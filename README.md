@@ -512,6 +512,22 @@ rejection of an incompatible settings schema, and an explicit return to `Off`.
 See `design_docs/2026-08-07_a23_resident_sync_consent.md` for the authority and
 host boundaries.
 
+## A24
+
+A24 makes that consent path available at resident startup.
+`CleromancySessionAuthority::open_with_local_sync_settings` loads Cleromancy's
+local selection before it returns a resident graph authority. A missing file
+keeps the authority at `Off`; an invalid schema prevents startup instead of
+silently widening what the authority can import or export.
+
+```powershell
+cargo test --features "graphshell-admission personal-sync" --test a24_resident_sync_startup --offline
+```
+
+This remains a product construction helper, not a Graphshell device host or
+sync loop. See `design_docs/2026-08-07_a24_resident_sync_startup.md` for its
+backend and host boundaries.
+
 ## License
 
 MIT OR Apache-2.0.

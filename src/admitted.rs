@@ -8,6 +8,8 @@
 //! session name and subject, which it uses to scope Cleromancy's own endpoint
 //! and Servitor petitions. It does not authenticate a new caller.
 
+#[cfg(feature = "personal-sync")]
+use std::path::Path;
 use std::sync::{Arc, Mutex};
 
 use graphshell::lifecycle::{AdmittedEndpointContext, BindAdmittedSession};
@@ -23,13 +25,15 @@ use graphshell_protocol::{
 };
 use muniment::Backend;
 use servitor::Subject;
+#[cfg(feature = "personal-sync")]
+use thiserror::Error;
 
 use crate::app::CleromancyAppSessionState;
 use crate::{AppError, CleromancyApp, HostError};
 #[cfg(feature = "personal-sync")]
 use crate::{
     CleromancySyncBatch, CleromancySyncError, CleromancySyncImport, CleromancySyncSelection,
-    CleromancySyncSettings, CleromancySyncSettingsError,
+    CleromancySyncSettings, CleromancySyncSettingsError, sync_settings_path,
 };
 
 impl<B: Backend> BindAdmittedSession for CleromancyApp<B> {
@@ -46,6 +50,17 @@ pub struct CleromancySessionAuthority<B> {
     app: Arc<Mutex<CleromancyApp<B>>>,
     #[cfg(feature = "personal-sync")]
     sync_selection: Arc<Mutex<CleromancySyncSelection>>,
+}
+
+/// A failure while opening Cleromancy's resident graph with its local sync
+/// consent applied.
+#[cfg(feature = "personal-sync")]
+#[derive(Debug, Error)]
+pub enum CleromancyResidentOpenError {
+    #[error(transparent)]
+    Host(#[from] HostError),
+    #[error(transparent)]
+    SyncSettings(#[from] CleromancySyncSettingsError),
 }
 
 impl<B> Clone for CleromancySessionAuthority<B> {
@@ -65,6 +80,22 @@ impl<B: Backend + Send + 'static> CleromancySessionAuthority<B> {
             #[cfg(feature = "personal-sync")]
             sync_selection: Arc::new(Mutex::new(CleromancySyncSelection::Off)),
         }
+    }
+
+    /// Open Cleromancy's durable graph and apply its local sync consent before
+    /// the resident authority becomes available. The data root owns only the
+    /// product's consent file; Graphshell identity and transport stay outside
+    /// this constructor.
+    #[cfg(feature = "personal-sync")]
+    pub async fn open_with_local_sync_settings(
+        backend: B,
+        data_root: &Path,
+    ) -> Result<Self, CleromancyResidentOpenError> {
+        let settings = CleromancySyncSettings::load(&sync_settings_path(data_root))?;
+        let host = crate::CleromancyHost::open(backend).await?;
+        let authority = Self::new(CleromancyApp::new(host));
+        authority.apply_sync_settings(&settings)?;
+        Ok(authority)
     }
 
     pub fn endpoint(&self, context: &AdmittedEndpointContext) -> CleromancySessionEndpoint<B> {

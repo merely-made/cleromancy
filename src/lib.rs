@@ -26,6 +26,12 @@ pub mod sync;
 pub mod sync_settings;
 pub mod tarot;
 
+#[cfg(all(
+    feature = "graphshell-admission",
+    feature = "personal-sync",
+    not(target_arch = "wasm32")
+))]
+pub use admitted::CleromancyResidentOpenError;
 #[cfg(all(feature = "graphshell-admission", not(target_arch = "wasm32")))]
 pub use admitted::{CleromancySessionAuthority, CleromancySessionEndpoint};
 pub use app::{AppError, CleromancyApp};
