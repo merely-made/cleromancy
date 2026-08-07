@@ -9,7 +9,7 @@ use graphshell::personal_sync::{
 };
 use mere::kernel::graph::{EdgeAssertion, Graph};
 use muniment::Backend;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use thiserror::Error;
 use uuid::Uuid;
@@ -30,7 +30,7 @@ pub const SYNC_BATCH_SCHEMA: &str = "cleromancy.sync-batch/v5";
 /// Graphshell's personal graph. Reading sync includes its contexts and exact
 /// candidate fields because a receipt without either dependency cannot be
 /// independently replayed.
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub enum CleromancySyncSelection {
     #[default]

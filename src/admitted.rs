@@ -29,6 +29,7 @@ use crate::{AppError, CleromancyApp, HostError};
 #[cfg(feature = "personal-sync")]
 use crate::{
     CleromancySyncBatch, CleromancySyncError, CleromancySyncImport, CleromancySyncSelection,
+    CleromancySyncSettings, CleromancySyncSettingsError,
 };
 
 impl<B: Backend> BindAdmittedSession for CleromancyApp<B> {
@@ -43,12 +44,16 @@ impl<B: Backend> BindAdmittedSession for CleromancyApp<B> {
 /// endpoints. Each endpoint receives its own projection state at open time.
 pub struct CleromancySessionAuthority<B> {
     app: Arc<Mutex<CleromancyApp<B>>>,
+    #[cfg(feature = "personal-sync")]
+    sync_selection: Arc<Mutex<CleromancySyncSelection>>,
 }
 
 impl<B> Clone for CleromancySessionAuthority<B> {
     fn clone(&self) -> Self {
         Self {
             app: Arc::clone(&self.app),
+            #[cfg(feature = "personal-sync")]
+            sync_selection: Arc::clone(&self.sync_selection),
         }
     }
 }
@@ -57,6 +62,8 @@ impl<B: Backend + Send + 'static> CleromancySessionAuthority<B> {
     pub fn new(app: CleromancyApp<B>) -> Self {
         Self {
             app: Arc::new(Mutex::new(app)),
+            #[cfg(feature = "personal-sync")]
+            sync_selection: Arc::new(Mutex::new(CleromancySyncSelection::Off)),
         }
     }
 
@@ -113,6 +120,37 @@ impl<B: Backend + Send + 'static> CleromancySessionAuthority<B> {
         crate::sync::export_sync_batch(&app.host, selection)
     }
 
+    /// The selection presently applied to this resident authority. It starts
+    /// at `Off`, even when Graphshell's personal-sync transport is available.
+    #[cfg(feature = "personal-sync")]
+    pub fn sync_selection(&self) -> CleromancySyncSelection {
+        *self
+            .sync_selection
+            .lock()
+            .expect("Cleromancy resident sync selection lock poisoned")
+    }
+
+    /// Apply product-owned local consent to the live resident authority.
+    /// Persistence stays with [`CleromancySyncSettings`].
+    #[cfg(feature = "personal-sync")]
+    pub fn apply_sync_settings(
+        &self,
+        settings: &CleromancySyncSettings,
+    ) -> Result<(), CleromancySyncSettingsError> {
+        settings.validate()?;
+        *self
+            .sync_selection
+            .lock()
+            .expect("Cleromancy resident sync selection lock poisoned") = settings.selection;
+        Ok(())
+    }
+
+    /// Export through the selection currently applied to this authority.
+    #[cfg(feature = "personal-sync")]
+    pub fn export_selected_sync_batch(&self) -> Result<CleromancySyncBatch, CleromancySyncError> {
+        self.export_sync_batch(self.sync_selection())
+    }
+
     /// Materialize selected, already-admitted personal graph truth into this
     /// authority. The existing importer validates the complete projection
     /// before it mutates the local reading graph.
@@ -127,6 +165,16 @@ impl<B: Backend + Send + 'static> CleromancySessionAuthority<B> {
             .lock()
             .expect("Cleromancy resident authority lock poisoned");
         crate::sync::import_sync_projection(&mut app.host, projection, selection)
+    }
+
+    /// Materialize a projection through the selection currently applied to
+    /// this authority.
+    #[cfg(feature = "personal-sync")]
+    pub fn import_selected_sync_projection(
+        &self,
+        projection: &SyncProjection,
+    ) -> Result<CleromancySyncImport, CleromancySyncError> {
+        self.import_sync_projection(projection, self.sync_selection())
     }
 }
 

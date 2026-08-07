@@ -495,6 +495,23 @@ authority, and finds the replayable Pattern occasion card there. See
 `design_docs/2026-08-07_a22_resident_pattern_sync.md` for validation and stop
 boundaries.
 
+## A23
+
+A23 makes sync consent durable and local to one Cleromancy installation. The
+product-owned `sync-settings.json` defaults to `Off`; a containing host loads
+and applies it to the resident authority before using the configured import or
+export helpers. The choice is intentionally not synced, because it governs
+which private reading truth this device is willing to share or materialize.
+
+```powershell
+cargo test --features "graphshell-admission personal-sync" --test a23_resident_sync_consent --offline
+```
+
+This proves default opt-out, save and reload, live authority application,
+rejection of an incompatible settings schema, and an explicit return to `Off`.
+See `design_docs/2026-08-07_a23_resident_sync_consent.md` for the authority and
+host boundaries.
+
 ## License
 
 MIT OR Apache-2.0.
