@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
 use std::collections::{BTreeMap, BTreeSet};
+use std::fmt;
+use std::str::FromStr;
 
 use chartulary::FacetId;
 use graphshell::personal_sync::{
@@ -43,7 +45,24 @@ pub enum CleromancySyncSelection {
     ContextsReadingsAndReflections,
 }
 
+/// The supplied local-consent name did not identify a supported selection.
+#[derive(Clone, Debug, Error, PartialEq, Eq)]
+#[error("unknown Cleromancy sync selection {value:?}")]
+pub struct CleromancySyncSelectionParseError {
+    value: String,
+}
+
 impl CleromancySyncSelection {
+    /// Stable, human-entered name for the local consent command.
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Off => "off",
+            Self::Contexts => "contexts",
+            Self::ContextsAndReadings => "contexts-and-readings",
+            Self::ContextsReadingsAndReflections => "contexts-readings-and-reflections",
+        }
+    }
+
     pub fn includes_contexts(self) -> bool {
         !matches!(self, Self::Off)
     }
@@ -90,6 +109,28 @@ impl CleromancySyncSelection {
             facets.push(REFLECTION_FACET);
         }
         PersonalSyncSelection::default().with_facets(facets)
+    }
+}
+
+impl fmt::Display for CleromancySyncSelection {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str(self.as_str())
+    }
+}
+
+impl FromStr for CleromancySyncSelection {
+    type Err = CleromancySyncSelectionParseError;
+
+    fn from_str(value: &str) -> Result<Self, Self::Err> {
+        match value.replace('_', "-").as_str() {
+            "off" => Ok(Self::Off),
+            "contexts" => Ok(Self::Contexts),
+            "contexts-and-readings" => Ok(Self::ContextsAndReadings),
+            "contexts-readings-and-reflections" => Ok(Self::ContextsReadingsAndReflections),
+            _ => Err(CleromancySyncSelectionParseError {
+                value: value.to_string(),
+            }),
+        }
     }
 }
 

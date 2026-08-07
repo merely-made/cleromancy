@@ -528,6 +528,22 @@ This remains a product construction helper, not a Graphshell device host or
 sync loop. See `design_docs/2026-08-07_a24_resident_sync_startup.md` for its
 backend and host boundaries.
 
+## A25
+
+A25 makes Cleromancy's local sync consent configurable now. With the
+`personal-sync` feature, `sync-consent show` reads the current choice and
+`sync-consent set contexts-and-readings` saves it. The command touches only
+`sync-settings.json`; it does not open a reading store, create graph truth, or
+contact a peer.
+
+```powershell
+cargo run --features personal-sync --bin cleromancy -- sync-consent show
+cargo run --features personal-sync --bin cleromancy -- sync-consent set contexts-and-readings
+```
+
+See `design_docs/2026-08-07_a25_sync_consent_command.md` for accepted choices,
+feature behavior, and the configuration boundary.
+
 ## License
 
 MIT OR Apache-2.0.

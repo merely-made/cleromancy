@@ -83,7 +83,8 @@ pub use spread::{
 #[cfg(all(feature = "personal-sync", not(target_arch = "wasm32")))]
 pub use sync::{
     CleromancySyncBatch, CleromancySyncError, CleromancySyncImport, CleromancySyncSelection,
-    SYNC_BATCH_SCHEMA, export_sync_batch, import_sync_projection,
+    CleromancySyncSelectionParseError, SYNC_BATCH_SCHEMA, export_sync_batch,
+    import_sync_projection,
 };
 #[cfg(all(feature = "personal-sync", not(target_arch = "wasm32")))]
 pub use sync_settings::{
