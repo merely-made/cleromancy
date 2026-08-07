@@ -459,6 +459,21 @@ cargo test --features graphshell-admission --test a20_resident_session_authority
 See `design_docs/2026-08-07_a20_resident_session_authority.md` for the state
 split, notification rule, and stop boundary.
 
+## A21
+
+A21 makes the resident authority explicitly flushable. A host can await one
+save of the same graph its admitted endpoints mutate, then a fresh Redb host
+reopens that saved reading truth. The save point is a product policy: a host
+may choose post-write, idle, shutdown, or user-triggered saving without making
+Graphshell’s carrier response pretend storage has already completed.
+
+```powershell
+cargo test --features graphshell-admission --test a21_resident_persistence --offline
+```
+
+See `design_docs/2026-08-07_a21_resident_persistence.md` for the persistence
+contract and explicit stop boundary.
+
 ## License
 
 MIT OR Apache-2.0.

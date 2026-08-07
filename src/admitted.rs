@@ -23,7 +23,7 @@ use muniment::Backend;
 use servitor::Subject;
 
 use crate::app::CleromancyAppSessionState;
-use crate::{AppError, CleromancyApp};
+use crate::{AppError, CleromancyApp, HostError};
 
 impl<B: Backend> BindAdmittedSession for CleromancyApp<B> {
     fn bind_admitted_session(mut self, context: &AdmittedEndpointContext) -> Self {
@@ -77,6 +77,19 @@ impl<B: Backend + Send + 'static> CleromancySessionAuthority<B> {
     ) -> Result<(), ResidentEndpointCatalogError> {
         let authority = self.clone();
         catalog.register_notifying(id, label, move |context| Ok(authority.endpoint(context)))
+    }
+
+    /// Flush the durable reading graph after one or more resident writes.
+    ///
+    /// Persistence remains an explicit host policy. Holding the authority
+    /// lock across the store operation makes the saved graph one coherent
+    /// point in the same mutation order the admitted endpoints observe.
+    pub async fn persist(&self, saved_at_secs: u64) -> Result<(), HostError> {
+        let mut app = self
+            .app
+            .lock()
+            .expect("Cleromancy resident authority lock poisoned");
+        app.host.persist(saved_at_secs).await
     }
 }
 
