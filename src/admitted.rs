@@ -12,6 +12,8 @@ use std::sync::{Arc, Mutex};
 
 use graphshell::lifecycle::{AdmittedEndpointContext, BindAdmittedSession};
 use graphshell::native::endpoint_catalog::{ResidentEndpointCatalog, ResidentEndpointCatalogError};
+#[cfg(feature = "personal-sync")]
+use graphshell::personal_sync::SyncProjection;
 use graphshell_endpoint::{
     IntentSink, PresentationSource, ProjectionCatalog, ProjectionNoticeSource, ProjectionSource,
 };
@@ -24,6 +26,10 @@ use servitor::Subject;
 
 use crate::app::CleromancyAppSessionState;
 use crate::{AppError, CleromancyApp, HostError};
+#[cfg(feature = "personal-sync")]
+use crate::{
+    CleromancySyncBatch, CleromancySyncError, CleromancySyncImport, CleromancySyncSelection,
+};
 
 impl<B: Backend> BindAdmittedSession for CleromancyApp<B> {
     fn bind_admitted_session(mut self, context: &AdmittedEndpointContext) -> Self {
@@ -90,6 +96,37 @@ impl<B: Backend + Send + 'static> CleromancySessionAuthority<B> {
             .lock()
             .expect("Cleromancy resident authority lock poisoned");
         app.host.persist(saved_at_secs).await
+    }
+
+    /// Export only the user-selected local truth through Cleromancy's
+    /// existing personal-sync mapping. This does not author, sign, or send an
+    /// operation.
+    #[cfg(feature = "personal-sync")]
+    pub fn export_sync_batch(
+        &self,
+        selection: CleromancySyncSelection,
+    ) -> Result<CleromancySyncBatch, CleromancySyncError> {
+        let app = self
+            .app
+            .lock()
+            .expect("Cleromancy resident authority lock poisoned");
+        crate::sync::export_sync_batch(&app.host, selection)
+    }
+
+    /// Materialize selected, already-admitted personal graph truth into this
+    /// authority. The existing importer validates the complete projection
+    /// before it mutates the local reading graph.
+    #[cfg(feature = "personal-sync")]
+    pub fn import_sync_projection(
+        &self,
+        projection: &SyncProjection,
+        selection: CleromancySyncSelection,
+    ) -> Result<CleromancySyncImport, CleromancySyncError> {
+        let mut app = self
+            .app
+            .lock()
+            .expect("Cleromancy resident authority lock poisoned");
+        crate::sync::import_sync_projection(&mut app.host, projection, selection)
     }
 }
 

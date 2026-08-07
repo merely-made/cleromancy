@@ -324,8 +324,9 @@ separate digest-addressed graph nodes, links facts to their chart, and exposes
 both through ordinary portable cards. Replay recomputes facts from stored
 positions and the declared orb without needing the original adapter.
 
-The concrete ephemeris, personal-sync selection, chart UI, houses, and
-interpretation catalog remain open decisions.
+The concrete ephemeris, chart UI, houses, and interpretation catalog remain
+open decisions. A22 later selects charts and verified facts through the
+existing explicit personal-sync setting.
 
 ```powershell
 cargo test --test a14
@@ -473,6 +474,26 @@ cargo test --features graphshell-admission --test a21_resident_persistence --off
 
 See `design_docs/2026-08-07_a21_resident_persistence.md` for the persistence
 contract and explicit stop boundary.
+
+## A22
+
+A22 completes selected sync for the saved Pattern occasion. The existing H7
+mapping now carries an astrology chart and verified facts alongside the normal
+reading dependencies, then preserves the occasion's exact collection members.
+`CleromancySessionAuthority` exposes that product mapping without owning a new
+replication store or transport. Sync remains opt-in: `Off` is the default, and
+a containing host chooses authoring and publish timing.
+
+```powershell
+cargo test --features personal-sync --test a4 --offline
+cargo test --features "graphshell-admission personal-sync" --test a22_resident_pattern_sync --offline
+```
+
+The proof admits a writer, creates one Pattern occasion, sends the selected
+batch through independent signed H7 replicas, imports it into a second resident
+authority, and finds the replayable Pattern occasion card there. See
+`design_docs/2026-08-07_a22_resident_pattern_sync.md` for validation and stop
+boundaries.
 
 ## License
 

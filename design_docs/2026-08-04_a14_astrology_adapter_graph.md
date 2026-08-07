@@ -27,8 +27,8 @@ source metadata, positions, chart digest, placements, and aspects.
 The adapter owns ephemeris mathematics and source licensing. Cleromancy owns
 receipt validation, integer normalization, sign/aspect derivation, graph
 identity, and projection. This slice does not choose a concrete ephemeris,
-publish astrology nodes through personal sync, calculate houses, or generate
-interpretations.
+calculate houses, or generate interpretations. A22 later publishes selected
+charts and verified facts through the existing opt-in personal-sync setting.
 
 ## Acceptance
 
@@ -41,5 +41,5 @@ interpretations.
 ## Stop rule
 
 Choose the concrete ephemeris and its licensing/runtime boundary before adding
-personal-sync facets or chart UI. Keep the source receipt and derived facts
-separately selectable.
+chart UI. Keep the source receipt and derived facts separately selectable. A22
+later adds selected sync facets without choosing the ephemeris or UI.

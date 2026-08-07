@@ -15,15 +15,16 @@ use thiserror::Error;
 use uuid::Uuid;
 
 use crate::host::{
-    CONTEXT_FACET, FIELD_FACET, READING_FACET, REFLECTION_FACET, SESSION_FACET,
-    THREE_CARD_SPREAD_FACET,
+    ASTROLOGY_CHART_FACET, ASTROLOGY_FACTS_FACET, CONCURRENCE_FACET, CONTEXT_FACET, FIELD_FACET,
+    READING_FACET, REFLECTION_FACET, SESSION_FACET, THREE_CARD_SPREAD_FACET,
 };
 use crate::{
-    CleromancyHost, ContextSnapshot, Field, HostError, Reading, ReadingEngine, ReadingError,
-    ReadingSession, Reflection, ThreeCardRelationKind, ThreeCardSpread,
+    AstrologyChart, AstrologyFacts, CleromancyHost, Concurrence, ContextSnapshot, Field, HostError,
+    Reading, ReadingEngine, ReadingError, ReadingSession, Reflection, ThreeCardRelationKind,
+    ThreeCardSpread,
 };
 
-pub const SYNC_BATCH_SCHEMA: &str = "cleromancy.sync-batch/v4";
+pub const SYNC_BATCH_SCHEMA: &str = "cleromancy.sync-batch/v5";
 
 /// The explicit local setting controlling which Cleromancy truth may enter
 /// Graphshell's personal graph. Reading sync includes its contexts and exact
@@ -35,8 +36,8 @@ pub enum CleromancySyncSelection {
     #[default]
     Off,
     Contexts,
-    /// Context, field, sealed result, saved occasions, and authored spreads.
-    /// It does not export reflective notes.
+    /// Context, field, sealed result, saved occasions, astrology facts, and
+    /// pattern occasions. It does not export reflective notes.
     ContextsAndReadings,
     /// The full reading history, including separately attached reflections.
     ContextsReadingsAndReflections,
@@ -58,6 +59,14 @@ impl CleromancySyncSelection {
         self.includes_readings()
     }
 
+    pub fn includes_astrology(self) -> bool {
+        self.includes_readings()
+    }
+
+    pub fn includes_concurrences(self) -> bool {
+        self.includes_readings()
+    }
+
     pub fn includes_reflections(self) -> bool {
         matches!(self, Self::ContextsReadingsAndReflections)
     }
@@ -73,6 +82,9 @@ impl CleromancySyncSelection {
             facets.push(READING_FACET);
             facets.push(SESSION_FACET);
             facets.push(THREE_CARD_SPREAD_FACET);
+            facets.push(ASTROLOGY_CHART_FACET);
+            facets.push(ASTROLOGY_FACTS_FACET);
+            facets.push(CONCURRENCE_FACET);
         }
         if self.includes_reflections() {
             facets.push(REFLECTION_FACET);
@@ -93,6 +105,9 @@ pub struct CleromancySyncBatch {
     pub readings: usize,
     pub sessions: usize,
     pub spreads: usize,
+    pub charts: usize,
+    pub facts: usize,
+    pub concurrences: usize,
     pub reflections: usize,
     pub digest: String,
 }
@@ -114,6 +129,9 @@ pub struct CleromancySyncImport {
     pub readings: usize,
     pub sessions: usize,
     pub spreads: usize,
+    pub charts: usize,
+    pub facts: usize,
+    pub concurrences: usize,
     pub reflections: usize,
 }
 
@@ -149,6 +167,15 @@ pub enum CleromancySyncError {
     MissingSpreadReading { spread: String, reading: String },
     #[error("synced reflection {reflection} has no selected session {session}")]
     MissingReflectionSession { reflection: String, session: String },
+    #[error("synced astrology facts {facts} has no selected chart {chart_digest}")]
+    MissingAstrologyChart { facts: String, chart_digest: String },
+    #[error("synced astrology chart {chart_digest} has no selected facts")]
+    MissingAstrologyFacts { chart_digest: String },
+    #[error("synced concurrence {concurrence} has no selected member {address}")]
+    MissingConcurrenceMember {
+        concurrence: String,
+        address: String,
+    },
     #[error("personal graph projection has {0} operations waiting for causal history")]
     PendingHistory(usize),
     #[error("personal graph projection has an unresolved Cleromancy conflict at {0}")]
@@ -179,6 +206,9 @@ pub fn export_sync_batch<B: Backend>(
     let mut readings = Vec::<(Reading, SelectedNode)>::new();
     let mut sessions = Vec::<(ReadingSession, SelectedNode)>::new();
     let mut spreads = Vec::<(ThreeCardSpread, SelectedNode)>::new();
+    let mut charts = Vec::<(AstrologyChart, SelectedNode)>::new();
+    let mut facts = Vec::<(AstrologyFacts, SelectedNode)>::new();
+    let mut concurrences = Vec::<(Concurrence, SelectedNode)>::new();
     let mut reflections = Vec::<(Reflection, SelectedNode)>::new();
 
     if selection.includes_contexts() {
@@ -188,6 +218,9 @@ pub fn export_sync_batch<B: Backend>(
             let reading = host.facet_value(key, READING_FACET);
             let session = host.facet_value(key, SESSION_FACET);
             let spread = host.facet_value(key, THREE_CARD_SPREAD_FACET);
+            let chart = host.facet_value(key, ASTROLOGY_CHART_FACET);
+            let facts_value = host.facet_value(key, ASTROLOGY_FACTS_FACET);
+            let concurrence = host.facet_value(key, CONCURRENCE_FACET);
             let reflection = host.facet_value(key, REFLECTION_FACET);
             if [
                 context.is_some(),
@@ -195,6 +228,9 @@ pub fn export_sync_batch<B: Backend>(
                 reading.is_some(),
                 session.is_some(),
                 spread.is_some(),
+                chart.is_some(),
+                facts_value.is_some(),
+                concurrence.is_some(),
                 reflection.is_some(),
             ]
             .into_iter()
@@ -267,6 +303,59 @@ pub fn export_sync_batch<B: Backend>(
                     spread,
                     selected_node(node, THREE_CARD_SPREAD_FACET, value.clone()),
                 ));
+            } else if selection.includes_astrology()
+                && let Some(value) = chart
+            {
+                let chart: AstrologyChart = serde_json::from_value(value.clone()).map_err(|e| {
+                    invalid(node.id, format!("astrology chart does not decode: {e}"))
+                })?;
+                chart
+                    .validate()
+                    .map_err(|e| invalid(node.id, e.to_string()))?;
+                let digest = chart.digest();
+                validate_identity(
+                    node.id,
+                    node.url(),
+                    &format!("cleromancy://astrology/chart/{digest}"),
+                )?;
+                charts.push((
+                    chart,
+                    selected_node(node, ASTROLOGY_CHART_FACET, value.clone()),
+                ));
+            } else if selection.includes_astrology()
+                && let Some(value) = facts_value
+            {
+                let astrology_facts: AstrologyFacts = serde_json::from_value(value.clone())
+                    .map_err(|e| invalid(node.id, format!("astrology facts do not decode: {e}")))?;
+                let digest = astrology_facts.digest();
+                validate_identity(
+                    node.id,
+                    node.url(),
+                    &format!("cleromancy://astrology/facts/{digest}"),
+                )?;
+                facts.push((
+                    astrology_facts,
+                    selected_node(node, ASTROLOGY_FACTS_FACET, value.clone()),
+                ));
+            } else if selection.includes_concurrences()
+                && let Some(value) = concurrence
+            {
+                let concurrence: Concurrence =
+                    serde_json::from_value(value.clone()).map_err(|e| {
+                        invalid(node.id, format!("concurrence facet does not decode: {e}"))
+                    })?;
+                concurrence
+                    .validate()
+                    .map_err(|e| invalid(node.id, e.to_string()))?;
+                validate_identity(
+                    node.id,
+                    node.url(),
+                    &format!("cleromancy://concurrence/{}", concurrence.id),
+                )?;
+                concurrences.push((
+                    concurrence,
+                    selected_node(node, CONCURRENCE_FACET, value.clone()),
+                ));
             } else if selection.includes_reflections()
                 && let Some(value) = reflection
             {
@@ -295,6 +384,9 @@ pub fn export_sync_batch<B: Backend>(
     readings.sort_by_key(|(_, node)| node.id);
     sessions.sort_by_key(|(_, node)| node.id);
     spreads.sort_by_key(|(_, node)| node.id);
+    charts.sort_by_key(|(_, node)| node.id);
+    facts.sort_by_key(|(_, node)| node.id);
+    concurrences.sort_by_key(|(_, node)| node.id);
     reflections.sort_by_key(|(_, node)| node.id);
     let context_ids = contexts
         .iter()
@@ -312,6 +404,61 @@ pub fn export_sync_batch<B: Backend>(
         .iter()
         .map(|(session, node)| (session.id.clone(), node.id))
         .collect::<BTreeMap<_, _>>();
+    let chart_ids = charts
+        .iter()
+        .map(|(chart, node)| (chart.digest(), node.id))
+        .collect::<BTreeMap<_, _>>();
+    let chart_values = charts
+        .iter()
+        .map(|(chart, _)| (chart.digest(), chart))
+        .collect::<BTreeMap<_, _>>();
+    let address_ids = contexts
+        .iter()
+        .map(|(_, node)| (&node.address, node.id))
+        .chain(fields.iter().map(|(_, node)| (&node.address, node.id)))
+        .chain(readings.iter().map(|(_, node)| (&node.address, node.id)))
+        .chain(sessions.iter().map(|(_, node)| (&node.address, node.id)))
+        .chain(spreads.iter().map(|(_, node)| (&node.address, node.id)))
+        .chain(charts.iter().map(|(_, node)| (&node.address, node.id)))
+        .chain(facts.iter().map(|(_, node)| (&node.address, node.id)))
+        .chain(
+            concurrences
+                .iter()
+                .map(|(_, node)| (&node.address, node.id)),
+        )
+        .chain(reflections.iter().map(|(_, node)| (&node.address, node.id)))
+        .map(|(address, id)| (address.clone(), id))
+        .collect::<BTreeMap<_, _>>();
+    let fact_chart_digests = facts
+        .iter()
+        .map(|(facts, _)| facts.chart_digest.clone())
+        .collect::<BTreeSet<_>>();
+    for (facts, _) in &facts {
+        let Some(chart) = chart_values.get(&facts.chart_digest) else {
+            return Err(CleromancySyncError::MissingAstrologyChart {
+                facts: facts.digest(),
+                chart_digest: facts.chart_digest.clone(),
+            });
+        };
+        facts.verify(chart).map_err(HostError::from)?;
+    }
+    for chart in chart_values.keys() {
+        if !fact_chart_digests.contains(chart) {
+            return Err(CleromancySyncError::MissingAstrologyFacts {
+                chart_digest: chart.clone(),
+            });
+        }
+    }
+    for (concurrence, _) in &concurrences {
+        for member in &concurrence.members {
+            if !address_ids.contains_key(&member.address) {
+                return Err(CleromancySyncError::MissingConcurrenceMember {
+                    concurrence: concurrence.id.clone(),
+                    address: member.address.clone(),
+                });
+            }
+        }
+    }
     let mut events = Vec::new();
     for (_, node) in &contexts {
         append_node_events(&mut events, node);
@@ -326,6 +473,15 @@ pub fn export_sync_batch<B: Backend>(
         append_node_events(&mut events, node);
     }
     for (_, node) in &spreads {
+        append_node_events(&mut events, node);
+    }
+    for (_, node) in &charts {
+        append_node_events(&mut events, node);
+    }
+    for (_, node) in &facts {
+        append_node_events(&mut events, node);
+    }
+    for (_, node) in &concurrences {
         append_node_events(&mut events, node);
     }
     for (_, node) in &reflections {
@@ -461,6 +617,38 @@ pub fn export_sync_batch<B: Backend>(
             });
         }
     }
+    for (facts, node) in &facts {
+        let Some(&chart) = chart_ids.get(&facts.chart_digest) else {
+            return Err(CleromancySyncError::MissingAstrologyChart {
+                facts: facts.digest(),
+                chart_digest: facts.chart_digest.clone(),
+            });
+        };
+        events.push(PersonalGraphEvent::AssertRelation {
+            from: node.id,
+            to: chart,
+            assertion: EdgeAssertion::Provenance {
+                sub_kind: mere::kernel::graph::ProvenanceSubKind::GeneratedFrom,
+            },
+        });
+    }
+    for (concurrence, node) in &concurrences {
+        for member in &concurrence.members {
+            let Some(&member_id) = address_ids.get(&member.address) else {
+                return Err(CleromancySyncError::MissingConcurrenceMember {
+                    concurrence: concurrence.id.clone(),
+                    address: member.address.clone(),
+                });
+            };
+            events.push(PersonalGraphEvent::AssertRelation {
+                from: node.id,
+                to: member_id,
+                assertion: EdgeAssertion::Containment {
+                    sub_kind: mere::kernel::graph::ContainmentSubKind::CollectionMember,
+                },
+            });
+        }
+    }
     for (reflection, node) in &reflections {
         let Some(&session) = session_ids.get(&reflection.session_id) else {
             return Err(CleromancySyncError::MissingReflectionSession {
@@ -489,6 +677,9 @@ pub fn export_sync_batch<B: Backend>(
         readings: readings.len(),
         sessions: sessions.len(),
         spreads: spreads.len(),
+        charts: charts.len(),
+        facts: facts.len(),
+        concurrences: concurrences.len(),
         reflections: reflections.len(),
         digest,
     })
@@ -516,13 +707,19 @@ pub fn import_sync_projection<B: Backend>(
         let reading = format!("/facet/{READING_FACET}");
         let session = format!("/facet/{SESSION_FACET}");
         let spread = format!("/facet/{THREE_CARD_SPREAD_FACET}");
+        let chart = format!("/facet/{ASTROLOGY_CHART_FACET}");
+        let facts = format!("/facet/{ASTROLOGY_FACTS_FACET}");
+        let concurrence = format!("/facet/{CONCURRENCE_FACET}");
         let reflection = format!("/facet/{REFLECTION_FACET}");
         if conflict.target.ends_with(&context)
             || (selection.includes_readings()
                 && (conflict.target.ends_with(&field)
                     || conflict.target.ends_with(&reading)
                     || conflict.target.ends_with(&session)
-                    || conflict.target.ends_with(&spread)))
+                    || conflict.target.ends_with(&spread)
+                    || conflict.target.ends_with(&chart)
+                    || conflict.target.ends_with(&facts)
+                    || conflict.target.ends_with(&concurrence)))
             || (selection.includes_reflections() && conflict.target.ends_with(&reflection))
         {
             return Err(CleromancySyncError::Conflict(conflict.target.clone()));
@@ -534,12 +731,18 @@ pub fn import_sync_projection<B: Backend>(
     let reading_facet = FacetId::new(READING_FACET);
     let session_facet = FacetId::new(SESSION_FACET);
     let spread_facet = FacetId::new(THREE_CARD_SPREAD_FACET);
+    let chart_facet = FacetId::new(ASTROLOGY_CHART_FACET);
+    let facts_facet = FacetId::new(ASTROLOGY_FACTS_FACET);
+    let concurrence_facet = FacetId::new(CONCURRENCE_FACET);
     let reflection_facet = FacetId::new(REFLECTION_FACET);
     let mut contexts = Vec::<ContextSnapshot>::new();
     let mut fields = Vec::<Field>::new();
     let mut readings = Vec::<Reading>::new();
     let mut sessions = Vec::<ReadingSession>::new();
     let mut spreads = Vec::<ThreeCardSpread>::new();
+    let mut charts = Vec::<AstrologyChart>::new();
+    let mut facts = Vec::<AstrologyFacts>::new();
+    let mut concurrences = Vec::<Concurrence>::new();
     let mut reflections = Vec::<Reflection>::new();
     for (_, node) in projection.graph.nodes() {
         let context = projection.graph.facets().get(&node.id, &context_facet);
@@ -547,6 +750,9 @@ pub fn import_sync_projection<B: Backend>(
         let reading = projection.graph.facets().get(&node.id, &reading_facet);
         let session = projection.graph.facets().get(&node.id, &session_facet);
         let spread = projection.graph.facets().get(&node.id, &spread_facet);
+        let chart = projection.graph.facets().get(&node.id, &chart_facet);
+        let facts_value = projection.graph.facets().get(&node.id, &facts_facet);
+        let concurrence = projection.graph.facets().get(&node.id, &concurrence_facet);
         let reflection = projection.graph.facets().get(&node.id, &reflection_facet);
         if [
             context.is_some(),
@@ -554,6 +760,9 @@ pub fn import_sync_projection<B: Backend>(
             reading.is_some(),
             session.is_some(),
             spread.is_some(),
+            chart.is_some(),
+            facts_value.is_some(),
+            concurrence.is_some(),
             reflection.is_some(),
         ]
         .into_iter()
@@ -625,6 +834,45 @@ pub fn import_sync_projection<B: Backend>(
                 &format!("cleromancy://spread/three-card/{}", spread.id),
             )?;
             spreads.push(spread);
+        } else if selection.includes_astrology()
+            && let Some(value) = chart
+        {
+            let chart: AstrologyChart = serde_json::from_value(value.clone())
+                .map_err(|e| invalid(node.id, format!("astrology chart does not decode: {e}")))?;
+            chart
+                .validate()
+                .map_err(|e| invalid(node.id, e.to_string()))?;
+            validate_identity(
+                node.id,
+                node.url(),
+                &format!("cleromancy://astrology/chart/{}", chart.digest()),
+            )?;
+            charts.push(chart);
+        } else if selection.includes_astrology()
+            && let Some(value) = facts_value
+        {
+            let astrology_facts: AstrologyFacts = serde_json::from_value(value.clone())
+                .map_err(|e| invalid(node.id, format!("astrology facts do not decode: {e}")))?;
+            validate_identity(
+                node.id,
+                node.url(),
+                &format!("cleromancy://astrology/facts/{}", astrology_facts.digest()),
+            )?;
+            facts.push(astrology_facts);
+        } else if selection.includes_concurrences()
+            && let Some(value) = concurrence
+        {
+            let concurrence: Concurrence = serde_json::from_value(value.clone())
+                .map_err(|e| invalid(node.id, format!("concurrence facet does not decode: {e}")))?;
+            concurrence
+                .validate()
+                .map_err(|e| invalid(node.id, e.to_string()))?;
+            validate_identity(
+                node.id,
+                node.url(),
+                &format!("cleromancy://concurrence/{}", concurrence.id),
+            )?;
+            concurrences.push(concurrence);
         } else if selection.includes_reflections()
             && let Some(value) = reflection
         {
@@ -646,6 +894,9 @@ pub fn import_sync_projection<B: Backend>(
     readings.sort_by(|left, right| left.id.cmp(&right.id));
     sessions.sort_by(|left, right| left.id.cmp(&right.id));
     spreads.sort_by(|left, right| left.id.cmp(&right.id));
+    charts.sort_by_key(AstrologyChart::digest);
+    facts.sort_by_key(AstrologyFacts::digest);
+    concurrences.sort_by(|left, right| left.id.cmp(&right.id));
     reflections.sort_by(|left, right| left.id.cmp(&right.id));
     let contexts_by_digest = contexts
         .iter()
@@ -663,6 +914,84 @@ pub fn import_sync_projection<B: Backend>(
         .iter()
         .map(|session| (session.id.clone(), session))
         .collect::<BTreeMap<_, _>>();
+    let charts_by_digest = charts
+        .iter()
+        .map(|chart| (chart.digest(), chart))
+        .collect::<BTreeMap<_, _>>();
+    let fact_chart_digests = facts
+        .iter()
+        .map(|facts| facts.chart_digest.clone())
+        .collect::<BTreeSet<_>>();
+    let selected_addresses = contexts
+        .iter()
+        .map(|context| format!("cleromancy://context/{}", context.digest()))
+        .chain(
+            fields
+                .iter()
+                .map(|field| format!("cleromancy://field/{}", field.digest())),
+        )
+        .chain(
+            readings
+                .iter()
+                .map(|reading| format!("cleromancy://reading/{}", reading.id)),
+        )
+        .chain(
+            sessions
+                .iter()
+                .map(|session| format!("cleromancy://session/{}", session.id)),
+        )
+        .chain(
+            spreads
+                .iter()
+                .map(|spread| format!("cleromancy://spread/three-card/{}", spread.id)),
+        )
+        .chain(
+            charts
+                .iter()
+                .map(|chart| format!("cleromancy://astrology/chart/{}", chart.digest())),
+        )
+        .chain(
+            facts
+                .iter()
+                .map(|facts| format!("cleromancy://astrology/facts/{}", facts.digest())),
+        )
+        .chain(
+            concurrences
+                .iter()
+                .map(|concurrence| format!("cleromancy://concurrence/{}", concurrence.id)),
+        )
+        .chain(
+            reflections
+                .iter()
+                .map(|reflection| format!("cleromancy://reflection/{}", reflection.id)),
+        )
+        .collect::<BTreeSet<_>>();
+    for facts in &facts {
+        let Some(chart) = charts_by_digest.get(&facts.chart_digest) else {
+            return Err(CleromancySyncError::MissingAstrologyChart {
+                facts: facts.digest(),
+                chart_digest: facts.chart_digest.clone(),
+            });
+        };
+        facts.verify(chart).map_err(HostError::from)?;
+    }
+    for chart in &charts {
+        if !fact_chart_digests.contains(&chart.digest()) {
+            return Err(CleromancySyncError::MissingAstrologyFacts {
+                chart_digest: chart.digest(),
+            });
+        }
+    }
+    for concurrence in &concurrences {
+        for member in &concurrence.members {
+            if !selected_addresses.contains(&member.address) {
+                return Err(CleromancySyncError::MissingConcurrenceMember {
+                    concurrence: concurrence.id.clone(),
+                    address: member.address.clone(),
+                });
+            }
+        }
+    }
     for reading in &readings {
         let Some(context) = contexts_by_digest.get(&reading.receipt.context_digest) else {
             return Err(CleromancySyncError::MissingContext {
@@ -808,6 +1137,13 @@ pub fn import_sync_projection<B: Backend>(
             .collect::<Vec<_>>();
         host.insert_three_card_spread(session, &spread_readings, spread)?;
     }
+    for facts in &facts {
+        let chart = charts_by_digest[&facts.chart_digest];
+        host.insert_astrology_chart(chart, facts.orb_millidegrees)?;
+    }
+    for concurrence in &concurrences {
+        host.insert_concurrence(concurrence)?;
+    }
     for reflection in &reflections {
         host.insert_reflection(sessions_by_id[&reflection.session_id], reflection)?;
     }
@@ -817,6 +1153,9 @@ pub fn import_sync_projection<B: Backend>(
         readings: readings.len(),
         sessions: sessions.len(),
         spreads: spreads.len(),
+        charts: charts.len(),
+        facts: facts.len(),
+        concurrences: concurrences.len(),
         reflections: reflections.len(),
     })
 }

@@ -4,6 +4,15 @@
 **Scope:** make sealed Cleromancy truth authorable and materializable through
 Graphshell H7 without creating another replication system.
 
+## Later update: A22
+
+A22 extends the same selected mapping to saved sessions, authored spreads,
+astrology charts, verified fact sets, and Pattern occasions. The current batch
+is `cleromancy.sync-batch/v5`. Its facts retain their chart provenance and an
+occasion retains its exact collection members. `ContextsAndReadings` remains
+the explicit selection for that complete replayable constellation; reflections
+still require `ContextsReadingsAndReflections`.
+
 ## Boundary
 
 Graphshell H7 already owns Personae-derived writers, roster admission, causal
@@ -24,7 +33,8 @@ The `personal-sync` Cargo feature is optional. Runtime selection defaults to
 - `Off` exports nothing;
 - `Contexts` exports context nodes and `cleromancy.context/v1` facets;
 - `ContextsAndReadings` also exports exact candidate-field nodes, reading
-  nodes, their facets, and `GeneratedFrom` relations.
+  nodes, their facets, and `GeneratedFrom` relations. A22 extends it with
+  saved sessions, spreads, charts, facts, and Pattern occasions.
 
 Reading sync includes contexts and fields by construction. A receipt whose
 bound context or field is absent would preserve an answer while discarding
@@ -49,7 +59,8 @@ Mere UUID derived from that address. Export order is stable: context nodes,
 field nodes, reading nodes, then reading-to-context and reading-to-field
 relations. Tags and nodes are sorted, and the complete versioned batch receives
 a BLAKE3 digest. A5 advances that wrapper to `cleromancy.sync-batch/v2` when it
-adds required field provenance.
+adds required field provenance; A22 advances it to v5 for replayable astrology
+and Pattern dependencies.
 
 Import validates the complete selected projection before changing local truth.
 It refuses:

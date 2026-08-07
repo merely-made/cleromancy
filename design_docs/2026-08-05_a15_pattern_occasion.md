@@ -36,5 +36,6 @@ casts continue to use operating-system entropy.
 
 Do not infer a correspondence, alter Tarot weights, or present concurrence as
 prediction. A later correspondence pack must name its author, version, mapping,
-and qualification algorithm explicitly. Concurrence is also excluded from
-personal sync until its astrology members have their own opt-in selection.
+and qualification algorithm explicitly. A22 later selects concurrence through
+`ContextsAndReadings` once its astrology chart and facts dependencies travel
+with it; that does not add a causal or interpretive claim.
