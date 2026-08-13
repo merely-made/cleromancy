@@ -235,7 +235,7 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             astrology_orb_state,
         ),
     ]);
-    #[cfg(feature = "ephemeris")]
+    #[cfg(feature = "analytic-ephemeris")]
     children.extend(ephemeris_controls(ui));
     children.extend([
         Box::new(el::<_, ConsultationUi, ConsultationAction>("h3", "Import chart"))
@@ -297,44 +297,25 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
     )
 }
 
-#[cfg(feature = "ephemeris")]
-fn ephemeris_controls(ui: &ConsultationUi) -> Vec<ConsultationView> {
-    use crate::EphemerisStatus;
-
-    let status = match &ui.ephemeris_status {
-        EphemerisStatus::Missing => {
-            "NASA/JPL DE440s is not installed. Installation downloads 31 MiB from NAIF and verifies its exact checksum before use.".to_string()
-        }
-        EphemerisStatus::Ready { path } => {
-            format!("Verified NASA/JPL DE440s ready at {}.", path.display())
-        }
-        EphemerisStatus::Invalid { path, detail } => format!(
-            "The local ephemeris at {} is invalid: {detail}. Installing again preserves it as a rejected file.",
-            path.display()
-        ),
-    };
-    let mut controls = vec![Box::new(
-        el::<_, ConsultationUi, ConsultationAction>("p", status)
+#[cfg(feature = "analytic-ephemeris")]
+fn ephemeris_controls(_ui: &ConsultationUi) -> Vec<ConsultationView> {
+    vec![
+        Box::new(
+            el::<_, ConsultationUi, ConsultationAction>(
+                "p",
+                "Charts are calculated locally from the built-in engine. Nothing is downloaded, and every chart records the engine revision that produced it.",
+            )
             .attr("class", "context-explanation")
             .attr("data-key", "ephemeris-status"),
-    ) as ConsultationView];
-    if !ui.ephemeris_status.is_ready() {
-        controls.push(Box::new(
-            button("Install NASA ephemeris", |ui: &mut ConsultationUi, _| {
-                ui.request_ephemeris_install()
+        ) as ConsultationView,
+        Box::new(
+            button("Calculate and save chart", |ui: &mut ConsultationUi, _| {
+                ui.request_calculated_astrology_chart()
             })
-            .attr("data-key", "install-ephemeris")
-            .attr("aria-label", "Install verified NASA JPL ephemeris"),
-        ));
-    }
-    controls.push(Box::new(
-        button("Calculate and save chart", |ui: &mut ConsultationUi, _| {
-            ui.request_calculated_astrology_chart()
-        })
-        .attr("data-key", "calculate-chart")
-        .attr("aria-label", "Calculate and save astrology chart"),
-    ));
-    controls
+            .attr("data-key", "calculate-chart")
+            .attr("aria-label", "Calculate and save astrology chart"),
+        ) as ConsultationView,
+    ]
 }
 
 fn field_label(field: &Field) -> String {

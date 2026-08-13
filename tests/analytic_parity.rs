@@ -3,9 +3,10 @@
 
 #![cfg(feature = "analytic-ephemeris")]
 
-//! Measures the data-free analytic engine against the same NASA/JPL Horizons
-//! vectors the DE440s golden test uses. Unlike that test this one needs no
-//! kernel, so it runs in the ordinary suite.
+//! Measures the adapter against NASA/JPL Horizons observer-table quantity 31.
+//! Turquet holds the same vectors in its own suite; this copy proves the chart
+//! contract preserves them through millidegree rounding. No kernel is
+//! involved, so it runs in the ordinary suite.
 
 use cleromancy::{AnalyticEphemerisAdapter, AstrologyMoment, calculate_with_adapter};
 
@@ -117,10 +118,9 @@ fn analytic_residuals_against_nasa_horizons() {
     );
 }
 
-/// Both engines cover the same ten bodies, so a chart from either reads the
-/// same way downstream.
+/// The chart covers all ten classical bodies.
 #[test]
-fn the_analytic_chart_carries_the_same_ten_bodies_as_the_kernel_engine() {
+fn the_analytic_chart_carries_all_ten_classical_bodies() {
     let adapter = AnalyticEphemerisAdapter::new();
     let chart = calculate_with_adapter(&adapter, &AstrologyMoment::global("2026-08-13T12:00:00Z"))
         .expect("calculate analytic chart");

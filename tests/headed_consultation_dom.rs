@@ -412,11 +412,6 @@ fn retained_consultation_dispatches_authored_layout_and_chart_input_actions() {
         consultation_view as fn(&ConsultationUi) -> ConsultationView,
         ConsultationUi::new(catalog),
     );
-    #[cfg(feature = "ephemeris")]
-    assert!(matches!(
-        one(click(&mut runner, &dom, "data-key", "install-ephemeris")),
-        ConsultationAction::InstallEphemeris
-    ));
     for (label, value) in [
         ("Layout label", "Compass"),
         ("Layout positions", "here | Here\nthere | There"),

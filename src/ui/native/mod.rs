@@ -131,11 +131,7 @@ impl NativeApp {
                 self.catalog_ready = true;
                 runner.update(|ui| ui.replace_catalog(catalog));
             }
-            #[cfg(feature = "ephemeris")]
-            WorkerUpdate::Ephemeris(status) => {
-                runner.update(|ui| ui.present_ephemeris_status(status));
-            }
-            #[cfg(feature = "ephemeris")]
+            #[cfg(feature = "analytic-ephemeris")]
             WorkerUpdate::AstrologyChart {
                 catalog,
                 facts_digest,

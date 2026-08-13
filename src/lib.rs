@@ -12,7 +12,7 @@ pub mod concurrence;
 pub mod consultation;
 pub mod context;
 pub mod enrichment;
-#[cfg(any(feature = "ephemeris", feature = "analytic-ephemeris"))]
+#[cfg(feature = "analytic-ephemeris")]
 pub mod ephemeris;
 pub mod field;
 pub mod host;
@@ -63,12 +63,6 @@ pub use enrichment::{
 pub use ephemeris::{
     ANALYTIC_EPHEMERIS_ALGORITHM, AnalyticEphemerisAdapter, AnalyticEphemerisError,
     TURQUET_REVISION,
-};
-#[cfg(feature = "ephemeris")]
-pub use ephemeris::{
-    ANISE_FORK_REVISION, CLEROMANCY_EPHEMERIS_ALGORITHM, DE440S_BYTES, DE440S_DOWNLOAD_URL,
-    DE440S_SHA256, EphemerisInstall, EphemerisProvisionError, EphemerisProvisioner,
-    EphemerisStatus, JplEphemerisAdapter, JplEphemerisError,
 };
 pub use field::{
     CONTEXTUAL_WEIGHT_RULE, Candidate, EXTERNAL_TERM_WEIGHT_RULE, Field, UNIFORM_DIE_RULE,

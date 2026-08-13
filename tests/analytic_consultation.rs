@@ -1,22 +1,19 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-#![cfg(feature = "ephemeris")]
-
-use std::path::PathBuf;
+#![cfg(feature = "analytic-ephemeris")]
 
 use cleromancy::{
-    AstrologyMoment, CleromancyHost, Consultation, JplEphemerisAdapter, calculate_with_adapter,
+    AnalyticEphemerisAdapter, AstrologyMoment, CleromancyHost, Consultation,
+    calculate_with_adapter,
 };
 use muniment::RedbBackend;
 
+/// The calculated-chart path needs no kernel, so this runs in the ordinary
+/// suite rather than as an ignored test.
 #[test]
-#[ignore = "requires CLEROMANCY_DE440S to name the canonical 31 MiB kernel"]
 fn calculated_chart_becomes_durable_consultation_truth() {
-    let kernel = std::env::var_os("CLEROMANCY_DE440S")
-        .map(PathBuf::from)
-        .expect("set CLEROMANCY_DE440S to the canonical NASA DE440s kernel");
-    let adapter = JplEphemerisAdapter::open_de440s(kernel).expect("load canonical DE440s");
+    let adapter = AnalyticEphemerisAdapter::new();
     let moment = AstrologyMoment::at("2024-04-08T18:00:00Z", 32_776_700, -96_797_000);
     let chart = calculate_with_adapter(&adapter, &moment).expect("calculate chart");
 
