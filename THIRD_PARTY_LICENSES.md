@@ -3,23 +3,19 @@
 This file records the optional ephemeris features' distribution boundary. It
 is not a substitute for the upstream license texts.
 
-## astro 2.0.0 (astro-rust)
+## turquet 0.1.0
 
 - License: MIT
-- Cleromancy fork: <https://github.com/merely-made/astro-rust>
-- Pinned revision: `c62ffdc7d55adfa1ee835fc7006d42d967bc4836`
-- Upstream: <https://github.com/saurvs/astro-rust>
+- Source: <https://github.com/merely-made/turquet>
+- Pinned revision: `95d1724c35ad7344029382f65c47efe1b9c489f2`
+- Provenance: a history-preserving adoption of Saurav Sachidanand's
+  MIT-licensed [`astro-rust`](https://github.com/saurvs/astro-rust); see
+  Turquet's PROVENANCE.md
 - Cleromancy modifications: none
 
-The `analytic-ephemeris` feature uses the fork's partial ELP-2000/82 lunar
-theory. The fork currently matches upstream at the pinned revision; upstream
-has been dormant since 2017, which is why the fork exists.
-
-## vsop87 3.0.0
-
-- License: MIT/Apache-2.0
-- Source: <https://github.com/Razican/vsop87-rs>
-- Cleromancy modifications: none (taken with default features off)
+The `analytic-ephemeris` feature adapts Turquet's `apparent` module, which
+composes VSOP87D, the partial ELP-2000/82 lunar theory, the analytical Pluto
+series, nutation, and precession without any external crate or data file.
 
 ## ANISE 0.10.6
 

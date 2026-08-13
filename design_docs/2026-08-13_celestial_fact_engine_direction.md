@@ -2,11 +2,28 @@
 
 **Date:** 2026-08-13
 **Status:** direction, not a gate. Captures the maintainer's product and
-architecture sketch plus the assistant's analysis. The engine is unnamed;
-naming is a maintainer decision.
-**Position:** incubated in Cleromancy the way Strophe incubates audio work.
-Promotion to a standalone crate happens after the first boundary proof, not
-before.
+architecture sketch plus the assistant's analysis.
+**Position:** superseded on two points the same day; see the later update.
+
+## Later update, same day: the engine is Turquet
+
+The engine is named **Turquet**, after the torquetum, and lives at
+`merely-made/turquet` (`repos/turquet` locally): a history-preserving
+adoption of `saurvs/astro-rust` with its own founding README, roadmap, and
+provenance record. That resolves this document's incubation posture early:
+the engine did not wait for the boundary proof to become a repo, and the
+promotion question is now Turquet's roadmap rather than a Cleromancy
+decision. The composition question also resolved concretely: Turquet's
+`apparent` module reaches every Horizons golden value within 2 millidegrees
+using only inherited code, so the pure-Rust engine needs no external crate at
+all, and Cleromancy's `analytic-ephemeris` feature is a thin rev-pinned
+adapter over it. The maintainer additionally directed that the DE440s kernel
+engine is retained as the accuracy oracle rather than removed, and that the
+remaining ANISE composition interest is its typed astrodynamics
+infrastructure, hifitime time scales and frames, as Turquet's T2 candidates,
+not its kernel. The first boundary proof below stands, now phrased as: one
+canonical Turquet Sun state consumed by a Today explanation and a `no_std`
+solar example.
 
 ## The idea
 

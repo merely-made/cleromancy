@@ -10,12 +10,11 @@
 use cleromancy::{AnalyticEphemerisAdapter, AstrologyMoment, calculate_with_adapter};
 
 /// The worst residual the analytic engine is allowed against Horizons. It is
-/// a measured ceiling, not an accuracy claim: the Sun, the Moon, and the
-/// eight planets land on the Horizons value exactly or within 2 millidegrees,
-/// and this headroom exists for Pluto, whose truncated series is the limiting
-/// term. See the analytic-parity design doc for what that means for sign
-/// placement and aspect orbs.
-const MAX_ERROR_MILLIDEGREES: i32 = 20;
+/// a measured ceiling, not an accuracy claim: through Turquet, every body
+/// lands on the Horizons value exactly or within 2 millidegrees. Turquet
+/// carries the same vectors in its own suite; this copy proves the adapter
+/// preserves them through the chart contract.
+const MAX_ERROR_MILLIDEGREES: i32 = 5;
 
 const J2000: &[(&str, i32, i32)] = &[
     ("sun", 280_369, 0),

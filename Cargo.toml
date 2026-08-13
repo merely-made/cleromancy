@@ -12,14 +12,13 @@ categories = ["gui"]
 default = []
 ephemeris = ["dep:anise", "dep:sha2", "dep:sofars", "dep:ureq"]
 # The data-free analytic engine. No kernel, no download, no filesystem.
-analytic-ephemeris = ["dep:astro", "dep:vsop87", "dep:sofars"]
+analytic-ephemeris = ["dep:turquet"]
 personal-sync = ["graphshell/personal-sync", "dep:personae", "dep:uuid"]
 graphshell-admission = ["graphshell/native"]
 
 [dependencies]
 accesskit = "0.24"
 anise = { git = "https://github.com/merely-made/anise.git", rev = "71e973a245e6701e14a5d4c88a3c4e7dedbf7702", version = "=0.10.6", default-features = false, optional = true }
-astro = { git = "https://github.com/merely-made/astro-rust.git", rev = "c62ffdc7d55adfa1ee835fc7006d42d967bc4836", version = "=2.0.0", optional = true }
 blake3 = "1"
 cambium = { git = "https://github.com/merely-made/genet.git", branch = "main" }
 cambium-winit = { git = "https://github.com/merely-made/genet.git", branch = "main" }
@@ -55,7 +54,7 @@ ureq = { version = "=3.3.0", default-features = false, features = ["rustls"], op
 servitor = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 thiserror = "2"
 uuid = { version = "1", features = ["serde"], optional = true }
-vsop87 = { version = "3", default-features = false, optional = true }
+turquet = { git = "https://github.com/merely-made/turquet.git", rev = "95d1724c35ad7344029382f65c47efe1b9c489f2", version = "=0.1.0", optional = true }
 wgpu = { version = "29", default-features = false, features = ["std"] }
 winit = "0.30"
 
