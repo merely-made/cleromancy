@@ -9,6 +9,7 @@ pub mod app;
 pub mod astrology;
 pub mod composer;
 pub mod concurrence;
+pub mod consultation;
 pub mod context;
 pub mod enrichment;
 pub mod field;
@@ -25,6 +26,7 @@ pub mod sync;
 #[cfg(all(feature = "personal-sync", not(target_arch = "wasm32")))]
 pub mod sync_settings;
 pub mod tarot;
+pub mod ui;
 
 #[cfg(all(
     feature = "graphshell-admission",
@@ -45,6 +47,11 @@ pub use concurrence::{
     ASTROLOGY_FACTS_ROLE, CONCURRENCE_SCHEMA, Concurrence, ConcurrenceError, ConcurrenceMember,
     READING_SESSION_ROLE,
 };
+pub use consultation::{
+    AstrologyChartDraft, Consultation, ConsultationCatalog, ConsultationDetail, ConsultationError,
+    ContextDraft, MANUAL_CONTEXT_SCHEMA, ReceiptComparison, ReceiptComparisonEntry,
+    SpreadTemplateDraft,
+};
 pub use context::ContextSnapshot;
 pub use enrichment::{
     EnrichmentMatch, EnrichmentReport, EnrichmentSource, EnrichmentValue, ExternalProjection,
@@ -56,6 +63,7 @@ pub use field::{
 };
 pub use host::{
     ASTROLOGY_CHART_FACET, ASTROLOGY_FACTS_FACET, CONCURRENCE_FACET, CleromancyHost, HostError,
+    SPREAD_FACET, SPREAD_TEMPLATE_FACET,
 };
 pub use intents::{
     AstrologyReadingConcurrenceIntentPayload, COMPOSE_READING_INTENT, COMPOSE_READING_SCHEMA,
@@ -67,6 +75,7 @@ pub use intents::{
     ThreeCardSpreadIntentPayload,
 };
 pub use reading::{
+    DERIVED_SELECTION_ALGORITHM, DERIVED_SELECTION_SCHEMA, DerivedSelection,
     EXTERNAL_QUALIFICATION_ALGORITHM, EnrichmentQualification, Reading, ReadingEngine,
     ReadingError, Receipt, SelectionMode,
 };
@@ -77,8 +86,9 @@ pub use session::{
     SessionError,
 };
 pub use spread::{
-    SpreadError, THREE_CARD_SPREAD_SCHEMA, ThreeCardPlacement, ThreeCardPosition,
-    ThreeCardRelation, ThreeCardRelationKind, ThreeCardSpread,
+    SPREAD_SCHEMA, SPREAD_TEMPLATE_SCHEMA, Spread, SpreadError, SpreadPosition, SpreadRelation,
+    SpreadRelationKind, SpreadTemplate, THREE_CARD_SPREAD_SCHEMA, ThreeCardPlacement,
+    ThreeCardPosition, ThreeCardRelation, ThreeCardRelationKind, ThreeCardSpread,
 };
 #[cfg(all(feature = "personal-sync", not(target_arch = "wasm32")))]
 pub use sync::{
@@ -92,6 +102,10 @@ pub use sync_settings::{
     CleromancySyncSettingsError, sync_settings_path,
 };
 pub use tarot::{TarotPack, TarotQualification};
+pub use ui::{
+    ConsultationAction, ConsultationContext, ConsultationLayout, ConsultationScreen,
+    ConsultationStatus, ConsultationUi, ConsultationView, consultation_view,
+};
 
 /// Stable fixture used by the A0 executable and integration receipts.
 pub fn a0_fixture() -> (ContextSnapshot, Field) {

@@ -132,6 +132,44 @@ fn generic_composer_rejects_a_deterministic_three_card_request() {
 }
 
 #[test]
+fn generic_composer_rejects_derived_until_its_descriptor_has_an_intent_schema() {
+    let (context, field) = a0_fixture();
+    let mut host = CleromancyHost::empty(MemoryBackend::new());
+    host.insert_context(&context).unwrap();
+    let subject = Subject::new([0x14; 32]);
+    let mut app = CleromancyApp::new(host);
+    app.bind_intent_subject(subject);
+    app.servitors_mut()
+        .grant(Grant::new(
+            subject,
+            Cap::scope("cleromancy/intents").unwrap(),
+            Mode::Write,
+        ))
+        .unwrap();
+    let mut carrier = LocalCarrier::new(app, |_, _| Err("resume is not used".to_string()));
+
+    let request = discover_request(&mut carrier);
+    let first = snapshot(&mut carrier, &request);
+    assert!(matches!(
+        request_intent(
+            &mut carrier,
+            invocation(
+                &first,
+                context_target(&first),
+                &ReadingCompositionIntentPayload::new(
+                    field,
+                    CompositionLayout::Single,
+                    SelectionMode::Derived,
+                ),
+            ),
+        ),
+        IntentResult::Rejected { reason } if reason.contains("seed and domain")
+    ));
+    assert!(carrier.take_notice().is_none());
+    assert!(sessions(carrier.endpoint()).is_empty());
+}
+
+#[test]
 fn generic_composer_can_select_a_graph_resident_field() {
     let (context, field) = a0_fixture();
     let field_digest = field.digest();

@@ -5,8 +5,8 @@ mod support;
 
 use cleromancy::moirai::clotho::EntropySource;
 use cleromancy::{
-    CONTEXTUAL_WEIGHT_RULE, CleromancyApp, CleromancyHost, Reading, ReadingEngine, ReadingError,
-    SelectionMode, a2_fixture,
+    CONTEXTUAL_WEIGHT_RULE, CleromancyApp, CleromancyHost, DerivedSelection, Reading,
+    ReadingEngine, ReadingError, SelectionMode, a2_fixture,
 };
 use graphshell_protocol::Carrier;
 use muniment::RedbBackend;
@@ -76,6 +76,21 @@ fn sealed_external_evidence_qualifies_and_replays_after_endpoint_shutdown() {
     assert_eq!(
         ReadingEngine::replay(&context, &field, &cast.receipt).unwrap(),
         cast
+    );
+
+    let derived = ReadingEngine::derive_enriched(
+        &context,
+        &field,
+        &evidence,
+        &DerivedSelection::new("a2-public-seed", "cleromancy.test/a2-enriched").unwrap(),
+    )
+    .unwrap();
+    assert_eq!(derived.receipt.schema, "cleromancy.receipt/v4");
+    assert_eq!(derived.receipt.mode, SelectionMode::Derived);
+    assert!(derived.receipt.derivation_digest.is_some());
+    assert_eq!(
+        ReadingEngine::replay(&context, &field, &derived.receipt).unwrap(),
+        derived
     );
 
     let mut tampered = calculated.receipt.clone();

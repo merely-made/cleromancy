@@ -6,8 +6,8 @@ use std::collections::VecDeque;
 use cleromancy::moirai::clotho::EntropySource;
 use cleromancy::servitor::{Cap, Grant, Mode, Subject};
 use cleromancy::{
-    a0_fixture, AstrologyChart, AstrologyMoment, AstrologyPosition, CleromancyApp, CleromancyHost,
-    ReadingEngine, ReadingError, CREATE_CONCURRENCE_INTENT,
+    AstrologyChart, AstrologyMoment, AstrologyPosition, CREATE_CONCURRENCE_INTENT, CleromancyApp,
+    CleromancyHost, ReadingEngine, ReadingError, a0_fixture,
 };
 use graphshell::client::RetainedEndpointSession;
 use graphshell_local::LocalCarrier;
@@ -98,10 +98,12 @@ fn retained_graphshell_session_submits_cleromancy_concurrence_from_exact_choices
             .collect::<Vec<_>>(),
         vec![reading_session.id.as_str()]
     );
-    assert!(retained
-        .submit_action_draft(&invocation_target, &mut draft)
-        .unwrap_err()
-        .contains("requires field astrology_facts_digest"));
+    assert!(
+        retained
+            .submit_action_draft(&invocation_target, &mut draft)
+            .unwrap_err()
+            .contains("requires field astrology_facts_digest")
+    );
 
     draft
         .choose("astrology_facts_digest", facts.digest())
@@ -126,11 +128,13 @@ fn retained_graphshell_session_submits_cleromancy_concurrence_from_exact_choices
             > revision_before,
         "resnapshot must observe the accepted endpoint write"
     );
-    assert!(retained
-        .resolve_all(&session)
-        .unwrap()
-        .into_iter()
-        .any(|(_, presentation)| presentation.semantics.label == "Pattern occasion"));
+    assert!(
+        retained
+            .resolve_all(&session)
+            .unwrap()
+            .into_iter()
+            .any(|(_, presentation)| presentation.semantics.label == "Pattern occasion")
+    );
 }
 
 fn fixture_chart(moment: &str, moon_longitude_millidegrees: u32) -> AstrologyChart {

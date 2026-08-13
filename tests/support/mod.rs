@@ -71,12 +71,9 @@ impl Carrier for FixtureCarrier {
             CarrierRequestBody::Snapshot(request) if request.session == self.session => {
                 let mut local = request;
                 local.session = self.host.session();
-                let mut snapshot = self
-                    .host
-                    .snapshot(local)
-                    .map_err(|error| {
-                        graphshell_protocol::CarrierError::Refused(error.to_string())
-                    })?;
+                let mut snapshot = self.host.snapshot(local).map_err(|error| {
+                    graphshell_protocol::CarrierError::Refused(error.to_string())
+                })?;
                 snapshot.session = self.session.clone();
                 Ok(CarrierResponseBody::Snapshot(Box::new(snapshot)))
             }

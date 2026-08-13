@@ -310,6 +310,11 @@ impl<B: Backend> CleromancyApp<B> {
                     "client token is outside the configured intent limits",
                 ));
             }
+            if mode == crate::SelectionMode::Derived {
+                return Ok(rejected(
+                    "derived selection needs a disclosed seed and domain and is not available through this intent",
+                ));
+            }
             if layout == CompositionLayout::ThreeCard && mode != crate::SelectionMode::Cast {
                 return Ok(rejected(
                     "the three-card layout requires cast selection mode",
@@ -339,6 +344,11 @@ impl<B: Backend> CleromancyApp<B> {
                         }
                         (crate::SelectionMode::Cast, None) => {
                             ReadingEngine::cast_with(&context, &field, entropy)
+                        }
+                        (crate::SelectionMode::Derived, _) => {
+                            return Ok(rejected(
+                                "derived selection needs a disclosed seed and domain and is not available through this intent",
+                            ));
                         }
                     };
                     let reading = match result {

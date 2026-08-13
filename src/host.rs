@@ -32,8 +32,9 @@ use thiserror::Error;
 use crate::moirai::clotho::EntropySource;
 use crate::{
     AstrologyChart, AstrologyError, AstrologyFacts, Concurrence, ConcurrenceError, ContextSnapshot,
-    Field, Reading, ReadingEngine, ReadingError, ReadingSession, Reflection, SessionError,
-    SpreadError, ThreeCardPosition, ThreeCardRelationKind, ThreeCardSpread,
+    Field, Reading, ReadingEngine, ReadingError, ReadingSession, Reflection, SessionError, Spread,
+    SpreadError, SpreadRelationKind, SpreadTemplate, ThreeCardPosition, ThreeCardRelationKind,
+    ThreeCardSpread,
 };
 
 pub const HOST_SLOT: &str = "cleromancy/mere-host/v1";
@@ -44,6 +45,8 @@ pub const READING_FACET: &str = "cleromancy.reading/v1";
 pub const SESSION_FACET: &str = "cleromancy.reading-session/v1";
 pub const REFLECTION_FACET: &str = "cleromancy.reflection/v1";
 pub const THREE_CARD_SPREAD_FACET: &str = "cleromancy.three-card-spread/v1";
+pub const SPREAD_TEMPLATE_FACET: &str = "cleromancy.spread-template/v1";
+pub const SPREAD_FACET: &str = "cleromancy.spread/v1";
 pub const ASTROLOGY_CHART_FACET: &str = "cleromancy.astrology-chart/v1";
 pub const ASTROLOGY_FACTS_FACET: &str = "cleromancy.astrology-facts/v1";
 pub const CONCURRENCE_FACET: &str = "cleromancy.concurrence/v1";
@@ -204,6 +207,151 @@ impl<B: Backend> CleromancyHost<B> {
 
     pub fn graph(&self) -> &Graph {
         &self.graph
+    }
+
+    /// Every stored context, decoded from its canonical digest address.
+    ///
+    /// Product surfaces use this typed catalog instead of walking raw graph
+    /// facets. A malformed or misplaced context is an error rather than a row
+    /// that silently disappears from the picker.
+    pub fn contexts(&self) -> Result<Vec<ContextSnapshot>, HostError> {
+        let mut contexts =
+            self.canonical_facet_values(CONTEXT_FACET, ContextSnapshot::digest, |digest| {
+                format!("cleromancy://context/{digest}")
+            })?;
+        contexts.sort_by_key(|context| (context.label.to_lowercase(), context.digest()));
+        Ok(contexts)
+    }
+
+    /// Every stored candidate field, ordered for a stable product picker.
+    pub fn fields(&self) -> Result<Vec<Field>, HostError> {
+        let mut fields = self.canonical_facet_values(FIELD_FACET, Field::digest, |digest| {
+            format!("cleromancy://field/{digest}")
+        })?;
+        fields.sort_by_key(|field| {
+            (
+                field.system.to_lowercase(),
+                field.rules.clone(),
+                field.digest(),
+            )
+        });
+        Ok(fields)
+    }
+
+    /// Every immutable authored layout, ordered for a stable local picker.
+    pub fn spread_templates(&self) -> Result<Vec<SpreadTemplate>, HostError> {
+        let mut templates = self.canonical_facet_values(
+            SPREAD_TEMPLATE_FACET,
+            |template: &SpreadTemplate| template.id.clone(),
+            |id| format!("cleromancy://spread-template/{id}"),
+        )?;
+        for template in &templates {
+            template.validate()?;
+        }
+        templates.sort_by_key(|template| (template.label.to_lowercase(), template.id.clone()));
+        Ok(templates)
+    }
+
+    /// Every stored and replay-verified astrology facts record, ordered by its
+    /// immutable digest for a stable local selector.
+    pub fn astrology_facts(&self) -> Result<Vec<AstrologyFacts>, HostError> {
+        let mut facts =
+            self.canonical_facet_values(ASTROLOGY_FACTS_FACET, AstrologyFacts::digest, |digest| {
+                format!("cleromancy://astrology/facts/{digest}")
+            })?;
+        for value in &facts {
+            self.replay_astrology_facts(value)?;
+        }
+        facts.sort_by_key(AstrologyFacts::digest);
+        Ok(facts)
+    }
+
+    /// Every saved reading occasion, newest first. Each row must replay from
+    /// its graph-resident context, field, and readings before it is returned.
+    pub fn sessions(&self) -> Result<Vec<ReadingSession>, HostError> {
+        let mut sessions = self.canonical_facet_values(
+            SESSION_FACET,
+            |session: &ReadingSession| session.id.clone(),
+            |id| format!("cleromancy://session/{id}"),
+        )?;
+        for session in &sessions {
+            session.validate()?;
+            self.replay_session(session)?;
+        }
+        sessions.sort_by(|left, right| {
+            right
+                .created_at_ms
+                .cmp(&left.created_at_ms)
+                .then_with(|| left.id.cmp(&right.id))
+        });
+        Ok(sessions)
+    }
+
+    /// Resolve one context from its content digest and verify that the stored
+    /// value still has that digest.
+    pub fn context_for_digest(&self, digest: &str) -> Result<ContextSnapshot, HostError> {
+        let context: ContextSnapshot = self.stored_facet(
+            &format!("cleromancy://context/{digest}"),
+            CONTEXT_FACET,
+            "context",
+            digest,
+        )?;
+        if context.digest() != digest {
+            return Err(HostError::InvalidStoredFacet {
+                facet: CONTEXT_FACET,
+                reason: "context digest does not match its canonical address".to_string(),
+            });
+        }
+        Ok(context)
+    }
+
+    /// Immutable reflections attached to one saved occasion, newest first.
+    pub fn reflections_for_session(&self, id: &str) -> Result<Vec<Reflection>, HostError> {
+        self.reading_session_for_id(id)?;
+        let mut reflections = self.canonical_facet_values(
+            REFLECTION_FACET,
+            |reflection: &Reflection| reflection.id.clone(),
+            |reflection_id| format!("cleromancy://reflection/{reflection_id}"),
+        )?;
+        for reflection in &reflections {
+            reflection.validate()?;
+        }
+        reflections.retain(|reflection| reflection.session_id == id);
+        reflections.sort_by(|left, right| {
+            right
+                .created_at_ms
+                .cmp(&left.created_at_ms)
+                .then_with(|| left.id.cmp(&right.id))
+        });
+        Ok(reflections)
+    }
+
+    /// Every saved grouping that explicitly contains one session. The group
+    /// remains an association, not evidence that any member caused another.
+    pub fn concurrences_for_session(&self, id: &str) -> Result<Vec<Concurrence>, HostError> {
+        self.reading_session_for_id(id)?;
+        let address = format!("cleromancy://session/{id}");
+        let mut concurrences = self.canonical_facet_values(
+            CONCURRENCE_FACET,
+            |concurrence: &Concurrence| concurrence.id.clone(),
+            |concurrence_id| format!("cleromancy://concurrence/{concurrence_id}"),
+        )?;
+        concurrences.retain(|concurrence| {
+            concurrence
+                .members
+                .iter()
+                .any(|member| member.address == address)
+        });
+        for concurrence in &concurrences {
+            self.replay_concurrence(concurrence)?;
+        }
+        concurrences.sort_by(|left, right| {
+            right
+                .created_at_ms
+                .cmp(&left.created_at_ms)
+                .then_with(|| left.id.cmp(&right.id))
+        });
+        Ok(concurrences)
     }
 
     pub fn was_reopened(&self) -> bool {
@@ -431,12 +579,28 @@ impl<B: Backend> CleromancyHost<B> {
         astrology_facts_digest: &str,
         reading_session_id: &str,
     ) -> Result<Concurrence, HostError> {
+        self.create_astrology_reading_concurrence_at(
+            astrology_facts_digest,
+            reading_session_id,
+            unix_time_ms()?,
+        )
+    }
+
+    /// Record a source-qualified chart and a reading in one explicit pattern
+    /// occasion at a caller-supplied timestamp. This makes local controller
+    /// tests deterministic without weakening the production convenience API.
+    pub fn create_astrology_reading_concurrence_at(
+        &mut self,
+        astrology_facts_digest: &str,
+        reading_session_id: &str,
+        created_at_ms: u64,
+    ) -> Result<Concurrence, HostError> {
         self.validate_astrology_reading_concurrence_members(
             astrology_facts_digest,
             reading_session_id,
         )?;
         let concurrence = Concurrence::astrology_reading(
-            unix_time_ms()?,
+            created_at_ms,
             astrology_facts_digest,
             reading_session_id,
         )?;
@@ -585,6 +749,65 @@ impl<B: Backend> CleromancyHost<B> {
         self.record_three_card_spread_at_with_entropy(
             context,
             field,
+            unix_time_ms()?,
+            client_token,
+            entropy,
+        )
+    }
+
+    /// Cast one independently sealed reading for each position in a stored
+    /// authored layout, then persist its session-bound spread record.
+    pub fn record_spread_at_with_entropy(
+        &mut self,
+        context: &ContextSnapshot,
+        field: &Field,
+        template: &SpreadTemplate,
+        created_at_ms: u64,
+        client_token: Option<String>,
+        entropy: &mut impl EntropySource,
+    ) -> Result<(ReadingSession, Spread, Vec<Reading>), HostError> {
+        template.validate()?;
+        let readings = template
+            .positions
+            .iter()
+            .map(|_| ReadingEngine::cast_with(context, field, entropy))
+            .collect::<Result<Vec<_>, _>>()?;
+        let placements = template
+            .positions
+            .iter()
+            .zip(&readings)
+            .map(|(position, reading)| crate::ReadingPlacement {
+                position: position.name.clone(),
+                reading_id: reading.id.clone(),
+            })
+            .collect();
+        let session = ReadingSession::with_placements(
+            created_at_ms,
+            event_nonce(entropy)?,
+            context.digest(),
+            field.digest(),
+            placements,
+            client_token,
+        )?;
+        self.insert_session(context, field, &readings, &session)?;
+        let spread = Spread::new(template, &session)?;
+        self.insert_spread_template(template)?;
+        self.insert_spread(&session, &readings, template, &spread)?;
+        Ok((session, spread, readings))
+    }
+
+    pub fn record_spread_with_entropy(
+        &mut self,
+        context: &ContextSnapshot,
+        field: &Field,
+        template: &SpreadTemplate,
+        client_token: Option<String>,
+        entropy: &mut impl EntropySource,
+    ) -> Result<(ReadingSession, Spread, Vec<Reading>), HostError> {
+        self.record_spread_at_with_entropy(
+            context,
+            field,
+            template,
             unix_time_ms()?,
             client_token,
             entropy,
@@ -795,6 +1018,130 @@ impl<B: Backend> CleromancyHost<B> {
         Ok(key)
     }
 
+    /// Store a reusable authored layout independently of every session that
+    /// later uses it.
+    pub fn insert_spread_template(
+        &mut self,
+        template: &SpreadTemplate,
+    ) -> Result<NodeKey, HostError> {
+        template.validate()?;
+        let key = self.upsert_node(
+            &format!("cleromancy://spread-template/{}", template.id),
+            &template.label,
+            ["spread", "spread-template"],
+        );
+        self.set_facet(
+            key,
+            SPREAD_TEMPLATE_FACET,
+            serde_json::to_value(template).unwrap(),
+        )?;
+        self.changed();
+        Ok(key)
+    }
+
+    /// Bind one stored template to one stored session and project the authored
+    /// position relationships onto that session's sealed readings.
+    pub fn insert_spread(
+        &mut self,
+        session: &ReadingSession,
+        readings: &[Reading],
+        template: &SpreadTemplate,
+        spread: &Spread,
+    ) -> Result<NodeKey, HostError> {
+        session.validate()?;
+        template.validate()?;
+        spread.validate()?;
+        if spread.template_id != template.id || spread.session_id != session.id {
+            return Err(
+                SpreadError::InvalidSpread("bound template or session id".to_string()).into(),
+            );
+        }
+        if !template
+            .positions
+            .iter()
+            .map(|position| position.name.as_str())
+            .eq(session
+                .placements
+                .iter()
+                .map(|placement| placement.position.as_str()))
+        {
+            return Err(SpreadError::InvalidSpread("session positions".to_string()).into());
+        }
+        self.validate_session_bindings(
+            &self.context_for_digest(&session.context_digest)?,
+            &self.field_for_digest(&session.field_digest)?,
+            readings,
+            session,
+        )?;
+        let session_key = self.session_key(session)?;
+        let template_key = self
+            .graph
+            .get_node_by_url(&format!("cleromancy://spread-template/{}", template.id))
+            .map(|(key, _)| key)
+            .ok_or_else(|| HostError::MissingReadingDependency {
+                kind: "spread template",
+                digest: template.id.clone(),
+            })?;
+        let mut reading_keys = BTreeMap::new();
+        for placement in &session.placements {
+            let key = self
+                .graph
+                .get_node_by_url(&format!("cleromancy://reading/{}", placement.reading_id))
+                .map(|(key, _)| key)
+                .ok_or_else(|| HostError::MissingReadingDependency {
+                    kind: "reading",
+                    digest: placement.reading_id.clone(),
+                })?;
+            reading_keys.insert(placement.position.as_str(), key);
+        }
+        let key = self.upsert_node(
+            &format!("cleromancy://spread/{}", spread.id),
+            &template.label,
+            ["spread", "authored-spread"],
+        );
+        self.set_facet(key, SPREAD_FACET, serde_json::to_value(spread).unwrap())?;
+        assert_relation(
+            &mut self.graph,
+            key,
+            session_key,
+            EdgeAssertion::Provenance {
+                sub_kind: ProvenanceSubKind::GeneratedFrom,
+            },
+        );
+        assert_relation(
+            &mut self.graph,
+            key,
+            template_key,
+            EdgeAssertion::Provenance {
+                sub_kind: ProvenanceSubKind::GeneratedFrom,
+            },
+        );
+        for reading_key in reading_keys.values() {
+            assert_relation(
+                &mut self.graph,
+                key,
+                *reading_key,
+                EdgeAssertion::Containment {
+                    sub_kind: ContainmentSubKind::CollectionMember,
+                },
+            );
+        }
+        for relation in &template.relations {
+            assert_relation(
+                &mut self.graph,
+                reading_keys[relation.from.as_str()],
+                reading_keys[relation.to.as_str()],
+                EdgeAssertion::Semantic {
+                    sub_kind: semantic_kind(relation.kind),
+                    label: Some(relation.label.clone()),
+                    decay_progress: None,
+                },
+            );
+        }
+        self.changed();
+        Ok(key)
+    }
+
     /// Replay a reading from graph-resident truth alone. The caller supplies
     /// neither its context nor its candidate field.
     pub fn replay_reading(&self, reading: &Reading) -> Result<Reading, HostError> {
@@ -901,9 +1248,79 @@ impl<B: Backend> CleromancyHost<B> {
         Ok(ordered)
     }
 
+    /// Resolve a generic spread from its immutable template, session, and
+    /// sealed readings. The returned reading order is the template order.
+    pub fn replay_spread(&self, spread: &Spread) -> Result<Vec<Reading>, HostError> {
+        let stored = self.stored_facet::<Spread>(
+            &format!("cleromancy://spread/{}", spread.id),
+            SPREAD_FACET,
+            "spread",
+            &spread.id,
+        )?;
+        if stored != *spread {
+            return Err(SpreadError::InvalidSpread("stored value".to_string()).into());
+        }
+        let template = self.spread_template_for_id(&spread.template_id)?;
+        let session = self.reading_session_for_id(&spread.session_id)?;
+        if !template
+            .positions
+            .iter()
+            .map(|position| position.name.as_str())
+            .eq(session
+                .placements
+                .iter()
+                .map(|placement| placement.position.as_str()))
+        {
+            return Err(SpreadError::InvalidSpread("session positions".to_string()).into());
+        }
+        let readings = self.replay_session(&session)?;
+        if readings.len() != template.positions.len() {
+            return Err(SpreadError::InvalidSpread("reading count".to_string()).into());
+        }
+        Ok(readings)
+    }
+
     pub fn facet_value(&self, key: NodeKey, facet: &str) -> Option<&Value> {
         let node = self.graph.get_node(key)?;
         self.graph.facets().get(&node.id, &FacetId::new(facet))
+    }
+
+    fn canonical_facet_values<T>(
+        &self,
+        facet: &'static str,
+        identity: impl Fn(&T) -> String,
+        address: impl Fn(&str) -> String,
+    ) -> Result<Vec<T>, HostError>
+    where
+        T: DeserializeOwned,
+    {
+        let mut values = BTreeMap::new();
+        for (key, node) in self.graph.nodes() {
+            let Some(value) = self.facet_value(key, facet) else {
+                continue;
+            };
+            let decoded: T = serde_json::from_value(value.clone()).map_err(|error| {
+                HostError::InvalidStoredFacet {
+                    facet,
+                    reason: error.to_string(),
+                }
+            })?;
+            let id = identity(&decoded);
+            let expected = address(&id);
+            if node.url() != expected {
+                return Err(HostError::InvalidStoredFacet {
+                    facet,
+                    reason: format!("value identity belongs at {expected}, not {}", node.url()),
+                });
+            }
+            if values.insert(id.clone(), decoded).is_some() {
+                return Err(HostError::InvalidStoredFacet {
+                    facet,
+                    reason: format!("duplicate canonical identity {id}"),
+                });
+            }
+        }
+        Ok(values.into_values().collect())
     }
 
     fn stored_facet<T: DeserializeOwned>(
@@ -1021,7 +1438,7 @@ impl<B: Backend> CleromancyHost<B> {
         serde_json::from_value(self.facet_value(key, CONTEXT_FACET)?.clone()).ok()
     }
 
-    pub(crate) fn field_for_digest(&self, digest: &str) -> Result<Field, HostError> {
+    pub fn field_for_digest(&self, digest: &str) -> Result<Field, HostError> {
         let address = format!("cleromancy://field/{digest}");
         let key = self
             .graph
@@ -1050,6 +1467,35 @@ impl<B: Backend> CleromancyHost<B> {
             });
         }
         Ok(field)
+    }
+
+    pub fn spread_template_for_id(&self, id: &str) -> Result<SpreadTemplate, HostError> {
+        let template: SpreadTemplate = self.stored_facet(
+            &format!("cleromancy://spread-template/{id}"),
+            SPREAD_TEMPLATE_FACET,
+            "spread template",
+            id,
+        )?;
+        template.validate()?;
+        if template.id != id {
+            return Err(HostError::InvalidStoredFacet {
+                facet: SPREAD_TEMPLATE_FACET,
+                reason: "template id does not match its canonical address".to_string(),
+            });
+        }
+        Ok(template)
+    }
+
+    pub fn spread_for_id(&self, id: &str) -> Result<Spread, HostError> {
+        let spread: Spread = self.stored_facet(
+            &format!("cleromancy://spread/{id}"),
+            SPREAD_FACET,
+            "spread",
+            id,
+        )?;
+        spread.validate()?;
+        self.replay_spread(&spread)?;
+        Ok(spread)
     }
 
     pub(crate) fn intent_was_advertised(&self, instance: InstanceId, intent: &str) -> bool {
@@ -1749,6 +2195,16 @@ fn unix_time_ms() -> Result<u64, HostError> {
         .duration_since(UNIX_EPOCH)
         .map_err(|_| HostError::Clock)?;
     u64::try_from(duration.as_millis()).map_err(|_| HostError::Clock)
+}
+
+fn semantic_kind(kind: SpreadRelationKind) -> SemanticSubKind {
+    match kind {
+        SpreadRelationKind::Supports => SemanticSubKind::Supports,
+        SpreadRelationKind::Contradicts => SemanticSubKind::Contradicts,
+        SpreadRelationKind::Questions => SemanticSubKind::Questions,
+        SpreadRelationKind::NextStep => SemanticSubKind::NextStep,
+        SpreadRelationKind::Elaborates => SemanticSubKind::Elaborates,
+    }
 }
 
 fn relation_kind_label(kind: RelationKind) -> &'static str {

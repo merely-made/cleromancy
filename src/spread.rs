@@ -1,6 +1,8 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
+use std::collections::BTreeSet;
+
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
 
@@ -8,6 +10,13 @@ use crate::context::canonical_digest;
 use crate::session::ReadingPlacement;
 
 pub const THREE_CARD_SPREAD_SCHEMA: &str = "cleromancy.three-card-spread/v1";
+pub const SPREAD_TEMPLATE_SCHEMA: &str = "cleromancy.spread-template/v1";
+pub const SPREAD_SCHEMA: &str = "cleromancy.spread/v1";
+
+const MAX_SPREAD_POSITIONS: usize = 12;
+const MAX_SPREAD_RELATIONS: usize = 24;
+const MAX_POSITION_NAME_BYTES: usize = 64;
+const MAX_LABEL_BYTES: usize = 256;
 
 /// The one authored layout in A8. These names are deliberately concrete: the
 /// crate exposes a useful spread, not a general spread language.
@@ -71,6 +80,59 @@ pub struct ThreeCardSpread {
 pub enum SpreadError {
     #[error("three-card spread is invalid: {0}")]
     InvalidSpread(String),
+}
+
+/// One named, ordered place in a reusable authored spread layout.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct SpreadPosition {
+    pub name: String,
+    pub label: String,
+}
+
+/// The finite semantic relationship kinds a spread author may state between
+/// positions. They describe the layout, never a discovered card meaning.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum SpreadRelationKind {
+    Supports,
+    Contradicts,
+    Questions,
+    NextStep,
+    Elaborates,
+}
+
+/// One authored relationship between two named positions in a layout.
+#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct SpreadRelation {
+    pub from: String,
+    pub to: String,
+    pub kind: SpreadRelationKind,
+    pub label: String,
+}
+
+/// A reusable, content-addressed layout. It contains only explicit authorial
+/// structure, so a later session can replay without a live editor or pack.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct SpreadTemplate {
+    pub schema: String,
+    pub id: String,
+    pub label: String,
+    pub positions: Vec<SpreadPosition>,
+    pub relations: Vec<SpreadRelation>,
+}
+
+/// The immutable attachment of one authored template to one saved cast
+/// session. Position-to-reading bindings remain in the session itself.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Spread {
+    pub schema: String,
+    pub id: String,
+    pub template_id: String,
+    pub session_id: String,
 }
 
 impl ThreeCardSpread {
@@ -167,12 +229,177 @@ impl ThreeCardSpread {
     }
 }
 
+impl SpreadPosition {
+    pub fn new(name: impl Into<String>, label: impl Into<String>) -> Self {
+        Self {
+            name: name.into(),
+            label: label.into(),
+        }
+    }
+}
+
+impl SpreadRelation {
+    pub fn new(
+        from: impl Into<String>,
+        kind: SpreadRelationKind,
+        to: impl Into<String>,
+        label: impl Into<String>,
+    ) -> Self {
+        Self {
+            from: from.into(),
+            to: to.into(),
+            kind,
+            label: label.into(),
+        }
+    }
+}
+
+impl SpreadTemplate {
+    pub fn new(
+        label: impl Into<String>,
+        positions: impl IntoIterator<Item = SpreadPosition>,
+        relations: impl IntoIterator<Item = SpreadRelation>,
+    ) -> Result<Self, SpreadError> {
+        let mut relations = relations.into_iter().collect::<Vec<_>>();
+        relations.sort();
+        let label = label.into();
+        let positions = positions.into_iter().collect::<Vec<_>>();
+        let id = spread_template_id(&label, &positions, &relations);
+        let template = Self {
+            schema: SPREAD_TEMPLATE_SCHEMA.to_string(),
+            id,
+            label,
+            positions,
+            relations,
+        };
+        template.validate()?;
+        Ok(template)
+    }
+
+    pub fn validate(&self) -> Result<(), SpreadError> {
+        if self.schema != SPREAD_TEMPLATE_SCHEMA {
+            return Err(SpreadError::InvalidSpread("template schema".to_string()));
+        }
+        if self.label.trim().is_empty() || self.label.len() > MAX_LABEL_BYTES {
+            return Err(SpreadError::InvalidSpread("template label".to_string()));
+        }
+        if self.positions.is_empty() || self.positions.len() > MAX_SPREAD_POSITIONS {
+            return Err(SpreadError::InvalidSpread("template positions".to_string()));
+        }
+        let mut positions = BTreeSet::new();
+        for position in &self.positions {
+            if !valid_position_name(&position.name) {
+                return Err(SpreadError::InvalidSpread("position name".to_string()));
+            }
+            if position.label.trim().is_empty() || position.label.len() > MAX_LABEL_BYTES {
+                return Err(SpreadError::InvalidSpread("position label".to_string()));
+            }
+            if !positions.insert(position.name.as_str()) {
+                return Err(SpreadError::InvalidSpread(
+                    "duplicate position name".to_string(),
+                ));
+            }
+        }
+        if self.relations.len() > MAX_SPREAD_RELATIONS {
+            return Err(SpreadError::InvalidSpread("template relations".to_string()));
+        }
+        let mut seen_relations = BTreeSet::new();
+        for relation in &self.relations {
+            if !positions.contains(relation.from.as_str())
+                || !positions.contains(relation.to.as_str())
+                || relation.from == relation.to
+            {
+                return Err(SpreadError::InvalidSpread("relation positions".to_string()));
+            }
+            if relation.label.trim().is_empty() || relation.label.len() > MAX_LABEL_BYTES {
+                return Err(SpreadError::InvalidSpread("relation label".to_string()));
+            }
+            if !seen_relations.insert(relation) {
+                return Err(SpreadError::InvalidSpread("duplicate relation".to_string()));
+            }
+        }
+        if self.relations.windows(2).any(|pair| pair[0] > pair[1]) {
+            return Err(SpreadError::InvalidSpread(
+                "relation order is not canonical".to_string(),
+            ));
+        }
+        if self.id != spread_template_id(&self.label, &self.positions, &self.relations) {
+            return Err(SpreadError::InvalidSpread("template identity".to_string()));
+        }
+        Ok(())
+    }
+}
+
+impl Spread {
+    pub fn new(
+        template: &SpreadTemplate,
+        session: &crate::ReadingSession,
+    ) -> Result<Self, SpreadError> {
+        template.validate()?;
+        session
+            .validate()
+            .map_err(|error| SpreadError::InvalidSpread(error.to_string()))?;
+        if !template
+            .positions
+            .iter()
+            .map(|position| position.name.as_str())
+            .eq(session
+                .placements
+                .iter()
+                .map(|placement| placement.position.as_str()))
+        {
+            return Err(SpreadError::InvalidSpread(
+                "session positions do not match template".to_string(),
+            ));
+        }
+        let id = spread_id(&template.id, &session.id);
+        let spread = Self {
+            schema: SPREAD_SCHEMA.to_string(),
+            id,
+            template_id: template.id.clone(),
+            session_id: session.id.clone(),
+        };
+        spread.validate()?;
+        Ok(spread)
+    }
+
+    pub fn validate(&self) -> Result<(), SpreadError> {
+        if self.schema != SPREAD_SCHEMA {
+            return Err(SpreadError::InvalidSpread("spread schema".to_string()));
+        }
+        if !is_digest(&self.template_id) || !is_digest(&self.session_id) {
+            return Err(SpreadError::InvalidSpread(
+                "spread dependency id".to_string(),
+            ));
+        }
+        if self.id != spread_id(&self.template_id, &self.session_id) {
+            return Err(SpreadError::InvalidSpread("spread identity".to_string()));
+        }
+        Ok(())
+    }
+}
+
 #[derive(Serialize)]
 struct ThreeCardSpreadIdentity<'a> {
     schema: &'static str,
     session_id: &'a str,
     placements: &'a [ThreeCardPlacement],
     relations: &'a [ThreeCardRelation],
+}
+
+#[derive(Serialize)]
+struct SpreadTemplateIdentity<'a> {
+    schema: &'static str,
+    label: &'a str,
+    positions: &'a [SpreadPosition],
+    relations: &'a [SpreadRelation],
+}
+
+#[derive(Serialize)]
+struct SpreadIdentity<'a> {
+    schema: &'static str,
+    template_id: &'a str,
+    session_id: &'a str,
 }
 
 fn three_card_spread_id(
@@ -186,6 +413,36 @@ fn three_card_spread_id(
         placements,
         relations,
     })
+}
+
+fn spread_template_id(
+    label: &str,
+    positions: &[SpreadPosition],
+    relations: &[SpreadRelation],
+) -> String {
+    canonical_digest(&SpreadTemplateIdentity {
+        schema: SPREAD_TEMPLATE_SCHEMA,
+        label,
+        positions,
+        relations,
+    })
+}
+
+fn spread_id(template_id: &str, session_id: &str) -> String {
+    canonical_digest(&SpreadIdentity {
+        schema: SPREAD_SCHEMA,
+        template_id,
+        session_id,
+    })
+}
+
+fn valid_position_name(value: &str) -> bool {
+    !value.is_empty()
+        && value.len() <= MAX_POSITION_NAME_BYTES
+        && value.bytes().enumerate().all(|(index, byte)| {
+            (byte.is_ascii_lowercase() || byte.is_ascii_digit() || byte == b'_')
+                && (index > 0 || byte.is_ascii_lowercase())
+        })
 }
 
 fn is_digest(value: &str) -> bool {

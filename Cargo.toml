@@ -14,7 +14,10 @@ personal-sync = ["graphshell/personal-sync", "dep:personae", "dep:uuid"]
 graphshell-admission = ["graphshell/native"]
 
 [dependencies]
+accesskit = "0.24"
 blake3 = "1"
+cambium = { git = "https://github.com/merely-made/genet.git", branch = "main" }
+cambium-winit = { git = "https://github.com/merely-made/genet.git", branch = "main" }
 chartulary = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 dirs = "6"
 graphshell = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false }
@@ -23,8 +26,17 @@ graphshell-endpoint = { git = "https://github.com/merely-made/mere.git", branch 
 graphshell-local = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 graphshell-protocol = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 graphshell-stdio = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+genet-layout = { git = "https://github.com/merely-made/genet.git", branch = "main" }
+genet-probe = { git = "https://github.com/merely-made/genet.git", branch = "main" }
+genet-scripted-dom = { git = "https://github.com/merely-made/genet.git", branch = "main", version = "=0.1.0" }
+genet-winit-host = { git = "https://github.com/merely-made/genet.git", branch = "main" }
+image = { version = "0.25", default-features = false, features = ["png"] }
+layout-dom-api = { git = "https://github.com/merely-made/genet.git", branch = "main", version = "=0.1.0" }
 mere = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["graph", "canvas"] }
 muniment = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["redb"] }
+netrender = { git = "https://github.com/merely-made/netrender.git", branch = "main" }
+paint_list_api = { git = "https://github.com/merely-made/netrender.git", branch = "main" }
+paint_list_render = { git = "https://github.com/merely-made/netrender.git", branch = "main" }
 personae = { git = "https://github.com/merely-made/mere.git", branch = "main", optional = true }
 pollster = "0.4"
 rand_core = { version = "0.6", features = ["getrandom"] }
@@ -35,6 +47,8 @@ serde_json = "1"
 servitor = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 thiserror = "2"
 uuid = { version = "1", features = ["serde"], optional = true }
+wgpu = { version = "29", default-features = false, features = ["std"] }
+winit = "0.30"
 
 [[bin]]
 name = "a4_sync_receipt"
@@ -42,4 +56,5 @@ path = "src/bin/a4_sync_receipt.rs"
 required-features = ["personal-sync"]
 
 [dev-dependencies]
+async-trait = "0.1"
 tempfile = "3"
