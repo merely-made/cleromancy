@@ -11,6 +11,8 @@ categories = ["gui"]
 [features]
 default = []
 ephemeris = ["dep:anise", "dep:sha2", "dep:sofars", "dep:ureq"]
+# The data-free analytic engine. No kernel, no download, no filesystem.
+analytic-ephemeris = ["dep:vsop87", "dep:sofars"]
 personal-sync = ["graphshell/personal-sync", "dep:personae", "dep:uuid"]
 graphshell-admission = ["graphshell/native"]
 
@@ -52,6 +54,7 @@ ureq = { version = "=3.3.0", default-features = false, features = ["rustls"], op
 servitor = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 thiserror = "2"
 uuid = { version = "1", features = ["serde"], optional = true }
+vsop87 = { version = "3", default-features = false, optional = true }
 wgpu = { version = "29", default-features = false, features = ["std"] }
 winit = "0.30"
 

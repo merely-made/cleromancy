@@ -12,7 +12,7 @@ pub mod concurrence;
 pub mod consultation;
 pub mod context;
 pub mod enrichment;
-#[cfg(feature = "ephemeris")]
+#[cfg(any(feature = "ephemeris", feature = "analytic-ephemeris"))]
 pub mod ephemeris;
 pub mod field;
 pub mod host;
@@ -58,6 +58,10 @@ pub use context::ContextSnapshot;
 pub use enrichment::{
     EnrichmentMatch, EnrichmentReport, EnrichmentSource, EnrichmentValue, ExternalProjection,
     SealedEnrichment,
+};
+#[cfg(feature = "analytic-ephemeris")]
+pub use ephemeris::{
+    ANALYTIC_EPHEMERIS_ALGORITHM, AnalyticEphemerisAdapter, AnalyticEphemerisError,
 };
 #[cfg(feature = "ephemeris")]
 pub use ephemeris::{
