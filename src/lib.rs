@@ -61,7 +61,8 @@ pub use enrichment::{
 };
 #[cfg(feature = "analytic-ephemeris")]
 pub use ephemeris::{
-    ANALYTIC_EPHEMERIS_ALGORITHM, AnalyticEphemerisAdapter, AnalyticEphemerisError,
+    ANALYTIC_EPHEMERIS_ALGORITHM, ASTRO_RUST_FORK_REVISION, AnalyticEphemerisAdapter,
+    AnalyticEphemerisError,
 };
 #[cfg(feature = "ephemeris")]
 pub use ephemeris::{

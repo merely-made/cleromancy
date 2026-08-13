@@ -7,9 +7,10 @@
 //! it:
 //!
 //! - [`jpl`] reads the public NASA/JPL DE440s kernel through the pinned ANISE
-//!   fork. It needs a verified 31 MiB kernel on disk and covers ten bodies.
-//! - [`analytic`] evaluates VSOP87D directly, so it reaches neither the
-//!   filesystem nor the network. It omits the Moon.
+//!   fork. It needs a verified 31 MiB kernel on disk.
+//! - [`analytic`] evaluates VSOP87D, the fork-pinned partial ELP-2000/82
+//!   Moon, and a truncated Pluto series directly, so it reaches neither the
+//!   filesystem nor the network. Both engines cover the same ten bodies.
 //!
 //! Cleromancy still owns the chart contract, the integer normalization, and
 //! the derived facts. Neither engine chooses a house system or interprets.
@@ -23,7 +24,8 @@ mod provision;
 
 #[cfg(feature = "analytic-ephemeris")]
 pub use analytic::{
-    ANALYTIC_EPHEMERIS_ALGORITHM, AnalyticEphemerisAdapter, AnalyticEphemerisError,
+    ANALYTIC_EPHEMERIS_ALGORITHM, ASTRO_RUST_FORK_REVISION, AnalyticEphemerisAdapter,
+    AnalyticEphemerisError,
 };
 #[cfg(feature = "ephemeris")]
 pub use jpl::{

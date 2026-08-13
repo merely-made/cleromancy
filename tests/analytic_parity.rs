@@ -10,14 +10,12 @@
 use cleromancy::{AnalyticEphemerisAdapter, AstrologyMoment, calculate_with_adapter};
 
 /// The worst residual the analytic engine is allowed against Horizons. It is
-/// a measured ceiling, not an accuracy claim: the Sun and the eight planets
-/// land on the Horizons value exactly, and this headroom exists for Pluto,
-/// whose truncated series is the limiting term. See the analytic-parity
-/// design doc for what that means for sign placement and aspect orbs.
+/// a measured ceiling, not an accuracy claim: the Sun, the Moon, and the
+/// eight planets land on the Horizons value exactly or within 2 millidegrees,
+/// and this headroom exists for Pluto, whose truncated series is the limiting
+/// term. See the analytic-parity design doc for what that means for sign
+/// placement and aspect orbs.
 const MAX_ERROR_MILLIDEGREES: i32 = 20;
-
-/// Bodies outside VSOP87 that the analytic engine deliberately omits.
-const OMITTED: [&str; 1] = ["moon"];
 
 const J2000: &[(&str, i32, i32)] = &[
     ("sun", 280_369, 0),
@@ -83,14 +81,9 @@ fn analytic_residuals_against_nasa_horizons() {
             "body", "horizons", "analytic", "d-lon", "d-lat"
         );
         for &(body, expected_longitude, expected_latitude) in *golden {
-            let Some(actual) = chart.position(body) else {
-                assert!(
-                    OMITTED.contains(&body),
-                    "{body} is missing but is not a declared omission"
-                );
-                println!("{body:<9} {expected_longitude:>12} {:>12}", "omitted");
-                continue;
-            };
+            let actual = chart
+                .position(body)
+                .unwrap_or_else(|| panic!("{body} is missing from the analytic chart"));
             let longitude_error =
                 circular_error(actual.longitude_millidegrees as i32, expected_longitude);
             let latitude_error = actual.latitude_millidegrees - expected_latitude;
@@ -125,20 +118,22 @@ fn analytic_residuals_against_nasa_horizons() {
     );
 }
 
-/// Every omitted body must be genuinely absent rather than silently wrong.
+/// Both engines cover the same ten bodies, so a chart from either reads the
+/// same way downstream.
 #[test]
-fn omitted_bodies_are_absent_rather_than_approximated() {
+fn the_analytic_chart_carries_the_same_ten_bodies_as_the_kernel_engine() {
     let adapter = AnalyticEphemerisAdapter::new();
     let chart = calculate_with_adapter(&adapter, &AstrologyMoment::global("2026-08-13T12:00:00Z"))
         .expect("calculate analytic chart");
-    for body in OMITTED {
+    for body in [
+        "sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune",
+        "pluto",
+    ] {
         assert!(
-            chart.position(body).is_none(),
-            "{body} must be absent from an analytic chart"
+            chart.position(body).is_some(),
+            "{body} must be present in an analytic chart"
         );
     }
-    assert!(chart.position("sun").is_some());
-    assert!(chart.position("pluto").is_some());
 }
 
 fn circular_error(actual: i32, expected: i32) -> i32 {

@@ -1,7 +1,25 @@
 # Third-party licenses and data
 
-This file records the optional ephemeris feature's distribution boundary. It
+This file records the optional ephemeris features' distribution boundary. It
 is not a substitute for the upstream license texts.
+
+## astro 2.0.0 (astro-rust)
+
+- License: MIT
+- Cleromancy fork: <https://github.com/merely-made/astro-rust>
+- Pinned revision: `c62ffdc7d55adfa1ee835fc7006d42d967bc4836`
+- Upstream: <https://github.com/saurvs/astro-rust>
+- Cleromancy modifications: none
+
+The `analytic-ephemeris` feature uses the fork's partial ELP-2000/82 lunar
+theory. The fork currently matches upstream at the pinned revision; upstream
+has been dormant since 2017, which is why the fork exists.
+
+## vsop87 3.0.0
+
+- License: MIT/Apache-2.0
+- Source: <https://github.com/Razican/vsop87-rs>
+- Cleromancy modifications: none (taken with default features off)
 
 ## ANISE 0.10.6
 

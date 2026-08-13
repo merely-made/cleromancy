@@ -4,6 +4,20 @@
 **Scope:** a second chart engine that reaches neither the filesystem nor the
 network, measured against the same reference vectors as the DE440s engine.
 
+## Later update, same day: the Moon landed
+
+The lunar gap described below is closed. `merely-made/astro-rust` now exists,
+pinned at `c62ffdc7d55adfa1ee835fc7006d42d967bc4836`, and its partial
+ELP-2000/82 `lunar::geocent_ecl_pos` supplies the Moon on the mean equinox of
+date, with the shared SOFARS nutation added and no light-time loop, since the
+series is geocentric and fitted directly. Measured against the same Horizons
+vectors, the Moon lands exactly at J2000 and at the 2024 eclipse instant, and
+within 2 millidegrees at 2026-08-13. Both engines now cover the same ten
+bodies, the omission machinery in the parity test became a ten-body presence
+assertion, and the worst residual across the whole chart remains Pluto at 14
+millidegrees. The Moon and body-coverage statements below are retained as the
+state this gate originally shipped.
+
 ## Decision
 
 Cleromancy carries two ephemeris engines behind the existing A14

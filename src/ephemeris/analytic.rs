@@ -10,10 +10,11 @@
 //! JPL adapter uses, so the two engines differ only in their source of
 //! planetary positions.
 //!
-//! It covers the Sun, the eight planets, and Pluto, which carries its own
-//! truncated series because it is outside VSOP87. The Moon needs a separate
-//! lunar theory and is deliberately absent rather than approximated; see the
-//! analytic-parity design doc.
+//! It covers the same ten bodies as the kernel engine. The Moon comes from
+//! the pinned `merely-made/astro-rust` fork's partial ELP-2000/82, which is
+//! already geocentric on the mean equinox of date, and Pluto carries its own
+//! truncated series because it is outside VSOP87; see the analytic-parity
+//! design doc for the measured residuals.
 
 use vsop87::{SphericalCoordinates, vsop87d};
 
@@ -22,10 +23,11 @@ use crate::astrology::{
 };
 
 pub const ANALYTIC_EPHEMERIS_ALGORITHM: &str =
-    "cleromancy.ephemeris/analytic-vsop87d-apparent-iau1980/v1";
-const ENGINE: &str = "cleromancy-analytic-ephemeris/v1; vsop87/3.0.0; sofars/0.6.1";
+    "cleromancy.ephemeris/analytic-vsop87d-elp2000-apparent-iau1980/v1";
+pub const ASTRO_RUST_FORK_REVISION: &str = "c62ffdc7d55adfa1ee835fc7006d42d967bc4836";
+const ENGINE: &str = "cleromancy-analytic-ephemeris/v1; vsop87/3.0.0; merely-made/astro-rust@c62ffdc7d55adfa1ee835fc7006d42d967bc4836 (astro/2.0.0); sofars/0.6.1";
 const EPHEMERIS: &str =
-    "VSOP87D (no data file); observer:earth-geocenter; bodies:sun,mercury..neptune";
+    "VSOP87D + partial ELP-2000/82 + truncated Pluto (no data file); observer:earth-geocenter; bodies:ten";
 
 /// Astronomical units travelled by light in one day.
 const LIGHT_SPEED_AU_PER_DAY: f64 = 173.144_632_674_24;
@@ -70,10 +72,11 @@ const LEAP_SECONDS: [(i32, u32, u32, f64); 28] = [
     (2017, 1, 1, 37.0),
 ];
 
-/// The bodies VSOP87D can place. Ordering matches the JPL adapter so the two
-/// charts read the same way where they overlap.
-const BODIES: [Body; 9] = [
+/// The same ten bodies as the kernel engine, in the same order, so the two
+/// charts read identically.
+const BODIES: [Body; 10] = [
     Body::Sun,
+    Body::Moon,
     Body::Mercury,
     Body::Venus,
     Body::Mars,
@@ -87,6 +90,7 @@ const BODIES: [Body; 9] = [
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum Body {
     Sun,
+    Moon,
     Mercury,
     Venus,
     Mars,
@@ -101,6 +105,7 @@ impl Body {
     fn name(self) -> &'static str {
         match self {
             Self::Sun => "sun",
+            Self::Moon => "moon",
             Self::Mercury => "mercury",
             Self::Venus => "venus",
             Self::Mars => "mars",
@@ -117,6 +122,7 @@ impl Body {
     fn heliocentric(self, jde: f64) -> [f64; 3] {
         match self {
             Self::Sun => [0.0, 0.0, 0.0],
+            Self::Moon => unreachable!("the Moon is geocentric and handled in apparent"),
             Self::Mercury => rectangular(&vsop87d::mercury(jde)),
             Self::Venus => rectangular(&vsop87d::venus(jde)),
             Self::Mars => rectangular(&vsop87d::mars(jde)),
@@ -150,6 +156,9 @@ impl AnalyticEphemerisAdapter {
 
     /// Apparent geocentric ecliptic longitude and latitude, in degrees.
     fn apparent(body: Body, jde_tt: f64) -> (f64, f64) {
+        if body == Body::Moon {
+            return Self::moon_apparent(jde_tt);
+        }
         let earth = vsop87d::earth(jde_tt);
         let earth = rectangular(&earth);
 
@@ -184,6 +193,20 @@ impl AnalyticEphemerisAdapter {
         (
             longitude.to_degrees().rem_euclid(360.0),
             latitude.to_degrees(),
+        )
+    }
+
+    /// The Moon from the fork's partial ELP-2000/82: already geocentric on
+    /// the mean equinox of date, so no light-time loop or aberration term is
+    /// added; apparent position is the series value plus nutation.
+    fn moon_apparent(jde_tt: f64) -> (f64, f64) {
+        let (point, _distance_km) = astro::lunar::geocent_ecl_pos(jde_tt);
+        let (nutation_in_longitude, _) = sofars::pnp::nut80(J2000_JD, jde_tt - J2000_JD);
+        (
+            (point.long + nutation_in_longitude)
+                .to_degrees()
+                .rem_euclid(360.0),
+            point.lat.to_degrees(),
         )
     }
 
