@@ -1,0 +1,39 @@
+{
+  "schema": "cleromancy.proof/a3-intent-v1",
+  "carrier": "graphshell-local JSON wire round-trip",
+  "identity_binding": "subject supplied by the containing host, never the payload",
+  "granted_scope": "cleromancy/intents/read",
+  "intent": "cleromancy.read",
+  "result": {
+    "schema": "cleromancy.reading/v1",
+    "id": "25a0c4f63165959707feb8f3b3f639ff85404ff30d4f507bbe2f1955e4ab4616",
+    "system": "cleromancy.fixture-system/v1",
+    "candidate_id": "threshold",
+    "title": "Attend to the threshold",
+    "interpretation": "Notice what has already changed before deciding what should change next.",
+    "receipt": {
+      "schema": "cleromancy.receipt/v1",
+      "mode": "calculated",
+      "algorithm": "contextual-weight/max/v1",
+      "context_digest": "39f07c6a6036b0984950c40bd651b133bc7d718b0e476afce0ca90f0554e5fe6",
+      "field_digest": "c8ec8a3f932ad98853c3767247eff08f48b59fc519dc64575134b4c8cfd90132",
+      "qualified_weights": [
+        6,
+        3,
+        2
+      ],
+      "total_weight": 11,
+      "sample": null,
+      "event_nonce": null,
+      "selected_index": 0,
+      "selected_candidate": "threshold"
+    }
+  },
+  "notice": {
+    "session": "local:cleromancy",
+    "epoch": 1,
+    "revision": 8
+  },
+  "servitor_audit_revision": 2,
+  "replay_verified": true
+}

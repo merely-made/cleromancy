@@ -1,0 +1,60 @@
+{
+  "schema": "cleromancy.enrichment-report/v2",
+  "algorithm": "cleromancy.enrichment/lexical-overlap/v1",
+  "context_digest": "2434289c5245808b729cd7ee5b1273e012911fc48225660200573e872d82b4ba",
+  "endpoint_label": "Turnstone",
+  "projection_label": "Browsing graph",
+  "session": "loopback:turnstone:g3",
+  "query_terms": [
+    "and",
+    "attention",
+    "change",
+    "deserves",
+    "field",
+    "graph",
+    "harmony",
+    "late",
+    "map",
+    "notes",
+    "question",
+    "radio",
+    "recent",
+    "reflection",
+    "season",
+    "structure",
+    "summer",
+    "this",
+    "threshold",
+    "what"
+  ],
+  "source_cards": 3,
+  "matches": [
+    {
+      "source_digest": "510261306de36c3552bd4de17ab20a86e341336b11a556a5706cfe09c425a0c1",
+      "presentation": "Field notes",
+      "terms": [
+        "field",
+        "graph",
+        "notes"
+      ]
+    },
+    {
+      "source_digest": "81de677e53e1545e325c0837331a2e40975e0ed9b6a10dd7699e0403d65c250e",
+      "presentation": "Harmony map",
+      "terms": [
+        "graph",
+        "harmony",
+        "map"
+      ]
+    },
+    {
+      "source_digest": "ea83d0a2036cb6edb5ecd476e98e6b214c44632033720d33f371e982e0fa9d77",
+      "presentation": "Radio map",
+      "terms": [
+        "graph",
+        "map",
+        "radio"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "schema": "cleromancy.proof/a15-pattern-occasion-v1",
+  "calculation_source": "fixed fixture positions; not a production ephemeris",
+  "astrology_chart": {
+    "schema": "cleromancy.astrology-chart/v1",
+    "algorithm": "fixture-positions/v1",
+    "engine": "fixture-engine",
+    "ephemeris": "fixture-ephemeris",
+    "moment": {
+      "instant_utc": "2026-08-05T12:00:00Z"
+    },
+    "positions": [
+      {
+        "body": "moon",
+        "longitude_millidegrees": 180000,
+        "latitude_millidegrees": 1000
+      },
+      {
+        "body": "sun",
+        "longitude_millidegrees": 0,
+        "latitude_millidegrees": 0
+      }
+    ]
+  },
+  "astrology_facts": {
+    "schema": "cleromancy.astrology-facts/v1",
+    "algorithm": "cleromancy.astrology/signs-and-aspects-from-positions/v1",
+    "chart_digest": "a08320194f3801d995bf6eb6baede51e14229264f25691c3f65fa76289d41df6",
+    "orb_millidegrees": 1000,
+    "placements": [
+      {
+        "body": "moon",
+        "sign": "libra",
+        "degree_millidegrees": 0,
+        "latitude_millidegrees": 1000
+      },
+      {
+        "body": "sun",
+        "sign": "aries",
+        "degree_millidegrees": 0,
+        "latitude_millidegrees": 0
+      }
+    ],
+    "aspects": [
+      {
+        "first": "moon",
+        "second": "sun",
+        "kind": "opposition",
+        "exact_millidegrees": 180000,
+        "separation_millidegrees": 180000,
+        "orb_millidegrees": 0
+      }
+    ]
+  },
+  "tarot_reading": {
+    "schema": "cleromancy.reading/v1",
+    "id": "0c93547bf68e7e9a725e7ba285e2a207487a820c899ed45b0bbefce82fc66dc0",
+    "system": "cleromancy.tarot/rws-major-reflective-v1",
+    "candidate_id": "major-16-tower",
+    "title": "The Tower",
+    "interpretation": "What unstable structure is being exposed, and what truth survives its collapse?",
+    "receipt": {
+      "schema": "cleromancy.receipt/v1",
+      "mode": "cast",
+      "algorithm": "os-csprng/rejection-u64+uniform/v1",
+      "context_digest": "a57a884e226727c429064d4b18b8845cc3593e43dfb9c738b3ffd3a7c4b22068",
+      "field_digest": "deebf911ddd5b3831af1823cf096744557b0d84bce0585e248391c189f72a71b",
+      "qualified_weights": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "total_weight": 22,
+      "sample": 16,
+      "event_nonce": "00000000000000110000000000000022",
+      "selected_index": 16,
+      "selected_candidate": "major-16-tower"
+    }
+  },
+  "reading_session": {
+    "schema": "cleromancy.reading-session/v1",
+    "id": "6062827e047c8f659e8aaca4311d777a7bf30b913f916180e22623331d0c3855",
+    "created_at_ms": 1785931200000,
+    "event_nonce": "00000000000000330000000000000044",
+    "context_digest": "a57a884e226727c429064d4b18b8845cc3593e43dfb9c738b3ffd3a7c4b22068",
+    "field_digest": "deebf911ddd5b3831af1823cf096744557b0d84bce0585e248391c189f72a71b",
+    "placements": [
+      {
+        "position": "focus",
+        "reading_id": "0c93547bf68e7e9a725e7ba285e2a207487a820c899ed45b0bbefce82fc66dc0"
+      }
+    ],
+    "client_token": "a15-pattern"
+  },
+  "concurrence": {
+    "schema": "cleromancy.concurrence/v1",
+    "id": "1f5979d5488cb22230f2e625a706fe14106006996019ea78e99d8127b9a7f9dd",
+    "created_at_ms": 1785931200000,
+    "label": "Astrology and reading",
+    "members": [
+      {
+        "role": "astrology-facts",
+        "address": "cleromancy://astrology/facts/ed39fc2b9ad1c439104e9c50a0dbd7f02f6de5eb69d97e3aed043ff018617bcc"
+      },
+      {
+        "role": "reading-session",
+        "address": "cleromancy://session/6062827e047c8f659e8aaca4311d777a7bf30b913f916180e22623331d0c3855"
+      }
+    ]
+  },
+  "concurrence_claim": "consulted together; astrology did not qualify or cause the tarot cast",
+  "graph_nodes": 7,
+  "graph_relations": 8
+}

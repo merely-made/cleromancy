@@ -1,0 +1,178 @@
+{
+  "schema": "cleromancy.proof/a8-three-card-spread-v1",
+  "context_digest": "6e05665c31fdaf082490376b81b14f28d33163798cc51c42ef3ee751831a9c82",
+  "field_digest": "deebf911ddd5b3831af1823cf096744557b0d84bce0585e248391c189f72a71b",
+  "session_id": "e7b2fc211c6eae61ac865687b97fd004f350bc8311ea7548a93928a070cdb49f",
+  "spread": {
+    "schema": "cleromancy.three-card-spread/v1",
+    "id": "cb651c82789b1c23bf2c20717d1171100424af12d7c42aa035b7d6cde649b20b",
+    "session_id": "e7b2fc211c6eae61ac865687b97fd004f350bc8311ea7548a93928a070cdb49f",
+    "placements": [
+      {
+        "position": "foundation",
+        "reading_id": "277dfd533502b640f99afac58bf884e48dcd23d0133f2e87fd8903cd4fb73611"
+      },
+      {
+        "position": "tension",
+        "reading_id": "5b0759eb7986345718c5bf6aa619466ce398aabb5d9ca57bd6e0807a57c47524"
+      },
+      {
+        "position": "next_step",
+        "reading_id": "7028f154584689d02a2be5de3b296b3fb48dd3ad44e492dff2b8a8c6c82c929b"
+      }
+    ],
+    "relations": [
+      {
+        "from": "tension",
+        "to": "foundation",
+        "kind": "questions",
+        "label": "tests the foundation"
+      },
+      {
+        "from": "next_step",
+        "to": "tension",
+        "kind": "next_step",
+        "label": "answers the tension"
+      }
+    ]
+  },
+  "readings": [
+    {
+      "schema": "cleromancy.reading/v1",
+      "id": "277dfd533502b640f99afac58bf884e48dcd23d0133f2e87fd8903cd4fb73611",
+      "system": "cleromancy.tarot/rws-major-reflective-v1",
+      "candidate_id": "major-00-fool",
+      "title": "The Fool",
+      "interpretation": "What beginning asks for curiosity before certainty, and what risk can remain bounded?",
+      "receipt": {
+        "schema": "cleromancy.receipt/v1",
+        "mode": "cast",
+        "algorithm": "os-csprng/rejection-u64+uniform/v1",
+        "context_digest": "6e05665c31fdaf082490376b81b14f28d33163798cc51c42ef3ee751831a9c82",
+        "field_digest": "deebf911ddd5b3831af1823cf096744557b0d84bce0585e248391c189f72a71b",
+        "qualified_weights": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "total_weight": 22,
+        "sample": 0,
+        "event_nonce": "00000000000000110000000000000022",
+        "selected_index": 0,
+        "selected_candidate": "major-00-fool"
+      }
+    },
+    {
+      "schema": "cleromancy.reading/v1",
+      "id": "5b0759eb7986345718c5bf6aa619466ce398aabb5d9ca57bd6e0807a57c47524",
+      "system": "cleromancy.tarot/rws-major-reflective-v1",
+      "candidate_id": "major-01-magician",
+      "title": "The Magician",
+      "interpretation": "Which available skill or tool becomes effective when you give it undivided attention?",
+      "receipt": {
+        "schema": "cleromancy.receipt/v1",
+        "mode": "cast",
+        "algorithm": "os-csprng/rejection-u64+uniform/v1",
+        "context_digest": "6e05665c31fdaf082490376b81b14f28d33163798cc51c42ef3ee751831a9c82",
+        "field_digest": "deebf911ddd5b3831af1823cf096744557b0d84bce0585e248391c189f72a71b",
+        "qualified_weights": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "total_weight": 22,
+        "sample": 1,
+        "event_nonce": "00000000000000330000000000000044",
+        "selected_index": 1,
+        "selected_candidate": "major-01-magician"
+      }
+    },
+    {
+      "schema": "cleromancy.reading/v1",
+      "id": "7028f154584689d02a2be5de3b296b3fb48dd3ad44e492dff2b8a8c6c82c929b",
+      "system": "cleromancy.tarot/rws-major-reflective-v1",
+      "candidate_id": "major-02-high-priestess",
+      "title": "The High Priestess",
+      "interpretation": "What is not yet ready to be explained, and what can be learned by listening longer?",
+      "receipt": {
+        "schema": "cleromancy.receipt/v1",
+        "mode": "cast",
+        "algorithm": "os-csprng/rejection-u64+uniform/v1",
+        "context_digest": "6e05665c31fdaf082490376b81b14f28d33163798cc51c42ef3ee751831a9c82",
+        "field_digest": "deebf911ddd5b3831af1823cf096744557b0d84bce0585e248391c189f72a71b",
+        "qualified_weights": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "total_weight": 22,
+        "sample": 2,
+        "event_nonce": "00000000000000550000000000000066",
+        "selected_index": 2,
+        "selected_candidate": "major-02-high-priestess"
+      }
+    }
+  ],
+  "replayed": true,
+  "entropy": "fixed fixture words; production casts use operating-system entropy",
+  "graph_nodes": 7,
+  "graph_relations": 17,
+  "authored_relationships": 2
+}

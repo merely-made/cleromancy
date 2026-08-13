@@ -1,0 +1,113 @@
+{
+  "schema": "cleromancy.reading/v2",
+  "id": "2138d9cf83f49535a9534da6938c5b1b69be4331d5af74dfc73b653b8a1c005c",
+  "system": "cleromancy.fixture-system/v1",
+  "candidate_id": "measure",
+  "title": "Measure the structure",
+  "interpretation": "Name the constraint that is doing useful work and the one that has become habit.",
+  "receipt": {
+    "schema": "cleromancy.receipt/v2",
+    "mode": "calculated",
+    "algorithm": "contextual-weight+external-term-share/max/v1",
+    "context_digest": "2434289c5245808b729cd7ee5b1273e012911fc48225660200573e872d82b4ba",
+    "field_digest": "788d1dd97ec7922649af8781984f6feaa00fd54add8f9d309ad557f49a917a17",
+    "enrichment": {
+      "schema": "cleromancy.enrichment-qualification/v1",
+      "algorithm": "cleromancy.qualification/external-term-share/v1",
+      "evidence": {
+        "schema": "cleromancy.sealed-enrichment/v1",
+        "algorithm": "cleromancy.enrichment/lexical-overlap/v1",
+        "context_digest": "2434289c5245808b729cd7ee5b1273e012911fc48225660200573e872d82b4ba",
+        "endpoint_label": "Turnstone",
+        "projection_label": "Browsing graph",
+        "session": "loopback:turnstone:g3",
+        "evidence_digest": "e8c0400eddaaf047a4f6cb0a86871f07308fba6cb588b2560442e54a28df68ff",
+        "sources": [
+          {
+            "digest": "510261306de36c3552bd4de17ab20a86e341336b11a556a5706cfe09c425a0c1",
+            "presentation": "Field notes",
+            "title": "Field notes",
+            "badges": [
+              "turnstone",
+              "granted projection"
+            ],
+            "values": [
+              {
+                "label": "Address",
+                "value": "mere://field-notes"
+              },
+              {
+                "label": "Source",
+                "value": "Turnstone graph"
+              }
+            ]
+          },
+          {
+            "digest": "81de677e53e1545e325c0837331a2e40975e0ed9b6a10dd7699e0403d65c250e",
+            "presentation": "Harmony map",
+            "title": "Harmony map",
+            "badges": [
+              "turnstone",
+              "granted projection"
+            ],
+            "values": [
+              {
+                "label": "Address",
+                "value": "mere://harmony-map"
+              },
+              {
+                "label": "Source",
+                "value": "Turnstone graph"
+              }
+            ]
+          },
+          {
+            "digest": "ea83d0a2036cb6edb5ecd476e98e6b214c44632033720d33f371e982e0fa9d77",
+            "presentation": "Radio map",
+            "title": "Radio map",
+            "badges": [
+              "turnstone",
+              "granted projection"
+            ],
+            "values": [
+              {
+                "label": "Address",
+                "value": "mere://radio-map"
+              },
+              {
+                "label": "Source",
+                "value": "Turnstone graph"
+              }
+            ]
+          }
+        ]
+      },
+      "report_digest": "67fb64002dca30d52379d557b12c6ca9682d07ac054fc491faccf997dbbaf9d6",
+      "candidate_terms": [
+        [],
+        [
+          "field",
+          "harmony",
+          "notes",
+          "radio"
+        ],
+        []
+      ],
+      "weight_additions": [
+        0,
+        4,
+        0
+      ]
+    },
+    "qualified_weights": [
+      6,
+      7,
+      2
+    ],
+    "total_weight": 15,
+    "sample": null,
+    "event_nonce": null,
+    "selected_index": 1,
+    "selected_candidate": "measure"
+  }
+}

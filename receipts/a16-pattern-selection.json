@@ -1,0 +1,119 @@
+{
+  "schema": "cleromancy.proof/a16-pattern-selection-v1",
+  "selection_target": "cleromancy://astrology/facts/ed39fc2b9ad1c439104e9c50a0dbd7f02f6de5eb69d97e3aed043ff018617bcc",
+  "payload": {
+    "schema": "cleromancy.intent.create-concurrence/v1",
+    "astrology_facts_digest": "ed39fc2b9ad1c439104e9c50a0dbd7f02f6de5eb69d97e3aed043ff018617bcc",
+    "reading_session_id": "77839dff5a7a0f546c9aa1697932678a96ae225f1a74a24a946b42c1dfda722f"
+  },
+  "astrology_chart": {
+    "schema": "cleromancy.astrology-chart/v1",
+    "algorithm": "fixture-positions/v1",
+    "engine": "fixture-engine",
+    "ephemeris": "fixture-ephemeris",
+    "moment": {
+      "instant_utc": "2026-08-05T12:00:00Z"
+    },
+    "positions": [
+      {
+        "body": "moon",
+        "longitude_millidegrees": 180000,
+        "latitude_millidegrees": 1000
+      },
+      {
+        "body": "sun",
+        "longitude_millidegrees": 0,
+        "latitude_millidegrees": 0
+      }
+    ]
+  },
+  "astrology_facts": {
+    "schema": "cleromancy.astrology-facts/v1",
+    "algorithm": "cleromancy.astrology/signs-and-aspects-from-positions/v1",
+    "chart_digest": "a08320194f3801d995bf6eb6baede51e14229264f25691c3f65fa76289d41df6",
+    "orb_millidegrees": 1000,
+    "placements": [
+      {
+        "body": "moon",
+        "sign": "libra",
+        "degree_millidegrees": 0,
+        "latitude_millidegrees": 1000
+      },
+      {
+        "body": "sun",
+        "sign": "aries",
+        "degree_millidegrees": 0,
+        "latitude_millidegrees": 0
+      }
+    ],
+    "aspects": [
+      {
+        "first": "moon",
+        "second": "sun",
+        "kind": "opposition",
+        "exact_millidegrees": 180000,
+        "separation_millidegrees": 180000,
+        "orb_millidegrees": 0
+      }
+    ]
+  },
+  "tarot_reading": {
+    "schema": "cleromancy.reading/v1",
+    "id": "25a0c4f63165959707feb8f3b3f639ff85404ff30d4f507bbe2f1955e4ab4616",
+    "system": "cleromancy.fixture-system/v1",
+    "candidate_id": "threshold",
+    "title": "Attend to the threshold",
+    "interpretation": "Notice what has already changed before deciding what should change next.",
+    "receipt": {
+      "schema": "cleromancy.receipt/v1",
+      "mode": "calculated",
+      "algorithm": "contextual-weight/max/v1",
+      "context_digest": "39f07c6a6036b0984950c40bd651b133bc7d718b0e476afce0ca90f0554e5fe6",
+      "field_digest": "c8ec8a3f932ad98853c3767247eff08f48b59fc519dc64575134b4c8cfd90132",
+      "qualified_weights": [
+        6,
+        3,
+        2
+      ],
+      "total_weight": 11,
+      "sample": null,
+      "event_nonce": null,
+      "selected_index": 0,
+      "selected_candidate": "threshold"
+    }
+  },
+  "reading_session": {
+    "schema": "cleromancy.reading-session/v1",
+    "id": "77839dff5a7a0f546c9aa1697932678a96ae225f1a74a24a946b42c1dfda722f",
+    "created_at_ms": 1785931200000,
+    "event_nonce": "00000000000000160000000000000017",
+    "context_digest": "39f07c6a6036b0984950c40bd651b133bc7d718b0e476afce0ca90f0554e5fe6",
+    "field_digest": "c8ec8a3f932ad98853c3767247eff08f48b59fc519dc64575134b4c8cfd90132",
+    "placements": [
+      {
+        "position": "focus",
+        "reading_id": "25a0c4f63165959707feb8f3b3f639ff85404ff30d4f507bbe2f1955e4ab4616"
+      }
+    ],
+    "client_token": "a16-pattern-selection"
+  },
+  "concurrence": {
+    "schema": "cleromancy.concurrence/v1",
+    "id": "b165455f57f821e76bef063923bd19fc58b181db38ab2d2c2189d526e71d0772",
+    "created_at_ms": 1785991073016,
+    "label": "Astrology and reading",
+    "members": [
+      {
+        "role": "astrology-facts",
+        "address": "cleromancy://astrology/facts/ed39fc2b9ad1c439104e9c50a0dbd7f02f6de5eb69d97e3aed043ff018617bcc"
+      },
+      {
+        "role": "reading-session",
+        "address": "cleromancy://session/77839dff5a7a0f546c9aa1697932678a96ae225f1a74a24a946b42c1dfda722f"
+      }
+    ]
+  },
+  "concurrence_claim": "consulted together; astrology did not qualify or cause the tarot cast",
+  "graph_nodes": 7,
+  "graph_relations": 8
+}

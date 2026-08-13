@@ -1,0 +1,349 @@
+{
+  "schema": "cleromancy.proof/a6-tarot-pack-v1",
+  "pack": {
+    "schema": "cleromancy.tarot-pack/v1",
+    "id": "cleromancy.tarot/rws-major-reflective-v1",
+    "title": "Major Arcana: reflective prompts",
+    "ordering": "Rider-Waite-Smith order; Strength VIII and Justice XI",
+    "content": "Traditional card titles with original upright reflective prompts",
+    "candidates": [
+      {
+        "id": "major-00-fool",
+        "title": "The Fool",
+        "interpretation": "What beginning asks for curiosity before certainty, and what risk can remain bounded?",
+        "tags": [
+          "beginning",
+          "openness",
+          "risk"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-01-magician",
+        "title": "The Magician",
+        "interpretation": "Which available skill or tool becomes effective when you give it undivided attention?",
+        "tags": [
+          "agency",
+          "attention",
+          "skill"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-02-high-priestess",
+        "title": "The High Priestess",
+        "interpretation": "What is not yet ready to be explained, and what can be learned by listening longer?",
+        "tags": [
+          "ambiguity",
+          "intuition",
+          "silence"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-03-empress",
+        "title": "The Empress",
+        "interpretation": "What needs material care, patience, or room to grow?",
+        "tags": [
+          "abundance",
+          "embodiment",
+          "nurture"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-04-emperor",
+        "title": "The Emperor",
+        "interpretation": "Which boundary or structure would make action safer and clearer?",
+        "tags": [
+          "authority",
+          "boundary",
+          "structure"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-05-hierophant",
+        "title": "The Hierophant",
+        "interpretation": "Which inherited practice is teaching you, and which part deserves examination?",
+        "tags": [
+          "institution",
+          "teaching",
+          "tradition"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-06-lovers",
+        "title": "The Lovers",
+        "interpretation": "What choice would align relationship, desire, and stated values?",
+        "tags": [
+          "choice",
+          "relationship",
+          "values"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-07-chariot",
+        "title": "The Chariot",
+        "interpretation": "What competing impulses need one direction before momentum becomes useful?",
+        "tags": [
+          "direction",
+          "discipline",
+          "momentum"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-08-strength",
+        "title": "Strength",
+        "interpretation": "Where would patient courage accomplish more than force?",
+        "tags": [
+          "courage",
+          "patience",
+          "restraint"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-09-hermit",
+        "title": "The Hermit",
+        "interpretation": "What becomes audible when you step back from other people's urgency?",
+        "tags": [
+          "guidance",
+          "inquiry",
+          "solitude"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-10-wheel-of-fortune",
+        "title": "Wheel of Fortune",
+        "interpretation": "Which change is already in motion, and where can you respond without pretending to control it?",
+        "tags": [
+          "chance",
+          "change",
+          "cycle"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-11-justice",
+        "title": "Justice",
+        "interpretation": "What consequence, obligation, or imbalance needs an exact accounting?",
+        "tags": [
+          "accountability",
+          "balance",
+          "consequence"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-12-hanged-man",
+        "title": "The Hanged Man",
+        "interpretation": "What changes when you stop forcing movement and examine the situation from its underside?",
+        "tags": [
+          "perspective",
+          "surrender",
+          "suspension"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-13-death",
+        "title": "Death",
+        "interpretation": "What ending must be acknowledged before transformation becomes more than a slogan?",
+        "tags": [
+          "ending",
+          "release",
+          "transformation"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-14-temperance",
+        "title": "Temperance",
+        "interpretation": "Which elements need proportion, exchange, and repeated adjustment rather than a dramatic solution?",
+        "tags": [
+          "exchange",
+          "integration",
+          "moderation"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-15-devil",
+        "title": "The Devil",
+        "interpretation": "Which attachment gains power by remaining unnamed, and what choice would loosen it?",
+        "tags": [
+          "appetite",
+          "attachment",
+          "constraint"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-16-tower",
+        "title": "The Tower",
+        "interpretation": "What unstable structure is being exposed, and what truth survives its collapse?",
+        "tags": [
+          "instability",
+          "revelation",
+          "rupture"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-17-star",
+        "title": "The Star",
+        "interpretation": "What small source of orientation can you trust while repair is still incomplete?",
+        "tags": [
+          "hope",
+          "orientation",
+          "renewal"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-18-moon",
+        "title": "The Moon",
+        "interpretation": "Which fear, image, or ambiguity needs observation before it is treated as fact?",
+        "tags": [
+          "fear",
+          "imagination",
+          "uncertainty"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-19-sun",
+        "title": "The Sun",
+        "interpretation": "What becomes simpler when it is brought fully into view and shared?",
+        "tags": [
+          "clarity",
+          "recognition",
+          "vitality"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-20-judgement",
+        "title": "Judgement",
+        "interpretation": "What prior decision is asking to be heard, revised, or answered now?",
+        "tags": [
+          "calling",
+          "reckoning",
+          "revision"
+        ],
+        "base_weight": 1
+      },
+      {
+        "id": "major-21-world",
+        "title": "The World",
+        "interpretation": "What is actually complete, and what new threshold appears when you name that completion?",
+        "tags": [
+          "completion",
+          "passage",
+          "wholeness"
+        ],
+        "base_weight": 1
+      }
+    ]
+  },
+  "pack_digest": "a849fda325427da3304c58bddc62a8393a0af94593c3f55b6302e753cf064dc6",
+  "context_digest": "7209df940a4853319422080378bb4acef64587b8ff1b76f92bf6f5d81d11d497",
+  "uniform_field_digest": "deebf911ddd5b3831af1823cf096744557b0d84bce0585e248391c189f72a71b",
+  "contextual_field_digest": "49e610f7e49ef8842c39deaf323c7d28da718c9a1c433e81cd1e14c8c42b0c2b",
+  "uniform_proof_entropy": "fixed fixture words; production cast uses operating-system entropy",
+  "uniform": {
+    "schema": "cleromancy.reading/v1",
+    "id": "deb58e7aa51d0636e60841004fc5f403a99eef564eae5569b5a4286dfbca52cb",
+    "system": "cleromancy.tarot/rws-major-reflective-v1",
+    "candidate_id": "major-16-tower",
+    "title": "The Tower",
+    "interpretation": "What unstable structure is being exposed, and what truth survives its collapse?",
+    "receipt": {
+      "schema": "cleromancy.receipt/v1",
+      "mode": "cast",
+      "algorithm": "os-csprng/rejection-u64+uniform/v1",
+      "context_digest": "7209df940a4853319422080378bb4acef64587b8ff1b76f92bf6f5d81d11d497",
+      "field_digest": "deebf911ddd5b3831af1823cf096744557b0d84bce0585e248391c189f72a71b",
+      "qualified_weights": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "total_weight": 22,
+      "sample": 16,
+      "event_nonce": "00000000000000110000000000000022",
+      "selected_index": 16,
+      "selected_candidate": "major-16-tower"
+    }
+  },
+  "contextual": {
+    "schema": "cleromancy.reading/v1",
+    "id": "c708d63e73b43a720df5dcca14c63bca6457d3df8999a4ff4df57dadfe85c55c",
+    "system": "cleromancy.tarot/rws-major-reflective-v1",
+    "candidate_id": "major-10-wheel-of-fortune",
+    "title": "Wheel of Fortune",
+    "interpretation": "Which change is already in motion, and where can you respond without pretending to control it?",
+    "receipt": {
+      "schema": "cleromancy.receipt/v1",
+      "mode": "calculated",
+      "algorithm": "contextual-weight/max/v1",
+      "context_digest": "7209df940a4853319422080378bb4acef64587b8ff1b76f92bf6f5d81d11d497",
+      "field_digest": "49e610f7e49ef8842c39deaf323c7d28da718c9a1c433e81cd1e14c8c42b0c2b",
+      "qualified_weights": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "total_weight": 24,
+      "sample": null,
+      "event_nonce": null,
+      "selected_index": 10,
+      "selected_candidate": "major-10-wheel-of-fortune"
+    }
+  },
+  "graph_nodes": 5,
+  "provenance_relations": 4
+}

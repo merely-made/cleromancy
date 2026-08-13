@@ -1,0 +1,74 @@
+{
+  "schema": "cleromancy.proof/a7-reading-session-v1",
+  "context_digest": "39f07c6a6036b0984950c40bd651b133bc7d718b0e476afce0ca90f0554e5fe6",
+  "field_digest": "c8ec8a3f932ad98853c3767247eff08f48b59fc519dc64575134b4c8cfd90132",
+  "reading": {
+    "schema": "cleromancy.reading/v1",
+    "id": "25a0c4f63165959707feb8f3b3f639ff85404ff30d4f507bbe2f1955e4ab4616",
+    "system": "cleromancy.fixture-system/v1",
+    "candidate_id": "threshold",
+    "title": "Attend to the threshold",
+    "interpretation": "Notice what has already changed before deciding what should change next.",
+    "receipt": {
+      "schema": "cleromancy.receipt/v1",
+      "mode": "calculated",
+      "algorithm": "contextual-weight/max/v1",
+      "context_digest": "39f07c6a6036b0984950c40bd651b133bc7d718b0e476afce0ca90f0554e5fe6",
+      "field_digest": "c8ec8a3f932ad98853c3767247eff08f48b59fc519dc64575134b4c8cfd90132",
+      "qualified_weights": [
+        6,
+        3,
+        2
+      ],
+      "total_weight": 11,
+      "sample": null,
+      "event_nonce": null,
+      "selected_index": 0,
+      "selected_candidate": "threshold"
+    }
+  },
+  "sessions": [
+    {
+      "schema": "cleromancy.reading-session/v1",
+      "id": "7ba3221e76952ddf8ce12e0e29ecfe64bcd25ca2ec5380f0d5af3c8e4eb6d850",
+      "created_at_ms": 1735689600000,
+      "event_nonce": "00000000000000110000000000000022",
+      "context_digest": "39f07c6a6036b0984950c40bd651b133bc7d718b0e476afce0ca90f0554e5fe6",
+      "field_digest": "c8ec8a3f932ad98853c3767247eff08f48b59fc519dc64575134b4c8cfd90132",
+      "placements": [
+        {
+          "position": "focus",
+          "reading_id": "25a0c4f63165959707feb8f3b3f639ff85404ff30d4f507bbe2f1955e4ab4616"
+        }
+      ],
+      "client_token": "a7-first"
+    },
+    {
+      "schema": "cleromancy.reading-session/v1",
+      "id": "52de26ea10ac4e0ae24d7e98e04d26d89eaaf3b86ce21f36c4dfc2908de05a42",
+      "created_at_ms": 1735689601000,
+      "event_nonce": "00000000000000330000000000000044",
+      "context_digest": "39f07c6a6036b0984950c40bd651b133bc7d718b0e476afce0ca90f0554e5fe6",
+      "field_digest": "c8ec8a3f932ad98853c3767247eff08f48b59fc519dc64575134b4c8cfd90132",
+      "placements": [
+        {
+          "position": "focus",
+          "reading_id": "25a0c4f63165959707feb8f3b3f639ff85404ff30d4f507bbe2f1955e4ab4616"
+        }
+      ],
+      "client_token": "a7-second"
+    }
+  ],
+  "reflection": {
+    "schema": "cleromancy.reflection/v1",
+    "id": "4d15348a88f602a25e6f50a0fe20d21e2ff5be3246430ec94d71a9e23547f8b4",
+    "session_id": "7ba3221e76952ddf8ce12e0e29ecfe64bcd25ca2ec5380f0d5af3c8e4eb6d850",
+    "created_at_ms": 1735689602000,
+    "event_nonce": "00000000000000550000000000000066",
+    "body": "The repeated result changed the question, not the result."
+  },
+  "event_entropy": "fixed fixture words; production sessions use operating-system entropy",
+  "graph_nodes": 6,
+  "graph_relations": 9,
+  "semantic_relations": 1
+}

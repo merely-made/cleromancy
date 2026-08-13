@@ -1,0 +1,15 @@
+# The phase comes from CLEROMANCY_SCENARIO_PHASE. `advance` is Cleromancy's
+# semantic form/session action; waits observe the worker's own quiescence.
+wait
+advance
+wait
+assert event semantic
+assert event durable
+advance
+wait
+assert text Keep the useful constraint revisable
+assert snap sessions >= 1
+assert snap readings >= 1
+assert snap reflections >= 1
+capture detail
+settle 2
