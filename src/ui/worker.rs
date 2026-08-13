@@ -16,6 +16,8 @@ use crate::{
     CleromancyHost, Consultation, ConsultationCatalog, ConsultationDetail, ConsultationError,
     ReceiptComparison, SelectionMode,
 };
+#[cfg(feature = "ephemeris")]
+use crate::{EphemerisProvisioner, EphemerisStatus, JplEphemerisAdapter, calculate_with_adapter};
 
 use super::{ConsultationAction, ConsultationContext, ConsultationLayout};
 
@@ -23,6 +25,13 @@ use super::{ConsultationAction, ConsultationContext, ConsultationLayout};
 #[derive(Clone, Debug)]
 pub(crate) enum WorkerUpdate {
     Catalog(ConsultationCatalog),
+    #[cfg(feature = "ephemeris")]
+    Ephemeris(EphemerisStatus),
+    #[cfg(feature = "ephemeris")]
+    AstrologyChart {
+        catalog: ConsultationCatalog,
+        facts_digest: String,
+    },
     Reading {
         catalog: ConsultationCatalog,
         detail: ConsultationDetail,
@@ -81,6 +90,7 @@ fn run(
     commands: mpsc::Receiver<ConsultationAction>,
     deliver: impl Fn(WorkerUpdate),
 ) {
+    let ephemeris = WorkerEphemeris::new(&store_path);
     let backend = match RedbBackend::open(&store_path) {
         Ok(backend) => backend,
         Err(error) => {
@@ -111,6 +121,8 @@ fn run(
             return;
         }
     }
+    #[cfg(feature = "ephemeris")]
+    deliver(WorkerUpdate::Ephemeris(ephemeris.provisioner.status()));
     match consultation.catalog() {
         Ok(catalog) => deliver(WorkerUpdate::Catalog(catalog)),
         Err(error) => {
@@ -123,7 +135,7 @@ fn run(
     }
 
     while let Ok(action) = commands.recv() {
-        match execute(&mut consultation, action) {
+        match execute(&mut consultation, action, &ephemeris) {
             Ok(update) => deliver(update),
             Err(error) => {
                 // A persist failure makes the controller deliberately refuse
@@ -152,6 +164,30 @@ fn run(
     }
 }
 
+struct WorkerEphemeris {
+    #[cfg(feature = "ephemeris")]
+    provisioner: EphemerisProvisioner,
+}
+
+impl WorkerEphemeris {
+    fn new(store_path: &std::path::Path) -> Self {
+        #[cfg(feature = "ephemeris")]
+        {
+            let data_root = store_path
+                .parent()
+                .unwrap_or_else(|| std::path::Path::new("."));
+            Self {
+                provisioner: EphemerisProvisioner::for_data_root(data_root),
+            }
+        }
+        #[cfg(not(feature = "ephemeris"))]
+        {
+            let _ = store_path;
+            Self {}
+        }
+    }
+}
+
 fn open_consultation(backend: RedbBackend) -> Result<Consultation<RedbBackend>, ConsultationError> {
     Ok(Consultation::new(pollster::block_on(
         CleromancyHost::open(backend),
@@ -161,7 +197,10 @@ fn open_consultation(backend: RedbBackend) -> Result<Consultation<RedbBackend>, 
 fn execute(
     consultation: &mut Consultation<RedbBackend>,
     action: ConsultationAction,
+    ephemeris: &WorkerEphemeris,
 ) -> Result<WorkerUpdate, ConsultationError> {
+    #[cfg(not(feature = "ephemeris"))]
+    let _ = ephemeris;
     match action {
         ConsultationAction::Read {
             context,
@@ -216,6 +255,28 @@ fn execute(
             pollster::block_on(consultation.save_astrology_chart(draft))?;
             Ok(WorkerUpdate::Catalog(consultation.catalog()?))
         }
+        #[cfg(feature = "ephemeris")]
+        ConsultationAction::InstallEphemeris => {
+            ephemeris
+                .provisioner
+                .download()
+                .map_err(|error| ConsultationError::Ephemeris(error.to_string()))?;
+            Ok(WorkerUpdate::Ephemeris(ephemeris.provisioner.status()))
+        }
+        #[cfg(feature = "ephemeris")]
+        ConsultationAction::CalculateAstrologyChart { draft } => {
+            let (moment, orb_millidegrees) = draft.into_moment_and_orb()?;
+            let adapter = JplEphemerisAdapter::open_de440s(ephemeris.provisioner.kernel_path())
+                .map_err(|error| ConsultationError::Ephemeris(error.to_string()))?;
+            let chart = calculate_with_adapter(&adapter, &moment)?;
+            let facts_digest = pollster::block_on(
+                consultation.save_calculated_astrology_chart(chart, orb_millidegrees),
+            )?;
+            Ok(WorkerUpdate::AstrologyChart {
+                catalog: consultation.catalog()?,
+                facts_digest,
+            })
+        }
         ConsultationAction::SaveReflection { session_id, body } => {
             let detail = pollster::block_on(consultation.reflect(&session_id, body))?;
             let catalog = consultation.catalog()?;
@@ -257,10 +318,17 @@ mod tests {
         let worker = spawn(temp.path().join("cleromancy.redb"), move |update| {
             updates.send(update).expect("test receiver remains open");
         });
-        let catalog = match received
+        let first = received
             .recv_timeout(Duration::from_secs(10))
-            .expect("initial catalog update")
-        {
+            .expect("initial worker update");
+        #[cfg(feature = "ephemeris")]
+        let first = match first {
+            WorkerUpdate::Ephemeris(_) => received
+                .recv_timeout(Duration::from_secs(10))
+                .expect("initial catalog update"),
+            update => update,
+        };
+        let catalog = match first {
             WorkerUpdate::Catalog(catalog) => catalog,
             update => panic!("expected initial catalog, got {update:?}"),
         };

@@ -131,6 +131,19 @@ impl NativeApp {
                 self.catalog_ready = true;
                 runner.update(|ui| ui.replace_catalog(catalog));
             }
+            #[cfg(feature = "ephemeris")]
+            WorkerUpdate::Ephemeris(status) => {
+                runner.update(|ui| ui.present_ephemeris_status(status));
+            }
+            #[cfg(feature = "ephemeris")]
+            WorkerUpdate::AstrologyChart {
+                catalog,
+                facts_digest,
+            } => {
+                self.probe_events
+                    .push(format!("durable astrology chart saved {facts_digest}"));
+                runner.update(move |ui| ui.present_calculated_chart(catalog, facts_digest));
+            }
             WorkerUpdate::Reading { catalog, detail } => {
                 self.probe_events
                     .push(format!("durable reading saved {}", detail.session.id));

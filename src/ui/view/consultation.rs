@@ -204,29 +204,8 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             .attr("data-key", "save-layout")
             .attr("aria-label", "Save authored layout"),
         ) as ConsultationView,
-        Box::new(el::<_, ConsultationUi, ConsultationAction>("h3", "Import chart facts"))
+        Box::new(el::<_, ConsultationUi, ConsultationAction>("h3", "Chart moment"))
             as ConsultationView,
-        labelled_text(
-            "Calculation algorithm",
-            "cleromancy-astrology-algorithm",
-            false,
-            &ui.astrology_algorithm,
-            astrology_algorithm_state,
-        ),
-        labelled_text(
-            "Calculation engine",
-            "cleromancy-astrology-engine",
-            false,
-            &ui.astrology_engine,
-            astrology_engine_state,
-        ),
-        labelled_text(
-            "Ephemeris source",
-            "cleromancy-astrology-ephemeris",
-            false,
-            &ui.astrology_ephemeris,
-            astrology_ephemeris_state,
-        ),
         labelled_text(
             "UTC instant",
             "cleromancy-astrology-instant",
@@ -255,6 +234,33 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             &ui.astrology_orb,
             astrology_orb_state,
         ),
+    ]);
+    #[cfg(feature = "ephemeris")]
+    children.extend(ephemeris_controls(ui));
+    children.extend([
+        Box::new(el::<_, ConsultationUi, ConsultationAction>("h3", "Import chart"))
+            as ConsultationView,
+        labelled_text(
+            "Calculation algorithm",
+            "cleromancy-astrology-algorithm",
+            false,
+            &ui.astrology_algorithm,
+            astrology_algorithm_state,
+        ),
+        labelled_text(
+            "Calculation engine",
+            "cleromancy-astrology-engine",
+            false,
+            &ui.astrology_engine,
+            astrology_engine_state,
+        ),
+        labelled_text(
+            "Ephemeris source",
+            "cleromancy-astrology-ephemeris",
+            false,
+            &ui.astrology_ephemeris,
+            astrology_ephemeris_state,
+        ),
         labelled_text(
             "Chart positions",
             "cleromancy-astrology-positions",
@@ -265,7 +271,7 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
         Box::new(
             el::<_, ConsultationUi, ConsultationAction>(
                 "p",
-                "Copy source-qualified positions as body | longitude millidegrees | latitude millidegrees | retrograde. Cleromancy validates and derives facts; it does not calculate an ephemeris.",
+                "For a manual import, identify the algorithm, engine, and ephemeris, then copy positions as body | longitude millidegrees | latitude millidegrees | retrograde. Local calculation ignores those manual source and position fields.",
             )
             .attr("class", "context-explanation"),
         ) as ConsultationView,
@@ -289,6 +295,46 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             .attr("aria-label", "Consultation")
             .attr("data-key", "region:consultation"),
     )
+}
+
+#[cfg(feature = "ephemeris")]
+fn ephemeris_controls(ui: &ConsultationUi) -> Vec<ConsultationView> {
+    use crate::EphemerisStatus;
+
+    let status = match &ui.ephemeris_status {
+        EphemerisStatus::Missing => {
+            "NASA/JPL DE440s is not installed. Installation downloads 31 MiB from NAIF and verifies its exact checksum before use.".to_string()
+        }
+        EphemerisStatus::Ready { path } => {
+            format!("Verified NASA/JPL DE440s ready at {}.", path.display())
+        }
+        EphemerisStatus::Invalid { path, detail } => format!(
+            "The local ephemeris at {} is invalid: {detail}. Installing again preserves it as a rejected file.",
+            path.display()
+        ),
+    };
+    let mut controls = vec![Box::new(
+        el::<_, ConsultationUi, ConsultationAction>("p", status)
+            .attr("class", "context-explanation")
+            .attr("data-key", "ephemeris-status"),
+    ) as ConsultationView];
+    if !ui.ephemeris_status.is_ready() {
+        controls.push(Box::new(
+            button("Install NASA ephemeris", |ui: &mut ConsultationUi, _| {
+                ui.request_ephemeris_install()
+            })
+            .attr("data-key", "install-ephemeris")
+            .attr("aria-label", "Install verified NASA JPL ephemeris"),
+        ));
+    }
+    controls.push(Box::new(
+        button("Calculate and save chart", |ui: &mut ConsultationUi, _| {
+            ui.request_calculated_astrology_chart()
+        })
+        .attr("data-key", "calculate-chart")
+        .attr("aria-label", "Calculate and save astrology chart"),
+    ));
+    controls
 }
 
 fn field_label(field: &Field) -> String {

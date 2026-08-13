@@ -106,8 +106,31 @@ fn parse_spread_relation(line: &str) -> Result<SpreadRelation, ConsultationError
     ))
 }
 
-/// A source-qualified chart import form. Positions are copied from an
-/// identified calculation source; this crate does not calculate an ephemeris.
+/// Inputs for the local ephemeris calculator.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct AstrologyCalculationDraft {
+    pub instant_utc: String,
+    #[serde(default)]
+    pub latitude_microdegrees: String,
+    #[serde(default)]
+    pub longitude_microdegrees: String,
+    pub orb_millidegrees: String,
+}
+
+impl AstrologyCalculationDraft {
+    pub fn into_moment_and_orb(self) -> Result<(AstrologyMoment, u32), ConsultationError> {
+        moment_and_orb(
+            &self.instant_utc,
+            &self.latitude_microdegrees,
+            &self.longitude_microdegrees,
+            &self.orb_millidegrees,
+        )
+    }
+}
+
+/// A source-qualified manual chart import form. Positions are copied from an
+/// identified calculation source when a local ephemeris is not used.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct AstrologyChartDraft {
@@ -127,22 +150,12 @@ pub struct AstrologyChartDraft {
 
 impl AstrologyChartDraft {
     pub fn into_chart_and_orb(self) -> Result<(AstrologyChart, u32), ConsultationError> {
-        let latitude = optional_number(&self.latitude_microdegrees, "latitude microdegrees")?;
-        let longitude = optional_number(&self.longitude_microdegrees, "longitude microdegrees")?;
-        let moment = match (latitude, longitude) {
-            (None, None) => AstrologyMoment::global(self.instant_utc.trim()),
-            (Some(latitude), Some(longitude)) => {
-                AstrologyMoment::at(self.instant_utc.trim(), latitude, longitude)
-            }
-            _ => {
-                return Err(ConsultationError::InvalidAstrology(
-                    "latitude and longitude are both required when either is given",
-                ));
-            }
-        };
-        let orb = self.orb_millidegrees.trim().parse::<u32>().map_err(|_| {
-            ConsultationError::InvalidAstrology("orb millidegrees must be a number")
-        })?;
+        let (moment, orb) = moment_and_orb(
+            &self.instant_utc,
+            &self.latitude_microdegrees,
+            &self.longitude_microdegrees,
+            &self.orb_millidegrees,
+        )?;
         let positions = self
             .positions
             .lines()
@@ -159,6 +172,42 @@ impl AstrologyChartDraft {
         chart.facts(orb)?;
         Ok((chart, orb))
     }
+}
+
+fn moment_and_orb(
+    instant_utc: &str,
+    latitude_microdegrees: &str,
+    longitude_microdegrees: &str,
+    orb_millidegrees: &str,
+) -> Result<(AstrologyMoment, u32), ConsultationError> {
+    if instant_utc.trim().is_empty() {
+        return Err(ConsultationError::InvalidAstrology(
+            "UTC instant is required",
+        ));
+    }
+    let latitude = optional_number(latitude_microdegrees, "latitude microdegrees")?;
+    let longitude = optional_number(longitude_microdegrees, "longitude microdegrees")?;
+    let moment = match (latitude, longitude) {
+        (None, None) => AstrologyMoment::global(instant_utc.trim()),
+        (Some(latitude), Some(longitude)) => {
+            AstrologyMoment::at(instant_utc.trim(), latitude, longitude)
+        }
+        _ => {
+            return Err(ConsultationError::InvalidAstrology(
+                "latitude and longitude are both required when either is given",
+            ));
+        }
+    };
+    let orb = orb_millidegrees
+        .trim()
+        .parse::<u32>()
+        .map_err(|_| ConsultationError::InvalidAstrology("orb millidegrees must be a number"))?;
+    if orb > 180_000 {
+        return Err(ConsultationError::InvalidAstrology(
+            "orb millidegrees must be at most 180000",
+        ));
+    }
+    Ok((moment, orb))
 }
 
 fn optional_number(text: &str, name: &'static str) -> Result<Option<i32>, ConsultationError> {

@@ -3,6 +3,8 @@
 
 use cambium::{DisclosureState, RadioGroup, SelectState, TextInput};
 
+#[cfg(feature = "ephemeris")]
+use crate::{AstrologyCalculationDraft, EphemerisStatus};
 use crate::{
     AstrologyChartDraft, ConsultationCatalog, ConsultationDetail, ContextDraft, DerivedSelection,
     ReceiptComparison, SelectionMode, SpreadTemplateDraft,
@@ -37,6 +39,12 @@ pub enum ConsultationAction {
     },
     SaveAstrologyChart {
         draft: AstrologyChartDraft,
+    },
+    #[cfg(feature = "ephemeris")]
+    InstallEphemeris,
+    #[cfg(feature = "ephemeris")]
+    CalculateAstrologyChart {
+        draft: AstrologyCalculationDraft,
     },
     SaveReflection {
         session_id: String,
@@ -77,6 +85,12 @@ pub enum ConsultationStatus {
     Ready,
     SavingReading,
     SavingSetup,
+    #[cfg(feature = "ephemeris")]
+    InstallingEphemeris,
+    #[cfg(feature = "ephemeris")]
+    CalculatingChart,
+    #[cfg(feature = "ephemeris")]
+    EphemerisReady,
     SetupSaved(String),
     ReadingSaved(String),
     SavingReflection,
@@ -93,6 +107,12 @@ impl ConsultationStatus {
             Self::Ready => "Ready".to_string(),
             Self::SavingReading => "Saving reading".to_string(),
             Self::SavingSetup => "Saving setup".to_string(),
+            #[cfg(feature = "ephemeris")]
+            Self::InstallingEphemeris => "Installing NASA/JPL ephemeris".to_string(),
+            #[cfg(feature = "ephemeris")]
+            Self::CalculatingChart => "Calculating chart".to_string(),
+            #[cfg(feature = "ephemeris")]
+            Self::EphemerisReady => "NASA/JPL ephemeris ready".to_string(),
             Self::SetupSaved(id) => format!("Saved: {id}"),
             Self::ReadingSaved(id) => format!("Reading saved: {id}"),
             Self::SavingReflection => "Saving reflection".to_string(),
@@ -101,6 +121,19 @@ impl ConsultationStatus {
             Self::ViewingSession(id) => format!("Viewing session: {id}"),
             Self::ComparingReceipts => "Comparing receipts".to_string(),
             Self::ViewingComparison(id) => format!("Comparing receipts with: {id}"),
+        }
+    }
+
+    pub fn is_busy(&self) -> bool {
+        match self {
+            Self::SavingReading
+            | Self::SavingSetup
+            | Self::SavingReflection
+            | Self::LoadingSession
+            | Self::ComparingReceipts => true,
+            #[cfg(feature = "ephemeris")]
+            Self::InstallingEphemeris | Self::CalculatingChart => true,
+            _ => false,
         }
     }
 }
@@ -131,6 +164,8 @@ pub struct ConsultationUi {
     pub(super) astrology_longitude: TextInput,
     pub(super) astrology_orb: TextInput,
     pub(super) astrology_positions: TextInput,
+    #[cfg(feature = "ephemeris")]
+    pub(super) ephemeris_status: EphemerisStatus,
     pub(super) comparison_select: SelectState,
     pub(super) workings: DisclosureState,
     pub(super) reflection: TextInput,
@@ -168,6 +203,8 @@ impl ConsultationUi {
             astrology_longitude: TextInput::default(),
             astrology_orb: TextInput::new("1000"),
             astrology_positions: TextInput::default(),
+            #[cfg(feature = "ephemeris")]
+            ephemeris_status: EphemerisStatus::Missing,
             comparison_select: SelectState::new(0).with_label("Compare with"),
             workings: DisclosureState::new("cleromancy-workings", "Workings"),
             reflection: TextInput::default(),
@@ -224,14 +261,7 @@ impl ConsultationUi {
             .min(catalog.astrology_facts.len());
         self.catalog = catalog;
         self.error = None;
-        if matches!(
-            self.status,
-            ConsultationStatus::SavingReading
-                | ConsultationStatus::SavingSetup
-                | ConsultationStatus::SavingReflection
-                | ConsultationStatus::LoadingSession
-                | ConsultationStatus::ComparingReceipts
-        ) {
+        if self.status.is_busy() {
             self.status = ConsultationStatus::Ready;
         }
     }
@@ -287,6 +317,37 @@ impl ConsultationUi {
     pub fn present_error(&mut self, error: impl Into<String>) {
         self.error = Some(error.into());
         self.status = ConsultationStatus::Ready;
+    }
+
+    #[cfg(feature = "ephemeris")]
+    pub(crate) fn present_ephemeris_status(&mut self, status: EphemerisStatus) {
+        let ready = status.is_ready();
+        self.ephemeris_status = status;
+        self.error = None;
+        self.status = if ready {
+            ConsultationStatus::EphemerisReady
+        } else {
+            ConsultationStatus::Ready
+        };
+    }
+
+    #[cfg(feature = "ephemeris")]
+    pub(crate) fn present_calculated_chart(
+        &mut self,
+        catalog: ConsultationCatalog,
+        facts_digest: String,
+    ) {
+        self.replace_catalog(catalog);
+        self.astrology_facts_select.selected = self
+            .catalog
+            .astrology_facts
+            .iter()
+            .position(|facts| facts.digest() == facts_digest)
+            .map_or(0, |index| index + 1);
+        self.status = ConsultationStatus::SetupSaved(format!(
+            "chart {}",
+            facts_digest.get(..12).unwrap_or(&facts_digest)
+        ));
     }
 
     pub(super) fn request_read(&mut self) -> Option<ConsultationAction> {
@@ -407,6 +468,40 @@ impl ConsultationUi {
                 positions: self.astrology_positions.text().to_string(),
             },
         })
+    }
+
+    #[cfg(feature = "ephemeris")]
+    pub(super) fn request_ephemeris_install(&mut self) -> Option<ConsultationAction> {
+        if self.ephemeris_status.is_ready() {
+            self.present_error("The verified NASA/JPL ephemeris is already installed.");
+            return None;
+        }
+        self.error = None;
+        self.status = ConsultationStatus::InstallingEphemeris;
+        Some(ConsultationAction::InstallEphemeris)
+    }
+
+    #[cfg(feature = "ephemeris")]
+    pub(super) fn request_calculated_astrology_chart(&mut self) -> Option<ConsultationAction> {
+        if !self.ephemeris_status.is_ready() {
+            self.present_error(
+                "Install the verified NASA/JPL ephemeris before calculating a chart.",
+            );
+            return None;
+        }
+        let draft = AstrologyCalculationDraft {
+            instant_utc: self.astrology_instant_utc.text().to_string(),
+            latitude_microdegrees: self.astrology_latitude.text().to_string(),
+            longitude_microdegrees: self.astrology_longitude.text().to_string(),
+            orb_millidegrees: self.astrology_orb.text().to_string(),
+        };
+        if let Err(error) = draft.clone().into_moment_and_orb() {
+            self.present_error(error.to_string());
+            return None;
+        }
+        self.error = None;
+        self.status = ConsultationStatus::CalculatingChart;
+        Some(ConsultationAction::CalculateAstrologyChart { draft })
     }
 
     pub(super) fn request_reflection(&mut self) -> Option<ConsultationAction> {

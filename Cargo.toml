@@ -10,11 +10,13 @@ categories = ["gui"]
 
 [features]
 default = []
+ephemeris = ["dep:anise", "dep:sha2", "dep:sofars", "dep:ureq"]
 personal-sync = ["graphshell/personal-sync", "dep:personae", "dep:uuid"]
 graphshell-admission = ["graphshell/native"]
 
 [dependencies]
 accesskit = "0.24"
+anise = { git = "https://github.com/merely-made/anise.git", rev = "71e973a245e6701e14a5d4c88a3c4e7dedbf7702", version = "=0.10.6", default-features = false, optional = true }
 blake3 = "1"
 cambium = { git = "https://github.com/merely-made/genet.git", branch = "main" }
 cambium-winit = { git = "https://github.com/merely-made/genet.git", branch = "main" }
@@ -44,6 +46,9 @@ sceno = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 scenotime = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
+sha2 = { version = "0.10", optional = true }
+sofars = { version = "=0.6.1", optional = true }
+ureq = { version = "=3.3.0", default-features = false, features = ["rustls"], optional = true }
 servitor = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 thiserror = "2"
 uuid = { version = "1", features = ["serde"], optional = true }

@@ -1,0 +1,54 @@
+{
+  "schema": "cleromancy.ephemeris-golden/v1",
+  "recorded_on": "2026-08-13",
+  "candidate": {
+    "algorithm": "cleromancy.ephemeris/geocentric-apparent-iau1976-1980/v1",
+    "engine": "cleromancy-ephemeris/v1; merely-made/anise@71e973a245e6701e14a5d4c88a3c4e7dedbf7702 (anise/0.10.6); sofars/0.6.1",
+    "anise_fork": "https://github.com/merely-made/anise",
+    "anise_revision": "71e973a245e6701e14a5d4c88a3c4e7dedbf7702",
+    "kernel": "NASA/JPL DE440s",
+    "kernel_sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+    "kernel_official_naif_md5": "3917ee56769db332790c751e2168843d",
+    "observer": "earth-geocenter",
+    "bodies": "sun, moon, and planetary barycenters"
+  },
+  "oracle": {
+    "service": "NASA/JPL Horizons API",
+    "endpoint": "https://ssd.jpl.nasa.gov/api/horizons.api",
+    "ephemeris_reported_by_service": "DE441",
+    "table": "observer",
+    "quantity": 31,
+    "description": "observer-centered IAU76/80 ecliptic-of-date apparent longitude and latitude",
+    "center": "500@399",
+    "reference_system": "ICRF"
+  },
+  "golden_vectors": "tests/ephemeris_golden.rs",
+  "stored_precision": "integer millidegrees",
+  "maximum_allowed_error_millidegrees": 2,
+  "maximum_observed_error_millidegrees": 1,
+  "charts": [
+    {
+      "instant_utc": "2000-01-01T12:00:00Z",
+      "location_microdegrees": null,
+      "chart_digest": "50c27f953931bb57c4856d498cfc114736e2ba40feacf9e66e62595e3d4ebb96",
+      "maximum_error_millidegrees": 0
+    },
+    {
+      "instant_utc": "2024-04-08T18:00:00Z",
+      "location_microdegrees": {
+        "latitude": 32776700,
+        "longitude": -96797000
+      },
+      "chart_digest": "e7083f39a82a011813710a2fb4f98eb2bfa8bc257c1892e0db33a2f6f3384741",
+      "maximum_error_millidegrees": 1,
+      "maximum_error_body": "pluto",
+      "maximum_error_axis": "longitude"
+    },
+    {
+      "instant_utc": "2026-08-13T12:00:00Z",
+      "location_microdegrees": null,
+      "chart_digest": "693a261b7dca73d16d8dc3cfdfa242ee564d3892acd94a01a4ac2d4103ee30d4",
+      "maximum_error_millidegrees": 0
+    }
+  ]
+}

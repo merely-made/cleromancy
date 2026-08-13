@@ -6,7 +6,7 @@ deterministic, securely cast, or derived from a public seed, and every result
 keeps a replayable receipt that separates context, qualification, selection,
 and interpretation.
 
-## Status (2026-08-12)
+## Status (2026-08-13)
 
 - The A0-A25 proof ledger is complete (2026-08-02 through 2026-08-07):
   single readings, sealed receipts with replay, field provenance, a 22-card
@@ -23,11 +23,16 @@ and interpretation.
 - Authored spread templates (1-12 positions, reusable, content-addressed)
   with selected sync and explicit astrology chart input are the newest
   landed slice.
+- The optional `ephemeris` feature now calculates source-qualified Sun, Moon,
+  and planetary positions through the MPL-2.0 `merely-made/anise` fork. The
+  native chart surface explicitly downloads and checksum-verifies NASA/JPL
+  DE440s, then saves calculated facts into the normal consultation catalog.
+  Its first three complete charts agree with NASA/JPL Horizons within the
+  stored millidegree precision.
 
-Plans live in `design_docs/`, one dated doc per slice; the three 2026-08-08
-plans (journal depth, derived selection, authored spreads) are the current
-frontier. Each carries strict stop rules: no spread DSL, no bundled
-ephemeris, no generated interpretation, no automatic sync.
+Plans live in `design_docs/`, one dated doc per slice. The current ephemeris
+stop rules keep houses, topocentric positions, generated interpretation, and
+automatic sync out of this proof.
 
 ## Use
 
@@ -36,6 +41,7 @@ repos (git dependencies).
 
 ```powershell
 cargo run --bin cleromancy         # the local consultation window
+cargo run --features ephemeris --bin cleromancy # verified install and chart calculation
 cargo test                         # the proof wall
 
 # Per-slice receipt binaries, e.g.
@@ -49,7 +55,8 @@ cargo run --features personal-sync --bin cleromancy -- sync-consent show
 
 ## License
 
-MIT OR Apache-2.0.
+Cleromancy is MIT OR Apache-2.0. The optional `ephemeris` feature links
+MPL-2.0 and MIT dependencies; see `THIRD_PARTY_LICENSES.md`.
 
 ---
 

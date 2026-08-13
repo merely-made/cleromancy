@@ -12,6 +12,8 @@ pub mod concurrence;
 pub mod consultation;
 pub mod context;
 pub mod enrichment;
+#[cfg(feature = "ephemeris")]
+pub mod ephemeris;
 pub mod field;
 pub mod host;
 pub mod intents;
@@ -48,14 +50,20 @@ pub use concurrence::{
     READING_SESSION_ROLE,
 };
 pub use consultation::{
-    AstrologyChartDraft, Consultation, ConsultationCatalog, ConsultationDetail, ConsultationError,
-    ContextDraft, MANUAL_CONTEXT_SCHEMA, ReceiptComparison, ReceiptComparisonEntry,
-    SpreadTemplateDraft,
+    AstrologyCalculationDraft, AstrologyChartDraft, Consultation, ConsultationCatalog,
+    ConsultationDetail, ConsultationError, ContextDraft, MANUAL_CONTEXT_SCHEMA, ReceiptComparison,
+    ReceiptComparisonEntry, SpreadTemplateDraft,
 };
 pub use context::ContextSnapshot;
 pub use enrichment::{
     EnrichmentMatch, EnrichmentReport, EnrichmentSource, EnrichmentValue, ExternalProjection,
     SealedEnrichment,
+};
+#[cfg(feature = "ephemeris")]
+pub use ephemeris::{
+    ANISE_FORK_REVISION, CLEROMANCY_EPHEMERIS_ALGORITHM, DE440S_BYTES, DE440S_DOWNLOAD_URL,
+    DE440S_SHA256, EphemerisInstall, EphemerisProvisionError, EphemerisProvisioner,
+    EphemerisStatus, JplEphemerisAdapter, JplEphemerisError,
 };
 pub use field::{
     CONTEXTUAL_WEIGHT_RULE, Candidate, EXTERNAL_TERM_WEIGHT_RULE, Field, UNIFORM_DIE_RULE,

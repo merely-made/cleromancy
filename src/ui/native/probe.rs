@@ -62,15 +62,11 @@ impl genet_probe::Automatable for NativeApp {
         if !self.catalog_ready {
             return Some(true);
         }
-        Some(self.runner.as_ref().is_some_and(|runner| {
-            matches!(
-                runner.state().status(),
-                crate::ConsultationStatus::SavingReading
-                    | crate::ConsultationStatus::SavingSetup
-                    | crate::ConsultationStatus::SavingReflection
-                    | crate::ConsultationStatus::LoadingSession
-            )
-        }))
+        Some(
+            self.runner
+                .as_ref()
+                .is_some_and(|runner| runner.state().status().is_busy()),
+        )
     }
 }
 

@@ -15,7 +15,7 @@ use thiserror::Error;
 
 use crate::moirai::clotho::{EntropySource, OsEntropy};
 use crate::{
-    AstrologyError, AstrologyFacts, CleromancyHost, Concurrence, ContextSnapshot,
+    AstrologyChart, AstrologyError, AstrologyFacts, CleromancyHost, Concurrence, ContextSnapshot,
     DerivedSelection, Field, HostError, Reading, ReadingEngine, ReadingError, ReadingSession,
     Reflection, SelectionMode, SpreadTemplate, TarotPack, TarotQualification,
 };
@@ -25,7 +25,8 @@ mod drafts;
 
 use compare::compare_details;
 pub use drafts::{
-    AstrologyChartDraft, ContextDraft, MANUAL_CONTEXT_SCHEMA, SpreadTemplateDraft,
+    AstrologyCalculationDraft, AstrologyChartDraft, ContextDraft, MANUAL_CONTEXT_SCHEMA,
+    SpreadTemplateDraft,
 };
 
 /// Stable picker/history values derived from graph truth.
@@ -95,6 +96,8 @@ pub enum ConsultationError {
     InvalidSpread(&'static str),
     #[error("astrology chart import is invalid: {0}")]
     InvalidAstrology(&'static str),
+    #[error("ephemeris operation failed: {0}")]
+    Ephemeris(String),
     #[error("derived selection requires a disclosed seed and domain")]
     DerivedSelectionRequired,
     #[error("a seed and domain are only valid for derived selection")]
@@ -229,11 +232,31 @@ impl<B: Backend> Consultation<B> {
         draft: AstrologyChartDraft,
         saved_at_secs: u64,
     ) -> Result<String, ConsultationError> {
-        self.ensure_writable()?;
         let (chart, orb) = draft.into_chart_and_orb()?;
-        let facts = chart.facts(orb)?;
+        self.save_calculated_astrology_chart_at(chart, orb, saved_at_secs)
+            .await
+    }
+
+    pub async fn save_calculated_astrology_chart(
+        &mut self,
+        chart: AstrologyChart,
+        orb_millidegrees: u32,
+    ) -> Result<String, ConsultationError> {
+        self.save_calculated_astrology_chart_at(chart, orb_millidegrees, unix_time_secs()?)
+            .await
+    }
+
+    pub async fn save_calculated_astrology_chart_at(
+        &mut self,
+        chart: AstrologyChart,
+        orb_millidegrees: u32,
+        saved_at_secs: u64,
+    ) -> Result<String, ConsultationError> {
+        self.ensure_writable()?;
+        chart.validate()?;
+        let facts = chart.facts(orb_millidegrees)?;
         let digest = facts.digest();
-        self.host.insert_astrology_chart(&chart, orb)?;
+        self.host.insert_astrology_chart(&chart, orb_millidegrees)?;
         self.persist(saved_at_secs).await?;
         Ok(digest)
     }
