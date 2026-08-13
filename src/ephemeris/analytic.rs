@@ -18,9 +18,9 @@ use crate::astrology::{
 
 pub const ANALYTIC_EPHEMERIS_ALGORITHM: &str =
     "cleromancy.ephemeris/analytic-vsop87d-elp2000-apparent-iau1980/v1";
-pub const TURQUET_REVISION: &str = "95d1724c35ad7344029382f65c47efe1b9c489f2";
+pub const TURQUET_REVISION: &str = "d29145181191b3f545cceda0b50bdc523c58a1da";
 const ENGINE: &str =
-    "cleromancy-analytic-ephemeris/v2; merely-made/turquet@95d1724c35ad7344029382f65c47efe1b9c489f2 (turquet/0.1.0)";
+    "cleromancy-analytic-ephemeris/v2; merely-made/turquet@d29145181191b3f545cceda0b50bdc523c58a1da (turquet/0.1.0)";
 const EPHEMERIS: &str = "Turquet apparent: VSOP87D + partial ELP-2000/82 + analytical Pluto (no data file); observer:earth-geocenter; bodies:ten";
 
 #[derive(Debug, thiserror::Error)]

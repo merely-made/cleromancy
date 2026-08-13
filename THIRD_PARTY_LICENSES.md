@@ -12,7 +12,7 @@ lane's licenses and the kernel's NASA/NAIF provenance.
 
 - License: MIT
 - Source: <https://github.com/merely-made/turquet>
-- Pinned revision: `95d1724c35ad7344029382f65c47efe1b9c489f2`
+- Pinned revision: `d29145181191b3f545cceda0b50bdc523c58a1da`
 - Provenance: a history-preserving adoption of Saurav Sachidanand's
   MIT-licensed [`astro-rust`](https://github.com/saurvs/astro-rust); see
   Turquet's PROVENANCE.md
