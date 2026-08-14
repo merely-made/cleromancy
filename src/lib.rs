@@ -62,7 +62,7 @@ pub use enrichment::{
 #[cfg(feature = "analytic-ephemeris")]
 pub use ephemeris::{
     ANALYTIC_EPHEMERIS_ALGORITHM, AnalyticEphemerisAdapter, AnalyticEphemerisError,
-    TURQUET_REVISION,
+    TURQUET_VERSION,
 };
 pub use field::{
     CONTEXTUAL_WEIGHT_RULE, Candidate, EXTERNAL_TERM_WEIGHT_RULE, Field, UNIFORM_DIE_RULE,

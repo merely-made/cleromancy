@@ -16,5 +16,5 @@ mod analytic;
 
 pub use analytic::{
     ANALYTIC_EPHEMERIS_ALGORITHM, AnalyticEphemerisAdapter, AnalyticEphemerisError,
-    TURQUET_REVISION,
+    TURQUET_VERSION,
 };
