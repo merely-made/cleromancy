@@ -7,6 +7,11 @@ description = "Context-qualified deterministic and cleromantic readings over a l
 repository = "https://github.com/merely-made/cleromancy"
 keywords = ["divination", "randomness", "local-first", "graph"]
 categories = ["gui"]
+# The application cannot be published: its engine, graph, and shell
+# dependencies are unpublished, so a release would resolve them from the
+# registry and fail to build. The name is held by the 0.0.1 reservation in
+# reservation/. Remove this once the platform crates publish for real.
+publish = false
 
 [features]
 default = []

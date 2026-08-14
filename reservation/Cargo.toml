@@ -1,0 +1,12 @@
+[package]
+name = "cleromancy"
+version = "0.0.1"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/merely-made/cleromancy"
+description = "Name reservation. Cleromancy is a local-first divination journal: context-qualified deterministic, cast, and derived readings over a Mere graph, where every reading keeps its complete workings and replays from graph truth alone. The application is not yet publishable because its engine and shell dependencies are unpublished."
+readme = "README.md"
+keywords = ["divination", "randomness", "local-first", "graph"]
+categories = ["gui"]
+
+[dependencies]
