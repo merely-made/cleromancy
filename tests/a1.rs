@@ -4,7 +4,7 @@
 mod support;
 
 use cleromancy::{CleromancyApp, CleromancyHost, ReadingEngine, a0_fixture, a1_fixture};
-use graphshell_protocol::Carrier;
+use chirograph::Carrier;
 use muniment::MemoryBackend;
 
 use support::{fixture_carrier, truth_bytes};

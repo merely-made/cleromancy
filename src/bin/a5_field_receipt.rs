@@ -9,7 +9,7 @@ use cleromancy::{
     a0_fixture,
 };
 use graphshell_local::LocalCarrier;
-use graphshell_protocol::{
+use chirograph::{
     Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
     ProjectionSnapshot,
 };
@@ -124,7 +124,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 fn discover_request(
     carrier: &mut impl Carrier,
-) -> Result<graphshell_protocol::ProjectionRequest, Box<dyn std::error::Error>> {
+) -> Result<chirograph::ProjectionRequest, Box<dyn std::error::Error>> {
     match carrier
         .request(CarrierRequestBody::Discover)
         .map_err(std::io::Error::other)?
@@ -138,7 +138,7 @@ fn discover_request(
 
 fn snapshot(
     carrier: &mut impl Carrier,
-    request: &graphshell_protocol::ProjectionRequest,
+    request: &chirograph::ProjectionRequest,
 ) -> Result<ProjectionSnapshot, Box<dyn std::error::Error>> {
     match carrier
         .request(CarrierRequestBody::Snapshot(request.clone()))

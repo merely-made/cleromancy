@@ -12,7 +12,7 @@ use cleromancy::{
     CleromancyHost, Concurrence, Reading, ReadingEngine, ReadingError, ReadingSession, a0_fixture,
 };
 use graphshell_local::LocalCarrier;
-use graphshell_protocol::{
+use chirograph::{
     Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
     ProjectionSnapshot, ResourceRequest,
 };
@@ -143,7 +143,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 fn discover_request(
     carrier: &mut impl Carrier,
-) -> Result<graphshell_protocol::ProjectionRequest, Box<dyn std::error::Error>> {
+) -> Result<chirograph::ProjectionRequest, Box<dyn std::error::Error>> {
     match carrier.request(CarrierRequestBody::Discover)? {
         CarrierResponseBody::Descriptor(descriptor) => {
             Ok(descriptor.projections[0].request.clone())
@@ -154,7 +154,7 @@ fn discover_request(
 
 fn snapshot(
     carrier: &mut impl Carrier,
-    request: &graphshell_protocol::ProjectionRequest,
+    request: &chirograph::ProjectionRequest,
 ) -> Result<ProjectionSnapshot, Box<dyn std::error::Error>> {
     match carrier.request(CarrierRequestBody::Snapshot(request.clone()))? {
         CarrierResponseBody::Snapshot(snapshot) => Ok(*snapshot),
@@ -182,7 +182,7 @@ fn target_for_address(
         let CarrierResponseBody::Resource(response) = response else {
             return Err("expected a portable-card resource".into());
         };
-        let card: graphshell_protocol::PortableCardV1 = serde_json::from_slice(&response.bytes)?;
+        let card: chirograph::PortableCardV1 = serde_json::from_slice(&response.bytes)?;
         if card
             .values
             .iter()
@@ -198,7 +198,7 @@ fn action_for(
     snapshot: &ProjectionSnapshot,
     target: sceno::InstanceId,
     intent: &str,
-) -> Result<graphshell_protocol::AdvertisedAction, Box<dyn std::error::Error>> {
+) -> Result<chirograph::AdvertisedAction, Box<dyn std::error::Error>> {
     snapshot
         .presentation
         .offers_for(target)

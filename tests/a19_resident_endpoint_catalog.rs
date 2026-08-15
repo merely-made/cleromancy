@@ -15,7 +15,7 @@ use graphshell::client::RetainedEndpointSession;
 use graphshell::lifecycle::{AdmittedEndpointContext, BindAdmittedSession};
 use graphshell::native::endpoint_catalog::ResidentEndpointCatalog;
 use graphshell_local::LocalCarrier;
-use graphshell_protocol::{
+use chirograph::{
     CapabilityProfile, IntentResult, PresentationCapability, ProjectionSession,
 };
 use muniment::MemoryBackend;

@@ -19,7 +19,7 @@ use graphshell::personal_sync::SyncProjection;
 use graphshell_endpoint::{
     IntentSink, PresentationSource, ProjectionCatalog, ProjectionNoticeSource, ProjectionSource,
 };
-use graphshell_protocol::{
+use chirograph::{
     CarrierNotice, EndpointDescriptor, IntentInvocation, IntentResult, ProjectionRequest,
     ProjectionSnapshot, ResourceRequest, ResourceResponse,
 };

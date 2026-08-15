@@ -3,7 +3,7 @@
 
 //! Lowering advertised Graphshell commands through the bound Servitor subject.
 
-use graphshell_protocol::{IntentInvocation, IntentResult};
+use chirograph::{IntentInvocation, IntentResult};
 use muniment::Backend;
 
 use super::{AppError, CleromancyApp};

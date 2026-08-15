@@ -11,7 +11,7 @@ use cleromancy::{
 };
 use graphshell::client::RetainedEndpointSession;
 use graphshell_local::LocalCarrier;
-use graphshell_protocol::{CapabilityProfile, IntentResult, PresentationCapability};
+use chirograph::{CapabilityProfile, IntentResult, PresentationCapability};
 use muniment::MemoryBackend;
 
 #[test]

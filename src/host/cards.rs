@@ -3,7 +3,7 @@
 
 //! Portable-card rendering for every projected Cleromancy node kind.
 
-use graphshell_protocol::{CardValueV1, PortableCardV1};
+use chirograph::{CardValueV1, PortableCardV1};
 
 use super::*;
 use crate::{AstrologyChart, AstrologyFacts, Concurrence, Reflection, ThreeCardSpread};

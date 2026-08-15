@@ -22,7 +22,7 @@ use graphshell::native::endpoint_catalog::ResidentEndpointCatalog;
 use graphshell::personal_sync::{PersonalGraphReplica, SyncRoster};
 use graphshell_endpoint::{ProjectionCatalog, ProjectionSource};
 use graphshell_local::LocalCarrier;
-use graphshell_protocol::{
+use chirograph::{
     CapabilityProfile, IntentResult, PresentationCapability, ProjectionSession,
 };
 use muniment::MemoryBackend;

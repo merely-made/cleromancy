@@ -18,7 +18,7 @@ use graphshell_endpoint::{
     PresentationSource, ProjectionCatalog, ProjectionNoticeSource, ProjectionSource,
 };
 use graphshell_local::LocalCarrier;
-use graphshell_protocol::{
+use chirograph::{
     CapabilityProfile, IntentResult, PresentationCapability, ProjectionSession, ResourceRequest,
 };
 use muniment::MemoryBackend;

@@ -8,7 +8,7 @@ use cleromancy::{
     THREE_CARD_SPREAD_INTENT, a0_fixture,
 };
 use graphshell_local::LocalCarrier;
-use graphshell_protocol::{
+use chirograph::{
     Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
     PortableCardV1, ProjectionSnapshot, ResourceRequest,
 };
@@ -211,7 +211,7 @@ fn payload_identity_cannot_replace_transport_binding_or_servitor_authority() {
     assert!(carrier.take_notice().is_some());
 }
 
-fn discover_request(carrier: &mut impl Carrier) -> graphshell_protocol::ProjectionRequest {
+fn discover_request(carrier: &mut impl Carrier) -> chirograph::ProjectionRequest {
     match carrier.request(CarrierRequestBody::Discover).unwrap() {
         CarrierResponseBody::Descriptor(descriptor) => descriptor.projections[0].request.clone(),
         response => panic!("unexpected discovery response: {response:?}"),
@@ -220,7 +220,7 @@ fn discover_request(carrier: &mut impl Carrier) -> graphshell_protocol::Projecti
 
 fn snapshot(
     carrier: &mut impl Carrier,
-    request: &graphshell_protocol::ProjectionRequest,
+    request: &chirograph::ProjectionRequest,
 ) -> ProjectionSnapshot {
     match carrier
         .request(CarrierRequestBody::Snapshot(request.clone()))

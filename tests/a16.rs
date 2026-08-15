@@ -11,7 +11,7 @@ use cleromancy::{
     ReadingError, a0_fixture,
 };
 use graphshell_local::LocalCarrier;
-use graphshell_protocol::{
+use chirograph::{
     ActionFormError, AdvertisedAction, Carrier, CarrierRequestBody, CarrierResponseBody,
     IntentInvocation, IntentResult, PortableCardV1, ProjectionSnapshot, ResourceRequest,
 };
@@ -182,7 +182,7 @@ fn fixture_chart(moment: &str, moon_longitude_millidegrees: u32) -> AstrologyCha
     .unwrap()
 }
 
-fn discover_request(carrier: &mut impl Carrier) -> graphshell_protocol::ProjectionRequest {
+fn discover_request(carrier: &mut impl Carrier) -> chirograph::ProjectionRequest {
     match carrier.request(CarrierRequestBody::Discover).unwrap() {
         CarrierResponseBody::Descriptor(descriptor) => descriptor.projections[0].request.clone(),
         response => panic!("unexpected discovery response: {response:?}"),
@@ -191,7 +191,7 @@ fn discover_request(carrier: &mut impl Carrier) -> graphshell_protocol::Projecti
 
 fn snapshot(
     carrier: &mut impl Carrier,
-    request: &graphshell_protocol::ProjectionRequest,
+    request: &chirograph::ProjectionRequest,
 ) -> ProjectionSnapshot {
     match carrier
         .request(CarrierRequestBody::Snapshot(request.clone()))

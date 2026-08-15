@@ -10,7 +10,7 @@ use graphshell_client::{
     ClientState, PresentationResolution, ResolvedPresentation, SnapshotApplyError,
 };
 use graphshell_endpoint::PresentationSource;
-use graphshell_protocol::{
+use chirograph::{
     CapabilityProfile, CarrierNotice, IntentInvocation, IntentResult, PresentationCapability,
 };
 use muniment::Backend;
@@ -65,7 +65,7 @@ pub(crate) struct CleromancyAppSessionState {
 #[cfg(all(feature = "graphshell-admission", not(target_arch = "wasm32")))]
 impl CleromancyAppSessionState {
     pub(crate) fn admitted(
-        session: graphshell_protocol::ProjectionSession,
+        session: chirograph::ProjectionSession,
         subject: Subject,
     ) -> Self {
         Self {
@@ -176,7 +176,7 @@ impl<B: Backend> CleromancyApp<B> {
             .apply_snapshot(snapshot)
             .map_err(AppError::Snapshot)?;
         for resource in resources {
-            let response = self.host.resource(graphshell_protocol::ResourceRequest {
+            let response = self.host.resource(chirograph::ResourceRequest {
                 session: session.clone(),
                 resource,
             })?;
@@ -233,7 +233,7 @@ impl<B: Backend> CleromancyApp<B> {
     /// local reading graph. No external node or facet enters `self.host`.
     pub fn mount_external(
         &mut self,
-        carrier: &mut impl graphshell_protocol::Carrier,
+        carrier: &mut impl chirograph::Carrier,
         projection_index: usize,
     ) -> Result<ExternalProjection, EnrichmentError> {
         mount_carrier(&mut self.client, carrier, projection_index)

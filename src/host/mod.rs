@@ -11,7 +11,7 @@ use std::collections::{BTreeMap, HashMap};
 use std::time::{SystemTime, UNIX_EPOCH};
 
 use chartulary::{FacetError, FacetId};
-use graphshell_protocol::{ContentHash, ProjectionRequest, ProjectionSession, ProtocolVersion};
+use chirograph::{ContentHash, ProjectionRequest, ProjectionSession, ProtocolVersion};
 use mere::kernel::geometry::PortablePoint;
 use mere::kernel::graph::apply::{GraphDelta, add_node, apply_graph_delta};
 use mere::kernel::graph::{Graph, NodeFacetStore, NodeKey, RelationKind, SemanticSubKind};

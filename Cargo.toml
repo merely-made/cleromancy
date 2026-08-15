@@ -31,7 +31,7 @@ graphshell = { git = "https://github.com/merely-made/mere.git", branch = "main",
 graphshell-client = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 graphshell-endpoint = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 graphshell-local = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-graphshell-protocol = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+chirograph = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 graphshell-stdio = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 genet-layout = { git = "https://github.com/merely-made/genet.git", branch = "main" }
 genet-probe = { git = "https://github.com/merely-made/genet.git", branch = "main" }

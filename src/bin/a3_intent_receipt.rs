@@ -9,7 +9,7 @@ use cleromancy::{
     ReadingIntentPayload, a0_fixture,
 };
 use graphshell_local::LocalCarrier;
-use graphshell_protocol::{
+use chirograph::{
     Carrier, CarrierNotice, CarrierRequestBody, CarrierResponseBody, IntentInvocation,
     IntentResult, ProjectionRequest, ProjectionSnapshot,
 };

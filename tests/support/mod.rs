@@ -3,7 +3,7 @@
 
 use cleromancy::{Candidate, CleromancyHost, ContextSnapshot, Field, ReadingEngine};
 use graphshell_endpoint::{PresentationSource, ProjectionSource};
-use graphshell_protocol::{
+use chirograph::{
     Carrier, CarrierRequestBody, CarrierResponseBody, EndpointDescriptor, ProjectionOffer,
     ProjectionSession, ResourceRequest,
 };
@@ -46,10 +46,10 @@ impl Carrier for FixtureCarrier {
     fn request(
         &mut self,
         body: CarrierRequestBody,
-    ) -> Result<CarrierResponseBody, graphshell_protocol::CarrierError> {
+    ) -> Result<CarrierResponseBody, chirograph::CarrierError> {
         if self.closed {
             // A closed carrier is gone, not declining.
-            return Err(graphshell_protocol::CarrierError::Disconnected(
+            return Err(chirograph::CarrierError::Disconnected(
                 "fixture carrier is closed".to_string(),
             ));
         }
@@ -60,7 +60,7 @@ impl Carrier for FixtureCarrier {
                     label: "Fixture source".to_string(),
                     projections: vec![ProjectionOffer {
                         label: "Fixture graph".to_string(),
-                        request: graphshell_protocol::ProjectionRequest {
+                        request: chirograph::ProjectionRequest {
                             version: local.version,
                             session: self.session.clone(),
                             score: local.score,
@@ -72,7 +72,7 @@ impl Carrier for FixtureCarrier {
                 let mut local = request;
                 local.session = self.host.session();
                 let mut snapshot = self.host.snapshot(local).map_err(|error| {
-                    graphshell_protocol::CarrierError::Refused(error.to_string())
+                    chirograph::CarrierError::Refused(error.to_string())
                 })?;
                 snapshot.session = self.session.clone();
                 Ok(CarrierResponseBody::Snapshot(Box::new(snapshot)))
@@ -85,10 +85,10 @@ impl Carrier for FixtureCarrier {
                         resource: request.resource,
                     })
                     .map_err(|error| {
-                        graphshell_protocol::CarrierError::Refused(error.to_string())
+                        chirograph::CarrierError::Refused(error.to_string())
                     })?;
                 Ok(CarrierResponseBody::Resource(
-                    graphshell_protocol::ResourceResponse {
+                    chirograph::ResourceResponse {
                         session: self.session.clone(),
                         resource: response.resource,
                         bytes: response.bytes,
@@ -99,25 +99,25 @@ impl Carrier for FixtureCarrier {
                 self.closed = true;
                 Ok(CarrierResponseBody::Closed)
             }
-            _ => Err(graphshell_protocol::CarrierError::Refused(
+            _ => Err(chirograph::CarrierError::Refused(
                 "fixture carrier refused the request".to_string(),
             )),
         }
     }
 
-    fn take_notice(&mut self) -> Option<graphshell_protocol::CarrierNotice> {
+    fn take_notice(&mut self) -> Option<chirograph::CarrierNotice> {
         None
     }
 
     fn wait_for_notice(
         &mut self,
-    ) -> Result<graphshell_protocol::CarrierNotice, graphshell_protocol::CarrierError> {
-        Err(graphshell_protocol::CarrierError::Refused(
+    ) -> Result<chirograph::CarrierNotice, chirograph::CarrierError> {
+        Err(chirograph::CarrierError::Refused(
             "fixture emits no notices".to_string(),
         ))
     }
 
-    fn shutdown(&mut self) -> Result<(), graphshell_protocol::CarrierError> {
+    fn shutdown(&mut self) -> Result<(), chirograph::CarrierError> {
         self.closed = true;
         Ok(())
     }

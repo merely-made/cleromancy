@@ -4,7 +4,7 @@
 //! Graphshell projection: advertised intents, bounded action choices, and
 //! snapshot construction over the phyllotaxis canvas layout.
 
-use graphshell_protocol::{
+use chirograph::{
     ActionFormChoiceV1, BoundsRelationship, CachePolicy, PresentationBinding,
     PresentationCapability, PresentationCodec, PresentationKey, PresentationManifest,
     PresentationOffer, PresentationSemantics, ProjectionSnapshot, SemanticRole,

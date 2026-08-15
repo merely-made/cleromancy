@@ -8,7 +8,7 @@ use cleromancy::{
     CONTEXTUAL_WEIGHT_RULE, CleromancyApp, CleromancyHost, DerivedSelection, Reading,
     ReadingEngine, ReadingError, SelectionMode, a2_fixture,
 };
-use graphshell_protocol::Carrier;
+use chirograph::Carrier;
 use muniment::RedbBackend;
 
 use support::{fixture_carrier, truth_bytes};

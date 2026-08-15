@@ -1,7 +1,7 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-use graphshell_protocol::{
+use chirograph::{
     ActionFormChoiceV1, ActionFormFieldV1, ActionFormV1, AdvertisedAction, IntentEffect,
     IntentReference,
 };

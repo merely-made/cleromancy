@@ -7,7 +7,7 @@ use cleromancy::{
     ThreeCardSpreadIntentPayload, a0_fixture,
 };
 use graphshell_local::LocalCarrier;
-use graphshell_protocol::{
+use chirograph::{
     Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
     PortableCardV1, ProjectionSnapshot, ResourceRequest,
 };
@@ -73,7 +73,7 @@ fn bound_host_can_cast_the_authored_spread_through_the_wire() {
     assert_eq!(readings.len(), 3);
 }
 
-fn discover_request(carrier: &mut impl Carrier) -> graphshell_protocol::ProjectionRequest {
+fn discover_request(carrier: &mut impl Carrier) -> chirograph::ProjectionRequest {
     match carrier.request(CarrierRequestBody::Discover).unwrap() {
         CarrierResponseBody::Descriptor(descriptor) => descriptor.projections[0].request.clone(),
         response => panic!("unexpected discovery response: {response:?}"),
@@ -82,7 +82,7 @@ fn discover_request(carrier: &mut impl Carrier) -> graphshell_protocol::Projecti
 
 fn snapshot(
     carrier: &mut impl Carrier,
-    request: &graphshell_protocol::ProjectionRequest,
+    request: &chirograph::ProjectionRequest,
 ) -> ProjectionSnapshot {
     match carrier
         .request(CarrierRequestBody::Snapshot(request.clone()))

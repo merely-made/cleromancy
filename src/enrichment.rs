@@ -6,7 +6,7 @@ use std::collections::BTreeSet;
 use graphshell_client::{
     ClientState, PresentationResolution, ResolvedContent, ResolvedPresentation,
 };
-use graphshell_protocol::{
+use chirograph::{
     CapabilityProfile, Carrier, CarrierError, CarrierRequestBody, CarrierResponseBody,
     PresentationCapability, ProjectionSession, ResourceRequest,
 };
