@@ -245,7 +245,9 @@ fn read_texture_rgba(
     {
         return Vec::new();
     }
-    let mapped = slice.get_mapped_range();
+    let Ok(mapped) = slice.get_mapped_range() else {
+        return Vec::new();
+    };
     let mut out = Vec::with_capacity((row_bytes * height) as usize);
     for row in 0..height as usize {
         let start = row * padded as usize;

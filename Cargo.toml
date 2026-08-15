@@ -55,7 +55,7 @@ servitor = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 thiserror = "2"
 uuid = { version = "1", features = ["serde"], optional = true }
 turquet = { version = "=0.1.0", optional = true }
-wgpu = { version = "29", default-features = false, features = ["std"] }
+wgpu = { version = "30", default-features = false, features = ["std"] }
 winit = "0.30"
 
 [[bin]]
@@ -66,3 +66,12 @@ required-features = ["personal-sync"]
 [dev-dependencies]
 async-trait = "0.1"
 tempfile = "3"
+
+# Vello on wgpu 30. Upstream vello 0.10 still requires wgpu 29, so netrender
+# (and through it this app's render path) takes vello from the owned fork:
+# the v0.10.0 tag plus exactly the API changes in linebender/vello#1754.
+# `[patch]` applies only from the top-level manifest and is NOT inherited
+# from genet or netrender, so every app workspace restates it. Retires by
+# deletion when upstream ships a wgpu-30 vello.
+[patch.crates-io]
+vello = { git = "https://github.com/mark-ik/vello.git", branch = "mark-ik/wgpu-30" }
