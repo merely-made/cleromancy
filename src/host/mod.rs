@@ -35,6 +35,7 @@ mod catalog;
 mod projection;
 mod records;
 mod replay;
+mod sky;
 mod spreads;
 
 pub const HOST_SLOT: &str = "cleromancy/mere-host/v1";
@@ -50,6 +51,8 @@ pub const SPREAD_FACET: &str = "cleromancy.spread/v1";
 pub const ASTROLOGY_CHART_FACET: &str = "cleromancy.astrology-chart/v1";
 pub const ASTROLOGY_FACTS_FACET: &str = "cleromancy.astrology-facts/v1";
 pub const CONCURRENCE_FACET: &str = "cleromancy.concurrence/v1";
+pub const SKY_DAY_FACTS_FACET: &str = "cleromancy.sky-day-facts/v1";
+pub const SKY_INTERPRETATION_FACET: &str = "cleromancy.sky-interpretation/v1";
 
 /// State that belongs to one projection connection rather than Cleromancy's
 /// saved reading graph.
@@ -91,6 +94,8 @@ pub enum HostError {
     MissingResource,
     #[error("reading requires stored {kind} {digest}")]
     MissingReadingDependency { kind: &'static str, digest: String },
+    #[error("sky record requires stored {kind} {digest}")]
+    MissingSkyDependency { kind: &'static str, digest: String },
     #[error("stored {facet} facet does not decode: {reason}")]
     InvalidStoredFacet { facet: &'static str, reason: String },
     #[error("reading session requires stored {kind} {id}")]

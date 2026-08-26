@@ -17,6 +17,7 @@ publish = false
 default = []
 # The data-free analytic engine. No kernel, no download, no filesystem.
 analytic-ephemeris = ["dep:turquet"]
+sky-timeline = ["dep:turquet-timeline"]
 personal-sync = ["graphshell/personal-sync", "dep:personae", "dep:uuid"]
 graphshell-admission = ["graphshell/native"]
 
@@ -55,6 +56,7 @@ servitor = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 thiserror = "2"
 uuid = { version = "1", features = ["serde"], optional = true }
 turquet = { version = "=0.1.0", optional = true }
+turquet-timeline = { package = "turquet", git = "https://github.com/merely-made/turquet.git", rev = "30875f30e83909f3030bc01237a5046e14cde29b", version = "=0.17.0", optional = true }
 wgpu = { version = "30", default-features = false, features = ["std"] }
 winit = "0.30"
 

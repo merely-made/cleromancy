@@ -29,6 +29,12 @@ and interpretation.
   DE440s, then saves calculated facts into the normal consultation catalog.
   Its first three complete charts agree with NASA/JPL Horizons within the
   stored millidegree precision.
+- The optional `sky-timeline` feature is the first daily astronomy consumer.
+  It normalizes Turquet's New Moon and caller-threshold airless solar
+  twilight facts for a UTC civil day and WGS84 observer. Numerical facts keep
+  their policy and provenance; authored interpretation packs remain a
+  separate, replayable layer. Refraction, limb, horizon-dip, weather, and
+  general visibility policy remain caller-owned.
 
 Plans live in `design_docs/`, one dated doc per slice. The current ephemeris
 stop rules keep houses, topocentric positions, generated interpretation, and
@@ -42,6 +48,7 @@ repos (git dependencies).
 ```powershell
 cargo run --bin cleromancy         # the local consultation window
 cargo run --features ephemeris --bin cleromancy # verified install and chart calculation
+cargo test --features sky-timeline --test sky_timeline # daily timeline consumer
 cargo test                         # the proof wall
 
 # Per-slice receipt binaries, e.g.
@@ -55,8 +62,9 @@ cargo run --features personal-sync --bin cleromancy -- sync-consent show
 
 ## License
 
-Cleromancy is MIT OR Apache-2.0. The optional `ephemeris` feature links
-MPL-2.0 and MIT dependencies; see `THIRD_PARTY_LICENSES.md`.
+Cleromancy is MIT OR Apache-2.0. The optional `ephemeris` and
+`sky-timeline` features link third-party dependencies; see
+`THIRD_PARTY_LICENSES.md`.
 
 ---
 

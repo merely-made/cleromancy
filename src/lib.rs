@@ -22,6 +22,7 @@ mod projection;
 pub mod reading;
 pub mod servitors;
 pub mod session;
+pub mod sky;
 pub mod spread;
 #[cfg(all(feature = "personal-sync", not(target_arch = "wasm32")))]
 pub mod sync;
@@ -70,7 +71,7 @@ pub use field::{
 };
 pub use host::{
     ASTROLOGY_CHART_FACET, ASTROLOGY_FACTS_FACET, CONCURRENCE_FACET, CleromancyHost, HostError,
-    SPREAD_FACET, SPREAD_TEMPLATE_FACET,
+    SKY_DAY_FACTS_FACET, SKY_INTERPRETATION_FACET, SPREAD_FACET, SPREAD_TEMPLATE_FACET,
 };
 pub use intents::{
     AstrologyReadingConcurrenceIntentPayload, COMPOSE_READING_INTENT, COMPOSE_READING_SCHEMA,
@@ -91,6 +92,15 @@ pub use servitors::{ServitorAccess, ServitorAccessError};
 pub use session::{
     READING_SESSION_SCHEMA, REFLECTION_SCHEMA, ReadingPlacement, ReadingSession, Reflection,
     SessionError,
+};
+#[cfg(feature = "sky-timeline")]
+pub use sky::turquet::{TurquetSkyError, analytical_sky_day};
+pub use sky::{
+    SKY_DAY_FACTS_SCHEMA, SKY_INTERPRETATION_SCHEMA, SKY_RULE_PACK_SCHEMA, SkyDayFacts,
+    SkyEarthOrientationApproximation, SkyEarthOrientationPolicy, SkyError, SkyFact, SkyFactKind,
+    SkyInterpretation, SkyNumericalPolicy, SkyProvenance, SkyRule, SkyRulePack, SkySearchControls,
+    SkyTtInterval, SkyTwilightMeasurement, SkyTwilightPolicy, UtcCivilDay, Wgs84Observer,
+    interpret_sky_day,
 };
 pub use spread::{
     SPREAD_SCHEMA, SPREAD_TEMPLATE_SCHEMA, Spread, SpreadError, SpreadPosition, SpreadRelation,
