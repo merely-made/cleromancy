@@ -1,7 +1,7 @@
 # Cleromancy: headed local consultation plan
 
 **Date:** 2026-08-07
-**Status:** active; H0-H1 complete
+**Status:** active; H0-H3 complete, H4 in progress
 **First proof:** one saved-and-reopened single-card tarot consultation
 
 ## Decision
@@ -34,13 +34,11 @@ personal sync, resident routing, and game clients remain behind it.
 | Persistence | `CleromancyHost::open` and `persist` over `RedbBackend` | Save-before-success behavior and recovery in the product controller |
 | Portable projection | `CleromancyApp` plus Graphshell snapshots and intents | Remains a remote/portable adapter; it is not the local UI state model |
 | Remote writes | Servitor scopes and admitted Graphshell subjects | User-facing grant policy, deferred until a remote headed path is resumed |
-| Native UI | Cambium controls, `GenetAppRunner`, Genet layout/render, and `genet-winit-host::SurfaceHost` | A Cleromancy-owned view, state reducer, and small winit shell |
+| Native UI | `cambium-genet-winit-host` plus Cleromancy's retained view, state, worker, and scenario policy | Exact-pinned and aggregate H4 acceptance |
 
-The live native host name matters. Current Genet exposes
-`genet-winit-host::SurfaceHost` and Cambium's `GenetAppRunner`.
-`ServalAppRunner` survives only as a deprecated alias. This plan uses the live
-Genet names. A later Serval/Mere product catalog route is a separate embedding
-proof.
+The native boundary now uses `cambium-genet-winit-host`. Cleromancy does not
+assemble `SurfaceHost`, winit, accessibility, layout, or GPU readback itself.
+A later Serval/Mere product catalog route is a separate embedding proof.
 
 ## Product shape
 
@@ -295,6 +293,46 @@ proves real OS text input. Keep these evidence claims separate.
 `cleromancy` launch reaches the local consultation instead of the static A0
 HTML writer.
 
+### H4. Current Cambium host boundary
+
+**Files:** `src/ui/action.rs`, `src/ui/native/`, `src/ui/scenario.rs`,
+`src/ui/state.rs`, `src/ui/view/`, `tests/headed_consultation_dom.rs`,
+`tests/consultation_authoring_dom.rs`, and `Cargo.toml`.
+
+Move the landed product off its retired hand-assembled Genet lifecycle and
+onto `cambium-genet-winit-host`. The shared host owns window lifecycle,
+layout, paint, input, scrolling, accessibility, and frame readback.
+Cleromancy keeps the persistence worker, domain command queue, product sheet,
+focused text-field mapping, and headed scenario policy.
+
+Cambium view dispatch now returns unit. A control records one typed
+`ConsultationAction` in `ConsultationUi`; the native `after_dispatch` hook
+takes and submits it after the retained input turn. The windowless acceptance
+harness installs the same focused-text hook as the native host, so pointer,
+keyboard, caret, and IME ownership are exercised at the shipping seam.
+
+**Current progress:** the focused source compile, persistence tests, both DOM
+receipts, the portable-core compile, and the two-process presented-pixel
+close/reopen receipt pass against the live sibling Genet compatibility lane.
+The headed receipt root is
+`C:\t\cleromancy-host-migration-receipt-20260827-0055`. The full product-feature
+aggregate compiles through Rust and then hits MSVC `LNK1318` at the final PDB;
+rerun that wall with test debug information disabled. The exact cached Genet
+revision separately stalls in Cargo resolution before the first compiler
+command. H4 remains in progress until both lanes are measured.
+
+**Done when:**
+
+- Cleromancy no longer directly owns winit, accessibility, layout, paint, or
+  GPU readback machinery;
+- reading/reflection and authored layout/chart DOM receipts use the extracted
+  host harness and remain separate, bounded proofs;
+- the first/reopen scenario preserves its receipt schema, durable IDs, and
+  presented-pixel captures through `AppCtx::capture`;
+- focused and aggregate tests pass with an exact Genet revision, isolated
+  Cargo state, a Cleromancy-specific target, and `-j 1`;
+- every handwritten source and test file in the slice remains under 600 lines.
+
 ## Work after the first proof
 
 Proceed in this order, one consumer-backed gate at a time:
@@ -346,7 +384,9 @@ seen during A24/A25:
 $env:CARGO_TARGET_DIR = 'C:\t\cleromancy-headed-target'
 cargo test --test headed_consultation --offline
 cargo test --test headed_consultation_dom --offline
-cargo test --all-features --offline
+cargo test --test consultation_authoring_dom --offline
+cargo test --config profile.test.debug=0 --features 'analytic-ephemeris,sky-timeline,personal-sync,graphshell-admission' --offline -j 1
+cargo check --lib --features portable-core --offline -j 1
 cargo run --bin cleromancy --offline
 ```
 

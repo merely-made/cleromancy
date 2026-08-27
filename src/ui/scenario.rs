@@ -10,11 +10,7 @@
 
 use std::path::{Path, PathBuf};
 
-use image::ImageEncoder;
-use netrender::ExternalTexturePlacement;
 use serde::Serialize;
-
-use genet_winit_host::SurfaceHost;
 
 pub use genet_probe::{Outcome, Scenario};
 
@@ -151,107 +147,4 @@ pub(crate) fn write_done(
     let json = serde_json::to_vec_pretty(&receipt).expect("serialize headed scenario receipt");
     std::fs::write(dir.join("receipt.json"), json)
         .unwrap_or_else(|error| panic!("write receipt.json in {dir:?}: {error}"));
-}
-
-/// Capture the just-presented composed scene to a PNG for a pixel receipt.
-pub(crate) fn capture_frame(
-    host: &SurfaceHost,
-    view: &wgpu::TextureView,
-    width: u32,
-    height: u32,
-    path: &Path,
-) -> bool {
-    let target = host.device().create_texture(&wgpu::TextureDescriptor {
-        label: Some("cleromancy scenario capture"),
-        size: wgpu::Extent3d {
-            width,
-            height,
-            depth_or_array_layers: 1,
-        },
-        mip_level_count: 1,
-        sample_count: 1,
-        dimension: wgpu::TextureDimension::D2,
-        format: wgpu::TextureFormat::Rgba8Unorm,
-        usage: wgpu::TextureUsages::RENDER_ATTACHMENT | wgpu::TextureUsages::COPY_SRC,
-        view_formats: &[],
-    });
-    let target_view = target.create_view(&wgpu::TextureViewDescriptor::default());
-    host.renderer().compose_external_texture(
-        view,
-        &target_view,
-        wgpu::TextureFormat::Rgba8Unorm,
-        width,
-        height,
-        ExternalTexturePlacement::new([0.0, 0.0, width as f32, height as f32]),
-    );
-    let rgba = read_texture_rgba(host.device(), host.queue(), &target, width, height);
-    if rgba.is_empty() {
-        return false;
-    }
-    let Ok(file) = std::fs::File::create(path) else {
-        return false;
-    };
-    image::codecs::png::PngEncoder::new(file)
-        .write_image(&rgba, width, height, image::ExtendedColorType::Rgba8)
-        .is_ok()
-}
-
-fn read_texture_rgba(
-    device: &wgpu::Device,
-    queue: &wgpu::Queue,
-    texture: &wgpu::Texture,
-    width: u32,
-    height: u32,
-) -> Vec<u8> {
-    let row_bytes = width * 4;
-    let padded = row_bytes.next_multiple_of(wgpu::COPY_BYTES_PER_ROW_ALIGNMENT);
-    let buffer = device.create_buffer(&wgpu::BufferDescriptor {
-        label: Some("cleromancy capture readback"),
-        size: padded as u64 * height as u64,
-        usage: wgpu::BufferUsages::COPY_DST | wgpu::BufferUsages::MAP_READ,
-        mapped_at_creation: false,
-    });
-    let mut encoder = device.create_command_encoder(&wgpu::CommandEncoderDescriptor {
-        label: Some("cleromancy capture readback"),
-    });
-    encoder.copy_texture_to_buffer(
-        wgpu::TexelCopyTextureInfo {
-            texture,
-            mip_level: 0,
-            origin: wgpu::Origin3d::ZERO,
-            aspect: wgpu::TextureAspect::All,
-        },
-        wgpu::TexelCopyBufferInfo {
-            buffer: &buffer,
-            layout: wgpu::TexelCopyBufferLayout {
-                offset: 0,
-                bytes_per_row: Some(padded),
-                rows_per_image: Some(height),
-            },
-        },
-        wgpu::Extent3d {
-            width,
-            height,
-            depth_or_array_layers: 1,
-        },
-    );
-    queue.submit([encoder.finish()]);
-    let slice = buffer.slice(..);
-    let (tx, rx) = std::sync::mpsc::channel();
-    slice.map_async(wgpu::MapMode::Read, move |result| {
-        let _ = tx.send(result);
-    });
-    if device.poll(wgpu::PollType::wait_indefinitely()).is_err() || !matches!(rx.recv(), Ok(Ok(())))
-    {
-        return Vec::new();
-    }
-    let Ok(mapped) = slice.get_mapped_range() else {
-        return Vec::new();
-    };
-    let mut out = Vec::with_capacity((row_bytes * height) as usize);
-    for row in 0..height as usize {
-        let start = row * padded as usize;
-        out.extend_from_slice(&mapped[start..start + row_bytes as usize]);
-    }
-    out
 }

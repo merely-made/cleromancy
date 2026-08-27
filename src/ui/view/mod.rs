@@ -4,10 +4,12 @@
 //! Pure Cambium view construction over [`ConsultationUi`], one submodule per
 //! semantic region.
 
-use cambium::{AnyView, GenetCtx, GenetElement, SelectState, TextInput, el, map_action, map_state,
-    text_field_typed, textarea_typed};
+use cambium::{
+    AnyView, GenetCtx, GenetElement, SelectState, TextInput, el, map_action, map_state,
+    text_field_typed, textarea_typed,
+};
 
-use super::state::{ConsultationAction, ConsultationUi};
+use super::state::ConsultationUi;
 use crate::SelectionMode;
 
 mod consultation;
@@ -18,13 +20,12 @@ use consultation::consultation_region;
 use journal::journal_region;
 use reading::reading_region;
 
-pub type ConsultationView =
-    Box<dyn AnyView<ConsultationUi, ConsultationAction, GenetCtx, GenetElement>>;
+pub type ConsultationView = Box<dyn AnyView<ConsultationUi, (), GenetCtx, GenetElement>>;
 
 pub fn consultation_view(ui: &ConsultationUi) -> ConsultationView {
     let mut chrome = Vec::new();
     chrome.push(Box::new(
-        el::<_, ConsultationUi, ConsultationAction>(
+        el::<_, ConsultationUi, ()>(
             "header",
             (
                 el("p", "Cleromancy").attr("class", "eyebrow"),
@@ -38,14 +39,14 @@ pub fn consultation_view(ui: &ConsultationUi) -> ConsultationView {
         .attr("class", "app-header"),
     ) as ConsultationView);
     chrome.push(Box::new(
-        el::<_, ConsultationUi, ConsultationAction>("p", ui.status.label())
+        el::<_, ConsultationUi, ()>("p", ui.status.label())
             .attr("role", "status")
             .attr("aria-live", "polite")
             .attr("data-key", "consultation-status"),
     ));
     if let Some(error) = &ui.error {
         chrome.push(Box::new(
-            el::<_, ConsultationUi, ConsultationAction>("p", error.clone())
+            el::<_, ConsultationUi, ()>("p", error.clone())
                 .attr("role", "alert")
                 .attr("data-key", "consultation-error"),
         ));
@@ -57,13 +58,12 @@ pub fn consultation_view(ui: &ConsultationUi) -> ConsultationView {
     ];
 
     Box::new(
-        el::<_, ConsultationUi, ConsultationAction>(
+        el::<_, ConsultationUi, ()>(
             "div",
             vec![
-                Box::new(el::<_, ConsultationUi, ConsultationAction>("div", chrome))
-                    as ConsultationView,
+                Box::new(el::<_, ConsultationUi, ()>("div", chrome)) as ConsultationView,
                 Box::new(
-                    el::<_, ConsultationUi, ConsultationAction>("main", regions)
+                    el::<_, ConsultationUi, ()>("main", regions)
                         .attr("class", "cleromancy-regions"),
                 ) as ConsultationView,
             ],
@@ -75,11 +75,11 @@ pub fn consultation_view(ui: &ConsultationUi) -> ConsultationView {
 
 fn labelled_control(label: &str, id: &str, control: ConsultationView) -> ConsultationView {
     Box::new(
-        el::<_, ConsultationUi, ConsultationAction>(
+        el::<_, ConsultationUi, ()>(
             "div",
             vec![
                 Box::new(
-                    el::<_, ConsultationUi, ConsultationAction>("span", label.to_string())
+                    el::<_, ConsultationUi, ()>("span", label.to_string())
                         .attr("class", "control-label"),
                 ) as ConsultationView,
                 control,
@@ -105,7 +105,7 @@ fn labelled_text(
     let field = map_action(field, never_text_action);
     let field = map_state(field, state);
     Box::new(
-        el::<_, ConsultationUi, ConsultationAction>(
+        el::<_, ConsultationUi, ()>(
             "label",
             (
                 el("span", label.to_string()).attr("class", "control-label"),
@@ -131,10 +131,10 @@ fn short_digest(digest: &str) -> &str {
     digest.get(..12).unwrap_or(digest)
 }
 
-fn never_text_action(_: &mut TextInput, _: ()) -> ConsultationAction {
+fn never_text_action(_: &mut TextInput, _: ()) {
     unreachable!("text controls do not bubble unit actions")
 }
 
-fn never_select_action(_: &mut SelectState, _: ()) -> ConsultationAction {
+fn never_select_action(_: &mut SelectState, _: ()) {
     unreachable!("select controls do not bubble unit actions")
 }

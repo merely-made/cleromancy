@@ -1,63 +1,14 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-use cambium::{DisclosureState, RadioGroup, SelectState, TextInput};
-
+use super::action::{ConsultationAction, ConsultationContext, ConsultationLayout};
 #[cfg(feature = "analytic-ephemeris")]
 use crate::AstrologyCalculationDraft;
 use crate::{
     AstrologyChartDraft, ConsultationCatalog, ConsultationDetail, ContextDraft, DerivedSelection,
     ReceiptComparison, SelectionMode, SpreadTemplateDraft,
 };
-
-#[derive(Clone, Debug, PartialEq, Eq)]
-pub enum ConsultationContext {
-    Existing(String),
-    New(ContextDraft),
-}
-
-#[derive(Clone, Debug, Default, PartialEq, Eq)]
-pub enum ConsultationLayout {
-    #[default]
-    Single,
-    ThreeCard,
-    Authored(String),
-}
-
-#[derive(Clone, Debug, PartialEq, Eq)]
-pub enum ConsultationAction {
-    Read {
-        context: ConsultationContext,
-        field_digest: String,
-        mode: SelectionMode,
-        derivation: Option<DerivedSelection>,
-        layout: ConsultationLayout,
-        astrology_facts_digest: Option<String>,
-    },
-    SaveSpreadTemplate {
-        draft: SpreadTemplateDraft,
-    },
-    SaveAstrologyChart {
-        draft: AstrologyChartDraft,
-    },
-    #[cfg(feature = "analytic-ephemeris")]
-    CalculateAstrologyChart {
-        draft: AstrologyCalculationDraft,
-    },
-    SaveReflection {
-        session_id: String,
-        body: String,
-    },
-    SelectSession {
-        session_id: String,
-    },
-    CompareSessions {
-        left_session_id: String,
-        right_session_id: String,
-    },
-}
-
-impl cambium::Action for ConsultationAction {}
+use cambium::{DisclosureState, RadioGroup, SelectState, TextInput};
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub enum ConsultationScreen {
@@ -162,6 +113,7 @@ pub struct ConsultationUi {
     pub(super) screen: ConsultationScreen,
     pub(super) status: ConsultationStatus,
     pub(super) error: Option<String>,
+    pub(super) pending_action: Option<ConsultationAction>,
 }
 
 impl ConsultationUi {
@@ -199,6 +151,7 @@ impl ConsultationUi {
             screen: ConsultationScreen::Consultation,
             status: ConsultationStatus::Ready,
             error: None,
+            pending_action: None,
         }
     }
 
@@ -221,10 +174,18 @@ impl ConsultationUi {
     pub fn error(&self) -> Option<&str> {
         self.error.as_deref()
     }
+    pub(crate) fn record_action(&mut self, action: Option<ConsultationAction>) {
+        self.pending_action = action;
+    }
 
+    /// Take the product command recorded by the last retained-view dispatch.
+    /// The native host sends it to Cleromancy's persistence worker only after
+    /// Cambium finishes the input turn.
+    pub fn take_pending_action(&mut self) -> Option<ConsultationAction> {
+        self.pending_action.take()
+    }
     /// Replace picker and history values after the persistence worker commits a
-    /// transaction. Keep the current selections where they still name a live
-    /// value; the worker is the authority for what remains available.
+    /// transaction; the worker is the authority for what remains available.
     pub(crate) fn replace_catalog(&mut self, catalog: ConsultationCatalog) {
         self.context_select.selected = self.context_select.selected.min(catalog.contexts.len());
         self.field_select.selected = self

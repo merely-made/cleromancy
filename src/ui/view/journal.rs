@@ -9,13 +9,11 @@ use super::{
     ConsultationView, labelled_control, labelled_text, mode_label, never_select_action,
     short_digest,
 };
-use crate::ui::state::{ConsultationAction, ConsultationUi};
+use crate::ui::state::ConsultationUi;
 
 pub(super) fn journal_region(ui: &ConsultationUi) -> ConsultationView {
     let mut children: Vec<ConsultationView> =
-        vec![Box::new(el::<_, ConsultationUi, ConsultationAction>(
-            "h2", "Journal",
-        ))];
+        vec![Box::new(el::<_, ConsultationUi, ()>("h2", "Journal"))];
     children.push(labelled_text(
         "Reflection",
         "cleromancy-reflection",
@@ -25,35 +23,33 @@ pub(super) fn journal_region(ui: &ConsultationUi) -> ConsultationView {
     ));
     children.push(Box::new(
         button("Add reflection", |ui: &mut ConsultationUi, _| {
-            ui.request_reflection()
+            let action = ui.request_reflection();
+            ui.record_action(action);
         })
         .attr("data-key", "save-reflection")
         .attr("aria-label", "Add reflection"),
     ));
     children.push(Box::new(
-        el::<_, ConsultationUi, ConsultationAction>(
-            "p",
-            "Each follow-up is saved as a separate immutable note.",
-        )
-        .attr("class", "reflection-explanation"),
+        el::<_, ConsultationUi, ()>("p", "Each follow-up is saved as a separate immutable note.")
+            .attr("class", "reflection-explanation"),
     ));
 
     if let Some(detail) = &ui.detail {
         for reflection in &detail.reflections {
             children.push(Box::new(
-                el::<_, ConsultationUi, ConsultationAction>("article", reflection.body.clone())
+                el::<_, ConsultationUi, ()>("article", reflection.body.clone())
                     .attr("data-key", format!("reflection:{}", reflection.id))
                     .attr("aria-label", "Saved reflection"),
             ));
         }
     }
 
-    children.push(Box::new(el::<_, ConsultationUi, ConsultationAction>(
+    children.push(Box::new(el::<_, ConsultationUi, ()>(
         "h3",
         "Recent sessions",
     )));
     if ui.catalog.sessions.is_empty() {
-        children.push(Box::new(el::<_, ConsultationUi, ConsultationAction>(
+        children.push(Box::new(el::<_, ConsultationUi, ()>(
             "p",
             "No saved sessions yet.",
         )));
@@ -63,7 +59,8 @@ pub(super) fn journal_region(ui: &ConsultationUi) -> ConsultationView {
             let label = format!("Session {}", short_digest(&id));
             children.push(Box::new(
                 button(label.clone(), move |ui: &mut ConsultationUi, _| {
-                    ui.request_session(id.clone())
+                    let action = ui.request_session(id.clone());
+                    ui.record_action(Some(action));
                 })
                 .attr("data-key", format!("session:{}", session.id))
                 .attr("aria-label", format!("Open {label}")),
@@ -93,7 +90,7 @@ pub(super) fn journal_region(ui: &ConsultationUi) -> ConsultationView {
         never_select_action,
     );
     let comparison_select = map_state(comparison_select, comparison_select_state);
-    children.push(Box::new(el::<_, ConsultationUi, ConsultationAction>(
+    children.push(Box::new(el::<_, ConsultationUi, ()>(
         "h3",
         "Receipt comparison",
     )));
@@ -104,14 +101,15 @@ pub(super) fn journal_region(ui: &ConsultationUi) -> ConsultationView {
     ));
     children.push(Box::new(
         button("Compare receipts", |ui: &mut ConsultationUi, _| {
-            ui.request_comparison()
+            let action = ui.request_comparison();
+            ui.record_action(action);
         })
         .attr("data-key", "compare-receipts")
         .attr("aria-label", "Compare receipts"),
     ));
     if let Some(comparison) = &ui.comparison {
         children.push(Box::new(
-            el::<_, ConsultationUi, ConsultationAction>(
+            el::<_, ConsultationUi, ()>(
                 "p",
                 format!(
                     "Context: {}; field: {}; position names: {}.",
@@ -124,7 +122,7 @@ pub(super) fn journal_region(ui: &ConsultationUi) -> ConsultationView {
         ));
         for entry in &comparison.entries {
             children.push(Box::new(
-                el::<_, ConsultationUi, ConsultationAction>(
+                el::<_, ConsultationUi, ()>(
                     "article",
                     (
                         el("h4", entry.position.clone()),
@@ -151,7 +149,7 @@ pub(super) fn journal_region(ui: &ConsultationUi) -> ConsultationView {
     }
 
     Box::new(
-        el::<_, ConsultationUi, ConsultationAction>("section", children)
+        el::<_, ConsultationUi, ()>("section", children)
             .attr("role", "region")
             .attr("aria-label", "Journal")
             .attr("data-key", "region:journal"),

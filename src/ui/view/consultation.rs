@@ -11,7 +11,7 @@ use cambium::{
 use super::{ConsultationView, labelled_control, labelled_text, never_select_action, short_digest};
 use crate::Field;
 use crate::tarot::RWS_MAJOR_ARCANA_ID;
-use crate::ui::state::{ConsultationAction, ConsultationUi};
+use crate::ui::state::ConsultationUi;
 
 pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
     let context_labels = std::iter::once("New context".to_string())
@@ -94,7 +94,7 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
     let astrology_facts_select = map_state(astrology_facts_select, astrology_facts_select_state);
 
     let mut children: Vec<ConsultationView> = vec![
-        Box::new(el::<_, ConsultationUi, ConsultationAction>("h2", "Consultation")),
+        Box::new(el::<_, ConsultationUi, ()>("h2", "Consultation")),
         labelled_control("Context", "cleromancy-context", Box::new(context_select)),
         labelled_text(
             "Context label",
@@ -125,7 +125,7 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             additional_facts_state,
         ),
         Box::new(
-            el::<_, ConsultationUi, ConsultationAction>(
+            el::<_, ConsultationUi, ()>(
                 "p",
                 "Additional facts use one disclosed name: value line. A changed form creates a new context snapshot; a selected context is reused unchanged.",
             )
@@ -159,7 +159,7 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             Box::new(astrology_facts_select),
         ),
         Box::new(
-            el::<_, ConsultationUi, ConsultationAction>(
+            el::<_, ConsultationUi, ()>(
                 "p",
                 "Calculated follows the highest disclosed qualified weight. Cast makes a fresh choice from operating-system cryptographic randomness. Derived hashes the public seed and domain into a replayable choice; it is not fresh entropy. Derived is single-card only. Multi-position layouts are always cast. Chosen chart facts are recorded as a concurrence, never as a cause or interpretation.",
             )
@@ -167,7 +167,7 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
         ),
     ];
     children.extend([
-        Box::new(el::<_, ConsultationUi, ConsultationAction>("h3", "Author a layout"))
+        Box::new(el::<_, ConsultationUi, ()>("h3", "Author a layout"))
             as ConsultationView,
         labelled_text(
             "Layout label",
@@ -191,7 +191,7 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             template_relations_state,
         ),
         Box::new(
-            el::<_, ConsultationUi, ConsultationAction>(
+            el::<_, ConsultationUi, ()>(
                 "p",
                 "Positions use name | label. Relationships use from | supports, contradicts, questions, next_step, or elaborates | to | label.",
             )
@@ -199,12 +199,13 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
         ) as ConsultationView,
         Box::new(
             button("Save layout", |ui: &mut ConsultationUi, _| {
-                ui.request_spread_template()
+                let action = ui.request_spread_template();
+                ui.record_action(action);
             })
             .attr("data-key", "save-layout")
             .attr("aria-label", "Save authored layout"),
         ) as ConsultationView,
-        Box::new(el::<_, ConsultationUi, ConsultationAction>("h3", "Chart moment"))
+        Box::new(el::<_, ConsultationUi, ()>("h3", "Chart moment"))
             as ConsultationView,
         labelled_text(
             "UTC instant",
@@ -238,7 +239,7 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
     #[cfg(feature = "analytic-ephemeris")]
     children.extend(ephemeris_controls(ui));
     children.extend([
-        Box::new(el::<_, ConsultationUi, ConsultationAction>("h3", "Import chart"))
+        Box::new(el::<_, ConsultationUi, ()>("h3", "Import chart"))
             as ConsultationView,
         labelled_text(
             "Calculation algorithm",
@@ -269,7 +270,7 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             astrology_positions_state,
         ),
         Box::new(
-            el::<_, ConsultationUi, ConsultationAction>(
+            el::<_, ConsultationUi, ()>(
                 "p",
                 "For a manual import, identify the algorithm, engine, and ephemeris, then copy positions as body | longitude millidegrees | latitude millidegrees | retrograde. Local calculation ignores those manual source and position fields.",
             )
@@ -277,20 +278,24 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
         ) as ConsultationView,
         Box::new(
             button("Save chart facts", |ui: &mut ConsultationUi, _| {
-                ui.request_astrology_chart()
+                let action = ui.request_astrology_chart();
+                ui.record_action(action);
             })
             .attr("data-key", "save-chart-facts")
             .attr("aria-label", "Save imported chart facts"),
         ) as ConsultationView,
         Box::new(
-            button("Read", |ui: &mut ConsultationUi, _| ui.request_read())
+            button("Read", |ui: &mut ConsultationUi, _| {
+                let action = ui.request_read();
+                ui.record_action(action);
+            })
                 .attr("data-key", "read")
                 .attr("aria-label", "Read this consultation"),
         ) as ConsultationView,
     ]);
 
     Box::new(
-        el::<_, ConsultationUi, ConsultationAction>("section", children)
+        el::<_, ConsultationUi, ()>("section", children)
             .attr("role", "region")
             .attr("aria-label", "Consultation")
             .attr("data-key", "region:consultation"),
@@ -301,7 +306,7 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
 fn ephemeris_controls(_ui: &ConsultationUi) -> Vec<ConsultationView> {
     vec![
         Box::new(
-            el::<_, ConsultationUi, ConsultationAction>(
+            el::<_, ConsultationUi, ()>(
                 "p",
                 "Charts are calculated locally from the built-in engine. Nothing is downloaded, and every chart records the engine revision that produced it.",
             )
@@ -310,7 +315,8 @@ fn ephemeris_controls(_ui: &ConsultationUi) -> Vec<ConsultationView> {
         ) as ConsultationView,
         Box::new(
             button("Calculate and save chart", |ui: &mut ConsultationUi, _| {
-                ui.request_calculated_astrology_chart()
+                let action = ui.request_calculated_astrology_chart();
+                ui.record_action(action);
             })
             .attr("data-key", "calculate-chart")
             .attr("aria-label", "Calculate and save astrology chart"),
@@ -326,7 +332,7 @@ fn field_label(field: &Field) -> String {
     }
 }
 
-fn never_radio_action(_: &mut RadioGroup, _: ()) -> ConsultationAction {
+fn never_radio_action(_: &mut RadioGroup, _: ()) {
     unreachable!("radio controls do not bubble unit actions")
 }
 

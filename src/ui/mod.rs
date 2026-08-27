@@ -7,14 +7,13 @@
 //! [`crate::Consultation`]; the H2 worker will execute the actions emitted by
 //! this surface away from the window thread.
 
+mod action;
 pub mod native;
 pub(crate) mod scenario;
 mod state;
 mod view;
 pub(crate) mod worker;
 
-pub use state::{
-    ConsultationAction, ConsultationContext, ConsultationLayout, ConsultationScreen,
-    ConsultationStatus, ConsultationUi,
-};
+pub use action::{ConsultationAction, ConsultationContext, ConsultationLayout};
+pub use state::{ConsultationScreen, ConsultationStatus, ConsultationUi};
 pub use view::{ConsultationView, consultation_view};

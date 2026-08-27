@@ -7,16 +7,14 @@ use cambium::{DetailRow, DetailSection, detail_panel, disclosure, el, map_action
 
 use super::{ConsultationView, mode_label};
 use crate::Reading;
-use crate::ui::state::{ConsultationAction, ConsultationUi};
+use crate::ui::state::ConsultationUi;
 
 pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
     let mut children: Vec<ConsultationView> =
-        vec![Box::new(el::<_, ConsultationUi, ConsultationAction>(
-            "h2", "Reading",
-        ))];
+        vec![Box::new(el::<_, ConsultationUi, ()>("h2", "Reading"))];
     match ui.detail.as_ref() {
         None => children.push(Box::new(
-            el::<_, ConsultationUi, ConsultationAction>(
+            el::<_, ConsultationUi, ()>(
                 "p",
                 "Enter a context and make a reading to see its prompt and receipt.",
             )
@@ -31,14 +29,13 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
                 .enumerate()
             {
                 children.push(Box::new(
-                    el::<_, ConsultationUi, ConsultationAction>("h3", placement.position.clone())
-                        .attr(
-                            "data-key",
-                            format!("reading-position:{}", placement.position),
-                        ),
+                    el::<_, ConsultationUi, ()>("h3", placement.position.clone()).attr(
+                        "data-key",
+                        format!("reading-position:{}", placement.position),
+                    ),
                 ));
                 children.push(Box::new(
-                    el::<_, ConsultationUi, ConsultationAction>("h4", reading.title.clone()).attr(
+                    el::<_, ConsultationUi, ()>("h4", reading.title.clone()).attr(
                         "data-key",
                         if index == 0 {
                             "result-title".to_string()
@@ -48,11 +45,7 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
                     ),
                 ));
                 children.push(Box::new(
-                    el::<_, ConsultationUi, ConsultationAction>(
-                        "p",
-                        reading.interpretation.clone(),
-                    )
-                    .attr(
+                    el::<_, ConsultationUi, ()>("p", reading.interpretation.clone()).attr(
                         "data-key",
                         if index == 0 {
                             "result-prompt".to_string()
@@ -77,7 +70,7 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
     }
 
     Box::new(
-        el::<_, ConsultationUi, ConsultationAction>("section", children)
+        el::<_, ConsultationUi, ()>("section", children)
             .attr("role", "region")
             .attr("aria-label", "Reading")
             .attr("data-key", "region:reading"),
@@ -126,6 +119,6 @@ fn workings_state(ui: &mut ConsultationUi) -> &mut cambium::DisclosureState {
     &mut ui.workings
 }
 
-fn never_disclosure_action(_: &mut cambium::DisclosureState, _: ()) -> ConsultationAction {
+fn never_disclosure_action(_: &mut cambium::DisclosureState, _: ()) {
     unreachable!("disclosures do not bubble unit actions")
 }
