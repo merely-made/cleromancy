@@ -15,6 +15,9 @@ publish = false
 
 [features]
 default = []
+# Used by the nested acceptance package to compile the portable product core
+# without Cleromancy's retired native Genet layout seam.
+portable-core = []
 # The data-free analytic engine. No kernel, no download, no filesystem.
 analytic-ephemeris = ["dep:turquet"]
 sky-timeline = ["dep:turquet-timeline"]

@@ -1,0 +1,55 @@
+[package]
+name = "cleromancy-core-acceptance"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[lib]
+name = "cleromancy"
+path = "../src/lib.rs"
+
+[features]
+default = ["portable-core"]
+portable-core = []
+# These names mirror root-library cfgs but do not widen this acceptance
+# package beyond its supported sky-timeline gate.
+analytic-ephemeris = []
+graphshell-admission = []
+personal-sync = []
+sky-timeline = ["dep:turquet-timeline"]
+
+[dependencies]
+blake3 = "1"
+chartulary = { git = "https://github.com/merely-made/mere.git", rev = "e8d04dd445d13a1fdeeaa0cbc35bd2669a718acc" }
+chirograph = { git = "https://github.com/merely-made/mere.git", rev = "e8d04dd445d13a1fdeeaa0cbc35bd2669a718acc" }
+graphshell-client = { git = "https://github.com/merely-made/mere.git", rev = "e8d04dd445d13a1fdeeaa0cbc35bd2669a718acc" }
+mere = { git = "https://github.com/merely-made/mere.git", rev = "e8d04dd445d13a1fdeeaa0cbc35bd2669a718acc", default-features = false, features = ["graph"] }
+muniment = { git = "https://github.com/merely-made/mere.git", rev = "e8d04dd445d13a1fdeeaa0cbc35bd2669a718acc", features = ["redb"] }
+rand_core = { version = "0.6", features = ["getrandom"] }
+sceno = { git = "https://github.com/merely-made/mere.git", rev = "e8d04dd445d13a1fdeeaa0cbc35bd2669a718acc" }
+scenotime = { git = "https://github.com/merely-made/mere.git", rev = "e8d04dd445d13a1fdeeaa0cbc35bd2669a718acc" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+servitor = { git = "https://github.com/merely-made/mere.git", rev = "e8d04dd445d13a1fdeeaa0cbc35bd2669a718acc" }
+thiserror = "2"
+turquet-timeline = { package = "turquet", git = "https://github.com/merely-made/turquet.git", rev = "30875f30e83909f3030bc01237a5046e14cde29b", version = "=0.17.0", optional = true }
+
+[dev-dependencies]
+pollster = "0.4"
+tempfile = "3"
+
+[lints.rust]
+dead_code = "allow"
+
+[[test]]
+name = "sky"
+path = "../tests/sky.rs"
+
+[[test]]
+name = "sky_host"
+path = "../tests/sky_host.rs"
+
+[[test]]
+name = "sky_timeline"
+path = "../tests/sky_timeline.rs"

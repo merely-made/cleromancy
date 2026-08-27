@@ -11,3 +11,4 @@
 /receipts/*-second.*
 /receipts/*-repeat.*
 Cargo.lock
+!/core/Cargo.lock

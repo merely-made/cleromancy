@@ -1,7 +1,7 @@
 # Cleromancy T5b: Turquet sky facts and authored daily interpretations
 
 **Date:** 2026-08-26
-**Status:** implemented; source-level gates passed, full-app integration pending platform reconciliation
+**Status:** accepted at the portable-core boundary; native window migration is a separate slice
 
 ## Scope
 
@@ -71,6 +71,10 @@ state.
 - **2026-08-26:** T4l's airless caller-threshold result is appropriate input
   for a factual daily timeline, but it must remain distinctly named from
   conventional twilight or visibility policy.
+- **2026-08-26:** Current Genet intentionally retired `genet-layout`. Its
+  replacement owns layout, input, accessibility, and wake handling behind the
+  Cambium host, so the old native window requires a headed migration rather
+  than a dependency rename.
 
 ## Progress
 
@@ -87,12 +91,14 @@ state.
   `cargo test --manifest-path C:\\t\\cleromancy-t5b-host-check\\Cargo.toml --test t5b_host -j 1`
   passed its factual-record, interpretation-binding, and `GeneratedFrom` edge
   proof.
-- **2026-08-26:** The original feature-gated integration command remains
-  checked in but could not reach Cleromancy: the ignored local platform patch
-  combines current Mere (which calls `LiveryDocument::mutate_dom`) with the
-  historical Genet revision required by the removed `genet-layout` crate.
-  Reconcile that unrelated platform seam before claiming the app-level
-  close/reopen test as measured.
+- **2026-08-26:** Added the private `core/` acceptance package. It points at
+  the production `src/lib.rs` and `tests/sky_timeline.rs`, pins current Mere
+  and Turquet revisions, and excludes only the retired native window and its
+  canvas projection adapter. The measured command
+  `cargo test --manifest-path C:\Users\mark_\Code\repos\cleromancy\core\Cargo.toml --features sky-timeline -j 1 --locked`
+  passed the full Dallas calculation, authored-pack separation, graph persist,
+  close/reopen, factual replay, interpretation replay, and durable
+  `GeneratedFrom` relation proof.
 
 ## Stop rule
 

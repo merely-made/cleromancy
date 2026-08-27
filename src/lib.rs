@@ -3,8 +3,13 @@
 
 //! Context-qualified deterministic and cleromantic readings over a Mere graph.
 
-#[cfg(all(feature = "graphshell-admission", not(target_arch = "wasm32")))]
+#[cfg(all(
+    not(feature = "portable-core"),
+    feature = "graphshell-admission",
+    not(target_arch = "wasm32")
+))]
 mod admitted;
+#[cfg(not(feature = "portable-core"))]
 pub mod app;
 pub mod astrology;
 pub mod composer;
@@ -12,33 +17,49 @@ pub mod concurrence;
 pub mod consultation;
 pub mod context;
 pub mod enrichment;
-#[cfg(feature = "analytic-ephemeris")]
+#[cfg(all(not(feature = "portable-core"), feature = "analytic-ephemeris"))]
 pub mod ephemeris;
 pub mod field;
 pub mod host;
 pub mod intents;
 pub mod moirai;
+#[cfg(not(feature = "portable-core"))]
 mod projection;
 pub mod reading;
 pub mod servitors;
 pub mod session;
 pub mod sky;
 pub mod spread;
-#[cfg(all(feature = "personal-sync", not(target_arch = "wasm32")))]
+#[cfg(all(
+    not(feature = "portable-core"),
+    feature = "personal-sync",
+    not(target_arch = "wasm32")
+))]
 pub mod sync;
-#[cfg(all(feature = "personal-sync", not(target_arch = "wasm32")))]
+#[cfg(all(
+    not(feature = "portable-core"),
+    feature = "personal-sync",
+    not(target_arch = "wasm32")
+))]
 pub mod sync_settings;
 pub mod tarot;
+#[cfg(not(feature = "portable-core"))]
 pub mod ui;
 
 #[cfg(all(
+    not(feature = "portable-core"),
     feature = "graphshell-admission",
     feature = "personal-sync",
     not(target_arch = "wasm32")
 ))]
 pub use admitted::CleromancyResidentOpenError;
-#[cfg(all(feature = "graphshell-admission", not(target_arch = "wasm32")))]
+#[cfg(all(
+    not(feature = "portable-core"),
+    feature = "graphshell-admission",
+    not(target_arch = "wasm32")
+))]
 pub use admitted::{CleromancySessionAuthority, CleromancySessionEndpoint};
+#[cfg(not(feature = "portable-core"))]
 pub use app::{AppError, CleromancyApp};
 pub use astrology::{
     ASTROLOGY_CHART_SCHEMA, ASTROLOGY_FACTS_ALGORITHM, ASTROLOGY_FACTS_SCHEMA, AspectKind,
@@ -60,7 +81,7 @@ pub use enrichment::{
     EnrichmentMatch, EnrichmentReport, EnrichmentSource, EnrichmentValue, ExternalProjection,
     SealedEnrichment,
 };
-#[cfg(feature = "analytic-ephemeris")]
+#[cfg(all(not(feature = "portable-core"), feature = "analytic-ephemeris"))]
 pub use ephemeris::{
     ANALYTIC_EPHEMERIS_ALGORITHM, AnalyticEphemerisAdapter, AnalyticEphemerisError,
     TURQUET_VERSION,
@@ -107,18 +128,27 @@ pub use spread::{
     SpreadRelationKind, SpreadTemplate, THREE_CARD_SPREAD_SCHEMA, ThreeCardPlacement,
     ThreeCardPosition, ThreeCardRelation, ThreeCardRelationKind, ThreeCardSpread,
 };
-#[cfg(all(feature = "personal-sync", not(target_arch = "wasm32")))]
+#[cfg(all(
+    not(feature = "portable-core"),
+    feature = "personal-sync",
+    not(target_arch = "wasm32")
+))]
 pub use sync::{
     CleromancySyncBatch, CleromancySyncError, CleromancySyncImport, CleromancySyncSelection,
     CleromancySyncSelectionParseError, SYNC_BATCH_SCHEMA, export_sync_batch,
     import_sync_projection,
 };
-#[cfg(all(feature = "personal-sync", not(target_arch = "wasm32")))]
+#[cfg(all(
+    not(feature = "portable-core"),
+    feature = "personal-sync",
+    not(target_arch = "wasm32")
+))]
 pub use sync_settings::{
     CLEROMANCY_SYNC_SETTINGS_FILENAME, CLEROMANCY_SYNC_SETTINGS_SCHEMA, CleromancySyncSettings,
     CleromancySyncSettingsError, sync_settings_path,
 };
 pub use tarot::{TarotPack, TarotQualification};
+#[cfg(not(feature = "portable-core"))]
 pub use ui::{
     ConsultationAction, ConsultationContext, ConsultationLayout, ConsultationScreen,
     ConsultationStatus, ConsultationUi, ConsultationView, consultation_view,

@@ -11,7 +11,9 @@ use std::collections::{BTreeMap, HashMap};
 use std::time::{SystemTime, UNIX_EPOCH};
 
 use chartulary::{FacetError, FacetId};
-use chirograph::{ContentHash, ProjectionRequest, ProjectionSession, ProtocolVersion};
+use chirograph::{ContentHash, ProjectionSession};
+#[cfg(not(feature = "portable-core"))]
+use chirograph::{ProjectionRequest, ProtocolVersion};
 use mere::kernel::geometry::PortablePoint;
 use mere::kernel::graph::apply::{GraphDelta, add_node, apply_graph_delta};
 use mere::kernel::graph::{Graph, NodeFacetStore, NodeKey, RelationKind, SemanticSubKind};
@@ -32,6 +34,7 @@ use crate::{
 
 mod cards;
 mod catalog;
+#[cfg(not(feature = "portable-core"))]
 mod projection;
 mod records;
 mod replay;
@@ -253,6 +256,7 @@ impl<B: Backend> CleromancyHost<B> {
         self.last_snapshot = None;
     }
 
+    #[cfg(not(feature = "portable-core"))]
     pub fn local_request(&self) -> ProjectionRequest {
         ProjectionRequest {
             version: ProtocolVersion::V1,
