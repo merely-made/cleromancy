@@ -5,20 +5,25 @@
 //! semantic region.
 
 use cambium::{
-    AnyView, GenetCtx, GenetElement, SelectState, TextInput, el, map_action, map_state,
-    text_field_typed, textarea_typed,
+    AnyView, GenetCtx, GenetElement, SelectState, SelectionState, TabActivation, TextInput, el,
+    map_action, map_state, tab_bar, text_field_typed, textarea_typed,
 };
 
+use super::screen::{self, ConsultationScreen};
 use super::state::ConsultationUi;
 use crate::SelectionMode;
 
 mod consultation;
 mod journal;
 mod reading;
+mod shared;
+mod trail;
 
 use consultation::consultation_region;
 use journal::journal_region;
 use reading::reading_region;
+use shared::placeholder_region;
+use trail::trail_region;
 
 pub type ConsultationView = Box<dyn AnyView<ConsultationUi, (), GenetCtx, GenetElement>>;
 
@@ -51,26 +56,65 @@ pub fn consultation_view(ui: &ConsultationUi) -> ConsultationView {
                 .attr("data-key", "consultation-error"),
         ));
     }
-    let regions = vec![
-        consultation_region(ui),
-        reading_region(ui),
-        journal_region(ui),
-    ];
+    // The tab bar is the only surface switch. It carries no
+    // `ConsultationAction`: Cambium mutates the `SelectionState` it is lensed
+    // onto and nothing else, so activating a tab never reaches the persistence
+    // worker.
+    let items = screen::surface_tab_items();
+    let tabs = map_action(
+        tab_bar(&ui.surface_tabs, &items, TabActivation::Automatic),
+        never_tab_action,
+    );
+    chrome.push(Box::new(map_state(tabs, surface_tabs_state)));
+
+    let screen = ui.screen();
+    let regions = match screen {
+        ConsultationScreen::Today => vec![
+            consultation_region(ui),
+            reading_region(ui),
+            trail_region(ui),
+        ],
+        ConsultationScreen::Journal => vec![journal_region(ui)],
+        ConsultationScreen::Sky => vec![placeholder_region(
+            "Sky",
+            "sky",
+            "The sky surface is not yet built. Stored sky facts will be listed here.",
+        )],
+        ConsultationScreen::Chart => vec![placeholder_region(
+            "Chart",
+            "chart",
+            "The chart surface is not yet built. Saved chart moments will be listed here.",
+        )],
+    };
 
     Box::new(
         el::<_, ConsultationUi, ()>(
             "div",
             vec![
                 Box::new(el::<_, ConsultationUi, ()>("div", chrome)) as ConsultationView,
+                // One `<main>` per surface is the tab panel: its id is what the
+                // active tab's `aria-controls` names, and it points back at the
+                // tab through `aria-labelledby`.
                 Box::new(
                     el::<_, ConsultationUi, ()>("main", regions)
-                        .attr("class", "cleromancy-regions"),
+                        .attr("class", "cleromancy-regions")
+                        .attr("role", "tabpanel")
+                        .attr("id", screen.panel_id())
+                        .attr("aria-labelledby", screen.tab_dom_id()),
                 ) as ConsultationView,
             ],
         )
         .attr("class", "cleromancy-consultation")
-        .attr("data-screen", ui.screen.key()),
+        .attr("data-screen", screen.key()),
     )
+}
+
+fn surface_tabs_state(ui: &mut ConsultationUi) -> &mut SelectionState {
+    &mut ui.surface_tabs
+}
+
+fn never_tab_action(_: &mut SelectionState, _: ()) {
+    unreachable!("the surface tab bar does not bubble unit actions")
 }
 
 fn labelled_control(label: &str, id: &str, control: ConsultationView) -> ConsultationView {

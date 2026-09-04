@@ -17,7 +17,7 @@ use crate::moirai::clotho::{EntropySource, OsEntropy};
 use crate::{
     AstrologyChart, AstrologyError, AstrologyFacts, CleromancyHost, Concurrence, ContextSnapshot,
     DerivedSelection, Field, HostError, Reading, ReadingEngine, ReadingError, ReadingSession,
-    Reflection, SelectionMode, SpreadTemplate, TarotPack, TarotQualification,
+    Reflection, SelectionMode, SessionSummary, SpreadTemplate, TarotPack, TarotQualification,
 };
 
 mod compare;
@@ -38,6 +38,10 @@ pub struct ConsultationCatalog {
     pub spread_templates: Vec<SpreadTemplate>,
     pub astrology_facts: Vec<AstrologyFacts>,
     pub sessions: Vec<ReadingSession>,
+    /// The same occasions as `sessions`, in the same order, projected for list
+    /// surfaces. Journal rows read these; anything needing replayed truth uses
+    /// [`Consultation::detail`].
+    pub session_summaries: Vec<SessionSummary>,
 }
 
 /// One saved occasion with every value required by the first reading and
@@ -137,6 +141,7 @@ impl<B: Backend> Consultation<B> {
             spread_templates: self.host.spread_templates()?,
             astrology_facts: self.host.astrology_facts()?,
             sessions: self.host.sessions()?,
+            session_summaries: self.host.session_summaries()?,
         })
     }
 

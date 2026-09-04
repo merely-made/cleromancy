@@ -93,6 +93,7 @@ pub use field::{
 pub use host::{
     ASTROLOGY_CHART_FACET, ASTROLOGY_FACTS_FACET, CONCURRENCE_FACET, CleromancyHost, HostError,
     SKY_DAY_FACTS_FACET, SKY_INTERPRETATION_FACET, SPREAD_FACET, SPREAD_TEMPLATE_FACET,
+    SessionSummary, SummaryPlacement, summarize,
 };
 pub use intents::{
     AstrologyReadingConcurrenceIntentPayload, COMPOSE_READING_INTENT, COMPOSE_READING_SCHEMA,

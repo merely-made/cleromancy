@@ -1,6 +1,13 @@
 # Cleromancy: headed journal depth
 
 **Date:** 2026-08-08
+**Status (2026-09-04): landed.** All five acceptance receipts are implemented
+and `cargo test --test journal_depth --offline` passes 2/2. The slice was
+subsequently overtaken by `Derived` selection, authored spreads, astrology
+chart input, and the sky timeline, all of which landed after it. Its successor
+is the [legible reader and fact surfaces plan](2026-09-04_legible_reader_and_fact_surfaces_plan.md),
+which addresses what this slice did not: finding and reading the durable
+material it made storable.
 **Scope:** deepen the existing local consultation window without enlarging the
 reading model or creating a spread language.
 

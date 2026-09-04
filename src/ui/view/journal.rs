@@ -3,46 +3,17 @@
 
 //! The journal region: reflections, saved sessions, and receipt comparison.
 
-use cambium::{SelectState, TextInput, button, el, map_action, map_state, select};
+use cambium::{SelectState, button, el, map_action, map_state, select};
 
-use super::{
-    ConsultationView, labelled_control, labelled_text, mode_label, never_select_action,
-    short_digest,
-};
+use super::shared::{reflection_editor, saved_reflections, session_row};
+use super::{ConsultationView, labelled_control, mode_label, never_select_action, short_digest};
 use crate::ui::state::ConsultationUi;
 
 pub(super) fn journal_region(ui: &ConsultationUi) -> ConsultationView {
     let mut children: Vec<ConsultationView> =
         vec![Box::new(el::<_, ConsultationUi, ()>("h2", "Journal"))];
-    children.push(labelled_text(
-        "Reflection",
-        "cleromancy-reflection",
-        true,
-        &ui.reflection,
-        reflection_state,
-    ));
-    children.push(Box::new(
-        button("Add reflection", |ui: &mut ConsultationUi, _| {
-            let action = ui.request_reflection();
-            ui.record_action(action);
-        })
-        .attr("data-key", "save-reflection")
-        .attr("aria-label", "Add reflection"),
-    ));
-    children.push(Box::new(
-        el::<_, ConsultationUi, ()>("p", "Each follow-up is saved as a separate immutable note.")
-            .attr("class", "reflection-explanation"),
-    ));
-
-    if let Some(detail) = &ui.detail {
-        for reflection in &detail.reflections {
-            children.push(Box::new(
-                el::<_, ConsultationUi, ()>("article", reflection.body.clone())
-                    .attr("data-key", format!("reflection:{}", reflection.id))
-                    .attr("aria-label", "Saved reflection"),
-            ));
-        }
-    }
+    reflection_editor(ui, &mut children);
+    saved_reflections(ui, &mut children);
 
     children.push(Box::new(el::<_, ConsultationUi, ()>(
         "h3",
@@ -55,16 +26,7 @@ pub(super) fn journal_region(ui: &ConsultationUi) -> ConsultationView {
         )));
     } else {
         for session in &ui.catalog.sessions {
-            let id = session.id.clone();
-            let label = format!("Session {}", short_digest(&id));
-            children.push(Box::new(
-                button(label.clone(), move |ui: &mut ConsultationUi, _| {
-                    let action = ui.request_session(id.clone());
-                    ui.record_action(Some(action));
-                })
-                .attr("data-key", format!("session:{}", session.id))
-                .attr("aria-label", format!("Open {label}")),
-            ));
+            children.push(session_row(&session.id));
         }
     }
 
@@ -152,7 +114,8 @@ pub(super) fn journal_region(ui: &ConsultationUi) -> ConsultationView {
         el::<_, ConsultationUi, ()>("section", children)
             .attr("role", "region")
             .attr("aria-label", "Journal")
-            .attr("data-key", "region:journal"),
+            .attr("data-key", "region:journal")
+            .attr("id", "cleromancy-region-journal"),
     )
 }
 
@@ -162,8 +125,4 @@ fn same_or_different(value: bool) -> &'static str {
 
 fn comparison_select_state(ui: &mut ConsultationUi) -> &mut SelectState {
     &mut ui.comparison_select
-}
-
-fn reflection_state(ui: &mut ConsultationUi) -> &mut TextInput {
-    &mut ui.reflection
 }

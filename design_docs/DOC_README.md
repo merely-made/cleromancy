@@ -73,8 +73,15 @@ the current public overview until it is authored.
 
 - [Headed local consultation](2026-08-07_headed_local_consultation_plan.md):
   native journal-window product plan.
-- [Journal depth](2026-08-08_journal_depth_plan.md): next durable journal
-  surface work.
+- [Journal depth](2026-08-08_journal_depth_plan.md) — **landed 2026-09-04**:
+  disclosed additional context facts, the fixed three-card cast, receipt
+  comparison, and append-only follow-up reflections. All five receipts
+  implemented; `journal_depth` passes 2/2.
+- [Legible reader and fact surfaces](2026-09-04_legible_reader_and_fact_surfaces_plan.md):
+  **plan 2026-09-04**: four surfaces over one fact graph (`today`, `journal`,
+  `sky`, `chart`); a replay-free session summary projection; a findable
+  journal reader; and DOM-legible sky and chart fact surfaces. Records the
+  Cambium vector-leaf and scrubber asks as Mere-side work, out of scope here.
 - [Derived selection](2026-08-08_derived_selection_plan.md): public-seed
   deterministic selection direction.
 - [Authored spreads, sync, and chart input](2026-08-08_authored_spreads_sync_and_chart_input_plan.md):

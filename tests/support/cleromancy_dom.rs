@@ -28,9 +28,19 @@ pub const SHEET: &str = r#"
 .app-header { border-bottom: 1px solid #625d50; padding-bottom: 12px; }
 .cleromancy-regions {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Surfaces carry one region or three, so the track count follows the
+     content rather than assuming the old three-column shell. */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 16px;
 }
+.selection-bar { display: flex; gap: 8px; margin: 12px 0; }
+.selection-item {
+  display: block; padding: 8px 12px; border: 1px solid #625d50; border-radius: 6px;
+  color: #d7c9a9; cursor: pointer;
+}
+.selection-item.selected { color: #f7f2e7; background: #6e522a; }
+.selection-item[aria-disabled='true'] { color: #8b8474; cursor: default; }
+.selection-disabled-reason { display: block; font-size: 12px; }
 .eyebrow { color: #d7b46a; font-size: 13px; text-transform: uppercase; }
 h1, h2, h3, p { margin-top: 0; }
 section[role='region'] {
@@ -93,6 +103,39 @@ pub fn select(harness: &mut App, label: &str, option: &str) {
     assert!(
         harness.click_on(&Selector::role("option").containing(option)),
         "missing option {option} for {label}"
+    );
+}
+
+/// Activate a surface tab by its visible label, and prove it took.
+///
+/// Surface choice is view-local, so the helper also proves that it did not
+/// emit a `ConsultationAction`.
+pub fn switch_surface(harness: &mut App, label: &str) {
+    let id = format!("cleromancy-surfaces-item-{}", label.to_ascii_lowercase());
+    assert!(
+        harness.click_on(&Selector::role("tab").with_attr("id", &id)),
+        "missing surface tab {label}"
+    );
+    assert_eq!(
+        attr_at_id(harness, &id, "aria-selected").as_deref(),
+        Some("true"),
+        "surface tab {label} did not become selected"
+    );
+    assert!(
+        take_action(harness).is_none(),
+        "switching to {label} emitted a ConsultationAction"
+    );
+}
+
+/// Move between surface tabs by the tab list's roving-focus keyboard contract.
+///
+/// Cambium skips disabled items and, with automatic activation, selects the
+/// focused enabled tab. As with pointer activation, this is view-local.
+pub fn next_surface(harness: &mut App) {
+    harness.press_key(&KeyPress::named(NamedKey::ArrowRight));
+    assert!(
+        take_action(harness).is_none(),
+        "keyboard surface traversal emitted a ConsultationAction"
     );
 }
 

@@ -14,12 +14,160 @@ mod support;
 use cleromancy::moirai::clotho::EntropySource;
 use cleromancy::{
     Consultation, ConsultationAction, ConsultationContext, ConsultationLayout, ReadingError,
+    SelectionMode,
 };
 use muniment::MemoryBackend;
 use support::{
     accessible_label, attr_at_id, attr_at_key, choose, click_key, count_attr, harness, has_attr,
-    has_key, has_text_at_key, has_text_in_id, one, select, text_at_key, type_into,
+    has_key, has_text, has_text_at_key, has_text_in_id, next_surface, one, select, switch_surface,
+    take_action, text_at_key, type_into,
 };
+
+#[test]
+fn four_surface_tabs_are_local_accessible_and_bounded() {
+    let host = cleromancy::CleromancyHost::empty(MemoryBackend::new());
+    let mut consultation = Consultation::new(host);
+    let field_digest = pollster::block_on(consultation.install_builtin_tarot_at(1)).unwrap();
+    let context_digest = pollster::block_on(consultation.save_context_at(
+        cleromancy::ContextDraft::new("Six occasions", "Which one is this?", "archive"),
+        2,
+    ))
+    .unwrap();
+    let mut entropy = FixedEntropy::new(0_u64..64);
+    for offset in 0_u64..6 {
+        pollster::block_on(consultation.read_at_with_entropy(
+            &context_digest,
+            &field_digest,
+            SelectionMode::Calculated,
+            1_000 + offset,
+            3 + offset,
+            &mut entropy,
+        ))
+        .unwrap();
+    }
+    let catalog = consultation.catalog().unwrap();
+    assert_eq!(catalog.session_summaries.len(), 6);
+    let session_ids = catalog
+        .session_summaries
+        .iter()
+        .map(|summary| summary.session_id.clone())
+        .collect::<Vec<_>>();
+    let mut keyboard = harness(catalog.clone());
+    keyboard.tab(true);
+    assert_eq!(
+        keyboard
+            .focus()
+            .and_then(|node| accessible_label(&keyboard, node)),
+        Some("Surfaces".into())
+    );
+    next_surface(&mut keyboard);
+    assert_surface(&keyboard, "journal", &["journal"]);
+    next_surface(&mut keyboard);
+    #[cfg(not(feature = "sky-timeline"))]
+    assert_surface(&keyboard, "chart", &["chart"]);
+    #[cfg(feature = "sky-timeline")]
+    assert_surface(&keyboard, "sky", &["sky"]);
+
+    let mut h = harness(catalog);
+
+    assert_eq!(count_attr(&h, "role", "tablist"), 1);
+    assert_eq!(count_attr(&h, "role", "tab"), 4);
+    for (label, selected) in [
+        ("Today", "true"),
+        ("Journal", "false"),
+        ("Sky", "false"),
+        ("Chart", "false"),
+    ] {
+        let id = format!("cleromancy-surfaces-item-{}", label.to_ascii_lowercase());
+        assert_eq!(
+            attr_at_id(&h, &id, "aria-selected").as_deref(),
+            Some(selected)
+        );
+    }
+    let sky_id = "cleromancy-surfaces-item-sky";
+    #[cfg(not(feature = "sky-timeline"))]
+    {
+        assert_eq!(
+            attr_at_id(&h, sky_id, "aria-disabled").as_deref(),
+            Some("true")
+        );
+        assert_eq!(
+            attr_at_id(&h, sky_id, "aria-description").as_deref(),
+            Some("The sky surface needs the sky-timeline feature.")
+        );
+        assert!(has_text(
+            &h,
+            "The sky surface needs the sky-timeline feature."
+        ));
+    }
+    #[cfg(feature = "sky-timeline")]
+    assert_eq!(
+        attr_at_id(&h, sky_id, "aria-disabled").as_deref(),
+        Some("false")
+    );
+    assert_eq!(
+        attr_at_id(&h, "cleromancy-surfaces-item-chart", "aria-disabled").as_deref(),
+        Some("false")
+    );
+    assert!(take_action(&mut h).is_none());
+
+    assert_surface(&h, "today", &["consultation", "reading", "trail"]);
+    for session_id in session_ids.iter().take(5) {
+        assert!(has_key(&h, &format!("session:{session_id}")));
+    }
+    assert!(
+        !has_key(&h, &format!("session:{}", session_ids[5])),
+        "Today must not grow past its five-row trail"
+    );
+
+    switch_surface(&mut h, "Journal");
+    assert_surface(&h, "journal", &["journal"]);
+    for session_id in &session_ids {
+        assert!(has_key(&h, &format!("session:{session_id}")));
+    }
+
+    switch_surface(&mut h, "Chart");
+    assert_surface(&h, "chart", &["chart"]);
+}
+
+fn assert_surface(harness: &support::App, screen: &str, visible_regions: &[&str]) {
+    assert!(has_attr(harness, "data-screen", screen));
+    assert_eq!(
+        attr_at_id(
+            harness,
+            &format!("cleromancy-surface-{screen}"),
+            "aria-labelledby"
+        )
+        .as_deref(),
+        Some(format!("cleromancy-surfaces-item-{screen}").as_str())
+    );
+    for tab in ["today", "journal", "sky", "chart"] {
+        assert_eq!(
+            attr_at_id(
+                harness,
+                &format!("cleromancy-surfaces-item-{tab}"),
+                "aria-selected"
+            )
+            .as_deref(),
+            Some(if tab == screen { "true" } else { "false" }),
+            "tab selection drifted from the rendered {screen} surface"
+        );
+    }
+    for region in [
+        "consultation",
+        "reading",
+        "trail",
+        "journal",
+        "sky",
+        "chart",
+    ] {
+        assert_eq!(
+            has_key(harness, &format!("region:{region}")),
+            visible_regions.contains(&region),
+            "unexpected visibility for {region} on {screen}"
+        );
+    }
+}
 
 #[test]
 fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
@@ -29,15 +177,28 @@ fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
     let catalog = consultation.catalog().unwrap();
     let mut invalid = harness(catalog.clone());
 
+    // Today is the default surface: the consultation form, the current
+    // reading, and the bounded recent trail. The full journal is one tab away.
     assert_eq!(count_attr(&invalid, "role", "region"), 3);
-    for region in ["Consultation", "Reading", "Journal"] {
-        let key = format!("region:{}", region.to_lowercase());
+    for (key, heading) in [
+        ("region:consultation", "Consultation"),
+        ("region:reading", "Reading"),
+        ("region:trail", "Recent"),
+    ] {
         assert_eq!(
-            attr_at_key(&invalid, &key, "role").as_deref(),
+            attr_at_key(&invalid, key, "role").as_deref(),
             Some("region")
         );
-        assert!(has_text_at_key(&invalid, &key, region));
+        assert!(has_text_at_key(&invalid, key, heading));
     }
+    switch_surface(&mut invalid, "Journal");
+    assert_eq!(count_attr(&invalid, "role", "region"), 1);
+    assert_eq!(
+        attr_at_key(&invalid, "region:journal", "role").as_deref(),
+        Some("region")
+    );
+    assert!(has_text_at_key(&invalid, "region:journal", "Journal"));
+    switch_surface(&mut invalid, "Today");
 
     assert!(click_key(&mut invalid, "read").is_none());
     assert!(
@@ -50,6 +211,13 @@ fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
 
     let mut h = harness(catalog);
 
+    // The surface tab bar sits above the form, so it takes the first stop in
+    // the tab order; only the active tab is focusable.
+    h.tab(true);
+    assert_eq!(
+        h.focus().and_then(|node| accessible_label(&h, node)),
+        Some("Surfaces".into())
+    );
     h.tab(true);
     assert_eq!(
         h.focus().and_then(|node| accessible_label(&h, node)),
@@ -215,6 +383,11 @@ fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
     let current_detail = consultation.detail(&session_id).unwrap();
     let catalog = consultation.catalog().unwrap();
     h.update(move |ui| ui.present_session(catalog, current_detail));
+    // Receipt comparison lives on the Journal surface. Presenting a session did
+    // not move the surface, so the switch is explicit.
+    assert!(has_key(&h, "region:trail"));
+    switch_surface(&mut h, "Journal");
+    assert!(take_action(&mut h).is_none());
     select(
         &mut h,
         "Compare with",
@@ -245,6 +418,7 @@ fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
     let catalog = consultation.catalog().unwrap();
     h.update(move |ui| ui.present_session(catalog, selected));
     assert_eq!(h.state().detail().unwrap().session.id, session_id);
+    switch_surface(&mut h, "Today");
 
     for (label, id) in [
         ("Context label", "cleromancy-context-label"),

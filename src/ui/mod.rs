@@ -10,10 +10,12 @@
 mod action;
 pub mod native;
 pub(crate) mod scenario;
+mod screen;
 mod state;
 mod view;
 pub(crate) mod worker;
 
 pub use action::{ConsultationAction, ConsultationContext, ConsultationLayout};
-pub use state::{ConsultationScreen, ConsultationStatus, ConsultationUi};
+pub use screen::ConsultationScreen;
+pub use state::{ConsultationStatus, ConsultationUi};
 pub use view::{ConsultationView, consultation_view};

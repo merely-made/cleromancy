@@ -63,6 +63,7 @@ fn empty_catalog() -> ConsultationCatalog {
         spread_templates: Vec::new(),
         astrology_facts: Vec::new(),
         sessions: Vec::new(),
+        session_summaries: Vec::new(),
     }
 }
 
@@ -285,9 +286,19 @@ const SHEET: &str = r#"
 .app-header { border-bottom: 1px solid #625d50; padding-bottom: 12px; }
 .cleromancy-regions {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Surfaces carry one region or three, so the track count follows the
+     content rather than assuming the old three-column shell. */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 16px;
 }
+.selection-bar { display: flex; gap: 8px; margin: 12px 0; }
+.selection-item {
+  display: block; padding: 8px 12px; border: 1px solid #625d50; border-radius: 6px;
+  color: #d7c9a9; cursor: pointer;
+}
+.selection-item.selected { color: #f7f2e7; background: #6e522a; }
+.selection-item[aria-disabled='true'] { color: #8b8474; cursor: default; }
+.selection-disabled-reason { display: block; font-size: 12px; }
 .eyebrow { color: #d7b46a; font-size: 13px; text-transform: uppercase; }
 h1, h2, h3, p { margin-top: 0; }
 section[role='region'] {

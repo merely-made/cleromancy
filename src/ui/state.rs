@@ -2,31 +2,14 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
 use super::action::{ConsultationAction, ConsultationContext, ConsultationLayout};
+use super::screen::{self, ConsultationScreen};
 #[cfg(feature = "analytic-ephemeris")]
 use crate::AstrologyCalculationDraft;
 use crate::{
     AstrologyChartDraft, ConsultationCatalog, ConsultationDetail, ContextDraft, DerivedSelection,
     ReceiptComparison, SelectionMode, SpreadTemplateDraft,
 };
-use cambium::{DisclosureState, RadioGroup, SelectState, TextInput};
-
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
-pub enum ConsultationScreen {
-    #[default]
-    Consultation,
-    Reading,
-    Journal,
-}
-
-impl ConsultationScreen {
-    pub fn key(self) -> &'static str {
-        match self {
-            Self::Consultation => "consultation",
-            Self::Reading => "reading",
-            Self::Journal => "journal",
-        }
-    }
-}
+use cambium::{DisclosureState, RadioGroup, SelectState, SelectionState, TextInput};
 
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub enum ConsultationStatus {
@@ -110,7 +93,10 @@ pub struct ConsultationUi {
     pub(super) reflection: TextInput,
     pub(super) detail: Option<ConsultationDetail>,
     pub(super) comparison: Option<ReceiptComparison>,
-    pub(super) screen: ConsultationScreen,
+    /// The only source of truth for which surface is rendered. The screen is
+    /// derived from it by [`screen::selected_screen`]; nothing else assigns a
+    /// surface, and in particular no `present_*` method does.
+    pub(super) surface_tabs: SelectionState,
     pub(super) status: ConsultationStatus,
     pub(super) error: Option<String>,
     pub(super) pending_action: Option<ConsultationAction>,
@@ -148,7 +134,7 @@ impl ConsultationUi {
             reflection: TextInput::default(),
             detail: None,
             comparison: None,
-            screen: ConsultationScreen::Consultation,
+            surface_tabs: screen::surface_tab_state(),
             status: ConsultationStatus::Ready,
             error: None,
             pending_action: None,
@@ -163,8 +149,10 @@ impl ConsultationUi {
         self.detail.as_ref()
     }
 
+    /// The active surface, derived from the tab bar's selection. There is no
+    /// stored screen field to fall out of step with it.
     pub fn screen(&self) -> ConsultationScreen {
-        self.screen
+        screen::selected_screen(&self.surface_tabs)
     }
 
     pub fn status(&self) -> &ConsultationStatus {
@@ -213,13 +201,15 @@ impl ConsultationUi {
         }
     }
 
+    /// Worker results never move the person to another surface: only tab
+    /// activation changes `surface_tabs`, so every `present_*` method below
+    /// updates content and status alone.
     pub fn present_reading(&mut self, catalog: ConsultationCatalog, detail: ConsultationDetail) {
         let session_id = detail.session.id.clone();
         self.adopt_detail(catalog, detail);
         self.workings.expanded = false;
         self.reflection = TextInput::default();
         self.comparison = None;
-        self.screen = ConsultationScreen::Reading;
         self.status = ConsultationStatus::ReadingSaved(session_id);
     }
 
@@ -231,7 +221,6 @@ impl ConsultationUi {
             .unwrap_or_else(|| detail.session.id.clone());
         self.adopt_detail(catalog, detail);
         self.reflection = TextInput::default();
-        self.screen = ConsultationScreen::Journal;
         self.status = ConsultationStatus::ReflectionSaved(reflection_id);
     }
 
@@ -239,7 +228,6 @@ impl ConsultationUi {
         let session_id = detail.session.id.clone();
         self.adopt_detail(catalog, detail);
         self.comparison = None;
-        self.screen = ConsultationScreen::Journal;
         self.status = ConsultationStatus::ViewingSession(session_id);
     }
 
@@ -257,7 +245,6 @@ impl ConsultationUi {
             .position(|session_id| session_id == &compared_session)
             .map_or(0, |index| index + 1);
         self.comparison = Some(comparison);
-        self.screen = ConsultationScreen::Journal;
         self.status = ConsultationStatus::ViewingComparison(compared_session);
     }
 

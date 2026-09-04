@@ -40,6 +40,9 @@ mod records;
 mod replay;
 mod sky;
 mod spreads;
+mod summary;
+
+pub use summary::{SessionSummary, SummaryPlacement, summarize};
 
 pub const HOST_SLOT: &str = "cleromancy/mere-host/v1";
 pub const LOCAL_SESSION: &str = "local:cleromancy";
