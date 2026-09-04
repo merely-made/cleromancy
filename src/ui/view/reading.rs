@@ -63,7 +63,15 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
                 .map(|(placement, reading)| receipt_section(&placement.position, reading))
                 .collect::<Vec<_>>();
             let details = detail_panel::<cambium::DisclosureState, ()>(&sections);
-            let workings = map_action(disclosure(&ui.workings, details), never_disclosure_action);
+            // Cambium's `disclosure` reports the toggle back to the caller
+            // rather than mutating its own state (mere `crates/cambium/cambium/
+            // src/disclosure.rs`). This view's state *is* the disclosure state,
+            // so the handler is `DisclosureState::toggle`, which is the form
+            // that crate's own doc names for exactly this case.
+            let workings = map_action(
+                disclosure(&ui.workings, details, cambium::DisclosureState::toggle),
+                never_disclosure_action,
+            );
             let workings = map_state(workings, workings_state);
             children.push(Box::new(workings));
         }

@@ -21,17 +21,17 @@ sky-timeline = ["dep:turquet-timeline"]
 
 [dependencies]
 blake3 = "1"
-chartulary = { git = "https://github.com/merely-made/mere.git", rev = "e8d04dd445d13a1fdeeaa0cbc35bd2669a718acc" }
-chirograph = { git = "https://github.com/merely-made/mere.git", rev = "e8d04dd445d13a1fdeeaa0cbc35bd2669a718acc" }
-graphshell-client = { git = "https://github.com/merely-made/mere.git", rev = "e8d04dd445d13a1fdeeaa0cbc35bd2669a718acc" }
-mere = { git = "https://github.com/merely-made/mere.git", rev = "e8d04dd445d13a1fdeeaa0cbc35bd2669a718acc", default-features = false, features = ["graph"] }
-muniment = { git = "https://github.com/merely-made/mere.git", rev = "e8d04dd445d13a1fdeeaa0cbc35bd2669a718acc", features = ["redb"] }
+chartulary = { git = "https://github.com/merely-made/mere.git", rev = "d82afa17e2cca86da843f07a2d718d2e69eb9f10" }
+chirograph = { git = "https://github.com/merely-made/mere.git", rev = "d82afa17e2cca86da843f07a2d718d2e69eb9f10" }
+graphshell-client = { git = "https://github.com/merely-made/mere.git", rev = "d82afa17e2cca86da843f07a2d718d2e69eb9f10" }
+mere = { git = "https://github.com/merely-made/mere.git", rev = "d82afa17e2cca86da843f07a2d718d2e69eb9f10", default-features = false, features = ["graph"] }
+muniment = { git = "https://github.com/merely-made/mere.git", rev = "d82afa17e2cca86da843f07a2d718d2e69eb9f10", features = ["redb"] }
 rand_core = { version = "0.6", features = ["getrandom"] }
-sceno = { git = "https://github.com/merely-made/mere.git", rev = "e8d04dd445d13a1fdeeaa0cbc35bd2669a718acc" }
-scenotime = { git = "https://github.com/merely-made/mere.git", rev = "e8d04dd445d13a1fdeeaa0cbc35bd2669a718acc" }
+sceno = { git = "https://github.com/merely-made/mere.git", rev = "d82afa17e2cca86da843f07a2d718d2e69eb9f10" }
+scenotime = { git = "https://github.com/merely-made/mere.git", rev = "d82afa17e2cca86da843f07a2d718d2e69eb9f10" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-servitor = { git = "https://github.com/merely-made/mere.git", rev = "e8d04dd445d13a1fdeeaa0cbc35bd2669a718acc" }
+servitor = { git = "https://github.com/merely-made/mere.git", rev = "d82afa17e2cca86da843f07a2d718d2e69eb9f10" }
 thiserror = "2"
 turquet-timeline = { package = "turquet", git = "https://github.com/merely-made/turquet.git", rev = "30875f30e83909f3030bc01237a5046e14cde29b", version = "=0.17.0", optional = true }
 
