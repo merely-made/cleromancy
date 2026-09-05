@@ -1,7 +1,7 @@
 # Cleromancy: legible reader and fact surfaces
 
 **Date:** 2026-09-04
-**Status (2026-09-04):** in progress. **R0–R1 landed**; R2–R4 open. Supersedes
+**Status (2026-09-04):** in progress. **R0–R2 landed**; R3–R4 open. Supersedes
 nothing; it is the successor slice to
 [journal depth](2026-08-08_journal_depth_plan.md), which is landed and green
 (see Findings).
@@ -259,6 +259,24 @@ to a page with an explicit "older" control. Filtering and bounding are product
 policy in `consultation`, computed over summaries; they never re-query the
 graph per keystroke.
 
+#### R2 maintainer rulings
+
+- Relative dates use elapsed UTC-duration buckets through a pure formatter:
+  `today` before 24 hours, `yesterday` before 48 hours, then `N days ago`.
+- Date filtering is selectable as `Any time`, `Past 7 days`, or `Past 30
+  days`; the cutoff instant is included and the range ends at now. A future
+  timestamp is labelled `in the future` rather than collapsed into `today`.
+- `JOURNAL_PAGE_SIZE` is the explicit product-policy constant and is `20`.
+  Older and newer controls page the bounded DOM, which states its shown range
+  and page count.
+- A mixed session names every distinct selection mode. Each row's accessible
+  name contains the full session id, context, date, placement/card count, and
+  all modes. Its visible pips are decorative, one per placement, and hidden
+  from accessibility while the count remains text.
+- `ConsultationCatalog` carries `session_summaries`, not replayed full
+  sessions. Session detail and receipt comparison remain explicit replay
+  boundaries. UI, worker, and headed-scenario consumers use summaries.
+
 **Done when:**
 
 - a trail row's accessible name identifies the session without abbreviation;
@@ -429,3 +447,19 @@ cargo test --test journal_depth --offline
   retires it. The receipts ran with unrelated dependency-source pins present
   in the dirty `Cargo.toml`; those pins are outside this slice and excluded
   from its commit.
+- **2026-09-04:** R2 landed. The catalog is now summary-only; session detail
+  and comparison are the explicit replay boundaries. The Journal applies pure
+  tag/date/paging policy over summaries, with a 20-row DOM bound stated even
+  for zero matches. Rows expose full accessible identity, decorative
+  per-placement pips, relative dates, every selection mode, and selected
+  context facts. The new `journal_reader_dom` receipt covers composed and
+  clearable filters, paging, local controls, selected detail, and comparison
+  and passes 2/2. Journal policy tests pass 2/2; the prior regression set passes
+  10/10 across `headed_consultation`, `headed_consultation_dom`,
+  `consultation_authoring_dom`, `journal_depth`, and `session_summary`; the
+  worker receipt passes 1/1; and the `portable-core` lib check passes. An
+  independent Luna review found two bounded issues, both repaired and
+  re-reviewed: empty results now state the bound, and past-date ranges end at
+  now. Formatting and diff checks pass. The receipts ran with unrelated
+  dependency-source pins present in the dirty `Cargo.toml`; those pins remain
+  outside this slice and are excluded from its commit.

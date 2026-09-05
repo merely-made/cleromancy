@@ -22,11 +22,16 @@ use crate::{
 
 mod compare;
 mod drafts;
+mod journal_policy;
 
 use compare::compare_details;
 pub use drafts::{
     AstrologyCalculationDraft, AstrologyChartDraft, ContextDraft, MANUAL_CONTEXT_SCHEMA,
     SpreadTemplateDraft,
+};
+pub use journal_policy::{
+    JOURNAL_PAGE_SIZE, JournalDateRange, JournalPage, filter_journal_summaries,
+    format_relative_date, journal_page,
 };
 
 /// Stable picker/history values derived from graph truth.
@@ -37,10 +42,9 @@ pub struct ConsultationCatalog {
     pub fields: Vec<Field>,
     pub spread_templates: Vec<SpreadTemplate>,
     pub astrology_facts: Vec<AstrologyFacts>,
-    pub sessions: Vec<ReadingSession>,
-    /// The same occasions as `sessions`, in the same order, projected for list
-    /// surfaces. Journal rows read these; anything needing replayed truth uses
-    /// [`Consultation::detail`].
+    /// Saved occasions projected for list surfaces, newest first. Anything
+    /// needing replayed truth crosses the explicit [`Consultation::detail`]
+    /// boundary instead of keeping every full session in a picker catalog.
     pub session_summaries: Vec<SessionSummary>,
 }
 
@@ -140,7 +144,6 @@ impl<B: Backend> Consultation<B> {
             fields: self.host.fields()?,
             spread_templates: self.host.spread_templates()?,
             astrology_facts: self.host.astrology_facts()?,
-            sessions: self.host.sessions()?,
             session_summaries: self.host.session_summaries()?,
         })
     }

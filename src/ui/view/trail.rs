@@ -36,7 +36,7 @@ pub(super) fn trail_region(ui: &ConsultationUi) -> ConsultationView {
         // The catalog is already newest first, so taking a prefix bounds the
         // column without reordering anything.
         for summary in ui.catalog.session_summaries.iter().take(TRAIL_LIMIT) {
-            children.push(session_row(&summary.session_id));
+            children.push(session_row(summary, ui.journal.now_ms));
         }
     }
     children.push(Box::new(

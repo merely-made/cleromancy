@@ -59,17 +59,20 @@ fn summaries_are_faithful_cheap_and_ordered_like_sessions() {
 
     let catalog = consultation.catalog().expect("read catalog");
 
-    // The summaries carry the same occasions, in the same order, as the full
-    // session rows they are meant to replace on list surfaces.
-    assert_eq!(catalog.session_summaries.len(), catalog.sessions.len());
+    // The summary catalog has no replaying session list. Its ordering is the
+    // host's canonical session order, verified through the explicit host API.
+    let sessions = consultation
+        .host()
+        .sessions()
+        .expect("read full sessions for receipt");
+    assert_eq!(catalog.session_summaries.len(), sessions.len());
     assert_eq!(
         catalog
             .session_summaries
             .iter()
             .map(|summary| summary.session_id.as_str())
             .collect::<Vec<_>>(),
-        catalog
-            .sessions
+        sessions
             .iter()
             .map(|session| session.id.as_str())
             .collect::<Vec<_>>(),
@@ -165,7 +168,9 @@ fn summaries_are_faithful_cheap_and_ordered_like_sessions() {
     // caller supplies only the session, its context, and its readings. This is
     // what makes the summary path structurally incapable of replaying a
     // receipt, and therefore cheap on an archive that grows without bound.
-    let detail = consultation.detail(&three_card_id).expect("replay the cast");
+    let detail = consultation
+        .detail(&three_card_id)
+        .expect("replay the cast");
     let rebuilt = summarize(&detail.session, &detail.context, &detail.readings);
     assert_eq!(&rebuilt, cast);
 
@@ -201,12 +206,10 @@ fn summarize_skips_a_placement_whose_reading_is_absent() {
 
     let field_digest =
         pollster::block_on(consultation.install_builtin_tarot_at(1)).expect("install tarot");
-    let context_digest = pollster::block_on(
-        consultation.save_context_at(
-            ContextDraft::new("Bounded", "What is bounded here?", "bounds"),
-            2,
-        ),
-    )
+    let context_digest = pollster::block_on(consultation.save_context_at(
+        ContextDraft::new("Bounded", "What is bounded here?", "bounds"),
+        2,
+    ))
     .expect("save context");
     let mut entropy = FixedEntropy::new(0_u64..32);
     let three_card = pollster::block_on(consultation.read_three_card_at_with_entropy(

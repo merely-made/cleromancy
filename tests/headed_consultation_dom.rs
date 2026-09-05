@@ -391,7 +391,7 @@ fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
     select(
         &mut h,
         "Compare with",
-        &format!("Session {}", &comparison_id[..12]),
+        &format!("A changing structure ({})", &comparison_id[..12]),
     );
     let (left_session_id, right_session_id) = match one(click_key(&mut h, "compare-receipts")) {
         ConsultationAction::CompareSessions {

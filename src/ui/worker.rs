@@ -12,12 +12,12 @@ use std::sync::mpsc::{self, Sender};
 
 use muniment::RedbBackend;
 
+#[cfg(feature = "analytic-ephemeris")]
+use crate::{AnalyticEphemerisAdapter, calculate_with_adapter};
 use crate::{
     CleromancyHost, Consultation, ConsultationCatalog, ConsultationDetail, ConsultationError,
     ReceiptComparison, SelectionMode,
 };
-#[cfg(feature = "analytic-ephemeris")]
-use crate::{AnalyticEphemerisAdapter, calculate_with_adapter};
 
 use super::{ConsultationAction, ConsultationContext, ConsultationLayout};
 
@@ -286,7 +286,7 @@ mod tests {
         };
         assert_eq!(catalog.fields.len(), 1, "first launch installs tarot only");
         assert!(catalog.contexts.is_empty());
-        assert!(catalog.sessions.is_empty());
+        assert!(catalog.session_summaries.is_empty());
 
         worker
             .command(ConsultationAction::Read {
@@ -310,7 +310,7 @@ mod tests {
             update => panic!("expected reading update, got {update:?}"),
         };
         assert_eq!(catalog.contexts.len(), 1);
-        assert_eq!(catalog.sessions.len(), 1);
+        assert_eq!(catalog.session_summaries.len(), 1);
         assert_eq!(detail.readings.len(), 1);
         let context_digest = detail.session.context_digest.clone();
 

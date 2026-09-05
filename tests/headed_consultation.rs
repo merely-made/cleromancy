@@ -89,9 +89,15 @@ fn saved_tarot_consultation_and_reflection_reopen_exactly() {
     let expected_catalog = consultation.catalog().unwrap();
     assert_eq!(expected_catalog.contexts.len(), 1);
     assert_eq!(expected_catalog.fields.len(), 1);
-    assert_eq!(expected_catalog.sessions.len(), 2);
-    assert_eq!(expected_catalog.sessions[0].id, calculated.session.id);
-    assert_eq!(expected_catalog.sessions[1].id, cast_session_id);
+    assert_eq!(expected_catalog.session_summaries.len(), 2);
+    assert_eq!(
+        expected_catalog.session_summaries[0].session_id,
+        calculated.session.id
+    );
+    assert_eq!(
+        expected_catalog.session_summaries[1].session_id,
+        cast_session_id
+    );
     let expected_detail_bytes = serde_json::to_vec(&reflected).unwrap();
     let expected_catalog_bytes = serde_json::to_vec(&expected_catalog).unwrap();
     let stored_before_reopen = pollster::block_on(backend.get(cleromancy::host::HOST_SLOT))

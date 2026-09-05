@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
 use super::action::{ConsultationAction, ConsultationContext, ConsultationLayout};
+use super::journal_state::JournalState;
 use super::screen::{self, ConsultationScreen};
 #[cfg(feature = "analytic-ephemeris")]
 use crate::AstrologyCalculationDraft;
@@ -89,6 +90,7 @@ pub struct ConsultationUi {
     pub(super) astrology_orb: TextInput,
     pub(super) astrology_positions: TextInput,
     pub(super) comparison_select: SelectState,
+    pub(super) journal: JournalState,
     pub(super) workings: DisclosureState,
     pub(super) reflection: TextInput,
     pub(super) detail: Option<ConsultationDetail>,
@@ -130,6 +132,7 @@ impl ConsultationUi {
             astrology_orb: TextInput::new("1000"),
             astrology_positions: TextInput::default(),
             comparison_select: SelectState::new(0).with_label("Compare with"),
+            journal: JournalState::new(),
             workings: DisclosureState::new("cleromancy-workings", "Workings"),
             reflection: TextInput::default(),
             detail: None,
@@ -182,7 +185,7 @@ impl ConsultationUi {
             .min(catalog.fields.len().saturating_sub(1));
         self.comparison_select.selected = self.comparison_select.selected.min(
             catalog
-                .sessions
+                .session_summaries
                 .len()
                 .saturating_sub(if self.detail.is_some() { 1 } else { 0 }),
         );
@@ -533,10 +536,10 @@ impl ConsultationUi {
     fn comparison_candidates(&self) -> Vec<String> {
         let selected_session = self.detail.as_ref().map(|detail| &detail.session.id);
         self.catalog
-            .sessions
+            .session_summaries
             .iter()
-            .filter(|session| Some(&session.id) != selected_session)
-            .map(|session| session.id.clone())
+            .filter(|summary| Some(&summary.session_id) != selected_session)
+            .map(|summary| summary.session_id.clone())
             .collect()
     }
 }

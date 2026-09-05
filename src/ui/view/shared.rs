@@ -7,10 +7,11 @@
 //! the `Journal`. They are defined once here so the two surfaces cannot drift
 //! into two different controls carrying the same `data-key`.
 
-use cambium::{TextInput, button, el};
+use cambium::{TextInput, button, button_with, el};
 
 use super::{ConsultationView, labelled_text, short_digest};
 use crate::ui::state::ConsultationUi;
+use crate::{SessionSummary, format_relative_date};
 
 /// The append-only reflection editor: field, control, and its explanation.
 pub(super) fn reflection_editor(ui: &ConsultationUi, children: &mut Vec<ConsultationView>) {
@@ -49,17 +50,76 @@ pub(super) fn saved_reflections(ui: &ConsultationUi, children: &mut Vec<Consulta
 }
 
 /// One saved occasion as an openable row.
-pub(super) fn session_row(session_id: &str) -> ConsultationView {
-    let id = session_id.to_string();
-    let label = format!("Session {}", short_digest(session_id));
+pub(super) fn session_row(summary: &SessionSummary, now_ms: u64) -> ConsultationView {
+    let id = summary.session_id.clone();
+    let relative_date = format_relative_date(summary.created_at_ms, now_ms);
+    let modes = summary
+        .modes()
+        .into_iter()
+        .map(selection_mode_label)
+        .collect::<Vec<_>>();
+    let mode_text = modes.join(" and ");
+    let placement_count = summary.placement_count();
+    let placement_text = format!(
+        "{placement_count} placement/card{}",
+        plural(placement_count)
+    );
+    let card_text = summary
+        .placements
+        .iter()
+        .map(|placement| format!("{}: {}", placement.position, placement.title))
+        .collect::<Vec<_>>()
+        .join(", ");
+    let visible_label = format!(
+        "{} · {} · {} · {}",
+        short_digest(&summary.session_id),
+        relative_date,
+        placement_text,
+        mode_text,
+    );
+    let aria_label = format!(
+        "Open session {}. Context: {}. Date: {}. {}. Cards: {}. Modes: {}.",
+        summary.session_id,
+        summary.context_label,
+        relative_date,
+        placement_text,
+        card_text,
+        mode_text,
+    );
+    let mut row: Vec<ConsultationView> = vec![Box::new(
+        el::<_, ConsultationUi, ()>("span", visible_label).attr("class", "session-summary"),
+    )];
+    row.push(Box::new(
+        el::<_, ConsultationUi, ()>(
+            "span",
+            (0..placement_count)
+                .map(|_| Box::new(el::<_, ConsultationUi, ()>("span", "▫")) as ConsultationView)
+                .collect::<Vec<_>>(),
+        )
+        .attr("class", "session-pips")
+        .attr("data-key", format!("session-pips:{}", summary.session_id))
+        .attr("aria-hidden", "true"),
+    ));
     Box::new(
-        button(label.clone(), move |ui: &mut ConsultationUi, _| {
+        button_with(row, move |ui: &mut ConsultationUi, _| {
             let action = ui.request_session(id.clone());
             ui.record_action(Some(action));
         })
-        .attr("data-key", format!("session:{session_id}"))
-        .attr("aria-label", format!("Open {label}")),
+        .attr("data-key", format!("session:{}", summary.session_id))
+        .attr("aria-label", aria_label),
     )
+}
+
+fn selection_mode_label(mode: crate::SelectionMode) -> &'static str {
+    match mode {
+        crate::SelectionMode::Calculated => "Calculated",
+        crate::SelectionMode::Cast => "Cast",
+        crate::SelectionMode::Derived => "Derived",
+    }
+}
+
+fn plural(count: usize) -> &'static str {
+    if count == 1 { "" } else { "s" }
 }
 
 /// A surface that is announced but not yet built.

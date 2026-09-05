@@ -176,11 +176,11 @@ impl ScenarioDriver<'_, '_> {
                 _ => error = Some("first scenario has no further semantic action".to_string()),
             },
             Phase::Reopen => {
-                let Some(session) = ui.catalog.sessions.first() else {
+                let Some(session) = ui.catalog.session_summaries.first() else {
                     error = Some("the reopened catalog has no saved session".to_string());
                     return;
                 };
-                let action = ui.request_session(session.id.clone());
+                let action = ui.request_session(session.session_id.clone());
                 ui.record_action(Some(action));
             }
         });
@@ -213,7 +213,7 @@ fn observation(runner: &ConsultationRunner, catalog_ready: bool) -> Observation 
     Observation {
         status: ui.status().label(),
         catalog_ready,
-        sessions: ui.catalog().sessions.len(),
+        sessions: ui.catalog().session_summaries.len(),
         readings: detail.map_or(0, |detail| detail.readings.len()),
         reflections: detail.map_or(0, |detail| detail.reflections.len()),
         ids,

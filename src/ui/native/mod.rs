@@ -62,7 +62,6 @@ fn empty_catalog() -> ConsultationCatalog {
         fields: Vec::new(),
         spread_templates: Vec::new(),
         astrology_facts: Vec::new(),
-        sessions: Vec::new(),
         session_summaries: Vec::new(),
     }
 }
@@ -237,6 +236,11 @@ pub fn consultation_focused_text(
         "cleromancy-astrology-engine" => field!(astrology_engine),
         "cleromancy-astrology-ephemeris" => field!(astrology_ephemeris),
         "cleromancy-astrology-positions" => field!(astrology_positions),
+        "cleromancy-journal-tag-filter" => Some(FocusedTextSlot {
+            node,
+            get: Box::new(|ui| &ui.journal.tag_filter),
+            get_mut: Box::new(|ui| &mut ui.journal.tag_filter),
+        }),
         "cleromancy-reflection" => field!(reflection),
         _ => None,
     }

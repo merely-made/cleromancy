@@ -73,8 +73,9 @@ pub use concurrence::{
 };
 pub use consultation::{
     AstrologyCalculationDraft, AstrologyChartDraft, Consultation, ConsultationCatalog,
-    ConsultationDetail, ConsultationError, ContextDraft, MANUAL_CONTEXT_SCHEMA, ReceiptComparison,
-    ReceiptComparisonEntry, SpreadTemplateDraft,
+    ConsultationDetail, ConsultationError, ContextDraft, JOURNAL_PAGE_SIZE, JournalDateRange,
+    JournalPage, MANUAL_CONTEXT_SCHEMA, ReceiptComparison, ReceiptComparisonEntry,
+    SpreadTemplateDraft, filter_journal_summaries, format_relative_date, journal_page,
 };
 pub use context::ContextSnapshot;
 pub use enrichment::{
@@ -83,8 +84,7 @@ pub use enrichment::{
 };
 #[cfg(all(not(feature = "portable-core"), feature = "analytic-ephemeris"))]
 pub use ephemeris::{
-    ANALYTIC_EPHEMERIS_ALGORITHM, AnalyticEphemerisAdapter, AnalyticEphemerisError,
-    TURQUET_VERSION,
+    ANALYTIC_EPHEMERIS_ALGORITHM, AnalyticEphemerisAdapter, AnalyticEphemerisError, TURQUET_VERSION,
 };
 pub use field::{
     CONTEXTUAL_WEIGHT_RULE, Candidate, EXTERNAL_TERM_WEIGHT_RULE, Field, UNIFORM_DIE_RULE,
