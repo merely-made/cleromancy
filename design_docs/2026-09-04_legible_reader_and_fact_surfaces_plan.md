@@ -1,7 +1,7 @@
 # Cleromancy: legible reader and fact surfaces
 
 **Date:** 2026-09-04
-**Status (2026-09-04):** in progress. **R0–R2 landed**; R3–R4 open. Supersedes
+**Status (2026-09-04):** in progress. **R0–R3 landed**; R4 open. Supersedes
 nothing; it is the successor slice to
 [journal depth](2026-08-08_journal_depth_plan.md), which is landed and green
 (see Findings).
@@ -64,6 +64,13 @@ read model defined here.
   `ConsultationCatalog` ([`consultation/mod.rs:35`](../src/consultation/mod.rs))
   carries `astrology_facts` but no sky facts. A sky surface cannot list what
   the store holds until this seam exists.
+- **2026-09-04: the drafted R3 body table described chart data, not sky-day
+  data.** `SkyDayFacts` stores New Moon, dawn, and dusk TT intervals, the
+  effective numerical policy, and per-event provenance. It has no body
+  longitude, daily motion, retrograde state, frame, supported-range verdict,
+  or oracle-parity field. Those claims cannot be projected from the record
+  without inventing data or widening the durable schema. `AstrologyChart` and
+  `AstrologyFacts` own the stored body positions and sign derivation instead.
 - **2026-09-04: concurrence is already the right carrier for chart facts in a
   reading.** `ConsultationDetail.concurrences` exists and is populated, and
   the canvas states the rule explicitly: chosen chart facts are recorded as a
@@ -120,6 +127,16 @@ recomputed from facets and is never persisted as its own facet.
 - **`Today` carries a bounded recent trail**, not the whole journal region.
   The `Journal` surface is the full reader: every session, filters, context
   rendering, and receipt comparison.
+- **R3 renders the sky-day record that exists.** Its ledger is the selected
+  civil day's stored New Moon, dawn, and dusk facts in canonical TT-interval
+  order. Catalog admission is canonical-address, digest, and structural
+  validation, not numerical recalculation. The existing `sky-timeline` tab
+  gate remains, while the catalog type may carry stored facts independently
+  of the optional Turquet producer.
+- **Chart-owned body positions stay in R4.** R4 may render the stored raw
+  longitude, derived sign, latitude, and retrograde flag. Daily motion,
+  structured frame/range metadata, and per-record oracle parity are absent
+  from the current schemas and are not inferred from source strings.
 
 ## Phases
 
@@ -299,30 +316,31 @@ on `ConsultationCatalog`.
 
 Then three regions, all in current Cambium:
 
-1. **Placements, millidegree canon** — a table carrying, per body, the raw
-   millidegree value, the human sign reading, daily motion, and retrograde
-   state. The raw canonical value and the derived human projection are
-   distinct columns; the projection is labelled as a projection.
-2. **Event ledger** — the upcoming events as a `sectioned_list`, each row
-   carrying its instant, description, and applying/separating state.
-3. **Explanation tree** — the canvas's hinge object, built from nested
-   `disclosure`: value, motion, instant with time scale, frame, model and
-   revision, supported range with in-range verdict, oracle parity, digest,
-   and beneath them the derived sign projection with its algorithm name.
+1. **Day record** — a selectable stored civil day, observer, and full digest.
+   The civil-day label is a projection over the record; the stored TT
+   intervals remain the canonical event values.
+2. **Event ledger** — the selected day's New Moon, dawn, and dusk facts as a
+   `sectioned_list`, ordered by TT interval. Each row carries the event name
+   and raw TT start and end; it does not invent a current-time horizon or an
+   applying/separating state absent from the record.
+3. **Explanation tree** — nested `disclosure` regions for the effective phase,
+   twilight, and Earth-orientation policy and for every event's stored model,
+   provider snapshot, transform, and Earth-orientation provenance.
 
-Every fact renders its policy and provenance. A fact outside its model's
-supported range says so in text; it is never rendered as an ordinary value.
+The view reads catalog values only. Invalid or misaddressed sky records are
+refused by `sky_day_facts()` before they can render; numerical range failures
+belong to the optional producer and cannot masquerade as a stored ordinary
+value.
 
 **Done when:**
 
 - `sky_day_facts()` lists stored records and rejects a corrupt one;
 - the Dallas 2024-04-08 fixture from `tests/sky_timeline.rs` renders its
   stored facts with no recalculation at view time;
-- each placement row shows canonical millidegrees *and* its labelled
-  projection;
-- the explanation tree exposes frame, model revision, range verdict, oracle
-  parity, and digest for a selected body;
-- an out-of-range fact renders its range refusal rather than a value.
+- every event row names its TT time scale and exposes the raw interval;
+- the explanation tree exposes the effective numerical policy, each event's
+  complete stored provenance, and the record digest;
+- Sky controls remain view-local and emit no product action.
 
 ### R4. Chart surface and the cast's sky
 
@@ -334,10 +352,12 @@ unconditional.
 Two pieces:
 
 1. **Chart surface** — saved moments as a list (label, chart digest,
-   placement count, observer), the aspects as a data grid with aspect,
-   separation in millidegrees, orb, and state, and a source block naming
-   engine, ephemeris, algorithm, frame, digest, and oracle parity. Existing
-   import and calculate controls move here from the consultation region.
+   placement count, observer), a placement table with stored longitude and
+   latitude millidegrees, labelled sign projection, and retrograde flag, the
+   aspects as a data grid with aspect, separation in millidegrees, and orb,
+   and a source block naming the stored engine, ephemeris, algorithm, and
+   digest. Existing import and calculate controls move here from the
+   consultation region.
 2. **Sky at this cast** — in the reading region, when a session carries a
    concurrence with chart facts, a compact strip of the associated positions
    plus the concurrence id and a link to the chart surface. It is rendered
@@ -349,8 +369,7 @@ Two pieces:
 
 - the saved-moments list and aspect grid render stored facts with no
   recalculation at view time;
-- the source block names engine, ephemeris, algorithm, frame, digest, and
-  oracle parity;
+- the source block names the stored engine, ephemeris, algorithm, and digest;
 - a session with a chart concurrence renders the strip; one without renders
   nothing rather than an empty frame;
 - the strip's copy states the concurrence rule, and no DOM text asserts
@@ -463,3 +482,20 @@ cargo test --test journal_depth --offline
   now. Formatting and diff checks pass. The receipts ran with unrelated
   dependency-source pins present in the dirty `Cargo.toml`; those pins remain
   outside this slice and are excluded from its commit.
+- **2026-09-04:** R3 landed after correcting a phase-boundary error in the
+  draft: body placements, daily motion, frame/range metadata, and oracle
+  parity are not `SkyDayFacts` fields. The Sky surface now renders exactly the
+  durable record that exists: selectable civil days, observer and digest,
+  canonical TT event intervals in a Cambium sectioned list, and disclosed
+  numerical policy plus complete per-event provenance. `sky_day_facts()`
+  rejects malformed and misaddressed records and sorts by civil day then
+  digest without calling the numerical adapter. The feature-gated Dallas DOM
+  receipt passes 2/2; its default-build companion passes 1/1 and proves stored
+  facts remain catalogued while the Sky tab is disabled. Sky host and timeline
+  predecessors pass 3/3, host enumerator guards pass 2/2, feature-enabled shell
+  coverage passes 2/2, default shell/journal/persistence/summary regressions
+  pass 9/9, and the `portable-core` lib check passes. Independent Luna review
+  found no implementation defect; its four receipt-strength gaps were added
+  and re-reviewed. Formatting and diff checks pass. The unrelated dirty
+  `Cargo.toml` dependency pins remain outside this slice and are excluded from
+  its commit.

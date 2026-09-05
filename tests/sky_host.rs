@@ -66,6 +66,7 @@ fn sky_records_persist_as_distinct_digest_nodes_with_provenance() {
     let interpretation = interpretation(&facts);
     host.insert_sky_day_facts(&facts).unwrap();
     host.insert_sky_interpretation(&interpretation).unwrap();
+    assert_eq!(host.sky_day_facts().unwrap(), vec![facts.clone()]);
     assert_eq!(SKY_DAY_FACTS_SCHEMA, "cleromancy.sky-day-facts/v1");
     assert!(host.sky_day_facts_for_digest(&facts.digest()).is_ok());
     assert_eq!(

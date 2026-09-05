@@ -14,6 +14,35 @@ use super::*;
 use crate::sky::{SkyDayFacts, SkyInterpretation};
 
 impl<B: Backend> CleromancyHost<B> {
+    /// Every stored daily sky record, sorted by UTC civil day then digest.
+    ///
+    /// This is an enumerator over persisted facts only. It verifies each
+    /// canonical digest address and structural payload, but never calls a sky
+    /// adapter or recalculates an event for a list surface.
+    pub fn sky_day_facts(&self) -> Result<Vec<SkyDayFacts>, HostError> {
+        let mut facts =
+            self.canonical_facet_values(SKY_DAY_FACTS_FACET, SkyDayFacts::digest, |digest| {
+                format!("cleromancy://sky/facts/{digest}")
+            })?;
+        for value in &facts {
+            value
+                .validate()
+                .map_err(|error| HostError::InvalidStoredFacet {
+                    facet: SKY_DAY_FACTS_FACET,
+                    reason: error.to_string(),
+                })?;
+        }
+        facts.sort_by_key(|value| {
+            (
+                value.civil_day.year,
+                value.civil_day.month,
+                value.civil_day.day,
+                value.digest(),
+            )
+        });
+        Ok(facts)
+    }
+
     /// Store one validated, immutable daily sky fact record.
     pub fn insert_sky_day_facts(&mut self, facts: &SkyDayFacts) -> Result<NodeKey, HostError> {
         facts
@@ -181,5 +210,101 @@ impl<B: Backend> CleromancyHost<B> {
             "sky interpretation",
             digest,
         )
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::{
+        SkyEarthOrientationApproximation, SkyEarthOrientationPolicy, SkyFact, SkyFactKind,
+        SkyNumericalPolicy, SkyProvenance, SkySearchControls, SkyTtInterval,
+        SkyTwilightMeasurement, SkyTwilightPolicy, UtcCivilDay, Wgs84Observer,
+    };
+    use muniment::MemoryBackend;
+
+    #[test]
+    fn enumerator_rejects_a_structurally_invalid_canonical_record() {
+        let mut host = CleromancyHost::empty(MemoryBackend::new());
+        let mut malformed = fixture();
+        malformed.schema = "cleromancy.sky-day-facts/unknown".to_string();
+        let digest = malformed.digest();
+        let key = host.upsert_node(
+            &format!("cleromancy://sky/facts/{digest}"),
+            "Malformed sky day facts",
+            ["sky", "facts"],
+        );
+        host.set_facet(
+            key,
+            SKY_DAY_FACTS_FACET,
+            serde_json::to_value(malformed).unwrap(),
+        )
+        .unwrap();
+        assert!(matches!(
+            host.sky_day_facts(),
+            Err(HostError::InvalidStoredFacet {
+                facet: SKY_DAY_FACTS_FACET,
+                ..
+            })
+        ));
+    }
+
+    #[test]
+    fn enumerator_rejects_a_valid_record_at_the_wrong_digest_address() {
+        let mut host = CleromancyHost::empty(MemoryBackend::new());
+        let facts = fixture();
+        let key = host.upsert_node(
+            "cleromancy://sky/facts/not-the-record-digest",
+            "Misaddressed sky day facts",
+            ["sky", "facts"],
+        );
+        host.set_facet(
+            key,
+            SKY_DAY_FACTS_FACET,
+            serde_json::to_value(facts).unwrap(),
+        )
+        .unwrap();
+        assert!(matches!(
+            host.sky_day_facts(),
+            Err(HostError::InvalidStoredFacet {
+                facet: SKY_DAY_FACTS_FACET,
+                ..
+            })
+        ));
+    }
+
+    fn fixture() -> SkyDayFacts {
+        SkyDayFacts::new(
+            UtcCivilDay::new(2024, 4, 8).unwrap(),
+            Wgs84Observer::new(32_776_700, -96_797_000, 130_000).unwrap(),
+            SkyNumericalPolicy {
+                phase_search: SkySearchControls::new(3_600, 100).unwrap(),
+                twilight: SkyTwilightPolicy {
+                    measurement: SkyTwilightMeasurement::AirlessSolarCenter,
+                    altitude_millidegrees: -6_000,
+                    search: SkySearchControls::new(900, 100).unwrap(),
+                },
+                earth_orientation: SkyEarthOrientationPolicy {
+                    authority: "fixture".to_string(),
+                    snapshot: "fixture".to_string(),
+                    approximation:
+                        SkyEarthOrientationApproximation::ConstantUt1MinusUtcZeroPolarMotion {
+                            ut1_minus_utc_milliseconds: 0,
+                        },
+                },
+            },
+            [SkyFact {
+                kind: SkyFactKind::Dawn,
+                interval: SkyTtInterval::new(2_460_408.9, 2_460_408.91).unwrap(),
+                provenance: SkyProvenance {
+                    model: "fixture".to_string(),
+                    provider: "fixture".to_string(),
+                    provider_snapshot: None,
+                    transform: "fixture".to_string(),
+                    earth_orientation: "fixture".to_string(),
+                },
+            }],
+        )
+        .unwrap()
     }
 }

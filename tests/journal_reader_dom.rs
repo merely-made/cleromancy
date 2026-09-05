@@ -27,6 +27,7 @@ fn journal_rows_filter_compose_clear_and_page_without_product_actions() {
         fields: Vec::new(),
         spread_templates: Vec::new(),
         astrology_facts: Vec::new(),
+        sky_day_facts: Vec::new(),
         session_summaries: (0..25)
             .map(|index| summary(index, now_ms - u64::from(index) * 24 * 60 * 60 * 1_000))
             .collect(),

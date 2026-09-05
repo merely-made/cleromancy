@@ -62,6 +62,7 @@ fn empty_catalog() -> ConsultationCatalog {
         fields: Vec::new(),
         spread_templates: Vec::new(),
         astrology_facts: Vec::new(),
+        sky_day_facts: Vec::new(),
         session_summaries: Vec::new(),
     }
 }
@@ -122,7 +123,7 @@ pub(super) fn apply_worker_update(
         WorkerUpdate::Catalog(catalog) => {
             state.catalog_ready = true;
             runner.update(|ui| ui.replace_catalog(catalog));
-        }
+        },
         #[cfg(feature = "analytic-ephemeris")]
         WorkerUpdate::AstrologyChart {
             catalog,
@@ -132,25 +133,25 @@ pub(super) fn apply_worker_update(
                 .probe_events
                 .push(format!("durable astrology chart saved {facts_digest}"));
             runner.update(move |ui| ui.present_calculated_chart(catalog, facts_digest));
-        }
+        },
         WorkerUpdate::Reading { catalog, detail } => {
             state
                 .probe_events
                 .push(format!("durable reading saved {}", detail.session.id));
             runner.update(move |ui| ui.present_reading(catalog, detail));
-        }
+        },
         WorkerUpdate::Reflection { catalog, detail } => {
             state
                 .probe_events
                 .push(format!("durable reflection saved {}", detail.session.id));
             runner.update(move |ui| ui.present_reflection(catalog, detail));
-        }
+        },
         WorkerUpdate::Session { catalog, detail } => {
             state
                 .probe_events
                 .push(format!("durable session recovered {}", detail.session.id));
             runner.update(move |ui| ui.present_session(catalog, detail));
-        }
+        },
         WorkerUpdate::Comparison {
             catalog,
             detail,
@@ -161,7 +162,7 @@ pub(super) fn apply_worker_update(
                 comparison.left_session_id, comparison.right_session_id
             ));
             runner.update(move |ui| ui.present_comparison(catalog, detail, comparison));
-        }
+        },
         WorkerUpdate::Error { catalog, message } => runner.update(move |ui| {
             if let Some(catalog) = catalog {
                 ui.replace_catalog(catalog);

@@ -17,12 +17,16 @@ mod consultation;
 mod journal;
 mod reading;
 mod shared;
+#[cfg(feature = "sky-timeline")]
+mod sky;
 mod trail;
 
 use consultation::consultation_region;
 use journal::journal_region;
 use reading::reading_region;
 use shared::placeholder_region;
+#[cfg(feature = "sky-timeline")]
+use sky::sky_region;
 use trail::trail_region;
 
 pub type ConsultationView = Box<dyn AnyView<ConsultationUi, (), GenetCtx, GenetElement>>;
@@ -75,11 +79,20 @@ pub fn consultation_view(ui: &ConsultationUi) -> ConsultationView {
             trail_region(ui),
         ],
         ConsultationScreen::Journal => vec![journal_region(ui)],
-        ConsultationScreen::Sky => vec![placeholder_region(
-            "Sky",
-            "sky",
-            "The sky surface is not yet built. Stored sky facts will be listed here.",
-        )],
+        ConsultationScreen::Sky => {
+            #[cfg(feature = "sky-timeline")]
+            {
+                vec![sky_region(ui)]
+            }
+            #[cfg(not(feature = "sky-timeline"))]
+            {
+                vec![placeholder_region(
+                    "Sky",
+                    "sky",
+                    "The sky surface needs the sky-timeline feature.",
+                )]
+            }
+        },
         ConsultationScreen::Chart => vec![placeholder_region(
             "Chart",
             "chart",

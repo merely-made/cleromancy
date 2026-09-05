@@ -12,6 +12,7 @@ mod journal_state;
 pub mod native;
 pub(crate) mod scenario;
 mod screen;
+mod sky_state;
 mod state;
 mod view;
 pub(crate) mod worker;

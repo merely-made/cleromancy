@@ -84,14 +84,15 @@ impl ConsultationScreen {
 
     /// Why this surface cannot be opened in this build, when it cannot.
     ///
-    /// The sky surface reads stored sky facts, which only exist when the
-    /// `sky-timeline` feature compiled their adapter in. The chart surface is
-    /// unconditional: manual chart import needs no ephemeris feature.
+    /// The `sky-timeline` feature gates the Sky event surface, even though
+    /// stored sky facts remain catalogued without compiling an adapter. The
+    /// chart surface is unconditional: manual chart import needs no ephemeris
+    /// feature.
     pub(crate) fn disabled_reason(self) -> Option<&'static str> {
         match self {
             Self::Sky if !cfg!(feature = "sky-timeline") => {
                 Some("The sky surface needs the sky-timeline feature.")
-            }
+            },
             _ => None,
         }
     }

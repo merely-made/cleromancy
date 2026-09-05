@@ -17,7 +17,8 @@ use crate::moirai::clotho::{EntropySource, OsEntropy};
 use crate::{
     AstrologyChart, AstrologyError, AstrologyFacts, CleromancyHost, Concurrence, ContextSnapshot,
     DerivedSelection, Field, HostError, Reading, ReadingEngine, ReadingError, ReadingSession,
-    Reflection, SelectionMode, SessionSummary, SpreadTemplate, TarotPack, TarotQualification,
+    Reflection, SelectionMode, SessionSummary, SkyDayFacts, SpreadTemplate, TarotPack,
+    TarotQualification,
 };
 
 mod compare;
@@ -35,13 +36,16 @@ pub use journal_policy::{
 };
 
 /// Stable picker/history values derived from graph truth.
-#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct ConsultationCatalog {
     pub contexts: Vec<ContextSnapshot>,
     pub fields: Vec<Field>,
     pub spread_templates: Vec<SpreadTemplate>,
     pub astrology_facts: Vec<AstrologyFacts>,
+    /// Stored sky timelines. Storage/query stay available without compiling
+    /// the optional numerical adapter; only the Sky surface is feature-gated.
+    pub sky_day_facts: Vec<SkyDayFacts>,
     /// Saved occasions projected for list surfaces, newest first. Anything
     /// needing replayed truth crosses the explicit [`Consultation::detail`]
     /// boundary instead of keeping every full session in a picker catalog.
@@ -144,6 +148,7 @@ impl<B: Backend> Consultation<B> {
             fields: self.host.fields()?,
             spread_templates: self.host.spread_templates()?,
             astrology_facts: self.host.astrology_facts()?,
+            sky_day_facts: self.host.sky_day_facts()?,
             session_summaries: self.host.session_summaries()?,
         })
     }

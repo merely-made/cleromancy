@@ -4,6 +4,7 @@
 use super::action::{ConsultationAction, ConsultationContext, ConsultationLayout};
 use super::journal_state::JournalState;
 use super::screen::{self, ConsultationScreen};
+use super::sky_state::SkyState;
 #[cfg(feature = "analytic-ephemeris")]
 use crate::AstrologyCalculationDraft;
 use crate::{
@@ -63,7 +64,7 @@ impl ConsultationStatus {
     }
 }
 
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct ConsultationUi {
     pub(super) catalog: ConsultationCatalog,
     pub(super) context_select: SelectState,
@@ -91,6 +92,7 @@ pub struct ConsultationUi {
     pub(super) astrology_positions: TextInput,
     pub(super) comparison_select: SelectState,
     pub(super) journal: JournalState,
+    pub(super) sky: SkyState,
     pub(super) workings: DisclosureState,
     pub(super) reflection: TextInput,
     pub(super) detail: Option<ConsultationDetail>,
@@ -133,6 +135,7 @@ impl ConsultationUi {
             astrology_positions: TextInput::default(),
             comparison_select: SelectState::new(0).with_label("Compare with"),
             journal: JournalState::new(),
+            sky: SkyState::new(),
             workings: DisclosureState::new("cleromancy-workings", "Workings"),
             reflection: TextInput::default(),
             detail: None,
@@ -197,6 +200,11 @@ impl ConsultationUi {
             .astrology_facts_select
             .selected
             .min(catalog.astrology_facts.len());
+        self.sky.selected_day.selected = self
+            .sky
+            .selected_day
+            .selected
+            .min(catalog.sky_day_facts.len().saturating_sub(1));
         self.catalog = catalog;
         self.error = None;
         if self.status.is_busy() {
@@ -310,9 +318,9 @@ impl ConsultationUi {
                     Err(error) => {
                         self.present_error(error.to_string());
                         return None;
-                    }
+                    },
                 }
-            }
+            },
         };
         let layout = if self.layout.selected == 0 {
             ConsultationLayout::Single
