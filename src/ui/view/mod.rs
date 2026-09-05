@@ -13,6 +13,7 @@ use super::screen::{self, ConsultationScreen};
 use super::state::ConsultationUi;
 use crate::SelectionMode;
 
+mod chart;
 mod consultation;
 mod journal;
 mod reading;
@@ -21,6 +22,7 @@ mod shared;
 mod sky;
 mod trail;
 
+use chart::chart_region;
 use consultation::consultation_region;
 use journal::journal_region;
 use reading::reading_region;
@@ -93,11 +95,7 @@ pub fn consultation_view(ui: &ConsultationUi) -> ConsultationView {
                 )]
             }
         },
-        ConsultationScreen::Chart => vec![placeholder_region(
-            "Chart",
-            "chart",
-            "The chart surface is not yet built. Saved chart moments will be listed here.",
-        )],
+        ConsultationScreen::Chart => vec![chart_region(ui)],
     };
 
     Box::new(

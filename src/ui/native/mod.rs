@@ -62,6 +62,7 @@ fn empty_catalog() -> ConsultationCatalog {
         fields: Vec::new(),
         spread_templates: Vec::new(),
         astrology_facts: Vec::new(),
+        astrology_charts: Vec::new(),
         sky_day_facts: Vec::new(),
         session_summaries: Vec::new(),
     }

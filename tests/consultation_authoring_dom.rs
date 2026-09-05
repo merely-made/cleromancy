@@ -12,7 +12,7 @@ use cleromancy::{
     SpreadTemplate,
 };
 use muniment::MemoryBackend;
-use support::{choose, click_key, harness, one, select, type_into};
+use support::{choose, click_key, harness, one, select, switch_surface, type_into};
 
 #[test]
 fn retained_consultation_dispatches_authored_layout_and_chart_input_actions() {
@@ -69,6 +69,7 @@ fn retained_consultation_dispatches_authored_layout_and_chart_input_actions() {
         other => panic!("expected authored layout action, found {other:?}"),
     }
 
+    switch_surface(&mut h, "Chart");
     for (label, value) in [
         ("Calculation algorithm", "source-import/v1"),
         ("Calculation engine", "example calculator"),
@@ -87,6 +88,7 @@ fn retained_consultation_dispatches_authored_layout_and_chart_input_actions() {
         other => panic!("expected chart input action, found {other:?}"),
     }
 
+    switch_surface(&mut h, "Today");
     type_into(&mut h, "Context label", "A four-part concern");
     type_into(&mut h, "Question", "Where is this going?");
     select(&mut h, "Stored field", "Rider-Waite-Smith Major Arcana");

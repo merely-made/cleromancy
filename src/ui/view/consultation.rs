@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
 //! The consultation region: context form, field and mode selection, layout
-//! authoring, and chart-fact import.
+//! authoring, and chart-fact association.
 
 use cambium::{
     RadioGroup, SelectState, TextInput, button, el, map_action, map_state, radio_group, select,
@@ -205,85 +205,6 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             .attr("data-key", "save-layout")
             .attr("aria-label", "Save authored layout"),
         ) as ConsultationView,
-        Box::new(el::<_, ConsultationUi, ()>("h3", "Chart moment"))
-            as ConsultationView,
-        labelled_text(
-            "UTC instant",
-            "cleromancy-astrology-instant",
-            false,
-            &ui.astrology_instant_utc,
-            astrology_instant_state,
-        ),
-        labelled_text(
-            "Latitude microdegrees (optional)",
-            "cleromancy-astrology-latitude",
-            false,
-            &ui.astrology_latitude,
-            astrology_latitude_state,
-        ),
-        labelled_text(
-            "Longitude microdegrees (optional)",
-            "cleromancy-astrology-longitude",
-            false,
-            &ui.astrology_longitude,
-            astrology_longitude_state,
-        ),
-        labelled_text(
-            "Aspect orb millidegrees",
-            "cleromancy-astrology-orb",
-            false,
-            &ui.astrology_orb,
-            astrology_orb_state,
-        ),
-    ]);
-    #[cfg(feature = "analytic-ephemeris")]
-    children.extend(ephemeris_controls(ui));
-    children.extend([
-        Box::new(el::<_, ConsultationUi, ()>("h3", "Import chart"))
-            as ConsultationView,
-        labelled_text(
-            "Calculation algorithm",
-            "cleromancy-astrology-algorithm",
-            false,
-            &ui.astrology_algorithm,
-            astrology_algorithm_state,
-        ),
-        labelled_text(
-            "Calculation engine",
-            "cleromancy-astrology-engine",
-            false,
-            &ui.astrology_engine,
-            astrology_engine_state,
-        ),
-        labelled_text(
-            "Ephemeris source",
-            "cleromancy-astrology-ephemeris",
-            false,
-            &ui.astrology_ephemeris,
-            astrology_ephemeris_state,
-        ),
-        labelled_text(
-            "Chart positions",
-            "cleromancy-astrology-positions",
-            true,
-            &ui.astrology_positions,
-            astrology_positions_state,
-        ),
-        Box::new(
-            el::<_, ConsultationUi, ()>(
-                "p",
-                "For a manual import, identify the algorithm, engine, and ephemeris, then copy positions as body | longitude millidegrees | latitude millidegrees | retrograde. Local calculation ignores those manual source and position fields.",
-            )
-            .attr("class", "context-explanation"),
-        ) as ConsultationView,
-        Box::new(
-            button("Save chart facts", |ui: &mut ConsultationUi, _| {
-                let action = ui.request_astrology_chart();
-                ui.record_action(action);
-            })
-            .attr("data-key", "save-chart-facts")
-            .attr("aria-label", "Save imported chart facts"),
-        ) as ConsultationView,
         Box::new(
             button("Read", |ui: &mut ConsultationUi, _| {
                 let action = ui.request_read();
@@ -300,28 +221,6 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             .attr("aria-label", "Consultation")
             .attr("data-key", "region:consultation"),
     )
-}
-
-#[cfg(feature = "analytic-ephemeris")]
-fn ephemeris_controls(_ui: &ConsultationUi) -> Vec<ConsultationView> {
-    vec![
-        Box::new(
-            el::<_, ConsultationUi, ()>(
-                "p",
-                "Charts are calculated locally from the built-in engine. Nothing is downloaded, and every chart records the engine revision that produced it.",
-            )
-            .attr("class", "context-explanation")
-            .attr("data-key", "ephemeris-status"),
-        ) as ConsultationView,
-        Box::new(
-            button("Calculate and save chart", |ui: &mut ConsultationUi, _| {
-                let action = ui.request_calculated_astrology_chart();
-                ui.record_action(action);
-            })
-            .attr("data-key", "calculate-chart")
-            .attr("aria-label", "Calculate and save astrology chart"),
-        ) as ConsultationView,
-    ]
 }
 
 fn field_label(field: &Field) -> String {
@@ -394,36 +293,4 @@ fn template_positions_state(ui: &mut ConsultationUi) -> &mut TextInput {
 
 fn template_relations_state(ui: &mut ConsultationUi) -> &mut TextInput {
     &mut ui.template_relations
-}
-
-fn astrology_algorithm_state(ui: &mut ConsultationUi) -> &mut TextInput {
-    &mut ui.astrology_algorithm
-}
-
-fn astrology_engine_state(ui: &mut ConsultationUi) -> &mut TextInput {
-    &mut ui.astrology_engine
-}
-
-fn astrology_ephemeris_state(ui: &mut ConsultationUi) -> &mut TextInput {
-    &mut ui.astrology_ephemeris
-}
-
-fn astrology_instant_state(ui: &mut ConsultationUi) -> &mut TextInput {
-    &mut ui.astrology_instant_utc
-}
-
-fn astrology_latitude_state(ui: &mut ConsultationUi) -> &mut TextInput {
-    &mut ui.astrology_latitude
-}
-
-fn astrology_longitude_state(ui: &mut ConsultationUi) -> &mut TextInput {
-    &mut ui.astrology_longitude
-}
-
-fn astrology_orb_state(ui: &mut ConsultationUi) -> &mut TextInput {
-    &mut ui.astrology_orb
-}
-
-fn astrology_positions_state(ui: &mut ConsultationUi) -> &mut TextInput {
-    &mut ui.astrology_positions
 }

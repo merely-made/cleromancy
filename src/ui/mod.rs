@@ -8,6 +8,7 @@
 //! this surface away from the window thread.
 
 mod action;
+mod chart_state;
 mod journal_state;
 pub mod native;
 pub(crate) mod scenario;

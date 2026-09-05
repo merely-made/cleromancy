@@ -43,6 +43,9 @@ pub struct ConsultationCatalog {
     pub fields: Vec<Field>,
     pub spread_templates: Vec<SpreadTemplate>,
     pub astrology_facts: Vec<AstrologyFacts>,
+    /// A replay-verified facts receipt paired with the exact stored chart it
+    /// describes. The legacy facts picker remains separate for authoring.
+    pub astrology_charts: Vec<StoredAstrologyChart>,
     /// Stored sky timelines. Storage/query stay available without compiling
     /// the optional numerical adapter; only the Sky surface is feature-gated.
     pub sky_day_facts: Vec<SkyDayFacts>,
@@ -50,6 +53,15 @@ pub struct ConsultationCatalog {
     /// needing replayed truth crosses the explicit [`Consultation::detail`]
     /// boundary instead of keeping every full session in a picker catalog.
     pub session_summaries: Vec<SessionSummary>,
+}
+
+/// A chart surface row. `facts` is replay-verified before this projection is
+/// made, while `chart` is the original stored source receipt.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct StoredAstrologyChart {
+    pub facts: AstrologyFacts,
+    pub chart: AstrologyChart,
 }
 
 /// One saved occasion with every value required by the first reading and
@@ -143,11 +155,22 @@ impl<B: Backend> Consultation<B> {
     }
 
     pub fn catalog(&self) -> Result<ConsultationCatalog, ConsultationError> {
+        let astrology_facts = self.host.astrology_facts()?;
+        let astrology_charts = astrology_facts
+            .iter()
+            .map(|facts| {
+                Ok(StoredAstrologyChart {
+                    facts: facts.clone(),
+                    chart: self.host.astrology_chart_for_digest(&facts.chart_digest)?,
+                })
+            })
+            .collect::<Result<Vec<_>, ConsultationError>>()?;
         Ok(ConsultationCatalog {
             contexts: self.host.contexts()?,
             fields: self.host.fields()?,
             spread_templates: self.host.spread_templates()?,
-            astrology_facts: self.host.astrology_facts()?,
+            astrology_facts,
+            astrology_charts,
             sky_day_facts: self.host.sky_day_facts()?,
             session_summaries: self.host.session_summaries()?,
         })

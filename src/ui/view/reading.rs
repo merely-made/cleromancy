@@ -3,11 +3,14 @@
 
 //! The reading region: per-position results and the collapsed workings.
 
-use cambium::{DetailRow, DetailSection, detail_panel, disclosure, el, map_action, map_state};
+use cambium::{
+    DetailRow, DetailSection, button, detail_panel, disclosure, el, map_action, map_state,
+};
 
 use super::{ConsultationView, mode_label};
-use crate::Reading;
+use crate::ui::screen::{self, ConsultationScreen};
 use crate::ui::state::ConsultationUi;
+use crate::{ASTROLOGY_FACTS_ROLE, Reading};
 
 pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
     let mut children: Vec<ConsultationView> =
@@ -21,6 +24,40 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
             .attr("class", "empty-reading"),
         )),
         Some(detail) => {
+            if let Some((concurrence_id, facts_digest, placements)) = chart_concurrence(ui) {
+                let link_digest = facts_digest.clone();
+                children.push(Box::new(
+                    el::<_, ConsultationUi, ()>(
+                        "aside",
+                        vec![
+                            Box::new(el::<_, ConsultationUi, ()>("h3", "Chart concurrence"))
+                                as ConsultationView,
+                            Box::new(el::<_, ConsultationUi, ()>(
+                                "p",
+                                "This chart was recorded with this reading as a concurrence. It does not claim that the chart caused or interpreted the reading.",
+                            )) as ConsultationView,
+                            Box::new(el::<_, ConsultationUi, ()>(
+                                "p",
+                                format!("Receipt {concurrence_id}: {placements}"),
+                            )) as ConsultationView,
+                            Box::new(
+                                button("Open concurrent chart", move |ui: &mut ConsultationUi, _| {
+                                    ui.select_chart_facts(&link_digest);
+                                    screen::select_surface(
+                                        &mut ui.surface_tabs,
+                                        ConsultationScreen::Chart,
+                                    );
+                                })
+                                .attr("data-key", "open-concurrent-chart")
+                                .attr("aria-label", "Open concurrent chart"),
+                            ) as ConsultationView,
+                        ],
+                    )
+                    .attr("role", "region")
+                    .attr("aria-label", "Chart concurrence")
+                    .attr("data-key", "reading-chart-concurrence"),
+                ));
+            }
             for (index, (placement, reading)) in detail
                 .session
                 .placements
@@ -74,7 +111,7 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
             );
             let workings = map_state(workings, workings_state);
             children.push(Box::new(workings));
-        }
+        },
     }
 
     Box::new(
@@ -83,6 +120,37 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
             .attr("aria-label", "Reading")
             .attr("data-key", "region:reading"),
     )
+}
+
+/// Resolve only canonical astrology-facts addresses that remain in the
+/// replay-verified catalog. A stale or unknown member is intentionally absent
+/// rather than projected as a chart.
+fn chart_concurrence(ui: &ConsultationUi) -> Option<(String, String, String)> {
+    const FACTS_PREFIX: &str = "cleromancy://astrology/facts/";
+    ui.detail
+        .as_ref()?
+        .concurrences
+        .iter()
+        .find_map(|concurrence| {
+            let digest = concurrence.members.iter().find_map(|member| {
+                (member.role == ASTROLOGY_FACTS_ROLE)
+                    .then(|| member.address.strip_prefix(FACTS_PREFIX))
+                    .flatten()
+            })?;
+            let stored = ui
+                .catalog
+                .astrology_charts
+                .iter()
+                .find(|stored| stored.facts.digest() == digest)?;
+            let placements = stored
+                .facts
+                .placements
+                .iter()
+                .map(|placement| format!("{} {:?}", placement.body, placement.sign))
+                .collect::<Vec<_>>()
+                .join(", ");
+            Some((concurrence.id.clone(), digest.to_string(), placements))
+        })
 }
 
 fn receipt_section(position: &str, reading: &Reading) -> DetailSection {

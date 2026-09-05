@@ -75,7 +75,8 @@ pub use consultation::{
     AstrologyCalculationDraft, AstrologyChartDraft, Consultation, ConsultationCatalog,
     ConsultationDetail, ConsultationError, ContextDraft, JOURNAL_PAGE_SIZE, JournalDateRange,
     JournalPage, MANUAL_CONTEXT_SCHEMA, ReceiptComparison, ReceiptComparisonEntry,
-    SpreadTemplateDraft, filter_journal_summaries, format_relative_date, journal_page,
+    SpreadTemplateDraft, StoredAstrologyChart, filter_journal_summaries, format_relative_date,
+    journal_page,
 };
 pub use context::ContextSnapshot;
 pub use enrichment::{

@@ -130,3 +130,8 @@ pub(crate) fn selected_screen(state: &SelectionState) -> ConsultationScreen {
         .map(ConsultationScreen::from_index)
         .unwrap_or_default()
 }
+
+/// Change surfaces from a local link without creating a product command.
+pub(crate) fn select_surface(state: &mut SelectionState, screen: ConsultationScreen) {
+    state.selected = vec![screen.index()];
+}

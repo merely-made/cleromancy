@@ -1,7 +1,7 @@
 # Cleromancy: legible reader and fact surfaces
 
 **Date:** 2026-09-04
-**Status (2026-09-04):** in progress. **R0–R3 landed**; R4 open. Supersedes
+**Status (2026-09-05):** complete. **R0–R4 landed.** Supersedes
 nothing; it is the successor slice to
 [journal depth](2026-08-08_journal_depth_plan.md), which is landed and green
 (see Findings).
@@ -344,16 +344,34 @@ value.
 
 ### R4. Chart surface and the cast's sky
 
-**Files:** `src/ui/view/chart.rs`, `src/ui/view/reading.rs`,
-`src/ui/state.rs`, `tests/chart_surface_dom.rs`. Feature:
-`analytic-ephemeris` for the chart surface; the concurrence strip is
+**Files:** `src/consultation/mod.rs`, `src/ui/view/chart.rs`,
+`src/ui/view/reading.rs`, `src/ui/state.rs`,
+`tests/chart_surface_dom.rs`. Feature: `analytic-ephemeris` for local
+calculation only; manual import, stored charts, and the concurrence strip are
 unconditional.
+
+**R4 rulings (2026-09-05, orchestrator):**
+
+- `ConsultationCatalog` gains a read model pairing each replay-verified
+  `AstrologyFacts` record with its resolved stored `AstrologyChart`. Catalog
+  construction may replay facts to defend graph truth; rendering receives the
+  finished values and performs no adapter call or fact derivation.
+- A chart has no stored display label or named observer. The saved-moment label
+  is therefore its stored UTC instant, and the observer line is a projection
+  of its optional stored coordinates (`global` when both are absent). R4 does
+  not widen the durable chart schema.
+- The reading strip projects the associated `AstrologyFacts.placements`. Raw
+  longitude remains on Chart, where the paired stored chart is available.
+- An absent retrograde value renders as `unknown`, not `false`.
+- Activating the strip's chart link changes the existing view-local surface
+  tab and selected chart only. It emits no product action and performs no
+  storage work.
 
 Two pieces:
 
-1. **Chart surface** — saved moments as a list (label, chart digest,
-   placement count, observer), a placement table with stored longitude and
-   latitude millidegrees, labelled sign projection, and retrograde flag, the
+1. **Chart surface** — saved moments as a list (UTC instant, chart digest,
+   placement count, coordinate/global observer projection), a placement table
+   with stored longitude and latitude millidegrees, labelled sign projection, and retrograde flag, the
    aspects as a data grid with aspect, separation in millidegrees, and orb,
    and a source block naming the stored engine, ephemeris, algorithm, and
    digest. Existing import and calculate controls move here from the
@@ -499,3 +517,20 @@ cargo test --test journal_depth --offline
   and re-reviewed. Formatting and diff checks pass. The unrelated dirty
   `Cargo.toml` dependency pins remain outside this slice and are excluded from
   its commit.
+- **2026-09-05:** R4 landed. `ConsultationCatalog` now pairs each
+  replay-verified astrology-facts receipt with its canonically resolved stored
+  chart. Chart renders full-identity saved moments, named Cambium placement and
+  aspect grids with explicit millidegree units, source identity, and manual
+  import in default builds; only local calculation remains feature-gated. A
+  reading with an astrology concurrence renders its id and derived placements,
+  states the association-only rule, and can open the matching chart through
+  view-local state without emitting a product action. Default and
+  `analytic-ephemeris` chart receipts pass 3/3 each; moved authoring passes 1/1;
+  shell, Journal, journal-depth, session-summary, and default Sky regressions
+  pass 10/10; and the `portable-core` lib check passes. The Journal receipt's
+  seven-day fixture was moved one hour inside its inclusive cutoff, removing a
+  pre-existing millisecond race between fixture time and UI time. Independent
+  review found placement semantics, durable-identity, landmark, receipt, and
+  unit-label gaps; all were repaired, and the final review is clean. Diff
+  checks pass. The unrelated dirty `Cargo.toml` dependency pins remain outside
+  this slice and are excluded from its commit.

@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
 use super::action::{ConsultationAction, ConsultationContext, ConsultationLayout};
+use super::chart_state::ChartState;
 use super::journal_state::JournalState;
 use super::screen::{self, ConsultationScreen};
 use super::sky_state::SkyState;
@@ -91,6 +92,7 @@ pub struct ConsultationUi {
     pub(super) astrology_orb: TextInput,
     pub(super) astrology_positions: TextInput,
     pub(super) comparison_select: SelectState,
+    pub(super) chart: ChartState,
     pub(super) journal: JournalState,
     pub(super) sky: SkyState,
     pub(super) workings: DisclosureState,
@@ -134,6 +136,7 @@ impl ConsultationUi {
             astrology_orb: TextInput::new("1000"),
             astrology_positions: TextInput::default(),
             comparison_select: SelectState::new(0).with_label("Compare with"),
+            chart: ChartState::new(),
             journal: JournalState::new(),
             sky: SkyState::new(),
             workings: DisclosureState::new("cleromancy-workings", "Workings"),
@@ -200,6 +203,11 @@ impl ConsultationUi {
             .astrology_facts_select
             .selected
             .min(catalog.astrology_facts.len());
+        self.chart.selected_chart.selected = self
+            .chart
+            .selected_chart
+            .selected
+            .min(catalog.astrology_charts.len().saturating_sub(1));
         self.sky.selected_day.selected = self
             .sky
             .selected_day
@@ -264,6 +272,20 @@ impl ConsultationUi {
         self.status = ConsultationStatus::Ready;
     }
 
+    /// Open the paired stored chart for a canonical astrology-facts receipt.
+    /// This only changes retained view state; it intentionally has no worker
+    /// action and does not claim the chart caused the reading.
+    pub(super) fn select_chart_facts(&mut self, facts_digest: &str) {
+        if let Some(index) = self
+            .catalog
+            .astrology_charts
+            .iter()
+            .position(|stored| stored.facts.digest() == facts_digest)
+        {
+            self.chart.selected_chart.selected = index;
+        }
+    }
+
     #[cfg(feature = "analytic-ephemeris")]
     pub(crate) fn present_calculated_chart(
         &mut self,
@@ -277,6 +299,7 @@ impl ConsultationUi {
             .iter()
             .position(|facts| facts.digest() == facts_digest)
             .map_or(0, |index| index + 1);
+        self.select_chart_facts(&facts_digest);
         self.status = ConsultationStatus::SetupSaved(format!(
             "chart {}",
             facts_digest.get(..12).unwrap_or(&facts_digest)
