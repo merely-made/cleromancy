@@ -6,7 +6,7 @@ deterministic, securely cast, or derived from a public seed, and every result
 keeps a replayable receipt that separates context, qualification, selection,
 and interpretation.
 
-## Status (2026-08-13)
+## Status (2026-09-06)
 
 - The A0-A25 proof ledger is complete (2026-08-02 through 2026-08-07):
   single readings, sealed receipts with replay, field provenance, a 22-card
@@ -14,15 +14,19 @@ and interpretation.
   reflections, astrology chart and facts nodes, cross-system "consulted
   together" occasions, a resident multi-session authority, explicit
   persistence, and opt-in selected personal sync with durable local consent.
-- The active phase is the headed local consultation: a journal window that
-  authors contexts with extra `name: value` facts, makes calculated, cast,
-  or derived readings and three-card casts, compares saved receipts, and
-  appends immutable reflections.
+- The headed local consultation now presents Today, Journal, Sky, and Chart
+  surfaces over one local fact graph. The Journal opens complete saved
+  readings; Sky and Chart expose provenance-bearing facts in DOM-legible
+  tables and lists.
+- Chart pairs replay-verified astrology facts with their stored chart, keeps
+  manual import available in default builds, and renders longitudes through
+  Cambium's read-only ecliptic strip while retaining the full positions grid.
+  A view-local aspect selector adds a read-only dimension projection beside
+  the complete aspects grid.
 - Derived readings replay byte-equal on independent engines from a public
   seed and domain (2026-08-08 contract).
 - Authored spread templates (1-12 positions, reusable, content-addressed)
-  with selected sync and explicit astrology chart input are the newest
-  landed slice.
+  with selected sync and explicit astrology chart input are landed.
 - The optional `ephemeris` feature now calculates source-qualified Sun, Moon,
   and planetary positions through the MPL-2.0 `merely-made/anise` fork. The
   native chart surface explicitly downloads and checksum-verifies NASA/JPL

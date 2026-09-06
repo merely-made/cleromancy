@@ -62,6 +62,8 @@ button:focus, input:focus, textarea:focus, select:focus { outline: 2px solid #d7
 [role='alert'] { padding: 10px; color: #ffd8d2; background: #542d29; }
 [role='status'] { color: #d7c9a9; }
 .selection-explanation, .empty-reading { color: #c4bcad; font-size: 14px; }
+.chart-ecliptic-labels { columns: 2; padding-left: 20px; color: #d7c9a9; font-size: 13px; }
+.chart-ecliptic-explanation { color: #c4bcad; font-size: 14px; }
 "#;
 
 pub fn harness(catalog: cleromancy::ConsultationCatalog) -> App {
