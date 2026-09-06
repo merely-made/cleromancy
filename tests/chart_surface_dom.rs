@@ -45,6 +45,7 @@ fn chart_surface_projects_stored_values_and_keeps_manual_import_available() {
         .find(|stored| stored.chart.moment.instant_utc == "2024-04-08T18:18:00Z")
         .unwrap();
     let chart_digest = eclipse.facts.chart_digest.clone();
+    let facts_digest = eclipse.facts.digest();
     let earlier = catalog
         .astrology_charts
         .iter()
@@ -140,6 +141,52 @@ fn chart_surface_projects_stored_values_and_keeps_manual_import_available() {
         attr_at_key(&h, "chart-aspects", "aria-label").as_deref(),
         Some("Stored aspects")
     );
+    assert_eq!(
+        attr_at_key(&h, "chart-selected-aspect", "aria-label").as_deref(),
+        Some("Selected aspect dimension")
+    );
+    assert_eq!(
+        attr_at_key(&h, "chart-selected-aspect-leaf", "aria-hidden").as_deref(),
+        Some("true")
+    );
+    let selected_aspect = text_at_key(&h, "chart-selected-aspect");
+    for expected in [
+        "Original aspect bodies: Mercury / Sun",
+        "Displayed endpoints: Sun (0 millidegrees) -> Mercury (90000 millidegrees)",
+        "Kind: Square",
+        "Measured separation: 90000 millidegrees",
+        "Exact target: 90000 millidegrees",
+        "Orb: 0 millidegrees",
+        "Units: millidegrees",
+        "Route: direct",
+        chart_digest.as_str(),
+        facts_digest.as_str(),
+    ] {
+        assert!(
+            selected_aspect.contains(expected),
+            "missing `{expected}` in `{selected_aspect}`"
+        );
+    }
+    assert!(h.click_on(&Selector::role("combobox").with_attr("aria-label", "Aspect relation")));
+    h.press_key(&KeyPress::named(NamedKey::End));
+    h.press_key(&KeyPress::named(NamedKey::Escape));
+    assert!(take_action(&mut h).is_none());
+    let second_aspect = text_at_key(&h, "chart-selected-aspect");
+    for expected in [
+        "Original aspect bodies: Moon / Sun",
+        "Displayed endpoints: Sun (0 millidegrees) -> Moon (60000 millidegrees)",
+        "Kind: Sextile",
+        "Measured separation: 60000 millidegrees",
+        "Exact target: 60000 millidegrees",
+        "Route: direct",
+    ] {
+        assert!(
+            second_aspect.contains(expected),
+            "missing `{expected}` in `{second_aspect}`"
+        );
+    }
+    assert!(text_at_key(&h, "chart-aspects").contains("Sextile"));
+    assert!(text_at_key(&h, "chart-aspects").contains("Square"));
     let source = text_at_key(&h, "chart-source");
     for expected in [
         "source-import/v1",
@@ -171,6 +218,12 @@ fn chart_surface_projects_stored_values_and_keeps_manual_import_available() {
     assert!(earlier_labels.contains("direct"));
     assert!(!earlier_labels.contains("Moon:"));
     assert!(text_at_key(&h, "chart-source").contains(&earlier_chart_digest));
+    assert!(!has_key(&h, "chart-selected-aspect"));
+    assert!(h.click_on(&Selector::role("combobox").with_attr("aria-label", "Stored chart")));
+    h.press_key(&KeyPress::named(NamedKey::Home));
+    h.press_key(&KeyPress::named(NamedKey::Escape));
+    assert!(has_key(&h, "chart-selected-aspect"));
+    assert!(text_at_key(&h, "chart-selected-aspect").contains("Kind: Square"));
 
     for (label, value) in [
         ("Calculation algorithm", "manual/v1"),

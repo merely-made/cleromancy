@@ -21,6 +21,8 @@ and interpretation.
 - Chart pairs replay-verified astrology facts with their stored chart, keeps
   manual import available in default builds, and renders longitudes through
   Cambium's read-only ecliptic strip while retaining the full positions grid.
+  A view-local aspect selector adds a read-only dimension projection beside
+  the complete aspects grid.
 - Derived readings replay byte-equal on independent engines from a public
   seed and domain (2026-08-08 contract).
 - Authored spread templates (1-12 positions, reusable, content-addressed)

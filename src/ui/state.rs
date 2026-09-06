@@ -208,6 +208,15 @@ impl ConsultationUi {
             .selected_chart
             .selected
             .min(catalog.astrology_charts.len().saturating_sub(1));
+        let aspect_count = catalog
+            .astrology_charts
+            .get(self.chart.selected_chart.selected)
+            .map_or(0, |stored| stored.facts.aspects.len());
+        self.chart.selected_aspect.selected = self
+            .chart
+            .selected_aspect
+            .selected
+            .min(aspect_count.saturating_sub(1));
         self.sky.selected_day.selected = self
             .sky
             .selected_day

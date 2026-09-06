@@ -1,7 +1,7 @@
 # Cleromancy: legible reader and fact surfaces
 
 **Date:** 2026-09-04
-**Status (2026-09-05):** complete. **R0–R4 landed.** Supersedes
+**Status (2026-09-06):** complete. **R0–R4 and Cambium V0–V1 landed.** Supersedes
 nothing; it is the successor slice to
 [journal depth](2026-08-08_journal_depth_plan.md), which is landed and green
 (see Findings).
@@ -406,7 +406,7 @@ decision to widen scope:
 | Ecliptic strip | tier-2 vector leaf, labels stay DOM | V0 landed in Cambium and adopted here; see Mere's `2026-09-06_fact_visualization_leaves_plan.md` |
 | Fact explanation tree | disclosure-tree widget | approximated here with nested `disclosure` |
 | Range-gated scrubber with pins | stepper exists, scrubber does not | not in Cambium |
-| Dimension-line aspect diagram | vector leaf | not in Cambium |
+| Dimension-line aspect diagram | vector leaf | V1 landed in Cambium and adopted here; see Mere's `2026-09-06_fact_visualization_leaves_plan.md` |
 | Event ledger | `sectioned_list` | exists |
 | Data grid | `data_grid` | exists |
 | Disclosure row, content-addressed select, segment, field, callout | 1a's asks | exist |
@@ -545,3 +545,14 @@ cargo test --test journal_depth --offline
   authoring and headed surface regressions pass 3/3; and the `portable-core`
   check passes. Independent review is clean after the retained-cache and
   second-selection receipt gaps were closed.
+- **2026-09-06:** Cambium visualization V1 adopted. Chart adds a view-local
+  aspect selector and a hidden read-only `DimensionLine` backed by DOM labels
+  for both bodies and raw longitudes, displayed endpoint order, kind, measured
+  separation, exact target, orb, units, route, chart digest, and facts digest.
+  Cleromancy owns the increasing shortest-path display convention; Cambium
+  receives only normalized ordered geometry and direct/wrapped traversal. The
+  complete aspects grid remains the receipt surface and selector changes emit
+  no product action. Projection tests pass 3/3; Chart passes 3/3 in default and
+  `analytic-ephemeris` builds; and adjacent headed/authoring regressions pass
+  3/3. Independent review found and closed explicit chart-return and selector
+  reconciliation gaps; final review is clean.

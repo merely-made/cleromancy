@@ -12,7 +12,7 @@ use std::path::{Path, PathBuf};
 use std::rc::Rc;
 use std::sync::mpsc::{self, Receiver};
 
-use cambium::AngleStrip;
+use cambium::{AngleStrip, DimensionLine};
 use cambium_genet_winit_host::{
     AppCtx, FocusedTextSlot, HostHooks, HostOptions, HostWake, Init, Runner, inert_hooks,
     run as run_host,
@@ -90,6 +90,7 @@ fn hooks(state: Rc<RefCell<NativeState>>) -> HostHooks<ConsultationUi, Logic, Co
     let framing = state.clone();
     hooks.frame = Box::new(move |ctx| {
         sync_chart_angle_strip(ctx);
+        sync_chart_aspect_dimension(ctx);
         scenario_driver::arm_capture(ctx, &framing);
         false
     });
@@ -118,6 +119,38 @@ fn sync_chart_angle_strip(ctx: &mut ConsultationCtx<'_>) {
         // element is absent elsewhere, so it cannot paint; retaining the
         // payload also avoids leaving a stale rendered-leaf cache entry behind.
         None => {},
+    }
+}
+
+fn sync_chart_aspect_dimension(ctx: &mut ConsultationCtx<'_>) {
+    let dimension = super::view::chart::selected_aspect_dimension(ctx.runner.state());
+    let Some(dimension) = dimension else {
+        // Keep the clean retained leaf across surface switches and empty
+        // charts, as with the ecliptic strip. The DOM leaf is absent then.
+        return;
+    };
+    if let Some(line) = ctx
+        .leaves
+        .get_mut_as::<DimensionLine>(&super::view::chart_aspect::CHART_ASPECT_DIMENSION_KEY)
+    {
+        line.set_measurement(
+            dimension.start,
+            dimension.end,
+            dimension.traversal,
+            Some(dimension.target),
+        );
+    } else {
+        ctx.leaves.insert(
+            super::view::chart_aspect::CHART_ASPECT_DIMENSION_KEY,
+            Box::new(DimensionLine::with_size(
+                dimension.start,
+                dimension.end,
+                dimension.traversal,
+                Some(dimension.target),
+                720.0,
+                36.0,
+            )),
+        );
     }
 }
 

@@ -78,11 +78,12 @@ the current public overview until it is authored.
   comparison, and append-only follow-up reflections. All five receipts
   implemented; `journal_depth` passes 2/2.
 - [Legible reader and fact surfaces](2026-09-04_legible_reader_and_fact_surfaces_plan.md):
-  **R0-R4 and Cambium V0 adoption landed 2026-09-06**: four surfaces over one
+  **R0-R4 and Cambium V0-V1 adoption landed 2026-09-06**: four surfaces over one
   fact graph (`today`, `journal`, `sky`, `chart`); a replay-free session
   summary projection; a findable journal reader; DOM-legible sky and chart
-  facts; and a reusable read-only ecliptic strip above the complete positions
-  grid. Later visualization primitives remain Mere-side work.
+  facts; a reusable read-only ecliptic strip above the complete positions
+  grid; and a view-local aspect dimension projection beside the complete
+  aspects grid. Later visualization primitives remain Mere-side work.
 - [Derived selection](2026-08-08_derived_selection_plan.md): public-seed
   deterministic selection direction.
 - [Authored spreads, sync, and chart input](2026-08-08_authored_spreads_sync_and_chart_input_plan.md):

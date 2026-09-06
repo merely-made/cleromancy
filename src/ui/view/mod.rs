@@ -14,6 +14,7 @@ use super::state::ConsultationUi;
 use crate::SelectionMode;
 
 pub(super) mod chart;
+pub(super) mod chart_aspect;
 mod consultation;
 mod journal;
 mod reading;

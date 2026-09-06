@@ -5,11 +5,12 @@
 //! optional adapter action, while this reader only projects saved values.
 
 use cambium::{
-    AngleStripMark, GridColumn, GridSpec, GridView, SelectState, TextInput, button, custom_leaf,
-    data_grid, el, map_action, map_state, select,
+    AngleStripMark, GridColumn, GridSpec, GridView, Key, NamedKey, SelectState, TextInput, button,
+    custom_leaf, data_grid, el, map_action, map_state, on_click, on_key, select,
 };
 
 use super::{ConsultationView, labelled_control, labelled_text, never_select_action};
+use crate::ui::chart_state::ChartState;
 use crate::ui::state::ConsultationUi;
 use crate::{AstrologyChart, AstrologyFacts, AstrologyPlacement, AstrologyPosition};
 
@@ -34,7 +35,25 @@ pub(super) fn chart_region(ui: &ConsultationUi) -> ConsultationView {
         .collect::<Vec<_>>();
     let refs = labels.iter().map(String::as_str).collect::<Vec<_>>();
     let picker = map_action(select(&ui.chart.selected_chart, &refs), never_select_action);
-    let picker = map_state(picker, chart_select_state);
+    let picker = map_state(picker, selected_chart_state);
+    // Aspect choice is scoped to the selected chart. Reset it on every chart
+    // picker navigation or pointer turn so an index from a larger aspect set
+    // cannot reappear against another chart.
+    let picker = on_click(
+        el::<_, ChartState, ()>("div", picker),
+        |chart: &mut ChartState, _| {
+            chart.selected_aspect.selected = 0;
+        },
+    );
+    let picker = on_key(picker, |chart: &mut ChartState, event| {
+        if matches!(
+            event.key,
+            Key::Named(NamedKey::ArrowDown | NamedKey::ArrowUp | NamedKey::Home | NamedKey::End)
+        ) {
+            chart.selected_aspect.selected = 0;
+        }
+    });
+    let picker = map_state(picker, chart_state);
     let mut children = vec![
         Box::new(el::<_, ConsultationUi, ()>("h2", "Chart")) as ConsultationView,
         Box::new(
@@ -51,7 +70,7 @@ pub(super) fn chart_region(ui: &ConsultationUi) -> ConsultationView {
         .astrology_charts
         .get(ui.chart.selected_chart.selected)
     {
-        children.extend(stored_chart(&stored.chart, &stored.facts));
+        children.extend(stored_chart(ui, &stored.chart, &stored.facts));
     } else {
         children.push(Box::new(
             el::<_, ConsultationUi, ()>(
@@ -71,7 +90,11 @@ pub(super) fn chart_region(ui: &ConsultationUi) -> ConsultationView {
     )
 }
 
-fn stored_chart(chart: &AstrologyChart, facts: &AstrologyFacts) -> Vec<ConsultationView> {
+fn stored_chart(
+    ui: &ConsultationUi,
+    chart: &AstrologyChart,
+    facts: &AstrologyFacts,
+) -> Vec<ConsultationView> {
     let observer = observer_label(chart);
     let mut views = vec![
         Box::new(el::<_, ConsultationUi, ()>("h3", "Stored chart receipt")) as ConsultationView,
@@ -92,8 +115,11 @@ fn stored_chart(chart: &AstrologyChart, facts: &AstrologyFacts) -> Vec<Consultat
         ecliptic_strip(chart, facts),
         positions_grid(chart, facts),
     ];
+    views.push(Box::new(el::<_, ConsultationUi, ()>("h3", "Aspects")) as ConsultationView);
+    // Keep the complete receipt grid beside the selected, view-local dimension
+    // projection.
+    views.extend(super::chart_aspect::selected_aspect_views(ui, chart, facts));
     views.extend([
-        Box::new(el::<_, ConsultationUi, ()>("h3", "Aspects")) as ConsultationView,
         aspects_grid(&facts.aspects),
         Box::new(el::<_, ConsultationUi, ()>("h3", "Source")) as ConsultationView,
         Box::new(
@@ -206,6 +232,19 @@ pub(in crate::ui) fn selected_angle_strip_marks(
             })
             .collect(),
     )
+}
+
+pub(in crate::ui) fn selected_aspect_dimension(
+    ui: &ConsultationUi,
+) -> Option<super::chart_aspect::AspectDimension> {
+    if ui.screen().key() != "chart" {
+        return None;
+    }
+    let stored = ui
+        .catalog
+        .astrology_charts
+        .get(ui.chart.selected_chart.selected)?;
+    super::chart_aspect::selected_dimension(ui, &stored.chart, &stored.facts)
 }
 
 fn marker_color(body: &str) -> (f32, f32, f32) {
@@ -405,8 +444,11 @@ fn ephemeris_controls() -> Vec<ConsultationView> {
     ]
 }
 
-fn chart_select_state(ui: &mut ConsultationUi) -> &mut SelectState {
-    &mut ui.chart.selected_chart
+fn chart_state(ui: &mut ConsultationUi) -> &mut ChartState {
+    &mut ui.chart
+}
+fn selected_chart_state(chart: &mut ChartState) -> &mut SelectState {
+    &mut chart.selected_chart
 }
 fn astrology_algorithm_state(ui: &mut ConsultationUi) -> &mut TextInput {
     &mut ui.astrology_algorithm
