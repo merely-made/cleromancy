@@ -403,7 +403,7 @@ decision to widen scope:
 
 | Ask | Canvas note | Status |
 |---|---|---|
-| Ecliptic strip | tier-2 vector leaf, labels stay DOM | not in Cambium |
+| Ecliptic strip | tier-2 vector leaf, labels stay DOM | V0 landed in Cambium and adopted here; see Mere's `2026-09-06_fact_visualization_leaves_plan.md` |
 | Fact explanation tree | disclosure-tree widget | approximated here with nested `disclosure` |
 | Range-gated scrubber with pins | stepper exists, scrubber does not | not in Cambium |
 | Dimension-line aspect diagram | vector leaf | not in Cambium |
@@ -534,3 +534,14 @@ cargo test --test journal_depth --offline
   unit-label gaps; all were repaired, and the final review is clean. Diff
   checks pass. The unrelated dirty `Cargo.toml` dependency pins remain outside
   this slice and are excluded from its commit.
+- **2026-09-06:** Cambium visualization V0 adopted. Chart now projects every
+  selected stored longitude into one read-only `AngleStrip` while retaining
+  the complete DOM positions grid, source identity, and product-action-silent
+  selection. The hidden paint leaf has a labelled DOM sibling with full body
+  values; a second-chart receipt guards selection and leaf resynchronization.
+  Mere owns the generic normalized geometry under its fact-visualization plan;
+  Cleromancy continues to own astrology units, labels, and provenance.
+  Chart passes 3/3 in both default and `analytic-ephemeris` builds; the moved
+  authoring and headed surface regressions pass 3/3; and the `portable-core`
+  check passes. Independent review is clean after the retained-cache and
+  second-selection receipt gaps were closed.

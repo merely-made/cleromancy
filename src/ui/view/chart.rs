@@ -5,13 +5,17 @@
 //! optional adapter action, while this reader only projects saved values.
 
 use cambium::{
-    GridColumn, GridSpec, GridView, SelectState, TextInput, button, data_grid, el, map_action,
-    map_state, select,
+    AngleStripMark, GridColumn, GridSpec, GridView, SelectState, TextInput, button, custom_leaf,
+    data_grid, el, map_action, map_state, select,
 };
 
 use super::{ConsultationView, labelled_control, labelled_text, never_select_action};
 use crate::ui::state::ConsultationUi;
 use crate::{AstrologyChart, AstrologyFacts, AstrologyPlacement, AstrologyPosition};
+
+pub(in crate::ui) const CHART_ANGLE_STRIP_KEY: u64 = 0x434c_4552_414e_474c;
+const CHART_ANGLE_STRIP_WIDTH: u32 = 720;
+const CHART_ANGLE_STRIP_HEIGHT: u32 = 36;
 
 pub(super) fn chart_region(ui: &ConsultationUi) -> ConsultationView {
     let labels = ui
@@ -85,6 +89,7 @@ fn stored_chart(chart: &AstrologyChart, facts: &AstrologyFacts) -> Vec<Consultat
             "chart-orb",
         ),
         Box::new(el::<_, ConsultationUi, ()>("h3", "Stored positions")) as ConsultationView,
+        ecliptic_strip(chart, facts),
         positions_grid(chart, facts),
     ];
     views.extend([
@@ -108,6 +113,115 @@ fn stored_chart(chart: &AstrologyChart, facts: &AstrologyFacts) -> Vec<Consultat
         ) as ConsultationView,
     ]);
     views
+}
+
+fn ecliptic_strip(chart: &AstrologyChart, facts: &AstrologyFacts) -> ConsultationView {
+    let labels = chart
+        .positions
+        .iter()
+        .map(|position| {
+            let placement = facts
+                .placements
+                .iter()
+                .find(|placement| placement.body == position.body);
+            let sign = placement.map_or_else(
+                || "sign unavailable".to_string(),
+                |placement| {
+                    format!(
+                        "{:?}, sign degree {} millidegrees",
+                        placement.sign, placement.degree_millidegrees
+                    )
+                },
+            );
+            el::<_, ConsultationUi, ()>(
+                "li",
+                format!(
+                    "{}: longitude {} millidegrees; latitude {} millidegrees; {}; {}",
+                    position.body,
+                    position.longitude_millidegrees,
+                    position.latitude_millidegrees,
+                    sign,
+                    motion_label(position),
+                ),
+            )
+            .attr("data-angle-body", position.body.clone())
+        })
+        .collect::<Vec<_>>();
+    Box::new(
+        el::<_, ConsultationUi, ()>(
+            "div",
+            vec![
+                Box::new(
+                    el::<_, ConsultationUi, ()>(
+                        "p",
+                        "Cyclic overview from 0 through 360 degrees. The complete stored values remain in the grid below.",
+                    )
+                    .attr("class", "chart-ecliptic-explanation"),
+                ) as ConsultationView,
+                Box::new(
+                    custom_leaf::<ConsultationUi, ()>(
+                        CHART_ANGLE_STRIP_KEY,
+                        CHART_ANGLE_STRIP_WIDTH,
+                        CHART_ANGLE_STRIP_HEIGHT,
+                    )
+                    .attr("aria-hidden", "true")
+                    .attr("data-key", "chart-ecliptic-leaf"),
+                ) as ConsultationView,
+                Box::new(
+                    el::<_, ConsultationUi, ()>("ul", labels)
+                        .attr("class", "chart-ecliptic-labels")
+                        .attr("data-key", "chart-ecliptic-labels"),
+                ) as ConsultationView,
+            ],
+        )
+        .attr("role", "group")
+        .attr("aria-label", "Ecliptic positions")
+        .attr("data-key", "chart-ecliptic-strip"),
+    )
+}
+
+pub(in crate::ui) fn selected_angle_strip_marks(
+    ui: &ConsultationUi,
+) -> Option<Vec<AngleStripMark>> {
+    if ui.screen().key() != "chart" {
+        return None;
+    }
+    let stored = ui
+        .catalog
+        .astrology_charts
+        .get(ui.chart.selected_chart.selected)?;
+    Some(
+        stored
+            .chart
+            .positions
+            .iter()
+            .map(|position| {
+                let (red, green, blue) = marker_color(&position.body);
+                AngleStripMark::rgb(
+                    position.longitude_millidegrees as f32 / 360_000.0,
+                    red,
+                    green,
+                    blue,
+                )
+            })
+            .collect(),
+    )
+}
+
+fn marker_color(body: &str) -> (f32, f32, f32) {
+    match body {
+        "Sun" => (0.95, 0.72, 0.25),
+        "Moon" => (0.65, 0.75, 0.92),
+        "Mercury" => (0.72, 0.62, 0.48),
+        "Venus" => (0.82, 0.48, 0.68),
+        "Mars" => (0.84, 0.34, 0.25),
+        "Jupiter" => (0.72, 0.48, 0.24),
+        "Saturn" => (0.62, 0.58, 0.42),
+        "Uranus" => (0.30, 0.72, 0.72),
+        "Neptune" => (0.32, 0.48, 0.86),
+        "Pluto" => (0.58, 0.38, 0.64),
+        _ => (0.78, 0.78, 0.76),
+    }
 }
 
 fn observer_label(chart: &AstrologyChart) -> String {
@@ -182,13 +296,17 @@ fn position_cell(
             || "unavailable".to_string(),
             |value| value.degree_millidegrees.to_string(),
         ),
-        _ => match position.retrograde {
-            Some(true) => "retrograde".to_string(),
-            Some(false) => "direct".to_string(),
-            None => "unknown".to_string(),
-        },
+        _ => motion_label(position).to_string(),
     };
     Box::new(el::<_, ConsultationUi, ()>("span", value))
+}
+
+fn motion_label(position: &AstrologyPosition) -> &'static str {
+    match position.retrograde {
+        Some(true) => "retrograde",
+        Some(false) => "direct",
+        None => "unknown",
+    }
 }
 
 fn aspects_grid(aspects: &[crate::AstrologyAspect]) -> ConsultationView {

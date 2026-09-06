@@ -12,6 +12,7 @@ use std::path::{Path, PathBuf};
 use std::rc::Rc;
 use std::sync::mpsc::{self, Receiver};
 
+use cambium::AngleStrip;
 use cambium_genet_winit_host::{
     AppCtx, FocusedTextSlot, HostHooks, HostOptions, HostWake, Init, Runner, inert_hooks,
     run as run_host,
@@ -88,12 +89,36 @@ fn hooks(state: Rc<RefCell<NativeState>>) -> HostHooks<ConsultationUi, Logic, Co
     hooks.after_dispatch = Box::new(move |ctx| dispatch_action(ctx, &dispatching));
     let framing = state.clone();
     hooks.frame = Box::new(move |ctx| {
+        sync_chart_angle_strip(ctx);
         scenario_driver::arm_capture(ctx, &framing);
         false
     });
     hooks.after_frame = Box::new(move |ctx| scenario_driver::after_frame(ctx, &state));
     hooks.focused_text = Box::new(consultation_focused_text);
     hooks
+}
+
+fn sync_chart_angle_strip(ctx: &mut ConsultationCtx<'_>) {
+    let marks = super::view::chart::selected_angle_strip_marks(ctx.runner.state());
+    match marks {
+        Some(marks) => {
+            if let Some(strip) = ctx
+                .leaves
+                .get_mut_as::<AngleStrip>(&super::view::chart::CHART_ANGLE_STRIP_KEY)
+            {
+                strip.set_marks(marks);
+            } else {
+                ctx.leaves.insert(
+                    super::view::chart::CHART_ANGLE_STRIP_KEY,
+                    Box::new(AngleStrip::with_size(marks, 720.0, 36.0)),
+                );
+            }
+        },
+        // Keep the clean retained leaf across surface switches. The Chart DOM
+        // element is absent elsewhere, so it cannot paint; retaining the
+        // payload also avoids leaving a stale rendered-leaf cache entry behind.
+        None => {},
+    }
 }
 
 fn drain_worker(ctx: &mut ConsultationCtx<'_>, state: &Rc<RefCell<NativeState>>) {
@@ -326,4 +351,6 @@ button:focus, input:focus, textarea:focus, select:focus { outline: 2px solid #d7
 [role='alert'] { padding: 10px; color: #ffd8d2; background: #542d29; }
 [role='status'] { color: #d7c9a9; }
 .selection-explanation, .empty-reading { color: #c4bcad; font-size: 14px; }
+.chart-ecliptic-labels { columns: 2; padding-left: 20px; color: #d7c9a9; font-size: 13px; }
+.chart-ecliptic-explanation { color: #c4bcad; font-size: 14px; }
 "#;

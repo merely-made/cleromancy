@@ -6,6 +6,7 @@
 #[path = "support/cleromancy_dom.rs"]
 mod support;
 
+use cambium_genet_winit_host::{KeyPress, NamedKey};
 #[cfg(feature = "analytic-ephemeris")]
 use cleromancy::ConsultationAction;
 use cleromancy::moirai::clotho::EntropySource;
@@ -13,6 +14,7 @@ use cleromancy::{
     AstrologyChart, AstrologyMoment, AstrologyPosition, CleromancyHost, Consultation, ContextDraft,
     ReadingError, SelectionMode,
 };
+use genet_probe::Selector;
 use muniment::MemoryBackend;
 #[cfg(feature = "analytic-ephemeris")]
 use support::one;
@@ -43,6 +45,13 @@ fn chart_surface_projects_stored_values_and_keeps_manual_import_available() {
         .find(|stored| stored.chart.moment.instant_utc == "2024-04-08T18:18:00Z")
         .unwrap();
     let chart_digest = eclipse.facts.chart_digest.clone();
+    let earlier = catalog
+        .astrology_charts
+        .iter()
+        .find(|stored| stored.chart.moment.instant_utc == "2024-01-01T00:00:00Z")
+        .unwrap();
+    let earlier_chart_digest = earlier.facts.chart_digest.clone();
+    let earlier_facts_digest = earlier.facts.digest();
     let selector_label = format!(
         "2024-04-08T18:18:00Z · {chart_digest} · 3 placements · 32900000, -96900000 microdegrees"
     );
@@ -90,6 +99,29 @@ fn chart_surface_projects_stored_values_and_keeps_manual_import_available() {
         attr_at_key(&h, "chart-positions", "aria-label").as_deref(),
         Some("Stored positions")
     );
+    assert_eq!(
+        attr_at_key(&h, "chart-ecliptic-strip", "aria-label").as_deref(),
+        Some("Ecliptic positions")
+    );
+    assert_eq!(
+        attr_at_key(&h, "chart-ecliptic-leaf", "aria-hidden").as_deref(),
+        Some("true")
+    );
+    let angle_labels = text_at_key(&h, "chart-ecliptic-labels");
+    for expected in [
+        "Moon: longitude 60000 millidegrees",
+        "latitude 125 millidegrees",
+        "Gemini, sign degree 0 millidegrees",
+        "retrograde",
+        "Sun: longitude 0 millidegrees",
+        "Aries, sign degree 0 millidegrees",
+        "unknown",
+    ] {
+        assert!(
+            angle_labels.contains(expected),
+            "missing `{expected}` in `{angle_labels}`"
+        );
+    }
     assert!(has_key(&h, "chart-aspects"));
     let aspects = text_at_key(&h, "chart-aspects");
     for expected in [
@@ -122,6 +154,23 @@ fn chart_surface_projects_stored_values_and_keeps_manual_import_available() {
     }
     assert!(text_at_key(&h, "chart-digest").contains(&chart_digest));
     assert!(has_key(&h, "chart-facts-digest"));
+
+    let earlier_selector =
+        format!("2024-01-01T00:00:00Z · {earlier_chart_digest} · 1 placements · Global observer");
+    assert!(h.click_on(&Selector::role("combobox").with_attr("aria-label", "Stored chart")));
+    h.press_key(&KeyPress::named(NamedKey::End));
+    h.press_key(&KeyPress::named(NamedKey::Escape));
+    assert!(has_text(&h, &earlier_selector));
+    assert!(take_action(&mut h).is_none());
+    assert!(text_at_key(&h, "chart-moment").contains("2024-01-01T00:00:00Z"));
+    assert!(text_at_key(&h, "chart-digest").contains(&earlier_chart_digest));
+    assert!(text_at_key(&h, "chart-facts-digest").contains(&earlier_facts_digest));
+    let earlier_labels = text_at_key(&h, "chart-ecliptic-labels");
+    assert!(earlier_labels.contains("Venus: longitude 300000 millidegrees"));
+    assert!(earlier_labels.contains("Aquarius, sign degree 0 millidegrees"));
+    assert!(earlier_labels.contains("direct"));
+    assert!(!earlier_labels.contains("Moon:"));
+    assert!(text_at_key(&h, "chart-source").contains(&earlier_chart_digest));
 
     for (label, value) in [
         ("Calculation algorithm", "manual/v1"),

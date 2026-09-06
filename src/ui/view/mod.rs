@@ -13,7 +13,7 @@ use super::screen::{self, ConsultationScreen};
 use super::state::ConsultationUi;
 use crate::SelectionMode;
 
-mod chart;
+pub(super) mod chart;
 mod consultation;
 mod journal;
 mod reading;
