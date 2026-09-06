@@ -97,3 +97,15 @@ vello = { git = "https://github.com/mark-ik/vello.git", branch = "mark-ik/wgpu-3
 # registry crate.
 taffy = { package = "genet-taffy", version = "=0.14.0", git = "https://github.com/merely-made/genet.git", rev = "115d348deddc344d949754e63beaece47cf49f34" }
 parley = { git = "https://github.com/merely-made/genet.git", rev = "115d348deddc344d949754e63beaece47cf49f34" }
+
+# `ipc-channel` and `gpu-allocator` — genet vendors both to keep the `windows`
+# crate on one version in any build that compiles the dx12 backend, and
+# `[patch]` does not cross workspaces, so this root restates them or silently
+# takes the registry copies. Measured here before the change: the graph
+# carried `windows 0.61.3` and `0.62.2` at once. The 0.61.3 came in through
+# registry `ipc-channel`, whose OS transport genet's fork makes optional; the
+# fork drops that dependency. `gpu-allocator` already resolved `windows 0.62.2`
+# on its own, so its entry buys source identity with the stack rather than a
+# fix, and keeps the pair from drifting apart on a future resolve.
+ipc-channel = { git = "https://github.com/merely-made/genet.git", rev = "115d348deddc344d949754e63beaece47cf49f34" }
+gpu-allocator = { git = "https://github.com/merely-made/genet.git", rev = "115d348deddc344d949754e63beaece47cf49f34" }
