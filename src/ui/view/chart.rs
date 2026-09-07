@@ -5,11 +5,11 @@
 //! optional adapter action, while this reader only projects saved values.
 
 use cambium::{
-    AngleStripMark, GridColumn, GridSpec, GridView, Key, NamedKey, SelectState, TextInput, button,
-    custom_leaf, data_grid, el, map_action, map_state, on_click, on_key, select,
+    AngleStripMark, GridColumn, GridSpec, GridView, RangeScrubber, RangeScrubberEvent,
+    RangeScrubberPin, TextInput, button, custom_leaf, data_grid, el, map_state, range_scrubber,
 };
 
-use super::{ConsultationView, labelled_control, labelled_text, never_select_action};
+use super::{ConsultationView, labelled_control, labelled_text};
 use crate::ui::chart_state::ChartState;
 use crate::ui::state::ConsultationUi;
 use crate::{AstrologyChart, AstrologyFacts, AstrologyPlacement, AstrologyPosition};
@@ -33,27 +33,29 @@ pub(super) fn chart_region(ui: &ConsultationUi) -> ConsultationView {
             )
         })
         .collect::<Vec<_>>();
-    let refs = labels.iter().map(String::as_str).collect::<Vec<_>>();
-    let picker = map_action(select(&ui.chart.selected_chart, &refs), never_select_action);
-    let picker = map_state(picker, selected_chart_state);
-    // Aspect choice is scoped to the selected chart. Reset it on every chart
-    // picker navigation or pointer turn so an index from a larger aspect set
-    // cannot reappear against another chart.
-    let picker = on_click(
-        el::<_, ChartState, ()>("div", picker),
-        |chart: &mut ChartState, _| {
+    let max = labels.len().saturating_sub(1) as f64;
+    let page_step = ((labels.len() as f64) / 4.0).ceil().max(1.0);
+    let pins = labels
+        .iter()
+        .enumerate()
+        .map(|(index, label)| RangeScrubberPin::new(index as f64, label.clone()))
+        .collect::<Vec<_>>();
+    let mut scrubber = RangeScrubber::new(0.0, max, ui.chart.selected_chart.selected as f64)
+        .with_steps(1.0, page_step)
+        .with_label("Stored chart")
+        .with_pins(pins);
+    if labels.is_empty() {
+        scrubber = scrubber.disabled("No stored charts available.");
+    }
+    let scrubber = range_scrubber(
+        scrubber,
+        move |chart: &mut ChartState, event: RangeScrubberEvent| {
+            let (RangeScrubberEvent::Preview(value) | RangeScrubberEvent::Commit(value)) = event;
+            chart.selected_chart.selected = value.round() as usize;
             chart.selected_aspect.selected = 0;
         },
     );
-    let picker = on_key(picker, |chart: &mut ChartState, event| {
-        if matches!(
-            event.key,
-            Key::Named(NamedKey::ArrowDown | NamedKey::ArrowUp | NamedKey::Home | NamedKey::End)
-        ) {
-            chart.selected_aspect.selected = 0;
-        }
-    });
-    let picker = map_state(picker, chart_state);
+    let picker = map_state(scrubber, chart_state);
     let mut children = vec![
         Box::new(el::<_, ConsultationUi, ()>("h2", "Chart")) as ConsultationView,
         Box::new(
@@ -63,7 +65,11 @@ pub(super) fn chart_region(ui: &ConsultationUi) -> ConsultationView {
             )
             .attr("data-key", "chart-introduction"),
         ) as ConsultationView,
-        labelled_control("Stored chart", "cleromancy-chart-select", Box::new(picker)),
+        labelled_control(
+            "Stored chart",
+            "cleromancy-chart-select",
+            Box::new(el::<_, ConsultationUi, ()>("div", picker).attr("data-key", "chart-scrubber")),
+        ),
     ];
     if let Some(stored) = ui
         .catalog
@@ -446,9 +452,6 @@ fn ephemeris_controls() -> Vec<ConsultationView> {
 
 fn chart_state(ui: &mut ConsultationUi) -> &mut ChartState {
     &mut ui.chart
-}
-fn selected_chart_state(chart: &mut ChartState) -> &mut SelectState {
-    &mut chart.selected_chart
 }
 fn astrology_algorithm_state(ui: &mut ConsultationUi) -> &mut TextInput {
     &mut ui.astrology_algorithm

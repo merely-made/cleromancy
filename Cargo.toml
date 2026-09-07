@@ -45,9 +45,9 @@ graphshell-endpoint = { git = "https://github.com/merely-made/mere.git", branch 
 graphshell-local = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 chirograph = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 graphshell-stdio = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-genet-probe = { git = "https://github.com/merely-made/genet.git", rev = "115d348deddc344d949754e63beaece47cf49f34" }
+genet-probe = { git = "https://github.com/merely-made/genet.git", rev = "9e8f9dc2f3ddc0af1658580bb51964462a03923f" }
 image = { version = "0.25", default-features = false, features = ["png"] }
-layout-dom-api = { git = "https://github.com/merely-made/genet.git", rev = "115d348deddc344d949754e63beaece47cf49f34", version = "=0.1.0" }
+layout-dom-api = { git = "https://github.com/merely-made/genet.git", rev = "9e8f9dc2f3ddc0af1658580bb51964462a03923f", version = "=0.1.0" }
 mere = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["graph", "canvas"] }
 muniment = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["redb"] }
 personae = { git = "https://github.com/merely-made/mere.git", branch = "main", optional = true }
@@ -70,7 +70,7 @@ required-features = ["personal-sync"]
 
 [dev-dependencies]
 async-trait = "0.1"
-genet-scripted-dom = { git = "https://github.com/merely-made/genet.git", rev = "115d348deddc344d949754e63beaece47cf49f34", version = "=0.1.0" }
+genet-scripted-dom = { git = "https://github.com/merely-made/genet.git", rev = "9e8f9dc2f3ddc0af1658580bb51964462a03923f", version = "=0.1.0" }
 tempfile = "3"
 
 # Vello on wgpu 30. Upstream vello 0.10 still requires wgpu 29, so netrender
@@ -95,8 +95,8 @@ vello = { git = "https://github.com/mark-ik/vello.git", branch = "mark-ik/wgpu-3
 # `StyleProperty::TabSize`, which published parley 0.10.0 does not have at the
 # same version number, so the fork's own source fails to compile against the
 # registry crate.
-taffy = { package = "genet-taffy", version = "=0.14.0", git = "https://github.com/merely-made/genet.git", rev = "115d348deddc344d949754e63beaece47cf49f34" }
-parley = { git = "https://github.com/merely-made/genet.git", rev = "115d348deddc344d949754e63beaece47cf49f34" }
+taffy = { package = "genet-taffy", version = "=0.14.0", git = "https://github.com/merely-made/genet.git", rev = "9e8f9dc2f3ddc0af1658580bb51964462a03923f" }
+parley = { git = "https://github.com/merely-made/genet.git", rev = "9e8f9dc2f3ddc0af1658580bb51964462a03923f" }
 
 # `ipc-channel` and `gpu-allocator` — genet vendors both to keep the `windows`
 # crate on one version in any build that compiles the dx12 backend, and
@@ -107,5 +107,5 @@ parley = { git = "https://github.com/merely-made/genet.git", rev = "115d348deddc
 # fork drops that dependency. `gpu-allocator` already resolved `windows 0.62.2`
 # on its own, so its entry buys source identity with the stack rather than a
 # fix, and keeps the pair from drifting apart on a future resolve.
-ipc-channel = { git = "https://github.com/merely-made/genet.git", rev = "115d348deddc344d949754e63beaece47cf49f34" }
-gpu-allocator = { git = "https://github.com/merely-made/genet.git", rev = "115d348deddc344d949754e63beaece47cf49f34" }
+ipc-channel = { git = "https://github.com/merely-made/genet.git", rev = "9e8f9dc2f3ddc0af1658580bb51964462a03923f" }
+gpu-allocator = { git = "https://github.com/merely-made/genet.git", rev = "9e8f9dc2f3ddc0af1658580bb51964462a03923f" }

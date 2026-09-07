@@ -19,8 +19,8 @@ use muniment::MemoryBackend;
 #[cfg(feature = "analytic-ephemeris")]
 use support::one;
 use support::{
-    attr_at_key, click_key, count_attr, harness, has_key, has_text, switch_surface, take_action,
-    text_at_key, type_into,
+    attr_at_key, attr_at_role, click_key, count_attr, harness, has_key, has_text, switch_surface,
+    take_action, text_at_key, type_into,
 };
 
 #[test]
@@ -32,6 +32,18 @@ fn empty_chart_surface_keeps_manual_import_reachable() {
     switch_surface(&mut h, "Chart");
     assert!(has_key(&h, "chart-empty"));
     assert!(has_key(&h, "save-chart-facts"));
+    assert_eq!(
+        attr_at_role(&h, "slider", "aria-label").as_deref(),
+        Some("Stored chart")
+    );
+    assert_eq!(
+        attr_at_role(&h, "slider", "aria-disabled").as_deref(),
+        Some("true")
+    );
+    assert_eq!(
+        attr_at_role(&h, "slider", "aria-description").as_deref(),
+        Some("No stored charts available.")
+    );
 }
 
 #[test]
@@ -56,6 +68,8 @@ fn chart_surface_projects_stored_values_and_keeps_manual_import_available() {
     let selector_label = format!(
         "2024-04-08T18:18:00Z · {chart_digest} · 3 placements · 32900000, -96900000 microdegrees"
     );
+    let earlier_selector_label =
+        format!("2024-01-01T00:00:00Z · {earlier_chart_digest} · 1 placements · Global observer");
     catalog
         .astrology_charts
         .sort_by_key(|stored| stored.chart.moment.instant_utc != "2024-04-08T18:18:00Z");
@@ -65,6 +79,33 @@ fn chart_surface_projects_stored_values_and_keeps_manual_import_available() {
     assert!(!has_key(&h, "reading-chart-concurrence"));
     switch_surface(&mut h, "Chart");
     assert!(has_text(&h, &selector_label));
+    assert_eq!(
+        attr_at_role(&h, "slider", "aria-label").as_deref(),
+        Some("Stored chart")
+    );
+    assert_eq!(
+        attr_at_role(&h, "slider", "aria-valuemin").as_deref(),
+        Some("0")
+    );
+    assert_eq!(
+        attr_at_role(&h, "slider", "aria-valuemax").as_deref(),
+        Some("1")
+    );
+    assert_eq!(
+        attr_at_role(&h, "slider", "aria-valuenow").as_deref(),
+        Some("0")
+    );
+    assert_eq!(
+        attr_at_role(&h, "slider", "data-step").as_deref(),
+        Some("1")
+    );
+    assert_eq!(
+        attr_at_role(&h, "slider", "data-page-step").as_deref(),
+        Some("1")
+    );
+    let scrubber = text_at_key(&h, "chart-scrubber");
+    assert!(scrubber.contains(&selector_label));
+    assert!(scrubber.contains(&earlier_selector_label));
 
     assert!(has_key(&h, "region:chart"));
     assert!(text_at_key(&h, "chart-moment").contains("2024-04-08T18:18:00Z"));
@@ -202,12 +243,20 @@ fn chart_surface_projects_stored_values_and_keeps_manual_import_available() {
     assert!(text_at_key(&h, "chart-digest").contains(&chart_digest));
     assert!(has_key(&h, "chart-facts-digest"));
 
-    let earlier_selector =
-        format!("2024-01-01T00:00:00Z · {earlier_chart_digest} · 1 placements · Global observer");
-    assert!(h.click_on(&Selector::role("combobox").with_attr("aria-label", "Stored chart")));
+    assert!(h.click_on(&Selector::role("slider").with_attr("aria-label", "Stored chart")));
+    h.press_key(&KeyPress::named(NamedKey::ArrowRight));
+    assert!(has_text(&h, &earlier_selector_label));
+    assert_eq!(
+        attr_at_role(&h, "slider", "aria-valuenow").as_deref(),
+        Some("1")
+    );
+    h.press_key(&KeyPress::named(NamedKey::ArrowLeft));
+    assert!(has_text(&h, &selector_label));
+    h.press_key(&KeyPress::named(NamedKey::PageDown));
+    assert!(has_text(&h, &selector_label));
+    h.press_key(&KeyPress::named(NamedKey::PageUp));
     h.press_key(&KeyPress::named(NamedKey::End));
-    h.press_key(&KeyPress::named(NamedKey::Escape));
-    assert!(has_text(&h, &earlier_selector));
+    assert!(has_text(&h, &earlier_selector_label));
     assert!(take_action(&mut h).is_none());
     assert!(text_at_key(&h, "chart-moment").contains("2024-01-01T00:00:00Z"));
     assert!(text_at_key(&h, "chart-digest").contains(&earlier_chart_digest));
@@ -218,10 +267,17 @@ fn chart_surface_projects_stored_values_and_keeps_manual_import_available() {
     assert!(earlier_labels.contains("direct"));
     assert!(!earlier_labels.contains("Moon:"));
     assert!(text_at_key(&h, "chart-source").contains(&earlier_chart_digest));
+    switch_surface(&mut h, "Journal");
+    switch_surface(&mut h, "Chart");
+    assert!(has_text(&h, &earlier_selector_label));
+    assert_eq!(
+        attr_at_role(&h, "slider", "aria-valuenow").as_deref(),
+        Some("1")
+    );
+    assert!(take_action(&mut h).is_none());
     assert!(!has_key(&h, "chart-selected-aspect"));
-    assert!(h.click_on(&Selector::role("combobox").with_attr("aria-label", "Stored chart")));
+    assert!(h.click_on(&Selector::role("slider").with_attr("aria-label", "Stored chart")));
     h.press_key(&KeyPress::named(NamedKey::Home));
-    h.press_key(&KeyPress::named(NamedKey::Escape));
     assert!(has_key(&h, "chart-selected-aspect"));
     assert!(text_at_key(&h, "chart-selected-aspect").contains("Kind: Square"));
 

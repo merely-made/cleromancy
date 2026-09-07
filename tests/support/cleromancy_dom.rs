@@ -236,6 +236,13 @@ pub fn attr_at_id(harness: &App, id: &str, name: &str) -> Option<String> {
     })
 }
 
+pub fn attr_at_role(harness: &App, role: &str, name: &str) -> Option<String> {
+    harness.with_dom(|dom| {
+        find_attr(dom, dom.document(), "role", role)
+            .and_then(|node| attr(dom, node, name).map(str::to_string))
+    })
+}
+
 pub fn accessible_label(harness: &App, node: NodeId) -> Option<String> {
     harness.with_dom(|dom| {
         let mut node = node;

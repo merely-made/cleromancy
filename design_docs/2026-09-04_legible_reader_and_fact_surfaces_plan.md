@@ -1,7 +1,7 @@
 # Cleromancy: legible reader and fact surfaces
 
 **Date:** 2026-09-04
-**Status (2026-09-06):** complete. **R0–R4 and Cambium V0–V1 landed.** Supersedes
+**Status (2026-09-06):** complete. **R0–R4 and Cambium V0–V2 landed.** Supersedes
 nothing; it is the successor slice to
 [journal depth](2026-08-08_journal_depth_plan.md), which is landed and green
 (see Findings).
@@ -405,7 +405,7 @@ decision to widen scope:
 |---|---|---|
 | Ecliptic strip | tier-2 vector leaf, labels stay DOM | V0 landed in Cambium and adopted here; see Mere's `2026-09-06_fact_visualization_leaves_plan.md` |
 | Fact explanation tree | disclosure-tree widget | approximated here with nested `disclosure` |
-| Range-gated scrubber with pins | stepper exists, scrubber does not | not in Cambium |
+| Range-gated scrubber with pins | stepper exists, scrubber does not | V2 landed in Cambium and adopted here; see Mere's `2026-09-06_fact_visualization_leaves_plan.md` |
 | Dimension-line aspect diagram | vector leaf | V1 landed in Cambium and adopted here; see Mere's `2026-09-06_fact_visualization_leaves_plan.md` |
 | Event ledger | `sectioned_list` | exists |
 | Data grid | `data_grid` | exists |
@@ -556,3 +556,16 @@ cargo test --test journal_depth --offline
   `analytic-ephemeris` builds; and adjacent headed/authoring regressions pass
   3/3. Independent review found and closed explicit chart-return and selector
   reconciliation gaps; final review is clean.
+- **2026-09-06:** Cambium visualization V2 adopted. Chart replaces the stored
+  chart select with a controlled range scrubber over catalog indices, using
+  one-step and page-step keyboard semantics plus UTC/digest pins. Preview and
+  commit reconcile the selected index and reset the view-local aspect selection;
+  an empty catalog exposes a disabled scrubber with an explicit reason while
+  manual import remains available. Scrubber selection is retained application
+  UI state across rerender and tab switches only. It is not durable graph
+  storage and adds no schema under the standing no-new-schema rule. The full
+  positions/aspects/source grids remain intact, and scrubber changes emit no
+  `ConsultationAction` or storage work. Chart passes 3/3 in default and
+  `analytic-ephemeris` builds; adjacent authoring passes 1/1 and headed surface
+  coverage passes 2/2. Independent review found and closed Cambium's
+  focused-to-disabled reconciliation gap before adoption landed.

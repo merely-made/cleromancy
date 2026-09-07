@@ -22,7 +22,9 @@ and interpretation.
   manual import available in default builds, and renders longitudes through
   Cambium's read-only ecliptic strip while retaining the full positions grid.
   A view-local aspect selector adds a read-only dimension projection beside
-  the complete aspects grid.
+  the complete aspects grid, and a controlled stored-chart range scrubber adds
+  UTC/digest pins. Scrubber selection is retained application UI state across
+  rerender and tab switches, not durable graph storage.
 - Derived readings replay byte-equal on independent engines from a public
   seed and domain (2026-08-08 contract).
 - Authored spread templates (1-12 positions, reusable, content-addressed)
