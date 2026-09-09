@@ -25,9 +25,8 @@ pub(super) fn chart_region(ui: &ConsultationUi) -> ConsultationView {
         .iter()
         .map(|stored| {
             format!(
-                "{} · {} · {} placements · {}",
+                "{} · {} placements · {}",
                 stored.chart.moment.instant_utc,
-                stored.facts.chart_digest,
                 stored.facts.placements.len(),
                 observer_label(&stored.chart),
             )
@@ -61,7 +60,7 @@ pub(super) fn chart_region(ui: &ConsultationUi) -> ConsultationView {
         Box::new(
             el::<_, ConsultationUi, ()>(
                 "p",
-                "Saved UTC moments and source-qualified positions. Placement labels and aspects are derived from this stored chart receipt.",
+                "Explore a saved moment through its planetary placements and their relationships. The calculated positions and sources are available below the reading.",
             )
             .attr("data-key", "chart-introduction"),
         ) as ConsultationView,
@@ -103,6 +102,7 @@ fn stored_chart(
 ) -> Vec<ConsultationView> {
     let observer = observer_label(chart);
     let mut views = vec![
+        super::astrology_reading::reading(ui, facts),
         Box::new(el::<_, ConsultationUi, ()>("h3", "Stored chart receipt")) as ConsultationView,
         labelled_value(
             "UTC moment",

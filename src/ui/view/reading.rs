@@ -3,14 +3,13 @@
 
 //! The reading region: per-position results and the collapsed workings.
 
-use cambium::{
-    DetailRow, DetailSection, button, detail_panel, disclosure, el, map_action, map_state,
-};
+use cambium::{button, detail_panel, disclosure, el, map_action, map_state};
 
-use super::{ConsultationView, mode_label};
+use super::ConsultationView;
+use crate::ASTROLOGY_FACTS_ROLE;
+use crate::reading_scene::{position_label, position_rationale};
 use crate::ui::screen::{self, ConsultationScreen};
 use crate::ui::state::ConsultationUi;
-use crate::{ASTROLOGY_FACTS_ROLE, Reading};
 
 pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
     let mut children: Vec<ConsultationView> =
@@ -37,21 +36,21 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
                 .attr("class", "reading-question")
                 .attr("data-key", "reading-question"),
             ));
-            if let Some((concurrence_id, facts_digest, placements)) = chart_concurrence(ui) {
+            if let Some((_concurrence_id, facts_digest, placements)) = chart_concurrence(ui) {
                 let link_digest = facts_digest.clone();
                 children.push(Box::new(
                     el::<_, ConsultationUi, ()>(
                         "aside",
                         vec![
-                            Box::new(el::<_, ConsultationUi, ()>("h3", "Chart concurrence"))
+                            Box::new(el::<_, ConsultationUi, ()>("h3", "Chart alongside this reading"))
                                 as ConsultationView,
                             Box::new(el::<_, ConsultationUi, ()>(
                                 "p",
-                                "This chart was recorded with this reading as a concurrence. It does not claim that the chart caused or interpreted the reading.",
+                                "This chart was saved alongside the draw. Explore its astrological reading as another perspective on the same occasion; it did not choose the cards.",
                             )) as ConsultationView,
                             Box::new(el::<_, ConsultationUi, ()>(
                                 "p",
-                                format!("Receipt {concurrence_id}: {placements}"),
+                                placements,
                             )) as ConsultationView,
                             Box::new(
                                 button("Open concurrent chart", move |ui: &mut ConsultationUi, _| {
@@ -67,70 +66,62 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
                         ],
                     )
                     .attr("role", "region")
-                    .attr("aria-label", "Chart concurrence")
+                    .attr("aria-label", "Chart alongside this reading")
                     .attr("data-key", "reading-chart-concurrence"),
                 ));
             }
-            let mut cards: Vec<ConsultationView> = Vec::new();
-            for (index, (placement, reading)) in detail
-                .session
-                .placements
-                .iter()
-                .zip(&detail.readings)
-                .enumerate()
-            {
-                let position_label = match placement.position.as_str() {
-                    "foundation" => "Foundation",
-                    "tension" => "Tension",
-                    "next_step" => "Next step",
-                    other => other,
-                };
-                let card = vec![
-                    Box::new(
-                        el::<_, ConsultationUi, ()>("h3", position_label.to_string()).attr(
-                            "data-key",
-                            format!("reading-position:{}", placement.position),
+            children.push(super::reading_scene::spread_view(ui));
+            let selected = ui
+                .reading_focus
+                .get(&detail.session.id)
+                .and_then(|position| {
+                    detail
+                        .session
+                        .placements
+                        .iter()
+                        .find(|item| &item.position == position)
+                })
+                .or_else(|| detail.session.placements.first());
+            if let Some(placement) = selected {
+                if let Some(reading) = detail
+                    .readings
+                    .iter()
+                    .find(|reading| reading.id == placement.reading_id)
+                {
+                    let card: Vec<ConsultationView> = vec![
+                        Box::new(el::<_, ConsultationUi, ()>(
+                            "h3",
+                            position_label(&placement.position),
+                        )),
+                        Box::new(el::<_, ConsultationUi, ()>("h4", reading.title.clone())),
+                        Box::new(
+                            el::<_, ConsultationUi, ()>("p", reading.interpretation.clone())
+                                .attr("data-key", "result-prompt"),
                         ),
-                    ) as ConsultationView,
-                    Box::new(
-                        el::<_, ConsultationUi, ()>("h4", reading.title.clone()).attr(
-                            "data-key",
-                            if index == 0 {
-                                "result-title".to_string()
-                            } else {
-                                format!("result-title:{}", placement.position)
-                            },
+                        Box::new(
+                            el::<_, ConsultationUi, ()>(
+                                "p",
+                                position_rationale(&placement.position),
+                            )
+                            .attr("class", "position-rationale"),
                         ),
-                    ) as ConsultationView,
-                    Box::new(
-                        el::<_, ConsultationUi, ()>("p", reading.interpretation.clone()).attr(
-                            "data-key",
-                            if index == 0 {
-                                "result-prompt".to_string()
-                            } else {
-                                format!("result-prompt:{}", placement.position)
-                            },
-                        ),
-                    ) as ConsultationView,
-                ];
-                cards.push(Box::new(
-                    el::<_, ConsultationUi, ()>("article", card)
-                        .attr("class", "reading-card")
-                        .attr(
-                            "aria-label",
-                            format!("{}: {}", position_label, reading.title),
-                        ),
-                ));
+                    ];
+                    children.push(Box::new(
+                        el::<_, ConsultationUi, ()>("article", card)
+                            .attr("class", "reading-card")
+                            .attr("data-key", "focused-reading")
+                            .attr("aria-live", "polite"),
+                    ));
+                }
             }
-            children.push(Box::new(
-                el::<_, ConsultationUi, ()>("div", cards).attr("class", "reading-cards"),
-            ));
             let sections = detail
                 .session
                 .placements
                 .iter()
                 .zip(&detail.readings)
-                .map(|(placement, reading)| receipt_section(&placement.position, reading))
+                .map(|(placement, reading)| {
+                    super::rationale::section(detail, &placement.position, reading)
+                })
                 .collect::<Vec<_>>();
             let details = detail_panel::<cambium::DisclosureState, ()>(&sections);
             // Cambium's `disclosure` reports the toggle back to the caller
@@ -184,44 +175,6 @@ fn chart_concurrence(ui: &ConsultationUi) -> Option<(String, String, String)> {
                 .join(", ");
             Some((concurrence.id.clone(), digest.to_string(), placements))
         })
-}
-
-fn receipt_section(position: &str, reading: &Reading) -> DetailSection {
-    let receipt = &reading.receipt;
-    let mut rows = vec![
-        DetailRow::new("Mode", mode_label(receipt.mode)),
-        DetailRow::new("Algorithm", receipt.algorithm.clone()),
-        DetailRow::new("Context digest", receipt.context_digest.clone()),
-        DetailRow::new("Field digest", receipt.field_digest.clone()),
-        DetailRow::new(
-            "Qualified weights",
-            receipt
-                .qualified_weights
-                .iter()
-                .map(u64::to_string)
-                .collect::<Vec<_>>()
-                .join(", "),
-        ),
-        DetailRow::new("Total weight", receipt.total_weight.to_string()),
-        DetailRow::new(
-            "Bounded sample",
-            receipt
-                .sample
-                .map_or_else(|| "not used".to_string(), |sample| sample.to_string()),
-        ),
-    ];
-    if let Some(derivation) = &receipt.derivation {
-        rows.push(DetailRow::new("Derived seed", derivation.seed.clone()));
-        rows.push(DetailRow::new("Derived domain", derivation.domain.clone()));
-    }
-    if let Some(digest) = &receipt.derivation_digest {
-        rows.push(DetailRow::new("Derivation digest", digest.clone()));
-    }
-    rows.push(DetailRow::new(
-        "Selected index",
-        receipt.selected_index.to_string(),
-    ));
-    DetailSection::new(format!("{} receipt", position), rows)
 }
 
 fn workings_state(ui: &mut ConsultationUi) -> &mut cambium::DisclosureState {

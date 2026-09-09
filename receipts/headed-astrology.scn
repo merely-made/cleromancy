@@ -1,0 +1,13 @@
+# Run with analytic-ephemeris, phase=reopen, after headed-tarot has seeded
+# a saved consultation and reflection. This is an explicit sample UTC moment.
+wait
+advance
+wait
+calculate-chart 2026-09-09T16:00:00Z
+wait
+show-chart
+wait
+assert text Astrological reading
+assert text purpose and self-expression
+capture chart
+settle 2

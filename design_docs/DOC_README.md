@@ -19,6 +19,8 @@ the current public overview until it is authored.
   exposes a vocabulary gap.
 - Preserve the local-first and no-generated-interpretation boundaries. Packs
   are authored, versioned content and remain independently replaceable.
+- Explain selection and symbolic interpretation in plain English at the reading
+  surface; keep the numerical source and saved receipt available for inspection.
 - Verify the headed reading at its ordinary window size. Tall DOM harnesses
   and saved-data checks do not establish that controls fit or that card
   results are visible; acceptance includes painted bounds and native capture.

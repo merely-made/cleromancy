@@ -26,6 +26,7 @@ pub mod moirai;
 #[cfg(not(feature = "portable-core"))]
 mod projection;
 pub mod reading;
+pub mod reading_scene;
 pub mod servitors;
 pub mod session;
 pub mod sky;

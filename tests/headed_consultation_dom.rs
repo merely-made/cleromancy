@@ -19,7 +19,7 @@ use cleromancy::{
 use muniment::MemoryBackend;
 use support::{
     accessible_label, attr_at_id, attr_at_key, choose, click_key, count_attr, harness, has_attr,
-    has_key, has_text, has_text_at_key, has_text_in_id, next_surface, one, select, switch_surface,
+    has_key, has_text_at_key, has_text_in_id, next_surface, one, select, switch_surface,
     take_action, text_at_key, type_into,
 };
 
@@ -275,7 +275,18 @@ fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
     assert_eq!(detail.readings.len(), 3);
     let expected_title = detail.readings[0].title.clone();
     let expected_prompt = detail.readings[0].interpretation.clone();
-    let expected_algorithm = detail.readings[0].receipt.algorithm.clone();
+    let expected_tension = detail.readings[1].interpretation.clone();
+    let unchanged_session = detail.session.clone();
+    // Repeated source results remain distinct scene occurrences.
+    let mut repeated = detail.clone();
+    repeated.session.placements[1].reading_id = repeated.session.placements[0].reading_id.clone();
+    let scene = cleromancy::reading_scene::reading_scene(&repeated);
+    assert_eq!(scene.scene.items[0].source, scene.scene.items[1].source);
+    assert_ne!(scene.positions[0], scene.positions[1]);
+    assert_ne!(
+        scene.scene.items[0].transform,
+        scene.scene.items[1].transform
+    );
     let session_id = detail.session.id.clone();
     let catalog = consultation.catalog().unwrap();
     h.update(move |ui| ui.present_reading(catalog, detail));
@@ -315,6 +326,23 @@ fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
             "card title must be visible: {key}: {x}, {y}, {width}, {height}"
         );
     }
+    h.move_to(1150.0, 400.0);
+    let mut previous = h.element_scroll_total();
+    for _ in 0..48 {
+        h.wheel(0.0, 32.0);
+        let current = h.element_scroll_total();
+        assert!(
+            current >= previous,
+            "scroll reversed: {previous} -> {current}"
+        );
+        assert!(
+            current - previous <= 32.1,
+            "scroll jumped: {previous} -> {current}"
+        );
+        previous = current;
+    }
+    assert!(previous > 100.0, "the page must actually scroll");
+    h.wheel(0.0, -100000.0);
     h.layout_at(1600.0, 4000.0);
 
     assert_eq!(
@@ -329,22 +357,36 @@ fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
         Some("true")
     );
     assert_eq!(attr_at_id(&h, "cleromancy-workings-panel", "hidden"), None);
-    assert!(has_text_in_id(&h, "cleromancy-workings-panel", "Algorithm"));
     assert!(has_text_in_id(
         &h,
         "cleromancy-workings-panel",
-        &expected_algorithm
+        "The choice"
     ));
     assert!(has_text_in_id(
+        &h,
+        "cleromancy-workings-panel",
+        "A fresh chance draw chose this result from the available possibilities, using their relative chances."
+    ));
+    assert!(!has_text_in_id(
         &h,
         "cleromancy-workings-panel",
         "Context digest"
     ));
-    assert!(has_text_in_id(
+    assert!(!has_text_in_id(
         &h,
         "cleromancy-workings-panel",
         "Bounded sample"
     ));
+    assert!(click_key(&mut h, "scene-card:tension").is_none());
+    assert_eq!(text_at_key(&h, "result-prompt"), expected_tension);
+    assert_eq!(
+        attr_at_key(&h, "scene-card:tension", "aria-pressed").as_deref(),
+        Some("true")
+    );
+    assert_eq!(h.state().detail().unwrap().session, unchanged_session);
+    switch_surface(&mut h, "Journal");
+    switch_surface(&mut h, "Today");
+    assert_eq!(text_at_key(&h, "result-prompt"), expected_tension);
 
     assert!(click_key(&mut h, "save-reflection").is_none());
     assert!(

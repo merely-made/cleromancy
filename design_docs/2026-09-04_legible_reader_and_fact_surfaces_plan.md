@@ -598,3 +598,40 @@ cargo test --test journal_depth --offline
   that package; the interrupted root test invocations are not green receipts.
   The native executable is built from the ordinary repository manifest.
   This does not close the historical exact-pin or full aggregate H4 gates.
+
+- **2026-09-09, scenes and interpretation:** The saved session now projects
+  through `reading_scene` into Sceno cards. As in Woodshed's Stage adapter,
+  repeated results share a source while each placement remains a distinct
+  occurrence. Cambium buttons realize the scene geometry and expose selection
+  to keyboard and pointer input. A focused panel explains the selected card
+  and its position. Focus is view-local, retained per session during this run;
+  restart restores the saved reading with its first position focused.
+  This bounded scene uses three columns and preserves authored position order;
+  it does not yet implement spatial arrangement authoring or camera persistence.
+
+  How it was done now explains the actual selection mode, context qualification,
+  matching tags, chance where applicable, and the authored interpretation.
+  Raw receipt values remain in the sealed records. Chart adds edition 1 of
+  product-authored symbolic placement/aspect prompts over saved facts, explains
+  their rationale, and can select that chart for the next card draw. These
+  prompts are a current view of the stored chart, not a separately sealed
+  astrological consultation or a birth-chart calculation. Numerical source
+  receipts remain available below the interpretation. No generated prose
+  service or new storage schema is introduced.
+
+  Validation: all nine focused tests pass across the scene run and final
+  changed-surface rerun. Coverage includes source/occurrence separation,
+  selection without a saved-session mutation, selection across tab switches,
+  normal-window bounds, and 48 bounded wheel steps without reversal or jump.
+  This is not a GPU frame-time measurement; the reported scrolling jank remains
+  an open performance question. Native three-card cast/reflection and reopen
+  both pass with byte-identical card previews. The scene preview is built from
+  the live library and native main via an artifact manifest using the same
+  dependency declarations and sibling redirects. The older interactive store
+  was only opened for inspection; its newer single-card reading correctly did
+  not satisfy the three-card fixture, so acceptance uses an isolated store.
+  Native `headed-astrology.scn` also passes with a Turquet-calculated sample
+  moment (2026-09-09 16:00 UTC), saved chart facts, visible symbolic prompts,
+  and a presented-frame capture. Final chart DOM checks pass after shortening
+  chart picker labels and ordering the symbolic prompts from Sun and Moon.
+  The final ordinary root binary also builds with both astronomy features.

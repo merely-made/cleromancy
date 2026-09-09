@@ -64,3 +64,13 @@ button:focus, input:focus, textarea:focus, select:focus { outline: 2px solid #d7
 .select-list { z-index: 1; padding: 4px; border: 1px solid #897550; background: #302d26; }
 .select-option { padding: 8px 10px; cursor: pointer; }
 .select-option[aria-selected='true'] { background: #6e522a; }
+
+.reading-scene { overflow: auto; margin: 14px 0; padding: 2px; }
+.scene-card { display: flex; flex-direction: column; justify-content: center; gap: 14px; margin: 0; padding: 12px; background: #302b22; text-align: left; }
+.scene-card[aria-pressed='true'] { background: #574124; border: 2px solid #e4cf9f; }
+.scene-position { display: block; font-size: 13px; color: #d7b46a; }
+.scene-title { display: block; font-family: serif; font-size: 23px; color: #fff0cf; }
+.reading-card .position-rationale { font-family: sans-serif; font-size: 14px; line-height: 1.5; color: #d7c9a9; }
+.astrology-prompt { padding: 16px; margin: 12px 0; border-left: 2px solid #897550; background: #302b22; }
+.astrology-prompt h4 { font-family: serif; font-size: 23px; margin: 0 0 8px; color: #fff0cf; }
+.astrology-prompt p { line-height: 1.6; }

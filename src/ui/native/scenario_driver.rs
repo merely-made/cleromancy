@@ -137,6 +137,31 @@ impl genet_probe::Driveable for ScenarioDriver<'_, '_> {
     fn app_step(&mut self, line: &str) -> Result<(), String> {
         match line {
             "advance" => self.advance(),
+            "show-chart" => {
+                self.ctx.runner.update(|ui| {
+                    crate::ui::screen::select_surface(
+                        &mut ui.surface_tabs,
+                        crate::ui::screen::ConsultationScreen::Chart,
+                    );
+                });
+                Ok(())
+            },
+            #[cfg(feature = "analytic-ephemeris")]
+            _ if line.starts_with("calculate-chart ") => {
+                let instant = line.trim_start_matches("calculate-chart ");
+                let mut error = None;
+                self.ctx.runner.update(|ui| {
+                    ui.astrology_instant_utc = cambium::TextInput::new(instant);
+                    let action = ui.request_calculated_astrology_chart();
+                    ui.record_action(action);
+                    error = ui.error().map(str::to_string);
+                });
+                if let Some(error) = error {
+                    return Err(error);
+                }
+                submit_pending(self.ctx.runner, self.state.worker.as_ref());
+                Ok(())
+            },
             _ => Err(format!("unknown Cleromancy scenario verb: {line}")),
         }
     }

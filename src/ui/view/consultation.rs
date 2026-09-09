@@ -141,6 +141,18 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
         ]);
     }
     children.push(Box::new(
+        button(
+            "Explore an astrological reading",
+            |ui: &mut ConsultationUi, _| {
+                super::screen::select_surface(
+                    &mut ui.surface_tabs,
+                    super::ConsultationScreen::Chart,
+                );
+            },
+        )
+        .attr("data-key", "explore-astrology"),
+    ));
+    children.push(Box::new(
         button("Read", |ui: &mut ConsultationUi, _| {
             let action = ui.request_read();
             ui.record_action(action);

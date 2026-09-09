@@ -18,6 +18,9 @@ pub(super) mod chart_aspect;
 mod consultation;
 mod journal;
 mod reading;
+mod reading_scene;
+mod rationale;
+mod astrology_reading;
 mod shared;
 #[cfg(feature = "sky-timeline")]
 mod sky;

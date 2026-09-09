@@ -66,10 +66,10 @@ fn chart_surface_projects_stored_values_and_keeps_manual_import_available() {
     let earlier_chart_digest = earlier.facts.chart_digest.clone();
     let earlier_facts_digest = earlier.facts.digest();
     let selector_label = format!(
-        "2024-04-08T18:18:00Z · {chart_digest} · 3 placements · 32900000, -96900000 microdegrees"
+        "2024-04-08T18:18:00Z · 3 placements · 32900000, -96900000 microdegrees"
     );
     let earlier_selector_label =
-        format!("2024-01-01T00:00:00Z · {earlier_chart_digest} · 1 placements · Global observer");
+        format!("2024-01-01T00:00:00Z · 1 placements · Global observer");
     catalog
         .astrology_charts
         .sort_by_key(|stored| stored.chart.moment.instant_utc != "2024-04-08T18:18:00Z");
@@ -79,6 +79,9 @@ fn chart_surface_projects_stored_values_and_keeps_manual_import_available() {
     assert!(!has_key(&h, "reading-chart-concurrence"));
     switch_surface(&mut h, "Chart");
     assert!(has_text(&h, &selector_label));
+    assert!(has_key(&h, "astrological-reading"));
+    assert!(text_at_key(&h, "astrology-prompt:Sun").contains("purpose and self-expression"));
+    assert!(text_at_key(&h, "astrology-rationale").contains("authored invitations"));
     assert_eq!(
         attr_at_role(&h, "slider", "aria-label").as_deref(),
         Some("Stored chart")
@@ -313,18 +316,12 @@ fn chart_concurrence_is_resolved_locally_without_a_product_action() {
     catalog
         .astrology_charts
         .sort_by_key(|stored| stored.chart.moment.instant_utc == "2024-04-08T18:18:00Z");
-    let concurrence_id = detail.concurrences[0].id.clone();
     let mut h = harness(catalog);
     let detail_catalog = h.state().catalog().clone();
     h.update(move |ui| ui.present_session(detail_catalog, detail));
     assert!(has_key(&h, "reading-chart-concurrence"));
     let strip = text_at_key(&h, "reading-chart-concurrence");
-    for expected in [
-        "does not claim that the chart caused",
-        concurrence_id.as_str(),
-        "Moon Gemini",
-        "Sun Aries",
-    ] {
+    for expected in ["it did not choose the cards", "Moon Gemini", "Sun Aries"] {
         assert!(
             strip.contains(expected),
             "missing `{expected}` in `{strip}`"
@@ -332,13 +329,17 @@ fn chart_concurrence_is_resolved_locally_without_a_product_action() {
     }
     assert_eq!(
         attr_at_key(&h, "reading-chart-concurrence", "aria-label").as_deref(),
-        Some("Chart concurrence")
+        Some("Chart alongside this reading")
     );
 
     assert!(click_key(&mut h, "open-concurrent-chart").is_none());
     assert!(take_action(&mut h).is_none());
     assert_eq!(h.state().screen().key(), "chart");
     assert!(text_at_key(&h, "chart-moment").contains("2024-04-08T18:18:00Z"));
+    let saved = h.state().detail().unwrap().session.clone();
+    assert!(click_key(&mut h, "read-with-chart").is_none());
+    assert_eq!(h.state().screen().key(), "today");
+    assert_eq!(h.state().detail().unwrap().session, saved);
 }
 
 fn fixture(
