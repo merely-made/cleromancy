@@ -1,7 +1,8 @@
 [CmdletBinding()]
 param(
     [string]$Root = (Join-Path $env:TEMP ("cleromancy-headed-" + [DateTime]::UtcNow.ToString("yyyyMMdd-HHmmss"))),
-    [string]$TargetDir = "C:\t\cleromancy-headed-target"
+    [string]$TargetDir = "C:\t\cleromancy-headed-target",
+    [string]$Features = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -21,7 +22,11 @@ foreach ($phase in "first", "reopen") {
     $env:CLEROMANCY_SCENARIO_PHASE = $phase
     $env:CLEROMANCY_CAPTURE_DIR = $captureDir
     $env:CARGO_TARGET_DIR = $TargetDir
-    & cargo run --bin cleromancy --offline
+    if ($Features) {
+        & cargo run --bin cleromancy --offline --features $Features
+    } else {
+        & cargo run --bin cleromancy --offline
+    }
     if ($LASTEXITCODE -ne 0) {
         throw "headed Cleromancy $phase process exited $LASTEXITCODE"
     }
@@ -62,6 +67,11 @@ foreach ($name in $idNames) {
 }
 
 $redb = Join-Path $store "cleromancy.redb"
+$firstCards = Get-Content -Raw -LiteralPath (Join-Path $Root "first\cards.json")
+$reopenedCards = Get-Content -Raw -LiteralPath (Join-Path $Root "reopen\cards.json")
+if ($firstCards -cne $reopenedCards -or @($firstCards | ConvertFrom-Json).Count -ne 3) {
+    throw "the three cast cards and prompts did not survive the Redb reopen"
+}
 if (!(Test-Path -LiteralPath $redb) -or (Get-Item -LiteralPath $redb).Length -le 0) {
     throw "the headed run did not leave a Redb store"
 }
@@ -71,6 +81,8 @@ $report = [ordered]@{
     ok = $true
     store = $redb
     redb_reopened = $true
+    cards_match_after_reopen = $true
+    features = $Features
     ids = [ordered]@{
         session_id = $first.ids.session_id
         reading_id = $first.ids.reading_id
@@ -81,11 +93,13 @@ $report = [ordered]@{
             scenario = (Join-Path $Root "first\scenario.done")
             receipt = (Join-Path $Root "first\receipt.json")
             pixels = (Join-Path $Root "first\detail.png")
+            cards = (Join-Path $Root "first\cards.json")
         }
         reopen = [ordered]@{
             scenario = (Join-Path $Root "reopen\scenario.done")
             receipt = (Join-Path $Root "reopen\receipt.json")
             pixels = (Join-Path $Root "reopen\detail.png")
+            cards = (Join-Path $Root "reopen\cards.json")
         }
     }
     evidence_boundaries = [ordered]@{

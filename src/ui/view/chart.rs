@@ -413,30 +413,52 @@ fn definition(label: &str, value: &str) -> ConsultationView {
 }
 
 fn import_controls(ui: &ConsultationUi) -> Vec<ConsultationView> {
-    let controls = vec![
+    let mut controls = vec![
+        Box::new(el::<_, ConsultationUi, ()>("h3", "Chart moment")) as ConsultationView,
+        labelled_text(
+            "UTC instant",
+            "cleromancy-astrology-instant",
+            false,
+            &ui.astrology_instant_utc,
+            astrology_instant_state,
+        ),
+        labelled_text(
+            "Latitude microdegrees (optional)",
+            "cleromancy-astrology-latitude",
+            false,
+            &ui.astrology_latitude,
+            astrology_latitude_state,
+        ),
+        labelled_text(
+            "Longitude microdegrees (optional)",
+            "cleromancy-astrology-longitude",
+            false,
+            &ui.astrology_longitude,
+            astrology_longitude_state,
+        ),
+        labelled_text(
+            "Aspect orb millidegrees",
+            "cleromancy-astrology-orb",
+            false,
+            &ui.astrology_orb,
+            astrology_orb_state,
+        ),
+    ];
+    #[cfg(feature = "analytic-ephemeris")]
+    controls.extend(ephemeris_controls());
+    controls.extend(vec![
         Box::new(el::<_, ConsultationUi, ()>("h3", "Import chart")) as ConsultationView,
         labelled_text("Calculation algorithm", "cleromancy-astrology-algorithm", false, &ui.astrology_algorithm, astrology_algorithm_state),
         labelled_text("Calculation engine", "cleromancy-astrology-engine", false, &ui.astrology_engine, astrology_engine_state),
         labelled_text("Ephemeris source", "cleromancy-astrology-ephemeris", false, &ui.astrology_ephemeris, astrology_ephemeris_state),
-        labelled_text("UTC instant", "cleromancy-astrology-instant", false, &ui.astrology_instant_utc, astrology_instant_state),
-        labelled_text("Latitude microdegrees (optional)", "cleromancy-astrology-latitude", false, &ui.astrology_latitude, astrology_latitude_state),
-        labelled_text("Longitude microdegrees (optional)", "cleromancy-astrology-longitude", false, &ui.astrology_longitude, astrology_longitude_state),
-        labelled_text("Aspect orb millidegrees", "cleromancy-astrology-orb", false, &ui.astrology_orb, astrology_orb_state),
         labelled_text("Chart positions", "cleromancy-astrology-positions", true, &ui.astrology_positions, astrology_positions_state),
-        Box::new(el::<_, ConsultationUi, ()>("p", "For a manual import, identify the algorithm, engine, and ephemeris, then copy positions as body | longitude millidegrees | latitude millidegrees | retrograde. Local calculation ignores those manual source and position fields.").attr("class", "context-explanation")) as ConsultationView,
+        Box::new(el::<_, ConsultationUi, ()>("p", "For a manual import, identify the algorithm, engine, and ephemeris, then copy positions as body | longitude millidegrees | latitude millidegrees | retrograde. Local calculation uses the chart moment above.").attr("class", "context-explanation")) as ConsultationView,
         Box::new(button("Save chart facts", |ui: &mut ConsultationUi, _| {
             let action = ui.request_astrology_chart();
             ui.record_action(action);
         }).attr("data-key", "save-chart-facts").attr("aria-label", "Save imported chart facts")) as ConsultationView,
-    ];
-    #[cfg(feature = "analytic-ephemeris")]
-    {
-        controls.into_iter().chain(ephemeris_controls()).collect()
-    }
-    #[cfg(not(feature = "analytic-ephemeris"))]
-    {
-        controls
-    }
+    ]);
+    controls
 }
 
 #[cfg(feature = "analytic-ephemeris")]

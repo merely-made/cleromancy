@@ -24,6 +24,19 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
             .attr("class", "empty-reading"),
         )),
         Some(detail) => {
+            children.push(Box::new(
+                el::<_, ConsultationUi, ()>(
+                    "p",
+                    detail
+                        .context
+                        .facts
+                        .get("question")
+                        .cloned()
+                        .unwrap_or_else(|| detail.context.label.clone()),
+                )
+                .attr("class", "reading-question")
+                .attr("data-key", "reading-question"),
+            ));
             if let Some((concurrence_id, facts_digest, placements)) = chart_concurrence(ui) {
                 let link_digest = facts_digest.clone();
                 children.push(Box::new(
@@ -58,6 +71,7 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
                     .attr("data-key", "reading-chart-concurrence"),
                 ));
             }
+            let mut cards: Vec<ConsultationView> = Vec::new();
             for (index, (placement, reading)) in detail
                 .session
                 .placements
@@ -65,33 +79,52 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
                 .zip(&detail.readings)
                 .enumerate()
             {
-                children.push(Box::new(
-                    el::<_, ConsultationUi, ()>("h3", placement.position.clone()).attr(
-                        "data-key",
-                        format!("reading-position:{}", placement.position),
-                    ),
-                ));
-                children.push(Box::new(
-                    el::<_, ConsultationUi, ()>("h4", reading.title.clone()).attr(
-                        "data-key",
-                        if index == 0 {
-                            "result-title".to_string()
-                        } else {
-                            format!("result-title:{}", placement.position)
-                        },
-                    ),
-                ));
-                children.push(Box::new(
-                    el::<_, ConsultationUi, ()>("p", reading.interpretation.clone()).attr(
-                        "data-key",
-                        if index == 0 {
-                            "result-prompt".to_string()
-                        } else {
-                            format!("result-prompt:{}", placement.position)
-                        },
-                    ),
+                let position_label = match placement.position.as_str() {
+                    "foundation" => "Foundation",
+                    "tension" => "Tension",
+                    "next_step" => "Next step",
+                    other => other,
+                };
+                let card = vec![
+                    Box::new(
+                        el::<_, ConsultationUi, ()>("h3", position_label.to_string()).attr(
+                            "data-key",
+                            format!("reading-position:{}", placement.position),
+                        ),
+                    ) as ConsultationView,
+                    Box::new(
+                        el::<_, ConsultationUi, ()>("h4", reading.title.clone()).attr(
+                            "data-key",
+                            if index == 0 {
+                                "result-title".to_string()
+                            } else {
+                                format!("result-title:{}", placement.position)
+                            },
+                        ),
+                    ) as ConsultationView,
+                    Box::new(
+                        el::<_, ConsultationUi, ()>("p", reading.interpretation.clone()).attr(
+                            "data-key",
+                            if index == 0 {
+                                "result-prompt".to_string()
+                            } else {
+                                format!("result-prompt:{}", placement.position)
+                            },
+                        ),
+                    ) as ConsultationView,
+                ];
+                cards.push(Box::new(
+                    el::<_, ConsultationUi, ()>("article", card)
+                        .attr("class", "reading-card")
+                        .attr(
+                            "aria-label",
+                            format!("{}: {}", position_label, reading.title),
+                        ),
                 ));
             }
+            children.push(Box::new(
+                el::<_, ConsultationUi, ()>("div", cards).attr("class", "reading-cards"),
+            ));
             let sections = detail
                 .session
                 .placements

@@ -96,6 +96,7 @@ pub struct ConsultationUi {
     pub(super) journal: JournalState,
     pub(super) sky: SkyState,
     pub(super) workings: DisclosureState,
+    pub(super) layout_editor: DisclosureState,
     pub(super) reflection: TextInput,
     pub(super) detail: Option<ConsultationDetail>,
     pub(super) comparison: Option<ReceiptComparison>,
@@ -118,7 +119,7 @@ impl ConsultationUi {
             tags: TextInput::default(),
             additional_facts: TextInput::default(),
             field_select: SelectState::new(0).with_label("Stored field"),
-            mode: RadioGroup::new(0).with_label("Selection mode"),
+            mode: RadioGroup::new(1).with_label("Selection mode"),
             derived_seed: TextInput::default(),
             derived_domain: TextInput::default(),
             layout: RadioGroup::new(0).with_label("Reading shape"),
@@ -140,6 +141,7 @@ impl ConsultationUi {
             journal: JournalState::new(),
             sky: SkyState::new(),
             workings: DisclosureState::new("cleromancy-workings", "Workings"),
+            layout_editor: DisclosureState::new("cleromancy-layout-editor", "Author a layout"),
             reflection: TextInput::default(),
             detail: None,
             comparison: None,
@@ -360,9 +362,10 @@ impl ConsultationUi {
             ConsultationLayout::ThreeCard
         } else {
             let Some(template) = self
-                .catalog
-                .spread_templates
-                .get(self.template_select.selected.saturating_sub(1))
+                .template_select
+                .selected
+                .checked_sub(1)
+                .and_then(|index| self.catalog.spread_templates.get(index))
             else {
                 self.present_error("Choose an authored layout before reading.");
                 return None;
@@ -374,9 +377,10 @@ impl ConsultationUi {
             return None;
         }
         let astrology_facts_digest = self
-            .catalog
-            .astrology_facts
-            .get(self.astrology_facts_select.selected.saturating_sub(1))
+            .astrology_facts_select
+            .selected
+            .checked_sub(1)
+            .and_then(|index| self.catalog.astrology_facts.get(index))
             .map(|facts| facts.digest());
         let action = ConsultationAction::Read {
             context,

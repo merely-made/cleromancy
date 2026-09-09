@@ -48,7 +48,12 @@ pub(super) fn after_frame(ctx: &mut ConsultationCtx<'_>, state: &Rc<RefCell<Nati
             observation(ctx.runner, state.catalog_ready),
             state.capture_error.as_deref(),
         );
-        *ctx.close = true;
+        // A trial can finish its receipt and leave the recovered reading open
+        // for ordinary interaction. Automated acceptance closes by default.
+        *ctx.close = std::env::var("CLEROMANCY_SCENARIO_KEEP_OPEN")
+            .ok()
+            .as_deref()
+            != Some("1");
     } else {
         state.borrow_mut().scenario = Some(run);
         if let Some(window) = ctx.window {
@@ -154,25 +159,26 @@ impl ScenarioDriver<'_, '_> {
         self.ctx.runner.update(|ui| match phase {
             Phase::First => match self.state.scenario_stage {
                 0 => {
-                    ui.context_label = cambium::TextInput::new("H3 durable threshold");
+                    ui.context_label = cambium::TextInput::new("Cleromancy and Turquet");
                     ui.question = cambium::TextInput::new(
-                        "What deserves attention before this threshold changes?",
+                        "What deserves attention as these projects become something I can use?",
                     );
-                    ui.tags = cambium::TextInput::new("change, reflection, threshold");
+                    ui.tags = cambium::TextInput::new("work, creativity, reflection");
                     ui.field_select.selected = 0;
-                    ui.mode.selected = 0;
+                    ui.mode.selected = 1;
+                    ui.layout.selected = 1;
                     let action = ui.request_read();
                     ui.record_action(action);
                     error = ui.error().map(str::to_string);
-                }
+                },
                 1 => {
                     ui.reflection = cambium::TextInput::new(
-                        "Keep the useful constraint revisable after the threshold moves.",
+                        "Trial note: return after using the app and record what resonated.",
                     );
                     let action = ui.request_reflection();
                     ui.record_action(action);
                     error = ui.error().map(str::to_string);
-                }
+                },
                 _ => error = Some("first scenario has no further semantic action".to_string()),
             },
             Phase::Reopen => {
@@ -182,7 +188,7 @@ impl ScenarioDriver<'_, '_> {
                 };
                 let action = ui.request_session(session.session_id.clone());
                 ui.record_action(Some(action));
-            }
+            },
         });
         if let Some(error) = error {
             return Err(error);
@@ -191,7 +197,7 @@ impl ScenarioDriver<'_, '_> {
         self.state.probe_events.push(match phase {
             Phase::First if self.state.scenario_stage == 1 => {
                 "semantic consultation authored".to_string()
-            }
+            },
             Phase::First => "semantic reflection authored".to_string(),
             Phase::Reopen => "semantic recovered session selected".to_string(),
         });
@@ -217,6 +223,20 @@ fn observation(runner: &ConsultationRunner, catalog_ready: bool) -> Observation 
         readings: detail.map_or(0, |detail| detail.readings.len()),
         reflections: detail.map_or(0, |detail| detail.reflections.len()),
         ids,
+        cards: detail.map_or_else(Vec::new, |detail| {
+            detail
+                .session
+                .placements
+                .iter()
+                .zip(&detail.readings)
+                .map(|(placement, reading)| scenario::ReadingPreview {
+                    position: placement.position.clone(),
+                    title: reading.title.clone(),
+                    prompt: reading.interpretation.clone(),
+                    mode: reading.receipt.mode,
+                })
+                .collect()
+        }),
     }
 }
 

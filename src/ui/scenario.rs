@@ -7,6 +7,7 @@
 //! deliberately explicit: `first` authors a consultation and reflection;
 //! `reopen` selects the same durable session from a fresh process. Captures are
 //! composed from the presented Genet scene, not from an occluded desktop.
+//! `CLEROMANCY_SCENARIO_KEEP_OPEN=1` leaves the finished trial interactive.
 
 use std::path::{Path, PathBuf};
 
@@ -51,7 +52,7 @@ pub(crate) fn load() -> Option<Run> {
     let phase = match std::env::var("CLEROMANCY_SCENARIO_PHASE") {
         Ok(value) => {
             Phase::parse(&value).unwrap_or_else(|error| panic!("load Cleromancy scenario: {error}"))
-        }
+        },
         Err(_) => panic!("load Cleromancy scenario: CLEROMANCY_SCENARIO_PHASE is required"),
     };
     let dir = std::env::var_os("CLEROMANCY_CAPTURE_DIR")
@@ -84,6 +85,15 @@ pub(crate) struct Observation {
     pub(crate) readings: usize,
     pub(crate) reflections: usize,
     pub(crate) ids: Option<ReportedIds>,
+    pub(crate) cards: Vec<ReadingPreview>,
+}
+
+#[derive(Clone, Debug, Serialize)]
+pub(crate) struct ReadingPreview {
+    pub(crate) position: String,
+    pub(crate) title: String,
+    pub(crate) prompt: String,
+    pub(crate) mode: crate::SelectionMode,
 }
 
 #[derive(Serialize)]
@@ -131,6 +141,10 @@ pub(crate) fn write_done(
     }
     std::fs::write(dir.join("scenario.done"), done)
         .unwrap_or_else(|error| panic!("write scenario.done in {dir:?}: {error}"));
+
+    let cards = serde_json::to_vec_pretty(&observation.cards).expect("serialize cast preview");
+    std::fs::write(dir.join("cards.json"), cards)
+        .unwrap_or_else(|error| panic!("write cards.json in {dir:?}: {error}"));
 
     let receipt = Receipt {
         schema: "cleromancy.headed-scenario/v1",

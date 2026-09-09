@@ -48,7 +48,57 @@ fn retained_consultation_dispatches_authored_layout_and_chart_input_actions() {
     host.insert_astrology_chart(&chart, 1_000).unwrap();
     let facts_digest = chart.facts(1_000).unwrap().digest();
     let catalog = Consultation::new(host).catalog().unwrap();
+    let mut h = harness(catalog.clone());
+
+    // The ordinary path casts without silently attaching the first stored chart.
+    type_into(&mut h, "Context label", "A first reading");
+    type_into(&mut h, "Question", "What deserves attention?");
+    match one(click_key(&mut h, "read")) {
+        ConsultationAction::Read {
+            mode,
+            astrology_facts_digest,
+            ..
+        } => {
+            assert_eq!(mode, cleromancy::SelectionMode::Cast);
+            assert_eq!(astrology_facts_digest, None);
+        },
+        other => panic!("expected default cast, found {other:?}"),
+    }
+    choose(&mut h, "Derived");
+    type_into(&mut h, "Derived seed", "a public seed");
+    type_into(&mut h, "Derived domain", "reading-trial/v1");
+    choose(&mut h, "Cast");
+    choose(&mut h, "Derived");
+    match one(click_key(&mut h, "read")) {
+        ConsultationAction::Read {
+            mode,
+            derivation: Some(derivation),
+            ..
+        } => {
+            assert_eq!(mode, cleromancy::SelectionMode::Derived);
+            assert_eq!(derivation.seed, "a public seed");
+            assert_eq!(derivation.domain, "reading-trial/v1");
+        },
+        other => panic!("expected retained derived inputs, found {other:?}"),
+    }
+    choose(&mut h, "Cast");
+    choose(&mut h, "Authored layout");
+    assert!(click_key(&mut h, "read").is_none());
+    assert!(
+        h.state()
+            .error()
+            .is_some_and(|error| error.contains("Choose an authored layout"))
+    );
+
     let mut h = harness(catalog);
+    assert_eq!(
+        support::attr_at_id(&h, "cleromancy-layout-editor-trigger", "aria-expanded").as_deref(),
+        Some("false")
+    );
+    assert!(h.click_on(
+        &genet_probe::Selector::role("button").with_attr("id", "cleromancy-layout-editor-trigger")
+    ));
+    assert!(support::take_action(&mut h).is_none());
 
     for (label, value) in [
         ("Layout label", "Compass"),
@@ -65,7 +115,7 @@ fn retained_consultation_dispatches_authored_layout_and_chart_input_actions() {
             assert_eq!(draft.label, "Compass");
             assert_eq!(draft.positions, "here | Here\nthere | There");
             assert_eq!(draft.relations, "there | supports | here | supports here");
-        }
+        },
         other => panic!("expected authored layout action, found {other:?}"),
     }
 
@@ -84,7 +134,7 @@ fn retained_consultation_dispatches_authored_layout_and_chart_input_actions() {
             assert_eq!(draft.algorithm, "source-import/v1");
             assert_eq!(draft.positions, "Sun | 135000 | 0 | false");
             assert_eq!(draft.orb_millidegrees, "1000");
-        }
+        },
         other => panic!("expected chart input action, found {other:?}"),
     }
 
@@ -110,7 +160,7 @@ fn retained_consultation_dispatches_authored_layout_and_chart_input_actions() {
                 astrology_facts_digest.as_deref(),
                 Some(facts_digest.as_str())
             );
-        }
+        },
         other => panic!("expected authored read action, found {other:?}"),
     }
 }

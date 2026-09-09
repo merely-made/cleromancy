@@ -205,7 +205,11 @@ fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
         invalid
             .state()
             .error()
-            .is_some_and(|error| error.contains("context label and question"))
+            .is_some_and(|error| error.contains("context label and question")),
+        "read action error {:?}; button {:?}; form {:?}",
+        invalid.state().error(),
+        support::rect_at_key(&invalid, "read"),
+        support::rect_at_key(&invalid, "region:consultation")
     );
     assert!(has_attr(&invalid, "role", "alert"));
 
@@ -255,7 +259,7 @@ fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
     let context_digest = match context {
         ConsultationContext::New(draft) => {
             pollster::block_on(consultation.save_context_at(draft, 2)).unwrap()
-        }
+        },
         ConsultationContext::Existing(_) => panic!("the first reading must author its context"),
     };
     let mut entropy = FixedEntropy::new(7_u64..64);
@@ -281,6 +285,37 @@ fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
     }
     assert_eq!(text_at_key(&h, "result-title"), expected_title);
     assert_eq!(text_at_key(&h, "result-prompt"), expected_prompt);
+    assert_eq!(
+        text_at_key(&h, "reading-question"),
+        "What deserves attention now?"
+    );
+    h.layout_at(1160.0, 760.0);
+    let (form_x, _, form_width, _) = support::rect_at_key(&h, "region:consultation");
+    let (reading_x, reading_y, reading_width, _) = support::rect_at_key(&h, "region:reading");
+    assert!(
+        reading_x >= form_x + form_width,
+        "reading must sit beside the form"
+    );
+    assert!(
+        reading_x + reading_width <= 1160.0,
+        "reading must fit the window: {reading_x} + {reading_width}"
+    );
+    assert!(
+        reading_y < 380.0,
+        "reading must begin in the first viewport"
+    );
+    for key in [
+        "result-title",
+        "result-title:tension",
+        "result-title:next_step",
+    ] {
+        let (x, y, width, height) = support::rect_at_key(&h, key);
+        assert!(
+            x >= 0.0 && x + width <= 1160.0 && y + height <= 760.0,
+            "card title must be visible: {key}: {x}, {y}, {width}, {height}"
+        );
+    }
+    h.layout_at(1600.0, 4000.0);
 
     assert_eq!(
         attr_at_id(&h, "cleromancy-workings-trigger", "aria-expanded").as_deref(),
@@ -329,7 +364,7 @@ fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
         } => {
             assert_eq!(id, session_id);
             body
-        }
+        },
         other => panic!("expected reflection action, found {other:?}"),
     };
     let reflected = pollster::block_on(consultation.reflect_at_with_entropy(

@@ -14,57 +14,8 @@ use layout_dom_api::{LayoutDom, LocalName, Namespace, NodeKind};
 pub type Logic = fn(&ConsultationUi) -> ConsultationView;
 pub type App = Harness<ConsultationUi, Logic, ConsultationView>;
 
-/// The production sheet is intentionally repeated here: the headless harness
-/// must hit the same retained boxes that the headed host paints.
-pub const SHEET: &str = r#"
-* { box-sizing: border-box; }
-.cleromancy-consultation {
-  min-height: 100vh;
-  padding: 24px;
-  color: #f1ede4;
-  background: #181714;
-  font-family: sans-serif;
-}
-.app-header { border-bottom: 1px solid #625d50; padding-bottom: 12px; }
-.cleromancy-regions {
-  display: grid;
-  /* Surfaces carry one region or three, so the track count follows the
-     content rather than assuming the old three-column shell. */
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 16px;
-}
-.selection-bar { display: flex; gap: 8px; margin: 12px 0; }
-.selection-item {
-  display: block; padding: 8px 12px; border: 1px solid #625d50; border-radius: 6px;
-  color: #d7c9a9; cursor: pointer;
-}
-.selection-item.selected { color: #f7f2e7; background: #6e522a; }
-.selection-item[aria-disabled='true'] { color: #8b8474; cursor: default; }
-.selection-disabled-reason { display: block; font-size: 12px; }
-.eyebrow { color: #d7b46a; font-size: 13px; text-transform: uppercase; }
-h1, h2, h3, p { margin-top: 0; }
-section[role='region'] {
-  display: block;
-  padding: 18px;
-  border: 1px solid #625d50;
-  border-radius: 10px;
-  background: #24221d;
-}
-.control { display: block; margin: 0 0 12px; }
-.control-label { display: block; margin-bottom: 5px; color: #d7c9a9; font-size: 13px; }
-input, textarea, select, button {
-  width: 100%; padding: 9px 10px; border: 1px solid #7b725f; border-radius: 5px;
-  color: #f7f2e7; background: #302d26; font: inherit;
-}
-textarea { min-height: 90px; resize: vertical; }
-button { margin-top: 4px; cursor: pointer; background: #6e522a; }
-button:focus, input:focus, textarea:focus, select:focus { outline: 2px solid #d7b46a; outline-offset: 2px; }
-[role='alert'] { padding: 10px; color: #ffd8d2; background: #542d29; }
-[role='status'] { color: #d7c9a9; }
-.selection-explanation, .empty-reading { color: #c4bcad; font-size: 14px; }
-.chart-ecliptic-labels { columns: 2; padding-left: 20px; color: #d7c9a9; font-size: 13px; }
-.chart-ecliptic-explanation { color: #c4bcad; font-size: 14px; }
-"#;
+/// Exercise the same stylesheet as the native window.
+pub const SHEET: &str = include_str!("../../src/ui/consultation.css");
 
 pub fn harness(catalog: cleromancy::ConsultationCatalog) -> App {
     let hooks: HostHooks<ConsultationUi, Logic, ConsultationView> = HostHooks {
@@ -106,6 +57,19 @@ pub fn select(harness: &mut App, label: &str, option: &str) {
         harness.click_on(&Selector::role("option").containing(option)),
         "missing option {option} for {label}"
     );
+    harness.with_dom(|dom| {
+        let selected = find_attr(dom, dom.document(), "aria-label", label).unwrap();
+        assert_eq!(
+            attr(dom, selected, "aria-expanded"),
+            Some("false"),
+            "{label} did not close after selecting {option}"
+        );
+        assert!(
+            text_content(dom, selected).contains(option),
+            "{label} did not select {option}: {}",
+            text_content(dom, selected)
+        );
+    });
 }
 
 /// Activate a surface tab by its visible label, and prove it took.
@@ -234,6 +198,15 @@ pub fn attr_at_id(harness: &App, id: &str, name: &str) -> Option<String> {
         find_attr(dom, dom.document(), "id", id)
             .and_then(|node| attr(dom, node, name).map(str::to_string))
     })
+}
+
+pub fn rect_at_key(harness: &App, key: &str) -> (f32, f32, f32, f32) {
+    let node = harness
+        .with_dom(|dom| find_attr(dom, dom.document(), "data-key", key))
+        .unwrap_or_else(|| panic!("missing {key}"));
+    harness
+        .painted_rect(node)
+        .unwrap_or_else(|| panic!("unpainted {key}"))
 }
 
 pub fn attr_at_role(harness: &App, role: &str, name: &str) -> Option<String> {

@@ -569,3 +569,32 @@ cargo test --test journal_depth --offline
   `analytic-ephemeris` builds; adjacent authoring passes 1/1 and headed surface
   coverage passes 2/2. Independent review found and closed Cambium's
   focused-to-disabled reconciliation gap before adoption landed.
+
+- **2026-09-09, reading trial:** Today now starts with a fresh Cast; Read
+  precedes optional metadata, Derived inputs appear only for that mode, and
+  authored-layout controls use a retained disclosure. The result repeats the
+  saved question and gives each placement a distinct card panel. Production
+  and DOM acceptance share `src/ui/consultation.css`. Corrected the chart
+  association picker so its explicit none option remains absent even with
+  stored charts, and an unselected authored layout cannot silently use the
+  first saved template. Chart calculation now precedes manual-import source
+  fields. The headed close/reopen scenario now uses a three-card OS-random
+  Cast and exports its titles and prompts beside the pixel capture.
+  Normal-window capture exposed viewport-wide percentage-sized controls;
+  the reading now uses wrapping columns, contained controls, and raised
+  dropdown lists. A 1160-by-760 painted-bounds gate checks that all three
+  card titles fit beside the form, and picker tests require an actual closed,
+  selected value. All nine focused tests pass (3 chart, 1 authoring,
+  3 persistence, 2 headed DOM). The ordinary root binary builds with
+  `analytic-ephemeris,sky-timeline`; native capture shows the complete
+  three-card prompts, and the original cast/reflection reopens with identical
+  ids and byte-equal card previews after the layout changes.
+
+  Receipts are local at
+  `C:/Users/mark_/Code/artifacts/cleromancy-reading-20260909-01a08758`.
+  Focused tests use its generated acceptance manifest over the live library
+  and test sources, root dependency declarations/lockfile, and the existing
+  sibling redirects. Automatic historical receipt binaries are excluded from
+  that package; the interrupted root test invocations are not green receipts.
+  The native executable is built from the ordinary repository manifest.
+  This does not close the historical exact-pin or full aggregate H4 gates.

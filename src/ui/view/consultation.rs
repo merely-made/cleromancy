@@ -5,7 +5,8 @@
 //! authoring, and chart-fact association.
 
 use cambium::{
-    RadioGroup, SelectState, TextInput, button, el, map_action, map_state, radio_group, select,
+    RadioGroup, SelectState, TextInput, button, disclosure, el, map_action, map_state, radio_group,
+    select,
 };
 
 use super::{ConsultationView, labelled_control, labelled_text, never_select_action, short_digest};
@@ -110,6 +111,52 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             &ui.question,
             question_state,
         ),
+        labelled_control("Stored field", "cleromancy-field", Box::new(field_select)),
+        labelled_control("Selection mode", "cleromancy-mode", Box::new(mode)),
+        labelled_control("Reading shape", "cleromancy-layout", Box::new(layout)),
+    ];
+    if ui.layout.selected == 2 {
+        children.push(labelled_control(
+            "Authored layout",
+            "cleromancy-template-select",
+            Box::new(template_select),
+        ));
+    }
+    if ui.mode.selected == 2 {
+        children.extend([
+            labelled_text(
+                "Derived seed",
+                "cleromancy-derived-seed",
+                false,
+                &ui.derived_seed,
+                derived_seed_state,
+            ),
+            labelled_text(
+                "Derived domain",
+                "cleromancy-derived-domain",
+                false,
+                &ui.derived_domain,
+                derived_domain_state,
+            ),
+        ]);
+    }
+    children.push(Box::new(
+        button("Read", |ui: &mut ConsultationUi, _| {
+            let action = ui.request_read();
+            ui.record_action(action);
+        })
+        .attr("data-key", "read")
+        .attr("aria-label", "Read this consultation")
+        .attr("class", "read-button"),
+    ));
+    children.push(Box::new(
+        el::<_, ConsultationUi, ()>(
+            "p",
+            "Readings are saved automatically. Add a reflection after you read.",
+        )
+        .attr("class", "selection-explanation"),
+    ));
+    children.extend([
         labelled_text(
             "Tags",
             "cleromancy-tags",
@@ -131,28 +178,6 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             )
             .attr("class", "context-explanation"),
         ),
-        labelled_control("Stored field", "cleromancy-field", Box::new(field_select)),
-        labelled_control("Selection mode", "cleromancy-mode", Box::new(mode)),
-        labelled_text(
-            "Derived seed",
-            "cleromancy-derived-seed",
-            false,
-            &ui.derived_seed,
-            derived_seed_state,
-        ),
-        labelled_text(
-            "Derived domain",
-            "cleromancy-derived-domain",
-            false,
-            &ui.derived_domain,
-            derived_domain_state,
-        ),
-        labelled_control("Reading shape", "cleromancy-layout", Box::new(layout)),
-        labelled_control(
-            "Authored layout",
-            "cleromancy-template-select",
-            Box::new(template_select),
-        ),
         labelled_control(
             "Astrology facts to associate",
             "cleromancy-astrology-facts",
@@ -165,10 +190,8 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             )
             .attr("class", "selection-explanation"),
         ),
-    ];
-    children.extend([
-        Box::new(el::<_, ConsultationUi, ()>("h3", "Author a layout"))
-            as ConsultationView,
+    ]);
+    let authoring: Vec<ConsultationView> = vec![
         labelled_text(
             "Layout label",
             "cleromancy-template-label",
@@ -205,15 +228,12 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             .attr("data-key", "save-layout")
             .attr("aria-label", "Save authored layout"),
         ) as ConsultationView,
-        Box::new(
-            button("Read", |ui: &mut ConsultationUi, _| {
-                let action = ui.request_read();
-                ui.record_action(action);
-            })
-                .attr("data-key", "read")
-                .attr("aria-label", "Read this consultation"),
-        ) as ConsultationView,
-    ]);
+    ];
+    children.push(Box::new(disclosure(
+        &ui.layout_editor,
+        authoring,
+        |ui: &mut ConsultationUi| ui.layout_editor.toggle(),
+    )));
 
     Box::new(
         el::<_, ConsultationUi, ()>("section", children)

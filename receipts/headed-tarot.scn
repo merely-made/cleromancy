@@ -7,9 +7,9 @@ assert event semantic
 assert event durable
 advance
 wait
-assert text Keep the useful constraint revisable
+assert text Trial note: return after using the app
 assert snap sessions >= 1
-assert snap readings >= 1
+assert snap readings >= 3
 assert snap reflections >= 1
 capture detail
 settle 2

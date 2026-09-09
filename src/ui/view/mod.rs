@@ -78,8 +78,10 @@ pub fn consultation_view(ui: &ConsultationUi) -> ConsultationView {
     let regions = match screen {
         ConsultationScreen::Today => vec![
             consultation_region(ui),
-            reading_region(ui),
-            trail_region(ui),
+            Box::new(
+                el::<_, ConsultationUi, ()>("div", vec![reading_region(ui), trail_region(ui)])
+                    .attr("class", "reading-column"),
+            ) as ConsultationView,
         ],
         ConsultationScreen::Journal => vec![journal_region(ui)],
         ConsultationScreen::Sky => {
@@ -109,7 +111,14 @@ pub fn consultation_view(ui: &ConsultationUi) -> ConsultationView {
                 // tab through `aria-labelledby`.
                 Box::new(
                     el::<_, ConsultationUi, ()>("main", regions)
-                        .attr("class", "cleromancy-regions")
+                        .attr(
+                            "class",
+                            if screen == ConsultationScreen::Today {
+                                "cleromancy-regions consultation-columns"
+                            } else {
+                                "cleromancy-regions"
+                            },
+                        )
                         .attr("role", "tabpanel")
                         .attr("id", screen.panel_id())
                         .attr("aria-labelledby", screen.tab_dom_id()),

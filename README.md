@@ -6,7 +6,7 @@ deterministic, securely cast, or derived from a public seed, and every result
 keeps a replayable receipt that separates context, qualification, selection,
 and interpretation.
 
-## Status (2026-09-06)
+## Status (2026-09-09)
 
 - The A0-A25 proof ledger is complete (2026-08-02 through 2026-08-07):
   single readings, sealed receipts with replay, field provenance, a 22-card
@@ -29,12 +29,12 @@ and interpretation.
   seed and domain (2026-08-08 contract).
 - Authored spread templates (1-12 positions, reusable, content-addressed)
   with selected sync and explicit astrology chart input are landed.
-- The optional `ephemeris` feature now calculates source-qualified Sun, Moon,
-  and planetary positions through the MPL-2.0 `merely-made/anise` fork. The
-  native chart surface explicitly downloads and checksum-verifies NASA/JPL
-  DE440s, then saves calculated facts into the normal consultation catalog.
-  Its first three complete charts agree with NASA/JPL Horizons within the
-  stored millidegree precision.
+- The `analytic-ephemeris` feature calculates Sun, Moon, and planetary
+  positions locally through Turquet, saving the engine identity with each
+  chart. The chart calculator needs no downloaded kernel.
+- Today starts in Cast mode. Read sits above optional context metadata;
+  derived seed controls appear when selected, and layout authoring is folded
+  away. Results show the saved question and a separate panel for each card.
 - The optional `sky-timeline` feature is the first daily astronomy consumer.
   It normalizes Turquet's New Moon and caller-threshold airless solar
   twilight facts for a UTC civil day and WGS84 observer. Numerical facts keep
@@ -53,7 +53,7 @@ repos (git dependencies).
 
 ```powershell
 cargo run --bin cleromancy         # the local consultation window
-cargo run --features ephemeris --bin cleromancy # verified install and chart calculation
+cargo run --features analytic-ephemeris,sky-timeline --bin cleromancy # chart calculator and stored Sky facts
 cargo test --features sky-timeline --test sky_timeline # daily timeline consumer
 cargo test                         # the proof wall
 
