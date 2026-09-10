@@ -24,40 +24,37 @@ sky-timeline = ["dep:turquet-timeline"]
 personal-sync = ["graphshell/personal-sync", "dep:personae", "dep:uuid"]
 graphshell-admission = ["graphshell/native"]
 
-# Mere is referenced by branch and Genet by revision, and the mixture is
-# deliberate. Cargo keys a git source by URL **plus reference**, so two
-# references to one repository land two copies of everything it carries: while
-# this crate pinned mere by rev and Isometry tracked `main`, a graph holding
-# both resolved two Cambiums, two `mere`s and a dozen more, and only a local
-# `[patch]` table hid it. Isometry is the consumer that has to agree, and it
-# tracks mere on `main`, so this does too (Mark, 2026-09-04). Genet stays
-# pinned by revision for the same one-reference reason, at the revision mere's
-# own Cambium consumes.
+# The platform family is pinned to Mere `fb7e136b13298b1e9c56ece8a282fb1b1fac4d8c`
+# and the exact Genet commit `3a7b50230d447f6fa7ed6921cba019f78347d932` that
+# it consumes. Cargo keys a git source by URL plus reference, so a branch
+# reference beside these commits would resolve a second source family and
+# split shared types in consumers such as Isometry. Update these pins together
+# when the platform integration moves.
 [dependencies]
 blake3 = "1"
-cambium = { git = "https://github.com/merely-made/mere.git", branch = "main", version = "0.3.3" }
-cambium-genet-winit-host = { git = "https://github.com/merely-made/mere.git", branch = "main", version = "0.1.0" }
-chartulary = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+cambium = { git = "https://github.com/merely-made/mere.git", rev = "fb7e136b13298b1e9c56ece8a282fb1b1fac4d8c", version = "0.3.3" }
+cambium-genet-winit-host = { git = "https://github.com/merely-made/mere.git", rev = "fb7e136b13298b1e9c56ece8a282fb1b1fac4d8c", version = "0.1.0" }
+chartulary = { git = "https://github.com/merely-made/mere.git", rev = "fb7e136b13298b1e9c56ece8a282fb1b1fac4d8c" }
 dirs = "6"
-graphshell = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false }
-graphshell-client = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-graphshell-endpoint = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-graphshell-local = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-chirograph = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-graphshell-stdio = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-genet-probe = { git = "https://github.com/merely-made/genet.git", rev = "9e8f9dc2f3ddc0af1658580bb51964462a03923f" }
+graphshell = { git = "https://github.com/merely-made/mere.git", rev = "fb7e136b13298b1e9c56ece8a282fb1b1fac4d8c", default-features = false }
+graphshell-client = { git = "https://github.com/merely-made/mere.git", rev = "fb7e136b13298b1e9c56ece8a282fb1b1fac4d8c" }
+graphshell-endpoint = { git = "https://github.com/merely-made/mere.git", rev = "fb7e136b13298b1e9c56ece8a282fb1b1fac4d8c" }
+graphshell-local = { git = "https://github.com/merely-made/mere.git", rev = "fb7e136b13298b1e9c56ece8a282fb1b1fac4d8c" }
+chirograph = { git = "https://github.com/merely-made/mere.git", rev = "fb7e136b13298b1e9c56ece8a282fb1b1fac4d8c" }
+graphshell-stdio = { git = "https://github.com/merely-made/mere.git", rev = "fb7e136b13298b1e9c56ece8a282fb1b1fac4d8c" }
+genet-probe = { git = "https://github.com/merely-made/genet.git", rev = "3a7b50230d447f6fa7ed6921cba019f78347d932" }
 image = { version = "0.25", default-features = false, features = ["png"] }
-layout-dom-api = { git = "https://github.com/merely-made/genet.git", rev = "9e8f9dc2f3ddc0af1658580bb51964462a03923f", version = "=0.1.0" }
-mere = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["graph", "canvas"] }
-muniment = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["redb"] }
-personae = { git = "https://github.com/merely-made/mere.git", branch = "main", optional = true }
+layout-dom-api = { git = "https://github.com/merely-made/genet.git", rev = "3a7b50230d447f6fa7ed6921cba019f78347d932", version = "=0.1.0" }
+mere = { git = "https://github.com/merely-made/mere.git", rev = "fb7e136b13298b1e9c56ece8a282fb1b1fac4d8c", default-features = false, features = ["graph", "canvas"] }
+muniment = { git = "https://github.com/merely-made/mere.git", rev = "fb7e136b13298b1e9c56ece8a282fb1b1fac4d8c", features = ["redb"] }
+personae = { git = "https://github.com/merely-made/mere.git", rev = "fb7e136b13298b1e9c56ece8a282fb1b1fac4d8c", optional = true }
 pollster = "0.4"
 rand_core = { version = "0.6", features = ["getrandom"] }
-sceno = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-scenotime = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+sceno = { git = "https://github.com/merely-made/mere.git", rev = "fb7e136b13298b1e9c56ece8a282fb1b1fac4d8c" }
+scenotime = { git = "https://github.com/merely-made/mere.git", rev = "fb7e136b13298b1e9c56ece8a282fb1b1fac4d8c" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-servitor = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+servitor = { git = "https://github.com/merely-made/mere.git", rev = "fb7e136b13298b1e9c56ece8a282fb1b1fac4d8c" }
 thiserror = "2"
 uuid = { version = "1", features = ["serde"], optional = true }
 turquet = { version = "=0.1.0", optional = true }
@@ -70,7 +67,7 @@ required-features = ["personal-sync"]
 
 [dev-dependencies]
 async-trait = "0.1"
-genet-scripted-dom = { git = "https://github.com/merely-made/genet.git", rev = "9e8f9dc2f3ddc0af1658580bb51964462a03923f", version = "=0.1.0" }
+genet-scripted-dom = { git = "https://github.com/merely-made/genet.git", rev = "3a7b50230d447f6fa7ed6921cba019f78347d932", version = "=0.1.0" }
 tempfile = "3"
 
 # Vello on wgpu 30. Upstream vello 0.10 still requires wgpu 29, so netrender
@@ -95,8 +92,8 @@ vello = { git = "https://github.com/mark-ik/vello.git", branch = "mark-ik/wgpu-3
 # `StyleProperty::TabSize`, which published parley 0.10.0 does not have at the
 # same version number, so the fork's own source fails to compile against the
 # registry crate.
-taffy = { package = "genet-taffy", version = "=0.14.0", git = "https://github.com/merely-made/genet.git", rev = "9e8f9dc2f3ddc0af1658580bb51964462a03923f" }
-parley = { git = "https://github.com/merely-made/genet.git", rev = "9e8f9dc2f3ddc0af1658580bb51964462a03923f" }
+taffy = { package = "genet-taffy", version = "=0.14.0", git = "https://github.com/merely-made/genet.git", rev = "3a7b50230d447f6fa7ed6921cba019f78347d932" }
+parley = { git = "https://github.com/merely-made/genet.git", rev = "3a7b50230d447f6fa7ed6921cba019f78347d932" }
 
 # `ipc-channel` and `gpu-allocator` — genet vendors both to keep the `windows`
 # crate on one version in any build that compiles the dx12 backend, and
@@ -107,5 +104,5 @@ parley = { git = "https://github.com/merely-made/genet.git", rev = "9e8f9dc2f3dd
 # fork drops that dependency. `gpu-allocator` already resolved `windows 0.62.2`
 # on its own, so its entry buys source identity with the stack rather than a
 # fix, and keeps the pair from drifting apart on a future resolve.
-ipc-channel = { git = "https://github.com/merely-made/genet.git", rev = "9e8f9dc2f3ddc0af1658580bb51964462a03923f" }
-gpu-allocator = { git = "https://github.com/merely-made/genet.git", rev = "9e8f9dc2f3ddc0af1658580bb51964462a03923f" }
+ipc-channel = { git = "https://github.com/merely-made/genet.git", rev = "3a7b50230d447f6fa7ed6921cba019f78347d932" }
+gpu-allocator = { git = "https://github.com/merely-made/genet.git", rev = "3a7b50230d447f6fa7ed6921cba019f78347d932" }

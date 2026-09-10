@@ -24,6 +24,9 @@ the current public overview until it is authored.
 - Verify the headed reading at its ordinary window size. Tall DOM harnesses
   and saved-data checks do not establish that controls fit or that card
   results are visible; acceptance includes painted bounds and native capture.
+- Keep the Mere and Genet dependency family on one immutable integration pin
+  when adopting a platform consumer; branch references can create a second
+  source identity and split shared types in downstream products.
 
 ## Product, graph, and reading proof ledger
 
