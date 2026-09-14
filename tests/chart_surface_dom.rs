@@ -14,7 +14,7 @@ use cleromancy::{
     AstrologyChart, AstrologyMoment, AstrologyPosition, CleromancyHost, Consultation, ContextDraft,
     ReadingError, SelectionMode,
 };
-use genet_probe::Selector;
+use taproot::Selector;
 use muniment::MemoryBackend;
 #[cfg(feature = "analytic-ephemeris")]
 use support::one;

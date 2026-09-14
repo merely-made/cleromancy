@@ -38,7 +38,7 @@ pub(super) fn after_frame(ctx: &mut ConsultationCtx<'_>, state: &Rc<RefCell<Nati
         };
         run.scenario.tick(&mut driver)
     };
-    if progress == genet_probe::Progress::Done && state.borrow().pending_capture.is_none() {
+    if progress == taproot::Progress::Done && state.borrow().pending_capture.is_none() {
         let state = state.borrow();
         let outcome = run.scenario.finish();
         scenario::write_done(
@@ -67,12 +67,12 @@ struct ScenarioDriver<'a, 'ctx> {
     state: &'a mut NativeState,
 }
 
-impl genet_probe::Automatable for ScenarioDriver<'_, '_> {
-    fn with_surfaces<R>(&self, f: impl FnOnce(&[genet_probe::ProbeSurface<'_>]) -> R) -> R {
+impl taproot::Automatable for ScenarioDriver<'_, '_> {
+    fn with_surfaces<R>(&self, f: impl FnOnce(&[taproot::ProbeSurface<'_>]) -> R) -> R {
         let dom = self.ctx.runner.dom();
         let dom = dom.borrow();
         let (width, height) = self.ctx.logical_size;
-        f(&[genet_probe::ProbeSurface {
+        f(&[taproot::ProbeSurface {
             name: "cleromancy",
             dom: &dom,
             rect: [0.0, 0.0, width, height],
@@ -80,9 +80,9 @@ impl genet_probe::Automatable for ScenarioDriver<'_, '_> {
         }])
     }
 
-    fn snapshot(&self) -> genet_probe::ProbeSnapshot {
+    fn snapshot(&self) -> taproot::ProbeSnapshot {
         let observed = observation(self.ctx.runner, self.state.catalog_ready);
-        let mut snapshot = genet_probe::ProbeSnapshot::default()
+        let mut snapshot = taproot::ProbeSnapshot::default()
             .with_field("status", observed.status)
             .with_field("catalog-ready", observed.catalog_ready.to_string())
             .with_field("sessions", observed.sessions.to_string())
@@ -122,7 +122,7 @@ impl genet_probe::Automatable for ScenarioDriver<'_, '_> {
     }
 }
 
-impl genet_probe::Driveable for ScenarioDriver<'_, '_> {
+impl taproot::Driveable for ScenarioDriver<'_, '_> {
     fn capture(&mut self, name: &str) -> bool {
         if name.is_empty() || name.contains(['/', '\\']) {
             return false;

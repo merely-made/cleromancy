@@ -513,7 +513,9 @@ fn semantic_kind(kind: SpreadRelationKind) -> SemanticSubKind {
 
 fn relation_kind_label(kind: RelationKind) -> &'static str {
     match kind {
-        RelationKind::Semantic(_) => "semantic",
+        // `OpenPredicate` joined the taxonomy in mere `51329461` and projects
+        // to `EdgeFamily::Semantic`, so it carries the semantic label.
+        RelationKind::Semantic(_) | RelationKind::OpenPredicate => "semantic",
         RelationKind::Traversal => "traversal",
         RelationKind::Containment(_) => "containment",
         RelationKind::Arrangement(_) => "arrangement",

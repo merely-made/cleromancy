@@ -3,7 +3,7 @@
 
 //! Headed, semantic consultation receipts.
 //!
-//! `CLEROMANCY_SCENARIO` names a genet-probe scenario. Its companion phase is
+//! `CLEROMANCY_SCENARIO` names a taproot scenario. Its companion phase is
 //! deliberately explicit: `first` authors a consultation and reflection;
 //! `reopen` selects the same durable session from a fresh process. Captures are
 //! composed from the presented Genet scene, not from an occluded desktop.
@@ -13,7 +13,7 @@ use std::path::{Path, PathBuf};
 
 use serde::Serialize;
 
-pub use genet_probe::{Outcome, Scenario};
+pub use taproot::{Outcome, Scenario};
 
 /// Which half of the close/reopen receipt a process is executing.
 #[derive(Clone, Copy, Debug, Serialize)]

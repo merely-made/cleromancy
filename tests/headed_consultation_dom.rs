@@ -350,7 +350,7 @@ fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
         Some("false")
     );
     assert!(h.click_on(
-        &genet_probe::Selector::role("button").with_attr("id", "cleromancy-workings-trigger",)
+        &taproot::Selector::role("button").with_attr("id", "cleromancy-workings-trigger",)
     ));
     assert_eq!(
         attr_at_id(&h, "cleromancy-workings-trigger", "aria-expanded").as_deref(),

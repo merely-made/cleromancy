@@ -18,7 +18,7 @@ use cleromancy::{CleromancyHost, Consultation};
 #[cfg(feature = "sky-timeline")]
 use cleromancy::{HostError, SKY_DAY_FACTS_FACET};
 #[cfg(feature = "sky-timeline")]
-use genet_probe::Selector;
+use taproot::Selector;
 #[cfg(feature = "sky-timeline")]
 use muniment::Backend;
 use muniment::MemoryBackend;

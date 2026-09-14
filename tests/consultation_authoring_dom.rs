@@ -96,7 +96,7 @@ fn retained_consultation_dispatches_authored_layout_and_chart_input_actions() {
         Some("false")
     );
     assert!(h.click_on(
-        &genet_probe::Selector::role("button").with_attr("id", "cleromancy-layout-editor-trigger")
+        &taproot::Selector::role("button").with_attr("id", "cleromancy-layout-editor-trigger")
     ));
     assert!(support::take_action(&mut h).is_none());
 
