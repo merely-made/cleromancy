@@ -50,6 +50,11 @@ pub fn run(data_root: &Path) -> Result<(), String> {
                 state: ConsultationUi::new(empty_catalog()),
                 logic: consultation_view as Logic,
                 sheet: SHEET.to_string(),
+                // `Init` grew these two in mere 1009f02d. Empty is the
+                // previous behaviour exactly: system faces only, and no
+                // host-supplied images behind the sheet's `url()`.
+                fonts: Vec::new(),
+                images: Vec::new(),
             }
         },
         hooks(state),

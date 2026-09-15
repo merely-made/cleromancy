@@ -27,6 +27,10 @@ pub fn harness(catalog: cleromancy::ConsultationCatalog) -> App {
             state: ConsultationUi::new(catalog),
             logic: consultation_view as Logic,
             sheet: SHEET.to_string(),
+            // Added in mere 1009f02d; empty keeps the harness on system
+            // faces and no host images, as before.
+            fonts: Vec::new(),
+            images: Vec::new(),
         },
         hooks,
     );

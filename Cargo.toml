@@ -24,37 +24,37 @@ sky-timeline = ["dep:turquet-timeline"]
 personal-sync = ["graphshell/personal-sync", "dep:personae", "dep:uuid"]
 graphshell-admission = ["graphshell/native"]
 
-# The platform family is pinned to Mere `3675a3528f750ec121cd603aca5e7fc2c73dc7fa`
-# and the exact Genet commit `7baa554c66f966295ee945d908738b635afe136a` that
+# The platform family is pinned to Mere `876320fddd4cecddab8080d5decf2b5d8568d47e`
+# and the exact Genet commit `5ae30cad0ea421085a52dc9f86ead53028f0592d` that
 # it consumes. Cargo keys a git source by URL plus reference, so a branch
 # reference beside these commits would resolve a second source family and
 # split shared types in consumers such as Isometry. Update these pins together
 # when the platform integration moves.
 [dependencies]
 blake3 = "1"
-cambium = { git = "https://github.com/merely-made/mere.git", rev = "3675a3528f750ec121cd603aca5e7fc2c73dc7fa", version = "0.3.3" }
-cambium-genet-winit-host = { git = "https://github.com/merely-made/mere.git", rev = "3675a3528f750ec121cd603aca5e7fc2c73dc7fa", version = "0.1.0" }
-chartulary = { git = "https://github.com/merely-made/mere.git", rev = "3675a3528f750ec121cd603aca5e7fc2c73dc7fa" }
+cambium = { git = "https://github.com/merely-made/mere.git", rev = "876320fddd4cecddab8080d5decf2b5d8568d47e", version = "0.3.3" }
+cambium-genet-winit-host = { git = "https://github.com/merely-made/mere.git", rev = "876320fddd4cecddab8080d5decf2b5d8568d47e", version = "0.1.0" }
+chartulary = { git = "https://github.com/merely-made/mere.git", rev = "876320fddd4cecddab8080d5decf2b5d8568d47e" }
 dirs = "6"
-graphshell = { git = "https://github.com/merely-made/mere.git", rev = "3675a3528f750ec121cd603aca5e7fc2c73dc7fa", default-features = false }
-graphshell-client = { git = "https://github.com/merely-made/mere.git", rev = "3675a3528f750ec121cd603aca5e7fc2c73dc7fa" }
-graphshell-endpoint = { git = "https://github.com/merely-made/mere.git", rev = "3675a3528f750ec121cd603aca5e7fc2c73dc7fa" }
-graphshell-local = { git = "https://github.com/merely-made/mere.git", rev = "3675a3528f750ec121cd603aca5e7fc2c73dc7fa" }
-chirograph = { git = "https://github.com/merely-made/mere.git", rev = "3675a3528f750ec121cd603aca5e7fc2c73dc7fa" }
-graphshell-stdio = { git = "https://github.com/merely-made/mere.git", rev = "3675a3528f750ec121cd603aca5e7fc2c73dc7fa" }
+graphshell = { git = "https://github.com/merely-made/mere.git", rev = "876320fddd4cecddab8080d5decf2b5d8568d47e", default-features = false }
+graphshell-client = { git = "https://github.com/merely-made/mere.git", rev = "876320fddd4cecddab8080d5decf2b5d8568d47e" }
+graphshell-endpoint = { git = "https://github.com/merely-made/mere.git", rev = "876320fddd4cecddab8080d5decf2b5d8568d47e" }
+graphshell-local = { git = "https://github.com/merely-made/mere.git", rev = "876320fddd4cecddab8080d5decf2b5d8568d47e" }
+chirograph = { git = "https://github.com/merely-made/mere.git", rev = "876320fddd4cecddab8080d5decf2b5d8568d47e" }
+graphshell-stdio = { git = "https://github.com/merely-made/mere.git", rev = "876320fddd4cecddab8080d5decf2b5d8568d47e" }
 image = { version = "0.25", default-features = false, features = ["png"] }
-layout-dom-api = { git = "https://github.com/merely-made/genet.git", rev = "7baa554c66f966295ee945d908738b635afe136a", version = "=0.1.0" }
-mere = { git = "https://github.com/merely-made/mere.git", rev = "3675a3528f750ec121cd603aca5e7fc2c73dc7fa", default-features = false, features = ["graph", "canvas"] }
-muniment = { git = "https://github.com/merely-made/mere.git", rev = "3675a3528f750ec121cd603aca5e7fc2c73dc7fa", features = ["redb"] }
-personae = { git = "https://github.com/merely-made/mere.git", rev = "3675a3528f750ec121cd603aca5e7fc2c73dc7fa", optional = true }
+layout-dom-api = { git = "https://github.com/merely-made/genet.git", rev = "5ae30cad0ea421085a52dc9f86ead53028f0592d", version = "=0.1.1" }
+mere = { git = "https://github.com/merely-made/mere.git", rev = "876320fddd4cecddab8080d5decf2b5d8568d47e", default-features = false, features = ["graph", "canvas"] }
+muniment = { git = "https://github.com/merely-made/mere.git", rev = "876320fddd4cecddab8080d5decf2b5d8568d47e", features = ["redb"] }
+personae = { git = "https://github.com/merely-made/mere.git", rev = "876320fddd4cecddab8080d5decf2b5d8568d47e", optional = true }
 pollster = "0.4"
 rand_core = { version = "0.6", features = ["getrandom"] }
-sceno = { git = "https://github.com/merely-made/mere.git", rev = "3675a3528f750ec121cd603aca5e7fc2c73dc7fa" }
-scenotime = { git = "https://github.com/merely-made/mere.git", rev = "3675a3528f750ec121cd603aca5e7fc2c73dc7fa" }
+sceno = { git = "https://github.com/merely-made/mere.git", rev = "876320fddd4cecddab8080d5decf2b5d8568d47e" }
+scenotime = { git = "https://github.com/merely-made/mere.git", rev = "876320fddd4cecddab8080d5decf2b5d8568d47e" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-servitor = { git = "https://github.com/merely-made/mere.git", rev = "3675a3528f750ec121cd603aca5e7fc2c73dc7fa" }
-taproot = { git = "https://github.com/merely-made/genet.git", rev = "7baa554c66f966295ee945d908738b635afe136a" }
+servitor = { git = "https://github.com/merely-made/mere.git", rev = "876320fddd4cecddab8080d5decf2b5d8568d47e" }
+taproot = { git = "https://github.com/merely-made/genet.git", rev = "5ae30cad0ea421085a52dc9f86ead53028f0592d" }
 thiserror = "2"
 uuid = { version = "1", features = ["serde"], optional = true }
 turquet = { version = "=0.1.0", optional = true }
@@ -67,7 +67,7 @@ required-features = ["personal-sync"]
 
 [dev-dependencies]
 async-trait = "0.1"
-genet-scripted-dom = { git = "https://github.com/merely-made/genet.git", rev = "7baa554c66f966295ee945d908738b635afe136a", version = "=0.1.0" }
+genet-scripted-dom = { git = "https://github.com/merely-made/genet.git", rev = "5ae30cad0ea421085a52dc9f86ead53028f0592d", version = "=0.1.1" }
 tempfile = "3"
 
 # Vello on wgpu 30. Upstream vello 0.10 still requires wgpu 29, so netrender
@@ -80,7 +80,7 @@ tempfile = "3"
 vello = { git = "https://github.com/mark-ik/vello.git", branch = "mark-ik/wgpu-30" }
 
 # Mere's p2panda family is the **owned fork**, not the published crates, as of
-# mere `3675a352`: the net crate is `mere-p2panda-net =0.7.4`, a fork release
+# mere `876320fd`: the net crate is `mere-p2panda-net =0.7.4`, a fork release
 # that was never published, so a registry edge cannot resolve it at all. This
 # app reaches the family transitively through `graphshell/personal-sync`, and
 # `[patch]` does not cross workspaces, so this root restates mere's own table
@@ -105,19 +105,21 @@ p2panda-sync = { git = "https://github.com/mark-ik/p2panda.git", tag = "mere-p2p
 
 # Genet's Livery/Buckram layout and text cone. Cambium's host reaches
 # `genet-livery`, and `[patch]` is not inherited across workspaces, so this
-# root must name Genet's own sources for both:
+# root must name Genet's own source for Taffy:
 #
 # `taffy` — genet renamed its vendored Taffy fork to `genet-taffy`, so the
 # patch names the package explicitly while keeping the `taffy` dependency
 # alias Cargo expects. Without it the identically named `genet-taffy 0.14.0`
 # comes from crates.io instead of the revision this workspace pins.
 #
-# `parley` — genet-livery uses `AlignmentOptions::last_line_alignment` and
-# `StyleProperty::TabSize`, which published parley 0.10.0 does not have at the
-# same version number, so the fork's own source fails to compile against the
-# registry crate.
-taffy = { package = "genet-taffy", version = "=0.14.0", git = "https://github.com/merely-made/genet.git", rev = "7baa554c66f966295ee945d908738b635afe136a" }
-parley = { git = "https://github.com/merely-made/genet.git", rev = "7baa554c66f966295ee945d908738b635afe136a" }
+# No `parley` or `fontique` row: as of genet `5ae30cad` those vendored forks
+# are published as the packages `genet-parley` and `genet-fontique` (lib names
+# still `parley` and `fontique`), so nothing in genet answers to the name
+# `parley` and a row keyed on it would match no package and fail the resolve
+# rather than sit inert. genet-livery reaches the fork by path inside the git
+# checkout, so no row is needed to keep one copy in the graph, and nothing in
+# this app names parley directly.
+taffy = { package = "genet-taffy", version = "=0.14.0", git = "https://github.com/merely-made/genet.git", rev = "5ae30cad0ea421085a52dc9f86ead53028f0592d" }
 
 # `ipc-channel` and `gpu-allocator` — genet vendors both to keep the `windows`
 # crate on one version in any build that compiles the dx12 backend, and
@@ -128,5 +130,5 @@ parley = { git = "https://github.com/merely-made/genet.git", rev = "7baa554c66f9
 # fork drops that dependency. `gpu-allocator` already resolved `windows 0.62.2`
 # on its own, so its entry buys source identity with the stack rather than a
 # fix, and keeps the pair from drifting apart on a future resolve.
-ipc-channel = { git = "https://github.com/merely-made/genet.git", rev = "7baa554c66f966295ee945d908738b635afe136a" }
-gpu-allocator = { git = "https://github.com/merely-made/genet.git", rev = "7baa554c66f966295ee945d908738b635afe136a" }
+ipc-channel = { git = "https://github.com/merely-made/genet.git", rev = "5ae30cad0ea421085a52dc9f86ead53028f0592d" }
+gpu-allocator = { git = "https://github.com/merely-made/genet.git", rev = "5ae30cad0ea421085a52dc9f86ead53028f0592d" }
