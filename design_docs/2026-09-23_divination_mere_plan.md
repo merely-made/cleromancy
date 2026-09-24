@@ -140,7 +140,9 @@ authority included. Nothing is imported: the mere starts empty.
 **Done when:**
 - Cleromancy opens its mere through the resident and never opens the
   reservoir's files;
-- mint, switch, fork and trash work from Cleromancy's interface;
+- mint, switch, fork and trash work from Cleromancy's interface, through the
+  shared Cambium mere view (reservoir plan V2b), not a view of Cleromancy's
+  own;
 - a reading made in Cleromancy is visible to another application, such as
   Graphshell, opening the same mere;
 - every receipt still replays, and a record that fails replay is refused
