@@ -7,8 +7,9 @@ the current public overview until it is authored.
 
 ## Working principles
 
-- Keep numerical facts, authored interpretation, and graph relationships as
-  separate inspectable values. A prose rule never mutates a calculated fact.
+- Keep numerical facts, interpretation (authored or generated, labelled which),
+  and graph relationships as separate inspectable values. A prose rule never
+  mutates a calculated fact.
 - Make time scale, observer, numerical policy, and source identity explicit at
   a calculation boundary. Do not rename a geometric result as a human
   visibility result.
@@ -17,10 +18,24 @@ the current public overview until it is authored.
 - Treat a consumer as an acceptance proof, not as permission to grow an
   unbounded algorithm catalogue. Add the next event only when a real consumer
   exposes a vocabulary gap.
-- Preserve the local-first and no-generated-interpretation boundaries. Packs
-  are authored, versioned content and remain independently replaceable.
-- Explain selection and symbolic interpretation in plain English at the reading
-  surface; keep the numerical source and saved receipt available for inspection.
+- Everything stays replayable. It is the one standing constraint (Mark,
+  2026-09-23); "no generated interpretation", "authored packs only" and "the sky
+  is never causal" were never his.
+- Be honest when anything is generated: say what was computed on what, and how
+  random, and let people choose both. Formula-derived inferences recompute
+  exactly. Model-generated ones are stored when produced, and labelled.
+- Local-first holds. Network sources such as weather are opt-in, and what they
+  return is stored with the reading. Time is always recorded; place is opt-in.
+- A reading narrates its own computation in plain words: which deck, which
+  method, what randomness, which card, orientation and position, the nth of m.
+  That narration is the audit, and a raw block of workings is not. Present the
+  context with the reading, and offer examples to riff on instead of blank
+  boxes.
+- Arrange readings, not spreads. Typed dimensions stay atomic, and every
+  relation names the method and engine that produced it.
+- Cleromancy's data is its domain's mere (divination, journaling, RNG), held by
+  the device resident. Use Mere's own sessions, graph journal, codicils,
+  reservoir and ambient tier, and keep no app-local copies of them.
 - Verify the headed reading at its ordinary window size. Tall DOM harnesses
   and saved-data checks do not establish that controls fit or that card
   results are visible; acceptance includes painted bounds and native capture.
@@ -79,6 +94,21 @@ the current public overview until it is authored.
 
 ## Consultation, projection, and residency
 
+- [Divination mere and the self-explaining reading](2026-09-23_divination_mere_plan.md):
+  **plan, 2026-09-23; nothing implemented.**
+  - C1 moves Cleromancy onto its domain's mere in the identity's reservoir,
+    held by the device resident with the full session lifecycle. It waits on
+    Mere's `repos/mere/design_docs/mere_docs/implementation_strategy/2026-09-23_reservoir_plan.md`.
+  - C2 is the reading that narrates its own computation.
+  - Then, in the order Mark ruled: typed cards across several decks, the
+    ambient card view, the shuffled deck with reversals, situation (time,
+    opt-in place and weather), labelled generated inferences, and more
+    systems.
+  - Mark's rulings are recorded in Mere's
+    `repos/mere/design_docs/mere_docs/design/2026-09-23_ambiance_design.md`.
+  - All decisions ruled 2026-09-23: Cleromancy's domain authority is composed
+    into the resident; the order is as above; the mere starts fresh, with no
+    import.
 - [Headed local consultation](2026-08-07_headed_local_consultation_plan.md):
   native journal-window product plan.
 - [Journal depth](2026-08-08_journal_depth_plan.md) — **landed 2026-09-04**:
@@ -94,7 +124,9 @@ the current public overview until it is authored.
   grid; and a controlled stored-chart range scrubber with UTC/digest pins.
   Scrubber persistence means retained application UI state across rerender and
   tab switches, not durable graph storage or a new schema. Later visualization
-  primitives remain Mere-side work.
+  primitives remain Mere-side work. Its north-star, "spreads as arrangements",
+  was revised by Mark on 2026-09-23: readings are what get arranged (divination
+  mere plan §6).
 - [Derived selection](2026-08-08_derived_selection_plan.md): public-seed
   deterministic selection direction.
 - [Authored spreads, sync, and chart input](2026-08-08_authored_spreads_sync_and_chart_input_plan.md):
