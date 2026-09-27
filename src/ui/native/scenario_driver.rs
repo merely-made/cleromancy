@@ -1,87 +1,56 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-//! The application-specific half of Cleromancy's headed scenario receipt.
-
-use std::cell::RefCell;
-use std::rc::Rc;
-
-use cambium_genet_winit_host::{AppCtx, HostPointer, read_frame};
-use image::ImageEncoder as _;
+//! Cleromancy commands and durable receipts over the shared Mesquite lane.
 
 use super::{ConsultationCtx, ConsultationRunner, Logic, NativeState, SHEET, submit_pending};
 use crate::ui::scenario::{self, Observation, Phase, ReportedIds};
 use crate::{ConsultationUi, ConsultationView};
+use cambium_genet_winit_host::AppCtx;
+use std::{cell::RefCell, path::PathBuf, rc::Rc};
 
-pub(super) fn arm_capture(ctx: &mut ConsultationCtx<'_>, state: &Rc<RefCell<NativeState>>) {
-    let path = state.borrow_mut().pending_capture.take();
-    let Some(path) = path else { return };
-    let capture_error = state.clone();
-    *ctx.capture = Some(Box::new(move |surface, view, width, height| {
-        let result = read_frame(surface, view, width, height)
-            .ok_or_else(|| "read frame".to_string())
-            .and_then(|frame| write_png(&path, &frame.rgba, frame.width, frame.height));
-        if let Err(error) = result {
-            capture_error.borrow_mut().capture_error = Some(format!("{}: {error}", path.display()));
-        }
-    }));
+pub(super) struct Product {
+    state: Rc<RefCell<NativeState>>,
+    dir: PathBuf,
+    phase: Phase,
+    keep_open: bool,
 }
 
-pub(super) fn after_frame(ctx: &mut ConsultationCtx<'_>, state: &Rc<RefCell<NativeState>>) {
-    let run = state.borrow_mut().scenario.take();
-    let Some(mut run) = run else { return };
-    let progress = {
-        let mut state = state.borrow_mut();
-        let mut driver = ScenarioDriver {
-            ctx,
-            state: &mut state,
-        };
-        run.scenario.tick(&mut driver)
+pub(super) fn lane(state: Rc<RefCell<NativeState>>, run: scenario::Run) -> mesquite::Lane<Product> {
+    let product = Product {
+        state,
+        dir: run.dir.clone(),
+        phase: run.phase,
+        keep_open: std::env::var("CLEROMANCY_SCENARIO_KEEP_OPEN").as_deref() == Ok("1"),
     };
-    if progress == taproot::Progress::Done && state.borrow().pending_capture.is_none() {
-        let state = state.borrow();
-        let outcome = run.scenario.finish();
-        scenario::write_done(
-            &run.dir,
-            run.phase,
-            &outcome,
-            observation(ctx.runner, state.catalog_ready),
-            state.capture_error.as_deref(),
-        );
-        // A trial can finish its receipt and leave the recovered reading open
-        // for ordinary interaction. Automated acceptance closes by default.
-        *ctx.close = std::env::var("CLEROMANCY_SCENARIO_KEEP_OPEN")
-            .ok()
-            .as_deref()
-            != Some("1");
-    } else {
-        state.borrow_mut().scenario = Some(run);
-        if let Some(window) = ctx.window {
-            window.request_redraw();
-        }
-    }
+    mesquite::Lane::from_config(
+        mesquite::LaneConfig {
+            scenario: run.path,
+            capture_dir: Some(run.dir.clone()),
+            // The shared receipt includes capture failures and timings. The
+            // product also preserves its durable close/reopen receipt below.
+            receipt: Some(run.dir.join("lane.done")),
+        },
+        product,
+        cambium_genet_winit_host::read_file,
+    )
+    .expect("load Cleromancy scenario")
 }
 
-struct ScenarioDriver<'a, 'ctx> {
-    ctx: &'a mut AppCtx<'ctx, ConsultationUi, Logic, ConsultationView>,
-    state: &'a mut NativeState,
-}
+impl mesquite::Product for Product {
+    type State = ConsultationUi;
+    type Logic = Logic;
+    type View = ConsultationView;
+    const KIND: &'static str = "cleromancy";
+    const SURFACE: &'static str = "cleromancy";
+    const LOG_PREFIX: &'static str = "cleromancy";
 
-impl taproot::Automatable for ScenarioDriver<'_, '_> {
-    fn with_surfaces<R>(&self, f: impl FnOnce(&[taproot::ProbeSurface<'_>]) -> R) -> R {
-        let dom = self.ctx.runner.dom();
-        let dom = dom.borrow();
-        let (width, height) = self.ctx.logical_size;
-        f(&[taproot::ProbeSurface {
-            name: "cleromancy",
-            dom: &dom,
-            rect: [0.0, 0.0, width, height],
-            sheet: SHEET,
-        }])
+    fn sheet(&self) -> &str {
+        SHEET
     }
 
-    fn snapshot(&self) -> taproot::ProbeSnapshot {
-        let observed = observation(self.ctx.runner, self.state.catalog_ready);
+    fn snapshot(&self, ctx: &ConsultationCtx<'_>, _: usize, _: f32) -> taproot::ProbeSnapshot {
+        let observed = observation(ctx.runner, self.state.borrow().catalog_ready);
         let mut snapshot = taproot::ProbeSnapshot::default()
             .with_field("status", observed.status)
             .with_field("catalog-ready", observed.catalog_ready.to_string())
@@ -96,44 +65,51 @@ impl taproot::Automatable for ScenarioDriver<'_, '_> {
         }
         snapshot
     }
-
-    fn drain_events(&mut self) -> Vec<String> {
-        std::mem::take(&mut self.state.probe_events)
+    fn drain_events(&mut self, _: &mut ConsultationCtx<'_>) -> Vec<String> {
+        std::mem::take(&mut self.state.borrow_mut().probe_events)
     }
-
-    fn act(&mut self, _label: &str) -> bool {
-        false
+    fn busy(&self, ctx: &ConsultationCtx<'_>, capture_pending: bool) -> Option<bool> {
+        Some(
+            capture_pending
+                || !self.state.borrow().catalog_ready
+                || ctx.runner.state().status().is_busy(),
+        )
     }
-
-    fn press(&mut self, x: f32, y: f32) {
-        self.ctx.pointer.push(HostPointer::Press(x, y));
+    fn app_step(
+        &mut self,
+        ctx: &mut ConsultationCtx<'_>,
+        _: mesquite::Checkpoints<'_>,
+        line: &str,
+    ) -> Result<(), String> {
+        ScenarioDriver {
+            ctx,
+            state: &mut self.state.borrow_mut(),
+        }
+        .app_step(line)
     }
-
-    fn moved(&mut self, x: f32, y: f32) {
-        self.ctx.pointer.push(HostPointer::Moved(x, y));
+    fn complete(
+        &mut self,
+        ctx: &mut ConsultationCtx<'_>,
+        outcome: &taproot::Outcome,
+    ) -> Result<(), String> {
+        scenario::write_done(
+            &self.dir,
+            self.phase,
+            outcome,
+            observation(ctx.runner, self.state.borrow().catalog_ready),
+        )
     }
-
-    fn release(&mut self, x: f32, y: f32) {
-        self.ctx.pointer.push(HostPointer::Release(x, y));
-    }
-
-    fn busy(&mut self) -> Option<bool> {
-        Some(!self.state.catalog_ready || self.ctx.runner.state().status().is_busy())
+    fn close_on_completion(&self) -> bool {
+        !self.keep_open
     }
 }
 
-impl taproot::Driveable for ScenarioDriver<'_, '_> {
-    fn capture(&mut self, name: &str) -> bool {
-        if name.is_empty() || name.contains(['/', '\\']) {
-            return false;
-        }
-        let Some(dir) = self.state.capture_dir.as_ref() else {
-            return false;
-        };
-        self.state.pending_capture = Some(dir.join(format!("{name}.png")));
-        true
-    }
+struct ScenarioDriver<'a, 'ctx> {
+    ctx: &'a mut AppCtx<'ctx, ConsultationUi, Logic, ConsultationView>,
+    state: &'a mut NativeState,
+}
 
+impl ScenarioDriver<'_, '_> {
     fn app_step(&mut self, line: &str) -> Result<(), String> {
         match line {
             "advance" => self.advance(),
@@ -263,11 +239,4 @@ fn observation(runner: &ConsultationRunner, catalog_ready: bool) -> Observation 
                 .collect()
         }),
     }
-}
-
-fn write_png(path: &std::path::Path, rgba: &[u8], width: u32, height: u32) -> Result<(), String> {
-    let file = std::fs::File::create(path).map_err(|error| error.to_string())?;
-    image::codecs::png::PngEncoder::new(file)
-        .write_image(rgba, width, height, image::ExtendedColorType::Rgba8)
-        .map_err(|error| error.to_string())
 }

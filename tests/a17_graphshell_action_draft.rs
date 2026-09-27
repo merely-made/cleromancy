@@ -10,7 +10,7 @@ use cleromancy::{
     CleromancyHost, ReadingEngine, ReadingError, a0_fixture,
 };
 use graphshell::client::RetainedEndpointSession;
-use graphshell_local::LocalCarrier;
+use graphshell_endpoint::local::LocalCarrier;
 use chirograph::{CapabilityProfile, IntentResult, PresentationCapability};
 use muniment::MemoryBackend;
 

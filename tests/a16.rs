@@ -10,7 +10,7 @@ use cleromancy::{
     CREATE_CONCURRENCE_INTENT, CleromancyApp, CleromancyHost, Concurrence, ReadingEngine,
     ReadingError, a0_fixture,
 };
-use graphshell_local::LocalCarrier;
+use graphshell_endpoint::local::LocalCarrier;
 use chirograph::{
     ActionFormError, AdvertisedAction, Carrier, CarrierRequestBody, CarrierResponseBody,
     IntentInvocation, IntentResult, PortableCardV1, ProjectionSnapshot, ResourceRequest,

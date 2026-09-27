@@ -95,7 +95,7 @@ fn four_surface_tabs_are_local_accessible_and_bounded() {
             attr_at_id(&h, sky_id, "aria-description").as_deref(),
             Some("The sky surface needs the sky-timeline feature.")
         );
-        assert!(has_text(
+        assert!(support::has_text(
             &h,
             "The sky surface needs the sky-timeline feature."
         ));

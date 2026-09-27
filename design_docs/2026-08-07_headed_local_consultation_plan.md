@@ -393,3 +393,36 @@ cargo run --bin cleromancy --offline
 The final command is an interactive Windows receipt. Record the exact headed
 scenario command and generated artifact paths when H3 lands rather than
 pretending the current static HTML executable satisfies this wall.
+
+
+## Mesquite migration (2026-09-27, native receipt passed)
+
+The native scenario adapter now implements `mesquite::Product`. Mesquite owns
+scenario ticks, scrolling selector clicks, capture readback/encoding, and the
+completion boundary. Cleromancy retains `advance`, chart commands, worker
+quiescence, typed observations and its durable first/reopen comparison.
+`Product::complete` writes `scenario.done`, `receipt.json` and `cards.json` using
+the aggregate lane outcome; `lane.done` separately records the shared capture
+receipt. `CLEROMANCY_SCENARIO_KEEP_OPEN=1` keeps the finished trial interactive.
+
+The dependency move also adopts the existing Graphshell carrier consolidation:
+`graphshell_endpoint::local` and `graphshell_endpoint::stdio` replace the retired
+carrier packages. Native acceptance is run outside the checkout so ignored
+local path patches cannot substitute unpublished work for the manifest pins.
+The receipt script reuses `C:\t\cargo-targets\cleromancy`.
+
+The manifest pins Mere `8106c7c2063001fbf60ea511758fb1c72ed8a243` and Genet
+`34626a6c82ee19f78609b8ebad8d513d3cc9c4cd`. Passed: 50 shared-runner tests;
+11 Cleromancy library tests, three durability tests and two headed DOM tests
+with `analytic-ephemeris`; and the native first/reopen script. Both processes
+completed in 16 scenario frames with one composed capture each. Durable IDs
+and card content match after reopening the redb store, and both captures were
+visually inspected. The native host reported accessibility installed with
+89 projected nodes; this is not a new manual assistive-technology receipt.
+`cargo check --all-targets --features analytic-ephemeris --offline` also passes
+from outside the checkout, covering the consolidated Graphshell imports.
+
+Evidence: `Code/testing/cleromancy/mesquite/headed-tarot.result.json` and
+`Code/testing/cambium/mesquite-migration/receipt.md`. The script used
+`-Root C:/Users/mark_/Code/testing/cleromancy/mesquite
+-TargetDir C:/t/cargo-targets/cleromancy -Features analytic-ephemeris`.

@@ -11,7 +11,7 @@ use cleromancy::{
     AstrologyReadingConcurrenceIntentPayload, CREATE_CONCURRENCE_INTENT, CleromancyApp,
     CleromancyHost, Concurrence, Reading, ReadingEngine, ReadingError, ReadingSession, a0_fixture,
 };
-use graphshell_local::LocalCarrier;
+use graphshell_endpoint::local::LocalCarrier;
 use chirograph::{
     Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
     ProjectionSnapshot, ResourceRequest,

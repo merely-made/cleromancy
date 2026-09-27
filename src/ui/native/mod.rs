@@ -92,14 +92,18 @@ fn hooks(state: Rc<RefCell<NativeState>>) -> HostHooks<ConsultationUi, Logic, Co
     hooks.after_wake = Box::new(move |ctx| drain_worker(ctx, &waking));
     let dispatching = state.clone();
     hooks.after_dispatch = Box::new(move |ctx| dispatch_action(ctx, &dispatching));
-    let framing = state.clone();
     hooks.frame = Box::new(move |ctx| {
         sync_chart_angle_strip(ctx);
         sync_chart_aspect_dimension(ctx);
-        scenario_driver::arm_capture(ctx, &framing);
         false
     });
-    hooks.after_frame = Box::new(move |ctx| scenario_driver::after_frame(ctx, &state));
+    let run = state.borrow_mut().scenario.take();
+    let mut lane = run.map(|run| scenario_driver::lane(state.clone(), run));
+    hooks.after_frame = Box::new(move |ctx| {
+        if let Some(lane) = &mut lane {
+            lane.after_frame(ctx);
+        }
+    });
     hooks.focused_text = Box::new(consultation_focused_text);
     hooks
 }
@@ -318,15 +322,11 @@ pub(super) struct NativeState {
     pub(super) scenario: Option<scenario::Run>,
     pub(super) scenario_phase: Option<Phase>,
     pub(super) scenario_stage: u8,
-    pub(super) capture_dir: Option<PathBuf>,
-    pub(super) pending_capture: Option<PathBuf>,
-    pub(super) capture_error: Option<String>,
     pub(super) probe_events: Vec<String>,
 }
 
 impl NativeState {
     fn new(scenario: Option<scenario::Run>) -> Self {
-        let capture_dir = scenario.as_ref().map(|run| run.dir.clone());
         let scenario_phase = scenario.as_ref().map(|run| run.phase);
         Self {
             worker: None,
@@ -335,9 +335,6 @@ impl NativeState {
             scenario,
             scenario_phase,
             scenario_stage: 0,
-            capture_dir,
-            pending_capture: None,
-            capture_error: None,
             probe_events: Vec::new(),
         }
     }

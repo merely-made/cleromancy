@@ -13,7 +13,7 @@ use std::path::{Path, PathBuf};
 
 use serde::Serialize;
 
-pub use taproot::{Outcome, Scenario};
+pub use taproot::Outcome;
 
 /// Which half of the close/reopen receipt a process is executing.
 #[derive(Clone, Copy, Debug, Serialize)]
@@ -37,7 +37,7 @@ impl Phase {
 
 /// A loaded scenario plus its receipt destination and required phase.
 pub(crate) struct Run {
-    pub(crate) scenario: Scenario,
+    pub(crate) path: PathBuf,
     pub(crate) dir: PathBuf,
     pub(crate) phase: Phase,
 }
@@ -45,10 +45,6 @@ pub(crate) struct Run {
 /// Load a self-drive scenario, or return `None` for a normal interactive run.
 pub(crate) fn load() -> Option<Run> {
     let path = PathBuf::from(std::env::var_os("CLEROMANCY_SCENARIO")?);
-    let body = std::fs::read_to_string(&path)
-        .unwrap_or_else(|error| panic!("read scenario {path:?}: {error}"));
-    let scenario =
-        Scenario::parse(&body).unwrap_or_else(|error| panic!("parse scenario {path:?}: {error}"));
     let phase = match std::env::var("CLEROMANCY_SCENARIO_PHASE") {
         Ok(value) => {
             Phase::parse(&value).unwrap_or_else(|error| panic!("load Cleromancy scenario: {error}"))
@@ -61,11 +57,7 @@ pub(crate) fn load() -> Option<Run> {
         .unwrap_or_else(|| PathBuf::from("."));
     std::fs::create_dir_all(&dir)
         .unwrap_or_else(|error| panic!("create scenario receipt directory {dir:?}: {error}"));
-    Some(Run {
-        scenario,
-        dir,
-        phase,
-    })
+    Some(Run { path, dir, phase })
 }
 
 /// The durable identities the relaunch harness compares without scraping text.
@@ -116,9 +108,9 @@ pub(crate) fn write_done(
     phase: Phase,
     outcome: &Outcome,
     observation: Observation,
-    capture_error: Option<&str>,
-) {
-    let mut ok = outcome.ok && observation.catalog_ready && observation.ids.is_some();
+) -> Result<(), String> {
+    let accepted = observation.catalog_ready && observation.ids.is_some();
+    let ok = outcome.ok && accepted;
     let mut log = outcome.log.clone();
     if !observation.catalog_ready {
         log.push("FAIL: local catalog did not become ready".to_string());
@@ -129,10 +121,6 @@ pub(crate) fn write_done(
                 .to_string(),
         );
     }
-    if let Some(error) = capture_error {
-        ok = false;
-        log.push(format!("FAIL: scenario capture: {error}"));
-    }
 
     let mut done = format!("RESULT {}\n", if ok { "ok" } else { "fail" });
     for line in &log {
@@ -140,11 +128,11 @@ pub(crate) fn write_done(
         done.push('\n');
     }
     std::fs::write(dir.join("scenario.done"), done)
-        .unwrap_or_else(|error| panic!("write scenario.done in {dir:?}: {error}"));
+        .map_err(|error| format!("write scenario.done in {dir:?}: {error}"))?;
 
     let cards = serde_json::to_vec_pretty(&observation.cards).expect("serialize cast preview");
     std::fs::write(dir.join("cards.json"), cards)
-        .unwrap_or_else(|error| panic!("write cards.json in {dir:?}: {error}"));
+        .map_err(|error| format!("write cards.json in {dir:?}: {error}"))?;
 
     let receipt = Receipt {
         schema: "cleromancy.headed-scenario/v1",
@@ -160,5 +148,10 @@ pub(crate) fn write_done(
     };
     let json = serde_json::to_vec_pretty(&receipt).expect("serialize headed scenario receipt");
     std::fs::write(dir.join("receipt.json"), json)
-        .unwrap_or_else(|error| panic!("write receipt.json in {dir:?}: {error}"));
+        .map_err(|error| format!("write receipt.json in {dir:?}: {error}"))?;
+    if accepted {
+        Ok(())
+    } else {
+        Err("Cleromancy durable scenario acceptance failed".into())
+    }
 }

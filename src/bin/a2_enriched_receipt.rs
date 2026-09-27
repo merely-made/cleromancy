@@ -6,7 +6,7 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 use cleromancy::{CleromancyApp, CleromancyHost, ReadingEngine, a2_fixture};
-use graphshell_stdio::StdioCarrier;
+use graphshell_endpoint::stdio::StdioCarrier;
 use muniment::MemoryBackend;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {

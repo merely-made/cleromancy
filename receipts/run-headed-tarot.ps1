@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [string]$Root = (Join-Path $env:TEMP ("cleromancy-headed-" + [DateTime]::UtcNow.ToString("yyyyMMdd-HHmmss"))),
-    [string]$TargetDir = "C:\t\cleromancy-headed-target",
+    [string]$TargetDir = "C:\t\cargo-targets\cleromancy",
     [string]$Features = ""
 )
 
@@ -11,7 +11,10 @@ $scenario = Join-Path $PSScriptRoot "headed-tarot.scn"
 $store = Join-Path $Root "store"
 
 New-Item -ItemType Directory -Force -Path $Root, $TargetDir | Out-Null
-Set-Location $repo
+# Run outside the repository so ignored developer path patches cannot replace
+# the manifest's published dependency pins in this acceptance receipt.
+Set-Location (Split-Path -Parent $repo)
+$manifest = Join-Path $repo "Cargo.toml"
 
 foreach ($phase in "first", "reopen") {
     $captureDir = Join-Path $Root $phase
@@ -23,9 +26,9 @@ foreach ($phase in "first", "reopen") {
     $env:CLEROMANCY_CAPTURE_DIR = $captureDir
     $env:CARGO_TARGET_DIR = $TargetDir
     if ($Features) {
-        & cargo run --bin cleromancy --offline --features $Features
+        & cargo run --manifest-path $manifest --bin cleromancy --offline --features $Features
     } else {
-        & cargo run --bin cleromancy --offline
+        & cargo run --manifest-path $manifest --bin cleromancy --offline
     }
     if ($LASTEXITCODE -ne 0) {
         throw "headed Cleromancy $phase process exited $LASTEXITCODE"

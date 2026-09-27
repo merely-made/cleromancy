@@ -7,7 +7,7 @@ use cleromancy::{
     Reading, ReadingIntentPayload, ReadingSession, RollIntentPayload, SELECT_INTENT,
     THREE_CARD_SPREAD_INTENT, a0_fixture,
 };
-use graphshell_local::LocalCarrier;
+use graphshell_endpoint::local::LocalCarrier;
 use chirograph::{
     Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
     PortableCardV1, ProjectionSnapshot, ResourceRequest,

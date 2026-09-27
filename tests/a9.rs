@@ -6,7 +6,7 @@ use cleromancy::{
     CleromancyApp, CleromancyHost, ReadingSession, THREE_CARD_SPREAD_INTENT, ThreeCardSpread,
     ThreeCardSpreadIntentPayload, a0_fixture,
 };
-use graphshell_local::LocalCarrier;
+use graphshell_endpoint::local::LocalCarrier;
 use chirograph::{
     Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
     PortableCardV1, ProjectionSnapshot, ResourceRequest,

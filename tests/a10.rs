@@ -3,7 +3,7 @@ use cleromancy::{
     COMPOSE_READING_INTENT, CleromancyApp, CleromancyHost, CompositionLayout,
     ReadingCompositionIntentPayload, ReadingSession, SelectionMode, ThreeCardSpread, a0_fixture,
 };
-use graphshell_local::LocalCarrier;
+use graphshell_endpoint::local::LocalCarrier;
 use chirograph::{
     Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
     PortableCardV1, ProjectionSnapshot, ResourceRequest,

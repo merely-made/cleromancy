@@ -8,7 +8,7 @@ use cleromancy::{
     CleromancyApp, CleromancyHost, READ_INTENT, READ_SCOPE, Reading, ReadingEngine,
     ReadingIntentPayload, a0_fixture,
 };
-use graphshell_local::LocalCarrier;
+use graphshell_endpoint::local::LocalCarrier;
 use chirograph::{
     Carrier, CarrierNotice, CarrierRequestBody, CarrierResponseBody, IntentInvocation,
     IntentResult, ProjectionRequest, ProjectionSnapshot,

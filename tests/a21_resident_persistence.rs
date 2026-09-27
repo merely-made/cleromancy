@@ -15,7 +15,7 @@ use cleromancy::{
 use graphshell::client::RetainedEndpointSession;
 use graphshell::lifecycle::AdmittedEndpointContext;
 use graphshell::native::endpoint_catalog::ResidentEndpointCatalog;
-use graphshell_local::LocalCarrier;
+use graphshell_endpoint::local::LocalCarrier;
 use chirograph::{
     CapabilityProfile, IntentResult, PresentationCapability, ProjectionSession,
 };

@@ -17,7 +17,7 @@ use graphshell::native::endpoint_catalog::ResidentEndpointCatalog;
 use graphshell_endpoint::{
     PresentationSource, ProjectionCatalog, ProjectionNoticeSource, ProjectionSource,
 };
-use graphshell_local::LocalCarrier;
+use graphshell_endpoint::local::LocalCarrier;
 use chirograph::{
     CapabilityProfile, IntentResult, PresentationCapability, ProjectionSession, ResourceRequest,
 };
