@@ -329,7 +329,7 @@ pub fn consultation_focused_text(
 #[cfg(test)]
 mod focused_text_tests {
     use super::*;
-    use cambium::{TextInput, caret_field_children, el};
+    use cambium::{TextFieldMode, TextInput, caret_field_children, el, on_key};
     use cambium_genet_winit_host::{Harness, inert_hooks};
 
     fn marked_question_view(ui: &ConsultationUi) -> ConsultationView {
@@ -342,6 +342,10 @@ mod focused_text_tests {
         .attr("aria-multiline", "true")
         .attr("data-cambium-text-value", ui.question.text())
         .attr("style", "display:block;width:240px;height:40px");
+        let field = on_key(field, |ui: &mut ConsultationUi, event| {
+            ui.question
+                .apply_key(&event, TextFieldMode::Multiline);
+        });
         Box::new(
             el::<_, ConsultationUi, ()>(
                 "label",
@@ -375,11 +379,14 @@ mod focused_text_tests {
         let focused = consultation_focused_text(harness.runner())
             .expect("the marked DIV resolves to the Question slot");
         assert_eq!(focused.node, harness.focus().expect("the textbox receives focus"));
+        assert_eq!((focused.get)(harness.state()).text(), "");
+        assert_eq!((focused.get)(harness.state()).caret_position().byte, 0);
         harness.key_injected("x");
 
         let focused = consultation_focused_text(harness.runner())
             .expect("the marked DIV remains routed after input");
         assert_eq!((focused.get)(harness.state()).text(), "x");
+        assert_eq!((focused.get)(harness.state()).caret_position().byte, 1);
     }
 }
 
