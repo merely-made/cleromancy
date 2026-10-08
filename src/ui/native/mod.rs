@@ -331,6 +331,7 @@ mod focused_text_tests {
     use super::*;
     use cambium::{TextFieldMode, TextInput, caret_field_children, el, on_key};
     use cambium_genet_winit_host::{Harness, inert_hooks};
+    use taproot::Selector;
 
     fn marked_question_view(ui: &ConsultationUi) -> ConsultationView {
         let field = el::<_, ConsultationUi, ()>(
@@ -374,7 +375,10 @@ mod focused_text_tests {
             hooks,
         );
         harness.layout_at(320.0, 120.0);
-        harness.click_at(14.0, 20.0);
+        assert!(
+            harness.click_on(&Selector::role("textbox").with_attr("aria-label", "Question")),
+            "the marked textbox has a painted click target",
+        );
 
         let focused = consultation_focused_text(harness.runner())
             .expect("the marked DIV resolves to the Question slot");
