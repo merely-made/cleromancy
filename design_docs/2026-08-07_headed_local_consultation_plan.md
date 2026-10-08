@@ -429,7 +429,8 @@ Evidence: `Code/testing/cleromancy/mesquite/headed-tarot.result.json` and
 
 ## Forms consumer compatibility, 2026-10-07
 
-**Status:** approved, implementation and fresh qualification in progress.
+**Status:** local mechanical compatibility qualifies on the existing public pins;
+candidate adoption and publication remain pending.
 The numbered F5 scope ruling lives in
 `genet/design_docs/2026-10-07_forms_value_validation_submission_plan.md`.
 Mere owns the field representation and F6 accessibility-leaf projection in
@@ -447,3 +448,30 @@ human assistive-technology operation. A later family adoption needs its own
 coherent published pins and consumer gates. Root owns serial qualification,
 commits and the acceptance record; delegated source work does not mutate Cargo
 inputs or overlays.
+
+At source `85c8f77`, `cleromancy-forms-generic-*` under
+`Code/testing/genet/forms` qualify the existing public graph and serial tests.
+The routing-disabled control records 11 passes and exactly the intended
+marked-DIV Question-slot failure, restores the original source with a fresh
+mtime, and passes its unowned source/config guards. The restored gate passes
+12 library tests, one authoring DOM test and two consultation DOM tests, with
+zero failures, ignores or filtered cases. Existing names are asserted on the
+field node through the real retained editing path.
+
+The older public field wrapper lacks `.attr`, including after state mapping.
+The local `NamedText` adapter attaches only the consumer's existing visible
+name to Mere's produced node and forwards lifecycle/messages unchanged. It
+adds a direct dependency on already-locked Meristem 0.2.0 at the same Mere pin;
+all 1,005 lock package versions, sources and checksums remain. The 668-package
+resolved graph preserves every identity and feature, adding only that direct
+root edge. All 36 Mere packages use `8106c7c2063001fbf60ea511758fb1c72ed8a243`;
+all 20 Genet packages use `34626a6c82ee19f78609b8ebad8d513d3cc9c4cd`.
+The frozen public lock SHA256 is
+`6040B3E0030A9114C42C2A83E6E67A3CA1D12753308CA87467264D19EFA0F3B1`.
+The generic `LayoutDomMut` setter avoids a test-only node import. Interim
+attribute/setter/import compile failures and the initial uncached registry
+lookup are retained as unqualified attempts. The network retry and final
+locked gates preserve checkout-local overlays and use the normal dependency
+cache. The approved stable `C:/t/cargo-targets/cleromancy` is retained for reuse.
+These are runner DOM checks; the earlier H4 desktop receipt retains its source
+snapshot, and adoption of the unpublished Forms family remains separate.
