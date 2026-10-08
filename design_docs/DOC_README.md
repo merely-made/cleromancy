@@ -99,7 +99,7 @@ the current public overview until it is authored.
 ## Consultation, projection, and residency
 
 - [Divination mere and the self-explaining reading](2026-09-23_divination_mere_plan.md):
-  **plan, refreshed 2026-10-07; C1–C8 not implemented.**
+  **C1 preparation in progress, 2026-10-08; no phase accepted.**
   - C1 moves Cleromancy onto its domain's mere in the identity's reservoir,
     held by the device resident with the full session lifecycle. §2 names the
     available shared substrate and the remaining authority, view, archive,
@@ -116,8 +116,10 @@ the current public overview until it is authored.
     into the resident; the order is as above; the mere starts fresh, with no
     import.
   - The refresh records the existing snapshot store, native first/reopen
-    evidence and limits, authored-position meaning bug and outstanding core
-    lock/format gates. C4 includes proposed foreground/background and dynamics
+    evidence and limits, authored-position meaning bug and the outstanding
+    format gate. The core lock is repaired and the portable full-candidate
+    validator is prepared; resident composition and consumer adoption remain
+    open. C4 includes proposed foreground/background and dynamics
     acceptance using shared contracts; no private spec or physics adoption is
     claimed. Preparation is distinguished from changing the ruled phase order.
 - [Headed local consultation](2026-08-07_headed_local_consultation_plan.md):

@@ -1,5 +1,6 @@
 /target/
 /target-*/
+/core/target/
 /.cargo/
 # Curated textual receipts are tracked; generated stores, screenshots, and
 # the byte-stability comparison copies stay local (headed plan evidence rule).

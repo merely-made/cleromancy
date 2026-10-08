@@ -1,7 +1,8 @@
 # Cleromancy: the divination mere, and a reading that explains itself
 
 **Date:** 2026-09-23
-**Status (2026-10-07):** plan; C1–C8 are not implemented. The existing local
+**Status (2026-10-08):** C1 preparation in progress; no phase is accepted.
+The existing local
 consultation works, but still owns one snapshot store and its own authority.
 Mere's reservoir V1 and V2, and V2b's component, harness and route adapter,
 have landed. C1 still needs the remaining reservoir contracts and Cleromancy's
@@ -146,7 +147,7 @@ published main branches. This refresh changes documentation only.
   `Code/testing/cleromancy/review-20261007/`; narrow windows, high zoom and
   release packaging were not qualified.
 
-### Dependency and readiness map (2026-10-07)
+### Dependency and readiness map (reviewed 2026-10-08)
 
 The reservoir plan owns reservoir status; the one-tree plan owns Graphshell's
 cutover; the dynamics and Scenograph editor plans own their shared contracts.
@@ -162,11 +163,35 @@ Their historical receipts do not count as Cleromancy consumer acceptance.
 | C2: computation narrative and authored position meaning | Stored reading, field, context and template definitions | Source analysis, narration design and template-resolution preparation can proceed against existing receipts; they do not complete C1 or change the ruled execution order. |
 | C3: typed cards, decks and interpretations | Cleromancy-owned schemas, versioned content and cited traditions | Prepare the domain binding and remove view-owned meaning when this phase executes. Mere does not supply divination semantics. |
 | C4: interactive contextual neighborhood | C3 binding; shared projection definitions/compiler and scene editing | Prepare explicit relation families and a consumer fixture. Focus and curation use owner actions; navigation never implicitly keeps an item. |
-| C4: authored dynamics and retained composition | Shared dynamics grammar, especially G4; G2 for its unified channels | G1/G3/G7/G9 are landed; G2 and portable `DynamicsSpec`/pickers remain open. Do not introduce an app-private spec or treat a pin bump as adoption. |
+| C4: authored dynamics and retained composition | Shared dynamics grammar, especially G4; G2 for its unified channels | G2 and G4a's portable spec core have since landed; G4b's runtime binding and end-to-end choice retention remain separate gates. The grammar plan owns their current status. Do not introduce an app-private spec or treat a pin bump as adoption. |
 
 Preparation means schemas, mappings, source-backed fixtures and acceptance
 design. It must not install a second persistence owner or claim an unfinished
 phase complete. The full C1 gate still includes V1–V5 under the existing ruling.
+
+### Authorized orchestration (2026-10-08)
+
+Mark authorized publishing this refresh and proceeding with the plan. The
+first implementation wave runs the independent reservoir contracts in separate
+lanes: V3 archive, V4 recorded denials and ambient grants, and V5 embedded/client
+ownership. Integration follows their scoped tests and real-process receipts.
+Graphshell's one-tree cutover and mounted session panel remain V2b gates; this
+wave does not bypass them or move C2 ahead of C1.
+
+Cleromancy supplies a read-only complete-candidate validator in
+[`host/domain.rs`](../src/host/domain.rs). It checks canonical record identity,
+supported domain facets, sealed reading replay and stored dependencies using
+the existing product decoders. It opens no store and leaves the candidate
+unchanged. The shared resident must install it before any graph, journal,
+archive or imported-session write; a helper's presence does not establish that
+composition. A coordinated integration pin follows the shared lanes, then the
+client and shared mere view replace the private authority and snapshot store.
+
+The core lock is aligned to the manifest's existing Mere revision. The locked
+sky-timeline gate now passes; the dated failure above remains historical.
+Domain-specific refusal tests run in the portable core. These are source
+checks; the new resident path still needs native lifecycle, cross-application
+visibility and fresh-process reopen qualification on the integrated revision.
 
 ### Historical findings (verified 2026-09-23)
 
@@ -453,3 +478,9 @@ orientations and positions, and interpretations.
   completion without changing the ruled order. Added authored-position and
   native presentation findings, bounded test/capture evidence, and proposed
   C4 scene/dynamics acceptance. No source, pin, store or runtime changes.
+- 2026-10-08: Mark authorized push and orchestration. Published the refresh,
+  started separate V3/V4/V5 implementation lanes, and prepared the product-owned
+  full-candidate replay validator. Aligned the core lock with its declared pin
+  and passed its locked sky-timeline gate. C1's resident composition, consumer
+  pin, common view and private-store retirement remain unaccepted; C2–C8 keep
+  their ruled order.

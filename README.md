@@ -6,13 +6,15 @@ deterministic, securely cast, or derived from a public seed, and every result
 keeps a replayable receipt that separates context, qualification, selection,
 and interpretation.
 
-## Status (2026-10-07)
+## Status (2026-10-08)
 
 The implemented local consultation remains the snapshot-based product below.
 The [divination mere and self-explaining reading plan](design_docs/2026-09-23_divination_mere_plan.md)
 now names the available Mere substrate, the remaining resident/reservoir
 integration gates, and proposed contextual scene and dynamics acceptance.
-C1–C8 have not landed; the plan owns their readiness and execution order.
+C1 preparation is underway: the product-owned replay validator is available,
+and reservoir archive, access and standalone contracts are being integrated.
+No phase is accepted; the plan owns readiness and execution order.
 
 - The A0-A25 proof ledger is complete (2026-08-02 through 2026-08-07):
   single readings, sealed receipts with replay, field provenance, a 22-card
