@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
 use cambium::{GenetCtx, GenetElement, TextField, TextInput, attr_qual};
-use layout_dom_api::{LayoutDom, LayoutDomMut};
+use layout_dom_api::LayoutDomMut;
 use meristem::{MessageCtx, MessageResult, Mut, View, ViewMarker};
 
 // The current public field wrapper has no attribute setter. Keep its builder
@@ -20,9 +20,8 @@ pub(super) fn named_text(field: TextField, name: &str) -> NamedText {
 }
 
 impl NamedText {
-    fn apply_name(&self, dom: &cambium::DomHandle, node: genet_scripted_dom::NodeId) {
+    fn apply_name<D: LayoutDomMut>(&self, dom: &mut D, node: D::NodeId) {
         let qual = attr_qual("aria-label");
-        let mut dom = dom.borrow_mut();
         if dom.attribute(node, &qual.ns, &qual.local) != Some(self.name.as_str()) {
             dom.set_attribute(node, qual, &self.name);
         }
@@ -37,7 +36,7 @@ impl View<TextInput, (), GenetCtx> for NamedText {
 
     fn build(&self, ctx: &mut GenetCtx, input: &mut TextInput) -> (GenetElement, Self::ViewState) {
         let (element, state) = self.field.build(ctx, input);
-        self.apply_name(&element.dom, element.node);
+        self.apply_name(&mut *element.dom.borrow_mut(), element.node);
         (element, state)
     }
 
@@ -51,7 +50,7 @@ impl View<TextInput, (), GenetCtx> for NamedText {
     ) {
         self.field
             .rebuild(&prev.field, state, ctx, element.reborrow_mut(), input);
-        self.apply_name(&element.dom, *element.node);
+        self.apply_name(&mut *element.dom.borrow_mut(), *element.node);
     }
 
     fn teardown(
