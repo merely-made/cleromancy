@@ -17,6 +17,7 @@ pub(super) mod chart;
 pub(super) mod chart_aspect;
 mod consultation;
 mod journal;
+mod named_text;
 mod reading;
 mod reading_scene;
 mod rationale;
@@ -170,7 +171,7 @@ fn labelled_text(
     } else {
         text_field_typed(input)
     };
-    let field = field.attr("aria-label", label.to_string());
+    let field = named_text::named_text(field, label);
     let field = map_action(field, never_text_action);
     let field = map_state(field, state);
     Box::new(

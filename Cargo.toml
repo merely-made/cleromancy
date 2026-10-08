@@ -43,6 +43,7 @@ chirograph = { git = "https://github.com/merely-made/mere.git", rev = "8106c7c20
 layout-dom-api = { git = "https://github.com/merely-made/genet.git", rev = "34626a6c82ee19f78609b8ebad8d513d3cc9c4cd", version = "=0.1.1" }
 mesquite = { git = "https://github.com/merely-made/mere.git", rev = "8106c7c2063001fbf60ea511758fb1c72ed8a243" }
 mere = { git = "https://github.com/merely-made/mere.git", rev = "8106c7c2063001fbf60ea511758fb1c72ed8a243", default-features = false, features = ["graph", "canvas"] }
+meristem = { git = "https://github.com/merely-made/mere.git", rev = "8106c7c2063001fbf60ea511758fb1c72ed8a243", version = "=0.2.0" }
 muniment = { git = "https://github.com/merely-made/mere.git", rev = "8106c7c2063001fbf60ea511758fb1c72ed8a243", features = ["redb"] }
 personae = { git = "https://github.com/merely-made/mere.git", rev = "8106c7c2063001fbf60ea511758fb1c72ed8a243", optional = true }
 pollster = "0.4"
