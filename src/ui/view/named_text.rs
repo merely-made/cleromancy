@@ -24,7 +24,7 @@ impl NamedText {
         let qual = attr_qual("aria-label");
         let mut dom = dom.borrow_mut();
         if dom.attribute(node, &qual.ns, &qual.local) != Some(self.name.as_str()) {
-            dom.set_attribute(node, qual, self.name.clone());
+            dom.set_attribute(node, qual, &self.name);
         }
     }
 }
