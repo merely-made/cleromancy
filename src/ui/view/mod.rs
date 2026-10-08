@@ -170,9 +170,9 @@ fn labelled_text(
     } else {
         text_field_typed(input)
     };
+    let field = field.attr("aria-label", label.to_string());
     let field = map_action(field, never_text_action);
     let field = map_state(field, state);
-    let field = field.attr("aria-label", label.to_string());
     Box::new(
         el::<_, ConsultationUi, ()>(
             "label",
