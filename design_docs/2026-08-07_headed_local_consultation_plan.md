@@ -429,8 +429,9 @@ Evidence: `Code/testing/cleromancy/mesquite/headed-tarot.result.json` and
 
 ## Forms consumer compatibility, 2026-10-07
 
-**Status:** local mechanical compatibility qualifies on the existing public pins;
-candidate adoption and publication remain pending.
+**Status, 2026-10-08:** mechanical compatibility qualifies on the existing public
+pins, including the fresh ThinkPad gate below. Adoption of Mere's new Forms
+family remains a separate gate.
 The numbered F5 scope ruling lives in
 `genet/design_docs/2026-10-07_forms_value_validation_submission_plan.md`.
 Mere owns the field representation and F6 accessibility-leaf projection in
@@ -443,7 +444,7 @@ Do not add labels to currently unnamed fields or repin dependencies here.
 
 Done when the affected native classification and headed DOM fixtures pass on
 the existing locked public graph, with app-marker cases covered independently.
-These gates do not prove adoption of the unpublished Mere/Genet candidate or
+These gates do not prove adoption of Mere's new Forms dependency family or
 human assistive-technology operation. A later family adoption needs its own
 coherent published pins and consumer gates. Root owns serial qualification,
 commits and the acceptance record; delegated source work does not mutate Cargo
@@ -474,4 +475,35 @@ lookup are retained as unqualified attempts. The network retry and final
 locked gates preserve checkout-local overlays and use the normal dependency
 cache. The approved stable `C:/t/cargo-targets/cleromancy` is retained for reuse.
 These are runner DOM checks; the earlier H4 desktop receipt retains its source
-snapshot, and adoption of the unpublished Forms family remains separate.
+snapshot, and adoption of the new Forms family remains separate.
+
+Fresh Linux qualification at `9789d64e5df4937c3005a2b3a25b5a733f67817b` includes
+the upstream domain module integrated at `e512763`: 20 library tests, one
+authoring DOM test and two consultation DOM tests pass, with zero failures,
+ignores or filtered cases. Cargo 1.98.1 uses `analytic-ephemeris`, one build job
+and one test thread. The existing public Mere `8106c7c` and Genet `34626a6c`
+families and ignored root lock SHA256 `6040B3E0...19EFA0F3B1` remain unchanged;
+the full retained lock hash is recorded above. The tracked core lock is also
+preserved. The first e512 Linux run passes 19 library tests and fails the marked
+textbox fixture before either DOM binary executes; it does not qualify.
+
+The fixture formerly clicked fixed coordinates beneath its label. It now
+clicks the semantic Question textbox through the host's live painted layout.
+Production routing and naming code stay unchanged. The exact focused positive
+passes; disabling only marked-textbox recognition then produces its sole
+expected failure. Source bytes are restored exactly with a fresh mtime, followed
+by the complete 23-pass gate. An intervening attempt is interrupted after a
+foreign Cargo job starts; its partial result is retained as unqualified, and
+only this lane's processes are terminated. The restored retry supplies all
+three completed targets.
+
+The locked metadata and public-checkout audit verify the same existing family:
+36 resolved Mere packages, 20 Genet and four Netrender packages in clean normal
+Cargo Git checkouts, with absent Cargo configuration and no Git URL rewrites.
+The 1,005-package lock includes 47 Mere and 20 Genet entries; resolved and locked
+counts describe different feature coverage. Raw
+`thinkpad-forms-20261008-cleromancy-*` receipts, control diff and restoration
+audit live under `Code/testing/genet/forms/thinkpad`. Root independently binds
+the documentation-only publication descendant to the tested source. These
+remain automated DOM/library checks; the earlier H4 physical desktop receipt
+retains its own source snapshot, and new Forms family adoption remains separate.
