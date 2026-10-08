@@ -120,9 +120,11 @@ pub fn type_into(harness: &mut App, label: &str, value: &str) {
     let node = harness.with_dom(|dom| {
         let group = find_attr(dom, dom.document(), "data-control", label)
             .unwrap_or_else(|| panic!("missing control {label}"));
-        find_element(dom, group, "input")
-            .or_else(|| find_element(dom, group, "textarea"))
+        find_text_field(dom, group)
             .unwrap_or_else(|| panic!("missing text field for {label}"))
+    });
+    harness.with_dom(|dom| {
+        assert_eq!(attr(dom, node, "aria-label"), Some(label));
     });
     let (x, y, width, height) = harness
         .painted_rect(node)
@@ -142,8 +144,7 @@ pub fn type_into(harness: &mut App, label: &str, value: &str) {
     }
     let actual = harness.with_dom(|dom| {
         let group = find_attr(dom, dom.document(), "data-control", label)?;
-        let field =
-            find_element(dom, group, "input").or_else(|| find_element(dom, group, "textarea"))?;
+        let field = find_text_field(dom, group)?;
         Some(text_content(dom, field))
     });
     assert_eq!(
@@ -257,6 +258,17 @@ fn find_element(dom: &ScriptedDom, node: NodeId, name: &str) -> Option<NodeId> {
     }
     dom.dom_children(node)
         .find_map(|child| find_element(dom, child, name))
+}
+
+fn find_text_field(dom: &ScriptedDom, node: NodeId) -> Option<NodeId> {
+    let tag = dom.element_name(node).map(|name| name.local.as_ref());
+    let native = matches!(tag, Some("input" | "textarea"));
+    let marked = attr(dom, node, "role") == Some("textbox")
+        && attr(dom, node, "data-cambium-text-value").is_some();
+    (native || marked).then_some(node).or_else(|| {
+        dom.dom_children(node)
+            .find_map(|child| find_text_field(dom, child))
+    })
 }
 
 fn find_attr(dom: &ScriptedDom, node: NodeId, name: &str, value: &str) -> Option<NodeId> {

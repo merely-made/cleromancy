@@ -426,3 +426,24 @@ Evidence: `Code/testing/cleromancy/mesquite/headed-tarot.result.json` and
 `Code/testing/cambium/mesquite-migration/receipt.md`. The script used
 `-Root C:/Users/mark_/Code/testing/cleromancy/mesquite
 -TargetDir C:/t/cargo-targets/cleromancy -Features analytic-ephemeris`.
+
+## Forms consumer compatibility, 2026-10-07
+
+**Status:** approved, implementation and fresh qualification in progress.
+The numbered F5 scope ruling lives in
+`genet/design_docs/2026-10-07_forms_value_validation_submission_plan.md`.
+Mere owns the field representation and F6 accessibility-leaf projection in
+`mere/design_docs/cambium_docs/technical_architecture/genet-compatibility.md`.
+
+This bounded pass attaches each existing text-control label to its textbox and
+updates focused-field caret classification for explicit Cambium app markers.
+Preserve native input/textarea classification for the current published family.
+Do not add labels to currently unnamed fields or repin dependencies here.
+
+Done when the affected native classification and headed DOM fixtures pass on
+the existing locked public graph, with app-marker cases covered independently.
+These gates do not prove adoption of the unpublished Mere/Genet candidate or
+human assistive-technology operation. A later family adoption needs its own
+coherent published pins and consumer gates. Root owns serial qualification,
+commits and the acceptance record; delegated source work does not mutate Cargo
+inputs or overlays.

@@ -268,7 +268,18 @@ pub fn consultation_focused_text(
     let dom = runner.dom();
     let dom = dom.borrow();
     let tag = &dom.element_name(node)?.local;
-    if tag.as_ref() != "input" && tag.as_ref() != "textarea" {
+    let native_text_control = matches!(tag.as_ref(), "input" | "textarea");
+    let marker_text_control = dom.attribute(
+        node,
+        &layout_dom_api::Namespace::from(""),
+        &layout_dom_api::LocalName::from("role"),
+    ) == Some("textbox")
+        && dom.attribute(
+            node,
+            &layout_dom_api::Namespace::from(""),
+            &layout_dom_api::LocalName::from("data-cambium-text-value"),
+        ).is_some();
+    if !native_text_control && !marker_text_control {
         return None;
     }
     let marker = dom.parent(node).and_then(|parent| {
@@ -312,6 +323,63 @@ pub fn consultation_focused_text(
         }),
         "cleromancy-reflection" => field!(reflection),
         _ => None,
+    }
+}
+
+#[cfg(test)]
+mod focused_text_tests {
+    use super::*;
+    use cambium::{TextInput, caret_field_children, el};
+    use cambium_genet_winit_host::{Harness, inert_hooks};
+
+    fn marked_question_view(ui: &ConsultationUi) -> ConsultationView {
+        let field = el::<_, ConsultationUi, ()>(
+            "div",
+            caret_field_children::<ConsultationUi, ()>(&ui.question, &[]),
+        )
+        .attr("role", "textbox")
+        .attr("aria-label", "Question")
+        .attr("aria-multiline", "true")
+        .attr("data-cambium-text-value", ui.question.text())
+        .attr("style", "display:block;width:240px;height:40px");
+        Box::new(
+            el::<_, ConsultationUi, ()>(
+                "label",
+                (el("span", "Question"), field),
+            )
+            .attr("id", "cleromancy-question"),
+        )
+    }
+
+    #[test]
+    fn marked_div_field_routes_text_into_its_question_slot() {
+        let hooks: HostHooks<ConsultationUi, Logic, ConsultationView> = HostHooks {
+            focused_text: Box::new(consultation_focused_text),
+            ..inert_hooks()
+        };
+        let mut state = ConsultationUi::new(empty_catalog());
+        state.question = TextInput::default();
+        let mut harness = Harness::with_hooks(
+            Init {
+                state,
+                logic: marked_question_view as Logic,
+                sheet: String::new(),
+                fonts: Vec::new(),
+                images: Vec::new(),
+            },
+            hooks,
+        );
+        harness.layout_at(320.0, 120.0);
+        harness.click_at(14.0, 20.0);
+
+        let focused = consultation_focused_text(harness.runner())
+            .expect("the marked DIV resolves to the Question slot");
+        assert_eq!(focused.node, harness.focus().expect("the textbox receives focus"));
+        harness.key_injected("x");
+
+        let focused = consultation_focused_text(harness.runner())
+            .expect("the marked DIV remains routed after input");
+        assert_eq!((focused.get)(harness.state()).text(), "x");
     }
 }
 
