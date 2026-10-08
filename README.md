@@ -6,7 +6,13 @@ deterministic, securely cast, or derived from a public seed, and every result
 keeps a replayable receipt that separates context, qualification, selection,
 and interpretation.
 
-## Status (2026-09-09)
+## Status (2026-10-07)
+
+The implemented local consultation remains the snapshot-based product below.
+The [divination mere and self-explaining reading plan](design_docs/2026-09-23_divination_mere_plan.md)
+now names the available Mere substrate, the remaining resident/reservoir
+integration gates, and proposed contextual scene and dynamics acceptance.
+C1–C8 have not landed; the plan owns their readiness and execution order.
 
 - The A0-A25 proof ledger is complete (2026-08-02 through 2026-08-07):
   single readings, sealed receipts with replay, field provenance, a 22-card
@@ -34,7 +40,8 @@ and interpretation.
   chart. The chart calculator needs no downloaded kernel.
 - Today starts in Cast mode. Read sits above optional context metadata;
   derived seed controls appear when selected, and layout authoring is folded
-  away. Results show the saved question and a separate panel for each card.
+  away. Results show the saved question, selectable placements and a focused
+  card interpretation.
 - The optional `sky-timeline` feature is the first daily astronomy consumer.
   It normalizes Turquet's New Moon and caller-threshold airless solar
   twilight facts for a UTC civil day and WGS84 observer. Numerical facts keep
@@ -42,9 +49,10 @@ and interpretation.
   separate, replayable layer. Refraction, limb, horizon-dip, weather, and
   general visibility policy remain caller-owned.
 
-Plans live in `design_docs/`, one dated doc per slice. The current ephemeris
-stop rules keep houses, topocentric positions, generated interpretation, and
-automatic sync out of this proof.
+The canonical plan index is [design_docs/DOC_README.md](design_docs/DOC_README.md).
+The current ephemeris proof does not implement houses or topocentric positions.
+Generated interpretations are planned in C7, with their inputs and method/model
+identity retained; they are not prohibited by the product's standing rules.
 
 ## Use
 

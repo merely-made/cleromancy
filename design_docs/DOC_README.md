@@ -33,6 +33,10 @@ the current public overview until it is authored.
   boxes.
 - Arrange readings, not spreads. Typed dimensions stay atomic, and every
   relation names the method and engine that produced it.
+- Keep semantic provenance, foreground/background emphasis and motion roles
+  independent. Shared scene and dynamics capabilities arrange disclosed facts;
+  Cleromancy owns their meaning and permitted actions. A saved presentation or
+  another host's receipt is not proof of this product's adoption.
 - Cleromancy's data is its domain's mere (divination, journaling, RNG), held by
   the device resident. Use Mere's own sessions, graph journal, codicils,
   reservoir and ambient tier, and keep no app-local copies of them.
@@ -95,10 +99,12 @@ the current public overview until it is authored.
 ## Consultation, projection, and residency
 
 - [Divination mere and the self-explaining reading](2026-09-23_divination_mere_plan.md):
-  **plan, 2026-09-23; nothing implemented.**
+  **plan, refreshed 2026-10-07; C1–C8 not implemented.**
   - C1 moves Cleromancy onto its domain's mere in the identity's reservoir,
-    held by the device resident with the full session lifecycle. It waits on
-    Mere's `repos/mere/design_docs/mere_docs/implementation_strategy/2026-09-23_reservoir_plan.md`.
+    held by the device resident with the full session lifecycle. §2 names the
+    available shared substrate and the remaining authority, view, archive,
+    grant and standalone-ownership acceptance gates; the Mere reservoir plan
+    owns their status.
   - C2 is the reading that narrates its own computation.
   - Then, in the order Mark ruled: typed cards across several decks, the
     ambient card view, the shuffled deck with reversals, situation (time,
@@ -109,6 +115,11 @@ the current public overview until it is authored.
   - All decisions ruled 2026-09-23: Cleromancy's domain authority is composed
     into the resident; the order is as above; the mere starts fresh, with no
     import.
+  - The refresh records the existing snapshot store, native first/reopen
+    evidence and limits, authored-position meaning bug and outstanding core
+    lock/format gates. C4 includes proposed foreground/background and dynamics
+    acceptance using shared contracts; no private spec or physics adoption is
+    claimed. Preparation is distinguished from changing the ruled phase order.
 - [Headed local consultation](2026-08-07_headed_local_consultation_plan.md):
   native journal-window product plan.
 - [Journal depth](2026-08-08_journal_depth_plan.md) — **landed 2026-09-04**:
