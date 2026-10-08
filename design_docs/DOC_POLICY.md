@@ -129,11 +129,10 @@ across the workspace. Cleromancy had 33 documents in `design_docs/` and no polic
 Docs are flat in `design_docs/`; no area roots have been promoted yet, and
 core §4 says flat is the right default until one domain earns promotion.
 
-**Two core requirements are not yet met, and meeting them is the first doc work
-this repo owes:**
+**Current local status (2026-10-07):**
 
-- Core §6 requires `design_docs/DOC_README.md` as the canonical index. It does
-  not exist here yet; the 33 existing docs are unindexed.
-- Core §7 refers to `PROJECT_DESCRIPTION.md`, which does not exist here yet.
-  Until it does, the root `README.md` stands alone and §7's derivation rule is
-  inert rather than violated.
+- [DOC_README.md](DOC_README.md) exists and is the canonical index under core §6.
+  The earlier claim that this repository is unindexed is historical.
+- Core §7's `PROJECT_DESCRIPTION.md` does not exist here yet and remains
+  reserved for the maintainer. Until it is authored, the root `README.md` is
+  derived from the current canonical plans and index.

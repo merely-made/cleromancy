@@ -1,8 +1,13 @@
 # Cleromancy: the divination mere, and a reading that explains itself
 
 **Date:** 2026-09-23
-**Status:** plan. Nothing implemented. C1 waits on Mere's reservoir plan
-(V1–V5). §7's decisions were all ruled on 2026-09-23.
+**Status (2026-10-07):** plan; C1–C8 are not implemented. The existing local
+consultation works, but still owns one snapshot store and its own authority.
+Mere's reservoir V1 and V2, and V2b's component, harness and route adapter,
+have landed. C1 still needs the remaining reservoir contracts and Cleromancy's
+domain-authority integration. The dependency map below replaces an opaque
+"wait for V1–V5" handoff with named acceptance gates. §7's 2026-09-23 rulings
+and the execution order remain in force.
 **Scope:** move Cleromancy onto its data domain's mere in the identity's
 reservoir, then rebuild the reading around Mark's 2026-09-23 rulings: a
 reading that narrates its own computation, typed cards with every tradition's
@@ -19,6 +24,12 @@ that behaves like a shuffled deck.
 - [Legible reader and fact surfaces](2026-09-04_legible_reader_and_fact_surfaces_plan.md),
   the predecessor slice. Its north-star line, "spreads as arrangements", is
   revised below.
+- `repos/mere/design_docs/mere_docs/implementation_strategy/2026-09-25_graphshell_one_tree_plan.md`:
+  V2b's Graphshell cutover, distinct from reservoir storage and lifecycle.
+- `repos/mere/design_docs/mere_docs/implementation_strategy/2026-10-02_dynamics_grammar_plan.md`:
+  shared motion terms, channel bindings, compositions, persistence and replay.
+- `repos/mere/design_docs/mere_docs/implementation_strategy/2026-10-07_scenograph_editor_plan.md`:
+  shared projection authoring and editing; its status owns those capabilities.
 
 ## 1. Rulings
 
@@ -87,7 +98,82 @@ Other systems enter only on argued merit.
 - generated inferences;
 - more systems.
 
-## 2. Findings (verified 2026-09-23)
+## 2. Findings
+
+### Current source and native review (2026-10-07)
+
+Reviewed Cleromancy `32a4b948` and Mere `cd3ebf26d`, both fetched from their
+published main branches. This refresh changes documentation only.
+
+- **The reservoir consumer has not landed.** `CleromancyHost` still stores
+  `PersistedHost` (graph, facets and projection counters) in one muniment slot
+  ([`host/mod.rs`](../src/host/mod.rs)). `CleromancySessionAuthority` still
+  owns its application graph ([`admitted.rs`](../src/admitted.rs)). C1's
+  resident-held divination domain is not established by the existing native
+  reopen proof.
+- **The scene is a bounded adapter.** [`reading_scene.rs`](../src/reading_scene.rs)
+  interns reading sources with separate placement occurrences, but manually
+  positions three columns. The DOM realization uses those coordinates
+  ([`ui/view/reading_scene.rs`](../src/ui/view/reading_scene.rs)); there is no
+  editable relation neighborhood or dynamics binding. The manifest pins Mere
+  `8106c7c2`, so current platform capabilities need a tested adaptation.
+- **Authored positions lose their meaning in the reader.** The renderer
+  derives labels and stock rationales from position ids instead of the saved
+  template ([`ui/view/reading.rs`](../src/ui/view/reading.rs),
+  [`reading_scene.rs`](../src/reading_scene.rs)). A saved label "What I must
+  release" under `foundation` displayed "Foundation" and the built-in
+  grounding rationale. C2 must resolve the saved template; C3 must carry its
+  meaning as versioned data.
+- **Audit presentation needs the reading narrative.** The expanded Cambium
+  detail panel has no host styles for its label/value classes, so labels and
+  explanations run together. Context authoring, large status identifiers and
+  header space compete with the focused reading. Chart entry exposes UTC
+  strings and microdegree/millidegree units. These are C2 presentation findings,
+  not evidence that a new storage layer fixes the interface.
+- **The old draw behavior remains.** The built-in field has 22 upright Major
+  Arcana, and each position casts independently over the full field
+  ([`tarot.rs`](../src/tarot.rs), [`host/spreads.rs`](../src/host/spreads.rs)).
+  C5's shuffled deck, non-repetition and reversals have not landed.
+- **Verification is bounded.** The four-feature suite
+  `cargo test --features analytic-ephemeris,sky-timeline,personal-sync,graphshell-admission`
+  passed. Native tarot first/reopen and astrology lanes passed; the reading's
+  ids matched and its card previews were byte-identical after a fresh process.
+  Three 2320×1520 captures were reviewed at the default 1160×760 window.
+  The standalone core's documented locked gate fails before compilation:
+  its manifest pins Mere `8106c7c2` while its lock retains `876320fd`.
+  `cargo fmt --all -- --check` also fails. These failures remain open.
+  The local review receipt and captures are retained under
+  `Code/testing/cleromancy/review-20261007/`; narrow windows, high zoom and
+  release packaging were not qualified.
+
+### Dependency and readiness map (2026-10-07)
+
+The reservoir plan owns reservoir status; the one-tree plan owns Graphshell's
+cutover; the dynamics and Scenograph editor plans own their shared contracts.
+Their historical receipts do not count as Cleromancy consumer acceptance.
+
+| Cleromancy target | Required contract or proof | Readiness and remaining work |
+| --- | --- | --- |
+| C1: resident-held domain and lifecycle | Reservoir V1–V2; composed Cleromancy domain validator | Shared index, routes, sessions and journal exist. Every write entrance still needs Cleromancy replay/record validation, with cross-application refusal tests. |
+| C1: common session view | Reservoir V2b | Component and route adapter exist; Graphshell cutover/panel acceptance and Cleromancy embedding remain separate unfinished steps. |
+| C1: session archive | Reservoir V3 | Codicil helpers exist; reservoir save/open/fork/compose integration and its receipts remain open. |
+| C1: access and ambient crossing | Reservoir V4 | Initial first-party route grants exist; recorded denials and per-mere ambient consent remain open. |
+| C1: standalone ownership | Reservoir V5 | Qualify embedded operation without Djinn, client attachment with Djinn, and refusal of a second owner. |
+| C2: computation narrative and authored position meaning | Stored reading, field, context and template definitions | Source analysis, narration design and template-resolution preparation can proceed against existing receipts; they do not complete C1 or change the ruled execution order. |
+| C3: typed cards, decks and interpretations | Cleromancy-owned schemas, versioned content and cited traditions | Prepare the domain binding and remove view-owned meaning when this phase executes. Mere does not supply divination semantics. |
+| C4: interactive contextual neighborhood | C3 binding; shared projection definitions/compiler and scene editing | Prepare explicit relation families and a consumer fixture. Focus and curation use owner actions; navigation never implicitly keeps an item. |
+| C4: authored dynamics and retained composition | Shared dynamics grammar, especially G4; G2 for its unified channels | G1/G3/G7/G9 are landed; G2 and portable `DynamicsSpec`/pickers remain open. Do not introduce an app-private spec or treat a pin bump as adoption. |
+
+Preparation means schemas, mappings, source-backed fixtures and acceptance
+design. It must not install a second persistence owner or claim an unfinished
+phase complete. The full C1 gate still includes V1–V5 under the existing ruling.
+
+### Historical findings (verified 2026-09-23)
+
+The following records the original assessment, including its then-current
+store and consumer observations. Recheck consumer revisions before C5; the
+stale Isometry/Isocosm checkout identified during the 2026-10-07 review is not
+current compatibility evidence.
 
 - **Storage.** `CleromancyHost` holds one Mere kernel `Graph` and saves it
   whole, as one snapshot document in one muniment slot
@@ -130,6 +216,11 @@ contexts, fields, charts, sky facts and reflections become records inside the
 mere's sessions. The graph journal records every move, and Eidetic archives
 sessions as codicils.
 
+Use the readiness map in §2 to name the missing contracts and their proofs.
+V1–V2's completion does not install Cleromancy's validator in the resident.
+V2b's route adapter does not establish the product's embedding, V3 archive
+integration, V4 denials/ambient grants, or V5 standalone ownership behavior.
+
 Cleromancy's domain authority, meaning replay before write, receipts and
 record validation, is composed into the resident the way Knot's was in the
 device resident plan's R3. Every application's writes to the divination mere
@@ -160,6 +251,12 @@ Reflection and context entry offer examples drawn from the reading instead of
 blank boxes. The receipt stays available, but auditability is the narration,
 not a raw block of workings.
 
+Resolve each position's label and meaning from the saved template rather than
+its id. Normal date/time and angle entry belongs in the product surface;
+serialized UTC strings, integer units and import details remain inspectable
+at the calculation boundary. Any expanded detail panel supplies readable
+label/value geometry through the host's styling contract.
+
 The narration says only what the receipt supports. Until C5's shuffled deck
 lands, it says each position is drawn independently, so a card can recur, and
 that every card is upright.
@@ -172,6 +269,9 @@ that every card is upright.
 - the context and the reading appear together;
 - the reflection box opens with at least one example taken from the reading it
   belongs to;
+- an authored position retains its saved label and meaning in the scene,
+  focused reading and accessible narration, including a custom label on a
+  built-in position id;
 - the narration states the current draw's independence and upright-only
   orientation, and changes when C5 lands.
 
@@ -201,13 +301,59 @@ carries its reason, method and engine version. The ambient tier holds:
 The ambiance design's two axes apply. Examining an item puts it in short-term
 memory, keeping promotes it, and focus never promotes.
 
+**Scene and dynamics refinement (2026-10-07; proposed consumer design).**
+Cleromancy supplies typed facts, cited correspondences, interpretation versions,
+reflections and permitted actions. Mere supplies projection authoring,
+arrangements, navigation, motion and shared editing. Foreground/background
+emphasis, provenance, and seeded/anchored/pinned placement are independently
+editable dimensions. Both foreground and background remain interactive.
+
+The first dynamics proof uses explicit relation families: correspondence under
+a named tradition, earlier appearances/reflections, and saved sky observations.
+Those families can be inspected or chosen separately. Inferred similarity may
+join them with its inputs, method and version disclosed; it is not a
+prerequisite for the first explicit-relation fixture. Material from other
+meres enters the ambient level only through V4's per-mere, per-app consent.
+
+Compose shared terms and targets rather than implementing a Cleromancy force
+catalog. A settling composition separates items and gathers related material;
+a living composition may retain circulation or other sustained motion. The
+person can pause, use a still/reduced-motion presentation, disturb an item,
+anchor it or pin it. A timeline's encoded time axis stays held while motion
+uses the remaining freedom. Available shared terms and permitted actions set
+the supported choices; unsupported terms or channels are refused explicitly.
+
+Consume G4's versioned `DynamicsSpec` when its persistence contract lands.
+The save records the recipe, relation/channel bindings, placement roles and
+curation separately from the sealed reading. Reopening must preserve the draw,
+position meanings, interpretation revisions and reflections. Scene dynamics
+do not silently draw again, rewrite an interpretation or promote keeping.
+Cleromancy must demonstrate its own save/reopen and moving-selection behavior;
+Graphshell or another product's receipts are not consumer adoption.
+
+A dynamics-based cast is a later exploration candidate, not this scene's draw
+method or a C5 requirement. It would require an explicitly chosen selection
+method and a replayable receipt with engine revision, parameters, initial state
+and recorded inputs/checkpoints. Mere's G8 determinism and G10 input-replay
+contracts must be qualified for that method; a random seed alone is not proof.
+
 **Done when:**
 - a focused card shows at least three relation families;
 - each ambient item names its engine and version;
 - examining and keeping move items between keeping levels and appear in the
   journal;
 - the same neighbourhood can be shown in at least two scenes, with
-  force-directed as the default.
+  force-directed as the default;
+- the first fixture shows one saved reading, a focused card and at least three
+  disclosed relation families; changing the lens or disturbing the scene lets
+  the person inspect the relationships and their named methods;
+- scene and supported dynamics choices save and reopen with focus, roles and
+  foreground/background presentation intact, while sealed reading data stays
+  unchanged;
+- selection and inspection remain usable during motion, and keyboard plus
+  still/reduced-motion operation expose the same meaningful actions;
+- keeping is explicit, and an opted-out neighboring mere contributes no
+  ambient material.
 
 ### C5. The shuffled deck
 
@@ -223,6 +369,10 @@ system or a public derived seed.
 - Isocosm's derived selection still produces byte-equal receipts at its pinned
   revision;
 - C2's narration reports the shuffle and each card's orientation.
+
+Establish that consumer's current checkout and integration pin before running
+the compatibility gate; the historical pin in §2 is not a current acceptance
+result.
 
 ### C6. Situation
 
@@ -297,3 +447,9 @@ orientations and positions, and interpretations.
   ruled too: reservoir under the shared root per persona, stable domain
   identifiers, and Turnstone's lifecycle moved into pandect for every
   application.
+- 2026-10-07: source/native review at Cleromancy `32a4b948` and shared-contract
+  refresh against Mere `cd3ebf26d`. Recorded the available V1–V2/V2b substrate,
+  named the outstanding C1 contracts, and separated preparatory work from phase
+  completion without changing the ruled order. Added authored-position and
+  native presentation findings, bounded test/capture evidence, and proposed
+  C4 scene/dynamics acceptance. No source, pin, store or runtime changes.
