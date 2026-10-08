@@ -1,10 +1,12 @@
 # Cleromancy: the divination mere, and a reading that explains itself
 
 **Date:** 2026-09-23
-**Status (2026-10-07):** plan; C1–C8 are not implemented. The existing local
+**Status (2026-10-08):** C1 preparation in progress; no phase is accepted.
+The existing local
 consultation works, but still owns one snapshot store and its own authority.
 Mere's reservoir V1 and V2, and V2b's component, harness and route adapter,
-have landed. C1 still needs the remaining reservoir contracts and Cleromancy's
+have landed. The first V3–V5 resident wave now has an integrated implementation
+and process fixtures. C1 still needs V2b's cutover/panel and Cleromancy's
 domain-authority integration. The dependency map below replaces an opaque
 "wait for V1–V5" handoff with named acceptance gates. §7's 2026-09-23 rulings
 and the execution order remain in force.
@@ -146,7 +148,7 @@ published main branches. This refresh changes documentation only.
   `Code/testing/cleromancy/review-20261007/`; narrow windows, high zoom and
   release packaging were not qualified.
 
-### Dependency and readiness map (2026-10-07)
+### Dependency and readiness map (reviewed 2026-10-08)
 
 The reservoir plan owns reservoir status; the one-tree plan owns Graphshell's
 cutover; the dynamics and Scenograph editor plans own their shared contracts.
@@ -154,19 +156,44 @@ Their historical receipts do not count as Cleromancy consumer acceptance.
 
 | Cleromancy target | Required contract or proof | Readiness and remaining work |
 | --- | --- | --- |
-| C1: resident-held domain and lifecycle | Reservoir V1–V2; composed Cleromancy domain validator | Shared index, routes, sessions and journal exist. Every write entrance still needs Cleromancy replay/record validation, with cross-application refusal tests. |
+| C1: resident-held domain and lifecycle | Reservoir V1–V2; composed Cleromancy domain validator | Shared index, routes, sessions, journal and a complete-candidate validation hook exist. Cleromancy's pure validator is prepared; every write entrance still needs its actual registration and cross-application refusal tests. |
 | C1: common session view | Reservoir V2b | Component and route adapter exist; Graphshell cutover/panel acceptance and Cleromancy embedding remain separate unfinished steps. |
-| C1: session archive | Reservoir V3 | Codicil helpers exist; reservoir save/open/fork/compose integration and its receipts remain open. |
-| C1: access and ambient crossing | Reservoir V4 | Initial first-party route grants exist; recorded denials and per-mere ambient consent remain open. |
-| C1: standalone ownership | Reservoir V5 | Qualify embedded operation without Djinn, client attachment with Djinn, and refusal of a second owner. |
+| C1: session archive | Reservoir V3 | Reservoir save/open/fork/compose and immutable source lineage pass route/process fixtures. Cleromancy must adapt its actions and validate domain candidates through that path. |
+| C1: access and ambient crossing | Reservoir V4 | Persistent denial, independent ambient consent, read-only ambient routes and live revocation pass resident fixtures. Owner controls and opted-in material in Cleromancy's ambient tier remain open. |
+| C1: standalone ownership | Reservoir V5 | Client-first attachment and embedded ownership pass separate-process library fixtures. Install identical divination authority in daemon and embedded composition, then qualify Cleromancy's actual startup. |
 | C2: computation narrative and authored position meaning | Stored reading, field, context and template definitions | Source analysis, narration design and template-resolution preparation can proceed against existing receipts; they do not complete C1 or change the ruled execution order. |
 | C3: typed cards, decks and interpretations | Cleromancy-owned schemas, versioned content and cited traditions | Prepare the domain binding and remove view-owned meaning when this phase executes. Mere does not supply divination semantics. |
 | C4: interactive contextual neighborhood | C3 binding; shared projection definitions/compiler and scene editing | Prepare explicit relation families and a consumer fixture. Focus and curation use owner actions; navigation never implicitly keeps an item. |
-| C4: authored dynamics and retained composition | Shared dynamics grammar, especially G4; G2 for its unified channels | G1/G3/G7/G9 are landed; G2 and portable `DynamicsSpec`/pickers remain open. Do not introduce an app-private spec or treat a pin bump as adoption. |
+| C4: authored dynamics and retained composition | Shared dynamics grammar, especially G4; G2 for its unified channels | G2 and G4a's portable spec core have since landed; G4b's runtime binding and end-to-end choice retention remain separate gates. The grammar plan owns their current status. Do not introduce an app-private spec or treat a pin bump as adoption. |
 
 Preparation means schemas, mappings, source-backed fixtures and acceptance
 design. It must not install a second persistence owner or claim an unfinished
 phase complete. The full C1 gate still includes V1–V5 under the existing ruling.
+
+### Authorized orchestration (2026-10-08)
+
+Mark authorized publishing this refresh and proceeding with the plan. The
+first implementation wave ran the independent reservoir contracts in separate
+lanes: V3 archive, V4 recorded denials and ambient grants, and V5 embedded/client
+ownership. Mere's integrated source at `5f611cfb3` passes scoped tests and
+real-process receipts; the reservoir plan owns their exact counts and limits.
+Graphshell's one-tree cutover and mounted session panel remain V2b gates; this
+wave does not bypass them or move C2 ahead of C1.
+
+Cleromancy supplies a read-only complete-candidate validator in
+[`host/domain.rs`](../src/host/domain.rs). It checks canonical record identity,
+supported domain facets, sealed reading replay and stored dependencies using
+the existing product decoders. It opens no store and leaves the candidate
+unchanged. The shared resident must install it before any graph, journal,
+archive or imported-session write; a helper's presence does not establish that
+composition. A coordinated integration pin follows the shared and V2b gates, then the
+client and shared mere view replace the private authority and snapshot store.
+
+The core lock is aligned to the manifest's existing Mere revision. The locked
+sky-timeline gate now passes; the dated failure above remains historical.
+Domain-specific refusal tests run in the portable core. These are source
+checks; the new resident path still needs native lifecycle, cross-application
+visibility and fresh-process reopen qualification on the integrated revision.
 
 ### Historical findings (verified 2026-09-23)
 
@@ -218,8 +245,9 @@ sessions as codicils.
 
 Use the readiness map in §2 to name the missing contracts and their proofs.
 V1–V2's completion does not install Cleromancy's validator in the resident.
-V2b's route adapter does not establish the product's embedding, V3 archive
-integration, V4 denials/ambient grants, or V5 standalone ownership behavior.
+V2b's route adapter does not establish the product's embedding. The shared
+V3–V5 resident contracts now have process fixtures; those do not establish
+Cleromancy's archive, ambient presentation or standalone startup acceptance.
 
 Cleromancy's domain authority, meaning replay before write, receipts and
 record validation, is composed into the resident the way Knot's was in the
@@ -453,3 +481,18 @@ orientations and positions, and interpretations.
   completion without changing the ruled order. Added authored-position and
   native presentation findings, bounded test/capture evidence, and proposed
   C4 scene/dynamics acceptance. No source, pin, store or runtime changes.
+- 2026-10-08: Mark authorized push and orchestration. Published the refresh,
+  started separate V3/V4/V5 implementation lanes, and prepared the product-owned
+  full-candidate replay validator. Aligned the core lock with its declared pin
+  and passed its locked sky-timeline gate. C1's resident composition, consumer
+  pin, common view and private-store retirement remain unaccepted; C2–C8 keep
+  their ruled order.
+- 2026-10-08: the first shared wave is integrated in Mere at `5f611cfb3`.
+  Archive lineage and read-only first-edit forks, recorded denial/ambient
+  route enforcement, and client-first embedded ownership pass combined
+  source and real-process fixtures. The reservoir plan records exact counts,
+  revisions and the unresolved expanded personal-sync reopen test. Its
+  permission API is owner-side; admitted products cannot clear their own
+  denial. Rechecked this readiness map against that source. No Cleromancy
+  repin, authority registration, private-store retirement, native consumer
+  proof or phase acceptance is implied by the shared implementation.

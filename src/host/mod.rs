@@ -34,6 +34,7 @@ use crate::{
 
 mod cards;
 mod catalog;
+mod domain;
 #[cfg(not(feature = "portable-core"))]
 mod projection;
 mod records;
@@ -41,6 +42,8 @@ mod replay;
 mod sky;
 mod spreads;
 mod summary;
+
+pub use domain::validate_divination_graph;
 
 pub use summary::{SessionSummary, SummaryPlacement, summarize};
 
@@ -198,7 +201,7 @@ impl<B: Backend> CleromancyHost<B> {
         let document = match &self.persisted_document {
             Some(document) if !self.dirty && document.graph.timestamp_secs == saved_at_secs => {
                 document.clone()
-            }
+            },
             _ => {
                 let mut graph = self.graph.to_snapshot();
                 graph.timestamp_secs = saved_at_secs;
@@ -208,7 +211,7 @@ impl<B: Backend> CleromancyHost<B> {
                     projection_epoch: self.projection_epoch,
                     projection_revision: self.projection_revision,
                 }
-            }
+            },
         };
         self.slots.save(HOST_SLOT, &document).await?;
         self.persisted_document = Some(document);
