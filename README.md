@@ -13,7 +13,9 @@ The [divination mere and self-explaining reading plan](design_docs/2026-09-23_di
 now names the available Mere substrate, the remaining resident/reservoir
 integration gates, and proposed contextual scene and dynamics acceptance.
 C1 preparation is underway: the product-owned replay validator is available,
-and reservoir archive, access and standalone contracts are being integrated.
+and reservoir archive, access and standalone resident contracts now have an
+integrated implementation with process fixtures. Cleromancy still needs its
+consumer pin, both domain registrations and the shared view/storage migration.
 No phase is accepted; the plan owns readiness and execution order.
 
 - The A0-A25 proof ledger is complete (2026-08-02 through 2026-08-07):

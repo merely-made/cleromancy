@@ -118,8 +118,10 @@ the current public overview until it is authored.
   - The refresh records the existing snapshot store, native first/reopen
     evidence and limits, authored-position meaning bug and the outstanding
     format gate. The core lock is repaired and the portable full-candidate
-    validator is prepared; resident composition and consumer adoption remain
-    open. C4 includes proposed foreground/background and dynamics
+    validator is prepared. Mere's integrated V3–V5 resident contracts pass
+    source and real-process fixtures; Cleromancy's domain registrations,
+    shared view/store migration and native consumer acceptance remain open.
+    C4 includes proposed foreground/background and dynamics
     acceptance using shared contracts; no private spec or physics adoption is
     claimed. Preparation is distinguished from changing the ruled phase order.
 - [Headed local consultation](2026-08-07_headed_local_consultation_plan.md):
