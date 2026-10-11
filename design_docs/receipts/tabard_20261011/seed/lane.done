@@ -1,0 +1,22 @@
+RESULT ok
+waited 0 frames
+waited 0 frames
+waited 0 frames
+captured detail
+captured product-light
+captured product-dark
+captured product-hc-light
+captured product-hc-dark
+captured workshop-saved
+captured workshop-narrow
+captured authored-consultation
+capture detail 2320x1520 digest=0a313d3d5ee70210 file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/seed/detail.png
+capture product-light 2320x1520 digest=bc1f137925a61294 file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/seed/product-light.png
+capture product-dark 2320x1520 digest=6815c39f037ca074 file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/seed/product-dark.png
+capture product-hc-light 2320x1520 digest=38de614b44240910 file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/seed/product-hc-light.png
+capture product-hc-dark 2320x1520 digest=40a6fc10503b3c89 file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/seed/product-hc-dark.png
+capture workshop-saved 2320x1520 digest=8694dc2029ef84ea file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/seed/workshop-saved.png
+capture workshop-narrow 840x2000 digest=8d149dfa13025e70 file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/seed/workshop-narrow.png
+capture authored-consultation 2320x1520 digest=809f1630142c38fc file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/seed/authored-consultation.png
+frames: 8 captured, 0 blank, 8 distinct digests
+presentation: 82 frames, 85 redraws, 3 unpresented redraws

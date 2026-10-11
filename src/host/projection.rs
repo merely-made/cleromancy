@@ -114,7 +114,12 @@ impl<B: Backend> CleromancyHost<B> {
     }
 
     pub(super) fn score(&self) -> Score {
+        let mut channels = self
+            .projection_channels
+            .lock()
+            .expect("projection channel cache");
         mere::canvas::project_canvas_strategy_with_score(
+            &mut channels,
             "phyllotaxis.default",
             &self.graph,
             None,
@@ -142,6 +147,9 @@ impl<B: Backend> CleromancyHost<B> {
             (Vec::new(), Vec::new())
         };
         let mut layout = mere::canvas::project_canvas_strategy_with_score(
+            self.projection_channels
+                .get_mut()
+                .expect("projection channel cache"),
             "phyllotaxis.default",
             &self.graph,
             None,
@@ -253,7 +261,13 @@ impl<B: Backend> CleromancyHost<B> {
         }
 
         let mut routed_relations = Vec::new();
-        for relation in self.graph.relations() {
+        // Content assertions stay in their owning resource store; project
+        // them onto the displayed cards beside surface-owned relations.
+        for relation in self
+            .graph
+            .projected_relations()
+            .map(|(_, relation)| relation)
+        {
             let (Some(&from), Some(&to), Some(from_position), Some(to_position)) = (
                 instance_of.get(&relation.from),
                 instance_of.get(&relation.to),

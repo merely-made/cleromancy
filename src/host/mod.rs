@@ -139,6 +139,10 @@ pub struct CleromancyHost<B> {
     slots: JsonSlots<B>,
     projection_session: ProjectionSession,
     pub(crate) graph: Graph,
+    // Transient layout facts belong to this graph owner. This is neither a
+    // persisted record nor projection-session/custody authority.
+    #[cfg(not(feature = "portable-core"))]
+    projection_channels: std::sync::Mutex<mere::canvas::ChannelRegistry>,
     pub(crate) projection_epoch: u64,
     pub(crate) projection_revision: u64,
     pub(crate) resources: BTreeMap<ContentHash, Vec<u8>>,
@@ -154,6 +158,8 @@ impl<B: Backend> CleromancyHost<B> {
             slots: JsonSlots::new(backend),
             projection_session: ProjectionSession(LOCAL_SESSION.to_string()),
             graph: Graph::new(),
+            #[cfg(not(feature = "portable-core"))]
+            projection_channels: std::sync::Mutex::new(mere::canvas::ChannelRegistry::new()),
             projection_epoch: 1,
             projection_revision: 1,
             resources: BTreeMap::new(),
@@ -171,6 +177,8 @@ impl<B: Backend> CleromancyHost<B> {
                 slots,
                 projection_session: ProjectionSession(LOCAL_SESSION.to_string()),
                 graph: Graph::new(),
+                #[cfg(not(feature = "portable-core"))]
+                projection_channels: std::sync::Mutex::new(mere::canvas::ChannelRegistry::new()),
                 projection_epoch: 1,
                 projection_revision: 1,
                 resources: BTreeMap::new(),
@@ -187,6 +195,8 @@ impl<B: Backend> CleromancyHost<B> {
             slots,
             projection_session: ProjectionSession(LOCAL_SESSION.to_string()),
             graph,
+            #[cfg(not(feature = "portable-core"))]
+            projection_channels: std::sync::Mutex::new(mere::canvas::ChannelRegistry::new()),
             projection_epoch: saved.projection_epoch,
             projection_revision: saved.projection_revision,
             resources: BTreeMap::new(),

@@ -1,0 +1,24 @@
+warning: patch `ipc-channel v0.22.0 (https://github.com/merely-made/genet.git?rev=7422e90613f9017e5bb790e3acb48f61776b2eda#7422e906)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling cleromancy v0.1.0 (/Users/markik/Code/worktrees/cleromancy-tabard-apps)
+    Finished `test` profile [unoptimized] target(s) in 17.61s
+     Running unittests src/lib.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/cleromancy-57b641f9d954543c)
+
+running 1 test
+
+thread 'ui::native::appearance_tests::neutral_workshop_headings_remain_readable_inside_dark_and_authored_hosts' (23190766) panicked at src/ui/native/appearance_tests.rs:422:17:
+Tabard foreground at 1160px, authored=false: rgb(241,237,228)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test ui::native::appearance_tests::neutral_workshop_headings_remain_readable_inside_dark_and_authored_hosts ... FAILED
+
+failures:
+
+failures:
+    ui::native::appearance_tests::neutral_workshop_headings_remain_readable_inside_dark_and_authored_hosts
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 33 filtered out; finished in 2.41s
+
+error: test failed, to rerun pass `--lib`

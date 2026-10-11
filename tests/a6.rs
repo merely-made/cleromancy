@@ -64,7 +64,8 @@ fn uniform_and_contextual_tarot_disclose_different_qualification() {
     assert_eq!(host.graph().nodes().count(), 5);
     assert_eq!(
         host.graph()
-            .relations()
+            .projected_relations()
+            .map(|(_, relation)| relation)
             .filter(|relation| {
                 relation.kind == RelationKind::Provenance(ProvenanceSubKind::GeneratedFrom)
             })

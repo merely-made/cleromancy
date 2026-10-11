@@ -1,0 +1,50 @@
+# The phase comes from CLEROMANCY_SCENARIO_PHASE. `advance` is Cleromancy's
+# semantic form/session action; waits observe the worker's own quiescence.
+wait
+advance
+wait
+assert event semantic
+assert event durable
+advance
+wait
+assert text Trial note: return after using the app
+assert snap sessions >= 1
+assert snap readings >= 3
+assert snap reflections >= 1
+capture detail
+settle 2
+
+assert snap appearance-id == theme:copy-1
+assert snap appearance-mode == dark
+click role:button @data-action=toggle-appearance
+click role:button @data-action=toggle-appearance
+settle 2
+capture consultation-before-save
+click role:button @data-action=toggle-appearance
+click role:button @data-action=edit-appearance
+click role:button @data-action=toggle-stylesheet
+click role:textbox @data-field=mode-sheet
+input-text :root{--tabard-color-bg:#342214;--tabard-color-surface:#49321b;--tabard-color-surface-2:#5e4324;--tabard-color-surface-hover:#7c5731;--tabard-color-text:#fff2ea;--tabard-color-text-header:#fff8f4;--tabard-color-text-dim:#e4ceb6;--tabard-color-text-disabled:#ba9e87;--tabard-color-primary:#ffc085;--tabard-color-on-primary:#342214;--tabard-syntax-link:#ffd294;--tabard-syntax-keyword:#ffc9a8;--tabard-syntax-string:#d0e6b5;--tabard-syntax-number:#ffdf95;--tabard-syntax-emphasis:#fff8f4;}
+click role:button @data-action=apply-stylesheet
+click role:button @data-action=save
+assert snap appearance-dirty == false
+click role:button @data-action=back-to-consultation
+click role:button @data-action=toggle-appearance
+settle 3
+capture consultation-after-save
+viewport-pixels-same consultation-before-save consultation-after-save
+click role:button @data-action=toggle-appearance
+click role:button @data-action=edit-appearance
+assert snap appearance-dirty == false
+click role:button @data-action=apply-to-cleromancy
+click role:button @data-action=back-to-consultation
+click role:button @data-action=toggle-appearance
+assert snap appearance-editor == false
+assert snap appearance-id == theme:copy-1
+settle 3
+capture consultation-after-apply
+captures-differ consultation-after-save consultation-after-apply
+viewport-pixels-change consultation-after-save consultation-after-apply
+assert snap sessions >= 1
+assert snap readings >= 3
+assert snap reflections >= 1

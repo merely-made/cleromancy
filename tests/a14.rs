@@ -79,7 +79,8 @@ fn astrology_chart_and_facts_are_graph_truth_and_project_as_cards() {
     );
     assert_eq!(
         host.graph()
-            .relations()
+            .projected_relations()
+            .map(|(_, relation)| relation)
             .filter(|relation| {
                 relation.kind == RelationKind::Provenance(ProvenanceSubKind::GeneratedFrom)
             })

@@ -77,7 +77,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         concurrence,
         concurrence_claim: "consulted together; astrology did not qualify or cause the tarot cast",
         graph_nodes: host.graph().nodes().count(),
-        graph_relations: host.graph().relations().count(),
+        graph_relations: host
+            .graph()
+            .projected_relations()
+            .map(|(_, relation)| relation)
+            .count(),
     };
     let mut app = CleromancyApp::new(host);
     write(&html_path, app.receipt_html()?.as_bytes())?;

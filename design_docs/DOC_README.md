@@ -98,6 +98,11 @@ the current public overview until it is authored.
 
 ## Consultation, projection, and residency
 
+- [Shared application appearance acceptance](receipts/tabard_20261011/README.md):
+  landed native Tabard choice/workshop/title bar, strict Save/Apply, four modes,
+  readable wide/narrow editor and durable fresh reopens; exact CPU/native receipts.
+  [Completed plan](archive_docs/2026-10-11/2026-10-11_tabard_appearance_plan.md).
+
 - [Divination mere and the self-explaining reading](2026-09-23_divination_mere_plan.md):
   **C1 preparation in progress, 2026-10-08; no phase accepted.**
   - C1 moves Cleromancy onto its domain's mere in the identity's reservoir,

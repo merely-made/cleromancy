@@ -30,7 +30,8 @@ fn graph_resident_field_replays_after_the_callers_field_is_gone() {
     );
     assert_eq!(
         host.graph()
-            .relations()
+            .projected_relations()
+            .map(|(_, relation)| relation)
             .filter(|relation| {
                 relation.kind == RelationKind::Provenance(ProvenanceSubKind::GeneratedFrom)
             })

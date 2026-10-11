@@ -11,7 +11,12 @@ use crate::{AstrologyChart, AstrologyFacts, Concurrence, Reflection, ThreeCardSp
 impl<B: Backend> CleromancyHost<B> {
     pub(super) fn card_for(&self, key: NodeKey) -> PortableCardV1 {
         let node = self.graph.get_node(key).expect("card key remains in graph");
-        let mut tags = node.tags.iter().cloned().collect::<Vec<_>>();
+        let mut tags = self
+            .graph
+            .node_content_tags(key)
+            .expect("card key remains in graph")
+            .into_iter()
+            .collect::<Vec<_>>();
         tags.sort();
         let mut values = vec![CardValueV1 {
             label: "Address".to_string(),

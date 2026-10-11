@@ -1,0 +1,13 @@
+Working directory: /Users/markik/Code/worktrees/cleromancy-tabard-apps
+Environment: CARGO_TARGET_DIR=/Users/markik/Code/targets/knot-tabard-apps CARGO_BUILD_JOBS=2 CARGO_INCREMENTAL=0 CARGO_PROFILE_DEV_DEBUG=0
+
+1. cargo +1.97.1 test --locked --offline --lib ui::native::appearance_tests::neutral_workshop_headings_remain_readable_inside_dark_and_authored_hosts -- --exact --nocapture
+First compile attempt exit101: missing LayoutDom import, no test executed (heading-contrast-negative.log). Repaired test import; original CSS negative02 exit101:1executed/1failed, actual Tabard color rgb(241,237,228) at1160px.
+
+2. cargo +1.97.1 test --locked --offline --lib ui::native::appearance_tests -- --nocapture
+Result: exit0;17passed/0failed/0ignored/17filtered;7.84s. Log: appearance-tests.log
+
+3. cargo +1.97.1 build --locked --offline --bin cleromancy
+Result: exit0;17.69s. Log: production-build.log
+
+Previous full/core/source/binary evidence retained. Final native rerun pending.

@@ -1,0 +1,28 @@
+{
+  "schema": "cleromancy.headed-scenario/v1",
+  "phase": "first",
+  "ok": true,
+  "status": "Reflection saved: 96f995c61e7e1cb05df8f13ebb07c298f0a14d79d8ee7d8daa9fdbec176c3f6c",
+  "catalog_ready": true,
+  "sessions": 1,
+  "readings": 3,
+  "reflections": 1,
+  "ids": {
+    "session_id": "e6c104ffff9464c3685e0b0b38702c6ff0ec10dd404d08cbe4dcfd6e18ee6378",
+    "reading_id": "5932f26638ea03ac75b5aa92c6953fcc0a1a5670744bc81a41d1b5ba1cc188b6",
+    "reflection_id": "96f995c61e7e1cb05df8f13ebb07c298f0a14d79d8ee7d8daa9fdbec176c3f6c"
+  },
+  "log": [
+    "waited 0 frames",
+    "waited 0 frames",
+    "waited 0 frames",
+    "captured detail",
+    "captured product-light",
+    "captured product-dark",
+    "captured product-hc-light",
+    "captured product-hc-dark",
+    "captured workshop-saved",
+    "captured workshop-narrow",
+    "captured authored-consultation"
+  ]
+}

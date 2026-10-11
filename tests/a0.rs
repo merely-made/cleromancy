@@ -74,7 +74,8 @@ fn mere_truth_reopens_and_graphshell_resolves_every_card() {
     assert_eq!(host.graph().nodes().count(), 4);
     assert_eq!(
         host.graph()
-            .relations()
+            .projected_relations()
+            .map(|(_, relation)| relation)
             .filter(|relation| {
                 relation.kind == RelationKind::Provenance(ProvenanceSubKind::GeneratedFrom)
             })

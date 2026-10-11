@@ -1,0 +1,349 @@
+{
+  "cases": {
+    "seed": {
+      "process": {
+        "launch_method": "LaunchServices temporary application bundle",
+        "launcher_exit": 0,
+        "timeout": false,
+        "success": true,
+        "elapsed_seconds": 60.293,
+        "binary_sha256": "4bd69abb17e834cff20408c403f76ea4f181f5312260cd31b217a97b34ca26eb",
+        "scenario_sha256": "021e087116a6d461c256be20d43cf5973dfead35036f3abb9eea082fbddbd31a",
+        "receipt": "scenario.done",
+        "captures": 8
+      },
+      "ids": {
+        "session_id": "e6c104ffff9464c3685e0b0b38702c6ff0ec10dd404d08cbe4dcfd6e18ee6378",
+        "reading_id": "5932f26638ea03ac75b5aa92c6953fcc0a1a5670744bc81a41d1b5ba1cc188b6",
+        "reflection_id": "96f995c61e7e1cb05df8f13ebb07c298f0a14d79d8ee7d8daa9fdbec176c3f6c"
+      },
+      "sessions": 1,
+      "readings": 3,
+      "reflections": 1,
+      "captures": 8,
+      "blank": 0,
+      "presented_frames": 82
+    },
+    "reopen": {
+      "process": {
+        "launch_method": "LaunchServices temporary application bundle",
+        "launcher_exit": 0,
+        "timeout": false,
+        "success": true,
+        "elapsed_seconds": 29.438,
+        "binary_sha256": "4bd69abb17e834cff20408c403f76ea4f181f5312260cd31b217a97b34ca26eb",
+        "scenario_sha256": "cd7cf0fa0be2ef240ff7fa48a3cd5be8e6d8e2351d28888ff4938e1ebf99b0b2",
+        "receipt": "scenario.done",
+        "captures": 3
+      },
+      "ids": {
+        "session_id": "e6c104ffff9464c3685e0b0b38702c6ff0ec10dd404d08cbe4dcfd6e18ee6378",
+        "reading_id": "5932f26638ea03ac75b5aa92c6953fcc0a1a5670744bc81a41d1b5ba1cc188b6",
+        "reflection_id": "96f995c61e7e1cb05df8f13ebb07c298f0a14d79d8ee7d8daa9fdbec176c3f6c"
+      },
+      "sessions": 1,
+      "readings": 3,
+      "reflections": 1,
+      "captures": 3,
+      "blank": 0,
+      "presented_frames": 40
+    },
+    "same-id": {
+      "process": {
+        "launch_method": "LaunchServices temporary application bundle",
+        "launcher_exit": 0,
+        "timeout": false,
+        "success": true,
+        "elapsed_seconds": 60.973,
+        "binary_sha256": "4bd69abb17e834cff20408c403f76ea4f181f5312260cd31b217a97b34ca26eb",
+        "scenario_sha256": "f271781f201c7e1771d8591527f7e3544f3b2feb50be65882d1d5fc08bb7f379",
+        "receipt": "scenario.done",
+        "captures": 4
+      },
+      "ids": {
+        "session_id": "e6c104ffff9464c3685e0b0b38702c6ff0ec10dd404d08cbe4dcfd6e18ee6378",
+        "reading_id": "5932f26638ea03ac75b5aa92c6953fcc0a1a5670744bc81a41d1b5ba1cc188b6",
+        "reflection_id": "96f995c61e7e1cb05df8f13ebb07c298f0a14d79d8ee7d8daa9fdbec176c3f6c"
+      },
+      "sessions": 1,
+      "readings": 3,
+      "reflections": 1,
+      "captures": 4,
+      "blank": 0,
+      "presented_frames": 64
+    },
+    "final-reopen": {
+      "process": {
+        "launch_method": "LaunchServices temporary application bundle",
+        "launcher_exit": 0,
+        "timeout": false,
+        "success": true,
+        "elapsed_seconds": 29.08,
+        "binary_sha256": "4bd69abb17e834cff20408c403f76ea4f181f5312260cd31b217a97b34ca26eb",
+        "scenario_sha256": "cd7cf0fa0be2ef240ff7fa48a3cd5be8e6d8e2351d28888ff4938e1ebf99b0b2",
+        "receipt": "scenario.done",
+        "captures": 3
+      },
+      "ids": {
+        "session_id": "e6c104ffff9464c3685e0b0b38702c6ff0ec10dd404d08cbe4dcfd6e18ee6378",
+        "reading_id": "5932f26638ea03ac75b5aa92c6953fcc0a1a5670744bc81a41d1b5ba1cc188b6",
+        "reflection_id": "96f995c61e7e1cb05df8f13ebb07c298f0a14d79d8ee7d8daa9fdbec176c3f6c"
+      },
+      "sessions": 1,
+      "readings": 3,
+      "reflections": 1,
+      "captures": 3,
+      "blank": 0,
+      "presented_frames": 40
+    },
+    "preview-live": {
+      "process": {
+        "launch_method": "LaunchServices temporary application bundle",
+        "launcher_exit": 0,
+        "timeout": false,
+        "success": true,
+        "elapsed_seconds": 31.06,
+        "binary_sha256": "4bd69abb17e834cff20408c403f76ea4f181f5312260cd31b217a97b34ca26eb",
+        "scenario_sha256": "5a23d9efff075c0636b4a85288b918b5fe1c5a119931a0da9b05ead477a849f5",
+        "receipt": "scenario.done",
+        "captures": 3
+      },
+      "ids": {
+        "session_id": "e6c104ffff9464c3685e0b0b38702c6ff0ec10dd404d08cbe4dcfd6e18ee6378",
+        "reading_id": "5932f26638ea03ac75b5aa92c6953fcc0a1a5670744bc81a41d1b5ba1cc188b6",
+        "reflection_id": "96f995c61e7e1cb05df8f13ebb07c298f0a14d79d8ee7d8daa9fdbec176c3f6c"
+      },
+      "sessions": 1,
+      "readings": 3,
+      "reflections": 1,
+      "captures": 3,
+      "blank": 0,
+      "presented_frames": 50
+    }
+  },
+  "captures": [
+    {
+      "file": "seed/authored-consultation.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "4982acfd891c82a93c913eb6417223a9c983ccfeab113354527442e1998ce2e9",
+      "colors": 4443
+    },
+    {
+      "file": "seed/detail.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "dbf507d84e467b97dda82ba85dcdd96b50de5c59033689cdbb1ed835a534b06a",
+      "colors": 5459
+    },
+    {
+      "file": "seed/product-dark.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "5b949b81201ed084a13875dd84301b146455216b96feffff4341058baa306e1b",
+      "colors": 4683
+    },
+    {
+      "file": "seed/product-hc-dark.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "7175c7bd77b399dcbf61285fcd8c95f10969e5f00a9e36df41ee628fe2ba3c89",
+      "colors": 1994
+    },
+    {
+      "file": "seed/product-hc-light.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "bd794619fc9096517ac56690a1469d742b46528d5e8d9ef07ed14cf9cabc394e",
+      "colors": 2068
+    },
+    {
+      "file": "seed/product-light.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "444140f39f3b413c782d5700b50ad72f7d8cba80ff2597ab70bc94c972424754",
+      "colors": 1354
+    },
+    {
+      "file": "seed/workshop-narrow.png",
+      "size": [
+        840,
+        2000
+      ],
+      "sha256": "e026a30c8f57aebe782ce1e2e78fcd624164c6cac2d62a5c72cc01bf4c2643f6",
+      "colors": 4914
+    },
+    {
+      "file": "seed/workshop-saved.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "7156bc9ba2cfa98f91aa69a28a0468f1db6c8107155ffd77f965f2e77ff7e973",
+      "colors": 6615
+    },
+    {
+      "file": "reopen/detail.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "fc18ae228b09b1337583082452d243f18645bf93e35e3c5275e190559619bf99",
+      "colors": 5067
+    },
+    {
+      "file": "reopen/reopened-authored.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "e88795e6fd1ef8a786a31011008e3aa11552b4d8852785b1a47b93f813a451de",
+      "colors": 5067
+    },
+    {
+      "file": "reopen/reopened-workshop-narrow.png",
+      "size": [
+        840,
+        2000
+      ],
+      "sha256": "481fe021ed02e6f4d4fe2937902a3cfa4f0b9938b5a5afd00ed866906714305b",
+      "colors": 4448
+    },
+    {
+      "file": "same-id/consultation-after-apply.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "e93f07466fc2602505be58d121202b218ffbf4fb5d7fa8e4bf53ccb47fe5a9a7",
+      "colors": 5150
+    },
+    {
+      "file": "same-id/consultation-after-save.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "7081e7e1ac18a67b655faac3e2317cec53bdb21faf0d937e1a6e608b82fa7843",
+      "colors": 5067
+    },
+    {
+      "file": "same-id/consultation-before-save.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "b9e44da99bdd2781929c45e0d18364d2a80dc2cd87af1c3915a22300c2189e16",
+      "colors": 5067
+    },
+    {
+      "file": "same-id/detail.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "478cd7e78536ef37beda5c2fe23fa7cb2d726e731fadbe622203a63eabd7dbce",
+      "colors": 5067
+    },
+    {
+      "file": "final-reopen/detail.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "b73a4d3f23d91faf5a6072edd50c94c99a36c6c3e48267db01400b5c3a9d4a46",
+      "colors": 5150
+    },
+    {
+      "file": "final-reopen/reopened-authored.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "a9a0186c2f969fcbe3ae2a46be5c70159e75c525fb713d4a54769bd6628011db",
+      "colors": 5150
+    },
+    {
+      "file": "final-reopen/reopened-workshop-narrow.png",
+      "size": [
+        840,
+        2000
+      ],
+      "sha256": "05c3f4cd6a1e19ca7fdea698741154e146e38a893fe71d8d86caca26e6a3f64d",
+      "colors": 4448
+    },
+    {
+      "file": "preview-live/authored-preview-brown.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "508c234e726b07659c70d8405416f277b55a61c86b0dd41c6b1a8940992b5f9b"
+    },
+    {
+      "file": "preview-live/authored-preview-live-green.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "78d0789554d76c9ce0194d28ab449e62425dbe5071265b909a5065e5b19ef8fe"
+    },
+    {
+      "file": "preview-live/detail.png",
+      "size": [
+        2320,
+        1520
+      ],
+      "sha256": "d15237d8196cf4b28b227298f61b8774bcd5a156a6199b195049e34673e8e875"
+    }
+  ],
+  "same_id_pixels": {
+    "save": {
+      "whole_capture_changed_pixels_above_2": 0,
+      "max_channel_difference": 1
+    },
+    "apply": {
+      "whole_capture_changed_pixels_above_2": 3526400,
+      "max_channel_difference": 122
+    }
+  },
+  "authored_css_exact": true,
+  "appearance": {
+    "theme_id": "theme:copy-1",
+    "theme_mode": "dark"
+  },
+  "authored_identity_count": 1,
+  "total_captures": 21,
+  "total_presented_frames": 276,
+  "live_authored_preview": {
+    "authored-preview-brown.png": {
+      "background_rgb": [
+        52,
+        34,
+        20
+      ],
+      "matching_pixels_tolerance_2": 314229
+    },
+    "authored-preview-live-green.png": {
+      "background_rgb": [
+        23,
+        59,
+        37
+      ],
+      "matching_pixels_tolerance_2": 314231
+    }
+  },
+  "unsaved_preview_discard_preserved_saved_css": true
+}

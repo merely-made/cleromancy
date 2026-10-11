@@ -1,0 +1,82 @@
+{
+  "stage": "Neutral-editor foreground CPU-qualified; final native rerun pending",
+  "frozen_at_utc": "2026-10-11T09:06:23.802030+00:00",
+  "worktree": "/Users/markik/Code/worktrees/cleromancy-tabard-apps",
+  "head": "ff3b1f5302e15b054b412bba8261dfc28ea81740",
+  "origin_main": "ff3b1f5302e15b054b412bba8261dfc28ea81740",
+  "source_sha256": {
+    "Cargo.toml": "ab9589de862180cb91fbb7ac31ab015f5673323f4899eb75075279a76927d767",
+    "core/Cargo.lock": "088e56706c42219ceadde004513a12785c3b118b4991f957a70d0d14c237451a",
+    "core/Cargo.toml": "9c6bedc05e9555649087b0b626ae568e613d22a0dd815fb7ed15f25ab4657fc7",
+    "design_docs/2026-10-11_tabard_appearance_plan.md": "99f51c92e5e101a3cf2099c6e5d357a2c1537c48d0cadf9f7b1e25383e2e5e17",
+    "design_docs/DOC_README.md": "75b9a8fcd000ba5ad73a9538b50e5e556f11f94b6213903e7003556309816a3a",
+    "receipts/tabard-authoring.scn": "021e087116a6d461c256be20d43cf5973dfead35036f3abb9eea082fbddbd31a",
+    "receipts/tabard-reopen.scn": "cd7cf0fa0be2ef240ff7fa48a3cd5be8e6d8e2351d28888ff4938e1ebf99b0b2",
+    "receipts/tabard-same-id.scn": "f271781f201c7e1771d8591527f7e3544f3b2feb50be65882d1d5fc08bb7f379",
+    "src/bin/a15_pattern_receipt.rs": "c0237cb4b43db9df01d41ac7181d9cb4ae9a521983121bbaf8e2bdeb516cce01",
+    "src/bin/a16_pattern_selection_receipt.rs": "35aece6cda8d15186440c78252050437f9e4acf5110dc40fd8918a5cdc672d66",
+    "src/bin/a5_field_receipt.rs": "8d2449ea5d11d44b493743ff9c22958ab70bb3e9ff7a062e2f4fb21c47eb4700",
+    "src/bin/a6_tarot_receipt.rs": "67cf49a0477cc288c82cacf8049aa497ad6e225cc8be12c8f67434e68a405ce5",
+    "src/bin/a7_session_receipt.rs": "4565e706ee653988dc07385a0e7cf5985b65aa4f7ec30de7e929c31e3c07a1df",
+    "src/bin/a8_three_card_receipt.rs": "6c270e0a562b36d4feee1a5982cad52270005fc4567acbfd794a5c195320049e",
+    "src/host/cards.rs": "e830175fc8e385d8d68f1b69c64671c17807495c75290b209301a48780079452",
+    "src/host/mod.rs": "e624b017f9836d1ecb66666d0b6b1544cad7769b362f20b19d64c523489d1df2",
+    "src/host/projection.rs": "9a0ec368e2b471c4341e2e1346be9bd9860f0716323d311000bb5451ca5a3168",
+    "src/ui/consultation.css": "25753a76eea9af4350841b548e84c9eb9dfcc792739ff82a52120f754bdad0b5",
+    "src/ui/native/appearance.rs": "83e4b773fdc1e292b68fea5b43f7adbb3be0ce7558ceaea7ee7de20b7318c857",
+    "src/ui/native/appearance_host.rs": "cfc4a20aacd5d73fea672c62aac2ce8af5fb97d934d88e6f5650da1a4821c798",
+    "src/ui/native/appearance_tests.rs": "8e2955419a27ef58b0f9fe910ccf423ffa54016565e89226c643498cd50c5206",
+    "src/ui/native/appearance_view.rs": "f31aaf218a94e7079607acc6a7d7445254bd926f3153ccda0c99579b4f6258ff",
+    "src/ui/native/mod.rs": "44ef46edeed0dfbc5352f2ddcc34a043d316c7a004dad19e5d0d758724d20de9",
+    "src/ui/native/scenario_driver.rs": "d86e274d3bba07929717fbdc2d340636624d31577195ac521565594664b1ee37",
+    "tests/a0.rs": "926dcc8998280a212ffc2058c9b67eab9ac97c6367311f8a3e6247f5bdfffe51",
+    "tests/a14.rs": "09e02267710eebb8c20c46fd5f811ac8db3a855088daaeffb69e7169811c6ac6",
+    "tests/a15.rs": "2cf9e1509309546b9c0586b4020ffcf496f1e2cfd3962c327e038daca64a4f5e",
+    "tests/a5.rs": "5643275d2d0065c5bfc16b7b34dd156139d3b0febae5c7394019980fd9882fe7",
+    "tests/a6.rs": "4a07f224da7c8bb4adacc0f1914781313b481fb08b06da0cd0809c6ac09d82b1",
+    "tests/a8.rs": "f8c367e4e732a1c78ff1a9ebbd013545742709b3968889bc960e7a028224d08e",
+    "tests/sky_host.rs": "b10919e2227ad9aabd596950b7aaf032d84df9813ee3991071fed6b5bacb1e70",
+    "tests/sky_timeline.rs": "89b5db9105d48426974ed3d0042ac5551f54de2a3a5dfa529664939c558e6de3"
+  },
+  "locks_sha256": {
+    "Cargo.lock": "518078ba2382fe356fa02bf283f870cc486fc4c1c44636e097fa9d0a2d4c938b",
+    "core/Cargo.lock": "088e56706c42219ceadde004513a12785c3b118b4991f957a70d0d14c237451a"
+  },
+  "root_lock_ignored": true,
+  "binary": "/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/cpu/final-readable/cleromancy-frozen",
+  "built_binary": "/Users/markik/Code/targets/knot-tabard-apps/debug/cleromancy",
+  "binary_sha256": "4bd69abb17e834cff20408c403f76ea4f181f5312260cd31b217a97b34ca26eb",
+  "binary_bytes": 140181604,
+  "tests": {
+    "focused_appearance_after_neutral_editor": 17,
+    "original_css_heading_negative": {
+      "executed": 1,
+      "failed": 1,
+      "observed_foreground": "rgb(241,237,228)"
+    },
+    "previous_default_full_before_monogram_and_neutral_editor": 92,
+    "previous_portable_core_sky_timeline": 18
+  },
+  "production_build_seconds": 17.69,
+  "pins": {
+    "mere": "e95326dc08446a9256d3e340c63e571684afe697",
+    "genet": "7422e90613f9017e5bb790e3acb48f61776b2eda",
+    "dramatis": "c1d620764315b4c750fcffea30b8c898b8bb73bc",
+    "maintained_vello": "10f01d6d88e94eac087daf033b24895cf97b8e82"
+  },
+  "qualification_bounds": [
+    "No GPU/native/browser run",
+    "Optional sync/admission/analytic feature graph metadata resolved only; runtime unqualified",
+    "Personal-sync legacy raw tag reader intentionally outside C1 scope",
+    "No Git commit or push yet"
+  ],
+  "previous_freeze": "/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/cpu/final/source-final.json",
+  "delta_from_previous": [
+    "src/ui/native/appearance_view.rs: native editor neutral foreground #242c39",
+    "src/ui/native/appearance_tests.rs: actual mounted heading foreground/background regression, dark/authored host at1160/420"
+  ],
+  "additional_runtime_fixture_sha256": {
+    "preview-live.scn": "5a23d9efff075c0636b4a85288b918b5fe1c5a119931a0da9b05ead477a849f5"
+  },
+  "native_qualification_summary": "summary.json"
+}

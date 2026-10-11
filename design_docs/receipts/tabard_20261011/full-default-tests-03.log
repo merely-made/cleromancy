@@ -1,0 +1,440 @@
+warning: patch `ipc-channel v0.22.0 (https://github.com/merely-made/genet.git?rev=7422e90613f9017e5bb790e3acb48f61776b2eda#7422e906)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling cleromancy v0.1.0 (/Users/markik/Code/worktrees/cleromancy-tabard-apps)
+    Finished `test` profile [unoptimized] target(s) in 2m 06s
+     Running unittests src/lib.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/cleromancy-57b641f9d954543c)
+
+running 33 tests
+test consultation::journal_policy::tests::date_cutoff_is_inclusive ... ok
+test consultation::journal_policy::tests::relative_dates_use_elapsed_duration_buckets ... ok
+test host::domain::tests::preserves_unrelated_unknown_facets ... ok
+test host::domain::tests::rejects_a_reading_after_its_field_node_is_removed ... ok
+test host::domain::tests::rejects_deleted_dependency_and_missing_domain_facet ... ok
+test host::domain::tests::rejects_orphan_domain_facets ... ok
+test host::domain::tests::rejects_tampered_unreferenced_sealed_reading ... ok
+test host::domain::tests::rejects_unknown_domain_version_and_multiple_domain_records ... ok
+test host::domain::tests::validates_a_session_and_reflection_and_refuses_a_missing_session ... ok
+test host::domain::tests::validates_complete_reading_without_mutating_candidate ... ok
+test host::sky::tests::enumerator_rejects_a_structurally_invalid_canonical_record ... ok
+test host::sky::tests::enumerator_rejects_a_valid_record_at_the_wrong_digest_address ... ok
+test ui::native::appearance_tests::appearance_fixtures_keep_the_shared_scenario_lane_and_durable_product_contract ... ok
+test ui::native::appearance_tests::cancel_native_close_then_discard_back_preserves_parent ... ok
+test ui::native::appearance_tests::corrupt_files_and_failed_choice_write_preserve_bytes_and_applied_presentation ... ok
+test ui::native::appearance_tests::exports_cannot_replace_future_application_data_or_overridden_preferences ... ok
+test ui::native::appearance_tests::identical_missing_paths_refuse_preference_and_library_writes ... ok
+test ui::native::appearance_tests::missing_nested_and_existing_aliases_preserve_owned_files ... ok
+test ui::native::appearance_tests::modes_authored_css_and_reopen_preserve_consultation_and_action_owner ... ok
+test ui::native::appearance_tests::mounted_save_back_edit_apply_reuses_saved_identity_without_early_publication ... ok
+test ui::native::appearance_tests::native_save_close_saves_definition_without_applying_or_mutating_consultation ... ok
+test ui::native::appearance_tests::overrides_and_exports_preserve_the_existing_consultation_store ... ok
+test ui::native::appearance_tests::product_dark_copy_supplies_shared_preview_roles_and_exact_product_context_colors ... ok
+test ui::native::appearance_tests::product_identity_keeps_its_seeds_across_canonical_modes_and_reopen ... ok
+test ui::native::appearance_tests::save_and_library_reload_hold_same_identity_until_explicit_apply ... ok
+test ui::native::appearance_tests::shared_fields_and_parent_controls_keep_real_geometry_at_420_and_1160 ... ok
+test ui::native::appearance_tests::shared_text_save_apply_and_back_do_not_dispatch_a_consultation_action ... ok
+test ui::native::appearance_tests::unchanged_appearance_does_not_reset_the_callers_stylesheet_on_dispatch ... ok
+test ui::native::focused_text_tests::marked_div_field_routes_text_into_its_question_slot ... ok
+test ui::view::chart_aspect::tests::coincident_aspect_stays_direct_at_one_tick ... ok
+test ui::view::chart_aspect::tests::ordinary_aspect_uses_increasing_direct_endpoints ... ok
+test ui::view::chart_aspect::tests::wrapped_aspect_uses_descending_raw_order_and_wraps_target ... ok
+test ui::worker::tests::worker_bootstraps_tarot_and_returns_durable_reading_updates ... ok
+
+test result: ok. 33 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 30.06s
+
+     Running unittests src/bin/a15_pattern_receipt.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a15_pattern_receipt-443967317f01cbc1)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a16_pattern_selection_receipt.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a16_pattern_selection_receipt-cc11f65e8df0131a)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a1_enrichment_receipt.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a1_enrichment_receipt-68b1e9181d1a8048)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a2_enriched_receipt.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a2_enriched_receipt-a35066b3de139997)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a3_intent_receipt.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a3_intent_receipt-3d314ad0a1983533)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a5_field_receipt.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a5_field_receipt-6fd036b2cf7c8a8c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a6_tarot_receipt.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a6_tarot_receipt-b90e28e5bb241247)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a7_session_receipt.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a7_session_receipt-6c10bad4a7de401f)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a8_three_card_receipt.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a8_three_card_receipt-a883b52e00c7f398)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/cleromancy-c7ec90ceff79d19d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/cleromancy_receipt.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/cleromancy_receipt-8ceb5ecf4b36fbe8)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a0.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a0-f92ab96fce235536)
+
+running 4 tests
+test calculated_reading_is_byte_stable_and_replays ... ok
+test cast_discloses_a_bounded_sample_and_replays_without_entropy ... ok
+test mere_truth_reopens_and_graphshell_resolves_every_card ... ok
+test servitor_access_keeps_scope_and_mode_boundaries ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.42s
+
+     Running tests/a1.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a1-0ab98edaf6c18f93)
+
+running 1 test
+test external_projection_mounts_beside_local_truth_and_correlation_is_a_receipt ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/a10.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a10-304289e19f5e20e5)
+
+running 5 tests
+test generic_composer_can_select_a_graph_resident_field ... ok
+test generic_composer_rejects_a_deterministic_three_card_request ... ok
+test generic_composer_rejects_a_missing_graph_field ... ok
+test generic_composer_rejects_derived_until_its_descriptor_has_an_intent_schema ... ok
+test generic_composer_saves_single_and_three_card_layouts ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+     Running tests/a12.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a12-94730a0157858952)
+
+running 2 tests
+test field_composer_emits_the_exact_field_and_round_trips ... ok
+test field_composer_rejects_structural_drafts_before_dispatch ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a13.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a13-84c7d02ece542714)
+
+running 3 tests
+test chart_derives_replayable_structured_facts ... ok
+test chart_metadata_and_facts_bind_the_calculation_boundary ... ok
+test chart_rejects_ambiguous_or_invalid_positions ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a14.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a14-b9be147b614e484e)
+
+running 2 tests
+test adapter_receipt_requires_the_requested_moment ... ok
+test astrology_chart_and_facts_are_graph_truth_and_project_as_cards ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/a15.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a15-093557b50794208b)
+
+running 2 tests
+test astrology_and_tarot_share_an_inspectable_occasion_without_a_causal_claim ... ok
+test concurrence_is_canonical_and_rejects_ambiguous_members ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/a16.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a16-e3aeb5f700d1fc51)
+
+running 1 test
+test saved_facts_and_sessions_select_each_other_through_the_bound_pattern_action ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/a17_graphshell_action_draft.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a17_graphshell_action_draft-2647f780efadc0ed)
+
+running 1 test
+test retained_graphshell_session_submits_cleromancy_concurrence_from_exact_choices ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/a18_admitted_endpoint.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a18_admitted_endpoint-9ad3917d489da1e4)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a19_resident_endpoint_catalog.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a19_resident_endpoint_catalog-b219db1719844d79)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a2.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a2-fc9f78b1ddce6129)
+
+running 1 test
+test sealed_external_evidence_qualifies_and_replays_after_endpoint_shutdown ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.81s
+
+     Running tests/a20_resident_session_authority.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a20_resident_session_authority-05fe32f17607a382)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a21_resident_persistence.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a21_resident_persistence-2b107e5af578ad43)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a22_resident_pattern_sync.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a22_resident_pattern_sync-dd75316b8cd9de80)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a23_resident_sync_consent.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a23_resident_sync_consent-c4113bafcf5a3640)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a24_resident_sync_startup.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a24_resident_sync_startup-ee5b0c1acddc8140)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a25_sync_consent_command.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a25_sync_consent_command-bec117d2419f0159)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a3.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a3-3126caa88d3deeef)
+
+running 2 tests
+test bound_authorized_consumer_reads_selects_and_rolls_through_the_wire ... ok
+test payload_identity_cannot_replace_transport_binding_or_servitor_authority ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+     Running tests/a4.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a4-966db0db6beccf90)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a5.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a5-9b3b95482e276331)
+
+running 1 test
+test graph_resident_field_replays_after_the_callers_field_is_gone ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/a6.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a6-f395057c8d5880f3)
+
+running 3 tests
+test major_arcana_pack_has_stable_complete_ordering ... ok
+test rule_names_are_enforced_instead_of_treated_as_labels ... ok
+test uniform_and_contextual_tarot_disclose_different_qualification ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+     Running tests/a7.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a7-5eaadedf6eedfe41)
+
+running 2 tests
+test repeated_calculated_reads_are_separate_sessions_with_immutable_reflection ... ok
+test session_and_reflection_identity_reject_tampering ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/a7_sync.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a7_sync-f6e2516939657b95)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a8.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a8-cb032bf0887e6903)
+
+running 1 test
+test fixed_three_card_spread_is_authored_replayable_and_graph_visible ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/a8_sync.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a8_sync-047a432b12c176fd)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/a9.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/a9-8cc31394b5dfe568)
+
+running 1 test
+test bound_host_can_cast_the_authored_spread_through_the_wire ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/analytic_consultation.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/analytic_consultation-744327c5d0003095)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/analytic_parity.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/analytic_parity-ca892ef7b781f29e)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/authored_consultation.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/authored_consultation-cef9979c19f6cbb3)
+
+running 1 test
+test consultation_persists_an_authored_cast_and_source_qualified_chart_concurrence ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.66s
+
+     Running tests/authored_spread.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/authored_spread-c4f6c6c7ac31dada)
+
+running 2 tests
+test authored_spread_replays_its_template_session_and_relations_after_reopen ... ok
+test authored_template_rejects_unknown_or_repeated_positions ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.47s
+
+     Running tests/authored_spread_sync.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/authored_spread_sync-0c5b4ffa23798627)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/chart_surface_dom.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/chart_surface_dom-bab4f5c20dddd83b)
+
+running 3 tests
+test chart_concurrence_is_resolved_locally_without_a_product_action ... ok
+test chart_surface_projects_stored_values_and_keeps_manual_import_available ... ok
+test empty_chart_surface_keeps_manual_import_reachable ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 39.22s
+
+     Running tests/consultation_authoring_dom.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/consultation_authoring_dom-b31973a36ece8863)
+
+running 1 test
+test retained_consultation_dispatches_authored_layout_and_chart_input_actions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 9.34s
+
+     Running tests/derived_selection.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/derived_selection-5936a112efbbbc09)
+
+running 3 tests
+test derived_receipt_is_byte_stable_and_replays_from_disclosed_inputs ... ok
+test derived_uniform_die_is_replayable_and_detects_receipt_tampering ... ok
+test local_consultation_persists_and_reopens_the_derived_descriptor ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.48s
+
+     Running tests/headed_consultation.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/headed_consultation-b0de4039f655552d)
+
+running 3 tests
+test rejected_commands_leave_persisted_truth_unchanged ... ok
+test saved_tarot_consultation_and_reflection_reopen_exactly ... ok
+test storage_failure_faults_the_controller_until_reopen ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.96s
+
+     Running tests/headed_consultation_dom.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/headed_consultation_dom-84e9e77e6f5027e6)
+
+running 2 tests
+test four_surface_tabs_are_local_accessible_and_bounded ... ok
+test retained_consultation_dispatches_a_complete_reading_and_reflection ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 81.11s
+
+     Running tests/journal_depth.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/journal_depth-46ed1f0db52014ef)
+
+running 2 tests
+test additional_facts_reject_ambiguous_or_reserved_input ... ok
+test journal_depth_preserves_contexts_three_cards_comparisons_and_follow_ups ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.68s
+
+     Running tests/journal_reader_dom.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/journal_reader_dom-6b4761ed9f7b266f)
+
+running 2 tests
+test journal_rows_filter_compose_clear_and_page_without_product_actions ... ok
+test journal_selected_detail_and_comparison_keep_replay_explicit ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 10.55s
+
+     Running tests/session_summary.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/session_summary-3ffd507ee56b5dfd)
+
+running 2 tests
+test summaries_are_faithful_cheap_and_ordered_like_sessions ... ok
+test summarize_skips_a_placement_whose_reading_is_absent ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.93s
+
+     Running tests/sky.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/sky-235b2e81409b2c09)
+
+running 3 tests
+test interpretations_bind_facts_and_exact_authored_pack ... ok
+test sky_facts_are_canonical_and_validate_after_json_round_trip ... ok
+test validation_rejects_noncanonical_or_out_of_bounds_policy_controls ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/sky_host.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/sky_host-8e3cde3cf14d92c7)
+
+running 2 tests
+test sky_interpretation_replay_requires_its_facts_dependency ... ok
+test sky_records_persist_as_distinct_digest_nodes_with_provenance ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/sky_surface_dom.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/sky_surface_dom-8465c58ab6ee48e5)
+
+running 1 test
+test stored_sky_facts_remain_catalogued_while_the_sky_tab_is_disabled ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.03s
+
+     Running tests/sky_timeline.rs (/Users/markik/Code/targets/knot-tabard-apps/debug/deps/sky_timeline-3c9fc66df712bac2)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests cleromancy
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

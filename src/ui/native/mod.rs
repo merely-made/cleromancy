@@ -14,20 +14,29 @@ use std::sync::mpsc::{self, Receiver};
 
 use cambium::{AngleStrip, DimensionLine};
 use cambium_genet_winit_host::{
-    AppCtx, FocusedTextSlot, HostHooks, HostOptions, HostWake, Init, Runner, inert_hooks,
-    run as run_host,
+    AppCtx, CaptionLabels, FocusedTextSlot, HostHooks, HostOptions, HostWake, Init, Runner,
+    WindowFrame, inert_hooks, platform_caption_controls, run as run_host,
 };
 use layout_dom_api::LayoutDom as _;
 
 use crate::ui::scenario::{self, Phase};
 use crate::ui::worker::{ConsultationWorker, WorkerUpdate, spawn};
-use crate::{ConsultationCatalog, ConsultationUi, ConsultationView, consultation_view};
+use crate::{ConsultationCatalog, ConsultationUi, ConsultationView};
 
+mod appearance;
+mod appearance_host;
+#[cfg(test)]
+mod appearance_tests;
+mod appearance_view;
 mod scenario_driver;
 
+use appearance_view::{ApplicationUi, Child};
+
+#[cfg(test)]
 type Logic = fn(&ConsultationUi) -> ConsultationView;
-type ConsultationRunner = Runner<ConsultationUi, Logic, ConsultationView>;
-type ConsultationCtx<'a> = AppCtx<'a, ConsultationUi, Logic, ConsultationView>;
+type ApplicationLogic = Box<dyn FnMut(&ApplicationUi) -> Child>;
+type ConsultationRunner = Runner<ApplicationUi, ApplicationLogic, Child>;
+type ConsultationCtx<'a> = AppCtx<'a, ApplicationUi, ApplicationLogic, Child>;
 
 /// Start the ordinary local consultation window.
 pub fn run(data_root: &Path) -> Result<(), String> {
@@ -36,20 +45,38 @@ pub fn run(data_root: &Path) -> Result<(), String> {
     let state = Rc::new(RefCell::new(NativeState::new(scenario::load())));
     let init_state = state.clone();
     let store_path = data_root.join("cleromancy.redb");
+    let (selection, library) = appearance::paths(data_root);
+    let appearance = appearance::AppearanceState::load(selection, library, data_root.to_path_buf());
     let options = HostOptions {
         title: "Cleromancy".to_string(),
         initial_logical_size: (1160.0, 760.0),
+        window_frame: WindowFrame::App,
         ..Default::default()
     };
 
     run_host(
         options,
-        move |_window, _commands, wake| {
+        move |_window, commands, wake| {
             install_worker(&init_state, store_path.clone(), wake);
+            let mut appearance = appearance;
+            let sheet = appearance
+                .take_stylesheet_change()
+                .expect("initial owned sheet");
             Init {
-                state: ConsultationUi::new(empty_catalog()),
-                logic: consultation_view as Logic,
-                sheet: SHEET.to_string(),
+                state: ApplicationUi {
+                    consultation: ConsultationUi::new(empty_catalog()),
+                    appearance,
+                },
+                logic: Box::new({
+                    let commands = commands.clone();
+                    move |state: &ApplicationUi| {
+                        appearance_view::root(
+                            state,
+                            platform_caption_controls(&commands, &CaptionLabels::default()),
+                        )
+                    }
+                }) as ApplicationLogic,
+                sheet,
                 // `Init` grew these two in mere 1009f02d. Empty is the
                 // previous behaviour exactly: system faces only, and no
                 // host-supplied images behind the sheet's `url()`.
@@ -86,13 +113,24 @@ fn install_worker(state: &Rc<RefCell<NativeState>>, store_path: PathBuf, wake: &
     state.updates = Some(receiver);
 }
 
-fn hooks(state: Rc<RefCell<NativeState>>) -> HostHooks<ConsultationUi, Logic, ConsultationView> {
+fn hooks(state: Rc<RefCell<NativeState>>) -> HostHooks<ApplicationUi, ApplicationLogic, Child> {
     let mut hooks = inert_hooks();
     let waking = state.clone();
     hooks.after_wake = Box::new(move |ctx| drain_worker(ctx, &waking));
     let dispatching = state.clone();
-    hooks.after_dispatch = Box::new(move |ctx| dispatch_action(ctx, &dispatching));
+    hooks.after_dispatch = Box::new(move |ctx| {
+        appearance_host::after_dispatch(ctx);
+        dispatch_action(ctx, &dispatching);
+    });
+    let mut previews = tabard_workshop::native_host::PreviewBindings::default();
     hooks.frame = Box::new(move |ctx| {
+        if ctx.runner.state().appearance.editor_open {
+            previews.register(
+                &ctx.runner.state().appearance.workshop,
+                ctx.leaves,
+                ctx.producers,
+            );
+        }
         sync_chart_angle_strip(ctx);
         sync_chart_aspect_dimension(ctx);
         false
@@ -101,15 +139,16 @@ fn hooks(state: Rc<RefCell<NativeState>>) -> HostHooks<ConsultationUi, Logic, Co
     let mut lane = run.map(|run| scenario_driver::lane(state.clone(), run));
     hooks.after_frame = Box::new(move |ctx| {
         if let Some(lane) = &mut lane {
-            lane.after_frame(ctx);
+            scenario_driver::drive(lane, ctx);
         }
     });
-    hooks.focused_text = Box::new(consultation_focused_text);
+    hooks.focused_text = Box::new(appearance_host::focused_text);
+    hooks.close_request = Box::new(appearance_host::close_request);
     hooks
 }
 
 fn sync_chart_angle_strip(ctx: &mut ConsultationCtx<'_>) {
-    let marks = super::view::chart::selected_angle_strip_marks(ctx.runner.state());
+    let marks = super::view::chart::selected_angle_strip_marks(&ctx.runner.state().consultation);
     match marks {
         Some(marks) => {
             if let Some(strip) = ctx
@@ -132,7 +171,7 @@ fn sync_chart_angle_strip(ctx: &mut ConsultationCtx<'_>) {
 }
 
 fn sync_chart_aspect_dimension(ctx: &mut ConsultationCtx<'_>) {
-    let dimension = super::view::chart::selected_aspect_dimension(ctx.runner.state());
+    let dimension = super::view::chart::selected_aspect_dimension(&ctx.runner.state().consultation);
     let Some(dimension) = dimension else {
         // Keep the clean retained leaf across surface switches and empty
         // charts, as with the ecliptic strip. The DOM leaf is absent then.
@@ -182,7 +221,7 @@ fn drain_worker(ctx: &mut ConsultationCtx<'_>, state: &Rc<RefCell<NativeState>>)
     }
 }
 
-pub(super) fn apply_worker_update(
+fn apply_worker_update(
     runner: &mut ConsultationRunner,
     state: &mut NativeState,
     update: WorkerUpdate,
@@ -190,7 +229,10 @@ pub(super) fn apply_worker_update(
     match update {
         WorkerUpdate::Catalog(catalog) => {
             state.catalog_ready = true;
-            runner.update(|ui| ui.replace_catalog(catalog));
+            runner.update(|state| {
+                let ui = &mut state.consultation;
+                ui.replace_catalog(catalog);
+            });
         },
         #[cfg(feature = "analytic-ephemeris")]
         WorkerUpdate::AstrologyChart {
@@ -200,25 +242,37 @@ pub(super) fn apply_worker_update(
             state
                 .probe_events
                 .push(format!("durable astrology chart saved {facts_digest}"));
-            runner.update(move |ui| ui.present_calculated_chart(catalog, facts_digest));
+            runner.update(move |state| {
+                let ui = &mut state.consultation;
+                ui.present_calculated_chart(catalog, facts_digest);
+            });
         },
         WorkerUpdate::Reading { catalog, detail } => {
             state
                 .probe_events
                 .push(format!("durable reading saved {}", detail.session.id));
-            runner.update(move |ui| ui.present_reading(catalog, detail));
+            runner.update(move |state| {
+                let ui = &mut state.consultation;
+                ui.present_reading(catalog, detail);
+            });
         },
         WorkerUpdate::Reflection { catalog, detail } => {
             state
                 .probe_events
                 .push(format!("durable reflection saved {}", detail.session.id));
-            runner.update(move |ui| ui.present_reflection(catalog, detail));
+            runner.update(move |state| {
+                let ui = &mut state.consultation;
+                ui.present_reflection(catalog, detail);
+            });
         },
         WorkerUpdate::Session { catalog, detail } => {
             state
                 .probe_events
                 .push(format!("durable session recovered {}", detail.session.id));
-            runner.update(move |ui| ui.present_session(catalog, detail));
+            runner.update(move |state| {
+                let ui = &mut state.consultation;
+                ui.present_session(catalog, detail);
+            });
         },
         WorkerUpdate::Comparison {
             catalog,
@@ -229,9 +283,13 @@ pub(super) fn apply_worker_update(
                 "durable receipts compared {} {}",
                 comparison.left_session_id, comparison.right_session_id
             ));
-            runner.update(move |ui| ui.present_comparison(catalog, detail, comparison));
+            runner.update(move |state| {
+                let ui = &mut state.consultation;
+                ui.present_comparison(catalog, detail, comparison);
+            });
         },
-        WorkerUpdate::Error { catalog, message } => runner.update(move |ui| {
+        WorkerUpdate::Error { catalog, message } => runner.update(move |state| {
+            let ui = &mut state.consultation;
             if let Some(catalog) = catalog {
                 ui.replace_catalog(catalog);
             }
@@ -240,15 +298,21 @@ pub(super) fn apply_worker_update(
     }
 }
 
-pub(super) fn submit_pending(runner: &mut ConsultationRunner, worker: Option<&ConsultationWorker>) {
+fn submit_pending(runner: &mut ConsultationRunner, worker: Option<&ConsultationWorker>) {
     let mut action = None;
-    runner.update(|ui| action = ui.take_pending_action());
+    runner.update(|state| {
+        let ui = &mut state.consultation;
+        action = ui.take_pending_action();
+    });
     let Some(action) = action else { return };
     if let Err(error) = worker
         .ok_or_else(|| "the consultation worker is unavailable".to_string())
         .and_then(|worker| worker.command(action))
     {
-        runner.update(|ui| ui.present_error(error));
+        runner.update(|state| {
+            let ui = &mut state.consultation;
+            ui.present_error(error);
+        });
     }
 }
 
@@ -265,7 +329,13 @@ pub fn consultation_focused_text(
     runner: &Runner<ConsultationUi, fn(&ConsultationUi) -> ConsultationView, ConsultationView>,
 ) -> Option<FocusedTextSlot<ConsultationUi>> {
     let node = runner.focus()?;
-    let dom = runner.dom();
+    consultation_text_slot(&runner.dom(), node)
+}
+
+fn consultation_text_slot(
+    dom: &cambium::DomHandle,
+    node: genet_scripted_dom::NodeId,
+) -> Option<FocusedTextSlot<ConsultationUi>> {
     let dom = dom.borrow();
     let tag = &dom.element_name(node)?.local;
     let native_text_control = matches!(tag.as_ref(), "input" | "textarea");
@@ -274,11 +344,13 @@ pub fn consultation_focused_text(
         &layout_dom_api::Namespace::from(""),
         &layout_dom_api::LocalName::from("role"),
     ) == Some("textbox")
-        && dom.attribute(
-            node,
-            &layout_dom_api::Namespace::from(""),
-            &layout_dom_api::LocalName::from("data-cambium-text-value"),
-        ).is_some();
+        && dom
+            .attribute(
+                node,
+                &layout_dom_api::Namespace::from(""),
+                &layout_dom_api::LocalName::from("data-cambium-text-value"),
+            )
+            .is_some();
     if !native_text_control && !marker_text_control {
         return None;
     }
@@ -344,15 +416,11 @@ mod focused_text_tests {
         .attr("data-cambium-text-value", ui.question.text())
         .attr("style", "display:block;width:240px;height:40px");
         let field = on_key(field, |ui: &mut ConsultationUi, event| {
-            ui.question
-                .apply_key(&event, TextFieldMode::Multiline);
+            ui.question.apply_key(&event, TextFieldMode::Multiline);
         });
         Box::new(
-            el::<_, ConsultationUi, ()>(
-                "label",
-                (el("span", "Question"), field),
-            )
-            .attr("id", "cleromancy-question"),
+            el::<_, ConsultationUi, ()>("label", (el("span", "Question"), field))
+                .attr("id", "cleromancy-question"),
         )
     }
 
@@ -382,7 +450,10 @@ mod focused_text_tests {
 
         let focused = consultation_focused_text(harness.runner())
             .expect("the marked DIV resolves to the Question slot");
-        assert_eq!(focused.node, harness.focus().expect("the textbox receives focus"));
+        assert_eq!(
+            focused.node,
+            harness.focus().expect("the textbox receives focus")
+        );
         assert_eq!((focused.get)(harness.state()).text(), "");
         assert_eq!((focused.get)(harness.state()).caret_position().byte, 0);
         harness.key_injected("x");

@@ -69,7 +69,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let graph_nodes = host.graph().nodes().count();
     let provenance_relations = host
         .graph()
-        .relations()
+        .projected_relations()
+        .map(|(_, relation)| relation)
         .filter(|relation| {
             relation.kind == RelationKind::Provenance(ProvenanceSubKind::GeneratedFrom)
         })

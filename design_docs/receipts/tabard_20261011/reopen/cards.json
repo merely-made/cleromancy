@@ -1,0 +1,20 @@
+[
+  {
+    "position": "foundation",
+    "title": "Temperance",
+    "prompt": "Which elements need proportion, exchange, and repeated adjustment rather than a dramatic solution?",
+    "mode": "cast"
+  },
+  {
+    "position": "tension",
+    "title": "Strength",
+    "prompt": "Where would patient courage accomplish more than force?",
+    "mode": "cast"
+  },
+  {
+    "position": "next_step",
+    "title": "The World",
+    "prompt": "What is actually complete, and what new threshold appears when you name that completion?",
+    "mode": "cast"
+  }
+]

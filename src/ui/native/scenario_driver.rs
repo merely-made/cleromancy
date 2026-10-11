@@ -3,9 +3,12 @@
 
 //! Cleromancy commands and durable receipts over the shared Mesquite lane.
 
-use super::{ConsultationCtx, ConsultationRunner, Logic, NativeState, SHEET, submit_pending};
+use super::appearance_view::{ApplicationUi, Child};
+use super::{
+    ApplicationLogic as Logic, ConsultationCtx, ConsultationRunner, NativeState, SHEET,
+    submit_pending,
+};
 use crate::ui::scenario::{self, Observation, Phase, ReportedIds};
-use crate::{ConsultationUi, ConsultationView};
 use cambium_genet_winit_host::AppCtx;
 use std::{cell::RefCell, path::PathBuf, rc::Rc};
 
@@ -14,10 +17,22 @@ pub(super) struct Product {
     dir: PathBuf,
     phase: Phase,
     keep_open: bool,
+    sheet: String,
+}
+
+pub(super) fn drive(lane: &mut mesquite::Lane<Product>, ctx: &mut ConsultationCtx<'_>) {
+    lane.product_mut().sheet = ctx.runner.state().appearance.stylesheet();
+    lane.after_frame(ctx);
 }
 
 pub(super) fn lane(state: Rc<RefCell<NativeState>>, run: scenario::Run) -> mesquite::Lane<Product> {
     let product = Product {
+        sheet: format!(
+            "{}\n{}\n{}",
+            SHEET,
+            cambium::TITLE_BAR_CSS,
+            super::appearance_view::CHROME_CSS
+        ),
         state,
         dir: run.dir.clone(),
         phase: run.phase,
@@ -38,15 +53,15 @@ pub(super) fn lane(state: Rc<RefCell<NativeState>>, run: scenario::Run) -> mesqu
 }
 
 impl mesquite::Product for Product {
-    type State = ConsultationUi;
+    type State = ApplicationUi;
     type Logic = Logic;
-    type View = ConsultationView;
+    type View = Child;
     const KIND: &'static str = "cleromancy";
     const SURFACE: &'static str = "cleromancy";
     const LOG_PREFIX: &'static str = "cleromancy";
 
     fn sheet(&self) -> &str {
-        SHEET
+        &self.sheet
     }
 
     fn snapshot(&self, ctx: &ConsultationCtx<'_>, _: usize, _: f32) -> taproot::ProbeSnapshot {
@@ -57,6 +72,29 @@ impl mesquite::Product for Product {
             .with_field("sessions", observed.sessions.to_string())
             .with_field("readings", observed.readings.to_string())
             .with_field("reflections", observed.reflections.to_string());
+        let appearance = &ctx.runner.state().appearance;
+        snapshot = snapshot
+            .with_field("appearance-id", appearance.active_id())
+            .with_field(
+                "appearance-mode",
+                appearance
+                    .applied()
+                    .and_then(|v| v.resolved.theme_mode.as_ref())
+                    .map_or_else(|| "legacy".into(), |mode| mode.as_key()),
+            )
+            .with_field("appearance-editor", appearance.editor_open.to_string())
+            .with_field(
+                "appearance-authoring",
+                appearance.authoring_available.to_string(),
+            )
+            .with_field(
+                "appearance-dirty",
+                appearance.workshop.has_changes().to_string(),
+            )
+            .with_field(
+                "appearance-name",
+                appearance.workshop.draft_theme().name.clone(),
+            );
         if let Some(ids) = observed.ids {
             snapshot = snapshot
                 .with_field("session-id", ids.session_id)
@@ -65,6 +103,20 @@ impl mesquite::Product for Product {
         }
         snapshot
     }
+    fn viewport(&self, ctx: &ConsultationCtx<'_>) -> Option<mesquite::Viewport> {
+        if ctx.runner.state().appearance.editor_open {
+            return None;
+        }
+        let node = taproot::matching(
+            &ctx.runner.dom().borrow(),
+            &taproot::Selector::class("cleromancy-consultation"),
+        )
+        .into_iter()
+        .next()?;
+        let (x, y, width, height) = ctx.painted_rect(node)?;
+        let scale = ctx.window?.scale_factor() as f32 * ctx.ui_zoom;
+        Some(mesquite::Viewport::new([x, y, width, height], scale, 1.0))
+    }
     fn drain_events(&mut self, _: &mut ConsultationCtx<'_>) -> Vec<String> {
         std::mem::take(&mut self.state.borrow_mut().probe_events)
     }
@@ -72,7 +124,7 @@ impl mesquite::Product for Product {
         Some(
             capture_pending
                 || !self.state.borrow().catalog_ready
-                || ctx.runner.state().status().is_busy(),
+                || ctx.runner.state().consultation.status().is_busy(),
         )
     }
     fn app_step(
@@ -105,7 +157,7 @@ impl mesquite::Product for Product {
 }
 
 struct ScenarioDriver<'a, 'ctx> {
-    ctx: &'a mut AppCtx<'ctx, ConsultationUi, Logic, ConsultationView>,
+    ctx: &'a mut AppCtx<'ctx, ApplicationUi, Logic, Child>,
     state: &'a mut NativeState,
 }
 
@@ -114,7 +166,8 @@ impl ScenarioDriver<'_, '_> {
         match line {
             "advance" => self.advance(),
             "show-chart" => {
-                self.ctx.runner.update(|ui| {
+                self.ctx.runner.update(|state| {
+                    let ui = &mut state.consultation;
                     crate::ui::screen::select_surface(
                         &mut ui.surface_tabs,
                         crate::ui::screen::ConsultationScreen::Chart,
@@ -126,7 +179,8 @@ impl ScenarioDriver<'_, '_> {
             _ if line.starts_with("calculate-chart ") => {
                 let instant = line.trim_start_matches("calculate-chart ");
                 let mut error = None;
-                self.ctx.runner.update(|ui| {
+                self.ctx.runner.update(|state| {
+                    let ui = &mut state.consultation;
                     ui.astrology_instant_utc = cambium::TextInput::new(instant);
                     let action = ui.request_calculated_astrology_chart();
                     ui.record_action(action);
@@ -157,39 +211,42 @@ impl ScenarioDriver<'_, '_> {
             return Ok(());
         }
         let mut error = None;
-        self.ctx.runner.update(|ui| match phase {
-            Phase::First => match self.state.scenario_stage {
-                0 => {
-                    ui.context_label = cambium::TextInput::new("Cleromancy and Turquet");
-                    ui.question = cambium::TextInput::new(
-                        "What deserves attention as these projects become something I can use?",
-                    );
-                    ui.tags = cambium::TextInput::new("work, creativity, reflection");
-                    ui.field_select.selected = 0;
-                    ui.mode.selected = 1;
-                    ui.layout.selected = 1;
-                    let action = ui.request_read();
-                    ui.record_action(action);
-                    error = ui.error().map(str::to_string);
+        self.ctx.runner.update(|state| {
+            let ui = &mut state.consultation;
+            match phase {
+                Phase::First => match self.state.scenario_stage {
+                    0 => {
+                        ui.context_label = cambium::TextInput::new("Cleromancy and Turquet");
+                        ui.question = cambium::TextInput::new(
+                            "What deserves attention as these projects become something I can use?",
+                        );
+                        ui.tags = cambium::TextInput::new("work, creativity, reflection");
+                        ui.field_select.selected = 0;
+                        ui.mode.selected = 1;
+                        ui.layout.selected = 1;
+                        let action = ui.request_read();
+                        ui.record_action(action);
+                        error = ui.error().map(str::to_string);
+                    },
+                    1 => {
+                        ui.reflection = cambium::TextInput::new(
+                            "Trial note: return after using the app and record what resonated.",
+                        );
+                        let action = ui.request_reflection();
+                        ui.record_action(action);
+                        error = ui.error().map(str::to_string);
+                    },
+                    _ => error = Some("first scenario has no further semantic action".to_string()),
                 },
-                1 => {
-                    ui.reflection = cambium::TextInput::new(
-                        "Trial note: return after using the app and record what resonated.",
-                    );
-                    let action = ui.request_reflection();
-                    ui.record_action(action);
-                    error = ui.error().map(str::to_string);
+                Phase::Reopen => {
+                    let Some(session) = ui.catalog.session_summaries.first() else {
+                        error = Some("the reopened catalog has no saved session".to_string());
+                        return;
+                    };
+                    let action = ui.request_session(session.session_id.clone());
+                    ui.record_action(Some(action));
                 },
-                _ => error = Some("first scenario has no further semantic action".to_string()),
-            },
-            Phase::Reopen => {
-                let Some(session) = ui.catalog.session_summaries.first() else {
-                    error = Some("the reopened catalog has no saved session".to_string());
-                    return;
-                };
-                let action = ui.request_session(session.session_id.clone());
-                ui.record_action(Some(action));
-            },
+            }
         });
         if let Some(error) = error {
             return Err(error);
@@ -208,7 +265,7 @@ impl ScenarioDriver<'_, '_> {
 }
 
 fn observation(runner: &ConsultationRunner, catalog_ready: bool) -> Observation {
-    let ui = runner.state();
+    let ui = &runner.state().consultation;
     let detail = ui.detail();
     let ids = detail.and_then(|detail| {
         Some(ReportedIds {

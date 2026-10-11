@@ -1,0 +1,43 @@
+Working directory: /Users/markik/Code/worktrees/cleromancy-tabard-apps
+Environment: CARGO_TARGET_DIR=/Users/markik/Code/targets/knot-tabard-apps CARGO_BUILD_JOBS=2 CARGO_INCREMENTAL=0 CARGO_PROFILE_DEV_DEBUG=0
+
+1. cargo +1.97.1 test --locked --lib ui::native::appearance_tests -- --nocapture
+Log: appearance-tests.log
+Status: exited 101 before tests; 16 compile errors. Original log preserved. Root acquired target for Hocket; Cleromancy source repairs pending retest.
+
+2. cargo +1.97.1 test --locked --lib ui::native::appearance_tests -- --nocapture
+Log: appearance-tests-02.log
+Status: exited 0; 16 passed, 0 failed, 0 ignored, 17 filtered; 22.49s.
+
+3. cargo +1.97.1 test --locked -- --test-threads=1
+Log: full-default-tests.log
+Status: running; refreshed Mesquite selector stylesheet to actual appearance before dispatch.
+Result for command 3: exit 101; all 33 library tests pass, tests/a0.rs then 3 pass/1 fail. Existing GeneratedFrom provenance count at75 is0 ratherthan4; four reopened nodes at74 pass. Original assertion/log preserved.
+
+Priority sibling gate (cwd /Users/markik/Code/worktrees/woodshed-tabard-apps/ports/hocket):
+CARGO_TARGET_DIR=/Users/markik/Code/targets/knot-tabard-apps CARGO_BUILD_JOBS=2 CARGO_INCREMENTAL=0 CARGO_PROFILE_DEV_DEBUG=0 cargo +1.97.1 test --locked --offline -p hocket-genet appearance_tests::canonical_mode_changes_preserve_the_visible_record_dot -- --exact --nocapture
+Log: hocket-record-dot-test-02.log
+Result: exit0; 1 passed, 0 failed, 64 filtered; 15.91s. First short-filter command interrupted exit130 on cache wait before compilation; original hocket-record-dot-test.log preserved. CPU target released to root for final Hocket tests/build.
+
+4. cargo +1.97.1 test --locked --offline -- --test-threads=1
+Log: full-default-tests-02.log
+Status: running after root handed target back; visible relation reads use current projected_relations API, original assertion values unchanged.
+Result command4: exit101; A0 original4 assertions now pass and libraries33 pass; stopped at A2 externally-qualified card tag visibility. Current card_for raw node.tags read migrated to Graph.node_content_tags; original A2 assertions unchanged.
+
+5. cargo +1.97.1 test --locked --offline -- --test-threads=1
+Log: full-default-tests-03.log
+Status: running after current content-tag reader correction.
+Result command5: exit0; 92 passed, 0 failed, 0 ignored across 57 result blocks.
+
+6. cargo +1.97.1 test --locked --offline --manifest-path core/Cargo.toml --features sky-timeline -- --test-threads=1
+Log: portable-core-tests.log
+Status: running.
+Result command6: exit0; 18 passed, 0 failed, 0 ignored (12 library+6sky/host/timeline). Eclipse timeline78.03s.
+
+7. cargo +1.97.1 build --locked --offline --bin cleromancy
+Log: production-build.log
+Status: running.
+Result command7: exit0; production dev build completed6.44s.
+Frozen binary: /Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/cpu/cleromancy-frozen
+SHA256: 31eaaa63b7b117613d671b7b65221340218c39ef8cb502c9577b8a577629936e
+Source/lock hashes: source-final.json. No native acceptance/publication.

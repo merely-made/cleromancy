@@ -1,0 +1,34 @@
+# The phase comes from CLEROMANCY_SCENARIO_PHASE. `advance` is Cleromancy's
+# semantic form/session action; waits observe the worker's own quiescence.
+wait
+advance
+wait
+assert event semantic
+assert event durable
+advance
+wait
+assert text Trial note: return after using the app
+assert snap sessions >= 1
+assert snap readings >= 3
+assert snap reflections >= 1
+capture detail
+settle 2
+
+# Fresh process, same durable consultation and authored appearance profile.
+assert snap appearance-id == theme:copy-1
+assert snap appearance-mode == dark
+assert snap appearance-editor == false
+settle 3
+capture reopened-authored
+click role:button @data-action=toggle-appearance
+click role:button @data-action=edit-appearance
+assert snap appearance-editor == true
+assert snap appearance-name == CleromancyAcceptance
+resize 420 1000
+settle 3
+capture reopened-workshop-narrow
+click role:button @data-action=back-to-consultation
+assert snap appearance-editor == false
+assert snap sessions >= 1
+assert snap readings >= 3
+assert snap reflections >= 1

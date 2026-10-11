@@ -1,0 +1,14 @@
+RESULT ok
+waited 0 frames
+waited 0 frames
+waited 0 frames
+captured detail
+captured consultation-before-save
+captured consultation-after-save
+captured consultation-after-apply
+capture detail 2320x1520 digest=49c594e17da55adc file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/same-id/detail.png
+capture consultation-before-save 2320x1520 digest=5d3927ea376d6669 file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/same-id/consultation-before-save.png
+capture consultation-after-save 2320x1520 digest=bb5126887970a0cc file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/same-id/consultation-after-save.png
+capture consultation-after-apply 2320x1520 digest=0474abb736dffae9 file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/same-id/consultation-after-apply.png
+frames: 4 captured, 0 blank, 4 distinct digests
+presentation: 64 frames, 67 redraws, 3 unpresented redraws

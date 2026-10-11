@@ -1,0 +1,12 @@
+RESULT ok
+waited 0 frames
+waited 0 frames
+waited 0 frames
+captured detail
+captured authored-preview-brown
+captured authored-preview-live-green
+capture detail 2320x1520 digest=c65dd3692facda66 file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/preview-live/detail.png
+capture authored-preview-brown 2320x1520 digest=f2906a4db8ae99ca file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/preview-live/authored-preview-brown.png
+capture authored-preview-live-green 2320x1520 digest=bda473e69b863cc7 file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/preview-live/authored-preview-live-green.png
+frames: 3 captured, 0 blank, 3 distinct digests
+presentation: 50 frames, 53 redraws, 3 unpresented redraws

@@ -76,10 +76,15 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         reflection,
         event_entropy: "fixed fixture words; production sessions use operating-system entropy",
         graph_nodes: host.graph().nodes().count(),
-        graph_relations: host.graph().relations().count(),
+        graph_relations: host
+            .graph()
+            .projected_relations()
+            .map(|(_, relation)| relation)
+            .count(),
         semantic_relations: host
             .graph()
-            .relations()
+            .projected_relations()
+            .map(|(_, relation)| relation)
             .filter(|relation| matches!(relation.kind, RelationKind::Semantic(_)))
             .count(),
     };

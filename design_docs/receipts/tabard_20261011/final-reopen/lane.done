@@ -1,0 +1,12 @@
+RESULT ok
+waited 0 frames
+waited 0 frames
+waited 0 frames
+captured detail
+captured reopened-authored
+captured reopened-workshop-narrow
+capture detail 2320x1520 digest=a70ae2e02f2ebd6c file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/final-reopen/detail.png
+capture reopened-authored 2320x1520 digest=1c30aa0e69c4931a file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/final-reopen/reopened-authored.png
+capture reopened-workshop-narrow 840x2000 digest=b91a5a6ce35611f6 file=/Users/markik/Code/tabard-app-receipts/2026-10-11/cleromancy/native-04/final-reopen/reopened-workshop-narrow.png
+frames: 3 captured, 0 blank, 3 distinct digests
+presentation: 40 frames, 43 redraws, 3 unpresented redraws

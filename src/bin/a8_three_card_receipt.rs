@@ -58,7 +58,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     let authored_relationships = host
         .graph()
-        .relations()
+        .projected_relations()
+        .map(|(_, relation)| relation)
         .filter(|relation| {
             matches!(
                 relation.kind,
@@ -80,7 +81,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         replayed,
         entropy: "fixed fixture words; production casts use operating-system entropy",
         graph_nodes: host.graph().nodes().count(),
-        graph_relations: host.graph().relations().count(),
+        graph_relations: host
+            .graph()
+            .projected_relations()
+            .map(|(_, relation)| relation)
+            .count(),
         authored_relationships,
     };
     let mut app = CleromancyApp::new(host);

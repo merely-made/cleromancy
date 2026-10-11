@@ -52,17 +52,23 @@ fn fixed_three_card_spread_is_authored_replayable_and_graph_visible() {
 
     let semantic = host
         .graph()
-        .relations()
+        .projected_relations()
+        .map(|(_, relation)| relation)
         .filter(|relation| {
             relation.kind == RelationKind::Semantic(SemanticSubKind::Questions)
                 || relation.kind == RelationKind::Semantic(SemanticSubKind::NextStep)
         })
         .count();
     assert_eq!(semantic, 2);
-    assert!(host.graph().relations().any(|relation| matches!(
-        relation.kind,
-        RelationKind::Containment(_) | RelationKind::Provenance(_)
-    )));
+    assert!(
+        host.graph()
+            .projected_relations()
+            .map(|(_, relation)| relation)
+            .any(|relation| matches!(
+                relation.kind,
+                RelationKind::Containment(_) | RelationKind::Provenance(_)
+            ))
+    );
 
     let mut tampered = spread.clone();
     tampered.relations[0].label = "a different story".to_string();

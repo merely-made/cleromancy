@@ -128,7 +128,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         concurrence,
         concurrence_claim: "consulted together; astrology did not qualify or cause the tarot cast",
         graph_nodes: carrier.endpoint().host.graph().nodes().count(),
-        graph_relations: carrier.endpoint().host.graph().relations().count(),
+        graph_relations: carrier
+            .endpoint()
+            .host
+            .graph()
+            .projected_relations()
+            .map(|(_, relation)| relation)
+            .count(),
     };
     let html = carrier.endpoint_mut().receipt_html()?;
     write(&html_path, html.as_bytes())?;

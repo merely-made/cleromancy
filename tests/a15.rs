@@ -90,7 +90,8 @@ fn astrology_and_tarot_share_an_inspectable_occasion_without_a_causal_claim() {
 
     assert_eq!(
         host.graph()
-            .relations()
+            .projected_relations()
+            .map(|(_, relation)| relation)
             .filter(|relation| {
                 relation.from == concurrence_key
                     && relation.kind
@@ -99,10 +100,16 @@ fn astrology_and_tarot_share_an_inspectable_occasion_without_a_causal_claim() {
             .count(),
         2
     );
-    assert!(!host.graph().relations().any(|relation| {
-        (relation.from == facts_key && relation.to == session_key)
-            || (relation.from == session_key && relation.to == facts_key)
-    }));
+    assert!(
+        !host
+            .graph()
+            .projected_relations()
+            .map(|(_, relation)| relation)
+            .any(|relation| {
+                (relation.from == facts_key && relation.to == session_key)
+                    || (relation.from == session_key && relation.to == facts_key)
+            })
+    );
     assert_eq!(host.replay_concurrence(&concurrence).unwrap(), concurrence);
 
     pollster::block_on(host.persist(15)).unwrap();

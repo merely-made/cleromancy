@@ -1,0 +1,63 @@
+# The phase comes from CLEROMANCY_SCENARIO_PHASE. `advance` is Cleromancy's
+# semantic form/session action; waits observe the worker's own quiescence.
+wait
+advance
+wait
+assert event semantic
+assert event durable
+advance
+wait
+assert text Trial note: return after using the app
+assert snap sessions >= 1
+assert snap readings >= 3
+assert snap reflections >= 1
+capture detail
+settle 2
+
+# Dedicated private CLEROMANCY_ROOT: existing durable receipt requirements remain.
+assert snap appearance-id == cleromancy:default
+assert snap appearance-authoring == true
+click role:button @data-action=toggle-appearance
+click role:button @data-appearance-mode=light
+settle 2
+capture product-light
+click role:button @data-appearance-mode=dark
+settle 2
+capture product-dark
+captures-differ product-light product-dark
+click role:button @data-appearance-mode=hc_light
+settle 2
+capture product-hc-light
+click role:button @data-appearance-mode=hc_dark
+settle 2
+capture product-hc-dark
+click role:button @data-appearance-mode=dark
+click role:button @data-action=edit-appearance
+assert snap appearance-editor == true
+click role:textbox @data-field=name
+input-text CleromancyAcceptance
+assert snap appearance-name == CleromancyAcceptance
+click role:button @data-action=toggle-stylesheet
+click role:textbox @data-field=mode-sheet
+input-text :root{--tabard-color-bg:#142238;--tabard-color-surface:#1b2e49;--tabard-color-surface-2:#243d5e;--tabard-color-text:#eaf2ff;--tabard-color-text-header:#f4f8ff;--tabard-color-primary:#85b9ff;--tabard-color-on-primary:#142238;--tabard-syntax-link:#94c5ff;--tabard-syntax-keyword:#c9a8ff;--tabard-syntax-string:#b8e6b5;--tabard-syntax-number:#ffd095;--tabard-syntax-emphasis:#f4f8ff;--tabard-color-text-dim:#b6cee4;--tabard-color-text-disabled:#879eba;}
+click role:button @data-action=apply-stylesheet
+click role:button @data-action=apply-to-cleromancy
+assert snap appearance-id == cleromancy:default
+click role:button @data-action=save
+assert snap appearance-dirty == false
+assert snap appearance-id == cleromancy:default
+capture workshop-saved
+click role:button @data-action=apply-to-cleromancy
+assert snap appearance-id == theme:copy-1
+assert snap appearance-mode == dark
+resize 420 1000
+settle 3
+capture workshop-narrow
+resize 1160 760
+click role:button @data-action=back-to-consultation
+assert snap appearance-editor == false
+settle 2
+capture authored-consultation
+assert snap sessions >= 1
+assert snap readings >= 3
+assert snap reflections >= 1

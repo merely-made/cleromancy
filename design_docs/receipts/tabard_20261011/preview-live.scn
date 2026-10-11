@@ -1,0 +1,38 @@
+# The phase comes from CLEROMANCY_SCENARIO_PHASE. `advance` is Cleromancy's
+# semantic form/session action; waits observe the worker's own quiescence.
+wait
+advance
+wait
+assert event semantic
+assert event durable
+advance
+wait
+assert text Trial note: return after using the app
+assert snap sessions >= 1
+assert snap readings >= 3
+assert snap reflections >= 1
+capture detail
+settle 2
+
+
+assert snap appearance-id == theme:copy-1
+assert snap appearance-mode == dark
+click role:button @data-action=toggle-appearance
+click role:button @data-action=edit-appearance
+assert snap appearance-name == CleromancyAcceptance
+click role:img @data-view-kind=application-stylesheet
+settle 4
+capture authored-preview-brown
+click role:button @data-action=toggle-stylesheet
+click role:textbox @data-field=mode-sheet
+input-text :root{--tabard-color-bg:#173b25;--tabard-color-surface:#235937;--tabard-color-surface-2:#316944;--tabard-color-text:#f0fff4;--tabard-color-text-header:#f4fff8;--tabard-color-primary:#89e6ad;--tabard-color-on-primary:#173b25;--tabard-color-text-dim:#c4edd2;--tabard-color-text-disabled:#91ba9c;}
+click role:button @data-action=apply-stylesheet
+click role:img @data-view-kind=application-stylesheet
+settle 4
+capture authored-preview-live-green
+captures-differ authored-preview-brown authored-preview-live-green
+click role:button @data-action=back-to-consultation
+click role:button @data-action=discard-close
+assert snap appearance-editor == false
+assert snap appearance-id == theme:copy-1
+assert snap appearance-mode == dark

@@ -76,7 +76,8 @@ fn sky_records_persist_as_distinct_digest_nodes_with_provenance() {
     );
     assert_eq!(
         host.graph()
-            .relations()
+            .projected_relations()
+            .map(|(_, relation)| relation)
             .filter(|relation| {
                 relation.kind == RelationKind::Provenance(ProvenanceSubKind::GeneratedFrom)
             })

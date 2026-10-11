@@ -103,7 +103,8 @@ fn dallas_eclipse_day_is_a_durable_turquet_timeline_with_authored_interpretation
     assert_eq!(
         reopened
             .graph()
-            .relations()
+            .projected_relations()
+            .map(|(_, relation)| relation)
             .filter(|relation| {
                 relation.kind == RelationKind::Provenance(ProvenanceSubKind::GeneratedFrom)
             })
@@ -116,7 +117,8 @@ fn dallas_eclipse_day_is_a_durable_turquet_timeline_with_authored_interpretation
     assert_eq!(
         reopened_again
             .graph()
-            .relations()
+            .projected_relations()
+            .map(|(_, relation)| relation)
             .filter(|relation| {
                 relation.kind == RelationKind::Provenance(ProvenanceSubKind::GeneratedFrom)
             })
