@@ -50,6 +50,39 @@ pub(super) fn lane(state: Rc<RefCell<NativeState>>, run: scenario::Run) -> mesqu
         cambium_genet_winit_host::read_file,
     )
     .expect("load Cleromancy scenario")
+    .with_presentation_timeout(presentation_timeout(
+        std::env::var("CLEROMANCY_PRESENTATION_TIMEOUT_SECS").ok().as_deref(),
+    ))
+}
+
+fn presentation_timeout(value: Option<&str>) -> std::time::Duration {
+    std::time::Duration::from_secs(
+        value
+            .and_then(|value| value.parse::<u64>().ok())
+            .unwrap_or(10)
+            .clamp(10, 60),
+    )
+}
+
+#[cfg(test)]
+mod presentation_tests {
+    use super::presentation_timeout;
+
+    #[test]
+    fn scenario_allowance_keeps_the_default_and_refuses_unbounded_waits() {
+        for (value, seconds) in [
+            (None, 10),
+            (Some("invalid"), 10),
+            (Some("-1"), 10),
+            (Some("0"), 10),
+            (Some("30"), 30),
+            (Some("60"), 60),
+            (Some("18446744073709551615"), 60),
+            (Some("18446744073709551616"), 10),
+        ] {
+            assert_eq!(presentation_timeout(value).as_secs(), seconds);
+        }
+    }
 }
 
 impl mesquite::Product for Product {
