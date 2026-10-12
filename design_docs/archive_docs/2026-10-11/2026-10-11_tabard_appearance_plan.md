@@ -173,8 +173,8 @@ responsibility. Export cancellation never saves or applies a definition.
 
 ## Granular font roles — 2026-10-12 continuation
 
-**Status:** implementation and shared publication landed; consumer CPU/native
-qualification in progress. The shared owning contract is
+**Status:** landed and qualified on macOS arm64; publication is carried by the
+consumer commit containing the final receipt. The shared owning contract is
 `mere/design_docs/mere_docs/implementation_strategy/2026-07-05_theme_modes_plan.md`,
 published in Mere `829e91c7a`. This extends the existing appearance adapter.
 
@@ -228,3 +228,15 @@ published in Mere `829e91c7a`. This extends the existing appearance adapter.
   Shared Mesquite's complete-payload repair passed 28 actual library tests and
   is published at Mere `addccab32`. The intervening advisory-inventory commit
   does not alter this supplier family. Rebuild and native retry follow.
+
+- **2026-10-12 completed qualification:** final committed runtime `c1fb4ce`
+  passes two native processes, nine reviewed captures and 123 presentations.
+  The actual shared picker stages before Apply; Reading/Heading requests persist
+  through four mode changes and an authored restoration, while unavailable Label
+  intent stays saved with fallback. The 420px font entry is visible; its panel
+  deliberately scrolls. Reopening retains exact preference/library bytes, card
+  data, all three durable IDs and 1/3/1 counts. Final 101 root and 17 portable-core
+  tests pass, with no failures/ignored. Native apps exited and the serialized
+  lane was returned to Woodshed. Optional-feature compilation, other consumers,
+  physical IME/OS accessibility, broad layout/contrast and glyph/frozen-face
+  fidelity remain separately owned gates. See the canonical receipt/verifier.

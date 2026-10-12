@@ -1,0 +1,20 @@
+[
+  {
+    "position": "foundation",
+    "title": "The Empress",
+    "prompt": "What needs material care, patience, or room to grow?",
+    "mode": "cast"
+  },
+  {
+    "position": "tension",
+    "title": "The Fool",
+    "prompt": "What beginning asks for curiosity before certainty, and what risk can remain bounded?",
+    "mode": "cast"
+  },
+  {
+    "position": "next_step",
+    "title": "The Fool",
+    "prompt": "What beginning asks for curiosity before certainty, and what risk can remain bounded?",
+    "mode": "cast"
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "appearance.json": {
+    "sha256": "ce1ac582bc2b157f1a04f8dcb6a8d70502370683a552d95f5813260e5e905593",
+    "contents": {
+      "theme_id": "theme:copy-1",
+      "theme_mode": "dark",
+      "fonts": {
+        "reading": [
+          "IBM Plex Mono"
+        ],
+        "heading": [
+          "Source Serif 4"
+        ],
+        "label": [
+          "Cleromancy Missing Face"
+        ]
+      }
+    }
+  },
+  "themes.json": {
+    "sha256": "f9c259b99d9dce9cb5ea1998b4495cb9915dfd999ae10375cedf9127999576b0",
+    "contents": {
+      "version": 1,
+      "themes": [
+        {
+          "id": "theme:copy-1",
+          "name": "CleromancyAcceptance",
+          "source": "User",
+          "seeds": {
+            "primary": {
+              "r": 215,
+              "g": 180,
+              "b": 106,
+              "a": 255
+            },
+            "secondary": {
+              "r": 46,
+              "g": 157,
+              "b": 166,
+              "a": 255
+            },
+            "tertiary": {
+              "r": 224,
+              "g": 168,
+              "b": 70,
+              "a": 255
+            },
+            "neutral": {
+              "r": 24,
+              "g": 23,
+              "b": 20,
+              "a": 255
+            },
+            "text_header": null,
+            "text_body": null,
+            "success": {
+              "r": 79,
+              "g": 179,
+              "b": 110,
+              "a": 255
+            },
+            "danger": {
+              "r": 213,
+              "g": 78,
+              "b": 78,
+              "a": 255
+            },
+            "dark": true
+          },
+          "high_contrast": false,
+          "harmony": "Custom",
+          "mode_sheets": {
+            "dark": [
+              ":root{--tabard-color-bg:#342214;--tabard-color-surface:#49321b;--tabard-color-surface-2:#5e4324;--tabard-color-surface-hover:#7c5731;--tabard-color-text:#fff2ea;--tabard-color-text-header:#fff8f4;--tabard-color-text-dim:#e4ceb6;--tabard-color-text-disabled:#ba9e87;--tabard-color-primary:#ffc085;--tabard-color-on-primary:#342214;--tabard-syntax-link:#ffd294;--tabard-syntax-keyword:#ffc9a8;--tabard-syntax-string:#d0e6b5;--tabard-syntax-number:#ffdf95;--tabard-syntax-emphasis:#fff8f4;}"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

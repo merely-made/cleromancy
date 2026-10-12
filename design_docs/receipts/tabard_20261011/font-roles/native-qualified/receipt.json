@@ -1,0 +1,28 @@
+{
+  "schema": "cleromancy.headed-scenario/v1",
+  "phase": "first",
+  "ok": true,
+  "status": "Reflection saved: f9be4f4361a356f90940066e671005ce710add4734f917472e29652aefb4ff64",
+  "catalog_ready": true,
+  "sessions": 1,
+  "readings": 3,
+  "reflections": 1,
+  "ids": {
+    "session_id": "f979a9d72c66324867e209861c77f10d56cec84ce5377a9e566d1252f13a87f5",
+    "reading_id": "c001fb5e0ec6ed82527ff1a9c391141165162993609d4b4db81d5ffa7a1a957d",
+    "reflection_id": "f9be4f4361a356f90940066e671005ce710add4734f917472e29652aefb4ff64"
+  },
+  "log": [
+    "waited 0 frames",
+    "waited 0 frames",
+    "waited 0 frames",
+    "captured font-roles-applied",
+    "captured authored-font-roles",
+    "captured canonical-light-font-roles",
+    "captured canonical-dark-font-roles",
+    "captured canonical-hc-light-font-roles",
+    "captured canonical-hc-dark-font-roles",
+    "captured authored-font-roles-restored",
+    "captured font-roles-compact"
+  ]
+}

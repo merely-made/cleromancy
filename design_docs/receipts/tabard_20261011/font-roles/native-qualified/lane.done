@@ -1,0 +1,22 @@
+RESULT ok
+waited 0 frames
+waited 0 frames
+waited 0 frames
+captured font-roles-applied
+captured authored-font-roles
+captured canonical-light-font-roles
+captured canonical-dark-font-roles
+captured canonical-hc-light-font-roles
+captured canonical-hc-dark-font-roles
+captured authored-font-roles-restored
+captured font-roles-compact
+capture font-roles-applied 2320x1520 digest=f5247a644b2f9e95 file=/Users/markik/Code/testing/font-roles-20261012/native-qualified/font-roles-applied.png
+capture authored-font-roles 2320x1520 digest=4021a7aad4705a7d file=/Users/markik/Code/testing/font-roles-20261012/native-qualified/authored-font-roles.png
+capture canonical-light-font-roles 2320x1520 digest=c287b86112eb8ba5 file=/Users/markik/Code/testing/font-roles-20261012/native-qualified/canonical-light-font-roles.png
+capture canonical-dark-font-roles 2320x1520 digest=cbab4b236c74666d file=/Users/markik/Code/testing/font-roles-20261012/native-qualified/canonical-dark-font-roles.png
+capture canonical-hc-light-font-roles 2320x1520 digest=eb43edf541768e31 file=/Users/markik/Code/testing/font-roles-20261012/native-qualified/canonical-hc-light-font-roles.png
+capture canonical-hc-dark-font-roles 2320x1520 digest=f942cee5f7eba240 file=/Users/markik/Code/testing/font-roles-20261012/native-qualified/canonical-hc-dark-font-roles.png
+capture authored-font-roles-restored 2320x1520 digest=dd7177b0bbf364c9 file=/Users/markik/Code/testing/font-roles-20261012/native-qualified/authored-font-roles-restored.png
+capture font-roles-compact 840x2000 digest=04b86bf98c47227d file=/Users/markik/Code/testing/font-roles-20261012/native-qualified/font-roles-compact.png
+frames: 8 captured, 0 blank, 8 distinct digests
+presentation: 97 frames, 98 redraws, 1 unpresented redraws

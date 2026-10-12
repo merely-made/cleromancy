@@ -1,0 +1,8 @@
+RESULT ok
+waited 0 frames
+waited 0 frames
+waited 0 frames
+captured reopened-font-roles
+capture reopened-font-roles 2320x1520 digest=094da7eea427d561 file=/Users/markik/Code/testing/font-roles-20261012/native-reopen/reopened-font-roles.png
+frames: 1 captured, 0 blank, 1 distinct digests
+presentation: 26 frames, 27 redraws, 1 unpresented redraws

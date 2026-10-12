@@ -177,12 +177,27 @@ qualify reset recovery or a complete WCAG review. All owned app processes exited
 
 ## Granular font roles — 2026-10-12
 
-**Status:** consumer implementation and CPU gates passed; native qualification
-in progress. [The font-role qualification ledger](font-roles/qualification.json)
+**Status:** bounded macOS qualification passed; publication recorded by the
+consumer commit carrying this receipt. [The font-role qualification ledger](font-roles/qualification.json)
 records the coherent supplier family, bundled OFL byte hashes and 101 passing
 root tests. New tests exercise actual native text/picker routing, explicit
 Apply, failed saves, unavailable requests, corrupt preference retention,
 ordered family fallback, known font advances, resize resources and authored
 CSS precedence. The root lock is preserved in this receipt; the independent
 core lock remains tracked in its workspace. Prior images qualify their own
-source revisions. Native font-role frames/reopening remain a separate gate.
+source revisions. Native acceptance passed from committed runtime `c1fb4ce`: two processes,
+nine visually reviewed captures and 123 presented frames. Reading uses bundled
+IBM Plex Mono, reading headings use bundled Source Serif 4, and the unavailable
+Label request remains saved with disclosed local fallback. Four canonical modes,
+authored mode restoration and 420px font entry pass. The compact panel scrolls;
+the capture shows Reading entry and mounted traversal covers other controls.
+Fresh reopening preserves exact preference/library bytes, card data, the same
+session/reading/reflection IDs and 1/3/1 counts. [Run the read-only verifier](font-roles/verify.py)
+with Python to validate committed process receipts, hashes and retained IDs.
+
+The initial eight-capture multiword-input attempt is retained as rejected evidence.
+Shared Mesquite's complete-payload fix is adopted at Mere `addccab32`. Final gates
+are 101 root tests and 17 portable-core tests, with no failures/ignored tests.
+Default/all-feature metadata keep one Mere and Genet source; optional feature
+compilation, per-glyph coverage, remote/frozen face fidelity, formal contrast,
+OS accessibility/physical IME and wider layout acceptance retain separate gates.

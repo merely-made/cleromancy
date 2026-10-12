@@ -6,7 +6,7 @@
   "vello": "2eae6243881d5b24c984d5ee35dde509ca5db782",
   "dramatis": "0234e7eea6f2ddf2330a71b9425da01b06ae0391",
   "tests": 101,
-  "native_status": "pending",
+  "native_status": "qualified bounded macOS arm64",
   "bundled_fonts": {
     "assets/fonts/ibm-plex-mono/IBMPlexMono-Bold.ttf": "ac27abd6450a64dd94467580a02fe6235156d5b92f2926ebbc8e7489df64e0be",
     "assets/fonts/ibm-plex-mono/IBMPlexMono-BoldItalic.ttf": "af4e05a761e98c1adf064c48a6352c9bec1a6ad70982cd2a544149323391f98e",
@@ -22,5 +22,65 @@
     "accepted": false,
     "reason": "shared scenario input-text split multiword font names",
     "receipt": "rejected-native-first/process.json"
-  }
+  },
+  "runtime_source": "c1fb4ce7f28f0f599e3c3ce876bfcf128046fb1b",
+  "binary_sha256": "09220df0137eed372d0b0732de5ee88252d2a359617e9eade4a0428804c7cf56",
+  "native": {
+    "processes": 2,
+    "reviewed_captures": 9,
+    "presented_frames": 123,
+    "seed": {
+      "captures": 8,
+      "frames": 97,
+      "elapsed_seconds": 73.384
+    },
+    "reopen": {
+      "captures": 1,
+      "frames": 26,
+      "elapsed_seconds": 9.918
+    },
+    "durable_ids": {
+      "session_id": "f979a9d72c66324867e209861c77f10d56cec84ce5377a9e566d1252f13a87f5",
+      "reading_id": "c001fb5e0ec6ed82527ff1a9c391141165162993609d4b4db81d5ffa7a1a957d",
+      "reflection_id": "f9be4f4361a356f90940066e671005ce710add4734f917472e29652aefb4ff64"
+    },
+    "counts": {
+      "sessions": 1,
+      "readings": 3,
+      "reflections": 1
+    },
+    "saved_fonts": {
+      "reading": [
+        "IBM Plex Mono"
+      ],
+      "heading": [
+        "Source Serif 4"
+      ],
+      "label": [
+        "Cleromancy Missing Face"
+      ]
+    },
+    "file_bytes_unchanged_on_reopen": true,
+    "cards_unchanged_on_reopen": true,
+    "app_cleanup": "Both unique launchers exited; CUA inventory has zero running acceptance apps",
+    "capture_sha256": {
+      "native-qualified/font-roles-applied.png": "73aef8d66a8bf2645207728c1b6e9c1abf811c0e877a5f8a4d743c718a433fdc",
+      "native-qualified/canonical-light-font-roles.png": "84d0729a67942412db73378ca7a17faf6ae4820ab831139e0d486e1118f604af",
+      "native-qualified/canonical-hc-light-font-roles.png": "f280afb08360fbeeb8fecd8abd79aa2dbe544fca2ef35d61c32eff5f534f910b",
+      "native-qualified/font-roles-compact.png": "50a4618e543a28bdd36d51ca961e777e858e962d6e5beadac8b3788395db4b83",
+      "native-qualified/canonical-dark-font-roles.png": "8bf2492f24b2b91ba657266aa7dff870d82d993241a2863a39a276b9eaf5bf98",
+      "native-qualified/authored-font-roles-restored.png": "ea636673423586bc86629158d1ff28d0b27e57d461e3b5e47490a864a7a3651b",
+      "native-qualified/canonical-hc-dark-font-roles.png": "db29c1f2542e7503a4252d4afb313b8e3ab5f130faece12a945cdd6da3fe603f",
+      "native-qualified/authored-font-roles.png": "e33fb08a1e708931d38ae199cf4f1b333cfc03090a0e0eaf48092db0a5ec1c7d",
+      "native-reopen/reopened-font-roles.png": "468067eeb2f595e04756ee5470c31f9ba09b243a3ad047134d1353c83dcba18b"
+    }
+  },
+  "limits": [
+    "Family-only roles; size, weight, line-height and measure stay host-owned",
+    "Scripted native control flow and mounted keyboard tests; formal OS accessibility/physical IME not newly certified",
+    "Compact font panel scrolls; capture shows Reading entry, mounted traversal covers other controls",
+    "No formal contrast certification or general consultation layout repair",
+    "Knot/Woodshed consumer adoption, per-glyph coverage and remote/frozen face identity remain separate gates",
+    "Appearance remains app-local; no resident/custody migration claim"
+  ]
 }

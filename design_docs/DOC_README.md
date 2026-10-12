@@ -184,5 +184,7 @@ the current public overview until it is authored.
 Granular appearance continuation (2026-10-12): the existing
 [appearance plan](archive_docs/2026-10-11/2026-10-11_tabard_appearance_plan.md#granular-font-roles--2026-10-12-continuation)
 records shared font-family roles, licensed bundled faces, explicit preference
-Apply, and current coherent supplier adoption. Consumer qualification is in
-progress; prior theme captures retain their original revision scope.
+Apply, and current coherent supplier adoption. Consumer macOS qualification is complete: 101 root tests, 17 portable-core tests,
+two native processes, nine reviewed captures and unchanged exact font requests
+and durable IDs on reopening. Prior theme captures retain their original revision
+scope; other consumer/platform and glyph/frozen-face gates remain separate.
