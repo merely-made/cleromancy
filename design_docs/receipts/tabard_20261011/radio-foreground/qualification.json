@@ -1,0 +1,158 @@
+{
+  "schema": "cleromancy.radio-foreground-qualification/v1",
+  "status": "qualified for scoped macOS foreground and focused consultation reopen",
+  "runtime_commit": "1d0777ad9b4e37cdc019ac11c01b289409894f87",
+  "focused_fixture_commit": "7efdab002ad3c8749a7ebfe58b9d4d3a17420c1f",
+  "source_sha256": {
+    "src/ui/consultation.css": "747b2063607453e37ec5fc8d0307e51b530cecbd243becefc13a8b062ab5d936",
+    "src/ui/native/appearance_tests.rs": "2fe455a6c3cf78158c7c82063b2aa51e3c3cb0cedf12cb0a80c8429cbf40e307",
+    "src/ui/native/scenario_driver.rs": "0741d71bfa0a11f95911eb980d77c18d51fe8fe56f9bebedb87460670dd056fe",
+    "receipts/tabard-radio-foreground.scn": "c93fce2df44f3b82c854877155a1b5b1bdffee8d608f9ce6468cc805f251a99a",
+    "receipts/tabard-radio-reopen.scn": "5b3ea2a1e7734a590ea26384884511ce45d34f1ea6ad039bba54d2fe755f0a32",
+    "Cargo.toml": "ab9589de862180cb91fbb7ac31ab015f5673323f4899eb75075279a76927d767",
+    "Cargo.lock": "518078ba2382fe356fa02bf283f870cc486fc4c1c44636e097fa9d0a2d4c938b"
+  },
+  "binary_sha256": "db4f0f0e5a19a0c464d752871eac5dace48c07400d803ff7be4253f4363ca1e0",
+  "cpu": {
+    "default_passed": 96,
+    "default_failed": 0,
+    "default_ignored": 0,
+    "native_tests_passed": 21,
+    "appearance_tests_included": 19,
+    "scenario_parse_final": 1,
+    "original_css_negative": {
+      "passed": 0,
+      "failed": 2,
+      "reason": "resolved selected foreground inherited body color"
+    }
+  },
+  "native": {
+    "cases": [
+      {
+        "case": "radio-native-qualified",
+        "launch_method": "LaunchServices temporary application bundle",
+        "launcher_exit": 0,
+        "timeout": false,
+        "success": true,
+        "elapsed_seconds": 53.63,
+        "binary_sha256": "db4f0f0e5a19a0c464d752871eac5dace48c07400d803ff7be4253f4363ca1e0",
+        "scenario_sha256": "c93fce2df44f3b82c854877155a1b5b1bdffee8d608f9ce6468cc805f251a99a",
+        "receipt": "scenario.done",
+        "captures": 6,
+        "presented_frames": 59,
+        "capture_sha256": {
+          "canonical-hc-light-radio-foreground.png": "2b062ef0370bbe2263dc7c19a8b35703cbd241a68b4642c08dc4ba0bc6e6c1a3",
+          "authored-radio-foreground.png": "d8dc0acf3a6b57eb526091c5bdb8fbf430677268dae4a2ed3237a46d0dab6829",
+          "authored-radio-restored.png": "f6ae814275310aaec0e5532942b492a37965f91ab7f34af069838fb2c4e16ab5",
+          "canonical-hc-dark-radio-foreground.png": "1b576de9e0dc52b4c8929ef5d02f131918a39be6d993827918c1fd2aeb5ad4b5",
+          "canonical-dark-radio-foreground.png": "49b18914ccfe774c4d2b6936ee6dfa046f2198a2c63dd342fe88678600c408e2",
+          "canonical-light-radio-foreground.png": "cf0e177c23baf0c8e5df4e24b9f30835349cdc550d81328c60aaafb0289d3635"
+        },
+        "accepted": true
+      },
+      {
+        "case": "radio-native-reopen-focused",
+        "launch_method": "LaunchServices temporary application bundle",
+        "launcher_exit": 0,
+        "timeout": false,
+        "success": true,
+        "elapsed_seconds": 30.682,
+        "binary_sha256": "db4f0f0e5a19a0c464d752871eac5dace48c07400d803ff7be4253f4363ca1e0",
+        "scenario_sha256": "5b3ea2a1e7734a590ea26384884511ce45d34f1ea6ad039bba54d2fe755f0a32",
+        "receipt": "scenario.done",
+        "captures": 1,
+        "presented_frames": 23,
+        "capture_sha256": {
+          "reopened-radio-foreground.png": "dc66636dc4a42139d309afc7dc2c42cfa911834e6576e30e809c50224bdda499"
+        },
+        "accepted": true
+      },
+      {
+        "case": "radio-native-seed",
+        "launch_method": "LaunchServices temporary application bundle",
+        "launcher_exit": 0,
+        "timeout": false,
+        "success": false,
+        "elapsed_seconds": 13.196,
+        "binary_sha256": "3d2811340d758c078c0246b54ce5aee5ad7f4b3ec18430a0df3864f8fb8616a3",
+        "scenario_sha256": "c93fce2df44f3b82c854877155a1b5b1bdffee8d608f9ce6468cc805f251a99a",
+        "receipt": "scenario.done",
+        "captures": 0,
+        "presented_frames": 0,
+        "capture_sha256": {},
+        "accepted": false
+      },
+      {
+        "case": "radio-native-seed-foreground",
+        "launch_method": "LaunchServices temporary application bundle",
+        "launcher_exit": 0,
+        "timeout": false,
+        "success": false,
+        "elapsed_seconds": 12.317,
+        "binary_sha256": "3d2811340d758c078c0246b54ce5aee5ad7f4b3ec18430a0df3864f8fb8616a3",
+        "scenario_sha256": "c93fce2df44f3b82c854877155a1b5b1bdffee8d608f9ce6468cc805f251a99a",
+        "receipt": "scenario.done",
+        "captures": 0,
+        "presented_frames": 0,
+        "capture_sha256": {},
+        "accepted": false
+      },
+      {
+        "case": "radio-native-seed-bundle-id",
+        "launch_method": "LaunchServices temporary application bundle",
+        "launcher_exit": 0,
+        "timeout": false,
+        "success": false,
+        "elapsed_seconds": 12.302,
+        "binary_sha256": "3d2811340d758c078c0246b54ce5aee5ad7f4b3ec18430a0df3864f8fb8616a3",
+        "scenario_sha256": "c93fce2df44f3b82c854877155a1b5b1bdffee8d608f9ce6468cc805f251a99a",
+        "receipt": "scenario.done",
+        "captures": 0,
+        "presented_frames": 0,
+        "capture_sha256": {},
+        "accepted": false
+      },
+      {
+        "case": "radio-native-reopen",
+        "launch_method": "LaunchServices temporary application bundle",
+        "launcher_exit": 0,
+        "timeout": false,
+        "success": false,
+        "elapsed_seconds": 88.153,
+        "binary_sha256": "db4f0f0e5a19a0c464d752871eac5dace48c07400d803ff7be4253f4363ca1e0",
+        "scenario_sha256": "cd7cf0fa0be2ef240ff7fa48a3cd5be8e6d8e2351d28888ff4938e1ebf99b0b2",
+        "receipt": "scenario.done",
+        "captures": 3,
+        "presented_frames": 36,
+        "capture_sha256": {
+          "reopened-authored.png": "0d7dc924bb76adf8fefb9dcd13803fc63f3aee60cec00cf605fb438346c2fbc2",
+          "reopened-workshop-narrow.png": "b6cb85db932e4135c4b00b2a99a163fe7bc4dd936aeb03b2114873ff5bc2c7ed",
+          "detail.png": "7ba1471419dc99416b53c43b9a642d4cab7b99c30fb4b5f88f8483e6ce7d9d59"
+        },
+        "accepted": false
+      }
+    ],
+    "accepted_captures_reviewed": 7,
+    "accepted_presented_frames": 82,
+    "exact_reopen_ids": {
+      "session_id": "2b147366a5fed03294b982bfb72506b0bc445d8c8371164e49ff777da9737c9c",
+      "reading_id": "024986096bfb72d9bfb5ef2325d73e08441454c6554c33153f6e9b99e0b96c02",
+      "reflection_id": "fc02d819ad80fc7f3d73c1a2370a2c7a51f1f0ab2da5533db9860a9a4f18087f"
+    },
+    "sessions": 1,
+    "readings": 3,
+    "reflections": 1,
+    "library_bytes_unchanged": true,
+    "presentation_allowance_seconds": 60,
+    "default_presentation_seconds": 10,
+    "max_presentation_seconds": 60
+  },
+  "limits": [
+    "Original ten-second attempts presented zero frames; preserved as failures.",
+    "The broad workshop reopen captured three images and 36 presentations, then stalled after resize/editor navigation; excluded from accepted counts.",
+    "The focused reopened consultation passes; this is not renewed workshop resize/close acceptance.",
+    "Native control Raise was rejected; passing results are not attributed to that action.",
+    "No forced reset recovery, formal WCAG audit, personal custody, C1 or other-platform acceptance."
+  ],
+  "evidence_root": "/Users/markik/Code/testing/theme-review-20261011"
+}

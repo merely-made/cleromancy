@@ -121,7 +121,8 @@ have mounted CPU regressions and are not claimed as separate headed scenarios.
 
 ## Selected-radio foreground follow-up (2026-10-11)
 
-Status: CPU-qualified; committed-source native checks pending. The consultation's
+Status: implemented and qualified for the scoped macOS consultation controls
+and focused fresh-process reopening. The consultation's
 checked radio rule now pairs `--tabard-color-primary` with
 `--tabard-color-on-primary`, as selected navigation and buttons already do.
 Previously checked selection-mode and reading-shape labels inherited body text;
@@ -132,8 +133,9 @@ Two mounted regressions fail on the original rule with the expected foreground
 mismatch. With the fix, they cover all four canonical modes, two opposite
 authored primary/foreground pairs, 1160×760 and 420×1000 layouts, actual radio
 selection changes, and unchanged body foreground on unchecked options.
-The full default suite passes 95 tests with no failures or ignores. The focused
-appearance suite passes 19 tests. The added native fixture
+The final full default suite passes 96 tests with no failures or ignores. The
+focused appearance suite passes 19 tests; the native module suite passes 21,
+including the bounded presentation allowance regression. The added native fixture
 `receipts/tabard-radio-foreground.scn` retains the ordinary durable consultation
 requirements, visits the authored choice and four canonical modes, then restores
 the authored choice for the existing fresh-process reopen fixture.
@@ -141,3 +143,34 @@ the authored choice for the existing fresh-process reopen fixture.
 This follow-up keeps the accepted dependency family and does not change theme
 derivation, library/choice persistence, or arbitrary authored CSS precedence.
 Original October 11 counts above remain bound to their original binary.
+
+
+Runtime source is `1d0777a` (foreground fix `3782e60`); the focused reopen
+fixture is committed at `7efdab0`. The production binary SHA256 is
+`db4f0f0e5a19a0c464d752871eac5dace48c07400d803ff7be4253f4363ca1e0`.
+Two accepted LaunchServices processes produce seven reviewed original captures
+and 82 presentations: authored/four-canonical-mode/restored choice (six captures,
+59 presentations), then focused consultation reopen (one capture, 23
+presentations). Checked Cast labels use the correct on-primary foreground;
+unchecked labels retain body foreground. Mounted tests cover both radio groups
+at both widths. Exact session/reading/reflection IDs match, and the authored
+library remains byte-identical. See the
+[qualification record](radio-foreground/qualification.json) and
+[reopened consultation](radio-foreground/radio-native-reopen-focused/reopened-radio-foreground.png).
+
+Three original ten-second launches stall while occluded before presenting any
+frames. The scenario adapter now exposes Mesquite's existing finite allowance
+through `CLEROMANCY_PRESENTATION_TIMEOUT_SECS`: ten seconds by default, explicit
+values bounded to 10–60 seconds. This affects only configured scenario runs;
+acceptance still requires real presentations and the ordinary durable product
+assertions. Accepted runs use sixty seconds. Native-control Raise was rejected,
+so success is not attributed to that action. An additional native Tab focus
+on the disposable reopened window changes no consultation content.
+
+The original broader reopen fixture captures the restored consultation and
+narrow workshop, then stalls after workshop resize/navigation (36 presentations,
+three images). Its failed receipt is preserved and excluded from accepted counts.
+The added focused reopen fixture keeps every ordinary durable consultation
+assertion while staying on the controls changed here. This does not renew
+workshop-resize/close acceptance, establish unattended background launch, or
+qualify reset recovery or a complete WCAG review. All owned app processes exited.

@@ -1,0 +1,10 @@
+RESULT ok
+waited 0 frames
+waited 0 frames
+waited 0 frames
+captured authored-radio-foreground
+captured canonical-light-radio-foreground
+captured canonical-dark-radio-foreground
+captured canonical-hc-light-radio-foreground
+captured canonical-hc-dark-radio-foreground
+captured authored-radio-restored

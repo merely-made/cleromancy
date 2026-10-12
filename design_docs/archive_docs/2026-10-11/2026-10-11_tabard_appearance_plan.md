@@ -159,3 +159,14 @@ responsibility. Export cancellation never saves or applies a definition.
 - **2026-10-11:** Additional live authored-canvas/Discard acceptance passed 3 captures and 50 presentations with the same frozen source and stable durable IDs. Actual brown/green pixel evidence and the unchanged brown saved library/choice are in the canonical receipt. Accepted native total: 21 captures and 276 presentations across five processes.
 
 - **2026-10-11, selected-radio correction:** Native-image review found that checked radio controls used the authored primary background but inherited body text. The consultation rule now uses the paired on-primary foreground. Two mounted regressions reproduce the original defect and cover four canonical modes, opposite authored foreground pairs, both accepted widths and real selection changes. Default95 and appearance19 tests pass; committed-source native color/reopen checks are pending in the existing acceptance receipt. The original adoption remains complete and its binary-bound counts remain historical.
+
+
+- **2026-10-11, selected-radio qualification:** The scenario-only finite allowance
+  keeps the ten-second default and caps explicit requests at sixty seconds.
+  Final default96/native21/scenario-parse checks and the production build pass.
+  Runtime `1d0777a` and focused fixture `7efdab0` qualify two native processes,
+  seven reviewed captures and 82 presentations, with exact consultation IDs
+  and unchanged theme-library bytes after reopening. The zero-frame launch
+  failures and later broad workshop-resize stall remain excluded evidence in
+  the existing receipt; this continuation qualifies the changed consultation
+  controls and focused reopen only.

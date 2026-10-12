@@ -1,0 +1,445 @@
+warning: patch `ipc-channel v0.22.0 (https://github.com/merely-made/genet.git?rev=7422e90613f9017e5bb790e3acb48f61776b2eda#7422e906)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling cleromancy v0.1.0 (/Users/markik/Code/repos/cleromancy)
+    Finished `test` profile [unoptimized] target(s) in 29.29s
+     Running unittests src/lib.rs (target/debug/deps/cleromancy-603a31d1c90698d6)
+
+running 37 tests
+test consultation::journal_policy::tests::date_cutoff_is_inclusive ... ok
+test consultation::journal_policy::tests::relative_dates_use_elapsed_duration_buckets ... ok
+test host::sky::tests::enumerator_rejects_a_valid_record_at_the_wrong_digest_address ... ok
+test host::sky::tests::enumerator_rejects_a_structurally_invalid_canonical_record ... ok
+test host::domain::tests::rejects_deleted_dependency_and_missing_domain_facet ... ok
+test host::domain::tests::rejects_orphan_domain_facets ... ok
+test host::domain::tests::rejects_a_reading_after_its_field_node_is_removed ... ok
+test host::domain::tests::rejects_tampered_unreferenced_sealed_reading ... ok
+test host::domain::tests::preserves_unrelated_unknown_facets ... ok
+test ui::native::appearance_tests::appearance_fixtures_keep_the_shared_scenario_lane_and_durable_product_contract ... ok
+test host::domain::tests::rejects_unknown_domain_version_and_multiple_domain_records ... ok
+test host::domain::tests::validates_complete_reading_without_mutating_candidate ... ok
+test host::domain::tests::validates_a_session_and_reflection_and_refuses_a_missing_session ... ok
+test ui::native::appearance_tests::identical_missing_paths_refuse_preference_and_library_writes ... ok
+test ui::native::appearance_tests::exports_cannot_replace_future_application_data_or_overridden_preferences ... ok
+test ui::native::appearance_tests::missing_nested_and_existing_aliases_preserve_owned_files ... ok
+test ui::native::appearance_tests::corrupt_files_and_failed_choice_write_preserve_bytes_and_applied_presentation ... ok
+test ui::native::appearance_tests::overrides_and_exports_preserve_the_existing_consultation_store ... ok
+test ui::native::appearance_tests::product_dark_copy_supplies_shared_preview_roles_and_exact_product_context_colors ... ok
+test ui::native::appearance_tests::save_and_library_reload_hold_same_identity_until_explicit_apply ... ok
+test ui::native::appearance_tests::product_identity_keeps_its_seeds_across_canonical_modes_and_reopen ... ok
+test ui::native::appearance_tests::unchanged_appearance_does_not_reset_the_callers_stylesheet_on_dispatch ... ok
+test ui::native::appearance_tests::native_save_close_saves_definition_without_applying_or_mutating_consultation ... ok
+test ui::native::scenario_driver::presentation_tests::scenario_allowance_keeps_the_default_and_refuses_unbounded_waits ... ok
+test ui::view::chart_aspect::tests::coincident_aspect_stays_direct_at_one_tick ... ok
+test ui::view::chart_aspect::tests::ordinary_aspect_uses_increasing_direct_endpoints ... ok
+test ui::view::chart_aspect::tests::wrapped_aspect_uses_descending_raw_order_and_wraps_target ... ok
+test ui::worker::tests::worker_bootstraps_tarot_and_returns_durable_reading_updates ... ok
+test ui::native::focused_text_tests::marked_div_field_routes_text_into_its_question_slot ... ok
+test ui::native::appearance_tests::cancel_native_close_then_discard_back_preserves_parent ... ok
+test ui::native::appearance_tests::shared_fields_and_parent_controls_keep_real_geometry_at_420_and_1160 ... ok
+test ui::native::appearance_tests::shared_text_save_apply_and_back_do_not_dispatch_a_consultation_action ... ok
+test ui::native::appearance_tests::neutral_workshop_headings_remain_readable_inside_dark_and_authored_hosts ... ok
+test ui::native::appearance_tests::selected_radio_uses_authored_on_primary_after_actual_selection_changes ... ok
+test ui::native::appearance_tests::mounted_save_back_edit_apply_reuses_saved_identity_without_early_publication ... ok
+test ui::native::appearance_tests::selected_radio_uses_canonical_on_primary_without_recoloring_unchecked_options ... ok
+test ui::native::appearance_tests::modes_authored_css_and_reopen_preserve_consultation_and_action_owner ... ok
+
+test result: ok. 37 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.63s
+
+     Running unittests src/bin/a15_pattern_receipt.rs (target/debug/deps/a15_pattern_receipt-dbbbe9777c8808cb)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a16_pattern_selection_receipt.rs (target/debug/deps/a16_pattern_selection_receipt-23d7c13ce91ea50f)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a1_enrichment_receipt.rs (target/debug/deps/a1_enrichment_receipt-16f19f23aa714099)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a2_enriched_receipt.rs (target/debug/deps/a2_enriched_receipt-156ea8373702bf14)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a3_intent_receipt.rs (target/debug/deps/a3_intent_receipt-39405d611f37312e)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a5_field_receipt.rs (target/debug/deps/a5_field_receipt-6f0cff44e44085af)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a6_tarot_receipt.rs (target/debug/deps/a6_tarot_receipt-b079a36572e5fa36)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a7_session_receipt.rs (target/debug/deps/a7_session_receipt-428fc1b00f43da84)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a8_three_card_receipt.rs (target/debug/deps/a8_three_card_receipt-8c3086092d9423f1)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/debug/deps/cleromancy-1c2e03db2f664b60)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/cleromancy_receipt.rs (target/debug/deps/cleromancy_receipt-1b0c35bedba2c326)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a0.rs (target/debug/deps/a0-840f8b729cd459b0)
+
+running 4 tests
+test servitor_access_keeps_scope_and_mode_boundaries ... ok
+test cast_discloses_a_bounded_sample_and_replays_without_entropy ... ok
+test calculated_reading_is_byte_stable_and_replays ... ok
+test mere_truth_reopens_and_graphshell_resolves_every_card ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+     Running tests/a1.rs (target/debug/deps/a1-9312edc2d246fbca)
+
+running 1 test
+test external_projection_mounts_beside_local_truth_and_correlation_is_a_receipt ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/a10.rs (target/debug/deps/a10-37f3574aa328156a)
+
+running 5 tests
+test generic_composer_rejects_a_missing_graph_field ... ok
+test generic_composer_rejects_derived_until_its_descriptor_has_an_intent_schema ... ok
+test generic_composer_rejects_a_deterministic_three_card_request ... ok
+test generic_composer_can_select_a_graph_resident_field ... ok
+test generic_composer_saves_single_and_three_card_layouts ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/a12.rs (target/debug/deps/a12-3c409b3c45f43d8c)
+
+running 2 tests
+test field_composer_rejects_structural_drafts_before_dispatch ... ok
+test field_composer_emits_the_exact_field_and_round_trips ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a13.rs (target/debug/deps/a13-680df675c7928fb6)
+
+running 3 tests
+test chart_rejects_ambiguous_or_invalid_positions ... ok
+test chart_derives_replayable_structured_facts ... ok
+test chart_metadata_and_facts_bind_the_calculation_boundary ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a14.rs (target/debug/deps/a14-6c0c6454ba786fd0)
+
+running 2 tests
+test adapter_receipt_requires_the_requested_moment ... ok
+test astrology_chart_and_facts_are_graph_truth_and_project_as_cards ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/a15.rs (target/debug/deps/a15-8b7bb60eaba4353a)
+
+running 2 tests
+test concurrence_is_canonical_and_rejects_ambiguous_members ... ok
+test astrology_and_tarot_share_an_inspectable_occasion_without_a_causal_claim ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/a16.rs (target/debug/deps/a16-cb777cab1e3e88da)
+
+running 1 test
+test saved_facts_and_sessions_select_each_other_through_the_bound_pattern_action ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/a17_graphshell_action_draft.rs (target/debug/deps/a17_graphshell_action_draft-0189169460379bfb)
+
+running 1 test
+test retained_graphshell_session_submits_cleromancy_concurrence_from_exact_choices ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/a18_admitted_endpoint.rs (target/debug/deps/a18_admitted_endpoint-ba1213a3a17dd3d1)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a19_resident_endpoint_catalog.rs (target/debug/deps/a19_resident_endpoint_catalog-fde9a5f85422f40a)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a2.rs (target/debug/deps/a2-dc13ba2b9bae0d86)
+
+running 1 test
+test sealed_external_evidence_qualifies_and_replays_after_endpoint_shutdown ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+
+     Running tests/a20_resident_session_authority.rs (target/debug/deps/a20_resident_session_authority-e7ec856bbe7b5b66)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a21_resident_persistence.rs (target/debug/deps/a21_resident_persistence-f990c8d6b4655276)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a22_resident_pattern_sync.rs (target/debug/deps/a22_resident_pattern_sync-1f2ac271694b50a7)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a23_resident_sync_consent.rs (target/debug/deps/a23_resident_sync_consent-73eb233142fe6887)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a24_resident_sync_startup.rs (target/debug/deps/a24_resident_sync_startup-056cc44e21f2a34a)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a25_sync_consent_command.rs (target/debug/deps/a25_sync_consent_command-7a298759b5a379c6)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a3.rs (target/debug/deps/a3-a8a29e37585bfbca)
+
+running 2 tests
+test payload_identity_cannot_replace_transport_binding_or_servitor_authority ... ok
+test bound_authorized_consumer_reads_selects_and_rolls_through_the_wire ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/a4.rs (target/debug/deps/a4-65697e41ff427bf2)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a5.rs (target/debug/deps/a5-da0075d41801f3ea)
+
+running 1 test
+test graph_resident_field_replays_after_the_callers_field_is_gone ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/a6.rs (target/debug/deps/a6-a52470742ae7a77f)
+
+running 3 tests
+test rule_names_are_enforced_instead_of_treated_as_labels ... ok
+test major_arcana_pack_has_stable_complete_ordering ... ok
+test uniform_and_contextual_tarot_disclose_different_qualification ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/a7.rs (target/debug/deps/a7-d0c6241cc5a01a7a)
+
+running 2 tests
+test session_and_reflection_identity_reject_tampering ... ok
+test repeated_calculated_reads_are_separate_sessions_with_immutable_reflection ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/a7_sync.rs (target/debug/deps/a7_sync-297e934f6313f965)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a8.rs (target/debug/deps/a8-ab5c77bc3e5f20c9)
+
+running 1 test
+test fixed_three_card_spread_is_authored_replayable_and_graph_visible ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/a8_sync.rs (target/debug/deps/a8_sync-b0f39fbe12a104cc)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a9.rs (target/debug/deps/a9-eb48cae41d71b2b5)
+
+running 1 test
+test bound_host_can_cast_the_authored_spread_through_the_wire ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/analytic_consultation.rs (target/debug/deps/analytic_consultation-fd77b3930c18db14)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/analytic_parity.rs (target/debug/deps/analytic_parity-c6fb5a5aa2a70ec9)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/authored_consultation.rs (target/debug/deps/authored_consultation-021d49835ae73680)
+
+running 1 test
+test consultation_persists_an_authored_cast_and_source_qualified_chart_concurrence ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+
+     Running tests/authored_spread.rs (target/debug/deps/authored_spread-aa058fcd356e4722)
+
+running 2 tests
+test authored_template_rejects_unknown_or_repeated_positions ... ok
+test authored_spread_replays_its_template_session_and_relations_after_reopen ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+     Running tests/authored_spread_sync.rs (target/debug/deps/authored_spread_sync-ac4b2be8b68262d8)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/chart_surface_dom.rs (target/debug/deps/chart_surface_dom-e9bf86b93360e75a)
+
+running 3 tests
+test empty_chart_surface_keeps_manual_import_reachable ... ok
+test chart_concurrence_is_resolved_locally_without_a_product_action ... ok
+test chart_surface_projects_stored_values_and_keeps_manual_import_available ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 7.46s
+
+     Running tests/consultation_authoring_dom.rs (target/debug/deps/consultation_authoring_dom-11a3adb1f6917381)
+
+running 1 test
+test retained_consultation_dispatches_authored_layout_and_chart_input_actions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.93s
+
+     Running tests/derived_selection.rs (target/debug/deps/derived_selection-23562a17b3d547d9)
+
+running 3 tests
+test derived_receipt_is_byte_stable_and_replays_from_disclosed_inputs ... ok
+test derived_uniform_die_is_replayable_and_detects_receipt_tampering ... ok
+test local_consultation_persists_and_reopens_the_derived_descriptor ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+     Running tests/headed_consultation.rs (target/debug/deps/headed_consultation-41dc8d62816326cd)
+
+running 3 tests
+test storage_failure_faults_the_controller_until_reopen ... ok
+test rejected_commands_leave_persisted_truth_unchanged ... ok
+test saved_tarot_consultation_and_reflection_reopen_exactly ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+
+     Running tests/headed_consultation_dom.rs (target/debug/deps/headed_consultation_dom-f892f64c1be9d780)
+
+running 2 tests
+test four_surface_tabs_are_local_accessible_and_bounded ... ok
+test retained_consultation_dispatches_a_complete_reading_and_reflection ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 30.99s
+
+     Running tests/journal_depth.rs (target/debug/deps/journal_depth-1a64a537d8857f15)
+
+running 2 tests
+test additional_facts_reject_ambiguous_or_reserved_input ... ok
+test journal_depth_preserves_contexts_three_cards_comparisons_and_follow_ups ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s
+
+     Running tests/journal_reader_dom.rs (target/debug/deps/journal_reader_dom-98dd052425b2ea84)
+
+running 2 tests
+test journal_selected_detail_and_comparison_keep_replay_explicit ... ok
+test journal_rows_filter_compose_clear_and_page_without_product_actions ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.24s
+
+     Running tests/session_summary.rs (target/debug/deps/session_summary-7c2a0d24efa55237)
+
+running 2 tests
+test summarize_skips_a_placement_whose_reading_is_absent ... ok
+test summaries_are_faithful_cheap_and_ordered_like_sessions ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.23s
+
+     Running tests/sky.rs (target/debug/deps/sky-ceaaa4072d066ccf)
+
+running 3 tests
+test validation_rejects_noncanonical_or_out_of_bounds_policy_controls ... ok
+test sky_facts_are_canonical_and_validate_after_json_round_trip ... ok
+test interpretations_bind_facts_and_exact_authored_pack ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/sky_host.rs (target/debug/deps/sky_host-8668c25863ed86a0)
+
+running 2 tests
+test sky_interpretation_replay_requires_its_facts_dependency ... ok
+test sky_records_persist_as_distinct_digest_nodes_with_provenance ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/sky_surface_dom.rs (target/debug/deps/sky_surface_dom-4fb1aa804b9a089f)
+
+running 1 test
+test stored_sky_facts_remain_catalogued_while_the_sky_tab_is_disabled ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+
+     Running tests/sky_timeline.rs (target/debug/deps/sky_timeline-872cd8b8cfc200ea)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests cleromancy
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

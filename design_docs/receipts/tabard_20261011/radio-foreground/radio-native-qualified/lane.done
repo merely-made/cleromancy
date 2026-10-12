@@ -1,0 +1,18 @@
+RESULT ok
+waited 0 frames
+waited 0 frames
+waited 0 frames
+captured authored-radio-foreground
+captured canonical-light-radio-foreground
+captured canonical-dark-radio-foreground
+captured canonical-hc-light-radio-foreground
+captured canonical-hc-dark-radio-foreground
+captured authored-radio-restored
+capture authored-radio-foreground 2320x1520 digest=8355952e257e0fe0 file=/Users/markik/Code/testing/theme-review-20261011/radio-native-qualified/authored-radio-foreground.png
+capture canonical-light-radio-foreground 2320x1520 digest=5ab6daa87a77edac file=/Users/markik/Code/testing/theme-review-20261011/radio-native-qualified/canonical-light-radio-foreground.png
+capture canonical-dark-radio-foreground 2320x1520 digest=94f3c5bc0438c7f4 file=/Users/markik/Code/testing/theme-review-20261011/radio-native-qualified/canonical-dark-radio-foreground.png
+capture canonical-hc-light-radio-foreground 2320x1520 digest=80402e30895e0e88 file=/Users/markik/Code/testing/theme-review-20261011/radio-native-qualified/canonical-hc-light-radio-foreground.png
+capture canonical-hc-dark-radio-foreground 2320x1520 digest=4753e2a17772b367 file=/Users/markik/Code/testing/theme-review-20261011/radio-native-qualified/canonical-hc-dark-radio-foreground.png
+capture authored-radio-restored 2320x1520 digest=d587eff58650a7bb file=/Users/markik/Code/testing/theme-review-20261011/radio-native-qualified/authored-radio-restored.png
+frames: 6 captured, 0 blank, 6 distinct digests
+presentation: 59 frames, 1569 redraws, 1510 unpresented redraws

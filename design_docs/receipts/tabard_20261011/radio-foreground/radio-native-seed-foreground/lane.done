@@ -1,0 +1,5 @@
+RESULT fail
+frames: 0 captured, 0 blank, 0 distinct digests
+presentation: 0 frames, 1197 redraws, 1197 unpresented redraws
+FAIL: native presentation stalled for 10000 ms (1197 redraws, 0 presented frames)
+FAIL: product completion: Cleromancy durable scenario acceptance failed

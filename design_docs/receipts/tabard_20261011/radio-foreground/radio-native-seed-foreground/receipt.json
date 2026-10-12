@@ -1,0 +1,15 @@
+{
+  "schema": "cleromancy.headed-scenario/v1",
+  "phase": "first",
+  "ok": false,
+  "status": "Ready",
+  "catalog_ready": true,
+  "sessions": 0,
+  "readings": 0,
+  "reflections": 0,
+  "ids": null,
+  "log": [
+    "FAIL: native presentation stalled for 10000 ms (1197 redraws, 0 presented frames)",
+    "FAIL: scenario completed without durable session, reading, and reflection ids"
+  ]
+}

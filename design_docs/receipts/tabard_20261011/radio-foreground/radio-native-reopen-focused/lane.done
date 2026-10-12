@@ -1,0 +1,8 @@
+RESULT ok
+waited 0 frames
+waited 0 frames
+waited 0 frames
+captured reopened-radio-foreground
+capture reopened-radio-foreground 2320x1520 digest=43a5280e71e4c770 file=/Users/markik/Code/testing/theme-review-20261011/radio-native-reopen-focused/reopened-radio-foreground.png
+frames: 1 captured, 0 blank, 1 distinct digests
+presentation: 23 frames, 2502 redraws, 2479 unpresented redraws

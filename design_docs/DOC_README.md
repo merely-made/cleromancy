@@ -105,8 +105,9 @@ the current public overview until it is authored.
 - [Shared application appearance acceptance](receipts/tabard_20261011/README.md):
   landed native Tabard choice/workshop/title bar, strict Save/Apply, four modes,
   readable wide/narrow editor and durable fresh reopens; exact CPU/native receipts.
-  The selected-radio foreground follow-up has negative controls and passing
-  canonical/authored mounted regressions; committed-source native checks pending.
+  The selected-radio foreground follow-up has negative controls, default96 and
+  native21 tests, seven reviewed native captures and exact focused reopening;
+  the broader workshop-resize retry remains explicitly failed evidence.
   [Completed plan](archive_docs/2026-10-11/2026-10-11_tabard_appearance_plan.md).
 
 - [Divination mere and the self-explaining reading](2026-09-23_divination_mere_plan.md):
