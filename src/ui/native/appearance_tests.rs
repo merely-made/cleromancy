@@ -647,6 +647,7 @@ fn appearance_fixtures_keep_the_shared_scenario_lane_and_durable_product_contrac
         "tabard-reopen.scn",
         "tabard-same-id.scn",
         "tabard-radio-foreground.scn",
+        "tabard-radio-reopen.scn",
     ] {
         let source = std::fs::read_to_string(root.join(name)).unwrap();
         taproot::Scenario::parse(&source).unwrap();
