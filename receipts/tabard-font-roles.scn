@@ -1,0 +1,80 @@
+# Private first-process consultation, with the accepted brown authored choice
+# supplied by the qualification fixture before launch.
+wait
+advance
+wait
+assert event semantic
+assert event durable
+advance
+wait
+assert text Trial note: return after using the app
+assert snap sessions >= 1
+assert snap readings >= 3
+assert snap reflections >= 1
+assert snap appearance-id == theme:copy-1
+assert snap appearance-mode == dark
+# Native shared picker: choosing is a draft until Apply.
+click role:button @data-action=toggle-appearance
+click role:button @data-font-choose=reading
+click role:textbox @data-font-search=true
+input-text IBM Plex Mono
+click role:button @data-font-family=IBM Plex Mono
+assert snap font-reading == default
+click role:textbox @data-font-role=heading
+input-text Source Serif 4
+click role:textbox @data-font-role=label
+input-text Cleromancy Missing Face
+click role:button @data-action=apply-font-roles
+assert snap font-reading == IBM Plex Mono
+assert snap font-heading == Source Serif 4
+assert snap font-label == Cleromancy Missing Face
+assert text unavailable here
+settle 2
+capture font-roles-applied
+click role:button @data-action=toggle-appearance
+settle 2
+capture authored-font-roles
+
+# The same actual consultation controls under all four canonical modes.
+click role:button @data-action=toggle-appearance
+click role:button @data-appearance-theme=cleromancy:default
+click role:button @data-appearance-mode=light
+click role:button @data-action=toggle-appearance
+settle 2
+capture canonical-light-font-roles
+click role:button @data-action=toggle-appearance
+click role:button @data-appearance-mode=dark
+click role:button @data-action=toggle-appearance
+settle 2
+capture canonical-dark-font-roles
+click role:button @data-action=toggle-appearance
+click role:button @data-appearance-mode=hc_light
+click role:button @data-action=toggle-appearance
+settle 2
+capture canonical-hc-light-font-roles
+click role:button @data-action=toggle-appearance
+click role:button @data-appearance-mode=hc_dark
+click role:button @data-action=toggle-appearance
+settle 2
+capture canonical-hc-dark-font-roles
+
+# Restore the authored choice for the ordinary fresh-process reopen fixture.
+click role:button @data-action=toggle-appearance
+click role:button @data-appearance-theme=theme:copy-1
+click role:button @data-appearance-mode=dark
+click role:button @data-action=toggle-appearance
+assert snap appearance-id == theme:copy-1
+assert snap appearance-mode == dark
+assert snap appearance-editor == false
+settle 2
+capture authored-font-roles-restored
+assert snap font-reading == IBM Plex Mono
+assert snap font-heading == Source Serif 4
+assert snap font-label == Cleromancy Missing Face
+resize 420 1000
+settle 3
+click role:button @data-action=toggle-appearance
+click role:textbox @data-font-role=reading
+settle 2
+capture font-roles-compact
+click role:button @data-action=toggle-appearance

@@ -1,0 +1,1172 @@
+{
+  "active_docs": 40,
+  "indexed_active_docs": 38,
+  "index_orphans": [
+    {
+      "source": "receipts/tabard_20261011/rejected-attempts.md",
+      "subject": "receipts/tabard_20261011/rejected-attempts.md",
+      "detail": "active document is absent from DOC_README.md"
+    }
+  ],
+  "index_ghosts": [],
+  "memory_directory_links": [],
+  "statusless_plans": [
+    {
+      "source": "2026-08-08_authored_spreads_sync_and_chart_input_plan.md",
+      "subject": "2026-08-08_authored_spreads_sync_and_chart_input_plan.md",
+      "detail": "plan has no Status: line"
+    },
+    {
+      "source": "2026-08-08_derived_selection_plan.md",
+      "subject": "2026-08-08_derived_selection_plan.md",
+      "detail": "plan has no Status: line"
+    }
+  ],
+  "broken_relative_links": [],
+  "historical_broken_relative_links": [],
+  "planned_broken_relative_links": [],
+  "ambiguous_known_root_paths": [
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/host.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/host.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/consultation.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/ui/",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/main.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/host.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/consultation.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/lib.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "tests/headed_consultation.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/ui/state.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/ui/view.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/ui/mod.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "tests/headed_consultation_dom.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/ui/worker.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/ui/native.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/main.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/bin/cleromancy_receipt.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/ui/scenario.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/ui/action.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/ui/native/",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/ui/scenario.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/ui/state.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "src/ui/view/",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "tests/headed_consultation_dom.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "tests/consultation_authoring_dom.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-08_authored_spreads_sync_and_chart_input_plan.md",
+      "subject": "src/spread.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-08_authored_spreads_sync_and_chart_input_plan.md",
+      "subject": "src/host.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-08_authored_spreads_sync_and_chart_input_plan.md",
+      "subject": "src/sync.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-08_authored_spreads_sync_and_chart_input_plan.md",
+      "subject": "src/consultation.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-08_authored_spreads_sync_and_chart_input_plan.md",
+      "subject": "src/ui/",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-08_authored_spreads_sync_and_chart_input_plan.md",
+      "subject": "src/sync_settings.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-08_journal_depth_plan.md",
+      "subject": "src/consultation.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-08_journal_depth_plan.md",
+      "subject": "src/ui/state.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-08_journal_depth_plan.md",
+      "subject": "src/ui/worker.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-08_journal_depth_plan.md",
+      "subject": "src/ui/view.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-08_journal_depth_plan.md",
+      "subject": "src/ui/native.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-08_journal_depth_plan.md",
+      "subject": "tests/journal_depth.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-08_journal_depth_plan.md",
+      "subject": "tests/headed_consultation_dom.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-13_analytic_ephemeris_parity.md",
+      "subject": "tests/analytic_parity.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-13_analytic_ephemeris_parity.md",
+      "subject": "tests/ephemeris_golden.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-13_analytic_ephemeris_parity.md",
+      "subject": "tests/analytic_parity.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-13_analytic_ephemeris_parity.md",
+      "subject": "src/ephemeris/analytic.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-13_ephemeris_engine.md",
+      "subject": "src/ephemeris.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-13_ephemeris_engine.md",
+      "subject": "tests/ephemeris_golden.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-13_ephemeris_engine.md",
+      "subject": "tests/ephemeris_consultation.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-26_sky_timeline_plan.md",
+      "subject": "src/sky.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-26_sky_timeline_plan.md",
+      "subject": "src/sky/turquet.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-26_sky_timeline_plan.md",
+      "subject": "src/host/sky.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-26_sky_timeline_plan.md",
+      "subject": "src/lib.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-08-26_sky_timeline_plan.md",
+      "subject": "tests/sky_timeline.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "tests/journal_depth.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "tests/consultation_authoring_dom.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/host/summary.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/host/mod.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/consultation/mod.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/lib.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/ui/native/mod.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "tests/session_summary.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/ui/state.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/ui/view/mod.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/ui/action.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "tests/headed_consultation_dom.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/ui/screen.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/ui/view/trail.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/ui/view/journal.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/ui/state.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/consultation/mod.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "tests/journal_reader_dom.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/host/sky.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/host/catalog.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/ui/view/sky.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/consultation/mod.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "tests/sky_surface_dom.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "tests/sky_timeline.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/consultation/mod.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/ui/view/chart.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/ui/view/reading.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/ui/state.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "tests/chart_surface_dom.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/host/summary.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "tests/session_summary.rs",
+      "detail": "bare src/tests/examples path has no crate context"
+    },
+    {
+      "source": "2026-09-04_legible_reader_and_fact_surfaces_plan.md",
+      "subject": "src/ui/consultation.css",
+      "detail": "bare src/tests/examples path has no crate context"
+    }
+  ],
+  "ignored_known_root_patterns": [],
+  "reserved_identifier_paths": [],
+  "missing_known_root_paths": [
+    {
+      "source": "2026-08-07_headed_local_consultation_plan.md",
+      "subject": "genet/design_docs/2026-10-07_forms_value_validation_submission_plan.md",
+      "detail": "resolved path does not exist: /Users/markik/Code/repos/genet/design_docs/2026-10-07_forms_value_validation_submission_plan.md"
+    },
+    {
+      "source": "2026-08-13_celestial_fact_engine_direction.md",
+      "subject": "repos/turquet",
+      "detail": "resolved path does not exist: /Users/markik/Code/repos/turquet"
+    },
+    {
+      "source": "2026-09-23_divination_mere_plan.md",
+      "subject": "repos/isometry/design_docs/2026-09-09_games_wing_consolidation_plan.md",
+      "detail": "resolved path does not exist: /Users/markik/Code/repos/isometry/design_docs/2026-09-09_games_wing_consolidation_plan.md"
+    },
+    {
+      "source": "DOC_POLICY.md",
+      "subject": "design_docs/PROJECT_DESCRIPTION.md",
+      "detail": "resolved path does not exist: /Users/markik/Code/repos/cleromancy/design_docs/PROJECT_DESCRIPTION.md"
+    }
+  ],
+  "historical_missing_known_root_paths": [],
+  "planned_missing_known_root_paths": [],
+  "invalid_historical_annotations": [],
+  "stale_historical_annotations": [],
+  "unheaded_owned_sources": [
+    {
+      "source": "receipts/run-headed-tarot.ps1",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "reservation/src/lib.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/admitted.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/app/invoke.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/app/mod.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/astrology.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/bin/a15_pattern_receipt.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/bin/a16_pattern_selection_receipt.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/bin/a1_enrichment_receipt.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/bin/a2_enriched_receipt.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/bin/a3_intent_receipt.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/bin/a4_sync_receipt.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/bin/a5_field_receipt.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/bin/a6_tarot_receipt.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/bin/a7_session_receipt.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/bin/a8_three_card_receipt.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/bin/cleromancy_receipt.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/composer.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/concurrence.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/consultation/compare.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/consultation/drafts.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/consultation/journal_policy.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/consultation/mod.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/context.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/enrichment.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ephemeris.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ephemeris/analytic.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/field.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/host/cards.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/host/catalog.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/host/domain.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/host/mod.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/host/projection.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/host/records.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/host/replay.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/host/sky.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/host/spreads.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/host/summary.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/intents.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/lib.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/main.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/moirai/atropos.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/moirai/clotho.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/moirai/lachesis.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/moirai/mod.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/projection.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/reading/engine.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/reading/mod.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/reading_scene.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/servitors.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/session.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/sky.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/sky/turquet.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/spread.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/sync/collect.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/sync/decode.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/sync/export.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/sync/import.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/sync/mod.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/sync/shared.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/sync_settings.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/tarot.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/action.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/chart_state.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/journal_state.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/mod.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/native/appearance.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/native/appearance_host.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/native/appearance_tests.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/native/appearance_view.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/native/mod.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/native/scenario_driver.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/scenario.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/screen.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/sky_state.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/state.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/view/astrology_reading.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/view/chart.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/view/chart_aspect.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/view/consultation.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/view/journal.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/view/mod.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/view/named_text.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/view/rationale.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/view/reading.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/view/reading_scene.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/view/shared.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/view/sky.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/view/trail.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "src/ui/worker.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a0.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a1.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a10.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a12.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a13.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a14.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a15.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a16.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a17_graphshell_action_draft.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a18_admitted_endpoint.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a19_resident_endpoint_catalog.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a2.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a20_resident_session_authority.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a21_resident_persistence.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a22_resident_pattern_sync.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a23_resident_sync_consent.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a24_resident_sync_startup.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a25_sync_consent_command.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a3.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a4.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a5.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a6.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a7.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a7_sync.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a8.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a8_sync.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/a9.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/analytic_consultation.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/analytic_parity.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/authored_consultation.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/authored_spread.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/authored_spread_sync.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/chart_surface_dom.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/consultation_authoring_dom.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/derived_selection.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/headed_consultation.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/headed_consultation_dom.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/journal_depth.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/journal_reader_dom.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/session_summary.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/sky.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/sky_host.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/sky_surface_dom.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/sky_timeline.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/support/cleromancy_dom.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    },
+    {
+      "source": "tests/support/mod.rs",
+      "subject": "Exhibit A",
+      "detail": "owned source lacks the MPL-2.0 header; see scripts/relicense_headers.py"
+    }
+  ],
+  "exhibit_b_sources": [],
+  "counts": {
+    "active_docs": 40,
+    "indexed_active_docs": 38,
+    "index_orphans": 1,
+    "index_ghosts": 0,
+    "memory_directory_links": 0,
+    "statusless_plans": 2,
+    "broken_relative_links": 0,
+    "historical_broken_relative_links": 0,
+    "planned_broken_relative_links": 0,
+    "ambiguous_known_root_paths": 82,
+    "ignored_known_root_patterns": 0,
+    "reserved_identifier_paths": 0,
+    "missing_known_root_paths": 4,
+    "historical_missing_known_root_paths": 0,
+    "planned_missing_known_root_paths": 0,
+    "invalid_historical_annotations": 0,
+    "stale_historical_annotations": 0,
+    "unheaded_owned_sources": 136,
+    "exhibit_b_sources": 0
+  }
+}

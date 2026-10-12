@@ -18,6 +18,8 @@ pub(super) const MODES: [Mode; 4] = [Mode::Light, Mode::Dark, Mode::HcLight, Mod
 
 pub(super) struct AppearanceState {
     pub workshop: WorkshopState,
+    pub font_editor: tabard_workshop::fonts::FontRoleEditor,
+    pub available_fonts: Vec<String>,
     pub open: bool,
     pub editor_open: bool,
     pub close_app: bool,
@@ -36,8 +38,13 @@ pub(super) struct AppearanceState {
 
 impl Default for AppearanceState {
     fn default() -> Self {
+        let available_fonts = cambium_genet_winit_host::available_font_families(&super::fonts::bundled_fonts());
+        let mut font_editor = tabard_workshop::fonts::FontRoleEditor::new(Default::default());
+        font_editor.set_available_families(available_fonts.clone());
         Self {
             workshop: WorkshopState::in_memory(),
+            font_editor,
+            available_fonts,
             open: false,
             editor_open: false,
             close_app: false,
@@ -116,6 +123,8 @@ impl AppearanceState {
                 ))
             },
         }
+        state.font_editor = tabard_workshop::fonts::FontRoleEditor::new(state.store.choice().fonts.clone());
+        state.font_editor.set_available_families(state.available_fonts.clone());
         state
     }
 
@@ -233,13 +242,33 @@ impl AppearanceState {
     }
 
     pub fn request_select(&mut self, id: &str, mode: Option<Mode>) -> Result<(), String> {
-        let choice = ThemeChoice::new(id, mode);
+        let mut choice = ThemeChoice::new(id, mode);
+        choice.fonts = self.store.choice().fonts.clone();
         self.candidate(&choice)?;
         self.pending_choice = Some(choice);
         Ok(())
     }
 
+    pub fn font_preferences(&self) -> &tabard::typography::FontPreferences { &self.store.choice().fonts }
+
+    pub fn font_diagnostics(&self) -> Vec<String> {
+        let mut messages = Vec::new();
+        for resolved in self.font_preferences().resolve(&self.available_fonts, &super::fonts::defaults()) {
+            let missing: Vec<_> = resolved.requested.iter().filter(|family| !family.is_generic() && !self.available_fonts.iter().any(|name| name.eq_ignore_ascii_case(family.name()))).map(|family| family.name()).collect();
+            if !missing.is_empty() { messages.push(format!("{}: {} unavailable here; using {} with glyph fallback. Saved requests are retained.", resolved.role.label(), missing.join(", "), resolved.family.name())); }
+        }
+        messages
+    }
+
     pub fn commit_requested(&mut self) {
+        if let Some(fonts) = self.font_editor.take_requested() {
+            let mut choice = self.store.choice().clone();
+            choice.fonts = fonts;
+            match self.candidate(&choice) {
+                Ok(_) => self.pending_choice = Some(choice),
+                Err(error) => self.font_editor.notice = Some(error),
+            }
+        }
         let Some(choice) = self.pending_choice.take() else {
             return;
         };
@@ -254,6 +283,7 @@ impl AppearanceState {
             self.store
                 .set_choice(choice)
                 .map_err(|error| format!("Appearance was not saved: {error}"))?;
+            self.font_editor.applied(self.store.choice().fonts.clone());
             self.applied = candidate;
             Ok::<_, String>(())
         })();
@@ -360,7 +390,7 @@ impl AppearanceState {
             cambium::TITLE_BAR_CSS,
             super::appearance_view::CHROME_CSS
         );
-        match self.applied.as_ref().map(|value| &value.presentation) {
+        let themed = match self.applied.as_ref().map(|value| &value.presentation) {
             None => base,
             Some(ThemePresentation::Derived(mode)) => {
                 format!("{base}\n{}", mode.css_custom_properties())
@@ -368,7 +398,8 @@ impl AppearanceState {
             Some(ThemePresentation::AuthoredStylesheet(rules)) => {
                 format!("{base}\n{}", rules.join("\n"))
             },
-        }
+        };
+        format!("{themed}\n{}\n{}", tabard_workshop::fonts::FONT_ROLE_CSS, self.font_preferences().css_custom_properties(&self.available_fonts, &super::fonts::defaults()))
     }
 
     pub fn take_stylesheet_change(&mut self) -> Option<String> {
@@ -467,7 +498,7 @@ fn product_resolution(choice: &ThemeChoice) -> Result<ResolvedThemeChoice, Strin
         .map_err(|error| error.to_string())?;
     Ok(ResolvedThemeChoice {
         requested: choice.clone(),
-        resolved: ThemeChoice::new(PRODUCT_DEFAULT, Some(mode)),
+        resolved: ThemeChoice { fonts: choice.fonts.clone(), ..ThemeChoice::new(PRODUCT_DEFAULT, Some(mode)) },
         theme,
         presentation,
         diagnostics: vec![],

@@ -77,6 +77,13 @@ pub(super) fn focused_text(runner: &ConsultationRunner) -> Option<FocusedTextSlo
             }),
         });
     }
+    if let Some(field) = tabard_workshop::fonts::focused_font_field(&runner.dom(), node) {
+        return Some(FocusedTextSlot {
+            node,
+            get: Box::new(move |state| state.appearance.font_editor.text_field(field)),
+            get_mut: Box::new(move |state| state.appearance.font_editor.text_field_mut(field)),
+        });
+    }
     let FocusedTextSlot { get, get_mut, .. } = super::consultation_text_slot(&runner.dom(), node)?;
     Some(FocusedTextSlot {
         node,

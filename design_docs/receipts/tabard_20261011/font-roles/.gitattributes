@@ -1,0 +1,2 @@
+*.log -text whitespace=-blank-at-eof,-space-before-tab
+*.json text eol=lf

@@ -24,6 +24,7 @@ use crate::ui::worker::{ConsultationWorker, WorkerUpdate, spawn};
 use crate::{ConsultationCatalog, ConsultationUi, ConsultationView};
 
 mod appearance;
+mod fonts;
 mod appearance_host;
 #[cfg(test)]
 mod appearance_tests;
@@ -77,10 +78,7 @@ pub fn run(data_root: &Path) -> Result<(), String> {
                     }
                 }) as ApplicationLogic,
                 sheet,
-                // `Init` grew these two in mere 1009f02d. Empty is the
-                // previous behaviour exactly: system faces only, and no
-                // host-supplied images behind the sheet's `url()`.
-                fonts: Vec::new(),
+                fonts: fonts::bundled_fonts(),
                 images: Vec::new(),
             }
         },

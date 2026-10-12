@@ -1,0 +1,18 @@
+{
+  "baseline": "270ab377c04d5e36621d6a0f0bffb390ca587b81",
+  "mere": "088555735e4c82e423188feab1f395dec7f92a1e",
+  "genet": "2c7ef73bfa44c07744e0643e3c6f98be3cbd7947",
+  "netrender": "c74b7cb28090c28b1c6d80b08dcdea18aff48d3e",
+  "vello": "2eae6243881d5b24c984d5ee35dde509ca5db782",
+  "dramatis": "0234e7eea6f2ddf2330a71b9425da01b06ae0391",
+  "tests": 101,
+  "native_status": "pending",
+  "bundled_fonts": {
+    "assets/fonts/ibm-plex-mono/IBMPlexMono-Bold.ttf": "ac27abd6450a64dd94467580a02fe6235156d5b92f2926ebbc8e7489df64e0be",
+    "assets/fonts/ibm-plex-mono/IBMPlexMono-BoldItalic.ttf": "af4e05a761e98c1adf064c48a6352c9bec1a6ad70982cd2a544149323391f98e",
+    "assets/fonts/ibm-plex-mono/IBMPlexMono-Regular.ttf": "6a3412f058c7d8dfd9170c41e85ade48e5156ecb89356110ca57a0a27734af46",
+    "assets/fonts/ibm-plex-mono/IBMPlexMono-Italic.ttf": "3362fc791b0652193328b862c1c5f23a789bc7288b1617fa63302f88689a2a34",
+    "assets/fonts/source-serif-4/SourceSerif4.ttf": "97b2d4da6e3cb494b5a1e66ae176914d852ccabef49e0c02c0df25f3e39aca0b",
+    "assets/fonts/source-serif-4/SourceSerif4-Italic.ttf": "15fbc7e4679489a501998c3669272637a6646388ef7e4bd77eebb5bf967a1f42"
+  }
+}

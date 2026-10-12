@@ -170,3 +170,54 @@ responsibility. Export cancellation never saves or applies a definition.
   failures and later broad workshop-resize stall remain excluded evidence in
   the existing receipt; this continuation qualifies the changed consultation
   controls and focused reopen only.
+
+## Granular font roles — 2026-10-12 continuation
+
+**Status:** implementation and shared publication landed; consumer CPU/native
+qualification in progress. The shared owning contract is
+`mere/design_docs/mere_docs/implementation_strategy/2026-07-05_theme_modes_plan.md`,
+published in Mere `829e91c7a`. This extends the existing appearance adapter.
+
+### Phases and done-conditions
+
+1. **Shared roles and resources.** Adopt optional interface, reading, heading,
+   label and code family requests, with sizes/spacing retained. Register
+   metadata-preserving IBM Plex Mono and Source Serif 4 OFL faces. Done when
+   root and independent core resolve one coherent Mere/Genet supplier family,
+   and actual shaped advances and resize resource retention pass.
+2. **Explicit preferences.** Mount Tabard's reusable controlled family fields
+   and route ordinary native text, keyboard, Apply and Default actions through
+   the existing atomic appearance-choice store. Preserve theme selection on
+   font Apply and fonts on theme/mode Apply; drafts do not implicitly publish.
+   Done when input, save/reopen, corrupt preferences, unavailable requests,
+   failed writes and authored CSS precedence pass in the mounted product host.
+3. **Native qualification and publication.** Use an isolated public-fixture
+   profile, ordinary-size captures, four theme modes, and a separate process
+   reopening the exact saved requests and reading/reflection IDs. Inspect
+   actual frames and preserve failures. Publish only the qualified consumer
+   slice; Knot/Woodshed and remote/frozen glyph fidelity have separate owners.
+
+### Findings and progress
+
+- **2026-10-12:** Shared font foundation has 99 passing focused tests. Its
+  portable requests and transient host availability are separate; unavailable
+  names never replace saved intent. Available family names are not a glyph
+  coverage or exact-face certification. Knot requires typography-aware card
+  cache invalidation before label adoption, and its writer preference remains
+  explicit. Woodshed's recorded-loop glyph remains an independent gate.
+- **2026-10-12:** Cleromancy's role cascade consumes shared properties only
+  for the existing corresponding defaults. Reading paragraphs retain 20px/1.6;
+  reading headings retain their own sizes; UI, control labels and code retain
+  existing size/weight/spacing. Explicit authored `font-family` still wins in
+  the ordinary cascade. Application role properties follow theme properties;
+  editing the theme library cannot implicitly apply a font draft.
+- **2026-10-12:** The first adoption builds against Mere `829e91c7a`, Genet
+  `2c7ef73`, Netrender `c74b7cb`, Vello `2eae624`, and Dramatis `0234e7e`,
+  including current renderer native-unlock qualification. Original appearance
+  receipts retain their older source identities; they do not qualify this repin.
+
+- **2026-10-12 CPU gate:** all 101 root tests pass with zero failures/ignored,
+  including 26 native adapter tests. The shared picker is adopted at Mere
+  `088555735`. Known Plex 600/1000 em advances, proportional Serif widths and
+  resize resource retention are checked through actual layout, with authored
+  `font-family` taking normal cascade authority. Native acceptance is pending.

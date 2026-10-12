@@ -1,0 +1,451 @@
+warning: patch `ipc-channel v0.22.0 (https://github.com/merely-made/genet.git?rev=2c7ef73bfa44c07744e0643e3c6f98be3cbd7947#2c7ef73b)` was not used in the crate graph
+warning: patch `vello v0.10.0 (https://github.com/mark-ik/vello.git?tag=vello-0.10.0#4354955e)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling cleromancy v0.1.0 (/Users/markik/Code/repos/cleromancy)
+    Finished `test` profile [unoptimized] target(s) in 5.07s
+     Running unittests src/lib.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/cleromancy-55b8fa09c7548631)
+
+running 42 tests
+test consultation::journal_policy::tests::date_cutoff_is_inclusive ... ok
+test consultation::journal_policy::tests::relative_dates_use_elapsed_duration_buckets ... ok
+test host::sky::tests::enumerator_rejects_a_valid_record_at_the_wrong_digest_address ... ok
+test host::sky::tests::enumerator_rejects_a_structurally_invalid_canonical_record ... ok
+test host::domain::tests::preserves_unrelated_unknown_facets ... ok
+test host::domain::tests::rejects_deleted_dependency_and_missing_domain_facet ... ok
+test host::domain::tests::rejects_a_reading_after_its_field_node_is_removed ... ok
+test host::domain::tests::rejects_orphan_domain_facets ... ok
+test host::domain::tests::rejects_tampered_unreferenced_sealed_reading ... ok
+test host::domain::tests::validates_complete_reading_without_mutating_candidate ... ok
+test host::domain::tests::rejects_unknown_domain_version_and_multiple_domain_records ... ok
+test host::domain::tests::validates_a_session_and_reflection_and_refuses_a_missing_session ... ok
+test ui::native::appearance_tests::appearance_fixtures_keep_the_shared_scenario_lane_and_durable_product_contract ... ok
+test ui::native::appearance_tests::identical_missing_paths_refuse_preference_and_library_writes ... ok
+test ui::native::appearance_tests::exports_cannot_replace_future_application_data_or_overridden_preferences ... ok
+test ui::native::appearance_tests::invalid_saved_font_preferences_remain_preserved_and_block_apply ... ok
+test ui::native::appearance_tests::missing_nested_and_existing_aliases_preserve_owned_files ... ok
+test ui::native::appearance_tests::corrupt_files_and_failed_choice_write_preserve_bytes_and_applied_presentation ... ok
+test ui::native::appearance_tests::missing_font_requests_and_failed_writes_preserve_applied_typography ... ok
+test ui::native::appearance_tests::product_dark_copy_supplies_shared_preview_roles_and_exact_product_context_colors ... ok
+test ui::native::appearance_tests::overrides_and_exports_preserve_the_existing_consultation_store ... ok
+test ui::native::appearance_tests::role_families_shape_real_bundled_faces_and_authored_css_retains_precedence ... ok
+test ui::native::appearance_tests::save_and_library_reload_hold_same_identity_until_explicit_apply ... ok
+test ui::native::appearance_tests::product_identity_keeps_its_seeds_across_canonical_modes_and_reopen ... ok
+test ui::native::appearance_tests::native_save_close_saves_definition_without_applying_or_mutating_consultation ... ok
+test ui::native::appearance_tests::cancel_native_close_then_discard_back_preserves_parent ... ok
+test ui::native::appearance_tests::font_roles_edit_without_apply_then_save_reopen_and_survive_mode_changes ... ok
+test ui::native::appearance_tests::unchanged_appearance_does_not_reset_the_callers_stylesheet_on_dispatch ... ok
+test ui::native::scenario_driver::presentation_tests::scenario_allowance_keeps_the_default_and_refuses_unbounded_waits ... ok
+test ui::view::chart_aspect::tests::coincident_aspect_stays_direct_at_one_tick ... ok
+test ui::view::chart_aspect::tests::ordinary_aspect_uses_increasing_direct_endpoints ... ok
+test ui::view::chart_aspect::tests::wrapped_aspect_uses_descending_raw_order_and_wraps_target ... ok
+test ui::worker::tests::worker_bootstraps_tarot_and_returns_durable_reading_updates ... ok
+test ui::native::focused_text_tests::marked_div_field_routes_text_into_its_question_slot ... ok
+test ui::native::appearance_tests::shared_fields_and_parent_controls_keep_real_geometry_at_420_and_1160 ... ok
+test ui::native::appearance_tests::neutral_workshop_headings_remain_readable_inside_dark_and_authored_hosts ... ok
+test ui::native::appearance_tests::mounted_save_back_edit_apply_reuses_saved_identity_without_early_publication ... ok
+test ui::native::appearance_tests::shared_text_save_apply_and_back_do_not_dispatch_a_consultation_action ... ok
+test ui::native::appearance_tests::selected_radio_uses_authored_on_primary_after_actual_selection_changes ... ok
+test ui::native::appearance_tests::modes_authored_css_and_reopen_preserve_consultation_and_action_owner ... ok
+test ui::native::appearance_tests::selected_radio_uses_canonical_on_primary_without_recoloring_unchecked_options ... ok
+test ui::native::appearance_tests::shared_font_picker_search_and_selection_remain_an_application_draft ... ok
+
+test result: ok. 42 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 5.18s
+
+     Running unittests src/bin/a15_pattern_receipt.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a15_pattern_receipt-312edad91a67ebfb)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a16_pattern_selection_receipt.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a16_pattern_selection_receipt-fddec13eacafd43a)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a1_enrichment_receipt.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a1_enrichment_receipt-0a8318de94f374c3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a2_enriched_receipt.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a2_enriched_receipt-70e0d0c6c2ec528b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a3_intent_receipt.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a3_intent_receipt-a0bcdac92c698f81)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a5_field_receipt.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a5_field_receipt-6478a7ed5fc127ec)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a6_tarot_receipt.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a6_tarot_receipt-2b0433f65fdc0434)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a7_session_receipt.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a7_session_receipt-8207cd2e9c4ac199)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/a8_three_card_receipt.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a8_three_card_receipt-4195a2ddd4745b59)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/cleromancy-6eb7818651d2a66f)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/cleromancy_receipt.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/cleromancy_receipt-b3b459511b1b19a0)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a0.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a0-ddcbcb2be812d876)
+
+running 4 tests
+test servitor_access_keeps_scope_and_mode_boundaries ... ok
+test cast_discloses_a_bounded_sample_and_replays_without_entropy ... ok
+test calculated_reading_is_byte_stable_and_replays ... ok
+test mere_truth_reopens_and_graphshell_resolves_every_card ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+
+     Running tests/a1.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a1-e5692fe0036bef59)
+
+running 1 test
+test external_projection_mounts_beside_local_truth_and_correlation_is_a_receipt ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a10.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a10-ab84dd6774958a75)
+
+running 5 tests
+test generic_composer_rejects_a_deterministic_three_card_request ... ok
+test generic_composer_rejects_derived_until_its_descriptor_has_an_intent_schema ... ok
+test generic_composer_rejects_a_missing_graph_field ... ok
+test generic_composer_can_select_a_graph_resident_field ... ok
+test generic_composer_saves_single_and_three_card_layouts ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/a12.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a12-077a611946df45a5)
+
+running 2 tests
+test field_composer_rejects_structural_drafts_before_dispatch ... ok
+test field_composer_emits_the_exact_field_and_round_trips ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a13.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a13-987be3054d88d8f3)
+
+running 3 tests
+test chart_rejects_ambiguous_or_invalid_positions ... ok
+test chart_derives_replayable_structured_facts ... ok
+test chart_metadata_and_facts_bind_the_calculation_boundary ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a14.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a14-f2a1f44dfaf082c4)
+
+running 2 tests
+test adapter_receipt_requires_the_requested_moment ... ok
+test astrology_chart_and_facts_are_graph_truth_and_project_as_cards ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a15.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a15-7a20c9b34b820254)
+
+running 2 tests
+test concurrence_is_canonical_and_rejects_ambiguous_members ... ok
+test astrology_and_tarot_share_an_inspectable_occasion_without_a_causal_claim ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/a16.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a16-1621d0fb3e85f203)
+
+running 1 test
+test saved_facts_and_sessions_select_each_other_through_the_bound_pattern_action ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/a17_graphshell_action_draft.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a17_graphshell_action_draft-a57d9470eb49678f)
+
+running 1 test
+test retained_graphshell_session_submits_cleromancy_concurrence_from_exact_choices ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/a18_admitted_endpoint.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a18_admitted_endpoint-ef8dcae439beb041)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a19_resident_endpoint_catalog.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a19_resident_endpoint_catalog-5b51ee29d45935f0)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a2.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a2-10731de809c432e0)
+
+running 1 test
+test sealed_external_evidence_qualifies_and_replays_after_endpoint_shutdown ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+
+     Running tests/a20_resident_session_authority.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a20_resident_session_authority-239ea85c199f3a61)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a21_resident_persistence.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a21_resident_persistence-46b52ed1e7516f3f)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a22_resident_pattern_sync.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a22_resident_pattern_sync-62a5edac2b4bebca)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a23_resident_sync_consent.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a23_resident_sync_consent-b57bc8ec93907843)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a24_resident_sync_startup.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a24_resident_sync_startup-97bc227481586d90)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a25_sync_consent_command.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a25_sync_consent_command-a64704c7c8f6529f)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a3.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a3-e2aefd01ce8f4a72)
+
+running 2 tests
+test payload_identity_cannot_replace_transport_binding_or_servitor_authority ... ok
+test bound_authorized_consumer_reads_selects_and_rolls_through_the_wire ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/a4.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a4-5af63738706ab7f0)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a5.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a5-8109b43be73a1c48)
+
+running 1 test
+test graph_resident_field_replays_after_the_callers_field_is_gone ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a6.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a6-2a122a581824b364)
+
+running 3 tests
+test rule_names_are_enforced_instead_of_treated_as_labels ... ok
+test major_arcana_pack_has_stable_complete_ordering ... ok
+test uniform_and_contextual_tarot_disclose_different_qualification ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/a7.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a7-221f60485c7514e4)
+
+running 2 tests
+test session_and_reflection_identity_reject_tampering ... ok
+test repeated_calculated_reads_are_separate_sessions_with_immutable_reflection ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a7_sync.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a7_sync-de9ae16fe57f595d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a8.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a8-7129a478232f06eb)
+
+running 1 test
+test fixed_three_card_spread_is_authored_replayable_and_graph_visible ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/a8_sync.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a8_sync-6627fb2c526b94cf)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/a9.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/a9-718da0edc3393430)
+
+running 1 test
+test bound_host_can_cast_the_authored_spread_through_the_wire ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/analytic_consultation.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/analytic_consultation-f68787aa3c5bbad7)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/analytic_parity.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/analytic_parity-4159a27cb0ab0afc)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/authored_consultation.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/authored_consultation-d91acaf3fc9cba92)
+
+running 1 test
+test consultation_persists_an_authored_cast_and_source_qualified_chart_concurrence ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.19s
+
+     Running tests/authored_spread.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/authored_spread-6faed08df55f4ac0)
+
+running 2 tests
+test authored_template_rejects_unknown_or_repeated_positions ... ok
+test authored_spread_replays_its_template_session_and_relations_after_reopen ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+
+     Running tests/authored_spread_sync.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/authored_spread_sync-2cf57b2139caa2b6)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/chart_surface_dom.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/chart_surface_dom-0ce70b60e5497222)
+
+running 3 tests
+test empty_chart_surface_keeps_manual_import_reachable ... ok
+test chart_concurrence_is_resolved_locally_without_a_product_action ... ok
+test chart_surface_projects_stored_values_and_keeps_manual_import_available ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 8.29s
+
+     Running tests/consultation_authoring_dom.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/consultation_authoring_dom-618b54ea21b7216b)
+
+running 1 test
+test retained_consultation_dispatches_authored_layout_and_chart_input_actions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.01s
+
+     Running tests/derived_selection.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/derived_selection-dbf95294cfc9f49d)
+
+running 3 tests
+test derived_receipt_is_byte_stable_and_replays_from_disclosed_inputs ... ok
+test derived_uniform_die_is_replayable_and_detects_receipt_tampering ... ok
+test local_consultation_persists_and_reopens_the_derived_descriptor ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+     Running tests/headed_consultation.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/headed_consultation-abfb2e1c953ca7a7)
+
+running 3 tests
+test storage_failure_faults_the_controller_until_reopen ... ok
+test rejected_commands_leave_persisted_truth_unchanged ... ok
+test saved_tarot_consultation_and_reflection_reopen_exactly ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+
+     Running tests/headed_consultation_dom.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/headed_consultation_dom-6c871ae348f7da90)
+
+running 2 tests
+test four_surface_tabs_are_local_accessible_and_bounded ... ok
+test retained_consultation_dispatches_a_complete_reading_and_reflection ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 31.14s
+
+     Running tests/journal_depth.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/journal_depth-ff2ad20db830f784)
+
+running 2 tests
+test additional_facts_reject_ambiguous_or_reserved_input ... ok
+test journal_depth_preserves_contexts_three_cards_comparisons_and_follow_ups ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.28s
+
+     Running tests/journal_reader_dom.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/journal_reader_dom-ab728fe7689593bb)
+
+running 2 tests
+test journal_selected_detail_and_comparison_keep_replay_explicit ... ok
+test journal_rows_filter_compose_clear_and_page_without_product_actions ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.51s
+
+     Running tests/session_summary.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/session_summary-86252b54b1a83fbf)
+
+running 2 tests
+test summarize_skips_a_placement_whose_reading_is_absent ... ok
+test summaries_are_faithful_cheap_and_ordered_like_sessions ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.29s
+
+     Running tests/sky.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/sky-3add7237874a7a7d)
+
+running 3 tests
+test validation_rejects_noncanonical_or_out_of_bounds_policy_controls ... ok
+test sky_facts_are_canonical_and_validate_after_json_round_trip ... ok
+test interpretations_bind_facts_and_exact_authored_pack ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/sky_host.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/sky_host-c96969851af05d88)
+
+running 2 tests
+test sky_interpretation_replay_requires_its_facts_dependency ... ok
+test sky_records_persist_as_distinct_digest_nodes_with_provenance ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/sky_surface_dom.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/sky_surface_dom-1dff35d83b9f7a95)
+
+running 1 test
+test stored_sky_facts_remain_catalogued_while_the_sky_tab_is_disabled ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.20s
+
+     Running tests/sky_timeline.rs (/Users/markik/Code/testing/font-roles-20261012/consumer-target/debug/deps/sky_timeline-6f1277c619814f81)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests cleromancy
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

@@ -46,6 +46,10 @@ the current public overview until it is authored.
 - Keep the Mere and Genet dependency family on one immutable integration pin
   when adopting a platform consumer; branch references can create a second
   source identity and split shared types in downstream products.
+- Keep font requests separate from local availability and realized glyph metrics.
+  Unset roles preserve product defaults; sizes and spacing remain app-owned.
+  Failed saves cannot change the applied font, and authored CSS retains ordinary
+  cascade authority. A family inventory is not proof of per-glyph coverage.
 - Pair a themed primary background with its on-primary foreground in selected
   controls. Check the mounted computed colors under canonical and authored
   themes; preserving arbitrary authored CSS does not replace this app-owned
@@ -176,3 +180,9 @@ the current public overview until it is authored.
   initialization and recovery path.
 - [A25 sync consent command](2026-08-07_a25_sync_consent_command.md):
   user-facing consent action.
+
+Granular appearance continuation (2026-10-12): the existing
+[appearance plan](archive_docs/2026-10-11/2026-10-11_tabard_appearance_plan.md#granular-font-roles--2026-10-12-continuation)
+records shared font-family roles, licensed bundled faces, explicit preference
+Apply, and current coherent supplier adoption. Consumer qualification is in
+progress; prior theme captures retain their original revision scope.

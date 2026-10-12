@@ -1,0 +1,24 @@
+# Fresh process on the first-run private profile. Preserve the ordinary
+# durable consultation assertions while staying on the changed radio controls.
+wait
+advance
+wait
+assert event semantic
+assert event durable
+advance
+wait
+assert text Trial note: return after using the app
+assert snap sessions >= 1
+assert snap readings >= 3
+assert snap reflections >= 1
+assert snap appearance-id == theme:copy-1
+assert snap appearance-mode == dark
+assert snap appearance-editor == false
+assert snap font-reading == IBM Plex Mono
+assert snap font-heading == Source Serif 4
+assert snap font-label == Cleromancy Missing Face
+settle 3
+capture reopened-font-roles
+assert snap sessions >= 1
+assert snap readings >= 3
+assert snap reflections >= 1

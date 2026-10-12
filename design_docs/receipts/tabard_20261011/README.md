@@ -174,3 +174,15 @@ The added focused reopen fixture keeps every ordinary durable consultation
 assertion while staying on the controls changed here. This does not renew
 workshop-resize/close acceptance, establish unattended background launch, or
 qualify reset recovery or a complete WCAG review. All owned app processes exited.
+
+## Granular font roles — 2026-10-12
+
+**Status:** consumer implementation and CPU gates passed; native qualification
+in progress. [The font-role qualification ledger](font-roles/qualification.json)
+records the coherent supplier family, bundled OFL byte hashes and 101 passing
+root tests. New tests exercise actual native text/picker routing, explicit
+Apply, failed saves, unavailable requests, corrupt preference retention,
+ordered family fallback, known font advances, resize resources and authored
+CSS precedence. The root lock is preserved in this receipt; the independent
+core lock remains tracked in its workspace. Prior images qualify their own
+source revisions. Native font-role frames/reopening remain a separate gate.

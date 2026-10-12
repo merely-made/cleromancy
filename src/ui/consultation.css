@@ -4,7 +4,7 @@
   padding: 24px;
   color: var(--tabard-color-text,#f1ede4);
   background: var(--tabard-color-bg,#181714);
-  font-family: sans-serif;
+  font-family: var(--tabard-font-interface, sans-serif);
 }
 .app-header { border-bottom: 1px solid var(--tabard-color-text-disabled,#625d50); padding-bottom: 12px; }
 .cleromancy-regions { display: block; }
@@ -48,8 +48,8 @@ button:focus, input:focus, textarea:focus, select:focus, [role='textbox']:focus 
 .reading-question { font-size: 20px; line-height: 1.5; color: var(--tabard-color-text-header,#e4cf9f); }
 .reading-card { padding: 22px; margin: 0; border: 1px solid var(--tabard-color-primary,#897550); border-radius: 8px; background: var(--tabard-color-surface-2,#302b22); }
 .reading-card h3 { font-size: 13px; color: var(--tabard-color-primary,#d7b46a); text-transform: uppercase; }
-.reading-card h4 { font-family: serif; font-size: 28px; margin: 12px 0; color: var(--tabard-color-text-header,#fff0cf); }
-.reading-card p { font-family: serif; font-size: 20px; line-height: 1.6; }
+.reading-card h4 { font-family: var(--tabard-font-reading, serif); font-size: 28px; margin: 12px 0; color: var(--tabard-color-text-header,#fff0cf); }
+.reading-card p { font-family: var(--tabard-font-reading, serif); font-size: 20px; line-height: 1.6; }
 .read-button { font-size: 18px; padding: 14px; margin-bottom: 8px; }
 .context-explanation, .reflection-explanation, .trail-explanation { font-size: 13px; color: var(--tabard-color-text-dim,#c4bcad); line-height: 1.5; }
 .disclosure-trigger { text-align: left; }
@@ -70,8 +70,13 @@ button:focus, input:focus, textarea:focus, select:focus, [role='textbox']:focus 
 .scene-card { color: var(--tabard-color-text,#f7f2e7); display: flex; flex-direction: column; justify-content: center; gap: 14px; margin: 0; padding: 12px; background: var(--tabard-color-surface-2,#302b22); text-align: left; }
 .scene-card[aria-pressed='true'] { background: var(--tabard-color-surface-hover,#574124); border: 2px solid var(--tabard-color-text-header,#e4cf9f); }
 .scene-position { display: block; font-size: 13px; color: var(--tabard-color-primary,#d7b46a); }
-.scene-title { display: block; font-family: serif; font-size: 23px; color: var(--tabard-color-text-header,#fff0cf); }
-.reading-card .position-rationale { font-family: sans-serif; font-size: 14px; line-height: 1.5; color: var(--tabard-color-text-dim,#d7c9a9); }
+.scene-title { display: block; font-family: var(--tabard-font-reading, serif); font-size: 23px; color: var(--tabard-color-text-header,#fff0cf); }
+.reading-card .position-rationale { font-family: var(--tabard-font-interface, sans-serif); font-size: 14px; line-height: 1.5; color: var(--tabard-color-text-dim,#d7c9a9); }
 .astrology-prompt { padding: 16px; margin: 12px 0; border-left: 2px solid var(--tabard-color-primary,#897550); background: var(--tabard-color-surface-2,#302b22); }
-.astrology-prompt h4 { font-family: serif; font-size: 23px; margin: 0 0 8px; color: var(--tabard-color-text-header,#fff0cf); }
+.astrology-prompt h4 { font-family: var(--tabard-font-reading, serif); font-size: 23px; margin: 0 0 8px; color: var(--tabard-color-text-header,#fff0cf); }
 .astrology-prompt p { line-height: 1.6; }
+
+/* Family roles retain each surface's existing size, weight and line-height. */
+.eyebrow, .control-label, .reading-card h3, .scene-position { font-family: var(--tabard-font-label, sans-serif); }
+.reading-card h4, .scene-title, .astrology-prompt h4 { font-family: var(--tabard-font-heading, serif); }
+pre, code { font-family: var(--tabard-font-code, monospace); }

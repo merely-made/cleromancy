@@ -108,6 +108,9 @@ impl mesquite::Product for Product {
         let appearance = &ctx.runner.state().appearance;
         snapshot = snapshot
             .with_field("appearance-id", appearance.active_id())
+            .with_field("font-reading", appearance.font_preferences().0.get(&tabard::typography::FontRole::Reading).and_then(|stack| stack.first()).map_or("default", |family| family.name()))
+            .with_field("font-heading", appearance.font_preferences().0.get(&tabard::typography::FontRole::Heading).and_then(|stack| stack.first()).map_or("default", |family| family.name()))
+            .with_field("font-label", appearance.font_preferences().0.get(&tabard::typography::FontRole::Label).and_then(|stack| stack.first()).map_or("default", |family| family.name()))
             .with_field(
                 "appearance-mode",
                 appearance

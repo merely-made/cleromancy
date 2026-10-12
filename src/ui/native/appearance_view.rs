@@ -157,6 +157,14 @@ fn panel(state: &ApplicationUi) -> Child {
             .attr("data-action", "edit-appearance"),
         ));
     }
+    children.push(Box::new(lens(
+        |editor: &mut tabard_workshop::fonts::FontRoleEditor| tabard_workshop::fonts::font_role_view(editor),
+        |state: &mut ApplicationUi| &mut state.appearance.font_editor,
+    )));
+    for message in state.appearance.font_diagnostics() {
+        children.push(Box::new(el("p", text(message)).attr("role", "status")));
+    }
+    children.push(Box::new(el("p", text("Bundled: IBM Plex Mono and Source Serif 4. Choose… lists the families available here.")).attr("class", "cleromancy-font-inventory")));
     children.push(Box::new(
         button(
             "Reload theme library",
@@ -213,7 +221,7 @@ fn editor(state: &ApplicationUi) -> Child {
 }
 
 pub(super) const CHROME_CSS: &str = "
-.cleromancy-desktop { display:flex;flex-direction:column;height:100vh;min-height:0;overflow:hidden;color:var(--tabard-color-text,#f1ede4);background:var(--tabard-color-bg,#181714);font-family:sans-serif; }
+.cleromancy-desktop { display:flex;flex-direction:column;height:100vh;min-height:0;overflow:hidden;color:var(--tabard-color-text,#f1ede4);background:var(--tabard-color-bg,#181714);font-family:var(--tabard-font-interface,sans-serif); }
 .cleromancy-desktop > .cleromancy-consultation { flex:1;min-height:0;overflow:auto; }
 .cleromancy-desktop > .cambium-title-bar { --titlebar-min-height:42px;background:var(--tabard-color-surface,#24221d);color:var(--tabard-color-text,#f1ede4); }
 .cleromancy-ornament { display:block;padding:4px 6px;font-size:18px; }
