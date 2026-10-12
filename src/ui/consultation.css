@@ -55,7 +55,7 @@ button:focus, input:focus, textarea:focus, select:focus, [role='textbox']:focus 
 .disclosure-trigger { text-align: left; }
 [role='radiogroup'] { display: flex; flex-wrap: wrap; gap: 8px; }
 [role='radio'] { padding: 8px; border: 1px solid var(--tabard-color-text-disabled,#7b725f); border-radius: 5px; cursor: pointer; }
-[role='radio'][aria-checked='true'] { background: var(--tabard-color-primary,#6e522a); border-color: var(--tabard-color-primary,#d7b46a); }
+[role='radio'][aria-checked='true'] { color: var(--tabard-color-on-primary,#f7f2e7); background: var(--tabard-color-primary,#6e522a); border-color: var(--tabard-color-primary,#d7b46a); }
 
 .reading-cards { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0; }
 .reading-card { flex: 1 1 180px; min-width: 0; }

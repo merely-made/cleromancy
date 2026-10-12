@@ -118,3 +118,26 @@ Linux, real reset recovery, unrelated app surfaces and arbitrary authored CSS
 are not qualified by these finite macOS fixtures. The extra live preview run qualifies unsaved CSS Apply and Discard/Back in the
 native workshop. Other dirty-close outcomes, export and failed-write ownership
 have mounted CPU regressions and are not claimed as separate headed scenarios.
+
+## Selected-radio foreground follow-up (2026-10-11)
+
+Status: CPU-qualified; committed-source native checks pending. The consultation's
+checked radio rule now pairs `--tabard-color-primary` with
+`--tabard-color-on-primary`, as selected navigation and buttons already do.
+Previously checked selection-mode and reading-shape labels inherited body text;
+the accepted brown authored fixture therefore painted pale text on peach even
+though its sheet supplied the correct dark on-primary foreground.
+
+Two mounted regressions fail on the original rule with the expected foreground
+mismatch. With the fix, they cover all four canonical modes, two opposite
+authored primary/foreground pairs, 1160×760 and 420×1000 layouts, actual radio
+selection changes, and unchanged body foreground on unchecked options.
+The full default suite passes 95 tests with no failures or ignores. The focused
+appearance suite passes 19 tests. The added native fixture
+`receipts/tabard-radio-foreground.scn` retains the ordinary durable consultation
+requirements, visits the authored choice and four canonical modes, then restores
+the authored choice for the existing fresh-process reopen fixture.
+
+This follow-up keeps the accepted dependency family and does not change theme
+derivation, library/choice persistence, or arbitrary authored CSS precedence.
+Original October 11 counts above remain bound to their original binary.

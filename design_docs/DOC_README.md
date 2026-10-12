@@ -46,6 +46,10 @@ the current public overview until it is authored.
 - Keep the Mere and Genet dependency family on one immutable integration pin
   when adopting a platform consumer; branch references can create a second
   source identity and split shared types in downstream products.
+- Pair a themed primary background with its on-primary foreground in selected
+  controls. Check the mounted computed colors under canonical and authored
+  themes; preserving arbitrary authored CSS does not replace this app-owned
+  semantic styling responsibility.
 
 ## Product, graph, and reading proof ledger
 
@@ -101,6 +105,8 @@ the current public overview until it is authored.
 - [Shared application appearance acceptance](receipts/tabard_20261011/README.md):
   landed native Tabard choice/workshop/title bar, strict Save/Apply, four modes,
   readable wide/narrow editor and durable fresh reopens; exact CPU/native receipts.
+  The selected-radio foreground follow-up has negative controls and passing
+  canonical/authored mounted regressions; committed-source native checks pending.
   [Completed plan](archive_docs/2026-10-11/2026-10-11_tabard_appearance_plan.md).
 
 - [Divination mere and the self-explaining reading](2026-09-23_divination_mere_plan.md):

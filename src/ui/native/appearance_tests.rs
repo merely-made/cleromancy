@@ -112,6 +112,124 @@ fn color(host: &Host, expected: tinct::Srgb) {
     );
 }
 
+fn radio_colors(host: &Host, checked: tinct::Srgb, background: tinct::Srgb, body: tinct::Srgb) {
+    let selected = host.with_dom(|dom| {
+        taproot::matching(
+            dom,
+            &Selector::role("radio").with_attr("aria-checked", "true"),
+        )
+    });
+    assert_eq!(selected.len(), 2, "selection mode and reading shape");
+    let unselected = host.with_dom(|dom| {
+        taproot::matching(
+            dom,
+            &Selector::role("radio").with_attr("aria-checked", "false"),
+        )
+    });
+    assert_eq!(unselected.len(), 4);
+    for (nodes, property, expected) in [
+        (&selected, "color", checked),
+        (&selected, "background-color", background),
+        (&unselected, "color", body),
+    ] {
+        for &node in nodes {
+            let (_, _, width, height) = host.painted_rect(node).expect("radio paints");
+            assert!(width > 0.0 && height > 0.0);
+            let value = host
+                .computed_value(node, property)
+                .unwrap()
+                .to_ascii_lowercase()
+                .replace(' ', "");
+            assert!(
+                [
+                    tinct::color_to_hex(expected).to_ascii_lowercase(),
+                    format!("rgb({},{},{})", expected.r, expected.g, expected.b),
+                    format!("rgba({},{},{},1)", expected.r, expected.g, expected.b),
+                ]
+                .contains(&value),
+                "radio {property}: {value}, expected {expected:?}"
+            );
+        }
+    }
+}
+
+#[test]
+fn selected_radio_uses_canonical_on_primary_without_recoloring_unchecked_options() {
+    let dir = tempfile::tempdir().unwrap();
+    let saved = theme(&dir.path().join("themes.json"), false);
+    let mut host = mounted(&dir);
+    action(&mut host, "toggle-appearance");
+    click(
+        &mut host,
+        Selector::role("button").with_attr("data-appearance-theme", &saved.id),
+    );
+    for mode in MODES {
+        click(
+            &mut host,
+            Selector::role("button").with_attr("data-appearance-mode", &mode.as_key()),
+        );
+        let palette = saved.palette_for_mode(&mode).unwrap().palette;
+        for (width, height) in [(1160.0, 760.0), (420.0, 1000.0)] {
+            host.layout_at(width, height);
+            radio_colors(&host, palette.on_primary, palette.primary, palette.text);
+        }
+    }
+}
+
+#[test]
+fn selected_radio_uses_authored_on_primary_after_actual_selection_changes() {
+    for (primary, on_primary, body) in [
+        ("#ffc085", "#342214", "#fff2ea"),
+        ("#203040", "#f1f2f3", "#a0b0c0"),
+    ] {
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("themes.json");
+        let mut saved = theme(&path, false);
+        saved.mode_sheets.insert(
+            "dark".into(),
+            vec![format!(
+                ":root {{ --tabard-color-primary:{primary}; --tabard-color-on-primary:{on_primary}; --tabard-color-text:{body}; }}"
+            )],
+        );
+        ThemeLibraryStore::load(&path)
+            .unwrap()
+            .save(&[saved.clone()])
+            .unwrap();
+        let mut host = mounted(&dir);
+        action(&mut host, "toggle-appearance");
+        click(
+            &mut host,
+            Selector::role("button").with_attr("data-appearance-theme", &saved.id),
+        );
+        click(
+            &mut host,
+            Selector::role("button").with_attr("data-appearance-mode", "dark"),
+        );
+        for (width, height) in [(1160.0, 760.0), (420.0, 1000.0)] {
+            host.layout_at(width, height);
+            radio_colors(
+                &host,
+                tinct::color_from_hex(on_primary).unwrap(),
+                tinct::color_from_hex(primary).unwrap(),
+                tinct::color_from_hex(body).unwrap(),
+            );
+        }
+        host.layout_at(1160.0, 760.0);
+        let before = host.state().consultation.mode.selected;
+        click(
+            &mut host,
+            Selector::role("radio").with_attr("aria-checked", "false"),
+        );
+        assert_ne!(host.state().consultation.mode.selected, before);
+        radio_colors(
+            &host,
+            tinct::color_from_hex(on_primary).unwrap(),
+            tinct::color_from_hex(primary).unwrap(),
+            tinct::color_from_hex(body).unwrap(),
+        );
+    }
+}
+
 #[test]
 fn modes_authored_css_and_reopen_preserve_consultation_and_action_owner() {
     let dir = tempfile::tempdir().unwrap();
@@ -528,6 +646,7 @@ fn appearance_fixtures_keep_the_shared_scenario_lane_and_durable_product_contrac
         "tabard-authoring.scn",
         "tabard-reopen.scn",
         "tabard-same-id.scn",
+        "tabard-radio-foreground.scn",
     ] {
         let source = std::fs::read_to_string(root.join(name)).unwrap();
         taproot::Scenario::parse(&source).unwrap();
