@@ -1,6 +1,6 @@
 {
   "baseline": "270ab377c04d5e36621d6a0f0bffb390ca587b81",
-  "mere": "088555735e4c82e423188feab1f395dec7f92a1e",
+  "mere": "addccab32fe45e54f99cae26ab03cf6aa9432f7e",
   "genet": "2c7ef73bfa44c07744e0643e3c6f98be3cbd7947",
   "netrender": "c74b7cb28090c28b1c6d80b08dcdea18aff48d3e",
   "vello": "2eae6243881d5b24c984d5ee35dde509ca5db782",
@@ -14,5 +14,13 @@
     "assets/fonts/ibm-plex-mono/IBMPlexMono-Italic.ttf": "3362fc791b0652193328b862c1c5f23a789bc7288b1617fa63302f88689a2a34",
     "assets/fonts/source-serif-4/SourceSerif4.ttf": "97b2d4da6e3cb494b5a1e66ae176914d852ccabef49e0c02c0df25f3e39aca0b",
     "assets/fonts/source-serif-4/SourceSerif4-Italic.ttf": "15fbc7e4679489a501998c3669272637a6646388ef7e4bd77eebb5bf967a1f42"
+  },
+  "core_tests": 17,
+  "rejected_native": {
+    "source": "b97213f75db5902f1f8b9081db39aa632a929f4d",
+    "captures": 8,
+    "accepted": false,
+    "reason": "shared scenario input-text split multiword font names",
+    "receipt": "rejected-native-first/process.json"
   }
 }

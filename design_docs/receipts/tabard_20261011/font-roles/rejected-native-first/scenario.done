@@ -1,0 +1,23 @@
+RESULT fail
+waited 0 frames
+waited 0 frames
+waited 0 frames
+FAIL: unknown Cleromancy scenario verb: input-text IBM Plex Mono
+FAIL: unknown Cleromancy scenario verb: input-text Source Serif 4
+FAIL: unknown Cleromancy scenario verb: input-text Cleromancy Missing Face
+FAIL: assert snap font-reading Eq 'IBM Plex Mono': got 'default'
+FAIL: assert snap font-heading Eq 'Source Serif 4': got 'default'
+FAIL: assert snap font-label Eq 'Cleromancy Missing Face': got 'default'
+FAIL: assert text 'unavailable here': not on any surface
+captured font-roles-applied
+captured authored-font-roles
+captured canonical-light-font-roles
+captured canonical-dark-font-roles
+captured canonical-hc-light-font-roles
+captured canonical-hc-dark-font-roles
+captured authored-font-roles-restored
+FAIL: assert snap font-reading Eq 'IBM Plex Mono': got 'default'
+FAIL: assert snap font-heading Eq 'Source Serif 4': got 'default'
+FAIL: assert snap font-label Eq 'Cleromancy Missing Face': got 'default'
+captured font-roles-compact
+FAIL: no current DOM target for Selector { surface: None, matcher: Role("button"), text: None, attr: Some(("data-font-family", "IBM Plex Mono")) }

@@ -221,3 +221,10 @@ published in Mere `829e91c7a`. This extends the existing appearance adapter.
   `088555735`. Known Plex 600/1000 em advances, proportional Serif widths and
   resize resource retention are checked through actual layout, with authored
   `font-family` taking normal cascade authority. Native acceptance is pending.
+
+- **2026-10-12 rejected native attempt:** eight captures/62.546 seconds from
+  committed `b97213f` are retained as failed. Multiword scenario input was
+  rejected before reaching controlled text; no font Apply or reopen is claimed.
+  Shared Mesquite's complete-payload repair passed 28 actual library tests and
+  is published at Mere `addccab32`. The intervening advisory-inventory commit
+  does not alter this supplier family. Rebuild and native retry follow.

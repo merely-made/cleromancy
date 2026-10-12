@@ -1,0 +1,39 @@
+{
+  "schema": "cleromancy.headed-scenario/v1",
+  "phase": "first",
+  "ok": false,
+  "status": "Reflection saved: 9f7f34f1bb163c0bbebbfa91608dc8375e6ced9e6a2cbd1ae86a396b93b113a4",
+  "catalog_ready": true,
+  "sessions": 1,
+  "readings": 3,
+  "reflections": 1,
+  "ids": {
+    "session_id": "884281c27d70347c4f411fc51cb0fbf5907e3b0b4a5b3e366d334b7d95e1ba06",
+    "reading_id": "fef548697dae0a29bdd0ddc1017e554f73b2aab9629645e446f20aaa58cdbfa2",
+    "reflection_id": "9f7f34f1bb163c0bbebbfa91608dc8375e6ced9e6a2cbd1ae86a396b93b113a4"
+  },
+  "log": [
+    "waited 0 frames",
+    "waited 0 frames",
+    "waited 0 frames",
+    "FAIL: unknown Cleromancy scenario verb: input-text IBM Plex Mono",
+    "FAIL: unknown Cleromancy scenario verb: input-text Source Serif 4",
+    "FAIL: unknown Cleromancy scenario verb: input-text Cleromancy Missing Face",
+    "FAIL: assert snap font-reading Eq 'IBM Plex Mono': got 'default'",
+    "FAIL: assert snap font-heading Eq 'Source Serif 4': got 'default'",
+    "FAIL: assert snap font-label Eq 'Cleromancy Missing Face': got 'default'",
+    "FAIL: assert text 'unavailable here': not on any surface",
+    "captured font-roles-applied",
+    "captured authored-font-roles",
+    "captured canonical-light-font-roles",
+    "captured canonical-dark-font-roles",
+    "captured canonical-hc-light-font-roles",
+    "captured canonical-hc-dark-font-roles",
+    "captured authored-font-roles-restored",
+    "FAIL: assert snap font-reading Eq 'IBM Plex Mono': got 'default'",
+    "FAIL: assert snap font-heading Eq 'Source Serif 4': got 'default'",
+    "FAIL: assert snap font-label Eq 'Cleromancy Missing Face': got 'default'",
+    "captured font-roles-compact",
+    "FAIL: no current DOM target for Selector { surface: None, matcher: Role(\"button\"), text: None, attr: Some((\"data-font-family\", \"IBM Plex Mono\")) }"
+  ]
+}

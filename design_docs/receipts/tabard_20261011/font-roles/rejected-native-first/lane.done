@@ -1,0 +1,33 @@
+RESULT fail
+waited 0 frames
+waited 0 frames
+waited 0 frames
+FAIL: unknown Cleromancy scenario verb: input-text IBM Plex Mono
+FAIL: unknown Cleromancy scenario verb: input-text Source Serif 4
+FAIL: unknown Cleromancy scenario verb: input-text Cleromancy Missing Face
+FAIL: assert snap font-reading Eq 'IBM Plex Mono': got 'default'
+FAIL: assert snap font-heading Eq 'Source Serif 4': got 'default'
+FAIL: assert snap font-label Eq 'Cleromancy Missing Face': got 'default'
+FAIL: assert text 'unavailable here': not on any surface
+captured font-roles-applied
+captured authored-font-roles
+captured canonical-light-font-roles
+captured canonical-dark-font-roles
+captured canonical-hc-light-font-roles
+captured canonical-hc-dark-font-roles
+captured authored-font-roles-restored
+FAIL: assert snap font-reading Eq 'IBM Plex Mono': got 'default'
+FAIL: assert snap font-heading Eq 'Source Serif 4': got 'default'
+FAIL: assert snap font-label Eq 'Cleromancy Missing Face': got 'default'
+captured font-roles-compact
+capture font-roles-applied 2320x1520 digest=9efebbaafedb4ade file=/Users/markik/Code/testing/font-roles-20261012/native-first/font-roles-applied.png
+capture authored-font-roles 2320x1520 digest=17f3e273f9123c0f file=/Users/markik/Code/testing/font-roles-20261012/native-first/authored-font-roles.png
+capture canonical-light-font-roles 2320x1520 digest=a23ec2b6e549ef0f file=/Users/markik/Code/testing/font-roles-20261012/native-first/canonical-light-font-roles.png
+capture canonical-dark-font-roles 2320x1520 digest=8f97f65d4824fdf5 file=/Users/markik/Code/testing/font-roles-20261012/native-first/canonical-dark-font-roles.png
+capture canonical-hc-light-font-roles 2320x1520 digest=31d92026d9e5f0dc file=/Users/markik/Code/testing/font-roles-20261012/native-first/canonical-hc-light-font-roles.png
+capture canonical-hc-dark-font-roles 2320x1520 digest=0096a1a3e61233cc file=/Users/markik/Code/testing/font-roles-20261012/native-first/canonical-hc-dark-font-roles.png
+capture authored-font-roles-restored 2320x1520 digest=538181a563457ef0 file=/Users/markik/Code/testing/font-roles-20261012/native-first/authored-font-roles-restored.png
+capture font-roles-compact 840x2000 digest=20d309a123ae745c file=/Users/markik/Code/testing/font-roles-20261012/native-first/font-roles-compact.png
+frames: 8 captured, 0 blank, 8 distinct digests
+presentation: 98 frames, 99 redraws, 1 unpresented redraws
+FAIL: no current DOM target for Selector { surface: None, matcher: Role("button"), text: None, attr: Some(("data-font-family", "IBM Plex Mono")) }

@@ -24,7 +24,7 @@ sky-timeline = ["dep:turquet-timeline"]
 personal-sync = ["graphshell/personal-sync", "dep:personae", "dep:uuid"]
 graphshell-admission = ["graphshell/native"]
 
-# The platform family is pinned to Mere `088555735e4c82e423188feab1f395dec7f92a1e`
+# The platform family is pinned to Mere `addccab32fe45e54f99cae26ab03cf6aa9432f7e`
 # and the exact Genet commit `2c7ef73bfa44c07744e0643e3c6f98be3cbd7947` that
 # it consumes. Cargo keys a git source by URL plus reference, so a branch
 # reference beside these commits would resolve a second source family and
@@ -32,33 +32,33 @@ graphshell-admission = ["graphshell/native"]
 # when the platform integration moves.
 [dependencies]
 blake3 = "1"
-cambium = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e", version = "0.3.3" }
-cambium-genet-winit-host = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e", version = "0.1.0" }
-chartulary = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e" }
+cambium = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e", version = "0.3.3" }
+cambium-genet-winit-host = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e", version = "0.1.0" }
+chartulary = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e" }
 dirs = "6"
-graphshell = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e", default-features = false }
-graphshell-client = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e" }
-graphshell-endpoint = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e", features = ["local", "stdio"] }
-chirograph = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e" }
+graphshell = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e", default-features = false }
+graphshell-client = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e" }
+graphshell-endpoint = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e", features = ["local", "stdio"] }
+chirograph = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e" }
 genet-scripted-dom = { git = "https://github.com/merely-made/genet.git", rev = "2c7ef73bfa44c07744e0643e3c6f98be3cbd7947", version = "=0.1.2" }
 layout-dom-api = { git = "https://github.com/merely-made/genet.git", rev = "2c7ef73bfa44c07744e0643e3c6f98be3cbd7947", version = "=0.1.1" }
-mesquite = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e" }
-mere = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e", default-features = false, features = ["graph", "canvas"] }
-meristem = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e", version = "=0.2.0" }
-muniment = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e", features = ["redb"] }
+mesquite = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e" }
+mere = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e", default-features = false, features = ["graph", "canvas"] }
+meristem = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e", version = "=0.2.0" }
+muniment = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e", features = ["redb"] }
 personae = { git = "https://github.com/merely-made/dramatis.git", rev = "0234e7eea6f2ddf2330a71b9425da01b06ae0391", optional = true }
 pollster = "0.4"
 rand_core = { version = "0.6", features = ["getrandom"] }
-sceno = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e" }
-scenotime = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e" }
+sceno = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e" }
+scenotime = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-servitor = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e" }
+servitor = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e" }
 taproot = { git = "https://github.com/merely-made/genet.git", rev = "2c7ef73bfa44c07744e0643e3c6f98be3cbd7947" }
 thiserror = "2"
-tabard = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e" }
-tabard-workshop = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e", features = ["native-host"] }
-tinct = { git = "https://github.com/merely-made/mere.git", rev = "088555735e4c82e423188feab1f395dec7f92a1e" }
+tabard = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e" }
+tabard-workshop = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e", features = ["native-host"] }
+tinct = { git = "https://github.com/merely-made/mere.git", rev = "addccab32fe45e54f99cae26ab03cf6aa9432f7e" }
 uuid = { version = "1", features = ["serde"], optional = true }
 turquet = { version = "=0.1.0", optional = true }
 turquet-timeline = { package = "turquet", git = "https://github.com/merely-made/turquet.git", rev = "30875f30e83909f3030bc01237a5046e14cde29b", version = "=0.17.0", optional = true }

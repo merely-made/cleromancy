@@ -1,0 +1,20 @@
+[
+  {
+    "position": "foundation",
+    "title": "The Star",
+    "prompt": "What small source of orientation can you trust while repair is still incomplete?",
+    "mode": "cast"
+  },
+  {
+    "position": "tension",
+    "title": "Temperance",
+    "prompt": "Which elements need proportion, exchange, and repeated adjustment rather than a dramatic solution?",
+    "mode": "cast"
+  },
+  {
+    "position": "next_step",
+    "title": "Strength",
+    "prompt": "Where would patient courage accomplish more than force?",
+    "mode": "cast"
+  }
+]
