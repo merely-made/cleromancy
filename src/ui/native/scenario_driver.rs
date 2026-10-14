@@ -6,7 +6,7 @@
 use super::appearance_view::{ApplicationUi, Child};
 use super::{
     ApplicationLogic as Logic, ConsultationCtx, ConsultationRunner, NativeState, SHEET,
-    submit_pending,
+    submit_mere_pending, submit_pending,
 };
 use crate::ui::scenario::{self, Observation, Phase, ReportedIds};
 use cambium_genet_winit_host::AppCtx;
@@ -51,7 +51,9 @@ pub(super) fn lane(state: Rc<RefCell<NativeState>>, run: scenario::Run) -> mesqu
     )
     .expect("load Cleromancy scenario")
     .with_presentation_timeout(presentation_timeout(
-        std::env::var("CLEROMANCY_PRESENTATION_TIMEOUT_SECS").ok().as_deref(),
+        std::env::var("CLEROMANCY_PRESENTATION_TIMEOUT_SECS")
+            .ok()
+            .as_deref(),
     ))
 }
 
@@ -67,6 +69,32 @@ fn presentation_timeout(value: Option<&str>) -> std::time::Duration {
 #[cfg(test)]
 mod presentation_tests {
     use super::presentation_timeout;
+
+    #[test]
+    fn resident_scenario_sources_parse_with_the_shared_assertion_grammar() {
+        for (name, script) in [
+            (
+                "seed",
+                include_str!("../../../receipts/c1-resident-seed.scn"),
+            ),
+            (
+                "reopen",
+                include_str!("../../../receipts/c1-resident-reopen.scn"),
+            ),
+            (
+                "retained",
+                include_str!("../../../receipts/c1-resident-retained.scn"),
+            ),
+            (
+                "compact controls",
+                include_str!("../../../receipts/c1-resident-compact-controls.scn"),
+            ),
+        ] {
+            taproot::Scenario::parse(script)
+                .unwrap_or_else(|error| panic!("{name} scenario: {error}"));
+        }
+        assert!(taproot::Scenario::parse("assert snap readings = 3").is_err());
+    }
 
     #[test]
     fn scenario_allowance_keeps_the_default_and_refuses_unbounded_waits() {
@@ -105,12 +133,92 @@ impl mesquite::Product for Product {
             .with_field("sessions", observed.sessions.to_string())
             .with_field("readings", observed.readings.to_string())
             .with_field("reflections", observed.reflections.to_string());
+        let mere = &ctx.runner.state().mere;
+        snapshot = snapshot
+            .with_field("mere-sessions", mere.model.sessions.len().to_string())
+            .with_field(
+                "mere-live-sessions",
+                mere.model
+                    .sessions
+                    .iter()
+                    .filter(|s| !s.trashed)
+                    .count()
+                    .to_string(),
+            )
+            .with_field(
+                "mere-trashed-sessions",
+                mere.model
+                    .sessions
+                    .iter()
+                    .filter(|s| s.trashed)
+                    .count()
+                    .to_string(),
+            )
+            .with_field(
+                "mere-attached",
+                mere.model
+                    .sessions
+                    .iter()
+                    .find(|s| s.attached)
+                    .map(|s| s.id.as_uuid().to_string())
+                    .unwrap_or_default(),
+            )
+            .with_field("mere-nodes", mere.model.graph.nodes.len().to_string())
+            .with_field(
+                "fields",
+                ctx.runner
+                    .state()
+                    .consultation
+                    .catalog()
+                    .fields
+                    .len()
+                    .to_string(),
+            )
+            .with_field(
+                "mere-archives",
+                mere.model
+                    .archive
+                    .as_ref()
+                    .map_or(0, |a| a.entries.len())
+                    .to_string(),
+            )
+            .with_field("mere-open", mere.open.to_string())
+            .with_field(
+                "mere-focused",
+                mere.view.focused.clone().unwrap_or_default(),
+            )
+            .with_field("mere-layout", mere.model.layout.clone())
+            .with_field("mere-notice", mere.model.notice.clone().unwrap_or_default());
         let appearance = &ctx.runner.state().appearance;
         snapshot = snapshot
             .with_field("appearance-id", appearance.active_id())
-            .with_field("font-reading", appearance.font_preferences().0.get(&tabard::typography::FontRole::Reading).and_then(|stack| stack.first()).map_or("default", |family| family.name()))
-            .with_field("font-heading", appearance.font_preferences().0.get(&tabard::typography::FontRole::Heading).and_then(|stack| stack.first()).map_or("default", |family| family.name()))
-            .with_field("font-label", appearance.font_preferences().0.get(&tabard::typography::FontRole::Label).and_then(|stack| stack.first()).map_or("default", |family| family.name()))
+            .with_field(
+                "font-reading",
+                appearance
+                    .font_preferences()
+                    .0
+                    .get(&tabard::typography::FontRole::Reading)
+                    .and_then(|stack| stack.first())
+                    .map_or("default", |family| family.name()),
+            )
+            .with_field(
+                "font-heading",
+                appearance
+                    .font_preferences()
+                    .0
+                    .get(&tabard::typography::FontRole::Heading)
+                    .and_then(|stack| stack.first())
+                    .map_or("default", |family| family.name()),
+            )
+            .with_field(
+                "font-label",
+                appearance
+                    .font_preferences()
+                    .0
+                    .get(&tabard::typography::FontRole::Label)
+                    .and_then(|stack| stack.first())
+                    .map_or("default", |family| family.name()),
+            )
             .with_field(
                 "appearance-mode",
                 appearance
@@ -140,7 +248,9 @@ impl mesquite::Product for Product {
         snapshot
     }
     fn viewport(&self, ctx: &ConsultationCtx<'_>) -> Option<mesquite::Viewport> {
-        if ctx.runner.state().appearance.editor_open {
+        // Shared workspace captures need both the mere and its focused reading.
+        // The ordinary consultation crop would discard the owner controls.
+        if ctx.runner.state().appearance.editor_open || ctx.runner.state().mere.open {
             return None;
         }
         let node = taproot::matching(
@@ -160,7 +270,8 @@ impl mesquite::Product for Product {
         Some(
             capture_pending
                 || !self.state.borrow().catalog_ready
-                || ctx.runner.state().consultation.status().is_busy(),
+                || ctx.runner.state().consultation.status().is_busy()
+                || ctx.runner.state().mere.busy,
         )
     }
     fn app_step(
@@ -200,7 +311,56 @@ struct ScenarioDriver<'a, 'ctx> {
 impl ScenarioDriver<'_, '_> {
     fn app_step(&mut self, line: &str) -> Result<(), String> {
         match line {
+            _ if line.starts_with("reveal mere-control ") => {
+                let step = line.trim_start_matches("reveal mere-control ");
+                let node = self.mere_control(step)?;
+                self.ctx
+                    .scroll_into_view(node, cambium_genet_winit_host::ScrollAlign::Nearest);
+                Ok(())
+            },
+            _ if line.starts_with("assert visible mere-control ") => {
+                let step = line.trim_start_matches("assert visible mere-control ");
+                let node = self.mere_control(step)?;
+                let painted = self
+                    .ctx
+                    .painted_rect(node)
+                    .ok_or("control has no painted bounds")?;
+                let visible = self
+                    .ctx
+                    .visible_rect(node)
+                    .ok_or("control is clipped out of view")?;
+                let (width, height) = self.ctx.logical_size;
+                let tolerance = 1.0;
+                if painted.2 <= 0.0
+                    || painted.3 <= 0.0
+                    || visible.2 + tolerance < painted.2
+                    || visible.3 + tolerance < painted.3
+                    || visible.0 < -tolerance
+                    || visible.1 < -tolerance
+                    || visible.0 + visible.2 > width + tolerance
+                    || visible.1 + visible.3 > height + tolerance
+                {
+                    return Err(format!(
+                        "mere-control {step} not fully reachable: painted={painted:?}, visible={visible:?}, viewport={width}x{height}"
+                    ));
+                }
+                let event = format!("visible mere-control {step}: painted={painted:?}, visible={visible:?}, viewport={width}x{height}");
+                // Acceptance-only: retain the exact observed bounds in native.log
+                // as well as the event stream, whose successful payloads Taproot
+                // does not currently include in its saved Outcome.
+                eprintln!("cleromancy: {event}");
+                self.state.probe_events.push(event);
+                Ok(())
+            },
             "advance" => self.advance(),
+            "show-mere" => {
+                if self.ctx.runner.state().mere.open {
+                    Ok(())
+                } else {
+                    self.mere_step(line)
+                }
+            },
+            _ if line.starts_with("mere-") => self.mere_step(line),
             "show-chart" => {
                 self.ctx.runner.update(|state| {
                     let ui = &mut state.consultation;
@@ -234,6 +394,176 @@ impl ScenarioDriver<'_, '_> {
 }
 
 impl ScenarioDriver<'_, '_> {
+    // Read-only fixture selection over the real shared controls. Reveal uses
+    // the same host-owned scroll path as pointer/accessibility target reveal.
+    fn mere_control(&self, step: &str) -> Result<genet_scripted_dom::NodeId, String> {
+        use layout_dom_api::LayoutDom;
+        let model = &self.ctx.runner.state().mere.model;
+        let container = match step {
+            "fork" | "trash" | "save-archive" => {
+                let id = model
+                    .sessions
+                    .iter()
+                    .find(|session| session.attached)
+                    .ok_or("no attached session for control reveal")?
+                    .id;
+                taproot::Selector::class("mere-view-session")
+                    .with_attr("data-session", id.as_uuid().to_string())
+            },
+            "open-archive" => {
+                let entry = model
+                    .archive
+                    .as_ref()
+                    .and_then(|archive| archive.entries.first())
+                    .ok_or("no archive for control reveal")?;
+                taproot::Selector::class("mere-view-archive")
+                    .with_attr("data-archive", entry.key.clone())
+            },
+            _ => return Err(format!("unknown read-only mere-control {step}")),
+        };
+        let dom = self.ctx.runner.dom();
+        let dom = dom.borrow();
+        let containers = taproot::matching(&dom, &container);
+        taproot::matching(
+            &dom,
+            &taproot::Selector::role("button").with_attr("data-step", step),
+        )
+        .into_iter()
+        .find(|node| {
+            let mut parent = dom.parent(*node);
+            while let Some(node) = parent {
+                if containers.contains(&node) {
+                    return true;
+                }
+                parent = dom.parent(node);
+            }
+            false
+        })
+        .ok_or_else(|| format!("shared control is missing: {step}"))
+    }
+
+    fn mere_step(&mut self, line: &str) -> Result<(), String> {
+        use layout_dom_api::LayoutDom;
+        let model = &self.ctx.runner.state().mere.model;
+        let attached = model
+            .sessions
+            .iter()
+            .find(|session| session.attached)
+            .map(|session| session.id);
+        let mut container = None;
+        let selector = match line {
+            "show-mere" => {
+                taproot::Selector::role("button").with_attr("data-action", "toggle-mere")
+            },
+            "mere-mint" => taproot::Selector::role("button").with_attr("data-request", "mint"),
+            "mere-fork" | "mere-trash" | "mere-save" | "mere-switch-first"
+            | "mere-restore-first" => {
+                let id = match line {
+                    "mere-switch-first" => model.sessions.iter().find(|s| !s.trashed).map(|s| s.id),
+                    "mere-restore-first" => model.sessions.iter().find(|s| s.trashed).map(|s| s.id),
+                    _ => attached,
+                }
+                .ok_or("no requested mere session")?;
+                // The shared owner correctly omits Switch for the already
+                // attached row. Trash can return to the original session before
+                // Restore, so a fixture's final switch may already be satisfied.
+                if line == "mere-switch-first" && attached == Some(id) {
+                    self.state.probe_events.push(format!(
+                        "shared switch target {} already attached; no action needed",
+                        id.as_uuid()
+                    ));
+                    return Ok(());
+                }
+                container = Some(
+                    taproot::Selector::class("mere-view-session")
+                        .with_attr("data-session", id.as_uuid().to_string()),
+                );
+                let step = match line {
+                    "mere-fork" => "fork",
+                    "mere-trash" => "trash",
+                    "mere-save" => "save-archive",
+                    "mere-switch-first" => "switch",
+                    _ => "restore",
+                };
+                taproot::Selector::role("button").with_attr("data-step", step)
+            },
+            "mere-open-archive" => {
+                let entry = model
+                    .archive
+                    .as_ref()
+                    .and_then(|a| a.entries.first())
+                    .ok_or("no saved archive")?;
+                taproot::Selector::role("button")
+                    .with_attr("aria-label", format!("Open {} as session", entry.name))
+            },
+            "mere-select-occasion" => {
+                let key = model
+                    .graph
+                    .nodes
+                    .iter()
+                    .find(|node| node.label == "Reading session")
+                    .ok_or("no saved occasion node")?
+                    .key
+                    .clone();
+                taproot::Selector::class("graph-canvas-swatch-node").with_attr("data-key", key)
+            },
+            "mere-select-reading" => {
+                let reading = self
+                    .ctx
+                    .runner
+                    .state()
+                    .consultation
+                    .detail()
+                    .and_then(|d| d.readings.first())
+                    .ok_or("no selected reading")?;
+                let key = mere::kernel::graph::Graph::node_namespace_id(&format!(
+                    "cleromancy://reading/{}",
+                    reading.id
+                ))
+                .to_string();
+                taproot::Selector::class("graph-canvas-swatch-node").with_attr("data-key", key)
+            },
+            _ => return Err(format!("unknown mere fixture action {line}")),
+        };
+        let node = {
+            let dom = self.ctx.runner.dom();
+            let dom = dom.borrow();
+            let containers = container
+                .as_ref()
+                .map(|selector| taproot::matching(&dom, selector));
+            taproot::matching(&dom, &selector)
+                .into_iter()
+                .find(|node| {
+                    let Some(containers) = &containers else {
+                        return true;
+                    };
+                    let mut parent = dom.parent(*node);
+                    while let Some(at) = parent {
+                        if containers.contains(&at) {
+                            return true;
+                        }
+                        parent = dom.parent(at);
+                    }
+                    false
+                })
+                .ok_or_else(|| format!("shared mounted control is missing: {selector:?}"))?
+        };
+        let (_, _, width, height) = self
+            .ctx
+            .painted_rect(node)
+            .ok_or("shared control has no painted bounds")?;
+        if width <= 0.0 || height <= 0.0 {
+            return Err("shared control has empty painted bounds".into());
+        }
+        // Dispatch to the actual mounted shared component callback. The helper
+        // chooses an id, never constructs the product/resident action itself.
+        self.ctx
+            .runner
+            .dispatch_click(node, cambium::PointerClick::at((width / 2.0, height / 2.0)));
+        submit_mere_pending(self.ctx.runner, self.state.worker.as_ref());
+        Ok(())
+    }
+
     fn advance(&mut self) -> Result<(), String> {
         let phase = self
             .state

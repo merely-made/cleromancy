@@ -1,12 +1,12 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-//! The ordinary, private local Cleromancy window.
+//! The ordinary Cleromancy window over the resident-held divination mere.
 
 use std::ffi::OsString;
 use std::path::PathBuf;
 
-#[cfg(feature = "personal-sync")]
+#[cfg(all(feature = "legacy-receipts", feature = "personal-sync"))]
 use cleromancy::{CleromancySyncSelection, CleromancySyncSettings, sync_settings_path};
 
 fn main() {
@@ -25,15 +25,13 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
         return sync_consent(&arguments);
     }
     if !arguments.is_empty() {
-        return Err(invalid_input(
-            "usage: cleromancy [sync-consent ...]; use cleromancy_receipt for the A0 HTML receipt",
-        ));
+        return Err(invalid_input("usage: cleromancy"));
     }
     cleromancy::ui::native::run(&data_root()).map_err(|message| std::io::Error::other(message))?;
     Ok(())
 }
 
-#[cfg(feature = "personal-sync")]
+#[cfg(all(feature = "legacy-receipts", feature = "personal-sync"))]
 fn sync_consent(arguments: &[OsString]) -> Result<(), Box<dyn std::error::Error>> {
     let data_root = data_root();
     let path = sync_settings_path(&data_root);
@@ -44,7 +42,7 @@ fn sync_consent(arguments: &[OsString]) -> Result<(), Box<dyn std::error::Error>
                 CleromancySyncSettings::load(&path)?.selection
             );
             Ok(())
-        }
+        },
         Some("set") if arguments.len() == 3 => {
             let selection = arguments[2]
                 .to_str()
@@ -55,19 +53,19 @@ fn sync_consent(arguments: &[OsString]) -> Result<(), Box<dyn std::error::Error>
             settings.save(&path)?;
             println!("sync consent: {selection}");
             Ok(())
-        }
+        },
         _ => Err(consent_usage()),
     }
 }
 
-#[cfg(not(feature = "personal-sync"))]
+#[cfg(not(all(feature = "legacy-receipts", feature = "personal-sync")))]
 fn sync_consent(_arguments: &[OsString]) -> Result<(), Box<dyn std::error::Error>> {
     Err(invalid_input(
-        "sync-consent requires the personal-sync feature; rebuild with --features personal-sync",
+        "sync-consent is a retired receipt harness; current consent is managed by the shared reservoir owner",
     ))
 }
 
-#[cfg(feature = "personal-sync")]
+#[cfg(all(feature = "legacy-receipts", feature = "personal-sync"))]
 fn consent_usage() -> Box<dyn std::error::Error> {
     invalid_input(
         "usage: cleromancy sync-consent [show | set off|contexts|contexts-and-readings|contexts-readings-and-reflections]",

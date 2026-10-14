@@ -1,7 +1,11 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-#![cfg(all(feature = "personal-sync", not(target_arch = "wasm32")))]
+#![cfg(all(
+    feature = "legacy-receipts",
+    feature = "personal-sync",
+    not(target_arch = "wasm32")
+))]
 
 use std::process::{Command, Output};
 

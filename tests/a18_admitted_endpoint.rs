@@ -1,7 +1,7 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-#![cfg(feature = "graphshell-admission")]
+#![cfg(all(feature = "legacy-receipts", feature = "graphshell-admission"))]
 
 use std::collections::VecDeque;
 

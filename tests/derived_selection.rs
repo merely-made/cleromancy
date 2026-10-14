@@ -1,6 +1,8 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
+#![cfg(feature = "legacy-receipts")]
+
 use cleromancy::{
     Candidate, CleromancyHost, Consultation, ContextDraft, DerivedSelection, Field, ReadingEngine,
     ReadingError, SelectionMode, UNIFORM_DIE_RULE, a0_fixture,

@@ -8,7 +8,7 @@
 //! headed scenario policy.
 
 use std::cell::RefCell;
-use std::path::{Path, PathBuf};
+use std::path::Path;
 use std::rc::Rc;
 use std::sync::mpsc::{self, Receiver};
 
@@ -24,11 +24,11 @@ use crate::ui::worker::{ConsultationWorker, WorkerUpdate, spawn};
 use crate::{ConsultationCatalog, ConsultationUi, ConsultationView};
 
 mod appearance;
-mod fonts;
 mod appearance_host;
 #[cfg(test)]
 mod appearance_tests;
 mod appearance_view;
+mod fonts;
 mod scenario_driver;
 
 use appearance_view::{ApplicationUi, Child};
@@ -45,7 +45,6 @@ pub fn run(data_root: &Path) -> Result<(), String> {
         .map_err(|error| format!("create {}: {error}", data_root.display()))?;
     let state = Rc::new(RefCell::new(NativeState::new(scenario::load())));
     let init_state = state.clone();
-    let store_path = data_root.join("cleromancy.redb");
     let (selection, library) = appearance::paths(data_root);
     let appearance = appearance::AppearanceState::load(selection, library, data_root.to_path_buf());
     let options = HostOptions {
@@ -58,7 +57,7 @@ pub fn run(data_root: &Path) -> Result<(), String> {
     run_host(
         options,
         move |_window, commands, wake| {
-            install_worker(&init_state, store_path.clone(), wake);
+            install_worker(&init_state, wake);
             let mut appearance = appearance;
             let sheet = appearance
                 .take_stylesheet_change()
@@ -66,6 +65,7 @@ pub fn run(data_root: &Path) -> Result<(), String> {
             Init {
                 state: ApplicationUi {
                     consultation: ConsultationUi::new(empty_catalog()),
+                    mere: Default::default(),
                     appearance,
                 },
                 logic: Box::new({
@@ -99,10 +99,10 @@ fn empty_catalog() -> ConsultationCatalog {
     }
 }
 
-fn install_worker(state: &Rc<RefCell<NativeState>>, store_path: PathBuf, wake: &HostWake) {
+fn install_worker(state: &Rc<RefCell<NativeState>>, wake: &HostWake) {
     let (updates, receiver) = mpsc::channel();
     let wake = wake.callback();
-    let worker = spawn(store_path, move |update| {
+    let worker = spawn(move |update| {
         let _ = updates.send(update);
         wake();
     });
@@ -128,6 +128,42 @@ fn hooks(state: Rc<RefCell<NativeState>>) -> HostHooks<ApplicationUi, Applicatio
                 ctx.leaves,
                 ctx.producers,
             );
+        }
+        let window_width = ctx.logical_size.0.round().max(1.0) as u32;
+        let wide = window_width >= 900;
+        let width = if wide { 420 } else { window_width };
+        let height = if wide {
+            (ctx.logical_size.1.round().max(1.0) as u32)
+                .saturating_sub(42)
+                .max(300)
+        } else {
+            300
+        };
+        if ctx.runner.state().mere.width != width
+            || ctx.runner.state().mere.height != height
+            || ctx.runner.state().mere.wide != wide
+        {
+            ctx.runner.update(|state| {
+                state.mere.width = width;
+                state.mere.height = height;
+                state.mere.wide = wide;
+                state.mere.view.lay_out(&state.mere.model, width, height);
+            });
+        }
+        if ctx.runner.state().mere.open {
+            let leaf = ctx
+                .runner
+                .state()
+                .mere
+                .view_of()
+                .paint_leaf(|_| sprigging::ColorF {
+                    r: 0.20,
+                    g: 0.35,
+                    b: 0.50,
+                    a: 1.0,
+                });
+            ctx.leaves
+                .insert(appearance_view::MERE_LEAF, Box::new(leaf));
         }
         sync_chart_angle_strip(ctx);
         sync_chart_aspect_dimension(ctx);
@@ -225,6 +261,108 @@ fn apply_worker_update(
     update: WorkerUpdate,
 ) {
     match update {
+        WorkerUpdate::Unavailable { message } => {
+            state.catalog_ready = true;
+            state
+                .probe_events
+                .push(format!("resident unavailable: {message}"));
+            runner.update(|state| {
+                state.mere.busy = false;
+                state.mere.view.focused = None;
+                state.mere.view.hovered = None;
+                state.mere.model.graph = Default::default();
+                state.mere.model.sessions.clear();
+                state.mere.model.can_mint = false;
+                state.mere.model.actions.clear();
+                state.mere.pending = None;
+                state.mere.model.archive = None;
+                state.consultation.clear_selection();
+                state.consultation.replace_catalog(empty_catalog());
+                state.mere.model.status =
+                    mere_view::ViewStatus::Unavailable(mere_view::StatusNote {
+                        message: message.clone(),
+                        action: None,
+                    });
+                state.consultation.present_error(message);
+            });
+        },
+        WorkerUpdate::Mere { model, catalog } => {
+            state.catalog_ready = true;
+            runner.update(|state| {
+                let previous = state
+                    .mere
+                    .model
+                    .sessions
+                    .iter()
+                    .find(|s| s.attached)
+                    .map(|s| s.id);
+                let next = model.sessions.iter().find(|s| s.attached).map(|s| s.id);
+                if previous != next {
+                    state.consultation.clear_selection();
+                    state.mere.view.focused = None;
+                    state.mere.view.hovered = None;
+                }
+                state.mere.model = model;
+                if state.mere.view.focused.as_ref().is_some_and(|key| {
+                    !state
+                        .mere
+                        .model
+                        .graph
+                        .nodes
+                        .iter()
+                        .any(|node| &node.key == key)
+                }) {
+                    state.mere.view.focused = None;
+                }
+                if state.mere.view.hovered.as_ref().is_some_and(|key| {
+                    !state
+                        .mere
+                        .model
+                        .graph
+                        .nodes
+                        .iter()
+                        .any(|node| &node.key == key)
+                }) {
+                    state.mere.view.hovered = None;
+                }
+                state.mere.busy = false;
+                state
+                    .mere
+                    .view
+                    .lay_out(&state.mere.model, state.mere.width, state.mere.height);
+                state.consultation.replace_catalog(catalog);
+            });
+        },
+        WorkerUpdate::GraphSelection {
+            catalog,
+            detail,
+            position,
+        } => {
+            state
+                .probe_events
+                .push(format!("shared graph selected {}", detail.session.id));
+            runner.update(|state| {
+                state.mere.busy = false;
+                let session = detail.session.id.clone();
+                let focus_url = position
+                    .as_ref()
+                    .and_then(|position| {
+                        detail
+                            .session
+                            .placements
+                            .iter()
+                            .find(|p| &p.position == position)
+                    })
+                    .map(|p| format!("cleromancy://reading/{}", p.reading_id))
+                    .unwrap_or_else(|| format!("cleromancy://session/{session}"));
+                state.mere.view.focused =
+                    Some(mere::kernel::graph::Graph::node_namespace_id(&focus_url).to_string());
+                state.consultation.present_session(catalog, detail);
+                if let Some(position) = position {
+                    state.consultation.reading_focus.insert(session, position);
+                }
+            });
+        },
         WorkerUpdate::Catalog(catalog) => {
             state.catalog_ready = true;
             runner.update(|state| {
@@ -264,6 +402,7 @@ fn apply_worker_update(
             });
         },
         WorkerUpdate::Session { catalog, detail } => {
+            runner.update(|state| state.mere.busy = false);
             state
                 .probe_events
                 .push(format!("durable session recovered {}", detail.session.id));
@@ -286,7 +425,11 @@ fn apply_worker_update(
                 ui.present_comparison(catalog, detail, comparison);
             });
         },
+        WorkerUpdate::SavedNotice(message) => runner.update(move |state| {
+            state.consultation.status = super::ConsultationStatus::SavedNotice(message);
+        }),
         WorkerUpdate::Error { catalog, message } => runner.update(move |state| {
+            state.mere.busy = false;
             let ui = &mut state.consultation;
             if let Some(catalog) = catalog {
                 ui.replace_catalog(catalog);
@@ -314,9 +457,31 @@ fn submit_pending(runner: &mut ConsultationRunner, worker: Option<&ConsultationW
     }
 }
 
+fn submit_mere_pending(runner: &mut ConsultationRunner, worker: Option<&ConsultationWorker>) {
+    let mut request = None;
+    runner.update(|state| {
+        request = state.mere.pending.take();
+        if request.is_some() {
+            state.mere.busy = true;
+        }
+    });
+    if let Some(request) = request {
+        if let Err(message) = worker
+            .ok_or_else(|| "resident worker is unavailable".to_owned())
+            .and_then(|worker| worker.mere(request))
+        {
+            runner.update(|state| {
+                state.mere.busy = false;
+                state.mere.model.notice = Some(message);
+            });
+        }
+    }
+}
+
 fn dispatch_action(ctx: &mut ConsultationCtx<'_>, state: &Rc<RefCell<NativeState>>) {
     let state = state.borrow();
     submit_pending(ctx.runner, state.worker.as_ref());
+    submit_mere_pending(ctx.runner, state.worker.as_ref());
 }
 
 /// Resolve the focused retained text control to its Cleromancy state slot.

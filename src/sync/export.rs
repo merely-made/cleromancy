@@ -11,9 +11,7 @@ use muniment::Backend;
 
 use super::collect::{SelectedTruth, collect_selected};
 use super::shared::{append_node_events, batch_digest, generic_semantic_kind, invalid};
-use super::{
-    CleromancySyncBatch, CleromancySyncError, CleromancySyncSelection, SYNC_BATCH_SCHEMA,
-};
+use super::{CleromancySyncBatch, CleromancySyncError, CleromancySyncSelection, SYNC_BATCH_SCHEMA};
 use crate::{CleromancyHost, HostError, ThreeCardRelationKind};
 
 /// Project the current local graph into the generic H7 event vocabulary.
@@ -168,6 +166,8 @@ pub fn export_sync_batch<B: Backend>(
             });
         };
         events.push(PersonalGraphEvent::AssertRelation {
+            statement_id: None,
+            asserted_at_ms: None,
             from: node.id,
             to: context,
             assertion: EdgeAssertion::Provenance {
@@ -181,6 +181,8 @@ pub fn export_sync_batch<B: Backend>(
             });
         };
         events.push(PersonalGraphEvent::AssertRelation {
+            statement_id: None,
+            asserted_at_ms: None,
             from: node.id,
             to: field,
             assertion: EdgeAssertion::Provenance {
@@ -196,6 +198,8 @@ pub fn export_sync_batch<B: Backend>(
             });
         };
         events.push(PersonalGraphEvent::AssertRelation {
+            statement_id: None,
+            asserted_at_ms: None,
             from: node.id,
             to: context,
             assertion: EdgeAssertion::Provenance {
@@ -209,6 +213,8 @@ pub fn export_sync_batch<B: Backend>(
             });
         };
         events.push(PersonalGraphEvent::AssertRelation {
+            statement_id: None,
+            asserted_at_ms: None,
             from: node.id,
             to: field,
             assertion: EdgeAssertion::Provenance {
@@ -223,6 +229,8 @@ pub fn export_sync_batch<B: Backend>(
                 });
             };
             events.push(PersonalGraphEvent::AssertRelation {
+                statement_id: None,
+                asserted_at_ms: None,
                 from: node.id,
                 to: reading,
                 assertion: EdgeAssertion::Containment {
@@ -239,6 +247,8 @@ pub fn export_sync_batch<B: Backend>(
             });
         };
         events.push(PersonalGraphEvent::AssertRelation {
+            statement_id: None,
+            asserted_at_ms: None,
             from: node.id,
             to: session,
             assertion: EdgeAssertion::Provenance {
@@ -258,6 +268,8 @@ pub fn export_sync_batch<B: Backend>(
                 });
             };
             events.push(PersonalGraphEvent::AssertRelation {
+                statement_id: None,
+                asserted_at_ms: None,
                 from: node.id,
                 to: reading,
                 assertion: EdgeAssertion::Containment {
@@ -273,16 +285,18 @@ pub fn export_sync_batch<B: Backend>(
                 return Err(invalid(node.id, "spread relation target position"));
             };
             events.push(PersonalGraphEvent::AssertRelation {
+                statement_id: None,
+                asserted_at_ms: None,
                 from: reading_ids[from_id],
                 to: reading_ids[to_id],
                 assertion: EdgeAssertion::Semantic {
                     sub_kind: match relation.kind {
                         ThreeCardRelationKind::Questions => {
                             mere::kernel::graph::SemanticSubKind::Questions
-                        }
+                        },
                         ThreeCardRelationKind::NextStep => {
                             mere::kernel::graph::SemanticSubKind::NextStep
-                        }
+                        },
                     },
                     label: Some(relation.label.clone()),
                     decay_progress: None,
@@ -324,6 +338,8 @@ pub fn export_sync_batch<B: Backend>(
             ));
         }
         events.push(PersonalGraphEvent::AssertRelation {
+            statement_id: None,
+            asserted_at_ms: None,
             from: node.id,
             to: session,
             assertion: EdgeAssertion::Provenance {
@@ -331,6 +347,8 @@ pub fn export_sync_batch<B: Backend>(
             },
         });
         events.push(PersonalGraphEvent::AssertRelation {
+            statement_id: None,
+            asserted_at_ms: None,
             from: node.id,
             to: template,
             assertion: EdgeAssertion::Provenance {
@@ -350,6 +368,8 @@ pub fn export_sync_batch<B: Backend>(
                 });
             };
             events.push(PersonalGraphEvent::AssertRelation {
+                statement_id: None,
+                asserted_at_ms: None,
                 from: node.id,
                 to: reading,
                 assertion: EdgeAssertion::Containment {
@@ -365,6 +385,8 @@ pub fn export_sync_batch<B: Backend>(
                 return Err(invalid(node.id, "spread relation target position"));
             };
             events.push(PersonalGraphEvent::AssertRelation {
+                statement_id: None,
+                asserted_at_ms: None,
                 from: reading_ids[*from_id],
                 to: reading_ids[*to_id],
                 assertion: EdgeAssertion::Semantic {
@@ -383,6 +405,8 @@ pub fn export_sync_batch<B: Backend>(
             });
         };
         events.push(PersonalGraphEvent::AssertRelation {
+            statement_id: None,
+            asserted_at_ms: None,
             from: node.id,
             to: chart,
             assertion: EdgeAssertion::Provenance {
@@ -399,6 +423,8 @@ pub fn export_sync_batch<B: Backend>(
                 });
             };
             events.push(PersonalGraphEvent::AssertRelation {
+                statement_id: None,
+                asserted_at_ms: None,
                 from: node.id,
                 to: member_id,
                 assertion: EdgeAssertion::Containment {
@@ -415,6 +441,8 @@ pub fn export_sync_batch<B: Backend>(
             });
         };
         events.push(PersonalGraphEvent::AssertRelation {
+            statement_id: None,
+            asserted_at_ms: None,
             from: node.id,
             to: session,
             assertion: EdgeAssertion::Semantic {

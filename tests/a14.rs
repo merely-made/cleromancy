@@ -1,3 +1,5 @@
+#![cfg(feature = "legacy-receipts")]
+
 use cleromancy::{
     AstrologyAdapter, AstrologyChart, AstrologyError, AstrologyMoment, AstrologyPosition,
     CleromancyApp, CleromancyHost, HostError, calculate_with_adapter,

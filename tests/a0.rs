@@ -1,6 +1,8 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
+#![cfg(feature = "legacy-receipts")]
+
 use cleromancy::moirai::clotho::EntropySource;
 use cleromancy::servitor::{Cap, Grant, Mode, Subject};
 use cleromancy::{

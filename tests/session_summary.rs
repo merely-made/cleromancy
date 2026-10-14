@@ -4,6 +4,8 @@
 //! R0 of the legible reader plan: session summaries are a faithful, cheap
 //! projection of the same graph truth `detail()` replays.
 
+#![cfg(feature = "legacy-receipts")]
+
 use std::collections::VecDeque;
 
 use cleromancy::moirai::clotho::EntropySource;

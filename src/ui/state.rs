@@ -23,6 +23,7 @@ pub enum ConsultationStatus {
     #[cfg(feature = "analytic-ephemeris")]
     CalculatingChart,
     SetupSaved(String),
+    SavedNotice(String),
     ReadingSaved(String),
     SavingReflection,
     ReflectionSaved(String),
@@ -36,6 +37,7 @@ impl ConsultationStatus {
     pub fn label(&self) -> String {
         match self {
             Self::Ready => "Ready".to_string(),
+            Self::SavedNotice(message) => message.clone(),
             Self::SavingReading => "Saving reading".to_string(),
             Self::SavingSetup => "Saving setup".to_string(),
             #[cfg(feature = "analytic-ephemeris")]
@@ -154,6 +156,14 @@ impl ConsultationUi {
         }
     }
 
+    pub(crate) fn clear_selection(&mut self) {
+        self.detail = None;
+        self.comparison = None;
+        self.reading_focus.clear();
+        self.reflection = TextInput::default();
+        self.status = ConsultationStatus::Ready;
+    }
+
     pub fn catalog(&self) -> &ConsultationCatalog {
         &self.catalog
     }
@@ -188,6 +198,14 @@ impl ConsultationUi {
     /// Replace picker and history values after the persistence worker commits a
     /// transaction; the worker is the authority for what remains available.
     pub(crate) fn replace_catalog(&mut self, catalog: ConsultationCatalog) {
+        if self.detail.as_ref().is_some_and(|detail| {
+            !catalog
+                .session_summaries
+                .iter()
+                .any(|summary| summary.session_id == detail.session.id)
+        }) {
+            self.clear_selection();
+        }
         self.context_select.selected = self.context_select.selected.min(catalog.contexts.len());
         self.field_select.selected = self
             .field_select
