@@ -123,7 +123,7 @@ the current public overview until it is authored.
   [Completed plan](archive_docs/2026-10-11/2026-10-11_tabard_appearance_plan.md).
 
 - [Divination mere and the self-explaining reading](2026-09-23_divination_mere_plan.md):
-  **C1 preparation in progress, 2026-10-08; no phase accepted.**
+  **C1 preparation in progress, reviewed 2026-10-13; no phase accepted.**
   - C1 moves Cleromancy onto its domain's mere in the identity's reservoir,
     held by the device resident with the full session lifecycle. §2 names the
     available shared substrate and the remaining authority, view, archive,
@@ -148,6 +148,12 @@ the current public overview until it is authored.
     C4 includes proposed foreground/background and dynamics
     acceptance using shared contracts; no private spec or physics adoption is
     claimed. Preparation is distinguished from changing the ruled phase order.
+  - The 2026-10-13 review verifies the separately published font receipt and
+    proposes a journal of reading occasions with a focused card constellation:
+    history/reflections, cited correspondences and recorded situation stay
+    independently inspectable. It records a concrete fixture and cross-app
+    witness; C1 lifecycle/authority, C2 narrative, C3 typed data and C4 native
+    neighborhood gates retain their ruled order.
 - [Headed local consultation](2026-08-07_headed_local_consultation_plan.md):
   native journal-window product plan.
 - [Journal depth](2026-08-08_journal_depth_plan.md) — **landed 2026-09-04**:

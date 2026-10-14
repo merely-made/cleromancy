@@ -1,7 +1,10 @@
 # Cleromancy: the divination mere, and a reading that explains itself
 
 **Date:** 2026-09-23
-**Status (2026-10-08):** C1 preparation in progress; no phase is accepted.
+**Status (2026-10-13):** C1 preparation in progress; no phase is accepted.
+Shared appearance/font roles are separately qualified and published. The
+reading-centered scene proposal below refines C4 without changing the ruled
+C1–C8 order or claiming reservoir adoption.
 The existing local
 consultation works, but still owns one snapshot store and its own authority.
 Mere's reservoir V1 and V2, and V2b's component, harness and route adapter,
@@ -195,6 +198,33 @@ Domain-specific refusal tests run in the portable core. These are source
 checks; the new resident path still needs native lifecycle, cross-application
 visibility and fresh-process reopen qualification on the integrated revision.
 
+### Font adoption and scene review (2026-10-13)
+
+Refreshed the clean product checkout to published `3e101cd087ea7a6dbec6f0094f2282fb51a32286`.
+The granular-font adoption is already published at `6cf1e405042455dd5d0ca314b45e92721997ca9d`;
+it does not need another implementation lane. The
+[font receipt](receipts/tabard_20261011/font-roles/qualification.json) records
+101 root and 17 portable-core tests, and native runtime `c1fb4ce7f28f0f599e3c3ce876bfcf128046fb1b`
+against Mere `addccab32`. Re-ran its read-only verifier and independently
+reviewed all nine original captures: two accepted processes, 123 presentations,
+unchanged preference/library bytes, card data and exact session/reading/reflection
+IDs after fresh reopening. The compact capture shows the Reading field in the
+scrolling panel, not every font control. Sizes and spacing remain host-owned.
+
+The three subsequent commits adopt Rust policy and the Murm supplier cohort;
+they change manifests, configuration, CI and documentation, with no product
+source, test, font-byte or scenario changes. Their compile/software receipts
+remain separate from the earlier headed font receipt. This review does not
+renew native acceptance on the new supplier graph.
+
+Current source still has the private `HOST_SLOT` snapshot and application
+authority, the manually placed three-column reading scene, and position labels
+derived from ids rather than the stored template. Fonts do not close C1 or C2.
+Reviewed published Mere `e84cfbd95b1660046d646580a8707af020a06e4b`'s reservoir
+and one-tree plans: they still distinguish available resident contracts from
+the unfinished V2b cutover/panel and Cleromancy consumer gates. The Mere plans
+own the detailed supplier status.
+
 ### Historical findings (verified 2026-09-23)
 
 The following records the original assessment, including its then-current
@@ -365,6 +395,65 @@ method and a replayable receipt with engine revision, parameters, initial state
 and recorded inputs/checkpoints. Mere's G8 determinism and G10 input-replay
 contracts must be qualified for that method; a random seed alone is not proof.
 
+**Reading-centered scene proposal (2026-10-13; not a new ruling).**
+Use a journal of reading occasions with a contextual constellation around the
+selected occasion. Each occasion groups its question, saved cast, draw-time
+context and subsequent reflections. A reading session contains individual
+sealed readings at distinct position occurrences; grouping them visually does
+not merge those records or replace their receipt identities. A dated journal
+is the legible overview. The constellation is the relation view, with a
+force-directed arrangement as the existing default and a still presentation
+available from the outset.
+
+Selecting an occasion opens its readable narrative and ordered spread.
+Selecting a card opens a bounded neighborhood around that occurrence:
+
+- **History:** prior occurrences of the same card, their questions and saved
+  reflections. Distinct occurrences remain distinct even when a card repeats.
+- **Correspondence:** related cards, deck crosswalks and traditional axes,
+  each naming its tradition, source and version. Admit only the typed data
+  available after C3; no view invents missing correspondences.
+- **Situation:** the facts actually recorded at the draw. Sky facts and
+  opted-in observations remain distinguishable from interpretation; this lens
+  does not silently fetch current weather or enable place.
+
+Choose relation families independently. A connection explains why it exists;
+distance is an arrangement aid, not a numerical claim about symbolic meaning.
+The focused question, position meaning and card narration stay readable while
+the surrounding neighborhood changes. A saved cross-reading relation or
+reflection uses a Cleromancy owner action. View pinning and focus alone never
+keep an ambient item or alter a reading. Material from another mere requires
+its explicit ambient grant and disappears from this projection on revocation.
+
+Graphshell supplies the shared navigation, scene editing, toolbar and
+accessible alternative, with the common mere session view composed alongside.
+Cleromancy supplies the domain projection and typed actions; the resident owns
+durable graph/session/archive operations and replay validation. Do not mount
+another editable generic graph over an app-local copy. A browser Graphshell
+opening the same admitted divination mere is a useful C1 cross-application
+acceptance witness, separately from the Cleromancy native scene.
+
+The first fixture is one saved three-position occasion, two earlier occasions,
+saved reflections and recorded sky facts, followed by cited correspondence data
+when C3 permits it. It deliberately includes a repeated card and a custom
+position label. The flow selects the current occasion, follows an earlier
+appearance, returns to the focused card, inspects a named relation, explicitly
+keeps one ambient item, and saves view curation. Fresh reopening checks exact
+sealed readings and reflection bytes, saved template labels, focus, curation
+and placement roles. A revoked neighboring mere yields no ambient material.
+Wide and compact native captures must show readable narrative and reachable
+controls under shared font roles; hit targets follow realized geometry.
+Keyboard and still/reduced-motion operation expose the same actions. Any
+motion composition uses the shared grammar and has its own save/reopen gate.
+
+Prepare the projection binding and synthetic fixture now; implement the
+resident-backed scene in the ruled order. C1's shared lifecycle and authority
+cutover remains the next product implementation gate. C2 supplies the narrative
+and authored-position meaning; C3 supplies typed correspondence data; C4 then
+qualifies this neighborhood. This proposal supplies a concrete consumer for
+the shared Graphshell work without treating a prototype or an upstream receipt
+as completion of those phases.
+
 **Done when:**
 - a focused card shows at least three relation families;
 - each ambient item names its engine and version;
@@ -496,3 +585,10 @@ orientations and positions, and interpretations.
   denial. Rechecked this readiness map against that source. No Cleromancy
   repin, authority registration, private-store retirement, native consumer
   proof or phase acceptance is implied by the shared implementation.
+- 2026-10-13: Refreshed the product checkout to published `3e101cd`, verified
+  the already published font adoption's committed receipt and all nine original
+  images, and separated its frozen native inputs from the later Murm/toolchain
+  adoption. Reviewed the current published Mere reservoir/one-tree plans and
+  recorded a proposed reading-centered journal/constellation with a concrete
+  fixture, owner boundaries and acceptance flow. No product code, dependency,
+  persistence owner or C1–C8 acceptance state changed.
