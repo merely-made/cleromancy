@@ -1,11 +1,11 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-//! The direct local product boundary over Cleromancy's graph authority.
+//! Product transformations over a complete divination graph candidate.
 //!
-//! Graphshell remains the portable and remote-admission adapter. A headed
-//! local process owns its private store directly and uses this controller to
-//! turn product commands into durable graph truth.
+//! The ordinary window reads the candidate from the resident and records the
+//! resulting stable-id edits through its admitted journal transaction. This
+//! controller owns divination meaning and validation, never the resident store.
 
 use std::time::{SystemTime, UNIX_EPOCH};
 
@@ -148,6 +148,10 @@ impl<B: Backend> Consultation<B> {
 
     pub fn host(&self) -> &CleromancyHost<B> {
         &self.host
+    }
+
+    pub(crate) fn host_mut_candidate(&mut self) -> &mut CleromancyHost<B> {
+        &mut self.host
     }
 
     pub fn is_faulted(&self) -> bool {

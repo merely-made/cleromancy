@@ -5,6 +5,7 @@
 
 #[cfg(all(
     not(feature = "portable-core"),
+    feature = "legacy-receipts",
     feature = "graphshell-admission",
     not(target_arch = "wasm32")
 ))]
@@ -40,6 +41,7 @@ pub mod sync;
 #[cfg(all(
     not(feature = "portable-core"),
     feature = "personal-sync",
+    feature = "legacy-receipts",
     not(target_arch = "wasm32")
 ))]
 pub mod sync_settings;
@@ -49,6 +51,7 @@ pub mod ui;
 
 #[cfg(all(
     not(feature = "portable-core"),
+    feature = "legacy-receipts",
     feature = "graphshell-admission",
     feature = "personal-sync",
     not(target_arch = "wasm32")
@@ -56,6 +59,7 @@ pub mod ui;
 pub use admitted::CleromancyResidentOpenError;
 #[cfg(all(
     not(feature = "portable-core"),
+    feature = "legacy-receipts",
     feature = "graphshell-admission",
     not(target_arch = "wasm32")
 ))]
@@ -144,6 +148,7 @@ pub use sync::{
 #[cfg(all(
     not(feature = "portable-core"),
     feature = "personal-sync",
+    feature = "legacy-receipts",
     not(target_arch = "wasm32")
 ))]
 pub use sync_settings::{

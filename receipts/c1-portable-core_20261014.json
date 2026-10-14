@@ -1,0 +1,77 @@
+{
+  "scope": "portable cleromancy-core-acceptance checkpoint only; native root and full C1 acceptance pending",
+  "base": "2851e6b0e3dda4b5b558c515579dede9daf1ec2d",
+  "supplier": "b590f7d991a14aa0b9b8971c397aedea0dc249f7",
+  "supplier_branch": "codex/c1-resident-divination-20261014",
+  "rust": "1.97.1",
+  "library_overrides": false,
+  "source_sha256": {
+    "core/Cargo.toml": "893cac67a0f4e6c5ced3ff6255f689920091a6957fcd3f9c90c6f1a0cd29f403",
+    "core/Cargo.lock": "5eaeb1ad4ec0bcb89dc4188b488ed9144e555dd42ddd21ae7766e74932b7cbaf",
+    "src/lib.rs": "4373a1289f927ba9ad00a429ec90a6f6fcf1c1e568a2162d458d0d0b51a2719a",
+    "src/host/mod.rs": "6c883489220b4817352ecd60063ea54a870e4336b89b6c005a937294d72e37e3",
+    "src/host/domain.rs": "950c56516eb6587153c613e6f8f99315fe81af7a3ae87d8a027b6ff4e31aaafb",
+    "src/consultation/mod.rs": "b2160603fac6b32528b8eb5ac2b0fad3f40a676fba02d037502cfafc7b0d5f04",
+    "tests/resident_candidate.rs": "8f738e7807a2116d23e875aae00b94410d27bd5330be4aa1ccf87d39d0f8a069",
+    "tests/sky_host.rs": "5b70291446075e909ae062ca7a940681010ad0f36238ba3fb2acd4bb186ea03a",
+    "tests/sky_timeline.rs": "bf22fbf0632987f991da23f6670f9b76e3fa6143b82b8a8b55c53f58e2518dbd"
+  },
+  "gates": {
+    "default": {
+      "passed": 18,
+      "failed": 0,
+      "ignored": 0,
+      "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/shared/cleromancy-core-immutable-b590-default.json",
+      "receipt_sha256": "1dce4ac6e4f9452f33e9b120b6ce90c58cee3769ad4c7dc48bb95449d2d31b5e",
+      "log_sha256": "df0292237081e826079d8a9a5748a685edb078208ff752eb1fa5e03124dd17c0",
+      "argv": [
+        "cargo",
+        "+1.97.1",
+        "test",
+        "--locked",
+        "-j",
+        "2"
+      ]
+    },
+    "legacy": {
+      "passed": 19,
+      "failed": 0,
+      "ignored": 0,
+      "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/shared/cleromancy-core-immutable-b590-legacy.json",
+      "receipt_sha256": "527d0c0272e953f44162ff54b4d02ad200b5de92399864396d264f073854987b",
+      "log_sha256": "7f38ea9662b2b661b5eb0d9f53df711a617002b6bdeb215678b60e40f58eb4f4",
+      "argv": [
+        "cargo",
+        "+1.97.1",
+        "test",
+        "--locked",
+        "-j",
+        "2",
+        "--features",
+        "legacy-receipts"
+      ]
+    },
+    "legacy-sky": {
+      "passed": 20,
+      "failed": 0,
+      "ignored": 0,
+      "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/shared/cleromancy-core-immutable-b590-legacy-sky.json",
+      "receipt_sha256": "60c2f38497d746a795b3dfd43cd55a7b2dbb0c6eb7979c5b4dfc2a75d0e267fa",
+      "log_sha256": "966d5f8628d77d106ea094a502cfb4388267b64d2908f5449f688c60936a8d54",
+      "argv": [
+        "cargo",
+        "+1.97.1",
+        "test",
+        "--locked",
+        "-j",
+        "2",
+        "--features",
+        "legacy-receipts,sky-timeline"
+      ]
+    }
+  },
+  "metadata_sha256": {
+    "default": "4c705f23cfad73b20fea65c25e7d7b3833e939eaa5754652f535f2a3fbf7ce43",
+    "legacy-sky": "8cac6c1c350ede9947896974a64efce590612610777ceff49125e1f0ec8d1837"
+  }
+}

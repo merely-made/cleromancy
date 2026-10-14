@@ -1,7 +1,7 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-//! Cleromancy's durable Mere-graph authority and its Graphshell projection.
+//! Cleromancy's divination graph transformations, replay and projection.
 //!
 //! The submodules split one `CleromancyHost` impl by concern: typed catalog
 //! queries, graph-truth replay, record insertion, spread insertion, snapshot
@@ -15,13 +15,19 @@ use chirograph::{ContentHash, ProjectionSession};
 #[cfg(not(feature = "portable-core"))]
 use chirograph::{ProjectionRequest, ProtocolVersion};
 use mere::kernel::geometry::PortablePoint;
+#[cfg(feature = "legacy-receipts")]
+use mere::kernel::graph::NodeFacetStore;
 use mere::kernel::graph::apply::{GraphDelta, add_node, apply_graph_delta};
-use mere::kernel::graph::{Graph, NodeFacetStore, NodeKey, RelationKind, SemanticSubKind};
+use mere::kernel::graph::{Graph, NodeKey, RelationKind, SemanticSubKind};
+#[cfg(feature = "legacy-receipts")]
 use mere::kernel::persistence::GraphSnapshot;
-use muniment::{Backend, JsonSlots, StoreError};
+#[cfg(feature = "legacy-receipts")]
+use muniment::JsonSlots;
+use muniment::{Backend, StoreError};
 use sceno::InstanceId;
 use scenotime::{Revision, SceneEpoch};
 use serde::de::DeserializeOwned;
+#[cfg(feature = "legacy-receipts")]
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use thiserror::Error;
@@ -47,6 +53,7 @@ pub use domain::validate_divination_graph;
 
 pub use summary::{SessionSummary, SummaryPlacement, summarize};
 
+#[cfg(feature = "legacy-receipts")]
 pub const HOST_SLOT: &str = "cleromancy/mere-host/v1";
 pub const LOCAL_SESSION: &str = "local:cleromancy";
 pub const CONTEXT_FACET: &str = "cleromancy.context/v1";
@@ -69,7 +76,11 @@ pub const SKY_INTERPRETATION_FACET: &str = "cleromancy.sky-interpretation/v1";
 /// A resident authority keeps one durable [`CleromancyHost`] and gives every
 /// admitted endpoint one of these states. Resources and scene instances must
 /// not leak from one peer into another peer's session.
-#[cfg(all(feature = "graphshell-admission", not(target_arch = "wasm32")))]
+#[cfg(all(
+    feature = "legacy-receipts",
+    feature = "graphshell-admission",
+    not(target_arch = "wasm32")
+))]
 pub(crate) struct CleromancyProjectionState {
     projection_session: ProjectionSession,
     resources: BTreeMap<ContentHash, Vec<u8>>,
@@ -77,7 +88,11 @@ pub(crate) struct CleromancyProjectionState {
     last_snapshot: Option<(SceneEpoch, Revision)>,
 }
 
-#[cfg(all(feature = "graphshell-admission", not(target_arch = "wasm32")))]
+#[cfg(all(
+    feature = "legacy-receipts",
+    feature = "graphshell-admission",
+    not(target_arch = "wasm32")
+))]
 impl CleromancyProjectionState {
     pub(crate) fn for_session(projection_session: ProjectionSession) -> Self {
         Self {
@@ -125,6 +140,7 @@ pub enum HostError {
     Reading(#[from] ReadingError),
 }
 
+#[cfg(feature = "legacy-receipts")]
 #[derive(Clone, Serialize, Deserialize)]
 struct PersistedHost {
     graph: GraphSnapshot,
@@ -133,10 +149,13 @@ struct PersistedHost {
     projection_revision: u64,
 }
 
-/// Cleromancy's source of truth: a Mere graph stored as one typed Muniment
-/// slot and projected through Graphshell's endpoint vocabulary.
+/// A transient divination graph reader and transformer. The ordinary app uses
+/// resident-disclosed candidates; retired private slots exist only under the
+/// explicit `legacy-receipts` harness feature.
 pub struct CleromancyHost<B> {
-    slots: JsonSlots<B>,
+    _backend: std::marker::PhantomData<B>,
+    #[cfg(feature = "legacy-receipts")]
+    slots: Option<JsonSlots<B>>,
     projection_session: ProjectionSession,
     pub(crate) graph: Graph,
     // Transient layout facts belong to this graph owner. This is neither a
@@ -148,14 +167,42 @@ pub struct CleromancyHost<B> {
     pub(crate) resources: BTreeMap<ContentHash, Vec<u8>>,
     active_instances: HashMap<InstanceId, NodeKey>,
     last_snapshot: Option<(SceneEpoch, Revision)>,
+    #[cfg(feature = "legacy-receipts")]
     persisted_document: Option<PersistedHost>,
     dirty: bool,
 }
 
+impl CleromancyHost<muniment::MemoryBackend> {
+    /// A transient product reader/transformer over a resident's complete graph.
+    /// This constructor opens no backend and owns no durable snapshot slot.
+    pub fn candidate(graph: Graph) -> Result<Self, HostError> {
+        validate_divination_graph(&graph)?;
+        Ok(Self {
+            _backend: std::marker::PhantomData,
+            #[cfg(feature = "legacy-receipts")]
+            slots: None,
+            projection_session: ProjectionSession(LOCAL_SESSION.to_string()),
+            graph,
+            #[cfg(not(feature = "portable-core"))]
+            projection_channels: std::sync::Mutex::new(mere::canvas::ChannelRegistry::new()),
+            projection_epoch: 1,
+            projection_revision: 1,
+            resources: BTreeMap::new(),
+            active_instances: HashMap::new(),
+            last_snapshot: None,
+            #[cfg(feature = "legacy-receipts")]
+            persisted_document: None,
+            dirty: false,
+        })
+    }
+}
+
 impl<B: Backend> CleromancyHost<B> {
-    pub fn empty(backend: B) -> Self {
+    pub fn empty(_backend: B) -> Self {
         Self {
-            slots: JsonSlots::new(backend),
+            _backend: std::marker::PhantomData,
+            #[cfg(feature = "legacy-receipts")]
+            slots: Some(JsonSlots::new(_backend)),
             projection_session: ProjectionSession(LOCAL_SESSION.to_string()),
             graph: Graph::new(),
             #[cfg(not(feature = "portable-core"))]
@@ -165,16 +212,19 @@ impl<B: Backend> CleromancyHost<B> {
             resources: BTreeMap::new(),
             active_instances: HashMap::new(),
             last_snapshot: None,
+            #[cfg(feature = "legacy-receipts")]
             persisted_document: None,
             dirty: true,
         }
     }
 
+    #[cfg(feature = "legacy-receipts")]
     pub async fn open(backend: B) -> Result<Self, HostError> {
         let slots = JsonSlots::new(backend);
         let Some(saved): Option<PersistedHost> = slots.load(HOST_SLOT).await? else {
             return Ok(Self {
-                slots,
+                _backend: std::marker::PhantomData,
+                slots: Some(slots),
                 projection_session: ProjectionSession(LOCAL_SESSION.to_string()),
                 graph: Graph::new(),
                 #[cfg(not(feature = "portable-core"))]
@@ -184,6 +234,7 @@ impl<B: Backend> CleromancyHost<B> {
                 resources: BTreeMap::new(),
                 active_instances: HashMap::new(),
                 last_snapshot: None,
+                #[cfg(feature = "legacy-receipts")]
                 persisted_document: None,
                 dirty: true,
             });
@@ -192,7 +243,8 @@ impl<B: Backend> CleromancyHost<B> {
         let mut graph = Graph::from_snapshot(&saved.graph);
         graph.overlay_facets(saved.facets);
         Ok(Self {
-            slots,
+            _backend: std::marker::PhantomData,
+            slots: Some(slots),
             projection_session: ProjectionSession(LOCAL_SESSION.to_string()),
             graph,
             #[cfg(not(feature = "portable-core"))]
@@ -207,26 +259,49 @@ impl<B: Backend> CleromancyHost<B> {
         })
     }
 
-    pub async fn persist(&mut self, saved_at_secs: u64) -> Result<(), HostError> {
-        let document = match &self.persisted_document {
-            Some(document) if !self.dirty && document.graph.timestamp_secs == saved_at_secs => {
-                document.clone()
-            },
-            _ => {
-                let mut graph = self.graph.to_snapshot();
-                graph.timestamp_secs = saved_at_secs;
-                PersistedHost {
-                    graph,
-                    facets: self.graph.facets().clone(),
-                    projection_epoch: self.projection_epoch,
-                    projection_revision: self.projection_revision,
-                }
-            },
-        };
-        self.slots.save(HOST_SLOT, &document).await?;
-        self.persisted_document = Some(document);
+    /// Validate a transient candidate. Historical receipt harnesses may opt
+    /// into their retired private slot; the ordinary product never compiles it.
+    pub async fn persist(&mut self, _saved_at_secs: u64) -> Result<(), HostError> {
+        #[cfg(feature = "legacy-receipts")]
+        if let Some(slots) = &self.slots {
+            let document = match &self.persisted_document {
+                Some(document) if !self.dirty && document.graph.timestamp_secs == _saved_at_secs => {
+                    document.clone()
+                },
+                _ => {
+                    let mut graph = self.graph.to_snapshot();
+                    graph.timestamp_secs = _saved_at_secs;
+                    PersistedHost {
+                        graph,
+                        facets: self.graph.facets().clone(),
+                        projection_epoch: self.projection_epoch,
+                        projection_revision: self.projection_revision,
+                    }
+                },
+            };
+            slots.save(HOST_SLOT, &document).await?;
+            self.persisted_document = Some(document);
+            self.dirty = false;
+            return Ok(());
+        }
+        validate_divination_graph(&self.graph)?;
         self.dirty = false;
         Ok(())
+    }
+
+    /// Capture product edits for the resident journal, using stable node ids.
+    /// Installing a recorder does not persist or grant application authority.
+    pub fn record_edits(
+        &mut self,
+        edits: std::sync::Arc<std::sync::Mutex<Vec<mere::kernel::graph::CapturedDelta>>>,
+    ) {
+        self.graph
+            .set_recorder(Some(std::sync::Arc::new(move |delta| {
+                edits
+                    .lock()
+                    .expect("candidate edit buffer")
+                    .push(delta.clone());
+            })));
     }
 
     pub fn graph(&self) -> &Graph {
@@ -234,7 +309,14 @@ impl<B: Backend> CleromancyHost<B> {
     }
 
     pub fn was_reopened(&self) -> bool {
-        self.persisted_document.is_some()
+        #[cfg(feature = "legacy-receipts")]
+        {
+            return self.persisted_document.is_some();
+        }
+        #[cfg(not(feature = "legacy-receipts"))]
+        {
+            false
+        }
     }
 
     pub fn is_empty(&self) -> bool {
@@ -245,7 +327,11 @@ impl<B: Backend> CleromancyHost<B> {
         self.projection_session.clone()
     }
 
-    #[cfg(all(feature = "graphshell-admission", not(target_arch = "wasm32")))]
+    #[cfg(all(
+        feature = "legacy-receipts",
+        feature = "graphshell-admission",
+        not(target_arch = "wasm32")
+    ))]
     pub(crate) fn swap_projection_state(&mut self, state: &mut CleromancyProjectionState) {
         std::mem::swap(&mut self.projection_session, &mut state.projection_session);
         std::mem::swap(&mut self.resources, &mut state.resources);
@@ -253,7 +339,11 @@ impl<B: Backend> CleromancyHost<B> {
         std::mem::swap(&mut self.last_snapshot, &mut state.last_snapshot);
     }
 
-    #[cfg(all(feature = "graphshell-admission", not(target_arch = "wasm32")))]
+    #[cfg(all(
+        feature = "legacy-receipts",
+        feature = "graphshell-admission",
+        not(target_arch = "wasm32")
+    ))]
     pub(crate) fn current_projection_revision(&self) -> (SceneEpoch, Revision) {
         (
             SceneEpoch(self.projection_epoch),
@@ -264,7 +354,11 @@ impl<B: Backend> CleromancyHost<B> {
     /// Rebind this in-memory endpoint before it serves an already-admitted
     /// Graphshell session. The durable reading graph stays local; the session
     /// name and all disclosed resources are per connection.
-    #[cfg(all(feature = "graphshell-admission", not(target_arch = "wasm32")))]
+    #[cfg(all(
+        feature = "legacy-receipts",
+        feature = "graphshell-admission",
+        not(target_arch = "wasm32")
+    ))]
     pub(crate) fn bind_projection_session(&mut self, session: ProjectionSession) {
         self.projection_session = session;
         self.resources.clear();
@@ -295,7 +389,11 @@ impl<B: Backend> CleromancyHost<B> {
     /// Unlike [`Self::active_revision`], this does not follow later durable
     /// graph changes. Resident endpoints use it to decide whether another
     /// admitted session advanced their view.
-    #[cfg(all(feature = "graphshell-admission", not(target_arch = "wasm32")))]
+    #[cfg(all(
+        feature = "legacy-receipts",
+        feature = "graphshell-admission",
+        not(target_arch = "wasm32")
+    ))]
     pub(crate) fn last_snapshot_revision(&self) -> Option<(SceneEpoch, Revision)> {
         self.last_snapshot
     }
