@@ -23,17 +23,17 @@ sky-timeline = ["dep:turquet-timeline"]
 
 [dependencies]
 blake3 = "1"
-chartulary = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-chirograph = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-graphshell-client = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-mere = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0", default-features = false, features = ["graph"] }
-muniment = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0", features = ["redb"] }
+chartulary = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+chirograph = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+graphshell-client = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+mere = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4", default-features = false, features = ["graph"] }
+muniment = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4", features = ["redb"] }
 rand_core = { version = "0.6", features = ["getrandom"] }
-sceno = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-scenotime = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
+sceno = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+scenotime = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-servitor = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
+servitor = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
 thiserror = "2"
 turquet-timeline = { package = "turquet", git = "https://github.com/merely-made/turquet.git", rev = "30875f30e83909f3030bc01237a5046e14cde29b", version = "=0.17.0", optional = true }
 
@@ -61,21 +61,21 @@ name = "resident_candidate"
 path = "../tests/resident_candidate.rs"
 
 [patch."https://github.com/merely-made/mere.git"]
-chartulary = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-chirograph = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-command-menu = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-graphshell-client = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-mere = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-mere-curation = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-mere-forme = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-mere-kernel = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-mere-proofs = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-muniment = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-numen = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-sceno = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-scenotime = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-servitor = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
+chartulary = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+chirograph = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+command-menu = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+graphshell-client = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+mere = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+mere-curation = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+mere-forme = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+mere-kernel = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+mere-proofs = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+muniment = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+numen = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+sceno = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+scenotime = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+servitor = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
 
 [patch.crates-io]
-mere-proofs = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
-muniment = { git = "https://www.github.com/merely-made/mere.git", rev = "c51e1913cc52cc161815b97939a46452495747e0" }
+mere-proofs = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
+muniment = { git = "https://www.github.com/merely-made/mere.git", rev = "a1309431f935427607da35844376a7511656fea4" }
