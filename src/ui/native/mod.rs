@@ -368,6 +368,9 @@ fn apply_worker_update(
             runner.update(|state| {
                 let ui = &mut state.consultation;
                 ui.replace_catalog(catalog);
+                if ui.status.is_busy() {
+                    ui.status = crate::ui::state::ConsultationStatus::Ready;
+                }
             });
         },
         #[cfg(feature = "analytic-ephemeris")]

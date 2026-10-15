@@ -24,6 +24,7 @@ pub mod field;
 pub mod host;
 pub mod intents;
 pub mod moirai;
+pub mod narrative;
 #[cfg(not(feature = "portable-core"))]
 mod projection;
 pub mod reading;

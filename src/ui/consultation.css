@@ -76,7 +76,35 @@ button:focus, input:focus, textarea:focus, select:focus, [role='textbox']:focus 
 .astrology-prompt h4 { font-family: var(--tabard-font-reading, serif); font-size: 23px; margin: 0 0 8px; color: var(--tabard-color-text-header,#fff0cf); }
 .astrology-prompt p { line-height: 1.6; }
 
+.reading-context { margin: 0 0 12px; }
+.reading-context .reading-question { margin-bottom: 4px; }
+.reading-context-facts { font-size: 13px; line-height: 1.5; color: var(--tabard-color-text-dim,#d7c9a9); overflow-wrap: anywhere; }
+.position-meaning { margin: 0 0 14px; font-size: 14px; line-height: 1.5; color: var(--tabard-color-text-dim,#d7c9a9); }
+.position-meaning-label { display: block; font-size: 13px; color: var(--tabard-color-primary,#d7b46a); }
+.reading-narrative { margin: 16px 0; }
+.narration-overview { font-size: 14px; line-height: 1.5; color: var(--tabard-color-text-dim,#d7c9a9); }
+.narration-list { margin: 0; padding-left: 0; list-style: none; }
+.narration { display: block; margin: 0 0 12px; padding: 10px 12px; border-left: 2px solid var(--tabard-color-text-disabled,#625d50); }
+.narration.current { border-left-color: var(--tabard-color-text-header,#e4cf9f); }
+.narration-heading { display: block; margin-bottom: 4px; font-size: 13px; color: var(--tabard-color-primary,#d7b46a); }
+.narration-text { margin: 0; font-size: 15px; line-height: 1.6; }
+.reflection-examples ul { margin: 0 0 12px; padding-left: 0; list-style: none; }
+.reflection-example { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 8px; }
+.reflection-example-text { flex: 1 1 200px; min-width: 0; font-family: var(--tabard-font-reading, serif); font-style: italic; line-height: 1.5; }
+.reflection-example button { margin-top: 0; }
+/* Cambium's detail panel leaves geometry to the host: one fact per row,
+   its label above its explanation. */
+.detail-section-title { display: block; margin: 16px 0 8px; font-weight: bold; color: var(--tabard-color-text-header,#e4cf9f); }
+.detail-row { display: block; margin: 0 0 10px; }
+.detail-key { display: block; margin-bottom: 2px; font-size: 13px; color: var(--tabard-color-primary,#d7b46a); }
+.detail-value { display: block; font-size: 14px; line-height: 1.5; overflow-wrap: anywhere; }
+
 /* Family roles retain each surface's existing size, weight and line-height. */
-.eyebrow, .control-label, .reading-card h3, .scene-position { font-family: var(--tabard-font-label, sans-serif); }
+.eyebrow, .control-label, .reading-card h3, .scene-position, .position-meaning-label, .narration-heading, .detail-key { font-family: var(--tabard-font-label, sans-serif); }
 .reading-card h4, .scene-title, .astrology-prompt h4 { font-family: var(--tabard-font-heading, serif); }
 pre, code { font-family: var(--tabard-font-code, monospace); }
+
+/* Reading order stays fixed while cards reflow to the available width. */
+.reading-spread-cards { display:flex; flex-wrap:wrap; gap:12px; }
+.reading-spread-cards .scene-card { flex:1 1 150px; min-width:0; min-height:136px; overflow-wrap:anywhere; }
+.cleromancy-consultation { overflow-wrap:anywhere; }

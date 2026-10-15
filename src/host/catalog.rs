@@ -256,4 +256,29 @@ impl<B: Backend> CleromancyHost<B> {
         self.replay_spread(&spread)?;
         Ok(spread)
     }
+
+    /// The authored template bound to one session, if any. A session has at
+    /// most one authored spread; a second binding is stored inconsistency.
+    pub fn spread_template_for_session(
+        &self,
+        session_id: &str,
+    ) -> Result<Option<SpreadTemplate>, HostError> {
+        let mut spreads = self.canonical_facet_values(
+            SPREAD_FACET,
+            |spread: &Spread| spread.id.clone(),
+            |id| format!("cleromancy://spread/{id}"),
+        )?;
+        spreads.retain(|spread| spread.session_id == session_id);
+        match spreads.as_slice() {
+            [] => Ok(None),
+            [spread] => {
+                self.replay_spread(spread)?;
+                Ok(Some(self.spread_template_for_id(&spread.template_id)?))
+            },
+            _ => Err(HostError::InvalidStoredFacet {
+                facet: SPREAD_FACET,
+                reason: format!("session {session_id} has more than one authored spread"),
+            }),
+        }
+    }
 }

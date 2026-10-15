@@ -12,17 +12,17 @@
 use std::path::Path;
 use std::sync::{Arc, Mutex};
 
-use graphshell::lifecycle::{AdmittedEndpointContext, BindAdmittedSession};
-use graphshell::native::endpoint_catalog::{ResidentEndpointCatalog, ResidentEndpointCatalogError};
+use chirograph::{
+    CarrierNotice, EndpointDescriptor, IntentInvocation, IntentResult, ProjectionRequest,
+    ProjectionSnapshot, ResourceRequest, ResourceResponse,
+};
 #[cfg(feature = "personal-sync")]
 use graphshell::personal_sync::SyncProjection;
 use graphshell_endpoint::{
     IntentSink, PresentationSource, ProjectionCatalog, ProjectionNoticeSource, ProjectionSource,
 };
-use chirograph::{
-    CarrierNotice, EndpointDescriptor, IntentInvocation, IntentResult, ProjectionRequest,
-    ProjectionSnapshot, ResourceRequest, ResourceResponse,
-};
+use graphshell_host::endpoint_catalog::{ResidentEndpointCatalog, ResidentEndpointCatalogError};
+use graphshell_host::lifecycle::{AdmittedEndpointContext, BindAdmittedSession};
 use muniment::Backend;
 use servitor::Subject;
 #[cfg(feature = "personal-sync")]

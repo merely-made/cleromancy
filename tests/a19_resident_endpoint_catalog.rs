@@ -5,19 +5,17 @@
 
 use std::collections::VecDeque;
 
+use chirograph::{CapabilityProfile, IntentResult, PresentationCapability, ProjectionSession};
 use cleromancy::moirai::clotho::EntropySource;
 use cleromancy::servitor::{Cap, Grant, Mode, Subject};
 use cleromancy::{
     AstrologyChart, AstrologyMoment, AstrologyPosition, CREATE_CONCURRENCE_INTENT, CleromancyApp,
     CleromancyHost, ReadingEngine, ReadingError, a0_fixture,
 };
-use graphshell::client::RetainedEndpointSession;
-use graphshell::lifecycle::{AdmittedEndpointContext, BindAdmittedSession};
-use graphshell::native::endpoint_catalog::ResidentEndpointCatalog;
+use graphshell_client::RetainedEndpointSession;
 use graphshell_endpoint::local::LocalCarrier;
-use chirograph::{
-    CapabilityProfile, IntentResult, PresentationCapability, ProjectionSession,
-};
+use graphshell_host::endpoint_catalog::ResidentEndpointCatalog;
+use graphshell_host::lifecycle::{AdmittedEndpointContext, BindAdmittedSession};
 use muniment::MemoryBackend;
 
 #[test]

@@ -11,8 +11,8 @@ use chirograph::{
     CarrierRequestBody, CarrierResponseBody, IntentResult, PortableCardV1, ProjectionSnapshot,
 };
 use djinn::embedded_reservoir::ReservoirAttachment;
-use graphshell::{mere_route, session_item};
 use mere::kernel::graph::{CapturedDelta, Graph};
+use mere_overmap::{route as mere_route, wire as session_item};
 use mere_view::{MereViewModel, MereViewRequest};
 use muniment::MemoryBackend;
 
@@ -690,8 +690,8 @@ mod tests {
         use castellan::authority::PersonaeHost;
         use castellan::custody::{IdentityVault, InMemoryStorage, Profile};
         use djinn::embedded_reservoir::ReservoirAttachmentOptions;
-        use graphshell::identity::VaultProtectionView;
-        use graphshell::native::app_admission::AppId;
+        use graphshell_endpoint::door::app_admission::AppId;
+        use graphshell_endpoint::door::identity::VaultProtectionView;
         use mere_view::{ArchiveRequest, SessionStep};
         use personae::{Ed25519Keypair, PersonaId, ProfileId};
 

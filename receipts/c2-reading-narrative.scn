@@ -1,0 +1,41 @@
+# C2: the reading narrates its own computation at the ordinary window size.
+# Needs a provisioned persona in MERE_ROOT; a fresh root refuses to open.
+wait
+assert snap fields == 1
+c2-author-layout
+wait
+c2-read-layout
+wait
+assert snap readings == 3
+advance
+wait
+assert snap reflections == 1
+assert text How this reading was made
+assert text operating-system randomness
+assert text this deck has no reversed cards
+reveal key reading-context reading-context
+settle 2
+capture reading-first-viewport
+reveal key scene-card scene-card:tension
+settle 2
+hover key scene-card scene-card:tension
+settle 2
+assert text presses on what I hold
+capture hover-tension
+unhover key scene-card scene-card:tension
+settle 2
+reveal key reading-narrative reading-narrative
+settle 2
+capture narration
+reveal key reflection-examples reflection-examples
+settle 2
+capture reflection-examples
+resize 420 760
+wait
+reveal key scene-card scene-card:next_step
+settle 2
+assert visible key scene-card scene-card:next_step
+capture compact-third-card
+reveal key reading-narrative reading-narrative
+settle 2
+capture compact-narration

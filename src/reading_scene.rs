@@ -59,6 +59,7 @@ pub fn reading_scene(detail: &ConsultationDetail) -> ReadingScene {
     }
 }
 
+/// A readable fallback for a stored name that has no saved label.
 pub fn position_label(position: &str) -> String {
     let label = position.replace('_', " ");
     let mut chars = label.chars();
@@ -66,24 +67,4 @@ pub fn position_label(position: &str) -> String {
         .next()
         .map(|first| first.to_uppercase().to_string() + chars.as_str())
         .unwrap_or(label)
-}
-
-pub fn position_rationale(position: &str) -> &'static str {
-    match position {
-        "foundation" => {
-            "Read this as the ground you are starting from: what supports the situation, or what you are taking for granted."
-        },
-        "tension" => {
-            "Read this against the foundation: what complicates it, challenges it, or asks for a different response."
-        },
-        "next_step" => {
-            "Read this as a possible response to that tension: something to try or attend to, rather than a promised outcome."
-        },
-        "focus" => {
-            "Use this as a single lens on your question. Notice what fits your experience and what does not."
-        },
-        _ => {
-            "Read this through the named position in your chosen layout, alongside the other results and your question."
-        },
-    }
 }

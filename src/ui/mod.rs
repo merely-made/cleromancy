@@ -23,3 +23,5 @@ pub use action::{ConsultationAction, ConsultationContext, ConsultationLayout};
 pub use screen::ConsultationScreen;
 pub use state::{ConsultationStatus, ConsultationUi};
 pub use view::{ConsultationView, consultation_view};
+
+mod chart_input;

@@ -12,7 +12,7 @@ use std::sync::mpsc::{self, Sender};
 
 use super::resident::ResidentConsultation;
 use djinn::embedded_reservoir::{ApplicationReservoirOptions, ReservoirAttachment};
-use graphshell::native::app_admission::{AppId, configured_app_endpoint};
+use graphshell_endpoint::door::app_admission::{AppId, configured_app_endpoint};
 use mere_view::{MereViewModel, MereViewRequest};
 use std::time::Duration;
 

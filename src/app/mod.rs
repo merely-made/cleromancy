@@ -5,13 +5,15 @@
 //! Graphshell owns the portable presentation client, and Servitor stays
 //! reachable at an explicit authority seam. `invoke` holds intent dispatch.
 
-use graphshell::view::{ProjectionLayoutView, ProjectionReceiptView, render_projection_receipt};
+use chirograph::{
+    CapabilityProfile, CarrierNotice, IntentInvocation, IntentResult, PresentationCapability,
+};
 use graphshell_client::{
     ClientState, PresentationResolution, ResolvedPresentation, SnapshotApplyError,
 };
 use graphshell_endpoint::PresentationSource;
-use chirograph::{
-    CapabilityProfile, CarrierNotice, IntentInvocation, IntentResult, PresentationCapability,
+use graphshell_host::view::{
+    ProjectionLayoutView, ProjectionReceiptView, render_projection_receipt,
 };
 use muniment::Backend;
 use servitor::Subject;
@@ -76,10 +78,7 @@ pub(crate) struct CleromancyAppSessionState {
     not(target_arch = "wasm32")
 ))]
 impl CleromancyAppSessionState {
-    pub(crate) fn admitted(
-        session: chirograph::ProjectionSession,
-        subject: Subject,
-    ) -> Self {
+    pub(crate) fn admitted(session: chirograph::ProjectionSession, subject: Subject) -> Self {
         Self {
             projection: CleromancyProjectionState::for_session(session),
             intent_subject: Some(subject),

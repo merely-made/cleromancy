@@ -89,6 +89,14 @@ mod presentation_tests {
                 "compact controls",
                 include_str!("../../../receipts/c1-resident-compact-controls.scn"),
             ),
+            (
+                "reading narrative",
+                include_str!("../../../receipts/c2-reading-narrative.scn"),
+            ),
+            (
+                "reading reopen",
+                include_str!("../../../receipts/c2-reading-reopen.scn"),
+            ),
         ] {
             taproot::Scenario::parse(script)
                 .unwrap_or_else(|error| panic!("{name} scenario: {error}"));
@@ -311,6 +319,116 @@ struct ScenarioDriver<'a, 'ctx> {
 impl ScenarioDriver<'_, '_> {
     fn app_step(&mut self, line: &str) -> Result<(), String> {
         match line {
+            "c2-author-layout" => {
+                self.ctx.runner.update(|state| {
+                    let ui = &mut state.consultation;
+                    ui.template_label = cambium::TextInput::new("C2 Letting go");
+                    ui.template_positions = cambium::TextInput::new("foundation | What I must release\ntension | What resists\nnext_step | What I can try");
+                    ui.template_relations = cambium::TextInput::new("tension | questions | foundation | presses on what I hold");
+                    let action = ui.request_spread_template();
+                    ui.record_action(action);
+                });
+                submit_pending(self.ctx.runner, self.state.worker.as_ref());
+                Ok(())
+            },
+            "c2-read-layout" => {
+                let mut error = None;
+                self.ctx.runner.update(|state| {
+                    let ui = &mut state.consultation;
+                    let Some(index) = ui
+                        .catalog
+                        .spread_templates
+                        .iter()
+                        .position(|t| t.label == "C2 Letting go")
+                    else {
+                        error = Some("C2 authored layout is missing".to_string());
+                        return;
+                    };
+                    ui.context_label = cambium::TextInput::new("C2 change of habit");
+                    ui.question = cambium::TextInput::new("What am I ready to set down?");
+                    ui.tags = cambium::TextInput::new("change, reflection");
+                    ui.additional_facts = cambium::TextInput::new("season: autumn");
+                    ui.field_select.selected = 0;
+                    ui.mode.selected = 1;
+                    ui.layout.selected = 2;
+                    ui.template_select.selected = index + 1;
+                    let action = ui.request_read();
+                    ui.record_action(action);
+                    error = ui.error().map(str::to_string);
+                });
+                if let Some(error) = error {
+                    return Err(error);
+                }
+                self.state.scenario_stage = 1;
+                submit_pending(self.ctx.runner, self.state.worker.as_ref());
+                Ok(())
+            },
+            _ if line.starts_with("assert visible key ") => {
+                let target = line.trim_start_matches("assert visible key ");
+                let node = self.keyed(target)?;
+                let painted = self
+                    .ctx
+                    .painted_rect(node)
+                    .ok_or("missing painted bounds")?;
+                let visible = self
+                    .ctx
+                    .visible_rect(node)
+                    .ok_or("missing visible bounds")?;
+                if painted.2 <= 0.0
+                    || painted.3 <= 0.0
+                    || (painted.0 - visible.0).abs() > 1.0
+                    || (painted.1 - visible.1).abs() > 1.0
+                    || (painted.2 - visible.2).abs() > 1.0
+                    || (painted.3 - visible.3).abs() > 1.0
+                {
+                    return Err(format!(
+                        "{target} clipped: painted={painted:?}, visible={visible:?}"
+                    ));
+                }
+                eprintln!("cleromancy: visible {target}: painted={painted:?}, visible={visible:?}");
+                Ok(())
+            },
+            _ if line.starts_with("reveal class ") => {
+                let class = line.trim_start_matches("reveal class ");
+                let node = {
+                    let dom = self.ctx.runner.dom();
+                    let dom = dom.borrow();
+                    taproot::matching(&dom, &taproot::Selector::class(class))
+                        .into_iter()
+                        .next()
+                        .ok_or_else(|| format!("no .{class}"))?
+                };
+                self.ctx
+                    .scroll_into_view(node, cambium_genet_winit_host::ScrollAlign::Start);
+                Ok(())
+            },
+            _ if line.starts_with("reveal key ") => {
+                let node = self.keyed(line.trim_start_matches("reveal key "))?;
+                self.ctx
+                    .scroll_into_view(node, cambium_genet_winit_host::ScrollAlign::Start);
+                Ok(())
+            },
+            // Acceptance-only: deliver the mounted view's own hover handler,
+            // as the host does when its hit target enters or leaves.
+            _ if line.starts_with("hover key ") || line.starts_with("unhover key ") => {
+                let (phase, key) = match line.strip_prefix("hover key ") {
+                    Some(key) => (cambium::HoverPhase::Enter, key),
+                    None => (
+                        cambium::HoverPhase::Leave,
+                        line.trim_start_matches("unhover key "),
+                    ),
+                };
+                let node = self.keyed(key)?;
+                let (_, _, width, height) = self
+                    .ctx
+                    .painted_rect(node)
+                    .ok_or_else(|| format!("{key} has no painted bounds"))?;
+                self.ctx.runner.dispatch_hover(
+                    node,
+                    cambium::HoverEvent::new(phase, (width / 2.0, height / 2.0), (width, height)),
+                );
+                Ok(())
+            },
             _ if line.starts_with("reveal mere-control ") => {
                 let step = line.trim_start_matches("reveal mere-control ");
                 let node = self.mere_control(step)?;
@@ -344,7 +462,9 @@ impl ScenarioDriver<'_, '_> {
                         "mere-control {step} not fully reachable: painted={painted:?}, visible={visible:?}, viewport={width}x{height}"
                     ));
                 }
-                let event = format!("visible mere-control {step}: painted={painted:?}, visible={visible:?}, viewport={width}x{height}");
+                let event = format!(
+                    "visible mere-control {step}: painted={painted:?}, visible={visible:?}, viewport={width}x{height}"
+                );
                 // Acceptance-only: retain the exact observed bounds in native.log
                 // as well as the event stream, whose successful payloads Taproot
                 // does not currently include in its saved Outcome.
@@ -562,6 +682,22 @@ impl ScenarioDriver<'_, '_> {
             .dispatch_click(node, cambium::PointerClick::at((width / 2.0, height / 2.0)));
         submit_mere_pending(self.ctx.runner, self.state.worker.as_ref());
         Ok(())
+    }
+
+    /// `class data-key`: one keyed element of a class, as the receipts name it.
+    fn keyed(&self, target: &str) -> Result<genet_scripted_dom::NodeId, String> {
+        let (class, key) = target
+            .split_once(' ')
+            .ok_or_else(|| format!("expected 'class data-key', got {target:?}"))?;
+        let dom = self.ctx.runner.dom();
+        let dom = dom.borrow();
+        taproot::matching(
+            &dom,
+            &taproot::Selector::class(class).with_attr("data-key", key),
+        )
+        .into_iter()
+        .next()
+        .ok_or_else(|| format!("no .{class} with data-key {key}"))
     }
 
     fn advance(&mut self) -> Result<(), String> {

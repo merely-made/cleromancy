@@ -75,6 +75,11 @@ pub struct ConsultationDetail {
     pub readings: Vec<Reading>,
     pub reflections: Vec<Reflection>,
     pub concurrences: Vec<Concurrence>,
+    /// The authored layout bound to this session, when it was read through
+    /// one. Its labels and relations are the positions' meaning; a built-in
+    /// position name never overrides them.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub spread_template: Option<SpreadTemplate>,
 }
 
 /// A replay-derived comparison of two sealed session receipts. It never writes
@@ -187,6 +192,7 @@ impl<B: Backend> Consultation<B> {
         let readings = self.host.replay_session(&session)?;
         let reflections = self.host.reflections_for_session(&session.id)?;
         let concurrences = self.host.concurrences_for_session(&session.id)?;
+        let spread_template = self.host.spread_template_for_session(&session.id)?;
         Ok(ConsultationDetail {
             session,
             context,
@@ -194,6 +200,7 @@ impl<B: Backend> Consultation<B> {
             readings,
             reflections,
             concurrences,
+            spread_template,
         })
     }
 
