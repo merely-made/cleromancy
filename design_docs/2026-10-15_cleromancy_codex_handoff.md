@@ -1,0 +1,179 @@
+# Cleromancy handoff for Codex, 2026-10-15
+
+**Status:** handoff, written for the Codex lane to execute in order. It covers
+what the Mere stack lift changed under Cleromancy on 2026-10-15 and what
+Cleromancy still owes. Every ruling quoted here is Mark's and is settled. If
+a task needs a decision that isn't here, stop and ask Mark, giving concrete
+options.
+
+## 1. Where Cleromancy stands
+
+### `main` is behind the lane
+
+`origin/main` is `d18590f`, on the old family:
+
+- Mere `0b9b7a9b`;
+- Genet `7a8c5b8`;
+- `graphshell::native` and the port's `graphshell::lifecycle` paths.
+
+### The lane holds the current work
+
+The Codex lane in Mark's checkout (`/Users/markik/Code/repos/cleromancy`) is
+on branch `codex/c1-resident-divination-20261014`.
+
+- **Pushed to that branch:** through `8e395cd`, which is 6 commits ahead of
+  `main` and 1 behind it.
+- **Local only, not pushed:**
+  - `fcfb1a4`: "Consume the extracted Mere stack and narrate saved readings";
+  - `b153672`: "Record C2 stack intake and bounded native qualification" (2026-10-15 18:02).
+- **Separate branch:** `codex/c1-float-roundtrip-core-20261014`, at
+  `f7ec0db`, 3 commits ahead.
+
+### What `b153672` already pins
+
+The lane has already consumed most of the lift.
+
+| Supplier | Pinned at `b153672` |
+|---|---|
+| Mere | `8b08c98b2`, for all 160 Mere rows |
+| Genet | `ae3d9f5d` |
+| Murm | `38e9c9b8` |
+
+Imports:
+
+- `graphshell_host::{endpoint_catalog, lifecycle, view}`;
+- `graphshell_client::{RetainedEndpointSession, ResolvedContent}`;
+- `graphshell_endpoint::{local::LocalCarrier, stdio::StdioCarrier}`;
+- `djinn`, `pandect`;
+- `graphshell-admission = ["graphshell-host/native"]`.
+
+What still comes from the Graphshell port: only `graphshell::personal_sync`,
+behind the `personal-sync` feature. That's lift L13. It moves once Mere's
+facet dissolution brief rules, so Cleromancy keeps `graphshell` until then.
+
+The lane already solved one-source resolution with a double-slash Mere URL
+(`https://www.github.com/merely-made//mere.git`). It is a redirect-equivalent
+spelling that patches both historical Mere spellings to one immutable
+replacement, because Cargo refuses to patch a source to another revision of
+itself. Keep using it. Knot and Turnstone hit the same Cargo limit today.
+
+### What changed in Mere and Murm since `8b08c98b2`
+
+All of it is on Mere `main`. As of this handoff, Mere `main` is `61fba39d9`.
+
+- **P5:** Graphshell's brokers moved to Djinn (`djinn::door`, `djinn::sync`),
+  and the line codec moved to `chirograph::line`.
+- **Follow-ups:**
+  - `view`, `sessions` and `canary` moved to `graphshell-host`;
+  - `browser_carrier`, `identity_endpoint` and `identity_projection` moved to
+    `djinn::door`;
+  - `resident_mere_proxy` moved to `graphshell_endpoint::door`.
+- **Merge-in:** branches; `MereViewRequest` and `SessionStep` are now
+  `#[non_exhaustive]`.
+- **Rename:** `edit-history` is now `backstep`, published as 0.1.0. sceno and
+  scenomise are bumped to 0.0.5.
+- **Murm:** one line on `main`, at `fb6360c12b`. It merges the C1 callback
+  fix `3d9e799f` and the in-process kind `38e9c9b8`. The old Murm branch
+  names are deleted, and both commits are reachable from `main`.
+- **Merge driver:** `weave` was removed from every family `.gitattributes`,
+  including Cleromancy's (`d18590f`). User git now uses `zdiff3` and
+  `rerere`.
+
+### Mark's rulings that bind this work
+
+- **Git:** land work on `main` as it goes green. Merge lane branches into
+  `main`, don't stack new ones. Fetch first, and never rebase or force-push.
+  Mark has authorized pushing.
+- **Platform family:** pin one immutable Mere, Genet, Netrender and Murm
+  family, and update those pins together.
+- **Remote mere route:** the dialable host starts only once a trusted root
+  other than the persona's exists. Device roots derive from the persona, and
+  pairing issues grants. Place roots come from the place record. See
+  `mere/design_docs/mere_docs/technical_architecture/2026-10-15_remote_mere_route_spec.md`
+  §11.
+
+## 2. Tasks, in order
+
+### Task 1: land the lane
+
+1. In Mark's checkout, confirm the working tree is clean. Push `fcfb1a4` and
+   `b153672` to `codex/c1-resident-divination-20261014`.
+2. Decide whether `codex/c1-float-roundtrip-core-20261014` is contained in
+   the resident-divination line. Its `a3d96b6`/`e2e9c27` commits appear in
+   both histories, so check with `git branch --contains` and `git cherry`.
+   - If it is contained, it's superseded.
+   - If not, merge it first.
+3. Merge the lane into `main`: `git switch main`, `git merge --ff-only
+   origin/main`, then `git merge --no-ff codex/c1-resident-divination-20261014`.
+   - Resolve the `.gitattributes` deletion from `d18590f` in `main`'s favour.
+   - Resolve `DOC_README.md` by keeping both sides' entries. This handoff's
+     index entry is on `main`.
+   - Run the checks below and push `main`.
+4. Delete the merged branches, local and remote.
+
+**Done when:**
+
+- `main` holds the lane's work and this handoff;
+- the checks pass;
+- no `codex/c1-*` branch is left unmerged.
+
+### Task 2: move onto the family's next revision
+
+The family is moving to one Murm (`M = fb6360c12b`) and one Mere revision.
+That happens in the repin round defined in the remote mere route spec §7,
+run by the Knot handoff's lane (`knot-editor/design_docs/2026-10-15_knot_codex_handoff.md`).
+Its output Mere is called `R2`.
+
+1. Wait for `R2`. If it isn't out, ask Mark whether to take current Mere
+   `main` instead.
+2. Move every Mere row, including the double-slash patch rows, to `R2`.
+3. Move every Murm row from `38e9c9b8` to `M`.
+4. Align Genet, Netrender and the vello fork with Mere's own manifest at
+   `R2`.
+5. Make the source changes:
+   - `graphshell_client::line` and `graphshell_host::line`, if named
+     directly, become `chirograph::line`;
+   - `edit_history` becomes `backstep`;
+   - any `match` on `MereViewRequest` or `SessionStep` gets a wildcard arm;
+   - anything that named a moved Graphshell module (`view`, `sessions`,
+     `canary`, `browser_carrier`, `identity_*`, `resident_mere_proxy`) takes
+     its new path.
+6. Run `cargo update`, then confirm `cargo metadata` resolves exactly one
+   Mere family and one Murm family. Use the lane's existing metadata
+   qualification.
+
+**Checks** (from the README):
+
+- `cargo test`, the proof wall;
+- `cargo test --features sky-timeline --test sky_timeline`;
+- `cargo check --features personal-sync --all-targets`;
+- `cargo check --features graphshell-admission --all-targets`;
+- the `core/` portable package's own tests.
+
+Use `TMPDIR=/tmp` for anything that opens a Unix socket. macOS limits socket
+paths to 104 bytes, and the default temp dir is longer.
+
+**Done when:** pushed on `main`, with the counts recorded in the divination
+plan's progress section.
+
+### Task 3: record P4's second-host receipt for Mere
+
+The Mere lift plan's P4 done condition names Cleromancy: "Cleromancy
+registers an endpoint with `ResidentEndpointCatalog` and
+`AdmittedEndpointContext` without `graphshell`." The lane already does this
+through `graphshell-host`.
+
+Point a test, or a receipt line, at that registration, and confirm the
+endpoint path names no `graphshell` package. The port remains only for
+`personal_sync`. Send the commit to the Mere lift plan's owner, or add a
+Progress line there yourself if you can push Mere.
+
+### Not for Codex yet
+
+- **L13 / P8:** Cleromancy builds with no `graphshell` package once
+  `personal_sync`'s replica, event and projection types have a stack home.
+  That waits for Mere's facet dissolution brief, which is waiting on graph
+  semantics' owner.
+- **Native foreground runs:** these are serialized with the Woodshed and Knot
+  lanes. Ask before taking the screen, and check it's unlocked:
+  `ioreg -n Root -d1 -a | grep -A1 CGSSessionScreenIsLocked`.
