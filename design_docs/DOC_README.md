@@ -218,3 +218,9 @@ The divination mere plan retains the full C1 done-conditions. Current H native
 Graphshell witness/reopen has six independent original reviews and owner guards;
 the mounted browser witness has five. Fresh Chrome/live/archive proofs also pass with independent reviews and whole
 owner guards. The full shared wall and final documentation remain pending.
+
+Main integration (2026-10-15): the resident/C2 lane and superseded portable
+branch are merged; [integration checks](../receipts/main-integration_20261015.json)
+pass with the qualified product tree unchanged. The handoff owns the pending
+coordinated R2 intake. Endpoint registration/admission uses graphshell-host;
+personal-sync still uses the Graphshell port.

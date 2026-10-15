@@ -837,3 +837,13 @@ orientations and positions, and interpretations.
   an isolated rerun passes. Remaining formatter findings affect 29 files whose
   bytes are identical to the pre-edit baseline. No remote push, main merge or
   complete shared-wall qualification is inferred.
+
+- 2026-10-15: Published the qualified C2 checkpoint, merged the resident lane
+  and superseded portable-core branch into main, and retained the current
+  product tree and all old receipts. Integration gates pass: 92 default tests,
+  18 portable-core tests, 2 endpoint tests and 1 active sky-timeline fixture;
+  personal-sync and admission all-target checks pass. The
+  [integration receipt](../receipts/main-integration_20261015.json) separates
+  these CPU checks from frozen native qualification. P4 registration/admission
+  imports use graphshell-host. Coordinated R2 intake remains pending before
+  further product implementation; no new C1 shared-wall acceptance is implied.
