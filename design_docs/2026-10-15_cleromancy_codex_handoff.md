@@ -1,6 +1,10 @@
 # Cleromancy handoff for Codex, 2026-10-15
 
-**Status:** handoff, written for the Codex lane to execute in order. It covers
+**Status (2026-10-15 continuation):** C1/C2 lane published and merged on main;
+integration CPU checks pass. The coordinated R2 intake
+remains pending. The historical handoff below records its original inputs.
+
+**Original status:** handoff, written for the Codex lane to execute in order. It covers
 what the Mere stack lift changed under Cleromancy on 2026-10-15 and what
 Cleromancy still owes. Every ruling quoted here is Mark's and is settled. If
 a task needs a decision that isn't here, stop and ask Mark, giving concrete
@@ -177,3 +181,33 @@ Progress line there yourself if you can push Mere.
 - **Native foreground runs:** these are serialized with the Woodshed and Knot
   lanes. Ask before taking the screen, and check it's unlocked:
   `ioreg -n Root -d1 -a | grep -A1 CGSSessionScreenIsLocked`.
+
+## Execution continuation (2026-10-15)
+
+- Published `fcfb1a4` and `b153672` on the resident-divination branch.
+- Fast-forwarded local main to published `9d8ebda`, then merged that lane at
+  `1e2fe7f`. Main's removal of `.gitattributes` and both index entries
+  are retained. Product source, tests and both manifests/locks are byte-identical
+  to `b153672` after integration.
+- `git cherry` identifies portable `f7ec0db` as patch-equivalent to the
+  resident line. Its only changes are core manifest/lock pins, superseded by
+  C2's newer qualified intake. Merge `0f775a0` records its ancestry with the
+  current tree retained. No old receipt or dependency is reverted.
+- Re-ran the existing read-only C2 verifier: 12 original capture hashes, 145
+  source inputs, exact reopened IDs/card bytes and 213 historical tracked
+  receipts pass. This preserves the frozen native source identity; merging
+  documentation is not a new native qualification.
+- The Knot checkout has the coordinated repin round in progress. R2 is not
+  yet identified as published. The required choice to wait or consume current
+  Mere main is pending with Mark; no independent supplier repin has begun.
+
+- Main integration checks pass: default 92, portable core 18, endpoint
+  admission/catalog 2, and the active historical sky-timeline fixture 1.
+  Personal-sync and graphshell-admission all-target checks pass separately.
+  The handoff's sky-only invocation runs zero tests; the additional
+  `legacy-receipts,sky-timeline` invocation executes its fixture.
+- [Integration receipt](../receipts/main-integration_20261015.json) records
+  the exact merge, log hashes and P4 endpoint source paths. Registration and
+  admitted session use `graphshell-host`; `src/admitted.rs` still has its
+  feature-gated `graphshell::personal_sync` import. The port also remains in
+  the resolved graph; this is the endpoint-path receipt, not L13 acceptance.

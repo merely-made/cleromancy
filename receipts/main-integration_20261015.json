@@ -1,0 +1,82 @@
+{
+  "schema": "cleromancy.main-integration/v1",
+  "date": "2026-10-15",
+  "integration_commit": "0f775a04987faa9821f6b2bb46bdf941d91029b0",
+  "qualified_product_source": "fcfb1a4da8e3723653b8cca5dffb801a71e42e1f",
+  "product_tree_unchanged_from": "b153672",
+  "gates": {
+    "default": {
+      "log": "/Users/markik/Code/testing/cleromancy/main-integration-20261015/default.log",
+      "sha256": "e1a75ff7632f377971e7ba9e264047b678c156d5183143dd465edf3dd46ff2a3",
+      "passed": 92,
+      "failed": 0,
+      "ignored": 0
+    },
+    "core": {
+      "log": "/Users/markik/Code/testing/cleromancy/main-integration-20261015/core.log",
+      "sha256": "a45a93cc173c55e29dcd87ce767b709c8658a94a954e8810adad9ce627281a76",
+      "passed": 18,
+      "failed": 0,
+      "ignored": 0
+    },
+    "sky": {
+      "log": "/Users/markik/Code/testing/cleromancy/main-integration-20261015/sky.log",
+      "sha256": "bf82ae944ab18d750b7edbcf35207be0793b21d08ab41b44e09fb0762d25d355",
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "note": "Requested command exits zero but fixture is feature-gated; sky-active adds legacy-receipts and executes it."
+    },
+    "sky-active": {
+      "log": "/Users/markik/Code/testing/cleromancy/main-integration-20261015/sky-active.log",
+      "sha256": "4fb25542e576a198121c968d501c6a5ca84fe22131c3986e5da68e467696a893",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    "personal-sync": {
+      "log": "/Users/markik/Code/testing/cleromancy/main-integration-20261015/personal-sync.log",
+      "sha256": "df63d3644ec5cf5c383e43242dddedb95556daa6401a025b1370bd6b1b159de6",
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    },
+    "admission": {
+      "log": "/Users/markik/Code/testing/cleromancy/main-integration-20261015/admission.log",
+      "sha256": "179670b26e8eba861122c2274a587bd49869b8faad53ceaedd3ee5cc2c119727",
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    },
+    "p4": {
+      "log": "/Users/markik/Code/testing/cleromancy/main-integration-20261015/p4.log",
+      "sha256": "526a585244fdc38f01a0a22aadbfe57932ee04dc88fe8a7eecaa6817d50c1506",
+      "passed": 2,
+      "failed": 0,
+      "ignored": 0
+    }
+  },
+  "p4": {
+    "schema": "cleromancy.graphshell-host-endpoint-source/v1",
+    "source_commit": "0f775a04987faa9821f6b2bb46bdf941d91029b0",
+    "files": {
+      "src/admitted.rs": {
+        "sha256": "3e1690e72c435ef61756e6fc4a2721d10b31c977595afa4ae300abac236d7510",
+        "remaining_port_references": [
+          "graphshell::personal_sync::SyncProjection"
+        ]
+      },
+      "tests/a18_admitted_endpoint.rs": {
+        "sha256": "7f717bc2711d8fa60a81468e91e38fa175ccbdfd102afa3c9387b0c0f929b5c1",
+        "remaining_port_references": []
+      },
+      "tests/a19_resident_endpoint_catalog.rs": {
+        "sha256": "9bfd2a5d83b72c7ab97ddd4f0a6ce7e3838f3d33b8ebb129ee0a9b07e0b2841d",
+        "remaining_port_references": []
+      }
+    },
+    "scope": "Registration/admission uses graphshell-host; source adapter still has cfg personal-sync port import. Not removal of graphshell from transitive graph or native acceptance."
+  },
+  "scope": "CPU integration checks; original C1/C2 receipts and native source identities remain unchanged. No new native, release, graphical unlock or full shared wall acceptance.",
+  "next_family_intake": "Coordinated R2 not yet published; choice pending with Mark."
+}
