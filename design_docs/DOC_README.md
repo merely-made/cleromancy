@@ -114,6 +114,12 @@ the current public overview until it is authored.
 
 ## Consultation, projection, and residency
 
+- [Codex handoff (October 15)](2026-10-15_cleromancy_codex_handoff.md): where
+  Cleromancy stands after the Mere stack lift (its lane already consumes
+  `graphshell-host` at Mere `8b08c98b2`; only `personal_sync` still needs the
+  port), and ordered tasks: land the C1 lane on `main`, move onto the family's
+  next Mere and Murm (`main` `fb6360c12b`) revisions, and record P4's receipt.
+
 - [Shared application appearance acceptance](receipts/tabard_20261011/README.md):
   landed native Tabard choice/workshop/title bar, strict Save/Apply, four modes,
   readable wide/narrow editor and durable fresh reopens; exact CPU/native receipts.
