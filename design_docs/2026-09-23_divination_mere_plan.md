@@ -1,16 +1,20 @@
 # Cleromancy: the divination mere, and a reading that explains itself
 
 **Date:** 2026-09-23
-**Status (2026-10-14):** C1 implementation and bounded native qualification are
-complete on the frozen candidate; the shared browser cutover wall and final
-documentation publication remain pending. No phase is accepted yet. Shared appearance
-and font roles retain their separate published receipts.
+**Status (2026-10-15):** C2 implementation and bounded native author/reopen
+qualification are complete on the working C1 branch, after Mark authorized
+C2 to proceed independently of the shared cutover wall. The stack intake is
+Mere `8b08c98b2`, with the extracted application door, serving views and mere
+route consumed from their stack crates. C1's original qualification ledger,
+shared cutover gates and publication identities retain their separate scope.
+See the [C2 qualification receipt](../receipts/c2-reading-qualification_20261015.json).
+Shared appearance and font roles retain their separate published receipts.
 
 The ordinary product attaches to the resident-held divination mere. Its private
 snapshot and admitted authority APIs are confined to the nondefault
 `legacy-receipts` harness. Daemon and embedded owners install the same immutable
 portable Cleromancy validator. The [C1 qualification ledger](../receipts/c1-resident-qualification_20261014.json)
-binds current H/N source, locked CPU gates, 19 original H captures, independent
+binds its frozen H/N source, locked CPU gates, 19 original H captures, independent
 visual reviews, fresh-process recovery, numerical compact control bounds and
 controlled terminal-fallback unlock/embedded ownership. The historical F/D
 checkpoint retains its separate images, bytes and source identity. V2b still requires the complete 164-scene one-tree
@@ -220,7 +224,7 @@ Their historical receipts do not count as Cleromancy consumer acceptance.
 | C1: session archive | Reservoir V3 | Fresh H native lifecycle/archive and process-reopen receipts pass through the resident, including legitimate archive thaw creation. Read-only focus/layout remain transient and byte-preserving in exact owner regressions and warm inspections. Historical F staged browser controls pass; H staged Save/exact Open/read-only controls and every-byte guards now pass. |
 | C1: access and ambient crossing | Reservoir V4 | Persistent denial, independent ambient consent, read-only scope and idle/live revocation pass resident/process fixtures. C1 preserves that enforcement; trusted owner controls and Cleromancy's card-ambient presentation remain separate later product gates. |
 | C1: standalone ownership | Reservoir V5 | Daemon and embedded compositions preserve the same product validation rules. Fresh H live-client and controlled PATH=/bin production terminal fallback qualify encrypted unlock/embedding; second-owner refusal and clean same-disk H helper handoff pass separate native/API receipts. The host graphical backend is available, but graphical prompt handling remains unqualified. |
-| C2: computation narrative and authored position meaning | Stored reading, field, context and template definitions | Source analysis, narration design and template-resolution preparation can proceed against existing receipts; they do not complete C1 or change the ruled execution order. |
+| C2: computation narrative and authored position meaning | Stored reading, field, context and template definitions | Implemented and bounded native-qualified on 2026-10-15: custom saved labels, per-card computation narrative, hover meanings, context, reflection examples and fresh-process reopening pass on the new stack. The C2 receipt owns the exact source, tests, captures and limits; C1 and shared-wall acceptance remain separate. |
 | C3: typed cards, decks and interpretations | Cleromancy-owned schemas, versioned content and cited traditions | Prepare the domain binding and remove view-owned meaning when this phase executes. Mere does not supply divination semantics. |
 | C4: interactive contextual neighborhood | C3 binding; shared projection definitions/compiler and scene editing | Prepare explicit relation families and a consumer fixture. Focus and curation use owner actions; navigation never implicitly keeps an item. |
 | C4: authored dynamics and retained composition | Shared dynamics grammar, especially G4; G2 for its unified channels | G2 and G4a's portable spec core have since landed; G4b's runtime binding and end-to-end choice retention remain separate gates. The grammar plan owns their current status. Do not introduce an app-private spec or treat a pin bump as adoption. |
@@ -444,6 +448,13 @@ authority included. Nothing is imported: the mere starts empty.
   removed.
 
 ### C2. The reading narrative
+
+**Implementation and bounded qualification (2026-10-15):** see the
+[C2 receipt](../receipts/c2-reading-qualification_20261015.json). The ordinary
+1160×760 window and compact 420×760 reading, authored layout recovery and
+fresh-process reopen are qualified on the repinned stack. The narration still
+reports independent upright draws; C5 remains responsible for changing that
+behavior. Exact chart import data remains available at the calculation boundary.
 
 The reading explains its own computation in plain words, card by card. Each
 card's narration says which deck, which method, what randomness and from where,
@@ -769,3 +780,60 @@ orientations and positions, and interpretations.
   viewport drift: four diagnostic runs, zero canonical accepted cases. The
   web-only repair is committed as `4a5099820` and is being rebuilt; native C51/A3/D
   receipts retain their original identities until the browser stack settles.
+
+- 2026-10-14: Mark started C2 before the shared V2b wall closes; C1's open gates
+  are unchanged. New `narrative` module derives each card's narration from its
+  sealed receipt, stored field and context: method and randomness source (OS,
+  or disclosed seed and domain), deck and size, weighting and chance, upright
+  orientation, saved position label, "position n of m", independent draws and
+  same-reading repeats. `ConsultationDetail` now carries the session's bound
+  `SpreadTemplate`; authored labels and relations override built-in meanings
+  for any position name, which fixes "What I must release" showing as
+  Foundation. The reader shows question, context facts, tags and date with the
+  reading; position meanings on hover (Cambium `on_hover`); a "How this reading
+  was made" list for every card; reflection examples taken from the reading;
+  and host styles for the detail panel's label/value rows. Built-in position
+  prose stays product-owned until C3 moves it to versioned data. Gates: default
+  90 tests (87 plus three in `tests/reading_narrative_dom.rs`), historical
+  features 128, portable core 18/19/20, both all-target checks pass. The new
+  DOM receipt drives real pointer hover through the layout harness at
+  1160×760. Native headed qualification is not done: an isolated fresh root
+  refuses to open without a provisioned persona wallet, so
+  `receipts/c2-reading-narrative.scn` (with new `reveal key`/`hover key`
+  driver verbs) has not run to completion. Chart date/angle entry, compact
+  scene clipping and long-ID wrapping remain open C2 work.
+
+- 2026-10-15: Mark authorized the repin/import migration and completion of C2,
+  preserving existing work and receipts. Mere is frozen at `8b08c98b2`, Genet
+  at `ae3d9f5d`, Netrender at `f4f9c0d` and its Vello triple at `276b4664`.
+  The application door comes from `graphshell-endpoint::door`, serving and
+  receipt views from `graphshell-host`, and mere route/wire vocabulary from
+  `mere-overmap`; client references use `graphshell-client` directly. The
+  optional personal-sync path still uses Graphshell's pending extraction.
+  Root patches converge historical supplier URL spellings on one immutable
+  Mere source identity, including the unchanged imported validator `f7ec0db`.
+  C2 adds reflowing card controls, exact decimal-degree/date input conversion,
+  context examples and readable detail rows. Native review exposed and fixed
+  a stale relative-date clock, the authored layout picker restoring as Three
+  cards, and catalog refresh clearing a pending read before its detail arrived.
+  New native captures and process reopening verify the saved custom labels,
+  card data and reflection identities. The receipt records exact gates, visual
+  reviews and earlier excluded attempts; none replaces or relabels a C1 image
+  or receipt. This intake does not renew the entire shared wall or qualify the
+  graphical unlock provider. Existing formatting debt remains separately scoped.
+
+- 2026-10-15: Source committed locally as `fcfb1a4` on the existing C1 branch.
+  Final gates: 92 default and 130 historical-feature tests; portable core
+  18/19/20. Both all-target configurations pass on Rust 1.99.0 and, separately,
+  explicit Rust 1.97.1. Three committed-source native processes use one frozen
+  binary: authoring 72 frames/six captures, fresh reopening 32/three, and the
+  expanded-receipt/chart/150%-zoom supplement 37/three.
+  All 12 originals are reviewed; the compact third card has equal painted and
+  visible rectangles. Reopening preserves exact session/reading/reflection IDs
+  and byte-identical card previews. All 213 original receipt files are unchanged.
+  Two committed direct launches stalled at two and zero presented frames;
+  their failures remain retained and successful bundled runs do not establish
+  consistent startup. The earlier concurrent-build CLI test failure is retained;
+  an isolated rerun passes. Remaining formatter findings affect 29 files whose
+  bytes are identical to the pre-edit baseline. No remote push, main merge or
+  complete shared-wall qualification is inferred.

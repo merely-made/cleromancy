@@ -13,6 +13,11 @@ This is the canonical index for active Cleromancy design documents. See the
 the maintainer and does not exist in this repository yet; the root README is
 the current public overview until it is authored.
 
+Stack intake (2026-10-15): C2 consumes Mere `8b08c98b2` through
+`graphshell-endpoint::door`, `graphshell-host` and `mere-overmap`.
+The [C2 receipt](../receipts/c2-reading-qualification_20261015.json) records
+consumer tests, native authoring/reopening and preserved historical evidence.
+
 ## Working principles
 
 - Keep numerical facts, interpretation (authored or generated, labelled which),
@@ -48,6 +53,8 @@ the current public overview until it is authored.
 - Cleromancy's data is its domain's mere (divination, journaling, RNG), held by
   the device resident. Use Mere's own sessions, graph journal, codicils,
   reservoir and ambient tier, and keep no app-local copies of them.
+- A resident catalog refresh is not completion of a pending product action.
+  Keep it pending until its detail or explicit completion update arrives.
 - Verify the headed reading at its ordinary window size. Tall DOM harnesses
   and saved-data checks do not establish that controls fit or that card
   results are visible; acceptance includes painted bounds and native capture.
