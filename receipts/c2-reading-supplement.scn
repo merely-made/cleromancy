@@ -1,0 +1,24 @@
+# Same saved reading: receipt geometry, ordinary chart entry and zoom.
+wait
+advance
+wait
+assert snap readings == 3
+assert snap reflections == 1
+click .disclosure-trigger How it was done
+wait
+assert text The position
+reveal class detail
+wait
+capture expanded-receipt
+show-chart
+wait
+assert text Date and time (UTC)
+assert text Latitude degrees (optional)
+reveal key empty-chart chart-empty
+settle 2
+capture chart-input
+zoom 1.5
+wait
+reveal key empty-chart chart-empty
+settle 2
+capture chart-input-zoom

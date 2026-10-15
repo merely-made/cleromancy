@@ -1,0 +1,20 @@
+# Fresh process, same public fixture; no new draw.
+wait
+advance
+wait
+assert snap readings == 3
+assert snap reflections == 1
+assert text What I must release
+assert text operating-system randomness
+reveal key reading-context reading-context
+settle 2
+capture reopened-reading
+reveal key reading-narrative reading-narrative
+settle 2
+capture reopened-narration
+resize 420 760
+wait
+reveal key scene-card scene-card:next_step
+settle 2
+assert visible key scene-card scene-card:next_step
+capture reopened-compact-card

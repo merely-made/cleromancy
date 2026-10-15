@@ -23,6 +23,7 @@ pub enum ConsultationStatus {
     #[cfg(feature = "analytic-ephemeris")]
     CalculatingChart,
     SetupSaved(String),
+    SavedNotice(String),
     ReadingSaved(String),
     SavingReflection,
     ReflectionSaved(String),
@@ -36,6 +37,7 @@ impl ConsultationStatus {
     pub fn label(&self) -> String {
         match self {
             Self::Ready => "Ready".to_string(),
+            Self::SavedNotice(message) => message.clone(),
             Self::SavingReading => "Saving reading".to_string(),
             Self::SavingSetup => "Saving setup".to_string(),
             #[cfg(feature = "analytic-ephemeris")]
@@ -97,6 +99,9 @@ pub struct ConsultationUi {
     pub(super) sky: SkyState,
     pub(super) workings: DisclosureState,
     pub(super) reading_focus: std::collections::BTreeMap<String, String>,
+    /// The scene position under the pointer, keyed by its session. Local
+    /// presentation state only; it never selects or writes anything.
+    pub(super) position_hover: Option<(String, String)>,
     pub(super) layout_editor: DisclosureState,
     pub(super) reflection: TextInput,
     pub(super) detail: Option<ConsultationDetail>,
@@ -135,7 +140,7 @@ impl ConsultationUi {
             astrology_instant_utc: TextInput::default(),
             astrology_latitude: TextInput::default(),
             astrology_longitude: TextInput::default(),
-            astrology_orb: TextInput::new("1000"),
+            astrology_orb: TextInput::new("1"),
             astrology_positions: TextInput::default(),
             comparison_select: SelectState::new(0).with_label("Compare with"),
             chart: ChartState::new(),
@@ -143,6 +148,7 @@ impl ConsultationUi {
             sky: SkyState::new(),
             workings: DisclosureState::new("cleromancy-workings", "How it was done"),
             reading_focus: Default::default(),
+            position_hover: None,
             layout_editor: DisclosureState::new("cleromancy-layout-editor", "Author a layout"),
             reflection: TextInput::default(),
             detail: None,
@@ -152,6 +158,15 @@ impl ConsultationUi {
             error: None,
             pending_action: None,
         }
+    }
+
+    pub(crate) fn clear_selection(&mut self) {
+        self.detail = None;
+        self.comparison = None;
+        self.reading_focus.clear();
+        self.position_hover = None;
+        self.reflection = TextInput::default();
+        self.status = ConsultationStatus::Ready;
     }
 
     pub fn catalog(&self) -> &ConsultationCatalog {
@@ -188,6 +203,14 @@ impl ConsultationUi {
     /// Replace picker and history values after the persistence worker commits a
     /// transaction; the worker is the authority for what remains available.
     pub(crate) fn replace_catalog(&mut self, catalog: ConsultationCatalog) {
+        if self.detail.as_ref().is_some_and(|detail| {
+            !catalog
+                .session_summaries
+                .iter()
+                .any(|summary| summary.session_id == detail.session.id)
+        }) {
+            self.clear_selection();
+        }
         self.context_select.selected = self.context_select.selected.min(catalog.contexts.len());
         self.field_select.selected = self
             .field_select
@@ -228,9 +251,31 @@ impl ConsultationUi {
             .min(catalog.sky_day_facts.len().saturating_sub(1));
         self.catalog = catalog;
         self.error = None;
-        if self.status.is_busy() {
-            self.status = ConsultationStatus::Ready;
-        }
+        // A resident catalog refresh can precede the operation's detail.
+        // Only its completion update may clear the pending product action.
+    }
+
+    /// The focused position name for a detail: the person's selection, or
+    /// the first placement.
+    pub(super) fn focused_position(&self, detail: &ConsultationDetail) -> String {
+        self.reading_focus
+            .get(&detail.session.id)
+            .filter(|position| {
+                detail
+                    .session
+                    .placements
+                    .iter()
+                    .any(|placement| &placement.position == *position)
+            })
+            .cloned()
+            .or_else(|| {
+                detail
+                    .session
+                    .placements
+                    .first()
+                    .map(|placement| placement.position.clone())
+            })
+            .unwrap_or_default()
     }
 
     /// Worker results never move the person to another surface: only tab
@@ -415,6 +460,14 @@ impl ConsultationUi {
         })
     }
 
+    fn chart_angles(&self) -> Result<(String, String, String), String> {
+        Ok((
+            super::chart_input::degrees(self.astrology_latitude.text(), 6)?,
+            super::chart_input::degrees(self.astrology_longitude.text(), 6)?,
+            super::chart_input::degrees(self.astrology_orb.text(), 3)?,
+        ))
+    }
+
     pub(super) fn request_astrology_chart(&mut self) -> Option<ConsultationAction> {
         if self.astrology_algorithm.text().trim().is_empty()
             || self.astrology_engine.text().trim().is_empty()
@@ -425,6 +478,13 @@ impl ConsultationUi {
             self.present_error("Enter the chart source, UTC instant, and at least one position.");
             return None;
         }
+        let (latitude, longitude, orb) = match self.chart_angles() {
+            Ok(values) => values,
+            Err(error) => {
+                self.present_error(error);
+                return None;
+            },
+        };
         self.error = None;
         self.status = ConsultationStatus::SavingSetup;
         Some(ConsultationAction::SaveAstrologyChart {
@@ -432,10 +492,10 @@ impl ConsultationUi {
                 algorithm: self.astrology_algorithm.text().to_string(),
                 engine: self.astrology_engine.text().to_string(),
                 ephemeris: self.astrology_ephemeris.text().to_string(),
-                instant_utc: self.astrology_instant_utc.text().to_string(),
-                latitude_microdegrees: self.astrology_latitude.text().to_string(),
-                longitude_microdegrees: self.astrology_longitude.text().to_string(),
-                orb_millidegrees: self.astrology_orb.text().to_string(),
+                instant_utc: super::chart_input::instant(self.astrology_instant_utc.text()),
+                latitude_microdegrees: latitude,
+                longitude_microdegrees: longitude,
+                orb_millidegrees: orb,
                 positions: self.astrology_positions.text().to_string(),
             },
         })
@@ -443,11 +503,18 @@ impl ConsultationUi {
 
     #[cfg(feature = "analytic-ephemeris")]
     pub(super) fn request_calculated_astrology_chart(&mut self) -> Option<ConsultationAction> {
+        let (latitude, longitude, orb) = match self.chart_angles() {
+            Ok(values) => values,
+            Err(error) => {
+                self.present_error(error);
+                return None;
+            },
+        };
         let draft = AstrologyCalculationDraft {
-            instant_utc: self.astrology_instant_utc.text().to_string(),
-            latitude_microdegrees: self.astrology_latitude.text().to_string(),
-            longitude_microdegrees: self.astrology_longitude.text().to_string(),
-            orb_millidegrees: self.astrology_orb.text().to_string(),
+            instant_utc: super::chart_input::instant(self.astrology_instant_utc.text()),
+            latitude_microdegrees: latitude,
+            longitude_microdegrees: longitude,
+            orb_millidegrees: orb,
         };
         if let Err(error) = draft.clone().into_moment_and_orb() {
             self.present_error(error.to_string());
@@ -505,6 +572,14 @@ impl ConsultationUi {
     }
 
     fn adopt_detail(&mut self, catalog: ConsultationCatalog, detail: ConsultationDetail) {
+        // Refresh the display clock after a draw; the startup clock precedes
+        // new readings and would incorrectly label them "in the future".
+        self.journal.now_ms = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .map_or(0, |duration| {
+                duration.as_millis().try_into().unwrap_or(u64::MAX)
+            });
+        self.position_hover = None;
         self.context_select.selected = catalog
             .contexts
             .iter()
@@ -534,7 +609,19 @@ impl ConsultationUi {
                 .map(|selection| selection.domain.clone())
                 .unwrap_or_default(),
         );
-        self.layout.selected = if detail
+        self.template_select.selected = detail
+            .spread_template
+            .as_ref()
+            .and_then(|template| {
+                catalog
+                    .spread_templates
+                    .iter()
+                    .position(|saved| saved.id == template.id)
+            })
+            .map_or(0, |index| index + 1);
+        self.layout.selected = if detail.spread_template.is_some() {
+            2
+        } else if detail
             .session
             .placements
             .iter()
@@ -587,5 +674,23 @@ impl ConsultationUi {
             .filter(|summary| Some(&summary.session_id) != selected_session)
             .map(|summary| summary.session_id.clone())
             .collect()
+    }
+}
+
+#[cfg(test)]
+mod refresh_tests {
+    use super::*;
+
+    #[test]
+    fn catalog_refresh_does_not_complete_a_pending_read() {
+        let host = crate::CleromancyHost::empty(muniment::MemoryBackend::new());
+        let catalog = crate::Consultation::new(host).catalog().unwrap();
+        let mut ui = ConsultationUi::new(catalog.clone());
+        ui.status = ConsultationStatus::SavingReading;
+        ui.replace_catalog(catalog);
+        assert!(
+            ui.status.is_busy(),
+            "the reading's detail has not arrived yet"
+        );
     }
 }

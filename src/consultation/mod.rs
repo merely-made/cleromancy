@@ -1,11 +1,11 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-//! The direct local product boundary over Cleromancy's graph authority.
+//! Product transformations over a complete divination graph candidate.
 //!
-//! Graphshell remains the portable and remote-admission adapter. A headed
-//! local process owns its private store directly and uses this controller to
-//! turn product commands into durable graph truth.
+//! The ordinary window reads the candidate from the resident and records the
+//! resulting stable-id edits through its admitted journal transaction. This
+//! controller owns divination meaning and validation, never the resident store.
 
 use std::time::{SystemTime, UNIX_EPOCH};
 
@@ -75,6 +75,11 @@ pub struct ConsultationDetail {
     pub readings: Vec<Reading>,
     pub reflections: Vec<Reflection>,
     pub concurrences: Vec<Concurrence>,
+    /// The authored layout bound to this session, when it was read through
+    /// one. Its labels and relations are the positions' meaning; a built-in
+    /// position name never overrides them.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub spread_template: Option<SpreadTemplate>,
 }
 
 /// A replay-derived comparison of two sealed session receipts. It never writes
@@ -150,6 +155,10 @@ impl<B: Backend> Consultation<B> {
         &self.host
     }
 
+    pub(crate) fn host_mut_candidate(&mut self) -> &mut CleromancyHost<B> {
+        &mut self.host
+    }
+
     pub fn is_faulted(&self) -> bool {
         self.faulted
     }
@@ -183,6 +192,7 @@ impl<B: Backend> Consultation<B> {
         let readings = self.host.replay_session(&session)?;
         let reflections = self.host.reflections_for_session(&session.id)?;
         let concurrences = self.host.concurrences_for_session(&session.id)?;
+        let spread_template = self.host.spread_template_for_session(&session.id)?;
         Ok(ConsultationDetail {
             session,
             context,
@@ -190,6 +200,7 @@ impl<B: Backend> Consultation<B> {
             readings,
             reflections,
             concurrences,
+            spread_template,
         })
     }
 

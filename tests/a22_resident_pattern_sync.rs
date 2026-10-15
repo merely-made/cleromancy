@@ -1,6 +1,7 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
+#![cfg(feature = "legacy-receipts")]
 #![cfg(all(
     feature = "graphshell-admission",
     feature = "personal-sync",
@@ -9,6 +10,7 @@
 
 use std::collections::VecDeque;
 
+use chirograph::{CapabilityProfile, IntentResult, PresentationCapability, ProjectionSession};
 use cleromancy::moirai::clotho::EntropySource;
 use cleromancy::servitor::{Cap, Grant, Mode, Subject};
 use cleromancy::{
@@ -16,15 +18,12 @@ use cleromancy::{
     CleromancyHost, CleromancySessionAuthority, CleromancySyncSelection, ReadingEngine,
     ReadingError, a0_fixture,
 };
-use graphshell::client::RetainedEndpointSession;
-use graphshell::lifecycle::AdmittedEndpointContext;
-use graphshell::native::endpoint_catalog::ResidentEndpointCatalog;
 use graphshell::personal_sync::{PersonalGraphReplica, SyncRoster};
-use graphshell_endpoint::{ProjectionCatalog, ProjectionSource};
+use graphshell_client::RetainedEndpointSession;
 use graphshell_endpoint::local::LocalCarrier;
-use chirograph::{
-    CapabilityProfile, IntentResult, PresentationCapability, ProjectionSession,
-};
+use graphshell_endpoint::{ProjectionCatalog, ProjectionSource};
+use graphshell_host::endpoint_catalog::ResidentEndpointCatalog;
+use graphshell_host::lifecycle::AdmittedEndpointContext;
 use muniment::MemoryBackend;
 use personae::{IdentityProvider, InMemoryProvider};
 

@@ -7,9 +7,9 @@
 
 use cambium_genet_winit_host::{Harness, HostHooks, Init, KeyPress, NamedKey, inert_hooks};
 use cleromancy::{ConsultationAction, ConsultationUi, ConsultationView, consultation_view};
-use taproot::Selector;
 use genet_scripted_dom::{NodeId, ScriptedDom};
 use layout_dom_api::{LayoutDom, LocalName, Namespace, NodeKind};
+use taproot::Selector;
 
 pub type Logic = fn(&ConsultationUi) -> ConsultationView;
 pub type App = Harness<ConsultationUi, Logic, ConsultationView>;
@@ -120,8 +120,7 @@ pub fn type_into(harness: &mut App, label: &str, value: &str) {
     let node = harness.with_dom(|dom| {
         let group = find_attr(dom, dom.document(), "data-control", label)
             .unwrap_or_else(|| panic!("missing control {label}"));
-        find_text_field(dom, group)
-            .unwrap_or_else(|| panic!("missing text field for {label}"))
+        find_text_field(dom, group).unwrap_or_else(|| panic!("missing text field for {label}"))
     });
     harness.with_dom(|dom| {
         assert_eq!(attr(dom, node, "aria-label"), Some(label));
@@ -134,6 +133,14 @@ pub fn type_into(harness: &mut App, label: &str, value: &str) {
         cleromancy::ui::native::consultation_focused_text(harness.runner()).is_some(),
         "text field {label} did not acquire the production text slot"
     );
+    // Replace a prefilled value through the same keyboard path a person uses.
+    harness.press_key(&KeyPress::character("a").with_modifiers(
+        cambium_genet_winit_host::Modifiers {
+            meta: true,
+            ..Default::default()
+        },
+    ));
+    harness.press_key(&KeyPress::named(NamedKey::Backspace));
     for (index, line) in value.split('\n').enumerate() {
         if index > 0 {
             harness.press_key(&KeyPress::named(NamedKey::Enter));

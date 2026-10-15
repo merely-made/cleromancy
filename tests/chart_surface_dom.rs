@@ -14,7 +14,6 @@ use cleromancy::{
     AstrologyChart, AstrologyMoment, AstrologyPosition, CleromancyHost, Consultation, ContextDraft,
     ReadingError, SelectionMode,
 };
-use taproot::Selector;
 use muniment::MemoryBackend;
 #[cfg(feature = "analytic-ephemeris")]
 use support::one;
@@ -22,6 +21,7 @@ use support::{
     attr_at_key, attr_at_role, click_key, count_attr, harness, has_key, has_text, switch_surface,
     take_action, text_at_key, type_into,
 };
+use taproot::Selector;
 
 #[test]
 fn empty_chart_surface_keeps_manual_import_reachable() {
@@ -65,11 +65,9 @@ fn chart_surface_projects_stored_values_and_keeps_manual_import_available() {
         .unwrap();
     let earlier_chart_digest = earlier.facts.chart_digest.clone();
     let earlier_facts_digest = earlier.facts.digest();
-    let selector_label = format!(
-        "2024-04-08T18:18:00Z · 3 placements · 32900000, -96900000 microdegrees"
-    );
-    let earlier_selector_label =
-        format!("2024-01-01T00:00:00Z · 1 placements · Global observer");
+    let selector_label =
+        format!("2024-04-08T18:18:00Z · 3 placements · 32900000, -96900000 microdegrees");
+    let earlier_selector_label = format!("2024-01-01T00:00:00Z · 1 placements · Global observer");
     catalog
         .astrology_charts
         .sort_by_key(|stored| stored.chart.moment.instant_utc != "2024-04-08T18:18:00Z");
@@ -288,7 +286,7 @@ fn chart_surface_projects_stored_values_and_keeps_manual_import_available() {
         ("Calculation algorithm", "manual/v1"),
         ("Calculation engine", "manual engine"),
         ("Ephemeris source", "manual source"),
-        ("UTC instant", "2024-04-09T00:00:00Z"),
+        ("Date and time (UTC)", "2024-04-09T00:00:00Z"),
         ("Chart positions", "Sun | 1 | 0 | false"),
     ] {
         type_into(&mut h, label, value);

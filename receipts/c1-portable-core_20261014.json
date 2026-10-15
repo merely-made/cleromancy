@@ -1,0 +1,89 @@
+{
+  "scope": "portable cleromancy-core-acceptance checkpoint only; native root and full C1 acceptance pending",
+  "base": "2851e6b0e3dda4b5b558c515579dede9daf1ec2d",
+  "supplier": "c51e1913cc52cc161815b97939a46452495747e0",
+  "supplier_branch": "codex/c1-resident-divination-20261014",
+  "rust": "1.97.1",
+  "library_overrides": false,
+  "source_sha256": {
+    "core/Cargo.toml": "20b83ebbf5878c67e03f7165b77975b427f1dd6cb28c0becdafb2e3c59580c54",
+    "core/Cargo.lock": "e345c2c0f4b1e9838f76a24dd7885797c8d06ca71a62089edc26f321dae1ecd7",
+    "src/lib.rs": "4373a1289f927ba9ad00a429ec90a6f6fcf1c1e568a2162d458d0d0b51a2719a",
+    "src/host/mod.rs": "6c883489220b4817352ecd60063ea54a870e4336b89b6c005a937294d72e37e3",
+    "src/host/domain.rs": "950c56516eb6587153c613e6f8f99315fe81af7a3ae87d8a027b6ff4e31aaafb",
+    "src/consultation/mod.rs": "b2160603fac6b32528b8eb5ac2b0fad3f40a676fba02d037502cfafc7b0d5f04",
+    "tests/resident_candidate.rs": "8f738e7807a2116d23e875aae00b94410d27bd5330be4aa1ccf87d39d0f8a069",
+    "tests/sky_host.rs": "5b70291446075e909ae062ca7a940681010ad0f36238ba3fb2acd4bb186ea03a",
+    "tests/sky_timeline.rs": "bf22fbf0632987f991da23f6670f9b76e3fa6143b82b8a8b55c53f58e2518dbd"
+  },
+  "gates": {
+    "default": {
+      "passed": 18,
+      "failed": 0,
+      "ignored": 0,
+      "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/shared/cleromancy-core-immutable-c51-default.json",
+      "receipt_sha256": "246459a254ac333a1e7c3ecd2ce95254b1792ef5b5fa4e7e4c25e8f423d61dfa",
+      "log_sha256": "cd7b62a1954aceb9e2a87c60bec4ed58222d9512e43252c3b8834bf3844acccc",
+      "argv": [
+        "env",
+        "RUSTC=/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustc",
+        "RUSTDOC=/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustdoc",
+        "cargo",
+        "+1.99.0",
+        "test",
+        "--locked",
+        "-j",
+        "2"
+      ]
+    },
+    "legacy": {
+      "passed": 19,
+      "failed": 0,
+      "ignored": 0,
+      "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/shared/cleromancy-core-immutable-c51-legacy.json",
+      "receipt_sha256": "e76cc5c4cb8d0438921cc6b38302dc014c3b7e8c5d4c16b7e55eb3de787849d4",
+      "log_sha256": "e90bfc8cc00a1921a8a846318d72bca45fe88c2941734ad677adf357df212091",
+      "argv": [
+        "env",
+        "RUSTC=/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustc",
+        "RUSTDOC=/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustdoc",
+        "cargo",
+        "+1.99.0",
+        "test",
+        "--locked",
+        "-j",
+        "2",
+        "--features",
+        "legacy-receipts"
+      ]
+    },
+    "legacy-sky": {
+      "passed": 20,
+      "failed": 0,
+      "ignored": 0,
+      "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/shared/cleromancy-core-immutable-c51-legacy-sky.json",
+      "receipt_sha256": "8296aed9abf7eaa6207a87cba582e46981d3a5231c39a76fe0c0899b498da067",
+      "log_sha256": "260021f11f89a76d0a2693cda7af9859bdf2910007d63e928d48383dd0ffd43b",
+      "argv": [
+        "env",
+        "RUSTC=/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustc",
+        "RUSTDOC=/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustdoc",
+        "cargo",
+        "+1.99.0",
+        "test",
+        "--locked",
+        "-j",
+        "2",
+        "--features",
+        "legacy-receipts,sky-timeline"
+      ]
+    }
+  },
+  "metadata_sha256": {
+    "default": "3ae100f5a492e08cea8c5131153a42b45e39f9bf313ba1780e9dd5065a805f99",
+    "legacy-sky": "28e6006dd4058de69cb71705fefb39a837ba2d7aa03386baf38d582622e5f837"
+  },
+  "prior_checkpoint": "e2e9c277166d3d715e069777dce8e58b944ee354",
+  "cargo_driver": "1.99.0",
+  "compiler_and_rustdoc": "1.97.1"
+}

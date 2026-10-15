@@ -1,10 +1,12 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
+#![cfg(feature = "legacy-receipts")]
 #![cfg(feature = "graphshell-admission")]
 
 use std::collections::VecDeque;
 
+use chirograph::{CapabilityProfile, IntentResult, PresentationCapability, ProjectionSession};
 use cleromancy::moirai::clotho::EntropySource;
 use cleromancy::servitor::{Cap, Grant, Mode, Subject};
 use cleromancy::{
@@ -12,13 +14,10 @@ use cleromancy::{
     CREATE_CONCURRENCE_INTENT, CleromancyApp, CleromancyHost, CleromancySessionAuthority,
     Concurrence, ReadingEngine, ReadingError, a0_fixture,
 };
-use graphshell::client::RetainedEndpointSession;
-use graphshell::lifecycle::AdmittedEndpointContext;
-use graphshell::native::endpoint_catalog::ResidentEndpointCatalog;
+use graphshell_client::RetainedEndpointSession;
 use graphshell_endpoint::local::LocalCarrier;
-use chirograph::{
-    CapabilityProfile, IntentResult, PresentationCapability, ProjectionSession,
-};
+use graphshell_host::endpoint_catalog::ResidentEndpointCatalog;
+use graphshell_host::lifecycle::AdmittedEndpointContext;
 use muniment::RedbBackend;
 
 #[test]

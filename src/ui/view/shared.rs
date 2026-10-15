@@ -15,6 +15,9 @@ use crate::{SessionSummary, format_relative_date};
 
 /// The append-only reflection editor: field, control, and its explanation.
 pub(super) fn reflection_editor(ui: &ConsultationUi, children: &mut Vec<ConsultationView>) {
+    if let Some(detail) = &ui.detail {
+        reflection_examples(detail, &ui.focused_position(detail), children);
+    }
     children.push(labelled_text(
         "Reflection",
         "cleromancy-reflection",
@@ -33,6 +36,60 @@ pub(super) fn reflection_editor(ui: &ConsultationUi, children: &mut Vec<Consulta
     children.push(Box::new(
         el::<_, ConsultationUi, ()>("p", "Each follow-up is saved as a separate immutable note.")
             .attr("class", "reflection-explanation"),
+    ));
+}
+
+/// Starting points taken from the open reading, never a blank box. Choosing
+/// one only fills the editor; nothing is saved until the person adds it.
+fn reflection_examples(
+    detail: &crate::ConsultationDetail,
+    focused: &str,
+    children: &mut Vec<ConsultationView>,
+) {
+    let examples = crate::narrative::reflection_examples(detail, focused);
+    if examples.is_empty() {
+        return;
+    }
+    let rows = examples
+        .into_iter()
+        .enumerate()
+        .map(|(index, example)| {
+            let text = example.clone();
+            Box::new(
+                el::<_, ConsultationUi, ()>(
+                    "li",
+                    vec![
+                        Box::new(
+                            el::<_, ConsultationUi, ()>("span", example.clone())
+                                .attr("class", "reflection-example-text"),
+                        ) as ConsultationView,
+                        Box::new(
+                            button("Start from this", move |ui: &mut ConsultationUi, _| {
+                                ui.reflection = TextInput::new(text.clone());
+                            })
+                            .attr("data-key", format!("use-reflection-example:{index}"))
+                            .attr("aria-label", format!("Start from this example: {example}")),
+                        ),
+                    ],
+                )
+                .attr("class", "reflection-example")
+                .attr("data-key", format!("reflection-example:{index}")),
+            ) as ConsultationView
+        })
+        .collect::<Vec<_>>();
+    children.push(Box::new(
+        el::<_, ConsultationUi, ()>(
+            "div",
+            vec![
+                Box::new(
+                    el::<_, ConsultationUi, ()>("p", "Something to riff on, from this reading:")
+                        .attr("class", "control-label"),
+                ) as ConsultationView,
+                Box::new(el::<_, ConsultationUi, ()>("ul", rows)),
+            ],
+        )
+        .attr("class", "reflection-examples")
+        .attr("data-key", "reflection-examples"),
     ));
 }
 

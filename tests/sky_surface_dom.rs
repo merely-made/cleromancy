@@ -3,6 +3,8 @@
 
 //! R3 receipt: the Sky surface only projects already-stored day facts.
 
+#![cfg(feature = "legacy-receipts")]
+
 #[path = "support/cleromancy_dom.rs"]
 mod support;
 

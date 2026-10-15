@@ -4,13 +4,13 @@
 use crate::field::{
     CONTEXTUAL_WEIGHT_RULE, EXTERNAL_TERM_WEIGHT_RULE, UNIFORM_DIE_RULE, UNIFORM_RULE,
 };
-use crate::reading_scene::{position_label, position_rationale};
+use crate::narrative::PositionMeaning;
 use crate::{ConsultationDetail, Reading, SelectionMode};
 use cambium::{DetailRow, DetailSection};
 
 pub(super) fn section(
     detail: &ConsultationDetail,
-    position: &str,
+    position: &PositionMeaning,
     reading: &Reading,
 ) -> DetailSection {
     let receipt = &reading.receipt;
@@ -38,7 +38,7 @@ pub(super) fn section(
         _ => "The saved collection defines which possibilities were eligible and how they were scored.".to_string(),
     };
     let mut rows = vec![
-        DetailRow::new("The position", position_rationale(position)),
+        DetailRow::new("The position", position.meaning.clone()),
         DetailRow::new("The choice", selection),
         DetailRow::new("What influenced it", qualification),
     ];
@@ -67,8 +67,5 @@ pub(super) fn section(
         }
     }
     rows.push(DetailRow::new("The interpretation", "The words come from the selected entry in the saved collection. Read them through your question and this position; they were not newly written from your question."));
-    DetailSection::new(
-        format!("{}: {}", position_label(position), reading.title),
-        rows,
-    )
+    DetailSection::new(format!("{}: {}", position.label, reading.title), rows)
 }

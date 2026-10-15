@@ -1,0 +1,36 @@
+# Read-only reachability after seed + first reopen; no lifecycle actions.
+wait
+show-mere
+wait
+assert snap mere-live-sessions == 4
+assert snap mere-archives == 1
+assert snap sessions == 1
+assert snap readings == 3
+assert snap reflections == 1
+remember compact-baseline
+resize 420 760
+wait
+reveal mere-control fork
+settle 2
+assert visible mere-control fork
+assert event visible mere-control fork
+capture compact-reachable-fork
+reveal mere-control trash
+settle 2
+assert visible mere-control trash
+assert event visible mere-control trash
+capture compact-reachable-trash
+reveal mere-control save-archive
+settle 2
+assert visible mere-control save-archive
+assert event visible mere-control save-archive
+capture compact-reachable-save
+reveal mere-control open-archive
+settle 2
+assert visible mere-control open-archive
+assert event visible mere-control open-archive
+capture compact-reachable-archive-open
+same compact-baseline mere-attached mere-live-sessions mere-archives sessions readings reflections session-id reading-id reflection-id
+resize 1160 760
+wait
+settle 2

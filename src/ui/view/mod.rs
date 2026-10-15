@@ -13,15 +13,15 @@ use super::screen::{self, ConsultationScreen};
 use super::state::ConsultationUi;
 use crate::SelectionMode;
 
+mod astrology_reading;
 pub(super) mod chart;
 pub(super) mod chart_aspect;
 mod consultation;
 mod journal;
 mod named_text;
+mod rationale;
 mod reading;
 mod reading_scene;
-mod rationale;
-mod astrology_reading;
 mod shared;
 #[cfg(feature = "sky-timeline")]
 mod sky;
@@ -37,6 +37,25 @@ use sky::sky_region;
 use trail::trail_region;
 
 pub type ConsultationView = Box<dyn AnyView<ConsultationUi, (), GenetCtx, GenetElement>>;
+
+/// Focused existing reading and reflection controls beside the shared mere.
+/// Authoring surfaces keep their ordinary geometry when the mere is closed.
+pub(crate) fn resident_reader_view(ui: &ConsultationUi) -> ConsultationView {
+    let mut children: Vec<ConsultationView> = vec![Box::new(
+        el::<_, ConsultationUi, ()>("p", ui.status.label()).attr("role", "status"),
+    )];
+    if let Some(error) = ui.error() {
+        children.push(Box::new(
+            el::<_, ConsultationUi, ()>("p", error.to_string()).attr("role", "alert"),
+        ));
+    }
+    children.push(reading_region(ui));
+    children.push(trail_region(ui));
+    Box::new(
+        el::<_, ConsultationUi, ()>("div", children)
+            .attr("class", "cleromancy-consultation cleromancy-mere-reading"),
+    )
+}
 
 pub fn consultation_view(ui: &ConsultationUi) -> ConsultationView {
     let mut chrome = Vec::new();

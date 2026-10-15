@@ -1,0 +1,381 @@
+{
+  "schema": "cleromancy.c2-reading-qualification/v1",
+  "date": "2026-10-15",
+  "status": "C2 implementation and bounded native qualification complete",
+  "source_commit": "fcfb1a4da8e3723653b8cca5dffb801a71e42e1f",
+  "branch": "codex/c1-resident-divination-20261014",
+  "publication": "local source commit; no push or main integration",
+  "supplier": {
+    "mere": "8b08c98b23f1ed074f5d88f26f1d2620cda4491a",
+    "genet": "ae3d9f5d9721fc6b0d5faa58bb6798ee63307be1",
+    "netrender": "f4f9c0d87e6a6030b61075a45118055dfe6a12df",
+    "vello": "276b46648c08f3d2062e70559afa999842e1873c",
+    "imported_validator": "f7ec0db556ca69a4f1d5a2b917409d7b2d861ec8"
+  },
+  "toolchains": {
+    "tests_and_native": "Cargo and Rust 1.99.0",
+    "msrv_checks": "Cargo 1.99.0 with explicit rustc/rustdoc 1.97.1"
+  },
+  "gates": {
+    "default-final": {
+      "passed": 92,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c2_20261015/default-final.log",
+      "complete": true
+    },
+    "historical-isolated": {
+      "passed": 130,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c2_20261015/historical-isolated.log",
+      "complete": true
+    },
+    "core": {
+      "passed": 18,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c2_20261015/core.log",
+      "complete": true
+    },
+    "core-legacy": {
+      "passed": 19,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c2_20261015/core-legacy.log",
+      "complete": true
+    },
+    "core-sky": {
+      "passed": 20,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c2_20261015/core-sky.log",
+      "complete": true
+    },
+    "check-final": {
+      "pass": true,
+      "log": "c2_20261015/check-final.log"
+    },
+    "check-historical-final": {
+      "pass": true,
+      "log": "c2_20261015/check-historical-final.log"
+    },
+    "msrv-check": {
+      "pass": true,
+      "log": "c2_20261015/msrv-check.log"
+    },
+    "msrv-check-historical": {
+      "pass": true,
+      "log": "c2_20261015/msrv-check-historical.log"
+    },
+    "build-delivery": {
+      "pass": true,
+      "log": "c2_20261015/build-delivery.log"
+    }
+  },
+  "native_runs": {
+    "committed-bundle-first": {
+      "process": {
+        "phase": "first",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 34.15,
+        "binary_sha256": "c76fc7b722bbb7f04e62d4365276a14de4fcf60830c6326f0f9220ae4f62b0b6",
+        "scenario_sha256": "93c7b78d6e09c7363086d12025869b9f612d8e8e0423979ac1fd81aac89c1fa2",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "ids": {
+        "session_id": "35250a3cb218c8df1b04bbbc805dba2a66a6c0a8bce16bf90546a43e5f821ab3",
+        "reading_id": "d4d60acb3233ff0655b482619a1781def7b349fdc515ba0c12dc9b6f649ca780",
+        "reflection_id": "6cdfd463382b3554a3f3d227485be2743b1429293d6d02d20f712efc1ec90e38"
+      },
+      "readings": 3,
+      "reflections": 1,
+      "receipt": "c2_20261015/committed-bundle-first/receipt.json"
+    },
+    "committed-bundle-reopen": {
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 15.81,
+        "binary_sha256": "c76fc7b722bbb7f04e62d4365276a14de4fcf60830c6326f0f9220ae4f62b0b6",
+        "scenario_sha256": "fe775893f5e9bdf7378b02e3b074d00db7ceb504d6e2aacbb5ceda15867c4382",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "ids": {
+        "session_id": "35250a3cb218c8df1b04bbbc805dba2a66a6c0a8bce16bf90546a43e5f821ab3",
+        "reading_id": "d4d60acb3233ff0655b482619a1781def7b349fdc515ba0c12dc9b6f649ca780",
+        "reflection_id": "6cdfd463382b3554a3f3d227485be2743b1429293d6d02d20f712efc1ec90e38"
+      },
+      "readings": 3,
+      "reflections": 1,
+      "receipt": "c2_20261015/committed-bundle-reopen/receipt.json"
+    },
+    "committed-bundle-supplement": {
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 15.61,
+        "binary_sha256": "c76fc7b722bbb7f04e62d4365276a14de4fcf60830c6326f0f9220ae4f62b0b6",
+        "scenario_sha256": "4ac2bf3fd788f16c120110b5461a261883d1da62554639310a5bb1760e9cd527",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "ids": {
+        "session_id": "35250a3cb218c8df1b04bbbc805dba2a66a6c0a8bce16bf90546a43e5f821ab3",
+        "reading_id": "d4d60acb3233ff0655b482619a1781def7b349fdc515ba0c12dc9b6f649ca780",
+        "reflection_id": "6cdfd463382b3554a3f3d227485be2743b1429293d6d02d20f712efc1ec90e38"
+      },
+      "readings": 3,
+      "reflections": 1,
+      "receipt": "c2_20261015/committed-bundle-supplement/receipt.json"
+    }
+  },
+  "captures": [
+    {
+      "path": "receipts/c2_20261015/committed-bundle-first/compact-narration.png",
+      "sha256": "7b9ae26a429457463e3428b1632853c40d6bf7b8e07e298e6fa9a98f04fc5574",
+      "review": "pass",
+      "reviewer": "implementation agent, direct original-pixel inspection",
+      "finding": "Text wraps within compact width; a complete first narration is visible and subsequent cards continue vertically."
+    },
+    {
+      "path": "receipts/c2_20261015/committed-bundle-first/compact-third-card.png",
+      "sha256": "26fb5d936c2a96d71224f737b778851c38a5e1f9ee8fe6380b0dd8047f779198",
+      "review": "pass",
+      "reviewer": "implementation agent, direct original-pixel inspection",
+      "finding": "Third card reflows vertically at 420x760 and its full painted rectangle equals its visible rectangle."
+    },
+    {
+      "path": "receipts/c2_20261015/committed-bundle-first/hover-tension.png",
+      "sha256": "36477cf366c0e8e37fb938984664eda810a640dd7c4dc2da2a53906cd2a03a3e",
+      "review": "pass",
+      "reviewer": "implementation agent, direct original-pixel inspection",
+      "finding": "Hover shows the saved relation meaning while the first card stays selected."
+    },
+    {
+      "path": "receipts/c2_20261015/committed-bundle-first/narration.png",
+      "sha256": "a84c6765cc6dec716ca1c121e14db390a3ee071a815465141fd5591bea1e0799",
+      "review": "pass",
+      "reviewer": "implementation agent, direct original-pixel inspection",
+      "finding": "All three ordered narrations are readable at ordinary width; method, weighting, orientation and independent draws are disclosed."
+    },
+    {
+      "path": "receipts/c2_20261015/committed-bundle-first/reading-first-viewport.png",
+      "sha256": "728bb54d34eca3b917e6a3653f53adee39e0f8ed4cafbc9702ac0d37126bad8f",
+      "review": "pass",
+      "reviewer": "implementation agent, direct original-pixel inspection",
+      "finding": "Saved custom labels, question, tags and season are readable; authored layout picker and today date are correct."
+    },
+    {
+      "path": "receipts/c2_20261015/committed-bundle-first/reflection-examples.png",
+      "sha256": "20a8118d45d72053f24c2717b4f13b4db6a1040f6b0ff5a4aeff04aa4154a815",
+      "review": "pass",
+      "reviewer": "implementation agent, direct original-pixel inspection",
+      "finding": "Examples name cards and saved positions; saved reflection is visible with reachable editor controls."
+    },
+    {
+      "path": "receipts/c2_20261015/committed-bundle-reopen/reopened-compact-card.png",
+      "sha256": "607c1ee0945df0239d4dee942b6e3bc62d90e0af4364dc2a3602d0bf56422533",
+      "review": "pass",
+      "reviewer": "implementation agent, direct original-pixel inspection",
+      "finding": "The reopened third card remains fully reachable at 420x760."
+    },
+    {
+      "path": "receipts/c2_20261015/committed-bundle-reopen/reopened-narration.png",
+      "sha256": "8d5b698e0f41e1b3d4a9e004888e742868c8519776d462a3d72deb197d90d975",
+      "review": "pass",
+      "reviewer": "implementation agent, direct original-pixel inspection",
+      "finding": "Fresh process reproduces each card narration without drawing again."
+    },
+    {
+      "path": "receipts/c2_20261015/committed-bundle-reopen/reopened-reading.png",
+      "sha256": "94a816e6533ddcbb7d0b2ba5bac242f932706615c97612b218a8f85d1c0ae0da",
+      "review": "pass",
+      "reviewer": "implementation agent, direct original-pixel inspection",
+      "finding": "Fresh process restores the same cards, saved custom labels, context and authored layout choice."
+    },
+    {
+      "path": "receipts/c2_20261015/committed-bundle-supplement/chart-input-zoom.png",
+      "sha256": "aed0fa6e331e788659c021d37d9b9c1f97fe72571ed608c7aa643b9041f1f164",
+      "review": "pass",
+      "reviewer": "implementation agent, direct original-pixel inspection",
+      "finding": "Date/time and decimal-degree fields remain readable at 150 percent zoom with vertical scrolling."
+    },
+    {
+      "path": "receipts/c2_20261015/committed-bundle-supplement/chart-input.png",
+      "sha256": "78fceaad3afc899ef6b3bcd911f780160654335f6da60ec71b767b5d17d66944",
+      "review": "pass",
+      "reviewer": "implementation agent, direct original-pixel inspection",
+      "finding": "Ordinary date/time and decimal-degree fields are readable; import-specific fields are separately labelled below."
+    },
+    {
+      "path": "receipts/c2_20261015/committed-bundle-supplement/expanded-receipt.png",
+      "sha256": "c15362a08de841ee97d54933eeeacb63294acb54fbc4669e31dc38e816228d3e",
+      "review": "pass",
+      "reviewer": "implementation agent, direct original-pixel inspection",
+      "finding": "Expanded labels are above their values with readable spacing, custom meanings and wrapped explanations."
+    }
+  ],
+  "capture_count": 12,
+  "reopen": {
+    "same_session_reading_reflection_ids": true,
+    "cards_file_byte_equal": true,
+    "saved_custom_labels_visually_restored": true,
+    "new_draw_on_reopen": false
+  },
+  "historical_receipts": {
+    "base": "8e395cd",
+    "files_checked": 213,
+    "changed_or_missing": [],
+    "all_original_receipts_preserved": true,
+    "scope": "213 tracked receipt files compared to 8e395cd; ignored historical evidence directories were left untouched"
+  },
+  "excluded_attempts": [
+    {
+      "run": "native-first-01",
+      "evidence": "receipts/c2_20261015/excluded/native-first-01",
+      "accepted": false
+    },
+    {
+      "run": "native-first-02",
+      "evidence": "receipts/c2_20261015/excluded/native-first-02",
+      "accepted": false
+    },
+    {
+      "run": "native-first-03",
+      "evidence": "receipts/c2_20261015/excluded/native-first-03",
+      "accepted": false
+    },
+    {
+      "run": "committed-first",
+      "evidence": "receipts/c2_20261015/excluded/committed-first",
+      "accepted": false
+    },
+    {
+      "run": "committed-first-retry",
+      "evidence": "receipts/c2_20261015/excluded/committed-first-retry",
+      "accepted": false
+    }
+  ],
+  "limits": [
+    "Bounded Cleromancy consumer qualification, not renewal of the complete shared browser cutover wall.",
+    "Production terminal unlock on an isolated public synthetic identity; graphical unlock is unqualified.",
+    "Direct launches stalled at two and zero presented frames before the accepted bundled runs. Successful runs do not establish consistently successful startup.",
+    "No all-durable-bytes-equal or new cross-application/native Graphshell acceptance claim.",
+    "No C3 typed-card semantics or C5 shuffled-deck change; current independent upright draws are stated honestly.",
+    "Formatting and historical documentation debt outside touched scope are retained."
+  ],
+  "formatting": {
+    "whole_tree_pass": false,
+    "remaining_offender_files": 29,
+    "all_remaining_offender_files_byte_identical_to_pre_edit_baseline": true,
+    "comparison": "c2_20261015/fmt-baseline-comparison.json"
+  },
+  "excluded_gate_detail": {
+    "historical-final.log": "CLI test failed while a concurrent default build replaced Cargo\u2019s shared main executable path. The isolated same-source rerun passed all 130 tests; native evidence uses a separately frozen executable.",
+    "native-first-01": "Owned PTY launcher initially missed the sentence-style vault prompt; canceled and retained.",
+    "native-first-02": "Preserved pre-final candidate exposed catalog/detail completion race and then a presentation stall; its captures do not qualify the final source.",
+    "native-first-03": "Excluded because a queued build replaced the executable path after launch.",
+    "committed-first": "2 presented frames, 1023 redraws, then 60-second presentation stall; retained.",
+    "committed-first-retry": "0 presented frames, 672 redraws, then 60-second presentation stall; retained."
+  },
+  "test_source_note": "Full default and portable-core gates preceded the final acceptance-only reveal-class helper; product source was unchanged. The final helper was exercised by the committed native supplement, and the final historical suite passed on the committed source.",
+  "native_bundle": {
+    "temporary_fixture_bundle": true,
+    "path": "/Users/markik/Code/testing/cleromancy/c2-20261015/Cleromancy C2.app",
+    "frozen_binary_sha256": "c76fc7b722bbb7f04e62d4365276a14de4fcf60830c6326f0f9220ae4f62b0b6",
+    "release_packaging_claim": false
+  },
+  "documentation": {
+    "relative_links_pass": true,
+    "new_missing_relative_links": 0,
+    "inherited_missing_relative_links": 0,
+    "report": "c2_20261015/doc-links.json"
+  },
+  "evidence_publication": {
+    "curated_receipt": "tracked JSON",
+    "generated_evidence": "local only, following .gitignore headed-evidence rule",
+    "local_directory": "/Users/markik/Code/repos/cleromancy/receipts/c2_20261015",
+    "original_work_directory": "/Users/markik/Code/testing/cleromancy/c2-20261015",
+    "verification_command": "python3 receipts/c2_20261015/verify.py"
+  },
+  "evidence_hashes": {
+    "receipts/c2_20261015/core-sky.log": "18a9a9ca8dc5e74878c73df0ebcc4bdedc4cc918cfdd354883e89fa10ae528a0",
+    "receipts/c2_20261015/dependency-closure.json": "77872bc191504a65454feaf1346b516f166cbb51f83abc859a37437ac9f64498",
+    "receipts/c2_20261015/core.log": "6828043a9295bd9d2c26339444f867dd42ceb4c1a919d9572774c584c720448e",
+    "receipts/c2_20261015/fmt-baseline-comparison.json": "037980414ca69fa9060647230389763012fd682e8cf517f8760d34501babfca6",
+    "receipts/c2_20261015/source-inventory.json": "1e650383e83c31721c0dba89fe53bb9e7f55c57fb5d7f4ae5b9f16b13676eb0a",
+    "receipts/c2_20261015/core-legacy.log": "a4eb15ea8d4a1e82d5d8086c6d473315a6e5dc6f255f1a13defbab081eeed41c",
+    "receipts/c2_20261015/provision-delivery.json": "98266177dc24f7b2b8cbd569266408b570ad15f3c945bd2f5c8da9394c29abb7",
+    "receipts/c2_20261015/build-delivery.log": "53280bf9950783b204c41b45d3d902a9be8d330d4c7c6cecc62ac75a8ed46e4f",
+    "receipts/c2_20261015/default-final.log": "7103a63422d064486a9f4d3b32a740ebe9a321ade63c4f1ce770675dcdf752c8",
+    "receipts/c2_20261015/msrv-check.log": "0499558655291f9293fadf77b0f88bcfca1d18521d7ef79d004361cb92e9ddb3",
+    "receipts/c2_20261015/fmt-final.log": "0b60d7c4ece7444474ebf7b9f2526553dc82d4117650fa8a8e0b532dcf408232",
+    "receipts/c2_20261015/check-final.log": "6c9b75c8fd55f66d960ef92dd793fdeb6c4dc6c8c8e13ed1cfb412870e995a3b",
+    "receipts/c2_20261015/msrv-check-historical.log": "ceb04dcebf92fc6c731002308055c814cd088916a578b5f769164e0e4630eb60",
+    "receipts/c2_20261015/historical-isolated.log": "cb64a37369c1ff4e9a372ee2027e9b8e29e82a8a5cdd99fdf11b412be6c4b7a0",
+    "receipts/c2_20261015/run-native.py": "27d91e0b9a1c1836ee92f31cb10e0adfec749aa3d2c947bedf42638ca4fe1c82",
+    "receipts/c2_20261015/verify.py": "1a03831686e65469856dce252584c8e5abd088ab60c7195b8a36087fd2d2f7c0",
+    "receipts/c2_20261015/doc-links.json": "43696b7159b3c9635a2632d23d066b46c7a47c6e42af8f573bcd99ca462fe982",
+    "receipts/c2_20261015/historical-receipt-guard.json": "de6449cdf090f079c8a79590abb669cd9d08cc57708e9f7aecd76b1a5515de03",
+    "receipts/c2_20261015/check-historical-final.log": "a7ab1e6f10d5cd3441988b70797fd94e628e2a0317d957c68ce025d7f681fbb8",
+    "receipts/c2_20261015/scenario-final.log": "97688852c0c6f3eb625f3fa37971cf9d635aebb92ffbeb2eef5d9242052c23da",
+    "receipts/c2_20261015/excluded/default.log": "f9027eb9022a3921ed314fd2f3f295d48a84d8c920cd7e4e2546d3f5367fa50a",
+    "receipts/c2_20261015/excluded/historical-final.log": "92b3aa9a134d3ef7cd5d9d3648710c5372decca6ae9f0cb3533059d04a3ea523",
+    "receipts/c2_20261015/excluded/committed-first/lane.done": "e3536f9f4b67b109df7820edd893ef8e17271769c46e51fb3fd65d2671ac8e2e",
+    "receipts/c2_20261015/excluded/committed-first/terminal.log": "ec0f42bd1c91dcc7018c8cdd5e7fd74ca68525322a91f20e693288bd15912b63",
+    "receipts/c2_20261015/excluded/committed-first/process.json": "279bd7fe51ae0cd20661933859c1c2ec7377448cbcce47df7eee9012645723f8",
+    "receipts/c2_20261015/excluded/committed-first/receipt.json": "b575ed00587954f62a42d0bddac591e72dc785b591876fdf896a3c90b2e32de1",
+    "receipts/c2_20261015/excluded/native-first-02/lane.done": "76e44529a11412ae0318456a1b83afa47333e9912a43fb1f453077bd7b022886",
+    "receipts/c2_20261015/excluded/native-first-02/terminal.log": "393e0495947875e8102f16c5e31b8ace9c6ad1680d68f088acd4c968e6851f2e",
+    "receipts/c2_20261015/excluded/native-first-02/process.json": "74ba2bdc2997a8a656432b1e0e069abbbecceb4ff3f2a71ed205e1a18a7614c3",
+    "receipts/c2_20261015/excluded/native-first-02/receipt.json": "2072c29cd9f63b8de39ff4f89d4e28c28898bbad76929bf15f1426acb7f79f08",
+    "receipts/c2_20261015/excluded/native-first-03/terminal.log": "caa952814fb04b66c93590565887f7d211367f2eef1dac557a4896f0cd0e9dbb",
+    "receipts/c2_20261015/excluded/native-first-03/excluded.json": "635a340bec85bd8e2e2ba24a06f48979412a8856ef7de4c0608351bd057ddbe0",
+    "receipts/c2_20261015/excluded/native-first-03/process.json": "0a7b2f99cb240075cd4d1566a6596fa599dfbfc5b08749d7ccea050884229828",
+    "receipts/c2_20261015/excluded/committed-first-retry/lane.done": "e361491e325a56ac1a55eb50073e3bbb1e6040edad7beeacd63f300f8ba9f2ef",
+    "receipts/c2_20261015/excluded/committed-first-retry/terminal.log": "97876f89c04e2bff975e4e4ac23c52477391a53d977a820024c1c8f2b159143c",
+    "receipts/c2_20261015/excluded/committed-first-retry/process.json": "c4ab766e344c95c74fd58f6d84a21f5e862746e7e482469fbaaca74f06d5556b",
+    "receipts/c2_20261015/excluded/committed-first-retry/receipt.json": "39fb7629e492c3b6d3e2aa2ff224bfa6abcde975305ed3eb0a48f6a88180a183",
+    "receipts/c2_20261015/excluded/native-first-01/terminal.log": "ee8f0174296bfeb35845ccdccb132b055a6bd5c85b29c1a689ff141d06bae4c0",
+    "receipts/c2_20261015/excluded/native-first-01/process.json": "986fcc2a90d1ba959f180f011c84c6209bb8fbdbb567e3255af0c55ab1f7d9a1",
+    "receipts/c2_20261015/committed-bundle-first/hover-tension.png": "36477cf366c0e8e37fb938984664eda810a640dd7c4dc2da2a53906cd2a03a3e",
+    "receipts/c2_20261015/committed-bundle-first/reflection-examples.png": "20a8118d45d72053f24c2717b4f13b4db6a1040f6b0ff5a4aeff04aa4154a815",
+    "receipts/c2_20261015/committed-bundle-first/compact-third-card.png": "26fb5d936c2a96d71224f737b778851c38a5e1f9ee8fe6380b0dd8047f779198",
+    "receipts/c2_20261015/committed-bundle-first/lane.done": "38a4286a57d160ae5e6b5d43278aa65bdedcbed3684e0952d8ace19d39cfd87d",
+    "receipts/c2_20261015/committed-bundle-first/cards.json": "e8c79d810f0fd68d38efac583c87ff9584e970085fbfecb4641710bca60bfd01",
+    "receipts/c2_20261015/committed-bundle-first/reading-first-viewport.png": "728bb54d34eca3b917e6a3653f53adee39e0f8ed4cafbc9702ac0d37126bad8f",
+    "receipts/c2_20261015/committed-bundle-first/terminal.log": "94e9da5dc47ab8af4137cf651e915c40412b602126b4f3c000c02ae85c11304e",
+    "receipts/c2_20261015/committed-bundle-first/scenario.done": "5d91c60a54c116c9da10913f488de140f61c4d49382c1ec061921e8f706f2cbb",
+    "receipts/c2_20261015/committed-bundle-first/narration.png": "a84c6765cc6dec716ca1c121e14db390a3ee071a815465141fd5591bea1e0799",
+    "receipts/c2_20261015/committed-bundle-first/process.json": "cee4dc75dded639d299566a2593dd5ef9f01a6a15714f144236aaa2bb5e7a416",
+    "receipts/c2_20261015/committed-bundle-first/compact-narration.png": "7b9ae26a429457463e3428b1632853c40d6bf7b8e07e298e6fa9a98f04fc5574",
+    "receipts/c2_20261015/committed-bundle-first/receipt.json": "9289cd703084ad15ecf16676e143f1ccf2ae003b8392b10ae0cc8f4d39f925cd",
+    "receipts/c2_20261015/committed-bundle-supplement/chart-input.png": "78fceaad3afc899ef6b3bcd911f780160654335f6da60ec71b767b5d17d66944",
+    "receipts/c2_20261015/committed-bundle-supplement/lane.done": "9efb7a2b8ceb18d7472ec2431f700d7a414de37964345427940a66a555f26884",
+    "receipts/c2_20261015/committed-bundle-supplement/cards.json": "e8c79d810f0fd68d38efac583c87ff9584e970085fbfecb4641710bca60bfd01",
+    "receipts/c2_20261015/committed-bundle-supplement/terminal.log": "6f99e10a8f56ea35e617f48aa82175361915967a803fd7896fecb75621653f96",
+    "receipts/c2_20261015/committed-bundle-supplement/scenario.done": "e70b112047672474164e2ef940b1ed1da36092d392ff44a0420de8678fda0b2c",
+    "receipts/c2_20261015/committed-bundle-supplement/expanded-receipt.png": "c15362a08de841ee97d54933eeeacb63294acb54fbc4669e31dc38e816228d3e",
+    "receipts/c2_20261015/committed-bundle-supplement/process.json": "028f8eeb81724ce570092894f560056d579a0a9df11dbad5dfe8f9d20be4ea1c",
+    "receipts/c2_20261015/committed-bundle-supplement/chart-input-zoom.png": "aed0fa6e331e788659c021d37d9b9c1f97fe72571ed608c7aa643b9041f1f164",
+    "receipts/c2_20261015/committed-bundle-supplement/receipt.json": "9143571eca0cb1d61f56a9ee5a3ca583768a0981035f656f1a052643e021c8a2",
+    "receipts/c2_20261015/committed-bundle-reopen/lane.done": "439c369f0f11da64e08907f624760adfe99c0b31368b5d39a0a0015b5fcfb987",
+    "receipts/c2_20261015/committed-bundle-reopen/cards.json": "e8c79d810f0fd68d38efac583c87ff9584e970085fbfecb4641710bca60bfd01",
+    "receipts/c2_20261015/committed-bundle-reopen/reopened-compact-card.png": "607c1ee0945df0239d4dee942b6e3bc62d90e0af4364dc2a3602d0bf56422533",
+    "receipts/c2_20261015/committed-bundle-reopen/terminal.log": "db28d9f5b4b6d7eb0f324d36b6be41ba14da8aab6f6e3efd9dd729e609365363",
+    "receipts/c2_20261015/committed-bundle-reopen/reopened-narration.png": "8d5b698e0f41e1b3d4a9e004888e742868c8519776d462a3d72deb197d90d975",
+    "receipts/c2_20261015/committed-bundle-reopen/scenario.done": "e3df6eb497010111916531717c1cba0509950fa5626c521c4998fdfec10b57b1",
+    "receipts/c2_20261015/committed-bundle-reopen/process.json": "ebc4d33e8258773b124daae7c3481a5eb656b748dee7f168773dbf3f4f5f5b63",
+    "receipts/c2_20261015/committed-bundle-reopen/reopened-reading.png": "94a816e6533ddcbb7d0b2ba5bac242f932706615c97612b218a8f85d1c0ae0da",
+    "receipts/c2_20261015/committed-bundle-reopen/receipt.json": "51d462bf519b1c63b8ade409504dde3317bd470418caa723a082315955dc492d"
+  }
+}

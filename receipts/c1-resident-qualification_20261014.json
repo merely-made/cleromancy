@@ -1,0 +1,2778 @@
+{
+  "schema": "cleromancy.c1-qualification/v1",
+  "status": "Bounded H/f7ec/N native and cross-application qualification complete within recorded scopes; full shared wall and final phase acceptance remain open",
+  "supplier": "a1309431f935427607da35844376a7511656fea4",
+  "portable_validator": "f7ec0db556ca69a4f1d5a2b917409d7b2d861ec8",
+  "native_source_base": "5c7522166fb28ac877a6e1ac8851bdabbe80d1b7",
+  "native_source_commit": "04bd24094301b91f1d39ee541554be9f1b9c5081",
+  "binary": {
+    "path": "/Users/markik/Code/testing/stack-state-20261011/mere-knot-repin-target/debug/cleromancy",
+    "sha256": "537c6d7bbc870190b297b42f547dad4d8b7be9b7ae856d2ebac29e592d1a5cf1",
+    "bytes": 220475072
+  },
+  "cargo_driver": "1.99.0",
+  "compiler_and_rustdoc": "1.97.1",
+  "native_gates": {
+    "default": {
+      "passed": 87,
+      "failed": 0,
+      "ignored": 0
+    },
+    "legacy": {
+      "passed": 125,
+      "failed": 0,
+      "ignored": 0
+    }
+  },
+  "runs": {
+    "native-cleromancy-H-seed": {
+      "passed": true,
+      "presented_frames": 67,
+      "captures": 7,
+      "ids": {
+        "session_id": "d420c0da977af7993e3bca796f8ba6461e73b2a98dd5a08fcd8f4ea2fe35e189",
+        "reading_id": "8ec8d5bcc8807d7f4f9c6d603233a7964f0ca7cede6e6e3d90572906da333b7b",
+        "reflection_id": "5842ef5eb7535dc89b6da3d3b135f9d056b748c6a2fa92821e26ef39a3080254"
+      },
+      "cards_sha256": "9c9d6ee77fb13ef946efd0e7ab2a78c8c41a87ff098e43316a7a08d387823de1",
+      "assets": [
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-seed/archived.png",
+          "sha256": "a660b24e1d0b66b4054985d99a5ffb98a522d221957e4d2c4df00edc95431b92",
+          "bytes": 727264
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-seed/cards.json",
+          "sha256": "9c9d6ee77fb13ef946efd0e7ab2a78c8c41a87ff098e43316a7a08d387823de1",
+          "bytes": 556
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-seed/compact-reading-and-mere.png",
+          "sha256": "8d7969cc6e3a1e71a4714cb3164fdff3140e1049c660dab67f98ae55ae21faaf",
+          "bytes": 324096
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-seed/forked.png",
+          "sha256": "94be4876956bb4c2664b834e56927c163d054e0235a06d4d1a15a44ca75d37f2",
+          "bytes": 724868
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-seed/lane.done",
+          "sha256": "77e6fdff3c099f1bdabee30d772e803d29da324483760503b855d11e56c5a883",
+          "bytes": 1584
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-seed/launcher.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-seed/minted-empty.png",
+          "sha256": "95f449e468be180ea712ab2e27c9fbf3f7b2759a42d7c0b0e7d5ca1f50473c3c",
+          "bytes": 421197
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-seed/native.log",
+          "sha256": "7d6f7a9b2b5610417e4e800388ec6a666e68006a5acc76836d3b3a1a5f17c2c6",
+          "bytes": 743
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-seed/process.json",
+          "sha256": "f304b3ce4fc1ea2ddc28ba67e0f0c08edfdf958d6d721d3e1badf453934847c8",
+          "bytes": 383
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-seed/reading-and-mere.png",
+          "sha256": "f809cc213c98b422589d5f6e3cd03f8cd4f1f2fe73be271718301de1e344b235",
+          "bytes": 673963
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-seed/receipt.json",
+          "sha256": "4b578ca4d6a243b858695f5647148232e28d76850d688bf4158a23094c6c23a1",
+          "bytes": 1080
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-seed/restored.png",
+          "sha256": "74947d7b30ed6fe9a346fca8364a8da7c51094394b9d75ccad907f2769c36a31",
+          "bytes": 724871
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-seed/scenario.done",
+          "sha256": "d74654f9946ea5302f0b99c5c9d28266cab6ae65b892bff0980027faa3c4d593",
+          "bytes": 395
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-seed/switched-original.png",
+          "sha256": "9812373efbd1fa8d30556c17d0b73b70d5eac47bc6416b5194a9698b25e2c2c9",
+          "bytes": 703160
+        }
+      ],
+      "independent_visual_review": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/cleromancy-agent-native-H-seed-independent-visual-review.json",
+        "sha256": "65d2157d053a9995f14267001e66ba8462e8ed497cd94d6faf8301423bce69c0",
+        "bytes": 12574
+      },
+      "process": {
+        "launch_method": "LaunchServices temporary application bundle",
+        "launcher_exit": 0,
+        "timeout": false,
+        "success": true,
+        "elapsed_seconds": 149.696,
+        "binary_sha256": "537c6d7bbc870190b297b42f547dad4d8b7be9b7ae856d2ebac29e592d1a5cf1",
+        "scenario_sha256": "745a87182dde20c26660e7ea621bab6ce25fb73fddd2c079253e861d88a3ea06",
+        "receipt": "scenario.done",
+        "captures": 7
+      },
+      "fresh_source": "a1309431f935427607da35844376a7511656fea4"
+    },
+    "native-cleromancy-H-reopen": {
+      "passed": true,
+      "presented_frames": 39,
+      "captures": 4,
+      "ids": {
+        "session_id": "d420c0da977af7993e3bca796f8ba6461e73b2a98dd5a08fcd8f4ea2fe35e189",
+        "reading_id": "8ec8d5bcc8807d7f4f9c6d603233a7964f0ca7cede6e6e3d90572906da333b7b",
+        "reflection_id": "5842ef5eb7535dc89b6da3d3b135f9d056b748c6a2fa92821e26ef39a3080254"
+      },
+      "cards_sha256": "9c9d6ee77fb13ef946efd0e7ab2a78c8c41a87ff098e43316a7a08d387823de1",
+      "assets": [
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-reopen/archive-thaw.png",
+          "sha256": "77e2abb4b84ae8505c2b3aefb587dc315609eb10c1b14ddcc4df200c72506195",
+          "bytes": 732629
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-reopen/cards.json",
+          "sha256": "9c9d6ee77fb13ef946efd0e7ab2a78c8c41a87ff098e43316a7a08d387823de1",
+          "bytes": 556
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-reopen/compact-archive-reading.png",
+          "sha256": "373419df23dcc125a680bbd3490ecdb9187d7cfa54d1ce18725b06dc7fd78186",
+          "bytes": 331472
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-reopen/lane.done",
+          "sha256": "32c37aa53e6575f13cae65af0806adc2fb8c80eeb08f92dffdbd49be3ab0e4db",
+          "bytes": 989
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-reopen/launcher.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-reopen/native.log",
+          "sha256": "bc157086c24778266edd5f4cdfd462e9c379a517a87bf374575c12b76e5a5eea",
+          "bytes": 456
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-reopen/original-after-archive.png",
+          "sha256": "d6bfdf33cbaa7567038e2005d7d6807d65043d532401211e7b6ccca04c123eac",
+          "bytes": 729652
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-reopen/process.json",
+          "sha256": "8f34911d903fd8af0255bd7824f46f2517c485a6bc9aef0704e707b61979ac11",
+          "bytes": 382
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-reopen/receipt.json",
+          "sha256": "48a9f86108467e4e66cb9a52deb69684702879a3cdd9da1e3b956a8bc83de35c",
+          "bytes": 844
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-reopen/recovered.png",
+          "sha256": "5a6f74d44d5f2f95d7e280a3b66eb9c9fd99ed3b25350f01011aba39fb7e93e1",
+          "bytes": 724871
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-reopen/scenario.done",
+          "sha256": "26324bdfd6cfb5e0edc5973beb898aa126c996672dd778d52ec382413d3ac526",
+          "bytes": 228
+        }
+      ],
+      "independent_visual_review": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/cleromancy-agent-native-H-reopen-independent-visual-review.json",
+        "sha256": "f70403dac8793cba75705fa4c4473c5d75bf57b7c89e230bc44aecf9d14ac92e",
+        "bytes": 7394
+      },
+      "process": {
+        "launch_method": "LaunchServices temporary application bundle",
+        "launcher_exit": 0,
+        "timeout": false,
+        "success": true,
+        "elapsed_seconds": 88.426,
+        "binary_sha256": "537c6d7bbc870190b297b42f547dad4d8b7be9b7ae856d2ebac29e592d1a5cf1",
+        "scenario_sha256": "2a5da35d72eb6138e124e84b1999c382e1ed71cf6788c32782bf7a5ea508fb1f",
+        "receipt": "scenario.done",
+        "captures": 4
+      },
+      "fresh_source": "a1309431f935427607da35844376a7511656fea4"
+    },
+    "native-cleromancy-H-compact": {
+      "passed": true,
+      "presented_frames": 46,
+      "captures": 4,
+      "ids": {
+        "session_id": "d420c0da977af7993e3bca796f8ba6461e73b2a98dd5a08fcd8f4ea2fe35e189",
+        "reading_id": "8ec8d5bcc8807d7f4f9c6d603233a7964f0ca7cede6e6e3d90572906da333b7b",
+        "reflection_id": "5842ef5eb7535dc89b6da3d3b135f9d056b748c6a2fa92821e26ef39a3080254"
+      },
+      "cards_sha256": "9c9d6ee77fb13ef946efd0e7ab2a78c8c41a87ff098e43316a7a08d387823de1",
+      "assets": [
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-compact/cards.json",
+          "sha256": "9c9d6ee77fb13ef946efd0e7ab2a78c8c41a87ff098e43316a7a08d387823de1",
+          "bytes": 556
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-compact/compact-reachable-archive-open.png",
+          "sha256": "2a66f3065e22920864c8d91f90a8b1487e4b672cf12bd4a36f811bbdeca82e38",
+          "bytes": 357005
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-compact/compact-reachable-fork.png",
+          "sha256": "93232f3f22aea791832c7bd8ef4417ccb97b586f416e7831e58b77f9104d5372",
+          "bytes": 343105
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-compact/compact-reachable-save.png",
+          "sha256": "b0021d3605cb84fdfb6d035025afef60b73fa5a2320fd31600a229b23831f256",
+          "bytes": 343106
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-compact/compact-reachable-trash.png",
+          "sha256": "4b44994ec99b9da30d3796951f88d13a62e69dac81197759b31d4653498cc6be",
+          "bytes": 343107
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-compact/lane.done",
+          "sha256": "07a459edf1587a72f7bae48681ef8ec66564a476c2bff8c83eb444cdb9bf6a9e",
+          "bytes": 1037
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-compact/launcher.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-compact/native.log",
+          "sha256": "96e87b63e85c41f03f6fb3d474f88f3080d2b06e408fdfbfbde18778488be10c",
+          "bytes": 930
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-compact/process.json",
+          "sha256": "7aac10a14a35ab9d03f567f60da8bd760886bdc85f4718b07f19e671e8bdd979",
+          "bytes": 382
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-compact/receipt.json",
+          "sha256": "8347ec05808b04cace543a75a4952a0144c245266183f9ed26e14cf60c68b71e",
+          "bytes": 806
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-compact/scenario.done",
+          "sha256": "babdb23ac10cbe1fcde52efbc5bfa36729cf673c70b3c10e96f49123758e1abb",
+          "bytes": 211
+        }
+      ],
+      "independent_visual_review": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/cleromancy-agent-native-H-compact-independent-visual-review.json",
+        "sha256": "de5dba1eb81f0847e83325bf58d18de235913ec62e9acbb4698a2a13a951a839",
+        "bytes": 8558
+      },
+      "process": {
+        "launch_method": "LaunchServices temporary application bundle",
+        "launcher_exit": 0,
+        "timeout": false,
+        "success": true,
+        "elapsed_seconds": 77.186,
+        "binary_sha256": "537c6d7bbc870190b297b42f547dad4d8b7be9b7ae856d2ebac29e592d1a5cf1",
+        "scenario_sha256": "653e097d9736ce08605591c349ebd697d8226e00a50f812d3d0ff7575f09fbf9",
+        "receipt": "scenario.done",
+        "captures": 4
+      },
+      "fresh_source": "a1309431f935427607da35844376a7511656fea4"
+    },
+    "native-cleromancy-H-retained": {
+      "passed": true,
+      "presented_frames": 20,
+      "captures": 2,
+      "ids": {
+        "session_id": "d420c0da977af7993e3bca796f8ba6461e73b2a98dd5a08fcd8f4ea2fe35e189",
+        "reading_id": "8ec8d5bcc8807d7f4f9c6d603233a7964f0ca7cede6e6e3d90572906da333b7b",
+        "reflection_id": "5842ef5eb7535dc89b6da3d3b135f9d056b748c6a2fa92821e26ef39a3080254"
+      },
+      "cards_sha256": "9c9d6ee77fb13ef946efd0e7ab2a78c8c41a87ff098e43316a7a08d387823de1",
+      "assets": [
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-retained/cards.json",
+          "sha256": "9c9d6ee77fb13ef946efd0e7ab2a78c8c41a87ff098e43316a7a08d387823de1",
+          "bytes": 556
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-retained/compact-retained-reading-and-mere.png",
+          "sha256": "e9f18bd91280733200db76db7cf0271972047b32027e04588867b97dbb34d024",
+          "bytes": 330269
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-retained/lane.done",
+          "sha256": "34fa848d4d0e1dbf56d7777f9895cdd1eb88b0f346bd296d266d02e01d0ee1c3",
+          "bytes": 643
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-retained/launcher.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-retained/native.log",
+          "sha256": "ee528ecce31581723b5b0f36a5e41f5694ef382738d9565e392f913876c8c77a",
+          "bytes": 320
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-retained/process.json",
+          "sha256": "764f41fcd7bba77c73e544bb2b372774b913cdbb82f34410b422b43029986162",
+          "bytes": 382
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-retained/receipt.json",
+          "sha256": "5c56e5e88243b4f7be9533381d35785b2b2a1c4daebc31b7ad97fedb72634acb",
+          "bytes": 733
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-retained/retained-reading-and-mere.png",
+          "sha256": "cccbdcc938dc7854ab07c1aa689e5c16651e4b712423f2c74ad1a7fcbdfcaa2b",
+          "bytes": 732589
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-cleromancy-H-retained/scenario.done",
+          "sha256": "c5d480634ee43cca532e850455e7a99ffbbfdeb09b4d7e43a05c79d338020292",
+          "bytes": 152
+        }
+      ],
+      "independent_visual_review": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/cleromancy-agent-native-H-retained-independent-visual-review.json",
+        "sha256": "33d87759825fc683d88a2a1465406cdcefa3b8c87c8b73115cbfca947e2ce729",
+        "bytes": 9530
+      },
+      "process": {
+        "launch_method": "LaunchServices temporary application bundle",
+        "launcher_exit": 0,
+        "timeout": false,
+        "success": true,
+        "elapsed_seconds": 76.089,
+        "binary_sha256": "537c6d7bbc870190b297b42f547dad4d8b7be9b7ae856d2ebac29e592d1a5cf1",
+        "scenario_sha256": "bcbe335e133dabdfe9befe632fbac2a3099d27153bad583ae39aba3de3af9a87",
+        "receipt": "scenario.done",
+        "captures": 2
+      },
+      "fresh_source": "a1309431f935427607da35844376a7511656fea4"
+    },
+    "native-ordinary-H-terminal-path-r2": {
+      "passed": true,
+      "presented_frames": 2421,
+      "captures": 2,
+      "ids": {
+        "session_id": "d420c0da977af7993e3bca796f8ba6461e73b2a98dd5a08fcd8f4ea2fe35e189",
+        "reading_id": "8ec8d5bcc8807d7f4f9c6d603233a7964f0ca7cede6e6e3d90572906da333b7b",
+        "reflection_id": "5842ef5eb7535dc89b6da3d3b135f9d056b748c6a2fa92821e26ef39a3080254"
+      },
+      "cards_sha256": "9c9d6ee77fb13ef946efd0e7ab2a78c8c41a87ff098e43316a7a08d387823de1",
+      "assets": [
+        {
+          "path": "receipts/c1_20261014/H_N/native-ordinary-H-terminal-path-r2/cards.json",
+          "sha256": "9c9d6ee77fb13ef946efd0e7ab2a78c8c41a87ff098e43316a7a08d387823de1",
+          "bytes": 556
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-ordinary-H-terminal-path-r2/compact-retained-reading-and-mere.png",
+          "sha256": "b60ecccd45d813e13b99560fea5bb6201e884d97081e8dad5b72e8d3e5846494",
+          "bytes": 330272
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-ordinary-H-terminal-path-r2/lane.done",
+          "sha256": "58a468f1a940b492a1950108cc291e74d828beca88423c75d4f334b20899cbe7",
+          "bytes": 657
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-ordinary-H-terminal-path-r2/launch-context.json",
+          "sha256": "b0be37667f5f61d425594a6d8f8869bc7da70a7b78b7f73604d94e5b1f76d5f1",
+          "bytes": 1694
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-ordinary-H-terminal-path-r2/process.json",
+          "sha256": "ea6baa995c39236252a5023e88997d5c0789834f4505d6783880ba08ae0f8a9f",
+          "bytes": 1280
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-ordinary-H-terminal-path-r2/receipt.json",
+          "sha256": "5c56e5e88243b4f7be9533381d35785b2b2a1c4daebc31b7ad97fedb72634acb",
+          "bytes": 733
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-ordinary-H-terminal-path-r2/retained-reading-and-mere.png",
+          "sha256": "25483994bb5afcc1f75bceef297cbc55977cf711bf3a75dbe9204387855e2c45",
+          "bytes": 732601
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/native-ordinary-H-terminal-path-r2/scenario.done",
+          "sha256": "c5d480634ee43cca532e850455e7a99ffbbfdeb09b4d7e43a05c79d338020292",
+          "bytes": 152
+        }
+      ],
+      "independent_visual_review": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/cleromancy-agent-native-H-ordinary-independent-visual-review.json",
+        "sha256": "4986ecf99841a19bef077b57bdb8bcc33918f3ed39941eca598b7eb6c950928d",
+        "bytes": 14098
+      },
+      "process": {
+        "schema": "cleromancy.H-ordinary-terminal-fallback-process/v1",
+        "source": "04bd24094301b91f1d39ee541554be9f1b9c5081",
+        "binary_sha256": "537c6d7bbc870190b297b42f547dad4d8b7be9b7ae856d2ebac29e592d1a5cf1",
+        "launch": "copied bundle executable directly in owned PTY",
+        "exec_session": 28040,
+        "exec_exit": 0,
+        "physical_Raise_and_Quit": true,
+        "process_observed_gone": true,
+        "real_prompt_observed": "Enter the vault passphrase to start.",
+        "fixture_passphrase_entered_via_actual_terminal": true,
+        "password_env_or_stub": false,
+        "child_PATH": "/bin",
+        "host_graphical_backend_available": true,
+        "graphical_prompt_handling_qualified": false,
+        "scenario_result": "RESULT ok",
+        "presented_frames": 2421,
+        "captures": 2,
+        "original_same_cards": true,
+        "second_owner_refusal": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-ordinary-second-owner/receipt.json",
+        "warm_original_guard": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-ordinary-inspection-warm/receipt.json",
+        "warm_readonly_thaw_guard": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-ordinary-readonly-thaw-inspection/receipt.json",
+        "post_run_zero_write_claim": false,
+        "GPU_returned_to_root": true,
+        "completed_utc": "2026-10-14T14:34:56.139827+00:00"
+      },
+      "fresh_source": "a1309431f935427607da35844376a7511656fea4"
+    }
+  },
+  "native_capture_count": 19,
+  "proofs": {
+    "nativeN-04bd240-compiled-input-gitblob-addendum.json": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/nativeN-04bd240-compiled-input-gitblob-addendum.json",
+      "sha256": "fb20adf355c1d7eb8e6ad76ce16ce3205801419084e73b5c2b8e83ab94ae7f5f",
+      "bytes": 11457
+    },
+    "cleromancy-agent-native-H-N04bd240-independent-source-review.json": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/cleromancy-agent-native-H-N04bd240-independent-source-review.json",
+      "sha256": "4ae8f3ca7ad19c4c1a7e3210761f184242e088a7babc691b4ffeeb4dc00ca21a",
+      "bytes": 45229
+    },
+    "core-H-publication.json": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/core-H-publication.json",
+      "sha256": "393935678a55246314d889bf58b74bfbf3947968a8ed3b0a7b2946d48d2f4c7d",
+      "bytes": 1871
+    },
+    "supplier-H-branch-publication.json": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/supplier-H-branch-publication.json",
+      "sha256": "daf34a810f3feb89ba064c08bba93fe138218445bf1ea90a940347c78f2994cb",
+      "bytes": 1283
+    },
+    "supplier-H-publication-proof-addendum.json": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/supplier-H-publication-proof-addendum.json",
+      "sha256": "32c6759dea3b4dd49a4fd4b44e1b44880904f370c2bfe40be4f12151880d64cf",
+      "bytes": 700
+    },
+    "native-preparation/owner-capsule-H-C2-native-lock-attempt1-receipts/qualification.json": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-preparation/owner-capsule-H-C2-native-lock-attempt1-receipts/qualification.json",
+      "sha256": "b6e6d90c6b5eff3775ac2098e906a82e30ac75204a488b5757f49f749e2fdda1",
+      "bytes": 4324
+    },
+    "native-preparation/H-C2-owner-capsule-final-review.json": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-preparation/H-C2-owner-capsule-final-review.json",
+      "sha256": "aa8574eee5c8953da0df129fc89ff41d1de699ae7c7996050ea2a2266b902133",
+      "bytes": 5128
+    },
+    "native-profile-frozena1309431f-before.json": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-profile-frozena1309431f-before.json",
+      "sha256": "61283b0d7b522da6a3af9ddd1a928c8b4dbe15e58d36bec2da581c17727ef3e9",
+      "bytes": 928
+    },
+    "native-profile-frozena1309431f-after.json": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-profile-frozena1309431f-after.json",
+      "sha256": "cd49a7464bff021c167904afda978228acce1947d476efde3bbb20d8d6eb73e1",
+      "bytes": 664
+    },
+    "native-H-ordinary-second-owner/receipt.json": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-ordinary-second-owner/receipt.json",
+      "sha256": "025e1a42bfdb5bb8b66905cbe8e42c157e8278ba219331deff4f0eb92f0fc27d",
+      "bytes": 168
+    },
+    "native-H-after-retained-warm-inspection/receipt.json": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-after-retained-warm-inspection/receipt.json",
+      "sha256": "5a5e18c05a24e72ebc4ef9b6c8163d898ea5f7fe09c28ba10c6a4aade9bb55e1",
+      "bytes": 994
+    },
+    "native-H-ordinary-inspection-warm/receipt.json": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-ordinary-inspection-warm/receipt.json",
+      "sha256": "5a5e18c05a24e72ebc4ef9b6c8163d898ea5f7fe09c28ba10c6a4aade9bb55e1",
+      "bytes": 994
+    },
+    "native-H-ordinary-readonly-thaw-inspection/receipt.json": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-ordinary-readonly-thaw-inspection/receipt.json",
+      "sha256": "6a25b0e381c564e42d7478f05f4001fa007b00d3c7816f7f9a988011513fb3be",
+      "bytes": 516
+    },
+    "native-H-ordinary-handoff-warm/receipt.json": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-ordinary-handoff-warm/receipt.json",
+      "sha256": "5a5e18c05a24e72ebc4ef9b6c8163d898ea5f7fe09c28ba10c6a4aade9bb55e1",
+      "bytes": 994
+    },
+    "native-ordinary-H-terminal/failure-classification.json": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-ordinary-H-terminal/failure-classification.json",
+      "sha256": "a2be2186db7ad41b6881ea867b58f9f3ec4a1272fa421c8176d629e935f82517",
+      "bytes": 709
+    }
+  },
+  "actual_original_mere": "be4907df-6abe-402f-90a0-116a270e0422",
+  "actual_readonly_thaw": "50008acd-2bb4-4948-8fd5-528ee80faaed",
+  "own_view_isolation_baseline": "Fool foundation in Cleromancy; no saved Graphshell view before its actual witness",
+  "owner_capsule_tests": {
+    "inventory": 29,
+    "stock_passed": 24,
+    "embedded_passed": 24,
+    "intentional_child_ignores_each": 5,
+    "failed": 0,
+    "dedicated_replay_passed": 1,
+    "registry_common_names": 846,
+    "registry_version_mismatches": 0
+  },
+  "ordinary_unlock_execution": {
+    "scope": "process-local PATH=/bin terminal fallback on fresh owned PTY",
+    "normal_encrypted_authentication": true,
+    "actual_prompt_and_terminal_answer": true,
+    "password_env_or_provider_stub": false,
+    "host_graphical_backend_available": true,
+    "graphical_prompt_handling_qualified": false,
+    "first_graphical_attempt_failed_and_preserved": true
+  },
+  "limitations": [
+    "Narrow reading still clips the third card and long IDs; dedicated scrolling exposes all four lifecycle controls",
+    "Retained GUI attachment is the fourth thaw, while explicit inspector Attach to original is a separately scoped interval",
+    "Warm byte guards preserve all files including epoch; no whole startup or cold-open zero-write claim",
+    "Ordinary terminal fallback is controlled child PATH=/bin; graphical unlock handling remains unqualified",
+    "2421 ordinary frames include a 2400-frame owner hold and supply no performance claim"
+  ],
+  "evidence_publication": {
+    "curated_manifest": "receipts/c1-resident-qualification_20261014.json",
+    "source_build_manifest": "receipts/c1-resident-source-build_20261014.json",
+    "captures_and_generated_comparison_copies": "local retained artifacts under receipts/c1_20261014 and Code/testing/cleromancy/c1-20261013",
+    "repository_rule": ".gitignore keeps generated stores, screenshots and byte-stability comparison copies local; curated textual receipts are tracked"
+  },
+  "historical_F_C_D_checkpoint": {
+    "schema": "cleromancy.c1-qualification/v1",
+    "status": "native-qualified; shared browser wall pending",
+    "supplier": "c51e1913cc52cc161815b97939a46452495747e0",
+    "portable_validator": "a3d96b62f2f4f908cc0267cbb7bbc29683d9a957",
+    "native_source_base": "a3d96b62f2f4f908cc0267cbb7bbc29683d9a957",
+    "binary": {
+      "path": "/Users/markik/Code/testing/stack-state-20261011/mere-knot-repin-target/debug/cleromancy",
+      "sha256": "3510d3edffaf42a15d800b5942fdfc978145b06507e023771ff4ab1120be0026",
+      "bytes": 207012816
+    },
+    "cargo_driver": "1.99.0",
+    "compiler_and_rustdoc": "1.97.1",
+    "native_gates": {
+      "default-test": {
+        "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/shared/cleromancy-native-immutable-c51-default-test.json",
+        "receipt_sha256": "08b77bc8ebfcac9aa05bc0cc3ce6c8886c356a1302baffbe9f923b9d41a400b6",
+        "log_sha256": "eb3d701cf32ecc7111d702aefe29f40a42cd6c46610555df9e9b546399fee80c",
+        "argv": [
+          "env",
+          "RUSTC=/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustc",
+          "RUSTDOC=/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustdoc",
+          "cargo",
+          "+1.99.0",
+          "test",
+          "--locked",
+          "--lib",
+          "--tests",
+          "-j",
+          "2"
+        ],
+        "exit": 0,
+        "passed": 87
+      },
+      "legacy-test": {
+        "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/shared/cleromancy-native-immutable-c51-legacy-test.json",
+        "receipt_sha256": "b8682b04213546e98e5cf594ff39b0a599cdcc5c613c164c577288d2ef3af5dc",
+        "log_sha256": "72df748f4dcb4ecf65192240fe2832d8f53ea42542bb3ca91d995684fbfc6142",
+        "argv": [
+          "env",
+          "RUSTC=/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustc",
+          "RUSTDOC=/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustdoc",
+          "cargo",
+          "+1.99.0",
+          "test",
+          "--locked",
+          "--lib",
+          "--tests",
+          "-j",
+          "2",
+          "--features",
+          "legacy-receipts,personal-sync,graphshell-admission"
+        ],
+        "exit": 0,
+        "passed": 125
+      },
+      "default-check": {
+        "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/shared/cleromancy-native-immutable-c51-default-check.json",
+        "receipt_sha256": "5c34cbecef4576d24eccd43e15da171bf0c382af6e19834dffcb7afd74e8f314",
+        "log_sha256": "cded7ca2aa083d9cf0a1383722594ef8b7a2c28c8e4cf5864db8d493ef3a739f",
+        "argv": [
+          "env",
+          "RUSTC=/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustc",
+          "RUSTDOC=/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustdoc",
+          "cargo",
+          "+1.99.0",
+          "check",
+          "--locked",
+          "--all-targets",
+          "-j",
+          "2"
+        ],
+        "exit": 0,
+        "passed": null
+      },
+      "legacy-check": {
+        "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/shared/cleromancy-native-immutable-c51-legacy-check.json",
+        "receipt_sha256": "aa2f570c4944cf0173d8943655f9d4fb7dfafcd1a79acf638ed1ccea856c70cd",
+        "log_sha256": "7fb8869b0df920c20dabe73ddfb16d9698031374cedcfe1bfa73e9fe8972646c",
+        "argv": [
+          "env",
+          "RUSTC=/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustc",
+          "RUSTDOC=/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustdoc",
+          "cargo",
+          "+1.99.0",
+          "check",
+          "--locked",
+          "--all-targets",
+          "-j",
+          "2",
+          "--features",
+          "legacy-receipts,personal-sync,graphshell-admission"
+        ],
+        "exit": 0,
+        "passed": null
+      },
+      "build": {
+        "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/shared/cleromancy-native-immutable-c51-build.json",
+        "receipt_sha256": "9784494eca76caa7f2abe93377fc7db81879a6e6fd6019cedbdfd03c35c78969",
+        "log_sha256": "95a0eabef518fc02abfac98c327380c458469cf5591c8e6ab69ce72dacd2968b",
+        "argv": [
+          "env",
+          "RUSTC=/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustc",
+          "RUSTDOC=/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustdoc",
+          "cargo",
+          "+1.99.0",
+          "build",
+          "--locked",
+          "--bin",
+          "cleromancy",
+          "-j",
+          "2"
+        ],
+        "exit": 0,
+        "passed": null
+      }
+    },
+    "runs": {
+      "native-cleromancy-frozenc51-seed": {
+        "passed": true,
+        "presented_frames": 66,
+        "captures": 7,
+        "ids": {
+          "session_id": "be162bdb00442942cb1d68cef8e852f7a3541c8de5be4c4e591ba394145f4d93",
+          "reading_id": "39227f004090d2235f8e026be64fbc450028a805b057a8b80e72e6d2821c47db",
+          "reflection_id": "2f6820d9739da1cc31867a0a7015f47815c99c7f35d985e68172315701cf5377"
+        },
+        "cards_sha256": "968d781e0c870103c952eed495f36967ecc1b3d0f19d874f3554d51cacb45586",
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-seed/archived.png",
+            "sha256": "42c1bea38dd87a8143228a4d3276e043186ffdff6ae023b14f37d45d7f3e1be5",
+            "bytes": 736228
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-seed/cards.json",
+            "sha256": "968d781e0c870103c952eed495f36967ecc1b3d0f19d874f3554d51cacb45586",
+            "bytes": 535
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-seed/compact-reading-and-mere.png",
+            "sha256": "836218c50a80eafd37707b1e6f5fe1b5adf598935bd546146b38181bcaedebeb",
+            "bytes": 330790
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-seed/forked.png",
+            "sha256": "39a2a191fe15c1980956f13458938a937431bbde17e783636a8027ac5c289eb2",
+            "bytes": 733375
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-seed/lane.done",
+            "sha256": "946fb60c5b09e13cd35d836069769f16a14bc294228094dee447a6e5afb3ceb0",
+            "bytes": 1638
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-seed/minted-empty.png",
+            "sha256": "fce5071e2f4430c4837e9013f927f43936ed03109f6e17747d683eab62cb725c",
+            "bytes": 421200
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-seed/native.log",
+            "sha256": "b2120b26b1d6f027b924cbf2c7ca497e8d59f508cd9d77dbfde13f22225128f1",
+            "bytes": 743
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-seed/process.json",
+            "sha256": "bc10d2f55e2b0f5add6dba5c3297e7922e80d82db7120118d68c523fd70eb636",
+            "bytes": 382
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-seed/reading-and-mere.png",
+            "sha256": "c3bfa27ccc8c7adb98a40baf85f2ee2b47153a80202b3096a6967f125daaf3bc",
+            "bytes": 679313
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-seed/receipt.json",
+            "sha256": "2c213479107ff50ff2cac7ebdb9278e950d0bdad9209def83a6aff67b8fd562d",
+            "bytes": 1080
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-seed/restored.png",
+            "sha256": "1a6e86b630694cd0f5768373868dbac80b7910562fca427a7d78ce55ed139e4b",
+            "bytes": 733376
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-seed/scenario.done",
+            "sha256": "c10fad86da9182dee747a112077a7aa9248375a14de765c7b31806537c60effc",
+            "bytes": 395
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-seed/switched-original.png",
+            "sha256": "8eff06e800468361bf2da7fca53207b3f5dbc3e6f7cbd9eadc64e9075566b92e",
+            "bytes": 711681
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-seed/independent-review.json",
+            "sha256": "47b65d5bc1f6c18aa60bc435d57d47f121bcdafe48d6dd8e7143184f935ea332",
+            "bytes": 9791
+          }
+        ]
+      },
+      "native-cleromancy-frozenc51-reopen-r2": {
+        "passed": true,
+        "presented_frames": 39,
+        "captures": 4,
+        "ids": {
+          "session_id": "be162bdb00442942cb1d68cef8e852f7a3541c8de5be4c4e591ba394145f4d93",
+          "reading_id": "39227f004090d2235f8e026be64fbc450028a805b057a8b80e72e6d2821c47db",
+          "reflection_id": "2f6820d9739da1cc31867a0a7015f47815c99c7f35d985e68172315701cf5377"
+        },
+        "cards_sha256": "968d781e0c870103c952eed495f36967ecc1b3d0f19d874f3554d51cacb45586",
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen-r2/archive-thaw.png",
+            "sha256": "4f038e2f1fcb6433a27c66dd2a7a5a2031f43ece348f0063ff38da378e93249d",
+            "bytes": 741046
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen-r2/cards.json",
+            "sha256": "968d781e0c870103c952eed495f36967ecc1b3d0f19d874f3554d51cacb45586",
+            "bytes": 535
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen-r2/compact-archive-reading.png",
+            "sha256": "c4428c1d0dd1e1b665f54de134d2565793a2ad57cf46478292394e8b34913d04",
+            "bytes": 335672
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen-r2/lane.done",
+            "sha256": "45c4e7c2cbb623c78509c1d3227855ba51534d5073bf707d1493f0cd34e9e7a5",
+            "bytes": 1033
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen-r2/native.log",
+            "sha256": "bc157086c24778266edd5f4cdfd462e9c379a517a87bf374575c12b76e5a5eea",
+            "bytes": 456
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen-r2/original-after-archive.png",
+            "sha256": "74749276156683ab043ce38326c179db75ce15bcb39c12aa62fda4c676836125",
+            "bytes": 738176
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen-r2/process.json",
+            "sha256": "098ddb55605e069308230efaa91e3e9ad5ded59143d618ad006c6cf22f52843c",
+            "bytes": 382
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen-r2/receipt.json",
+            "sha256": "22bbe1de207174fe21cb80e9c9feb0a5fea1f4c5dc8ee6c98316055943978eff",
+            "bytes": 844
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen-r2/recovered.png",
+            "sha256": "08b415e92384afe0fca437e985831c5f767200334d13e8c0d743a2d6e1e15a81",
+            "bytes": 733384
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen-r2/scenario.done",
+            "sha256": "26324bdfd6cfb5e0edc5973beb898aa126c996672dd778d52ec382413d3ac526",
+            "bytes": 228
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen-r2/independent-review.json",
+            "sha256": "a48d4e92519817c91929091d01d61b2f373d7af626b2c829ed37e43acf255a01",
+            "bytes": 8114
+          }
+        ]
+      },
+      "native-cleromancy-frozenc51-compact": {
+        "passed": true,
+        "presented_frames": 46,
+        "captures": 4,
+        "ids": {
+          "session_id": "be162bdb00442942cb1d68cef8e852f7a3541c8de5be4c4e591ba394145f4d93",
+          "reading_id": "39227f004090d2235f8e026be64fbc450028a805b057a8b80e72e6d2821c47db",
+          "reflection_id": "2f6820d9739da1cc31867a0a7015f47815c99c7f35d985e68172315701cf5377"
+        },
+        "cards_sha256": "968d781e0c870103c952eed495f36967ecc1b3d0f19d874f3554d51cacb45586",
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-compact/cards.json",
+            "sha256": "968d781e0c870103c952eed495f36967ecc1b3d0f19d874f3554d51cacb45586",
+            "bytes": 535
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-compact/compact-reachable-archive-open.png",
+            "sha256": "9065de07b9bbb16aa4bc2dcd1ccb8d6ccaccf3f473cb0f1064e0850e350a8337",
+            "bytes": 364146
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-compact/compact-reachable-fork.png",
+            "sha256": "1ad71e73ffa9415dd686f1e55181711c5ed9a9d1c544c8ea71c557a959ff774c",
+            "bytes": 349801
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-compact/compact-reachable-save.png",
+            "sha256": "67b41c31f06433c61600d5b3668607cb4b5ea97cea8d9730fcc8e42c4c80196a",
+            "bytes": 349796
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-compact/compact-reachable-trash.png",
+            "sha256": "7b4f24a38603c9d0d820719f41a6715c559f5c35e61e68c5ab3ac1cbc9e74e8c",
+            "bytes": 349805
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-compact/lane.done",
+            "sha256": "a56d16b31061ab948620898667eec5304be39a7d213298c7e4ceae9f2aa9d31e",
+            "bytes": 1067
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-compact/native.log",
+            "sha256": "96e87b63e85c41f03f6fb3d474f88f3080d2b06e408fdfbfbde18778488be10c",
+            "bytes": 930
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-compact/process.json",
+            "sha256": "38b954488a6dc35643ab8698b1772c2d926e55c41c766196592f7265cde7341f",
+            "bytes": 382
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-compact/receipt.json",
+            "sha256": "e3949b88c99546981af70bc6deff4f3d141449a38535b74dbda63988e2f4ae57",
+            "bytes": 806
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-compact/scenario.done",
+            "sha256": "babdb23ac10cbe1fcde52efbc5bfa36729cf673c70b3c10e96f49123758e1abb",
+            "bytes": 211
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-compact/independent-review.json",
+            "sha256": "09886309992c1cb66cfcddc187f56a50913315538dedb7390e8a20aca433fbbe",
+            "bytes": 8691
+          }
+        ]
+      },
+      "native-ordinary-frozenc51-terminal": {
+        "passed": true,
+        "presented_frames": 20,
+        "captures": 2,
+        "ids": {
+          "session_id": "be162bdb00442942cb1d68cef8e852f7a3541c8de5be4c4e591ba394145f4d93",
+          "reading_id": "39227f004090d2235f8e026be64fbc450028a805b057a8b80e72e6d2821c47db",
+          "reflection_id": "2f6820d9739da1cc31867a0a7015f47815c99c7f35d985e68172315701cf5377"
+        },
+        "cards_sha256": "968d781e0c870103c952eed495f36967ecc1b3d0f19d874f3554d51cacb45586",
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-ordinary-frozenc51-terminal/binary-identity.json",
+            "sha256": "5a98c1d5d32cf2dfd69edb8404c45e9943a44b83686ed4c1888ce7033d7bba05",
+            "bytes": 237
+          },
+          {
+            "path": "receipts/c1_20261014/native-ordinary-frozenc51-terminal/cards.json",
+            "sha256": "968d781e0c870103c952eed495f36967ecc1b3d0f19d874f3554d51cacb45586",
+            "bytes": 535
+          },
+          {
+            "path": "receipts/c1_20261014/native-ordinary-frozenc51-terminal/compact-retained-reading-and-mere.png",
+            "sha256": "7fc66651fc414adeb88b9ba35dfe5c7e09bda35d022ccbbca63cb3003e2c2753",
+            "bytes": 336962
+          },
+          {
+            "path": "receipts/c1_20261014/native-ordinary-frozenc51-terminal/lane.done",
+            "sha256": "7c84b3bca7df85e18c51c7ddb8ed860063084ee7b8ab10599cd10a5af316aedb",
+            "bytes": 655
+          },
+          {
+            "path": "receipts/c1_20261014/native-ordinary-frozenc51-terminal/receipt.json",
+            "sha256": "e0f88452b6f3f8bc9555b8d914c2e020dc9bb5208694bd10963cb5aa5a1f4834",
+            "bytes": 733
+          },
+          {
+            "path": "receipts/c1_20261014/native-ordinary-frozenc51-terminal/retained-reading-and-mere.png",
+            "sha256": "749903c5bcbc9d7c9734ce0571eca1e297bf9187bbe95cf076e6c627177c827a",
+            "bytes": 741106
+          },
+          {
+            "path": "receipts/c1_20261014/native-ordinary-frozenc51-terminal/scenario.done",
+            "sha256": "c5d480634ee43cca532e850455e7a99ffbbfdeb09b4d7e43a05c79d338020292",
+            "bytes": 152
+          },
+          {
+            "path": "receipts/c1_20261014/native-ordinary-frozenc51-terminal/independent-review.json",
+            "sha256": "4d8ddce6ea5ec1f8b230b2ccb097aece59e6dec19e4324059cd468cc1fa89434",
+            "bytes": 13850
+          }
+        ]
+      },
+      "native-cleromancy-frozenc51-retained": {
+        "passed": true,
+        "presented_frames": 20,
+        "captures": 2,
+        "ids": {
+          "session_id": "be162bdb00442942cb1d68cef8e852f7a3541c8de5be4c4e591ba394145f4d93",
+          "reading_id": "39227f004090d2235f8e026be64fbc450028a805b057a8b80e72e6d2821c47db",
+          "reflection_id": "2f6820d9739da1cc31867a0a7015f47815c99c7f35d985e68172315701cf5377"
+        },
+        "cards_sha256": "968d781e0c870103c952eed495f36967ecc1b3d0f19d874f3554d51cacb45586",
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-retained/lane.done",
+            "sha256": "79a4cad5312b07a1430277dcab5fed13f054fe4f412dc0530d87d162d2a26dbf",
+            "bytes": 657
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-retained/cards.json",
+            "sha256": "968d781e0c870103c952eed495f36967ecc1b3d0f19d874f3554d51cacb45586",
+            "bytes": 535
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-retained/compact-retained-reading-and-mere.png",
+            "sha256": "5da66cee22834bcfd0cc162f5dad3440d3af2b8a4c950b3f3b77642a1a2970f0",
+            "bytes": 336965
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-retained/retained-reading-and-mere.png",
+            "sha256": "2fa0f32c9281e6557c2f88aae9a0f5a74964d776bff85cca9c0830c9f0c2f01f",
+            "bytes": 741119
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-retained/native.log",
+            "sha256": "ee528ecce31581723b5b0f36a5e41f5694ef382738d9565e392f913876c8c77a",
+            "bytes": 320
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-retained/scenario.done",
+            "sha256": "c5d480634ee43cca532e850455e7a99ffbbfdeb09b4d7e43a05c79d338020292",
+            "bytes": 152
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-retained/process.json",
+            "sha256": "014af3cb53cdf9580c69e6a076aa345c564acf72ed2900f61cac7fe035dece45",
+            "bytes": 382
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-retained/launcher.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-retained/receipt.json",
+            "sha256": "e0f88452b6f3f8bc9555b8d914c2e020dc9bb5208694bd10963cb5aa5a1f4834",
+            "bytes": 733
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-retained/independent-review.json",
+            "sha256": "a72d0bee9ad65473bd7dd46b3060d8e3141d396104ddab21b9ded1a70b867891",
+            "bytes": 4750
+          }
+        ]
+      }
+    },
+    "pending": [
+      "Full 164-scene shared cutover wall with exact profiles and mandatory supplements, including browser snapshot repair renewal",
+      "Native D and canonical qualification documentation publication"
+    ],
+    "limitations": [
+      "First reopen stalled: zero frames, 1328 redraws, 60s; successful retry does not prove consistently successful presentation",
+      "Long identifiers and horizontal card content still clip in narrow viewports (C2)",
+      "Cold cross-app projection hydration increments persisted Graphshell projection epoch; only warm inspections establish all-byte equality",
+      "No hardware, WAN, formal individual-step OS accessibility or graphical vault unlock claim"
+    ],
+    "owner_checks": {
+      "native-c51-baseline-inspection": {
+        "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-c51-baseline-inspection/receipt.json",
+        "receipt_sha256": "b61ed5447b258ce76baba4d758554f211d6e29afe085859f8fe13f03919c2d58",
+        "evidence": {
+          "durable_bytes_unchanged": true,
+          "graph_seeded_by_verifier": false,
+          "helper_sha256": "254bc72be0fb0f3ef6b739a54c310c131a1e19132fa090f3225926ab308460d6",
+          "inspections": {
+            "cleromancy": {
+              "attachment_action": {
+                "acknowledged": true,
+                "from_session": "b15a7908-fc40-459a-af5a-1e08aaa6b90a",
+                "intent": "mere.sessions.attach",
+                "scope": "connection-local",
+                "to_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+              },
+              "intent_count": 1
+            },
+            "graphshell": {
+              "attachment_action": {
+                "acknowledged": true,
+                "from_session": "b15a7908-fc40-459a-af5a-1e08aaa6b90a",
+                "intent": "mere.sessions.attach",
+                "scope": "connection-local",
+                "to_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+              },
+              "intent_count": 1
+            }
+          },
+          "native_gui_acceptance": false,
+          "passed": true,
+          "schema": "cleromancy.c1-native-preparation/v1",
+          "target_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+        },
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-c51-baseline-inspection/before.json",
+            "sha256": "6f66163d56800ccfacfd1215b67e575e6f3ea5e1117859baf8a6ad6a4458a6c9",
+            "bytes": 8143
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-baseline-inspection/cleromancy.stdout.json",
+            "sha256": "49518f90790ae9bb4e3a56d5f3fff99396ef26a5db4f24afe304d2615faf2c03",
+            "bytes": 5869
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-baseline-inspection/after.json",
+            "sha256": "6f66163d56800ccfacfd1215b67e575e6f3ea5e1117859baf8a6ad6a4458a6c9",
+            "bytes": 8143
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-baseline-inspection/cleromancy.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-baseline-inspection/graphshell.stdout.json",
+            "sha256": "95facda15c0d23d40f84301e63ff53677339bb19b49d46405d79091fb12a21af",
+            "bytes": 5385
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-baseline-inspection/graphshell.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-baseline-inspection/inventory.json",
+            "sha256": "9df6b84ceefd1a7906d6d40ee47cb011c2b18d39c71dd4e500620ddd5a2c00aa",
+            "bytes": 5644
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-baseline-inspection/receipt.json",
+            "sha256": "b61ed5447b258ce76baba4d758554f211d6e29afe085859f8fe13f03919c2d58",
+            "bytes": 994
+          }
+        ]
+      },
+      "native-c51-ordinary-inspection-warm": {
+        "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-c51-ordinary-inspection-warm/receipt.json",
+        "receipt_sha256": "b61ed5447b258ce76baba4d758554f211d6e29afe085859f8fe13f03919c2d58",
+        "evidence": {
+          "durable_bytes_unchanged": true,
+          "graph_seeded_by_verifier": false,
+          "helper_sha256": "254bc72be0fb0f3ef6b739a54c310c131a1e19132fa090f3225926ab308460d6",
+          "inspections": {
+            "cleromancy": {
+              "attachment_action": {
+                "acknowledged": true,
+                "from_session": "b15a7908-fc40-459a-af5a-1e08aaa6b90a",
+                "intent": "mere.sessions.attach",
+                "scope": "connection-local",
+                "to_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+              },
+              "intent_count": 1
+            },
+            "graphshell": {
+              "attachment_action": {
+                "acknowledged": true,
+                "from_session": "b15a7908-fc40-459a-af5a-1e08aaa6b90a",
+                "intent": "mere.sessions.attach",
+                "scope": "connection-local",
+                "to_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+              },
+              "intent_count": 1
+            }
+          },
+          "native_gui_acceptance": false,
+          "passed": true,
+          "schema": "cleromancy.c1-native-preparation/v1",
+          "target_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+        },
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-inspection-warm/before.json",
+            "sha256": "2254fab0091c24409e357871450273bfc2c092a221b333031273bed57a8ea6e4",
+            "bytes": 8938
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-inspection-warm/cleromancy.stdout.json",
+            "sha256": "5645d1adb052c2424e8f32ae52c3c64ecc49afd8a62e629dc818ff73d5f39a41",
+            "bytes": 5864
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-inspection-warm/after.json",
+            "sha256": "2254fab0091c24409e357871450273bfc2c092a221b333031273bed57a8ea6e4",
+            "bytes": 8938
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-inspection-warm/cleromancy.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-inspection-warm/graphshell.stdout.json",
+            "sha256": "42e1c0b4768562d55c61cd7242e98d3caf3d94d14db54fa422b6455a0a6ec954",
+            "bytes": 5380
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-inspection-warm/graphshell.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-inspection-warm/inventory.json",
+            "sha256": "9df6b84ceefd1a7906d6d40ee47cb011c2b18d39c71dd4e500620ddd5a2c00aa",
+            "bytes": 5644
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-inspection-warm/receipt.json",
+            "sha256": "b61ed5447b258ce76baba4d758554f211d6e29afe085859f8fe13f03919c2d58",
+            "bytes": 994
+          }
+        ]
+      },
+      "native-c51-ordinary-retained-inspection-warm": {
+        "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-c51-ordinary-retained-inspection-warm/receipt.json",
+        "receipt_sha256": "b61ed5447b258ce76baba4d758554f211d6e29afe085859f8fe13f03919c2d58",
+        "evidence": {
+          "durable_bytes_unchanged": true,
+          "graph_seeded_by_verifier": false,
+          "helper_sha256": "254bc72be0fb0f3ef6b739a54c310c131a1e19132fa090f3225926ab308460d6",
+          "inspections": {
+            "cleromancy": {
+              "attachment_action": {
+                "acknowledged": true,
+                "from_session": "b15a7908-fc40-459a-af5a-1e08aaa6b90a",
+                "intent": "mere.sessions.attach",
+                "scope": "connection-local",
+                "to_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+              },
+              "intent_count": 1
+            },
+            "graphshell": {
+              "attachment_action": {
+                "acknowledged": true,
+                "from_session": "b15a7908-fc40-459a-af5a-1e08aaa6b90a",
+                "intent": "mere.sessions.attach",
+                "scope": "connection-local",
+                "to_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+              },
+              "intent_count": 1
+            }
+          },
+          "native_gui_acceptance": false,
+          "passed": true,
+          "schema": "cleromancy.c1-native-preparation/v1",
+          "target_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+        },
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-retained-inspection-warm/before.json",
+            "sha256": "4c756deb4a8a00d9e8cc5bf64cb2dd3670fc9e7d89cbe1d9122d0ed0a60b2f52",
+            "bytes": 8938
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-retained-inspection-warm/cleromancy.stdout.json",
+            "sha256": "4a64262eef683835e4995200ec762ba1ac4200be2325823ae4d08f8e81c493bd",
+            "bytes": 5871
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-retained-inspection-warm/after.json",
+            "sha256": "4c756deb4a8a00d9e8cc5bf64cb2dd3670fc9e7d89cbe1d9122d0ed0a60b2f52",
+            "bytes": 8938
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-retained-inspection-warm/cleromancy.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-retained-inspection-warm/graphshell.stdout.json",
+            "sha256": "9d0212e045d339bb3b4f190fff8346a232e3e1266b0dc76c347e075fa4a144e7",
+            "bytes": 5386
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-retained-inspection-warm/graphshell.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-retained-inspection-warm/inventory.json",
+            "sha256": "9df6b84ceefd1a7906d6d40ee47cb011c2b18d39c71dd4e500620ddd5a2c00aa",
+            "bytes": 5644
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-retained-inspection-warm/receipt.json",
+            "sha256": "b61ed5447b258ce76baba4d758554f211d6e29afe085859f8fe13f03919c2d58",
+            "bytes": 994
+          }
+        ]
+      },
+      "native-c51-second-owner-helper": {
+        "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-c51-second-owner-helper/receipt.json",
+        "receipt_sha256": "025e1a42bfdb5bb8b66905cbe8e42c157e8278ba219331deff4f0eb92f0fc27d",
+        "evidence": {
+          "durable_bytes_unchanged": true,
+          "exit_code": 101,
+          "original_owner_stopped": false,
+          "passed": true,
+          "schema": "cleromancy.c1-second-owner-preparation/v1"
+        },
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-c51-second-owner-helper/before.json",
+            "sha256": "6f66163d56800ccfacfd1215b67e575e6f3ea5e1117859baf8a6ad6a4458a6c9",
+            "bytes": 8143
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-second-owner-helper/second-owner.stdout.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-second-owner-helper/after.json",
+            "sha256": "6f66163d56800ccfacfd1215b67e575e6f3ea5e1117859baf8a6ad6a4458a6c9",
+            "bytes": 8143
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-second-owner-helper/second-owner.stderr.log",
+            "sha256": "1b624cae9bb791cc877229b795073cca05ffccd41c12833de922e1442c861632",
+            "bytes": 450
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-second-owner-helper/receipt.json",
+            "sha256": "025e1a42bfdb5bb8b66905cbe8e42c157e8278ba219331deff4f0eb92f0fc27d",
+            "bytes": 168
+          }
+        ]
+      },
+      "native-c51-ordinary-second-owner": {
+        "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-c51-ordinary-second-owner/receipt.json",
+        "receipt_sha256": "025e1a42bfdb5bb8b66905cbe8e42c157e8278ba219331deff4f0eb92f0fc27d",
+        "evidence": {
+          "durable_bytes_unchanged": true,
+          "exit_code": 101,
+          "original_owner_stopped": false,
+          "passed": true,
+          "schema": "cleromancy.c1-second-owner-preparation/v1"
+        },
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-second-owner/before.json",
+            "sha256": "2254fab0091c24409e357871450273bfc2c092a221b333031273bed57a8ea6e4",
+            "bytes": 8938
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-second-owner/second-owner.stdout.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-second-owner/after.json",
+            "sha256": "2254fab0091c24409e357871450273bfc2c092a221b333031273bed57a8ea6e4",
+            "bytes": 8938
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-second-owner/second-owner.stderr.log",
+            "sha256": "f7184f38fa3bf7bdc1beaa22cc4b192b5c785701112489a2b575cd3ab1bd5731",
+            "bytes": 450
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-second-owner/receipt.json",
+            "sha256": "025e1a42bfdb5bb8b66905cbe8e42c157e8278ba219331deff4f0eb92f0fc27d",
+            "bytes": 168
+          }
+        ]
+      },
+      "native-c51-handoff-inspection-warm": {
+        "receipt": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-c51-handoff-inspection-warm/receipt.json",
+        "receipt_sha256": "b61ed5447b258ce76baba4d758554f211d6e29afe085859f8fe13f03919c2d58",
+        "evidence": {
+          "durable_bytes_unchanged": true,
+          "graph_seeded_by_verifier": false,
+          "helper_sha256": "254bc72be0fb0f3ef6b739a54c310c131a1e19132fa090f3225926ab308460d6",
+          "inspections": {
+            "cleromancy": {
+              "attachment_action": {
+                "acknowledged": true,
+                "from_session": "b15a7908-fc40-459a-af5a-1e08aaa6b90a",
+                "intent": "mere.sessions.attach",
+                "scope": "connection-local",
+                "to_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+              },
+              "intent_count": 1
+            },
+            "graphshell": {
+              "attachment_action": {
+                "acknowledged": true,
+                "from_session": "b15a7908-fc40-459a-af5a-1e08aaa6b90a",
+                "intent": "mere.sessions.attach",
+                "scope": "connection-local",
+                "to_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+              },
+              "intent_count": 1
+            }
+          },
+          "native_gui_acceptance": false,
+          "passed": true,
+          "schema": "cleromancy.c1-native-preparation/v1",
+          "target_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+        },
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-c51-handoff-inspection-warm/before.json",
+            "sha256": "084802604538709e893907ff9a18ea4978fa13a38af4c61096c8a6bffab4876e",
+            "bytes": 8938
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-handoff-inspection-warm/cleromancy.stdout.json",
+            "sha256": "fb7e11105a2aa28931b5ca800d363c2bf2b430f38116878330e04afc9c2efb37",
+            "bytes": 5869
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-handoff-inspection-warm/after.json",
+            "sha256": "084802604538709e893907ff9a18ea4978fa13a38af4c61096c8a6bffab4876e",
+            "bytes": 8938
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-handoff-inspection-warm/cleromancy.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-handoff-inspection-warm/graphshell.stdout.json",
+            "sha256": "5ee5fa66794105da9e6f3bc85b29864b750ec573b75da70b2cd3b0a62f612d31",
+            "bytes": 5386
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-handoff-inspection-warm/graphshell.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-handoff-inspection-warm/inventory.json",
+            "sha256": "9df6b84ceefd1a7906d6d40ee47cb011c2b18d39c71dd4e500620ddd5a2c00aa",
+            "bytes": 5644
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-handoff-inspection-warm/receipt.json",
+            "sha256": "b61ed5447b258ce76baba4d758554f211d6e29afe085859f8fe13f03919c2d58",
+            "bytes": 994
+          }
+        ]
+      },
+      "native-c51-graphshell-witness-reopen-inspection": {
+        "evidence": {
+          "durable_bytes_unchanged": true,
+          "graph_seeded_by_verifier": false,
+          "helper_sha256": "254bc72be0fb0f3ef6b739a54c310c131a1e19132fa090f3225926ab308460d6",
+          "inspections": {
+            "cleromancy": {
+              "attachment_action": {
+                "acknowledged": true,
+                "from_session": "b15a7908-fc40-459a-af5a-1e08aaa6b90a",
+                "intent": "mere.sessions.attach",
+                "scope": "connection-local",
+                "to_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+              },
+              "intent_count": 1
+            },
+            "graphshell": {
+              "attachment_action": {
+                "acknowledged": true,
+                "from_session": "b15a7908-fc40-459a-af5a-1e08aaa6b90a",
+                "intent": "mere.sessions.attach",
+                "scope": "connection-local",
+                "to_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+              },
+              "intent_count": 1
+            }
+          },
+          "native_gui_acceptance": false,
+          "passed": true,
+          "schema": "cleromancy.c1-native-preparation/v1",
+          "target_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+        },
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-witness-reopen-inspection/before.json",
+            "sha256": "5bc23b5e3285132fc9ce4e27f12ebbb5067c2e6c96e5ddb0e9d101fe9380901e",
+            "bytes": 9544
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-witness-reopen-inspection/cleromancy.stdout.json",
+            "sha256": "ed7e19031824140157764a72166a4a027da5d88e1fabc087a62e09aed629bc89",
+            "bytes": 5871
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-witness-reopen-inspection/after.json",
+            "sha256": "5bc23b5e3285132fc9ce4e27f12ebbb5067c2e6c96e5ddb0e9d101fe9380901e",
+            "bytes": 9544
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-witness-reopen-inspection/cleromancy.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-witness-reopen-inspection/graphshell.stdout.json",
+            "sha256": "2c4b12e804274537e8bbac3c444266ca505e08fe7a67d880bfa167dcb127eca6",
+            "bytes": 5884
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-witness-reopen-inspection/graphshell.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-witness-reopen-inspection/inventory.json",
+            "sha256": "8ad1bd1b1c30fc8e16b5d128b0839146830560d42b1f2a8411a6d760901bdd23",
+            "bytes": 6173
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-witness-reopen-inspection/verifier.stdout.json",
+            "sha256": "8ad1bd1b1c30fc8e16b5d128b0839146830560d42b1f2a8411a6d760901bdd23",
+            "bytes": 6173
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-witness-reopen-inspection/verifier.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-witness-reopen-inspection/receipt.json",
+            "sha256": "b61ed5447b258ce76baba4d758554f211d6e29afe085859f8fe13f03919c2d58",
+            "bytes": 994
+          }
+        ],
+        "cleromancy_view_preserved": true,
+        "graphshell_view": "Grid and Reading session focus"
+      },
+      "native-c51-post-browser-witness-inspection": {
+        "evidence": {
+          "durable_bytes_unchanged": true,
+          "graph_seeded_by_verifier": false,
+          "helper_sha256": "254bc72be0fb0f3ef6b739a54c310c131a1e19132fa090f3225926ab308460d6",
+          "inspections": {
+            "cleromancy": {
+              "attachment_action": {
+                "acknowledged": true,
+                "from_session": "b15a7908-fc40-459a-af5a-1e08aaa6b90a",
+                "intent": "mere.sessions.attach",
+                "scope": "connection-local",
+                "to_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+              },
+              "intent_count": 1
+            },
+            "graphshell": {
+              "attachment_action": {
+                "acknowledged": true,
+                "from_session": "b15a7908-fc40-459a-af5a-1e08aaa6b90a",
+                "intent": "mere.sessions.attach",
+                "scope": "connection-local",
+                "to_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+              },
+              "intent_count": 1
+            }
+          },
+          "native_gui_acceptance": false,
+          "passed": true,
+          "schema": "cleromancy.c1-native-preparation/v1",
+          "target_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+        },
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-c51-post-browser-witness-inspection/before.json",
+            "sha256": "795a1994c38df64d469f087e18e6f67a13b9fdc2ce4fb546227168429cc70d5f",
+            "bytes": 9544
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-post-browser-witness-inspection/cleromancy.stdout.json",
+            "sha256": "066b6be4cf663d1492f22ee6ebb066bf882a88fd2a01bf2a8a3f4f0ed7323492",
+            "bytes": 5871
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-post-browser-witness-inspection/after.json",
+            "sha256": "795a1994c38df64d469f087e18e6f67a13b9fdc2ce4fb546227168429cc70d5f",
+            "bytes": 9544
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-post-browser-witness-inspection/cleromancy.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-post-browser-witness-inspection/graphshell.stdout.json",
+            "sha256": "b56fecdc440858d4a520fad8a80383cb395d04f64df2422861ad8757dd5d8970",
+            "bytes": 5879
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-post-browser-witness-inspection/graphshell.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-post-browser-witness-inspection/inventory.json",
+            "sha256": "8ad1bd1b1c30fc8e16b5d128b0839146830560d42b1f2a8411a6d760901bdd23",
+            "bytes": 6173
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-post-browser-witness-inspection/verifier.stdout.json",
+            "sha256": "8ad1bd1b1c30fc8e16b5d128b0839146830560d42b1f2a8411a6d760901bdd23",
+            "bytes": 6173
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-post-browser-witness-inspection/verifier.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-post-browser-witness-inspection/receipt.json",
+            "sha256": "b61ed5447b258ce76baba4d758554f211d6e29afe085859f8fe13f03919c2d58",
+            "bytes": 994
+          }
+        ],
+        "cleromancy_view_preserved": true
+      },
+      "native-c51-graphshell-live-ack-inspection": {
+        "evidence": {
+          "durable_bytes_unchanged": true,
+          "graph_seeded_by_verifier": false,
+          "helper_sha256": "254bc72be0fb0f3ef6b739a54c310c131a1e19132fa090f3225926ab308460d6",
+          "inspections": {
+            "cleromancy": {
+              "attachment_action": {
+                "acknowledged": true,
+                "from_session": "b15a7908-fc40-459a-af5a-1e08aaa6b90a",
+                "intent": "mere.sessions.attach",
+                "scope": "connection-local",
+                "to_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+              },
+              "intent_count": 1
+            },
+            "graphshell": {
+              "attachment_action": {
+                "acknowledged": true,
+                "from_session": "b15a7908-fc40-459a-af5a-1e08aaa6b90a",
+                "intent": "mere.sessions.attach",
+                "scope": "connection-local",
+                "to_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+              },
+              "intent_count": 1
+            }
+          },
+          "native_gui_acceptance": false,
+          "passed": true,
+          "schema": "cleromancy.c1-native-preparation/v1",
+          "target_session": "f6e0689c-2633-47c1-be0d-d745e3c30ae6"
+        },
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-live-ack-inspection/before.json",
+            "sha256": "a94b7ae381fbbecfe417fc623567c77f7e55fdeb732d167ecdfd1e066038b8fc",
+            "bytes": 9544
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-live-ack-inspection/phase-comparison.json",
+            "sha256": "da22b14b4dbf5f86d9749e826e602837a1961ef2bb4e2fc79f9aafb66f44fa7f",
+            "bytes": 1542
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-live-ack-inspection/cleromancy.stdout.json",
+            "sha256": "7fbe40f8a6b1ade42afe223c6d486065d10ba5bbe065ca97cddfedf054949e3b",
+            "bytes": 5863
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-live-ack-inspection/after.json",
+            "sha256": "a94b7ae381fbbecfe417fc623567c77f7e55fdeb732d167ecdfd1e066038b8fc",
+            "bytes": 9544
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-live-ack-inspection/cleromancy.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-live-ack-inspection/graphshell.stdout.json",
+            "sha256": "925f0ef7072edbcefbda1ff890b7ab0a7adbd6e3f9fab457f6518d6b36d89cb3",
+            "bytes": 5891
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-live-ack-inspection/graphshell.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-live-ack-inspection/inventory.json",
+            "sha256": "6ce49091eb0dac099ac2ab355cc0ff5cc028e5ccb817055f06cbb56f3ef9cf49",
+            "bytes": 6187
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-live-ack-inspection/verifier.stdout.json",
+            "sha256": "6ce49091eb0dac099ac2ab355cc0ff5cc028e5ccb817055f06cbb56f3ef9cf49",
+            "bytes": 6187
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-live-ack-inspection/verifier.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-graphshell-live-ack-inspection/receipt.json",
+            "sha256": "b61ed5447b258ce76baba4d758554f211d6e29afe085859f8fe13f03919c2d58",
+            "bytes": 994
+          }
+        ],
+        "cleromancy_view_preserved": true
+      }
+    },
+    "preserved_failed_controls": {
+      "native-c51-ordinary-inspection": {
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-inspection/before.json",
+            "sha256": "e00c743667f0285687f88fedd50cfe339a23042d8d984f9d3c85e4e455d9449b",
+            "bytes": 8938
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-inspection/cleromancy.stdout.json",
+            "sha256": "5645d1adb052c2424e8f32ae52c3c64ecc49afd8a62e629dc818ff73d5f39a41",
+            "bytes": 5864
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-inspection/after.json",
+            "sha256": "2254fab0091c24409e357871450273bfc2c092a221b333031273bed57a8ea6e4",
+            "bytes": 8938
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-inspection/cleromancy.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-inspection/graphshell.stdout.json",
+            "sha256": "42e1c0b4768562d55c61cd7242e98d3caf3d94d14db54fa422b6455a0a6ec954",
+            "bytes": 5380
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-inspection/graphshell.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-inspection/inventory.json",
+            "sha256": "9df6b84ceefd1a7906d6d40ee47cb011c2b18d39c71dd4e500620ddd5a2c00aa",
+            "bytes": 5644
+          }
+        ],
+        "status": "preserved failure; not acceptance"
+      },
+      "native-c51-ordinary-retained-inspection": {
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-retained-inspection/before.json",
+            "sha256": "911e276b3d74289155bfab80a44f65ffbadca6aba098a5e09c2a6c2c3b97fbd3",
+            "bytes": 8938
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-retained-inspection/cleromancy.stdout.json",
+            "sha256": "4a64262eef683835e4995200ec762ba1ac4200be2325823ae4d08f8e81c493bd",
+            "bytes": 5871
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-retained-inspection/after.json",
+            "sha256": "4c756deb4a8a00d9e8cc5bf64cb2dd3670fc9e7d89cbe1d9122d0ed0a60b2f52",
+            "bytes": 8938
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-retained-inspection/cleromancy.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-retained-inspection/graphshell.stdout.json",
+            "sha256": "9d0212e045d339bb3b4f190fff8346a232e3e1266b0dc76c347e075fa4a144e7",
+            "bytes": 5386
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-retained-inspection/graphshell.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-ordinary-retained-inspection/inventory.json",
+            "sha256": "9df6b84ceefd1a7906d6d40ee47cb011c2b18d39c71dd4e500620ddd5a2c00aa",
+            "bytes": 5644
+          }
+        ],
+        "status": "preserved failure; not acceptance"
+      },
+      "native-c51-handoff-inspection": {
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-c51-handoff-inspection/before.json",
+            "sha256": "909f2207ecace5657ed8e813902304a238b9c210cf9acc464149315736c240a7",
+            "bytes": 8938
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-handoff-inspection/cleromancy.stdout.json",
+            "sha256": "fb7e11105a2aa28931b5ca800d363c2bf2b430f38116878330e04afc9c2efb37",
+            "bytes": 5869
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-handoff-inspection/after.json",
+            "sha256": "084802604538709e893907ff9a18ea4978fa13a38af4c61096c8a6bffab4876e",
+            "bytes": 8938
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-handoff-inspection/cleromancy.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-handoff-inspection/graphshell.stdout.json",
+            "sha256": "5ee5fa66794105da9e6f3bc85b29864b750ec573b75da70b2cd3b0a62f612d31",
+            "bytes": 5386
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-handoff-inspection/graphshell.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-c51-handoff-inspection/inventory.json",
+            "sha256": "9df6b84ceefd1a7906d6d40ee47cb011c2b18d39c71dd4e500620ddd5a2c00aa",
+            "bytes": 5644
+          }
+        ],
+        "status": "preserved failure; not acceptance"
+      },
+      "native-cleromancy-frozenc51-reopen": {
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen/lane.done",
+            "sha256": "66c69be623599529a40e0da474a939fd88c08b955d6d6a35c1ce94296cdd0fb9",
+            "bytes": 205
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen/cards.json",
+            "sha256": "968d781e0c870103c952eed495f36967ecc1b3d0f19d874f3554d51cacb45586",
+            "bytes": 535
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen/native.log",
+            "sha256": "6ce84988279ddf1ed5d5728b6846c868d15c281963820f176d49bc93855aa1dd",
+            "bytes": 201
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen/scenario.done",
+            "sha256": "8621b705a5093453b6c1a5dee766a4f85380ccf9b2290abb9572ced77e36f8c3",
+            "bytes": 94
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen/process.json",
+            "sha256": "cd0a7b813cd1f86c1483ec4fe6547e65879ce8e2f6af8c5d3a81bb5d92bc359b",
+            "bytes": 383
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen/launcher.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-cleromancy-frozenc51-reopen/receipt.json",
+            "sha256": "7db6cab7c855095be6ac11eead7e6fd7cacc21be29526896e07cfdd2ac3c67e0",
+            "bytes": 639
+          }
+        ],
+        "status": "preserved failure; not acceptance"
+      }
+    },
+    "ordinary_unlock_execution": {
+      "mechanism": "Direct owned Mach-O app-bundle executable on real PTY, SSH_TTY=/dev/tty; production NativeOrTerminal prompt",
+      "public_fixture_only": true,
+      "passphrase_environment_or_cli_argument": false,
+      "scenario_environment": "CLEROMANCY_SCENARIO",
+      "normal_process_exit": 0,
+      "initial_non_scenario_launch_error": "CLEROMANCY_SCENARIO_PATH unrecognized; no scenario acceptance claimed"
+    },
+    "private_store_and_appearance_guard": {
+      "passed": true,
+      "retired_private_store_unchanged": true,
+      "appearance_unchanged": true,
+      "themes_unchanged": true,
+      "only_original_files_present": true,
+      "files": {
+        "cleromancy.redb": "82fa3d5491a9e6848385170b9fc444b5b01359a828508d14c48347020c7ccd77",
+        "themes.json": "f9c259b99d9dce9cb5ea1998b4495cb9915dfd999ae10375cedf9127999576b0",
+        "appearance.json": "ce1ac582bc2b157f1a04f8dcb6a8d70502370683a552d95f5813260e5e905593"
+      }
+    },
+    "evidence_publication": {
+      "curated_manifest": "receipts/c1-resident-qualification_20261014.json",
+      "source_build_manifest": "receipts/c1-resident-source-build_20261014.json",
+      "captures_and_generated_comparison_copies": "local retained artifacts under receipts/c1_20261014 and Code/testing/cleromancy/c1-20261013",
+      "repository_rule": ".gitignore keeps generated stores, screenshots and byte-stability comparison copies local; curated textual receipts are tracked"
+    },
+    "cross_application_native": {
+      "native-graphshell-witness-final-c51": {
+        "passed": true,
+        "presented_frames": 49,
+        "captures": 5,
+        "binary_sha256": "36883e87a037d69fef12fdea8db052a7942149d6385485a6c52d38620c111bdc",
+        "scenario_sha256": "6f2453a838ade674994b2d872b84178398f22062eb3a450144846bcf465261f5",
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-graphshell-witness-final-c51/04_refreshed_record.png",
+            "sha256": "2a723722b42162ff4bbc7045cc52750332e056cc3801371e5c1f6982c62db971",
+            "bytes": 694140
+          },
+          {
+            "path": "receipts/c1_20261014/native-graphshell-witness-final-c51/02_context_record.png",
+            "sha256": "183f241cf17f6164159db0b004078a24082806457cbd8f03db5b57a5b9198cef",
+            "bytes": 553137
+          },
+          {
+            "path": "receipts/c1_20261014/native-graphshell-witness-final-c51/01_shared_mere.png",
+            "sha256": "62a4e1ecfbb21f7d3dfa7e2429206721dee82f04479985756b73f51070ffd9d4",
+            "bytes": 438209
+          },
+          {
+            "path": "receipts/c1_20261014/native-graphshell-witness-final-c51/05_saved_grid_view.png",
+            "sha256": "f290002df4a3ab36061a5642b431ea6176171116d22ed4ad1702a675ed866b46",
+            "bytes": 776183
+          },
+          {
+            "path": "receipts/c1_20261014/native-graphshell-witness-final-c51/native.log",
+            "sha256": "5cdd965373deec0d485d54f4d2df501505bbb7518362e1cfb4b93ef7c3013754",
+            "bytes": 529
+          },
+          {
+            "path": "receipts/c1_20261014/native-graphshell-witness-final-c51/scenario.done",
+            "sha256": "b68a23ba4ac3eec9296330af16f1438fa42098ada3fcb0ae2c4c6fa225b03355",
+            "bytes": 1216
+          },
+          {
+            "path": "receipts/c1_20261014/native-graphshell-witness-final-c51/process.json",
+            "sha256": "302e24c91a4e012ab8da92c56c89cd0c81cbac99eb261d704dde68ec7745e3b0",
+            "bytes": 382
+          },
+          {
+            "path": "receipts/c1_20261014/native-graphshell-witness-final-c51/launcher.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-graphshell-witness-final-c51/03_reading_record.png",
+            "sha256": "41c4480447e55bca70fda9c8390ad2056d484a1d15f1a92f847e4fa65f57ffb5",
+            "bytes": 695425
+          },
+          {
+            "path": "receipts/c1_20261014/native-graphshell-witness-final-c51/independent-review.json",
+            "sha256": "01e4f98e836c640ccecb6f8d3526738084721a6eb1fbba0063b1f186912b814e",
+            "bytes": 6874
+          }
+        ]
+      },
+      "native-graphshell-reopen-final-c51": {
+        "passed": true,
+        "presented_frames": 19,
+        "captures": 1,
+        "binary_sha256": "36883e87a037d69fef12fdea8db052a7942149d6385485a6c52d38620c111bdc",
+        "scenario_sha256": "3836cde8e02c3f0d4ecb511b59938674ff162697b5d90f0654f245351972a480",
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/native-graphshell-reopen-final-c51/native.log",
+            "sha256": "5fbce12ac0b287fe629b6ae743b8ad3c4589492b249473154b1b6a21bc284bcf",
+            "bytes": 236
+          },
+          {
+            "path": "receipts/c1_20261014/native-graphshell-reopen-final-c51/scenario.done",
+            "sha256": "e3c1b3cad054b063879d13ad425ad7ed957bdc982e8dbd88b81e23b57cb04393",
+            "bytes": 396
+          },
+          {
+            "path": "receipts/c1_20261014/native-graphshell-reopen-final-c51/process.json",
+            "sha256": "ff3883b958a602b3a07bb34025cf94ddb47d8c30b6f27920fb46bde154d0e9a8",
+            "bytes": 382
+          },
+          {
+            "path": "receipts/c1_20261014/native-graphshell-reopen-final-c51/launcher.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          {
+            "path": "receipts/c1_20261014/native-graphshell-reopen-final-c51/01_shared_mere_own_view_reopened.png",
+            "sha256": "7b7708ee85a4e65c5aa39479c52ff720fec2d8c5ed718b42e0270c4f9bc48232",
+            "bytes": 776173
+          },
+          {
+            "path": "receipts/c1_20261014/native-graphshell-reopen-final-c51/independent-review.json",
+            "sha256": "9b9c8eb1eae21ee41b137a3b5cacf7a7bac88687469e216309c1374cc6439a23",
+            "bytes": 4386
+          }
+        ]
+      }
+    },
+    "native_source_commit": "400ce312fd2b2c135449282cbb9e7a1463ab8e97",
+    "publication": {
+      "supplier_F": "published branch checkpoint",
+      "portable_C": "published branch checkpoint",
+      "native_D": "locally committed; not pushed",
+      "main_merge": false
+    },
+    "committed_source_equivalence": {
+      "commit": "400ce312fd2b2c135449282cbb9e7a1463ab8e97",
+      "inputs": 145,
+      "missing": 0,
+      "mismatches": 0,
+      "binary_sha256": "3510d3edffaf42a15d800b5942fdfc978145b06507e023771ff4ab1120be0026",
+      "independent_review": "/Users/markik/Code/testing/cleromancy/c1-20261013/nativeD-400ce31-compiled-input-gitblob-addendum.json",
+      "review_sha256": "476c3f7b05e00a3c052d3bc82e41f0d0e5103e8f93feefef71ef16a26f807f66",
+      "rebuild_claimed": false,
+      "remote_publication_claimed": false
+    },
+    "cross_application_browser": {
+      "c1-browser-witness-switch": {
+        "passed": true,
+        "source": "c51e1913cc52cc161815b97939a46452495747e0",
+        "actual_browser": "Chrome 155, Desktop 1400x900, DPR2, Metal3",
+        "receipt_sequence": 1,
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/c1-browser-witness-switch/result.json",
+            "sha256": "1b94850a798c4df5cd28f124ac9cb3e2d658489b559bcb2232b7ead717a01b84",
+            "bytes": 36480
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-witness-switch/0001_05_browser_rejoined_own_view.png",
+            "sha256": "bb08ce20d4fab392a915d467e0bd9ce6266eba9d6142d615a2db200db0147709",
+            "bytes": 427031
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-witness-switch/result-0001.json",
+            "sha256": "1b94850a798c4df5cd28f124ac9cb3e2d658489b559bcb2232b7ead717a01b84",
+            "bytes": 36480
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-witness-switch/native-ax-observation.json",
+            "sha256": "bbfb1bdf13b66282274c8fe5acc2576a0409aee740607569aa6eb5f3bf79ce76",
+            "bytes": 1183
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-witness-switch/0001_01_browser_resident_own_view.png",
+            "sha256": "aaec08ba8900dd631fe6c5602c7b36d10bf038568544e6b9c63f78d75ec17561",
+            "bytes": 427030
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-witness-switch/0001_03_browser_refreshed_record.png",
+            "sha256": "b683a79383014af5028ef311a8c451111b348829722d56ecddaaac8126217a87",
+            "bytes": 427035
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-witness-switch/0001_02_browser_context_record.png",
+            "sha256": "170c57b045f6a90be5e5647263b4d9de76bc0feab9ead09020503692afdca423",
+            "bytes": 420468
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-witness-switch/progress.json",
+            "sha256": "1a2c6af362731a46050cdef029fb367a6e12be7df885020aaaac612031a2c1cc",
+            "bytes": 32274
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-witness-switch/0001_04_browser_closed_purge.png",
+            "sha256": "c99e267193ce44829435b5d0e35e28d70d4a8db7972a92e2d88072c92d25ccd9",
+            "bytes": 224041
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-witness-switch/independent-review.json",
+            "sha256": "507e774ac71f104d0a5ae4267318c097cc861605c06c45057e1991ea6b0e3a7b",
+            "bytes": 8967
+          }
+        ]
+      },
+      "c1-browser-reopen-switch": {
+        "passed": true,
+        "source": "c51e1913cc52cc161815b97939a46452495747e0",
+        "actual_browser": "Chrome 155, Desktop 1400x900, DPR2, Metal3",
+        "receipt_sequence": 1,
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/c1-browser-reopen-switch/result.json",
+            "sha256": "f93a95137b6259b989171cd2036346242d9d3917945720c03a27ccc92cae39f8",
+            "bytes": 34719
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-reopen-switch/result-0001.json",
+            "sha256": "f93a95137b6259b989171cd2036346242d9d3917945720c03a27ccc92cae39f8",
+            "bytes": 34719
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-reopen-switch/0001_01_browser_fresh_own_view.png",
+            "sha256": "44907426794dfb5c04134cab8eef907fadb3c243c99e6b6f55cb99c3b6ca4bff",
+            "bytes": 427052
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-reopen-switch/progress.json",
+            "sha256": "e37d4c68ade7d59005ef21d14f7694feae7fae6a9e24df80cff424bd2b372a6b",
+            "bytes": 32001
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-reopen-switch/independent-review.json",
+            "sha256": "02de9e7ac94a72e384c4ca4a76571281357fe9e5c50a09d8a5c230ad79d3fa82",
+            "bytes": 3426
+          }
+        ]
+      },
+      "c1-browser-live-switch": {
+        "passed": true,
+        "source": "c51e1913cc52cc161815b97939a46452495747e0",
+        "actual_browser": "Chrome 155, Desktop 1400x900, DPR2, Metal3",
+        "receipt_sequence": 2,
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/c1-browser-live-switch/0002_00_browser_live_before_native_update.png",
+            "sha256": "f52cc758d8d51e959b67e9dca2a063b2c9e40315872e472e53472b366eefe321",
+            "bytes": 427028
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-live-switch/native-ax-generation-observation.json",
+            "sha256": "27b4be4bfdcaeed76993c8dd35cbb1e6426cbb781e6463575832caadcd8d1068",
+            "bytes": 718
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-live-switch/result.json",
+            "sha256": "fb082497b879f2b587ac481582b7ea9c00946d7d10d2a46da929149d2d228b66",
+            "bytes": 35189
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-live-switch/result-0001.json",
+            "sha256": "4d98f40ccf31b2fb25a6b25a813c8753cd9f557753bf9fc4ffa3bbf0bc2f859b",
+            "bytes": 34835
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-live-switch/0001_00_browser_live_before_native_update.png",
+            "sha256": "f52cc758d8d51e959b67e9dca2a063b2c9e40315872e472e53472b366eefe321",
+            "bytes": 427028
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-live-switch/result-0002.json",
+            "sha256": "fb082497b879f2b587ac481582b7ea9c00946d7d10d2a46da929149d2d228b66",
+            "bytes": 35189
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-live-switch/0002_01_browser_live_external_view.png",
+            "sha256": "daf5c2d69188a822af8a464b7d70ddef7e206e4d0d709ddc180e004d8e4d2aa5",
+            "bytes": 429561
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-live-switch/fixture-events.jsonl",
+            "sha256": "35da06ba91ed899cc596aa4b9c608a49801121c0e9143189bee8ebb9c2a831e7",
+            "bytes": 249
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-live-switch/independent-review.json",
+            "sha256": "6302fe82908648a967040eedd474785ec4e10b9bc26ca8b99999b1370414e35f",
+            "bytes": 6822
+          }
+        ]
+      },
+      "c1-browser-archive-switch": {
+        "passed_bounded_staged_proof": true,
+        "accepted_sequences": [
+          1,
+          3,
+          4
+        ],
+        "preserved_failed_sequence": 2,
+        "accepted_original_captures": 9,
+        "preserved_failed_original_captures": 7,
+        "assets": [
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/0002_08_browser_rejoined_archive.png",
+            "sha256": "ac59b30eef2dba26e09da91c68d68b6d17e1d5356f69db0d7fb18523c0e36096",
+            "bytes": 417093
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/result.json",
+            "sha256": "c4265c7c8b2952d91b7f76637bf4d65490065f65848e2ee815836b3af3bd273a",
+            "bytes": 38581
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/result-0001.json",
+            "sha256": "ac65b0a83a20e633b8e96be1eb9e42396dad4d5277b47b83be2d357bd402e31a",
+            "bytes": 36484
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/0003_06_browser_refreshed_archive.png",
+            "sha256": "d8e67270c6204e27e337f1c1e4fa67070d855ccf65b070865eb6792c50e9f316",
+            "bytes": 417075
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/0003_03_browser_transient_archive_record.png",
+            "sha256": "5df560ba3f17fe564ff957cf79d67cb7e9df4adbdb352192c128969540533732",
+            "bytes": 417041
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/0004_09_browser_original_preserved_view.png",
+            "sha256": "fbdb4edc9026545b2c9cf7a0b8a4d5d3792b8dde44d86db26e309f13cbf597b0",
+            "bytes": 416991
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/0003_02_browser_read_only_archive.png",
+            "sha256": "b375a3a3f4d91f838a234e2538eac15ef2200e012ec8f25725606fcf43a57443",
+            "bytes": 423250
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/0002_03_browser_transient_archive_record.png",
+            "sha256": "ec6bbdd04fcbf60108ecd992e810219e9a2ed03dc9fcecc1a3dc951ee1bbe8e8",
+            "bytes": 417108
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/0001_01_browser_saved_archive.png",
+            "sha256": "dd5fe822c07eb4813bcb21178e19d89f7d58174ca3b7be650052ab2c25659907",
+            "bytes": 429578
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/result-0004.json",
+            "sha256": "c4265c7c8b2952d91b7f76637bf4d65490065f65848e2ee815836b3af3bd273a",
+            "bytes": 38581
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/0003_05_browser_transient_archive_spiral.png",
+            "sha256": "c8c181383bb1318e7c17fd8ec93028f0844a88b0787dcec11c946a7ff0c49f39",
+            "bytes": 417146
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/0002_07_browser_purged_archive.png",
+            "sha256": "d7b41bd22ac0ec95182e504fb2f6a6603ec565a345b568ec1a7106e06b5742e6",
+            "bytes": 417111
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/0002_05_browser_transient_archive_spiral.png",
+            "sha256": "7e925c4674a9aa366f7e6de9d4889ac2028c8c6206f93489c38c226c4afaae0f",
+            "bytes": 417005
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/progress.json",
+            "sha256": "386af2216429da292e1f85d586f45686c4470c2c270449e623753ac3761a42a8",
+            "bytes": 7820
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/0003_08_browser_rejoined_archive.png",
+            "sha256": "5d41df0bd2f58384372b426a8510ddce60ac75b7621d7aa58ec327590a949146",
+            "bytes": 423102
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/result-0002.json",
+            "sha256": "8c532c0aece161f0ceb1731012fb8aa2ff1edfcd68cbc873722ad80b1758bed8",
+            "bytes": 41098
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/0002_06_browser_refreshed_archive.png",
+            "sha256": "937be175748254745f7160f670b05a4b468b340d94b388de24011acd77417d46",
+            "bytes": 417060
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/0002_02_browser_read_only_archive.png",
+            "sha256": "d9a6623ebae563e4b5ebf0131dc18440340dcc6de648555c4ea0a3d5885143f8",
+            "bytes": 423220
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/0002_04_browser_transient_archive_grid.png",
+            "sha256": "a6ccaab26e965338c0a8d48cc5b4c541df9f7046b093b0a4ae77f478f59efb42",
+            "bytes": 414961
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/0003_04_browser_transient_archive_grid.png",
+            "sha256": "edac43619258865abc93d7dafbbe8f4736b8f015c7094902bd15ede3887f0fff",
+            "bytes": 415089
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/0003_07_browser_purged_archive.png",
+            "sha256": "3ce1a550fa64642ce03cf20e9656402f0e2177034a288ca71b2ec7787c74691f",
+            "bytes": 224055
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/result-0003.json",
+            "sha256": "26c4ab1cdae52164abc58742e5fb40716fc7b9fce6723d761a877a7b49541562",
+            "bytes": 41222
+          },
+          {
+            "path": "receipts/c1_20261014/c1-browser-archive-switch/independent-review.json",
+            "sha256": "0aac3454563ebd9fa51bd1d2b4245bace4c7dada1efe024c00f2a1b9b6dd2f70",
+            "bytes": 24417
+          }
+        ],
+        "archive": "blake3:b1e550070e854f1907f5a9e0fc70193c19bd546af90b9c0d51943d83558ae871",
+        "read_only_thaw": "0591e329-2f39-4c0b-a676-00376ba26586",
+        "no_implicit_fork": true,
+        "read_only_interval_all_durable_bytes_unchanged": true
+      }
+    },
+    "connected_live_update": {
+      "native_ack": true,
+      "retained_browser_connection": true,
+      "generation_before": 6,
+      "generation_after": 7,
+      "strategy_before": "grid.default",
+      "strategy_after": "phyllotaxis.default",
+      "refresh_switch_reconnect_reload_between": false,
+      "review": "/Users/markik/Code/testing/cleromancy/c1-20261013/connected-live-final-c51-independent-visual-review.json",
+      "native_presented_frames": 26,
+      "native_captures": 1,
+      "domain_count": 8,
+      "cleromancy_view_preserved": true
+    },
+    "cross_application_owner_guard_chain": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/owner-guard-chain-final-c51.json",
+      "sha256": "3757bccd394b68358d9ebe6e19a3627e022279baa00e63aca8c7d6f1149a02dc",
+      "stages": 7,
+      "includes_epoch_and_both_app_views": true
+    },
+    "browser_wall_initial_attempt": {
+      "source": "c51e1913cc52cc161815b97939a46452495747e0",
+      "semantic_runs": 4,
+      "semantic_passes": 3,
+      "semantic_failures": 1,
+      "canonical_accepted": 0,
+      "geometry_required": [
+        1400,
+        900
+      ],
+      "geometry_observed": [
+        1400,
+        844
+      ],
+      "preserved_summary": "/Users/markik/Code/testing/cleromancy/c1-20261013/browser-wall-c51-receipts/initial-batch-diagnostic-summary.json",
+      "repair_source": "4a50998205a34693a84076f6d0db4edec5faee38",
+      "repair_current_status": "wasm rebuild underway; unqualified"
+    },
+    "browser_repair_targeted_face_acceptance": {
+      "status": "bounded original D3 and selected Bare face cases independently qualified at G; full canonical wall remains pending",
+      "source": "4a50998205a34693a84076f6d0db4edec5faee38",
+      "runtime_source": "c51e1913cc52cc161815b97939a46452495747e0",
+      "d3_review": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/browser-G-d3-independent-visual-review.json",
+        "sha256": "37656622de5f0a7c40f8eef7fb16e98ec24b1e2038b7e2bd2f2106bd811eabe5"
+      },
+      "selected_bare_review": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/browser-G-p4-tree-detail-actions-independent-visual-review.json",
+        "sha256": "85ad2bfdf798e8eec2e9fe4d5c2bcadce08f508c8a69249ba4402501336c1e69"
+      },
+      "scope": "Original scenario source and actual PNG hashes/physical profile/1400x900 Desktop DPR2 package bindings reviewed; no changed assertions or thresholds; no native rebuild claim."
+    }
+  },
+  "historical_exact_bytes": {
+    "F-c51-native-D-before-H-ledger.json": {
+      "path": "/Users/markik/Code/repos/cleromancy/receipts/c1_20261014/checkpoints/F-c51-native-D-before-H-ledger.json",
+      "sha256": "9920c9dfbc40233954be6b612b94fec1e19ec4377f2601d615e76cff5147c3b2",
+      "bytes": 76035
+    },
+    "F-c51-native-D-before-H-source-build.json": {
+      "path": "/Users/markik/Code/repos/cleromancy/receipts/c1_20261014/checkpoints/F-c51-native-D-before-H-source-build.json",
+      "sha256": "e3418a281e04966af5206b2a571f9b6696e7842e7e44e0e76b3717accff4b240",
+      "bytes": 14650
+    }
+  },
+  "publication": {
+    "supplier_H": "published C1 branch checkpoint",
+    "portable_f7ec": "published pure-core branch checkpoint",
+    "native_N": "published exact source checkpoint on C1 branch; final qualification docs pending",
+    "final_documentation": "pending",
+    "main_merge": false,
+    "native_N_proof": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-N-branch-publication.json",
+      "sha256": "0dfd6b6435db9f3251c5386b3a0b84020c727e67dc309bb2cc99ef3b30f0a3a3"
+    },
+    "documentation_checkpoint": "ready for bounded checkpoint commit/push; final full-wall verdict pending"
+  },
+  "cross_application_native": {
+    "status": "H native witness and actual fresh reopen accepted within combined scoped visual/owner proofs",
+    "source": "a1309431f935427607da35844376a7511656fea4",
+    "binary_sha256": "67418f29ba31ced796ef56c18107d11b12f8c575d8ef51efb883ef2cbb8d932d",
+    "actual_original_mere": "be4907df-6abe-402f-90a0-116a270e0422",
+    "actual_Graphshell_focus": "cleromancy://session/d420c0da977af7993e3bca796f8ba6461e73b2a98dd5a08fcd8f4ea2fe35e189",
+    "Graphshell_view": "Grid",
+    "Cleromancy_entire_Fool_view_map_preserved": true,
+    "witness_presented_frames": 49,
+    "witness_captures": 5,
+    "fresh_process_reopen_pending": false,
+    "proofs": {
+      "native-graphshell-witness-final-a1309431f/process.json": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-graphshell-witness-final-a1309431f/process.json",
+        "sha256": "53e34d21001981325aeb3b5cb0f22deb7a0180f30405ee726b9f358426370c00"
+      },
+      "native-graphshell-witness-final-a1309431f/execution-binding.json": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-graphshell-witness-final-a1309431f/execution-binding.json",
+        "sha256": "62143ad0f3b0b705a1d2cfaf8279544e58f4a5d09e89c6c3033a0643d863cd32"
+      },
+      "cleromancy-agent-native-Graphshell-H-witness-independent-visual-review.json": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/cleromancy-agent-native-Graphshell-H-witness-independent-visual-review.json",
+        "sha256": "4949008b3765904aaa76d622f0c6e2bac3070a14c9e0d7f26f56242b9e1b1b9c"
+      },
+      "native-H-after-graphshell-witness-inspection/phase-comparison.json": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-after-graphshell-witness-inspection/phase-comparison.json",
+        "sha256": "817f0c9aec6905240fea3257ea12ea842bae1fcf5cf252d46c27df98df82a79d"
+      },
+      "native-graphshell-reopen-final-a1309431f/process.json": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-graphshell-reopen-final-a1309431f/process.json",
+        "sha256": "6fd1e86a31e01658b6210d74792b6968273c7e937cc1b006f510d7842689dc58"
+      },
+      "cleromancy-agent-native-Graphshell-H-reopen-independent-visual-review.json": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/cleromancy-agent-native-Graphshell-H-reopen-independent-visual-review.json",
+        "sha256": "247aaea55aad1c053a5f98c3987f803cebc7c4212371c3fb32bb85b337d83c1d"
+      },
+      "native-H-after-graphshell-reopen-inspection/phase-comparison.json": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-after-graphshell-reopen-inspection/phase-comparison.json",
+        "sha256": "0ace83efad8e9ab8201886cd8dd80d695f6b596280f44a2c41345f6c32bdb015"
+      }
+    },
+    "local_originals": [
+      {
+        "path": "receipts/c1_20261014/H_N/native-graphshell-witness-final-a1309431f/01_shared_mere.png",
+        "sha256": "4e95602468a7bc437b08f5c6c74cfb4a2547440b84763d57921c6f127394e30f",
+        "bytes": 436025
+      },
+      {
+        "path": "receipts/c1_20261014/H_N/native-graphshell-witness-final-a1309431f/02_context_record.png",
+        "sha256": "477347f65406ac257862c40aae199e2037d7cf75de2466b290ed543dbd914a4b",
+        "bytes": 550962
+      },
+      {
+        "path": "receipts/c1_20261014/H_N/native-graphshell-witness-final-a1309431f/03_reading_record.png",
+        "sha256": "6fab76cc736f8d584c9b5b9056d05117301e615ed3095c7d66800df4d518394a",
+        "bytes": 695251
+      },
+      {
+        "path": "receipts/c1_20261014/H_N/native-graphshell-witness-final-a1309431f/04_refreshed_record.png",
+        "sha256": "64bc0e5b6041f478e15e2cc148169194d5d82ca51d2662e74a16e93771b322c7",
+        "bytes": 693946
+      },
+      {
+        "path": "receipts/c1_20261014/H_N/native-graphshell-witness-final-a1309431f/05_saved_grid_view.png",
+        "sha256": "2312b5cc34872095ecc29dc210ddc5ea1ae3a47448e3fb0e115e50a679b1bf47",
+        "bytes": 776129
+      },
+      {
+        "path": "receipts/c1_20261014/H_N/native-graphshell-reopen-final-a1309431f/01_shared_mere_own_view_reopened.png",
+        "sha256": "f53e5f1a1cb2fcb8ad76d680e7d3264dc4650fef573a8d297c4ee817506ea229",
+        "bytes": 776137
+      }
+    ],
+    "fresh_reopen_presented_frames": 19,
+    "fresh_reopen_captures": 1,
+    "total_native_Graphshell_originals": 6,
+    "all_postwitness_bytes_identical_through_reopen": true,
+    "postwitness_durable_shared_file_count": 36,
+    "retired_sentinel_count": 1,
+    "no_extra_fork_or_view_write_on_reopen": true
+  },
+  "cross_application_browser": {
+    "status": "H mounted witness/freshChrome/retained connectedlive/stagedarchive accepted within independently reviewed visual+owner scopes",
+    "supplier": "a1309431f935427607da35844376a7511656fea4",
+    "product_wasm_sha256": "8f1beabc914f62ac219b5fe8a8fa6bfc25571955564605350a3fda5d00a662a6",
+    "witness": {
+      "captures": 5,
+      "originals": [
+        {
+          "path": "receipts/c1_20261014/H_N/c1-browser-witness-switch/0001_01_browser_resident_own_view.png",
+          "sha256": "9c92bb73194209aff5e4e055811051ab409ce339be2989e52537a1813d1a01ea",
+          "bytes": 426866
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/c1-browser-witness-switch/0001_02_browser_context_record.png",
+          "sha256": "05005c64424473a1eea94e21be90dea0e5c3d4faa6b1c5a880905cbeee67322f",
+          "bytes": 419152
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/c1-browser-witness-switch/0001_03_browser_refreshed_record.png",
+          "sha256": "bbbb7a3ac8f5ea73d7d1758eaff054b788cca7c89266c699e430a85ce3962609",
+          "bytes": 426801
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/c1-browser-witness-switch/0001_04_browser_closed_purge.png",
+          "sha256": "b097cc134f0a616718c0baa1fb4c35e6d4b1899145376c702cdfa30f2e9eb0a6",
+          "bytes": 224033
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/c1-browser-witness-switch/0001_05_browser_rejoined_own_view.png",
+          "sha256": "b7d76b9b2ebd85d4d63c4cc8c1e81d55bfeb06a9b21279b1851097f849dbc11d",
+          "bytes": 426851
+        }
+      ],
+      "verified_environment": {
+        "viewport": [
+          1400,
+          900
+        ],
+        "DPR": 2,
+        "Chrome": 155,
+        "adapter": "Apple Metal3",
+        "actualPNG": [
+          2800,
+          1800
+        ]
+      },
+      "executed_derived_SCN": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/browser-preparation/source-refresh-a1309431f-c1-be4907df/c1/witness-switch.scn",
+        "sha256": "dae22e57dfa90d066f83d3746bec3b46a159b949391325302d949ba45809f8c5",
+        "bytes": 2140
+      },
+      "retained_baseline_SCN": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/browser-preparation/source-refresh-a1309431f-c1-be4907df/c1/mere_divination_browser_witness.scn",
+        "sha256": "93b48ccae615f3603ac5bfb883467350a80be5329cbdce50001561093dc4dd5f",
+        "bytes": 1482
+      },
+      "physical_process_quit": {
+        "pid": 85736,
+        "exec_session": 65392,
+        "physical_Chrome_menu_Quit": true,
+        "exit_code": 0
+      },
+      "proofs": {
+        "visual": {
+          "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/cleromancy-agent-browser-H-witness-independent-visual-review.json",
+          "sha256": "1a2c28fbdf7855f29156021c734a6f62f61a20c84dfc9cad467a41faa5477dec",
+          "bytes": 12229
+        },
+        "owner": {
+          "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-after-browser-witness-inspection/phase-comparison.json",
+          "sha256": "7fc13438fe8716e77fa2d2feed6ee8b4e07dc65d219d9464a0a45176d543a2f4",
+          "bytes": 5453
+        },
+        "raw_result": {
+          "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/browser-receipts-final-a1309431f/c1-browser-witness-switch/result-0001.json",
+          "sha256": "d63b3ff1061138ad777dee56fcbfd679bfa6e507ede48e0b635be1cfa743ad0c",
+          "bytes": 36465
+        },
+        "execution_addendum": {
+          "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/browser-receipts-final-a1309431f/c1-browser-witness-switch/execution-addendum.json",
+          "sha256": "ee423c015a91736a73322e11fcaba3c18b9d7285d8d1abcf14c85f80e35caa97",
+          "bytes": 2490
+        }
+      },
+      "owner_scope": {
+        "complete_inventory_unchanged": true,
+        "scoped_Graphshell_view_history_appended": true,
+        "other_shared_files_unchanged": 35,
+        "inspection_all_36_files_and_sentinel_identical": true,
+        "complete_Cleromancy_Fool_view_map_preserved": true
+      },
+      "pixel_limits": "Lower session, field and foundation fields clip in browser details; exact parity is actual Chrome AX/semantic evidence, not full pixel readability."
+    },
+    "c1-browser-reopen-switch": {
+      "status": "PASS bounded actual fresh Chrome H own Grid/focus restoration",
+      "owner_status": "passed complete inventory and every durable byte through fresh browser reopen and inspection",
+      "proofs": {
+        "independent_visual": {
+          "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/cleromancy-agent-browser-H-reopen-independent-visual-review.json",
+          "sha256": "3b502753321c932cb8102b96f026470fa7e7c35a29d469d4cdc2b7a71ccc2902",
+          "bytes": 7583
+        },
+        "owner_guard": {
+          "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-after-browser-reopen-inspection/phase-comparison.json",
+          "sha256": "4ad41d37420125a0e3b7e9dcd13498b46874901935529a91e001f6846f6995b2",
+          "bytes": 4847
+        }
+      },
+      "local_originals": [
+        {
+          "path": "receipts/c1_20261014/H_N/c1-browser-reopen-switch/0001_01_browser_fresh_own_view.png",
+          "sha256": "14d66cf22fb737315f8d8d479c3e4e3705f16f6406024683f86718bea5bf7856",
+          "bytes": 426765
+        }
+      ],
+      "captures": 1,
+      "scope": "Original review and owner guard have separate stated scopes; no full wall or C1 verdict inferred."
+    },
+    "c1-connected-live": {
+      "status": "PASS bounded connected cross-process own-view notice and readable shared record witness; owner byte guard separate.",
+      "owner_status": "passed only acknowledged scoped Graphshell strategy Grid to Spiral changed; all other authority and bytes preserved",
+      "proofs": {
+        "independent_visual": {
+          "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/cleromancy-agent-H-connected-live-independent-visual-review.json",
+          "sha256": "c7c9dced43250fdb761e9bb9c9c7164e636b5c1b3d5f1912d31deb510052d82b",
+          "bytes": 13693
+        },
+        "owner_guard": {
+          "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-after-live-update-inspection/phase-comparison.json",
+          "sha256": "1055d63122584c61fe0def6d2687d2d3741368219383c9efd0ad4e03cc6650c9",
+          "bytes": 7248
+        }
+      },
+      "local_originals": [
+        {
+          "path": "receipts/c1_20261014/H_N/c1-connected-live/01_external_saved_spiral_view.png",
+          "sha256": "28379994d3e855e6c6b0de1c4569af00a74abb253b233f97b8b988c1b7352a91",
+          "bytes": 798972
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/c1-connected-live/0001_00_browser_live_before_native_update.png",
+          "sha256": "4108dedc13eaeb9f758bbb7891d8239174d4b72e10e4dfb69b52345b6f826e51",
+          "bytes": 426730
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/c1-connected-live/0002_00_browser_live_before_native_update.png",
+          "sha256": "4108dedc13eaeb9f758bbb7891d8239174d4b72e10e4dfb69b52345b6f826e51",
+          "bytes": 426730
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/c1-connected-live/0002_01_browser_live_external_view.png",
+          "sha256": "f481aefbbf0d47bba07797765515ec4f3d6b3429472b9c55f0a6f725c58c4cef",
+          "bytes": 429085
+        }
+      ],
+      "captures": 4,
+      "distinct_capture_hashes": 3,
+      "capture_count_scope": {
+        "files_reviewed": 4,
+        "distinct_content_hashes": 3,
+        "browser_grid_copy": "0002_00 is byte-identical retained baseline from result0001; not a new Grid event or extra independent observation."
+      },
+      "scope": "Original review and owner guard have separate stated scopes; no full wall or C1 verdict inferred."
+    },
+    "staged_archive_owner_preparation": {
+      "status": "Save/exactOpen, transient full45fileguard, originalReturn and independent9original review passed",
+      "new_codicil": "blake3:11119317b895f7532a76c2c0bf84a154138a9d19dba2b136246060f1d3546215",
+      "new_readonly_thaw": "a8066413-a60f-4c96-af85-33d88d7a9e7f",
+      "native_existing_thaw_50008_is_distinct": true,
+      "sessions": 5,
+      "records": 8,
+      "edges": 6,
+      "archives": 2,
+      "shared_durable_file_count_after_Open": 45,
+      "retired_sentinel_count": 1,
+      "full_Cleromancy_Fool_map_and_Graphshell_d420_Spiral_maps_preserved": true,
+      "proofs": {
+        "Save": {
+          "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-after-archive-save-inspection/phase-comparison.json",
+          "sha256": "9275eda541c7583122898a197da08e889f2d9e4aacd799d70201a7dbe1acefb5"
+        },
+        "exactOpen": {
+          "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-archive-thaw-before-controls/phase-comparison.json",
+          "sha256": "ecdcbdbaa811ac0e0ad962a156f6a2b3d3a05eafd144ac62bf22ce9788cbfa36"
+        }
+      },
+      "no_automatic_visual_or_zero_write_Open_claim": true
+    },
+    "c1-staged-archive": {
+      "status": "PASS bounded H archive Save/Open, read-only transient controls/purge/rejoin, and original writable-view restoration. All three H staged results pass; no H scene failures in this packet.",
+      "owner_status": "passed original writable session and complete application views restored; every durable byte unchanged on Switch and inspection",
+      "proofs": {
+        "independent_visual": {
+          "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/cleromancy-agent-browser-H-archive-independent-visual-review.json",
+          "sha256": "9a95876666a001fe83f519234f9f7fedae925c23902783d55f2e4c24261eef92",
+          "bytes": 21642
+        },
+        "owner_guard": {
+          "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-final-original-after-archive-inspection/phase-comparison.json",
+          "sha256": "c77e866352e3e600557a8904482c2c980d4baf223538a63ee5acc7f0538f1c4b",
+          "bytes": 4383
+        }
+      },
+      "local_originals": [
+        {
+          "path": "receipts/c1_20261014/H_N/c1-staged-archive/0001_01_browser_saved_archive.png",
+          "sha256": "91e2b3fdd4974e453e24d4cce37445a153fa46aca850d5b747c09bfdf674fbc5",
+          "bytes": 429076
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/c1-staged-archive/0002_02_browser_read_only_archive.png",
+          "sha256": "574e35d45308c8edffa22f66b82361f26c9f0da34969e4b66f6ed10af23c5d10",
+          "bytes": 423171
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/c1-staged-archive/0002_03_browser_transient_archive_record.png",
+          "sha256": "60cfa899d376486c1d4b1c7caf712d47903480c5ac3c3b8b2c2e6ac0bfb7067b",
+          "bytes": 416154
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/c1-staged-archive/0002_04_browser_transient_archive_grid.png",
+          "sha256": "68cdf4f397ab86aaa655f6c8a83acde9f50bf5a17d9cbc9edcdc8d4054c4e323",
+          "bytes": 414245
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/c1-staged-archive/0002_05_browser_transient_archive_spiral.png",
+          "sha256": "0a66d592b6adddf39cd04387f05962271f3620a47c2bb2d15875cc205998ea77",
+          "bytes": 416189
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/c1-staged-archive/0002_06_browser_refreshed_archive.png",
+          "sha256": "2d5cabe46fe1c4431abecc5d34cdfc00061fe5d7d2d0644e69300b743548fe9f",
+          "bytes": 416267
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/c1-staged-archive/0002_07_browser_purged_archive.png",
+          "sha256": "ebea463e27819b9ddc3e36377eca684a77e10bc7e073f4f550d8110203cc53f5",
+          "bytes": 224049
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/c1-staged-archive/0002_08_browser_rejoined_archive.png",
+          "sha256": "85839ac9e585e02e3063ea11b83e011b06bcc26071d7459801bdf4ae63a80535",
+          "bytes": 423163
+        },
+        {
+          "path": "receipts/c1_20261014/H_N/c1-staged-archive/0003_09_browser_original_preserved_view.png",
+          "sha256": "0610f0bc555acb298d12c24ad50039b09476013e91eb34a8a942a029c5493c8f",
+          "bytes": 417132
+        }
+      ],
+      "captures": 9,
+      "distinct_capture_hashes": 9,
+      "capture_count_scope": null,
+      "scope": "Original review and owner guard have separate stated scopes; no full wall or C1 verdict inferred."
+    },
+    "staged_archive_owner_chain": {
+      "live_baseline": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-before-live-update-inspection/phase-comparison.json",
+        "sha256": "12688d9ab7913038395a553eb8fae386d7b29632438dd598318a392a8102a6f2",
+        "bytes": 3876
+      },
+      "live_update": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-after-live-update-inspection/phase-comparison.json",
+        "sha256": "1055d63122584c61fe0def6d2687d2d3741368219383c9efd0ad4e03cc6650c9",
+        "bytes": 7248
+      },
+      "archiveSave": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-after-archive-save-inspection/phase-comparison.json",
+        "sha256": "9275eda541c7583122898a197da08e889f2d9e4aacd799d70201a7dbe1acefb5",
+        "bytes": 5932
+      },
+      "exactOpen": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-archive-thaw-before-controls/phase-comparison.json",
+        "sha256": "ecdcbdbaa811ac0e0ad962a156f6a2b3d3a05eafd144ac62bf22ce9788cbfa36",
+        "bytes": 6449
+      },
+      "readonly_transient": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-archive-thaw-after-controls/phase-comparison.json",
+        "sha256": "b1c91373ef102d07cd6f0eec4c320e0f17266dc6289c79cc2fa6ae3d9ad8a360",
+        "bytes": 6325
+      },
+      "returnOriginal": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-final-original-after-archive-inspection/phase-comparison.json",
+        "sha256": "c77e866352e3e600557a8904482c2c980d4baf223538a63ee5acc7f0538f1c4b",
+        "bytes": 4383
+      }
+    },
+    "shared_bytes_after_Open_through_controls_and_return_exact": true,
+    "no_extra_implicit_fork": true
+  },
+  "pending": [
+    "Remaining143 H canonical cases and all mandatory supplements",
+    "Final phase verdict and final canonical qualification documentation update"
+  ],
+  "durable_guard_counts_by_interval": {
+    "retained_before_ordinary_provision": 29,
+    "ordinary_after_real_vault_wallet_provision": 34,
+    "H_helper_post_ordinary_handoff": 34,
+    "retired_sentinel_each": 1,
+    "no_files_excluded": true,
+    "after_Graphshell_own_view_creation": 36
+  },
+  "shared_wall": {
+    "status": "First H positive controls batch independently qualified; full wall remains open",
+    "cases": 21,
+    "canonical_total": 164,
+    "remaining": 143,
+    "captures": 43,
+    "new_profiles": 20,
+    "preserved_original_Scene_profile": 1,
+    "geometry": {
+      "wide_2800x1800": 41,
+      "narrow_840x1600": 2
+    },
+    "proofs": {
+      "execution": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/browser-wall-a1309431f-receipts/H01-controls-execution-closure.json",
+        "sha256": "4bd024cd8c917b5256b990a18fbcc0641834d093d99e642bf3b64f2ca8e38503",
+        "bytes": 28906
+      },
+      "independent_original_reviews": {
+        "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/cleromancy-agent-browser-H-canonical01-independent-closure.json",
+        "sha256": "958cef78b72330925a5b549513423c5813816ace1f51d1bfc5447acd2dc28097",
+        "bytes": 56377
+      }
+    },
+    "limits": "Per-case clipping, unmeasured zero GPU/NaN values, slow CPU timing and bounded busy waits retained. Reader planted negatives and all remaining mandatory supplements unexecuted."
+  },
+  "final_resident_disk_reopen": {
+    "status": "Actual clean same-disk H resident restart preserves complete inventories/views; separate warm all45+sentinel guards pass",
+    "new_owner_PID": 98930,
+    "new_owner_exec": 74081,
+    "proof": {
+      "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/native-H-final-resident-disk-reopen/qualification.json",
+      "sha256": "847086c1835c4bee7b5a5747350e31cb2d57afc8f31f641a73200395c6b3c81e",
+      "bytes": 11037
+    },
+    "cold_changes": "Release/startup change archive.redb/reservoir.redb; first cold original guard fails solely on Graphshell epoch8\u219210, verbatim failure retained. No zero-write cold claim or epoch exclusion.",
+    "sessions": 5,
+    "archives": 2,
+    "records": 8,
+    "edges": 6,
+    "warm_shared_files": 45,
+    "sentinel": 1
+  },
+  "documentation_audit": {
+    "path": "/Users/markik/Code/testing/cleromancy/c1-20261013/doc-audit-H-bounded-checkpoint-20261014/comparison.json",
+    "sha256": "f0a48b6a578f23c086bf934b0dbbb9cb59554a7c67dd5e0618a09f9ff0fb6665",
+    "bytes": 883
+  }
+}

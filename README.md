@@ -6,17 +6,22 @@ deterministic, securely cast, or derived from a public seed, and every result
 keeps a replayable receipt that separates context, qualification, selection,
 and interpretation.
 
-## Status (2026-10-08)
+## Status (2026-10-15)
 
-The implemented local consultation remains the snapshot-based product below.
-The [divination mere and self-explaining reading plan](design_docs/2026-09-23_divination_mere_plan.md)
-now names the available Mere substrate, the remaining resident/reservoir
-integration gates, and proposed contextual scene and dynamics acceptance.
-C1 preparation is underway: the product-owned replay validator is available,
-and reservoir archive, access and standalone resident contracts now have an
-integrated implementation with process fixtures. Cleromancy still needs its
-consumer pin, both domain registrations and the shared view/storage migration.
-No phase is accepted; the plan owns readiness and execution order.
+The ordinary product opens the resident-held divination mere; its old private
+snapshot authority is confined to the explicit `legacy-receipts` harness.
+The C1 branch now consumes the extracted application door, serving views and
+mere route from the stack at Mere `8b08c98b2`. Main-branch integration and the
+shared cutover qualification remain separate from this consumer intake.
+
+C2 narrates each card's computation, keeps authored position labels and
+meanings, shows context with the reading and offers reflection examples.
+Cards reflow at compact widths. Chart entry accepts ordinary UTC dates/times
+and decimal degrees, converted exactly at the calculation boundary. Bounded
+native authoring and fresh-process reopening preserve the saved reading and
+reflection identities. The [C2 receipt](receipts/c2-reading-qualification_20261015.json)
+records source, gates, capture reviews and qualification limits; the
+[divination plan](design_docs/2026-09-23_divination_mere_plan.md) owns phase scope.
 
 - The A0-A25 proof ledger is complete (2026-08-02 through 2026-08-07):
   single readings, sealed receipts with replay, field provenance, a 22-card
@@ -70,13 +75,17 @@ cargo test --features sky-timeline --test sky_timeline # daily timeline consumer
 cargo test                         # the proof wall
 
 # Per-slice receipt binaries, e.g.
-cargo run --bin cleromancy_receipt -- receipts/a0.html
+cargo run --features legacy-receipts --bin cleromancy_receipt -- receipts/a0.html
 
-# Sync consent (off by default, local to this installation)
-cargo run --features personal-sync --bin cleromancy -- sync-consent show
+# Historical sync-consent receipt harness (ordinary consent is resident-owned)
+cargo run --features legacy-receipts,personal-sync --bin cleromancy -- sync-consent show
 ```
 
-`CLEROMANCY_ROOT` overrides the data directory.
+`MERE_ROOT` selects the shared reservoir and identity root;
+`CLEROMANCY_VAULT_DIR` selects its vault. `CLEROMANCY_ROOT` selects local
+application preferences and the historical harness directory. Normal resident
+startup requires a provisioned persona; qualification uses an isolated public
+synthetic identity.
 
 ## License
 

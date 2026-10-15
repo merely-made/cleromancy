@@ -8,6 +8,7 @@ use crate::{CONTEXTUAL_WEIGHT_RULE, Candidate, Field, UNIFORM_RULE};
 
 pub const MAJOR_ARCANA_PACK_SCHEMA: &str = "cleromancy.tarot-pack/v1";
 pub const RWS_MAJOR_ARCANA_ID: &str = "cleromancy.tarot/rws-major-reflective-v1";
+pub const RWS_MAJOR_ARCANA_TITLE: &str = "Major Arcana: reflective prompts";
 
 /// The user-visible way a Tarot field is qualified. Uniform ignores context;
 /// contextual gives each matching context tag one additional base-weight
@@ -48,7 +49,7 @@ impl TarotPack {
         Self {
             schema: MAJOR_ARCANA_PACK_SCHEMA.to_string(),
             id: RWS_MAJOR_ARCANA_ID.to_string(),
-            title: "Major Arcana: reflective prompts".to_string(),
+            title: RWS_MAJOR_ARCANA_TITLE.to_string(),
             ordering: "Rider-Waite-Smith order; Strength VIII and Justice XI".to_string(),
             content: "Traditional card titles with original upright reflective prompts".to_string(),
             candidates: major_arcana(),

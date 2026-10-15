@@ -10,6 +10,33 @@ use cambium::{AnyView, GenetCtx, GenetElement, PointerClick, button, el, lens, t
 pub(super) struct ApplicationUi {
     pub consultation: ConsultationUi,
     pub appearance: AppearanceState,
+    pub mere: MereUi,
+}
+
+pub(super) const MERE_LEAF: u64 = 0x434c45524d455245;
+
+#[derive(Default)]
+pub(super) struct MereUi {
+    pub model: mere_view::MereViewModel,
+    pub view: mere_view::MereViewState,
+    pub open: bool,
+    pub width: u32,
+    pub height: u32,
+    pub wide: bool,
+    pub pending: Option<mere_view::MereViewRequest>,
+    pub busy: bool,
+}
+
+impl MereUi {
+    pub fn view_of(&self) -> mere_view::MereView<'_> {
+        mere_view::MereView {
+            model: &self.model,
+            state: &self.view,
+            leaf_key: MERE_LEAF,
+            width: self.width.max(320),
+            height: self.height.max(300),
+        }
+    }
 }
 
 pub(super) type Child = Box<dyn AnyView<ApplicationUi, (), GenetCtx, GenetElement>>;
@@ -23,15 +50,31 @@ pub(super) fn root(state: &ApplicationUi, captions: Child) -> Child {
         ),
         Box::new(el("span", text("Cleromancy"))),
         Box::new(
-            button(
-                "Appearance",
-                |state: &mut ApplicationUi, _: PointerClick| {
-                    state.appearance.open = !state.appearance.open;
-                },
+            el(
+                "div",
+                vec![
+                    Box::new(
+                        button("Mere", |state: &mut ApplicationUi, _: PointerClick| {
+                            state.mere.open = !state.mere.open;
+                        })
+                        .attr("data-action", "toggle-mere")
+                        .attr("aria-expanded", state.mere.open.to_string())
+                        .attr("aria-controls", "cleromancy-mere-workspace"),
+                    ) as Child,
+                    Box::new(
+                        button(
+                            "Appearance",
+                            |state: &mut ApplicationUi, _: PointerClick| {
+                                state.appearance.open = !state.appearance.open;
+                            },
+                        )
+                        .attr("class", "cleromancy-appearance-toggle")
+                        .attr("data-action", "toggle-appearance")
+                        .attr("aria-expanded", state.appearance.open.to_string()),
+                    ),
+                ],
             )
-            .attr("class", "cleromancy-appearance-toggle")
-            .attr("data-action", "toggle-appearance")
-            .attr("aria-expanded", state.appearance.open.to_string()),
+            .attr("class", "cleromancy-header-actions"),
         ),
         captions,
     );
@@ -42,10 +85,31 @@ pub(super) fn root(state: &ApplicationUi, captions: Child) -> Child {
         if state.appearance.open {
             children.push(panel(state));
         }
-        children.push(Box::new(lens(
-            |ui: &mut ConsultationUi| consultation_view(ui),
-            |state: &mut ApplicationUi| &mut state.consultation,
-        )));
+        if state.mere.open {
+            let mere = mere_view::mere_view(
+                state.mere.view_of(),
+                |state: &mut ApplicationUi, event| state.mere.view.apply(event),
+                |state: &mut ApplicationUi, request| state.mere.pending = Some(request),
+            );
+            let reader = Box::new(lens(
+                |ui: &mut ConsultationUi| crate::ui::view::resident_reader_view(ui),
+                |state: &mut ApplicationUi| &mut state.consultation,
+            )) as Child;
+            children.push(Box::new(
+                el("div", vec![mere, reader])
+                    .attr("class", "cleromancy-mere-workspace")
+                    .attr("id", "cleromancy-mere-workspace")
+                    .attr(
+                        "data-width",
+                        if state.mere.wide { "wide" } else { "compact" },
+                    ),
+            ));
+        } else {
+            children.push(Box::new(lens(
+                |ui: &mut ConsultationUi| consultation_view(ui),
+                |state: &mut ApplicationUi| &mut state.consultation,
+            )));
+        }
     }
     Box::new(el("div", children).attr("class", "cleromancy-desktop"))
 }
@@ -158,7 +222,9 @@ fn panel(state: &ApplicationUi) -> Child {
         ));
     }
     children.push(Box::new(lens(
-        |editor: &mut tabard_workshop::fonts::FontRoleEditor| tabard_workshop::fonts::font_role_view(editor),
+        |editor: &mut tabard_workshop::fonts::FontRoleEditor| {
+            tabard_workshop::fonts::font_role_view(editor)
+        },
         |state: &mut ApplicationUi| &mut state.appearance.font_editor,
     )));
     for message in state.appearance.font_diagnostics() {
@@ -223,6 +289,14 @@ fn editor(state: &ApplicationUi) -> Child {
 pub(super) const CHROME_CSS: &str = "
 .cleromancy-desktop { display:flex;flex-direction:column;height:100vh;min-height:0;overflow:hidden;color:var(--tabard-color-text,#f1ede4);background:var(--tabard-color-bg,#181714);font-family:var(--tabard-font-interface,sans-serif); }
 .cleromancy-desktop > .cleromancy-consultation { flex:1;min-height:0;overflow:auto; }
+.cleromancy-header-actions { display:flex;align-items:center;gap:8px; }
+.cleromancy-header-actions button { margin:0;padding:6px 10px; }
+.cleromancy-mere-workspace { display:flex;flex:1;min-height:0;overflow:hidden; }
+.cleromancy-mere-workspace > .mere-view { flex-shrink:0;border-right:1px solid var(--tabard-color-text-disabled,#625d50); }
+.cleromancy-mere-workspace .cleromancy-mere-reading { flex:1;min-width:0;min-height:0;overflow:auto;padding:16px; }
+.cleromancy-mere-workspace[data-width=\"compact\"] { flex-direction:column;overflow:auto; }
+.cleromancy-mere-workspace[data-width=\"compact\"] .cleromancy-mere-reading { flex-shrink:0;overflow:visible; }
+.cleromancy-mere-workspace[data-width=\"compact\"] > .mere-view { border-right:0;border-bottom:1px solid var(--tabard-color-text-disabled,#625d50); }
 .cleromancy-desktop > .cambium-title-bar { --titlebar-min-height:42px;background:var(--tabard-color-surface,#24221d);color:var(--tabard-color-text,#f1ede4); }
 .cleromancy-ornament { display:block;padding:4px 6px;font-size:18px; }
 .cleromancy-appearance-toggle { display:block;padding:6px 10px;border:1px solid currentColor;border-radius:5px;background:transparent;color:inherit; }

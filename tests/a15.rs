@@ -1,3 +1,5 @@
+#![cfg(feature = "legacy-receipts")]
+
 use std::collections::VecDeque;
 
 use cleromancy::moirai::clotho::EntropySource;

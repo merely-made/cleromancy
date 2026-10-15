@@ -124,7 +124,10 @@ fn retained_consultation_dispatches_authored_layout_and_chart_input_actions() {
         ("Calculation algorithm", "source-import/v1"),
         ("Calculation engine", "example calculator"),
         ("Ephemeris source", "example ephemeris"),
-        ("UTC instant", "2026-08-08T12:00:00Z"),
+        ("Date and time (UTC)", "2026-08-08 12:00"),
+        ("Latitude degrees (optional)", "40.7128"),
+        ("Longitude degrees (optional)", "-74.006"),
+        ("Aspect orb degrees", "1.25"),
         ("Chart positions", "Sun | 135000 | 0 | false"),
     ] {
         type_into(&mut h, label, value);
@@ -133,7 +136,10 @@ fn retained_consultation_dispatches_authored_layout_and_chart_input_actions() {
         ConsultationAction::SaveAstrologyChart { draft } => {
             assert_eq!(draft.algorithm, "source-import/v1");
             assert_eq!(draft.positions, "Sun | 135000 | 0 | false");
-            assert_eq!(draft.orb_millidegrees, "1000");
+            assert_eq!(draft.instant_utc, "2026-08-08T12:00:00Z");
+            assert_eq!(draft.latitude_microdegrees, "40712800");
+            assert_eq!(draft.longitude_microdegrees, "-74006000");
+            assert_eq!(draft.orb_millidegrees, "1250");
         },
         other => panic!("expected chart input action, found {other:?}"),
     }
