@@ -385,8 +385,10 @@ impl AppearanceState {
             );
         }
         let base = format!(
-            "{}\n{}\n{}",
+            "{}\n{}\n{}\n{}\n{}",
             super::SHEET,
+            mere_view::MERE_VIEW_CSS,
+            cambium::GRAPH_CANVAS_SWATCH_CSS,
             cambium::TITLE_BAR_CSS,
             super::appearance_view::CHROME_CSS
         );

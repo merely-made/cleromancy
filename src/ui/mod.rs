@@ -3,14 +3,15 @@
 
 //! Cleromancy's retained local consultation surface.
 //!
-//! This module owns view state and Cambium rendering only. Storage remains in
-//! [`crate::Consultation`]; the H2 worker will execute the actions emitted by
-//! this surface away from the window thread.
+//! This module owns view state and Cambium rendering only. The worker sends
+//! product transformations and shared lifecycle actions through the admitted
+//! resident transaction boundary away from the window thread.
 
 mod action;
 mod chart_state;
 mod journal_state;
 pub mod native;
+pub(crate) mod resident;
 pub(crate) mod scenario;
 mod screen;
 mod sky_state;
@@ -22,3 +23,5 @@ pub use action::{ConsultationAction, ConsultationContext, ConsultationLayout};
 pub use screen::ConsultationScreen;
 pub use state::{ConsultationStatus, ConsultationUi};
 pub use view::{ConsultationView, consultation_view};
+
+mod chart_input;

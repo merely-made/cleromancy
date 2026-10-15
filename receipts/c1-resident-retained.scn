@@ -1,0 +1,18 @@
+# Stable retained state after seed and first archive inspection; no lifecycle writes.
+wait
+show-mere
+wait
+assert snap mere-live-sessions == 4
+assert snap mere-archives == 1
+assert snap sessions == 1
+assert snap readings == 3
+assert snap reflections == 1
+capture retained-reading-and-mere
+resize 420 760
+wait
+assert snap readings == 3
+assert snap reflections == 1
+capture compact-retained-reading-and-mere
+resize 1160 760
+wait
+settle 2

@@ -4,9 +4,10 @@
 //! Accessible DOM realization of the shared scene, preserving its placement
 //! and source/occurrence distinction without making the saved reading mutable.
 use super::ConsultationView;
-use crate::reading_scene::{CARD_HEIGHT, CARD_WIDTH, position_label, reading_scene};
+use crate::narrative::reading_layout;
+use crate::reading_scene::reading_scene;
 use crate::ui::state::ConsultationUi;
-use cambium::{button_with, el};
+use cambium::{HoverPhase, button_with, el, on_hover};
 
 pub(super) fn spread_view(ui: &ConsultationUi) -> ConsultationView {
     let detail = ui
@@ -14,23 +15,15 @@ pub(super) fn spread_view(ui: &ConsultationUi) -> ConsultationView {
         .as_ref()
         .expect("reading scene needs a saved reading");
     let projection = reading_scene(detail);
-    let selected = ui
-        .reading_focus
-        .get(&projection.session_id)
-        .map(String::as_str)
-        .unwrap_or_else(|| {
-            projection
-                .positions
-                .first()
-                .map(String::as_str)
-                .unwrap_or("")
-        });
+    let layout = reading_layout(detail);
+    let selected = ui.focused_position(detail);
     let mut cards: Vec<ConsultationView> = Vec::new();
-    for (index, (item, position)) in projection
+    for (index, ((_item, position), meaning)) in projection
         .scene
         .items
         .iter()
         .zip(&projection.positions)
+        .zip(&layout.positions)
         .enumerate()
     {
         let Some(reading) = detail
@@ -42,7 +35,7 @@ pub(super) fn spread_view(ui: &ConsultationUi) -> ConsultationView {
         };
         let session = projection.session_id.clone();
         let target = position.clone();
-        let label = position_label(position);
+        let label = meaning.label.clone();
         let content: Vec<ConsultationView> = vec![
             Box::new(
                 el::<_, ConsultationUi, ()>("span", label.clone())
@@ -62,30 +55,96 @@ pub(super) fn spread_view(ui: &ConsultationUi) -> ConsultationView {
                     ),
             ),
         ];
-        cards.push(Box::new(button_with(content, move |ui: &mut ConsultationUi, _| {
+        let card = button_with(content, move |ui: &mut ConsultationUi, _| {
             // A queued event for an older session cannot select the current one.
-            if ui.detail.as_ref().is_some_and(|detail| detail.session.id == session) {
+            if ui
+                .detail
+                .as_ref()
+                .is_some_and(|detail| detail.session.id == session)
+            {
                 ui.reading_focus.insert(session.clone(), target.clone());
             }
-        }).attr("class", "scene-card")
-            .attr("data-key", format!("scene-card:{position}"))
-            .attr("aria-label", format!("{label}: {}", reading.title))
-            .attr("aria-pressed", if position == selected { "true" } else { "false" })
-            .attr("style", format!("position:absolute;left:{}px;top:{}px;width:{CARD_WIDTH}px;height:{CARD_HEIGHT}px;", item.transform.translate.x - CARD_WIDTH / 2.0, item.transform.translate.y - CARD_HEIGHT / 2.0))));
+        })
+        .attr("class", "scene-card")
+        .attr("data-key", format!("scene-card:{position}"))
+        .attr("aria-label", format!("{label}: {}", reading.title))
+        .attr("title", meaning.meaning.clone())
+        .attr(
+            "aria-pressed",
+            if *position == selected {
+                "true"
+            } else {
+                "false"
+            },
+        );
+        let session = projection.session_id.clone();
+        let hovered = position.clone();
+        cards.push(Box::new(on_hover(
+            card,
+            move |ui: &mut ConsultationUi, event| match event.phase {
+                HoverPhase::Enter => {
+                    ui.position_hover = Some((session.clone(), hovered.clone()));
+                },
+                HoverPhase::Leave => {
+                    if ui
+                        .position_hover
+                        .as_ref()
+                        .is_some_and(|(_, position)| position == &hovered)
+                    {
+                        ui.position_hover = None;
+                    }
+                },
+                HoverPhase::Move => {},
+            },
+        )));
     }
-    let width = projection.scene.bounds.size.w;
-    let height = projection.scene.bounds.size.h;
-    Box::new(
+
+    // The meaning of the hovered position, or of the focused one when the
+    // pointer is elsewhere. Keyboard and assistive users reach the same text
+    // through focus and the narration below.
+    let shown = ui
+        .position_hover
+        .as_ref()
+        .filter(|(session, _)| *session == projection.session_id)
+        .map(|(_, position)| position.clone())
+        .unwrap_or(selected);
+    let meaning = layout
+        .positions
+        .iter()
+        .find(|position| position.name == shown)
+        .map(|position| {
+            Box::new(
+                el::<_, ConsultationUi, ()>(
+                    "p",
+                    vec![
+                        Box::new(
+                            el::<_, ConsultationUi, ()>("strong", position.label.clone())
+                                .attr("class", "position-meaning-label"),
+                        ) as ConsultationView,
+                        Box::new(el::<_, ConsultationUi, ()>(
+                            "span",
+                            position.meaning.clone(),
+                        )),
+                    ],
+                )
+                .attr("class", "position-meaning")
+                .attr("data-key", "position-meaning")
+                .attr("data-position", position.name.clone()),
+            ) as ConsultationView
+        });
+
+    let mut children: Vec<ConsultationView> = vec![Box::new(
         el::<_, ConsultationUi, ()>(
             "div",
-            Box::new(el::<_, ConsultationUi, ()>("div", cards).attr(
-                "style",
-                format!("position:relative;width:{width}px;height:{height}px;"),
-            )) as ConsultationView,
+            Box::new(
+                el::<_, ConsultationUi, ()>("div", cards).attr("class", "reading-spread-cards"),
+            ) as ConsultationView,
         )
         .attr("class", "reading-scene")
         .attr("role", "group")
         .attr("aria-label", "Reading spread")
         .attr("data-key", "reading-scene"),
-    )
+    )];
+    children.extend(meaning);
+    Box::new(el::<_, ConsultationUi, ()>("div", children).attr("class", "reading-spread"))
 }

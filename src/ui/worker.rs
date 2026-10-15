@@ -1,22 +1,26 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-//! The owned persistence lane for the native consultation window.
+//! The admitted resident command lane for the native consultation window.
 //!
 //! Cambium state emits a small product action. This worker is the only native
-//! UI component allowed to open Redb or call the async persistence boundary,
+//! UI component allowed to call the async resident boundary,
 //! so a slow save never borrows or blocks the window event loop.
 
 use std::path::PathBuf;
 use std::sync::mpsc::{self, Sender};
 
-use muniment::RedbBackend;
+use super::resident::ResidentConsultation;
+use djinn::embedded_reservoir::{ApplicationReservoirOptions, ReservoirAttachment};
+use graphshell_endpoint::door::app_admission::{AppId, configured_app_endpoint};
+use mere_view::{MereViewModel, MereViewRequest};
+use std::time::Duration;
 
 #[cfg(feature = "analytic-ephemeris")]
 use crate::{AnalyticEphemerisAdapter, calculate_with_adapter};
 use crate::{
-    CleromancyHost, Consultation, ConsultationCatalog, ConsultationDetail, ConsultationError,
-    ReceiptComparison, SelectionMode,
+    Consultation, ConsultationCatalog, ConsultationDetail, ConsultationError, ReceiptComparison,
+    SelectionMode,
 };
 
 use super::{ConsultationAction, ConsultationContext, ConsultationLayout};
@@ -24,7 +28,20 @@ use super::{ConsultationAction, ConsultationContext, ConsultationLayout};
 /// A result crossing from the persistence lane back to the native host.
 #[derive(Clone, Debug)]
 pub(crate) enum WorkerUpdate {
+    Unavailable {
+        message: String,
+    },
+    GraphSelection {
+        catalog: ConsultationCatalog,
+        detail: ConsultationDetail,
+        position: Option<String>,
+    },
+    Mere {
+        model: MereViewModel,
+        catalog: ConsultationCatalog,
+    },
     Catalog(ConsultationCatalog),
+    SavedNotice(String),
     #[cfg(feature = "analytic-ephemeris")]
     AstrologyChart {
         catalog: ConsultationCatalog,
@@ -59,114 +76,204 @@ pub(crate) enum WorkerUpdate {
 /// after the window closes.
 #[derive(Clone, Debug)]
 pub(crate) struct ConsultationWorker {
-    commands: Sender<ConsultationAction>,
+    commands: Sender<WorkerCommand>,
+}
+
+enum WorkerCommand {
+    Product(ConsultationAction),
+    Mere(MereViewRequest),
 }
 
 impl ConsultationWorker {
+    pub(crate) fn mere(&self, request: MereViewRequest) -> Result<(), String> {
+        self.commands
+            .send(WorkerCommand::Mere(request))
+            .map_err(|_| "the resident consultation worker is no longer running".into())
+    }
+
     pub(crate) fn command(&self, command: ConsultationAction) -> Result<(), String> {
         self.commands
-            .send(command)
+            .send(WorkerCommand::Product(command))
             .map_err(|_| "the consultation worker is no longer running".to_string())
     }
 }
 
-/// Start the worker and immediately publish the durable picker/history state.
-pub(crate) fn spawn(
-    store_path: PathBuf,
-    deliver: impl Fn(WorkerUpdate) + Send + 'static,
-) -> ConsultationWorker {
+/// Start the resident client worker and publish its picker/history state.
+pub(crate) fn spawn(deliver: impl Fn(WorkerUpdate) + Send + 'static) -> ConsultationWorker {
     let (commands, receiver) = mpsc::channel();
     std::thread::Builder::new()
-        .name("cleromancy-store".to_string())
-        .spawn(move || run(store_path, receiver, deliver))
-        .expect("start Cleromancy persistence worker");
+        .name("cleromancy-resident-client".to_string())
+        .spawn(move || run(receiver, deliver))
+        .expect("start Cleromancy resident client worker");
     ConsultationWorker { commands }
 }
 
-fn run(
-    store_path: PathBuf,
-    commands: mpsc::Receiver<ConsultationAction>,
-    deliver: impl Fn(WorkerUpdate),
-) {
-    let backend = match RedbBackend::open(&store_path) {
-        Ok(backend) => backend,
+fn run(commands: mpsc::Receiver<WorkerCommand>, deliver: impl Fn(WorkerUpdate)) {
+    let runtime = match tokio::runtime::Builder::new_multi_thread()
+        .worker_threads(2)
+        .enable_all()
+        .build()
+    {
+        Ok(runtime) => runtime,
         Err(error) => {
-            deliver(WorkerUpdate::Error {
-                catalog: None,
-                message: format!("open local store: {error}"),
+            deliver(WorkerUpdate::Unavailable {
+                message: error.to_string(),
             });
             return;
-        }
+        },
     };
-    let mut consultation = match open_consultation(backend.clone()) {
-        Ok(consultation) => consultation,
-        Err(error) => {
-            deliver(WorkerUpdate::Error {
-                catalog: None,
-                message: format!("open local consultation: {error}"),
-            });
+    let opened = runtime.block_on(async {
+        let mut prompt = djinn::startup_vault::NativeOrTerminal {
+            native: djinn::identity_ui::SystemNativeIdentityUi::default(),
+        };
+        let options = ApplicationReservoirOptions {
+            endpoint: configured_app_endpoint(),
+            application: AppId::new("cleromancy"),
+            domain: pandect::DomainId::new("divination").map_err(|e| e.to_string())?,
+            shared_root: pandect::shared_root::shared_root(),
+            vault_dir: std::env::var_os("CLEROMANCY_VAULT_DIR")
+                .map(PathBuf::from)
+                .unwrap_or_else(personae::default_vault_dir),
+            persona: None,
+            profile: None,
+            session_duration: Duration::from_secs(24 * 60 * 60),
+        };
+        let attachment =
+            ReservoirAttachment::open_application(options, &mut prompt, |routes| async {
+                Ok(routes.with_divination_authority())
+            })
+            .await
+            .map_err(|e| e.to_string())?;
+        ResidentConsultation::attach(attachment).await
+    });
+    let mut client = match opened {
+        Ok(client) => client,
+        Err(message) => {
+            deliver(WorkerUpdate::Unavailable { message });
             return;
-        }
+        },
     };
-
-    if consultation.host().is_empty() {
-        if let Err(error) = pollster::block_on(consultation.install_builtin_tarot()) {
-            deliver(WorkerUpdate::Error {
-                catalog: None,
-                message: format!("install built-in tarot field: {error}"),
+    let publish = |client: &ResidentConsultation| -> Result<(), String> {
+        let catalog = client
+            .consultation()?
+            .catalog()
+            .map_err(|e| e.to_string())?;
+        deliver(WorkerUpdate::Mere {
+            model: client.model.clone(),
+            catalog: catalog.clone(),
+        });
+        if let Some((detail, position)) = client.restored_selection() {
+            deliver(WorkerUpdate::GraphSelection {
+                catalog,
+                detail,
+                position,
             });
-            return;
         }
+        Ok(())
+    };
+    if let Err(message) = publish(&client) {
+        deliver(WorkerUpdate::Unavailable { message });
+        let _ = runtime.block_on(client.close());
+        return;
     }
-    match consultation.catalog() {
-        Ok(catalog) => deliver(WorkerUpdate::Catalog(catalog)),
-        Err(error) => {
-            deliver(WorkerUpdate::Error {
-                catalog: None,
-                message: format!("load local consultation: {error}"),
-            });
-            return;
-        }
-    }
-
-    while let Ok(action) = commands.recv() {
-        match execute(&mut consultation, action) {
-            Ok(update) => deliver(update),
-            Err(error) => {
-                // A persist failure makes the controller deliberately refuse
-                // follow-up writes. Reopen before accepting the next action,
-                // never pretending an uncertain graph instance is still live.
-                if consultation.is_faulted() {
-                    match open_consultation(backend.clone()) {
-                        Ok(reopened) => consultation = reopened,
-                        Err(reopen_error) => {
-                            deliver(WorkerUpdate::Error {
-                                catalog: None,
-                                message: format!(
-                                    "{error}; reopen local consultation: {reopen_error}"
-                                ),
-                            });
-                            continue;
-                        }
+    loop {
+        match commands.recv_timeout(Duration::from_millis(250)) {
+            Ok(WorkerCommand::Product(action)) => match runtime.block_on(client.action(action)) {
+                Ok(update) => {
+                    if let Err(message) = publish(&client) {
+                        deliver(WorkerUpdate::Unavailable { message });
+                        break;
                     }
+                    deliver(update);
+                    if let Some(message) = client.saved_notice.take() {
+                        deliver(WorkerUpdate::SavedNotice(message));
+                    }
+                },
+                Err(message) => {
+                    if client.unavailable {
+                        deliver(WorkerUpdate::Unavailable { message });
+                        break;
+                    }
+                    deliver(WorkerUpdate::Error {
+                        catalog: client.consultation().ok().and_then(|c| c.catalog().ok()),
+                        message,
+                    });
+                },
+            },
+            Ok(WorkerCommand::Mere(MereViewRequest::Activate(key))) => {
+                match runtime.block_on(client.select(&key)) {
+                    Ok((detail, position)) => match client
+                        .consultation()
+                        .and_then(|c| c.catalog().map_err(|e| e.to_string()))
+                    {
+                        Ok(catalog) => deliver(WorkerUpdate::GraphSelection {
+                            catalog,
+                            detail,
+                            position,
+                        }),
+                        Err(message) => deliver(WorkerUpdate::Error {
+                            catalog: None,
+                            message,
+                        }),
+                    },
+                    Err(message) => {
+                        if client.unavailable {
+                            deliver(WorkerUpdate::Unavailable { message });
+                            break;
+                        }
+                        deliver(WorkerUpdate::Error {
+                            catalog: None,
+                            message,
+                        });
+                    },
                 }
-                deliver(WorkerUpdate::Error {
-                    catalog: consultation.catalog().ok(),
-                    message: error.to_string(),
-                });
-            }
+            },
+            Ok(WorkerCommand::Mere(request)) => {
+                if let Err(message) = runtime.block_on(client.request(request)) {
+                    if client.unavailable {
+                        deliver(WorkerUpdate::Unavailable { message });
+                        break;
+                    }
+                    client.model.notice = Some(message);
+                }
+                if let Err(message) = publish(&client) {
+                    deliver(WorkerUpdate::Unavailable { message });
+                    break;
+                }
+            },
+            Err(mpsc::RecvTimeoutError::Timeout) => {
+                // Poll the existing admitted connection for external changes;
+                // the route's own notices include graph, policy and lifecycle.
+                match runtime.block_on(client.take_notice()) {
+                    Ok(true) => match runtime.block_on(client.refresh()) {
+                        Ok(()) => {
+                            if let Err(message) = publish(&client) {
+                                deliver(WorkerUpdate::Unavailable { message });
+                                break;
+                            }
+                        },
+                        Err(message) => {
+                            deliver(WorkerUpdate::Unavailable { message });
+                            break;
+                        },
+                    },
+                    Ok(false) => {},
+                    Err(message) => {
+                        deliver(WorkerUpdate::Unavailable { message });
+                        break;
+                    },
+                }
+            },
+            Err(mpsc::RecvTimeoutError::Disconnected) => break,
         }
+    }
+    if let Err(message) = runtime.block_on(client.close()) {
+        eprintln!("cleromancy resident close: {message}");
     }
 }
 
-fn open_consultation(backend: RedbBackend) -> Result<Consultation<RedbBackend>, ConsultationError> {
-    Ok(Consultation::new(pollster::block_on(
-        CleromancyHost::open(backend),
-    )?))
-}
-
-fn execute(
-    consultation: &mut Consultation<RedbBackend>,
+pub(crate) fn execute<B: muniment::Backend>(
+    consultation: &mut Consultation<B>,
     action: ConsultationAction,
 ) -> Result<WorkerUpdate, ConsultationError> {
     match action {
@@ -182,7 +289,7 @@ fn execute(
                 ConsultationContext::Existing(digest) => digest,
                 ConsultationContext::New(draft) => {
                     pollster::block_on(consultation.save_context(draft))?
-                }
+                },
             };
             let detail = match layout {
                 ConsultationLayout::Single => match (mode, derivation) {
@@ -191,13 +298,13 @@ fn execute(
                     )?,
                     (SelectionMode::Derived, None) => {
                         return Err(ConsultationError::DerivedSelectionRequired);
-                    }
+                    },
                     (_, None) => {
                         pollster::block_on(consultation.read(&context_digest, &field_digest, mode))?
-                    }
+                    },
                     (_, Some(_)) => {
                         return Err(ConsultationError::UnexpectedDerivation);
-                    }
+                    },
                 },
                 ConsultationLayout::ThreeCard => pollster::block_on(
                     consultation.read_three_card(&context_digest, &field_digest),
@@ -214,15 +321,15 @@ fn execute(
             };
             let catalog = consultation.catalog()?;
             Ok(WorkerUpdate::Reading { catalog, detail })
-        }
+        },
         ConsultationAction::SaveSpreadTemplate { draft } => {
             pollster::block_on(consultation.save_spread_template(draft))?;
             Ok(WorkerUpdate::Catalog(consultation.catalog()?))
-        }
+        },
         ConsultationAction::SaveAstrologyChart { draft } => {
             pollster::block_on(consultation.save_astrology_chart(draft))?;
             Ok(WorkerUpdate::Catalog(consultation.catalog()?))
-        }
+        },
         #[cfg(feature = "analytic-ephemeris")]
         ConsultationAction::CalculateAstrologyChart { draft } => {
             let (moment, orb_millidegrees) = draft.into_moment_and_orb()?;
@@ -235,17 +342,17 @@ fn execute(
                 catalog: consultation.catalog()?,
                 facts_digest,
             })
-        }
+        },
         ConsultationAction::SaveReflection { session_id, body } => {
             let detail = pollster::block_on(consultation.reflect(&session_id, body))?;
             let catalog = consultation.catalog()?;
             Ok(WorkerUpdate::Reflection { catalog, detail })
-        }
+        },
         ConsultationAction::SelectSession { session_id } => {
             let detail = consultation.detail(&session_id)?;
             let catalog = consultation.catalog()?;
             Ok(WorkerUpdate::Session { catalog, detail })
-        }
+        },
         ConsultationAction::CompareSessions {
             left_session_id,
             right_session_id,
@@ -258,109 +365,6 @@ fn execute(
                 detail,
                 comparison,
             })
-        }
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use std::sync::mpsc;
-    use std::time::Duration;
-
-    use super::*;
-    use crate::{ContextDraft, SelectionMode};
-
-    #[test]
-    fn worker_bootstraps_tarot_and_returns_durable_reading_updates() {
-        let temp = tempfile::tempdir().expect("temporary local store");
-        let (updates, received) = mpsc::channel();
-        let worker = spawn(temp.path().join("cleromancy.redb"), move |update| {
-            updates.send(update).expect("test receiver remains open");
-        });
-        let first = received
-            .recv_timeout(Duration::from_secs(10))
-            .expect("initial worker update");
-        let catalog = match first {
-            WorkerUpdate::Catalog(catalog) => catalog,
-            update => panic!("expected initial catalog, got {update:?}"),
-        };
-        assert_eq!(catalog.fields.len(), 1, "first launch installs tarot only");
-        assert!(catalog.contexts.is_empty());
-        assert!(catalog.session_summaries.is_empty());
-
-        worker
-            .command(ConsultationAction::Read {
-                context: ConsultationContext::New(ContextDraft::new(
-                    "A changing structure",
-                    "What deserves attention now?",
-                    "change, reflection",
-                )),
-                field_digest: catalog.fields[0].digest(),
-                mode: SelectionMode::Calculated,
-                derivation: None,
-                layout: ConsultationLayout::Single,
-                astrology_facts_digest: None,
-            })
-            .expect("worker accepts read");
-        let (catalog, detail) = match received
-            .recv_timeout(Duration::from_secs(10))
-            .expect("reading update")
-        {
-            WorkerUpdate::Reading { catalog, detail } => (catalog, detail),
-            update => panic!("expected reading update, got {update:?}"),
-        };
-        assert_eq!(catalog.contexts.len(), 1);
-        assert_eq!(catalog.session_summaries.len(), 1);
-        assert_eq!(detail.readings.len(), 1);
-        let context_digest = detail.session.context_digest.clone();
-
-        worker
-            .command(ConsultationAction::SaveReflection {
-                session_id: detail.session.id.clone(),
-                body: "Keep the useful constraint revisable.".to_string(),
-            })
-            .expect("worker accepts reflection");
-        match received
-            .recv_timeout(Duration::from_secs(10))
-            .expect("reflection update")
-        {
-            WorkerUpdate::Reflection { detail, .. } => {
-                assert_eq!(detail.reflections.len(), 1);
-                assert_eq!(
-                    detail.reflections[0].body,
-                    "Keep the useful constraint revisable."
-                );
-            }
-            update => panic!("expected reflection update, got {update:?}"),
-        }
-
-        worker
-            .command(ConsultationAction::Read {
-                context: ConsultationContext::Existing(context_digest),
-                field_digest: catalog.fields[0].digest(),
-                mode: SelectionMode::Cast,
-                derivation: None,
-                layout: ConsultationLayout::ThreeCard,
-                astrology_facts_digest: None,
-            })
-            .expect("worker accepts three-card cast");
-        match received
-            .recv_timeout(Duration::from_secs(10))
-            .expect("three-card update")
-        {
-            WorkerUpdate::Reading { detail, .. } => {
-                assert_eq!(detail.readings.len(), 3);
-                assert_eq!(
-                    detail
-                        .session
-                        .placements
-                        .iter()
-                        .map(|placement| placement.position.as_str())
-                        .collect::<Vec<_>>(),
-                    ["foundation", "tension", "next_step"]
-                );
-            }
-            update => panic!("expected three-card reading update, got {update:?}"),
-        }
+        },
     }
 }

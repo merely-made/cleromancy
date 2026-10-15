@@ -416,34 +416,35 @@ fn import_controls(ui: &ConsultationUi) -> Vec<ConsultationView> {
     let mut controls = vec![
         Box::new(el::<_, ConsultationUi, ()>("h3", "Chart moment")) as ConsultationView,
         labelled_text(
-            "UTC instant",
+            "Date and time (UTC)",
             "cleromancy-astrology-instant",
             false,
             &ui.astrology_instant_utc,
             astrology_instant_state,
         ),
         labelled_text(
-            "Latitude microdegrees (optional)",
+            "Latitude degrees (optional)",
             "cleromancy-astrology-latitude",
             false,
             &ui.astrology_latitude,
             astrology_latitude_state,
         ),
         labelled_text(
-            "Longitude microdegrees (optional)",
+            "Longitude degrees (optional)",
             "cleromancy-astrology-longitude",
             false,
             &ui.astrology_longitude,
             astrology_longitude_state,
         ),
         labelled_text(
-            "Aspect orb millidegrees",
+            "Aspect orb degrees",
             "cleromancy-astrology-orb",
             false,
             &ui.astrology_orb,
             astrology_orb_state,
         ),
     ];
+    controls.push(Box::new(el::<_, ConsultationUi, ()>("p", "For example: 2026-10-15 09:30 UTC; latitude 40.7128, longitude -74.0060; aspect orb 1 degree. Place stays optional.").attr("class", "context-explanation")));
     #[cfg(feature = "analytic-ephemeris")]
     controls.extend(ephemeris_controls());
     controls.extend(vec![

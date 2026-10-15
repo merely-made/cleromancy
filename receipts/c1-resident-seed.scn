@@ -1,0 +1,57 @@
+# One synthetic reading is committed through the admitted resident transaction.
+wait
+advance
+wait
+advance
+wait
+assert snap sessions == 1
+assert snap readings == 3
+assert snap reflections == 1
+show-mere
+wait
+assert snap mere-live-sessions == 1
+assert snap mere-nodes >= 8
+capture reading-and-mere
+mere-select-reading
+wait
+assert snap readings == 3
+mere-mint
+wait
+assert snap mere-live-sessions == 2
+assert snap sessions == 0
+assert snap readings == 0
+assert snap fields == 1
+assert snap mere-nodes == 1
+capture minted-empty
+mere-switch-first
+wait
+assert snap sessions == 1
+assert snap readings == 3
+assert snap reflections == 1
+capture switched-original
+resize 420 760
+wait
+assert snap readings == 3
+capture compact-reading-and-mere
+resize 1160 760
+wait
+mere-save
+wait
+assert snap mere-archives == 1
+capture archived
+mere-fork
+wait
+assert snap mere-live-sessions == 3
+assert snap sessions == 1
+capture forked
+mere-trash
+wait
+assert snap mere-trashed-sessions == 1
+mere-restore-first
+wait
+assert snap mere-trashed-sessions == 0
+mere-switch-first
+wait
+assert snap sessions == 1
+capture restored
+settle 2

@@ -38,7 +38,12 @@ const DOMAIN_FACETS: [&str; 13] = [
 /// validation. This is the product-owned validator prepared for C1; the
 /// resident's transaction boundary remains responsible for invoking it.
 pub fn validate_divination_graph(graph: &Graph) -> Result<(), HostError> {
+    // Build the replay reader without opening or writing a private backend.
     let mut reader = CleromancyHost::empty(muniment::MemoryBackend::new());
+    #[cfg(feature = "legacy-receipts")]
+    {
+        reader.slots = None;
+    }
     reader.graph = graph.clone();
     reader.validate_domain()
 }

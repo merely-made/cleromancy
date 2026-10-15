@@ -3,15 +3,15 @@
 
 use std::collections::VecDeque;
 
+use chirograph::{CapabilityProfile, IntentResult, PresentationCapability};
 use cleromancy::moirai::clotho::EntropySource;
 use cleromancy::servitor::{Cap, Grant, Mode, Subject};
 use cleromancy::{
     AstrologyChart, AstrologyMoment, AstrologyPosition, CREATE_CONCURRENCE_INTENT, CleromancyApp,
     CleromancyHost, ReadingEngine, ReadingError, a0_fixture,
 };
-use graphshell::client::RetainedEndpointSession;
+use graphshell_client::RetainedEndpointSession;
 use graphshell_endpoint::local::LocalCarrier;
-use chirograph::{CapabilityProfile, IntentResult, PresentationCapability};
 use muniment::MemoryBackend;
 
 #[test]

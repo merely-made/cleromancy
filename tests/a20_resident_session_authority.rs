@@ -1,26 +1,27 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
+#![cfg(feature = "legacy-receipts")]
 #![cfg(feature = "graphshell-admission")]
 
 use std::collections::VecDeque;
 
+use chirograph::{
+    CapabilityProfile, IntentResult, PresentationCapability, ProjectionSession, ResourceRequest,
+};
 use cleromancy::moirai::clotho::EntropySource;
 use cleromancy::servitor::{Cap, Grant, Mode, Subject};
 use cleromancy::{
     AstrologyChart, AstrologyMoment, AstrologyPosition, CREATE_CONCURRENCE_INTENT, CleromancyApp,
     CleromancyHost, CleromancySessionAuthority, ReadingEngine, ReadingError, a0_fixture,
 };
-use graphshell::client::RetainedEndpointSession;
-use graphshell::lifecycle::AdmittedEndpointContext;
-use graphshell::native::endpoint_catalog::ResidentEndpointCatalog;
+use graphshell_client::RetainedEndpointSession;
+use graphshell_endpoint::local::LocalCarrier;
 use graphshell_endpoint::{
     PresentationSource, ProjectionCatalog, ProjectionNoticeSource, ProjectionSource,
 };
-use graphshell_endpoint::local::LocalCarrier;
-use chirograph::{
-    CapabilityProfile, IntentResult, PresentationCapability, ProjectionSession, ResourceRequest,
-};
+use graphshell_host::endpoint_catalog::ResidentEndpointCatalog;
+use graphshell_host::lifecycle::AdmittedEndpointContext;
 use muniment::MemoryBackend;
 
 #[test]

@@ -1,3 +1,5 @@
+#![cfg(feature = "legacy-receipts")]
+
 use cleromancy::sky::{
     SKY_DAY_FACTS_SCHEMA, SKY_INTERPRETATION_SCHEMA, SkyDayFacts, SkyEarthOrientationApproximation,
     SkyEarthOrientationPolicy, SkyFact, SkyFactKind, SkyInterpretation, SkyNumericalPolicy,

@@ -54,6 +54,7 @@ fn mounted(dir: &tempfile::TempDir) -> Host {
     let sheet = appearance.take_stylesheet_change().unwrap();
     let state = appearance_view::ApplicationUi {
         consultation: crate::ConsultationUi::new(empty_catalog()),
+        mere: Default::default(),
         appearance,
     };
     let mut hooks = inert_hooks();
@@ -480,6 +481,33 @@ fn shared_fields_and_parent_controls_keep_real_geometry_at_420_and_1160() {
 
 #[test]
 fn neutral_workshop_headings_remain_readable_inside_dark_and_authored_hosts() {
+    let neutral = ThemeRegistry::default()
+        .theme_def(tabard::theme::registry::THEME_ID_DEFAULT)
+        .unwrap()
+        .palette_for_mode(&Mode::Light)
+        .unwrap()
+        .palette;
+    let luminance = |color: tinct::Srgb| {
+        let linear = |channel: u8| {
+            let value = f64::from(channel) / 255.0;
+            if value <= 0.04045 {
+                value / 12.92
+            } else {
+                ((value + 0.055) / 1.055).powf(2.4)
+            }
+        };
+        0.2126 * linear(color.r) + 0.7152 * linear(color.g) + 0.0722 * linear(color.b)
+    };
+    let ink = luminance(neutral.text);
+    let surface = luminance(neutral.surface);
+    assert!((ink.max(surface) + 0.05) / (ink.min(surface) + 0.05) >= 4.5);
+    let css_colors = |color: tinct::Srgb| {
+        [
+            tinct::color_to_hex(color).to_ascii_lowercase(),
+            format!("rgb({},{},{})", color.r, color.g, color.b),
+            format!("rgba({},{},{},1)", color.r, color.g, color.b),
+        ]
+    };
     for authored in [false, true] {
         let dir = tempfile::tempdir().unwrap();
         let saved = authored.then(|| theme(&dir.path().join("themes.json"), true));
@@ -507,12 +535,11 @@ fn neutral_workshop_headings_remain_readable_inside_dark_and_authored_hosts() {
                     .find(|node| dom.has_class(*node, "cambium-title-bar"))
                     .expect("shared workshop title bar")
             });
-            let editor = host.with_dom(|dom| {
-                taproot::matching(dom, &Selector::class("theme-editor"))[0]
-            });
+            let editor =
+                host.with_dom(|dom| taproot::matching(dom, &Selector::class("theme-editor"))[0]);
             for (container, label, background) in [
                 ("brand-title", "Tabard", header),
-                ("editor-intro", "Your theme", editor),
+                ("workspace-pane-heading", "Your theme", editor),
                 ("control-group", "Seed colours", editor),
             ] {
                 let heading = host.with_dom(|dom| {
@@ -538,8 +565,7 @@ fn neutral_workshop_headings_remain_readable_inside_dark_and_authored_hosts() {
                     .to_ascii_lowercase()
                     .replace(' ', "");
                 assert!(
-                    ["#242c39", "rgb(36,44,57)", "rgba(36,44,57,1)"]
-                        .contains(&foreground.as_str()),
+                    css_colors(neutral.text).contains(&foreground),
                     "{label} foreground at {width}px, authored={authored}: {foreground}"
                 );
                 let background = host
@@ -548,15 +574,13 @@ fn neutral_workshop_headings_remain_readable_inside_dark_and_authored_hosts() {
                     .to_ascii_lowercase()
                     .replace(' ', "");
                 assert!(
-                    ["#fff", "#ffffff", "rgb(255,255,255)", "rgba(255,255,255,1)"]
-                        .contains(&background.as_str()),
+                    css_colors(neutral.surface).contains(&background),
                     "{label} background at {width}px: {background}"
                 );
             }
         }
     }
 }
-
 #[test]
 fn unchanged_appearance_does_not_reset_the_callers_stylesheet_on_dispatch() {
     let dir = tempfile::tempdir().unwrap();
@@ -977,6 +1001,7 @@ fn role_families_shape_real_bundled_faces_and_authored_css_retains_precedence() 
             sheet: format!("{}{}", appearance.stylesheet(), probe),
             state: appearance_view::ApplicationUi {
                 consultation: crate::ConsultationUi::new(empty_catalog()),
+                mere: Default::default(),
                 appearance,
             },
             logic: Box::new(|_: &appearance_view::ApplicationUi| {
@@ -1101,4 +1126,57 @@ fn shared_font_picker_search_and_selection_remain_an_application_draft() {
         host.state().appearance.font_preferences().0[&FontRole::Reading][0].name(),
         "IBM Plex Mono"
     );
+}
+
+#[test]
+fn shared_mere_and_focused_reading_share_the_ordinary_wide_viewport() {
+    let dir = tempfile::tempdir().unwrap();
+    let mut host = mounted(&dir);
+    let mut consultation = crate::Consultation::new(
+        crate::CleromancyHost::candidate(mere::kernel::graph::Graph::new()).unwrap(),
+    );
+    let field = pollster::block_on(consultation.install_builtin_tarot_at(1)).unwrap();
+    let context = pollster::block_on(consultation.save_context_at(
+        crate::ContextDraft::new("A shared workspace", "What needs attention?", "reading"),
+        2,
+    ))
+    .unwrap();
+    let detail =
+        pollster::block_on(consultation.read(&context, &field, crate::SelectionMode::Calculated))
+            .unwrap();
+    let catalog = consultation.catalog().unwrap();
+    host.update(|state| {
+        state.consultation.present_reading(catalog, detail);
+        state.mere.width = 420;
+        state.mere.height = 718;
+        state.mere.wide = true;
+        state.mere.model.title = "Divination".into();
+        state.mere.model.can_mint = true;
+    });
+    host.relayout();
+    action(&mut host, "toggle-mere");
+    let node =
+        |class: &str| host.with_dom(|dom| taproot::matching(dom, &Selector::class(class))[0]);
+    let panel = host.painted_rect(node("mere-view")).unwrap();
+    let reader = host.painted_rect(node("cleromancy-mere-reading")).unwrap();
+    assert!(panel.2 > 0.0 && reader.2 > 0.0);
+    assert!(
+        panel.0 + panel.2 <= reader.0 + 1.0,
+        "panel and reader are side by side"
+    );
+    assert!((panel.1 - reader.1).abs() < 1.0);
+    let focused = host.with_dom(|dom| taproot::matching(dom, &Selector::class("reading-card"))[0]);
+    let card = host
+        .visible_rect(focused)
+        .expect("the selected card is visible beside the shared panel");
+    assert!(card.2 > 0.0 && card.3 > 0.0);
+    click(
+        &mut host,
+        Selector::role("button").with_attr("data-request", "mint"),
+    );
+    assert_eq!(
+        host.state().mere.pending,
+        Some(mere_view::MereViewRequest::Mint)
+    );
+    assert!(host.state().consultation.pending_action.is_none());
 }

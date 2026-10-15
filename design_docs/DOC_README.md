@@ -13,6 +13,11 @@ This is the canonical index for active Cleromancy design documents. See the
 the maintainer and does not exist in this repository yet; the root README is
 the current public overview until it is authored.
 
+Stack intake (2026-10-15): C2 consumes Mere `8b08c98b2` through
+`graphshell-endpoint::door`, `graphshell-host` and `mere-overmap`.
+The [C2 receipt](../receipts/c2-reading-qualification_20261015.json) records
+consumer tests, native authoring/reopening and preserved historical evidence.
+
 ## Working principles
 
 - Keep numerical facts, interpretation (authored or generated, labelled which),
@@ -48,6 +53,8 @@ the current public overview until it is authored.
 - Cleromancy's data is its domain's mere (divination, journaling, RNG), held by
   the device resident. Use Mere's own sessions, graph journal, codicils,
   reservoir and ambient tier, and keep no app-local copies of them.
+- A resident catalog refresh is not completion of a pending product action.
+  Keep it pending until its detail or explicit completion update arrives.
 - Verify the headed reading at its ordinary window size. Tall DOM harnesses
   and saved-data checks do not establish that controls fit or that card
   results are visible; acceptance includes painted bounds and native capture.
@@ -129,37 +136,29 @@ the current public overview until it is authored.
   [Completed plan](archive_docs/2026-10-11/2026-10-11_tabard_appearance_plan.md).
 
 - [Divination mere and the self-explaining reading](2026-09-23_divination_mere_plan.md):
-  **C1 preparation in progress, reviewed 2026-10-13; no phase accepted.**
-  - C1 moves Cleromancy onto its domain's mere in the identity's reservoir,
-    held by the device resident with the full session lifecycle. §2 names the
-    available shared substrate and the remaining authority, view, archive,
-    grant and standalone-ownership acceptance gates; the Mere reservoir plan
-    owns their status.
-  - C2 is the reading that narrates its own computation.
-  - Then, in the order Mark ruled: typed cards across several decks, the
-    ambient card view, the shuffled deck with reversals, situation (time,
-    opt-in place and weather), labelled generated inferences, and more
-    systems.
-  - Mark's rulings are recorded in Mere's
-    `repos/mere/design_docs/mere_docs/design/2026-09-23_ambiance_design.md`.
-  - All decisions ruled 2026-09-23: Cleromancy's domain authority is composed
-    into the resident; the order is as above; the mere starts fresh, with no
-    import.
-  - The refresh records the existing snapshot store, native first/reopen
-    evidence and limits, authored-position meaning bug and the outstanding
-    format gate. The core lock is repaired and the portable full-candidate
-    validator is prepared. Mere's integrated V3–V5 resident contracts pass
-    source and real-process fixtures; Cleromancy's domain registrations,
-    shared view/store migration and native consumer acceptance remain open.
-    C4 includes proposed foreground/background and dynamics
-    acceptance using shared contracts; no private spec or physics adoption is
-    claimed. Preparation is distinguished from changing the ruled phase order.
-  - The 2026-10-13 review verifies the separately published font receipt and
-    proposes a journal of reading occasions with a focused card constellation:
-    history/reflections, cited correspondences and recorded situation stay
-    independently inspectable. It records a concrete fixture and cross-app
-    witness; C1 lifecycle/authority, C2 narrative, C3 typed data and C4 native
-    neighborhood gates retain their ruled order.
+  **C1 implemented and bounded native/cross-application qualified, 2026-10-14;
+  full shared wall pending; no phase accepted.**
+  - Published H/f7ec/N composes Cleromancy's product-owned validator into the
+    resident. Ordinary Cleromancy attaches or embeds the resident; private
+    snapshot/authority paths are retired from its default product. Historical
+    receipts remain explicit nondefault harnesses.
+  - Five fresh native runs, native Graphshell witness/reopen, actual Chrome
+    reopen, retained native-ACK/browser live update and staged archive/read-only
+    controls have independent original reviews and separate owner guards.
+    Final transient controls/return preserve all45 shared files and the retired
+    sentinel, including epochs. Source checkpoints are pushed; the complete
+    shared wall, supplements and final documentation verdict remain open.
+  - §2 names exact supplier/consumer readiness and scopes. The Mere reservoir
+    plan owns V1–V5 status; bounded C1 proofs do not close full V2b/one-tree UI
+    qualification. Graphical unlock handling remains unqualified; the controlled
+    production terminal lane is explicitly scoped.
+  - C2 narrates the reading's computation. Then, in Mark's ruled order: typed
+    cards across decks, card ambient view, shuffled deck/reversals, situation,
+    labelled generated inferences and additional systems. The journal-of-occasions
+    scene and focused card constellation remain proposals for those later gates.
+  - The mere starts fresh with no import. Appearance/font-role publication and
+    historical F/G qualification receipts retain their separate scopes. All
+    source, lifecycle, authority and later narrative gates preserve that order.
 - [Headed local consultation](2026-08-07_headed_local_consultation_plan.md):
   native journal-window product plan.
 - [Journal depth](2026-08-08_journal_depth_plan.md) — **landed 2026-09-04**:
@@ -208,3 +207,14 @@ Apply, and current coherent supplier adoption. Consumer macOS qualification is c
 two native processes, nine reviewed captures and unchanged exact font requests
 and durable IDs on reopening. Prior theme captures retain their original revision
 scope; other consumer/platform and glyph/frozen-face gates remain separate.
+
+C1 qualification (2026-10-14):
+[the qualification ledger](../receipts/c1-resident-qualification_20261014.json) records
+published exact-float supplier H, portable validator f7ec and native N,
+immutable CPU/owner gates and 19 independently reviewed fresh H native
+captures. Controlled process-local terminal fallback has a separate declared
+scope; graphical unlock remains unqualified. The F/A3/D checkpoint is preserved.
+The divination mere plan retains the full C1 done-conditions. Current H native
+Graphshell witness/reopen has six independent original reviews and owner guards;
+the mounted browser witness has five. Fresh Chrome/live/archive proofs also pass with independent reviews and whole
+owner guards. The full shared wall and final documentation remain pending.

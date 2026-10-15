@@ -6,10 +6,10 @@
 use cambium::{button, detail_panel, disclosure, el, map_action, map_state};
 
 use super::ConsultationView;
-use crate::ASTROLOGY_FACTS_ROLE;
-use crate::reading_scene::{position_label, position_rationale};
+use crate::narrative::{ReadingNarrative, narrate, position_meaning};
 use crate::ui::screen::{self, ConsultationScreen};
 use crate::ui::state::ConsultationUi;
+use crate::{ASTROLOGY_FACTS_ROLE, ConsultationDetail, format_relative_date};
 
 pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
     let mut children: Vec<ConsultationView> =
@@ -23,19 +23,7 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
             .attr("class", "empty-reading"),
         )),
         Some(detail) => {
-            children.push(Box::new(
-                el::<_, ConsultationUi, ()>(
-                    "p",
-                    detail
-                        .context
-                        .facts
-                        .get("question")
-                        .cloned()
-                        .unwrap_or_else(|| detail.context.label.clone()),
-                )
-                .attr("class", "reading-question")
-                .attr("data-key", "reading-question"),
-            ));
+            children.push(context_with_reading(ui, detail));
             if let Some((_concurrence_id, facts_digest, placements)) = chart_concurrence(ui) {
                 let link_digest = facts_digest.clone();
                 children.push(Box::new(
@@ -71,56 +59,54 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
                 ));
             }
             children.push(super::reading_scene::spread_view(ui));
-            let selected = ui
-                .reading_focus
-                .get(&detail.session.id)
-                .and_then(|position| {
+            let narrative = narrate(detail);
+            let focused = ui.focused_position(detail);
+            if let Some((placement, reading)) = detail
+                .session
+                .placements
+                .iter()
+                .find(|placement| placement.position == focused)
+                .and_then(|placement| {
                     detail
-                        .session
-                        .placements
+                        .readings
                         .iter()
-                        .find(|item| &item.position == position)
+                        .find(|reading| reading.id == placement.reading_id)
+                        .map(|reading| (placement, reading))
                 })
-                .or_else(|| detail.session.placements.first());
-            if let Some(placement) = selected {
-                if let Some(reading) = detail
-                    .readings
-                    .iter()
-                    .find(|reading| reading.id == placement.reading_id)
-                {
-                    let card: Vec<ConsultationView> = vec![
-                        Box::new(el::<_, ConsultationUi, ()>(
-                            "h3",
-                            position_label(&placement.position),
-                        )),
-                        Box::new(el::<_, ConsultationUi, ()>("h4", reading.title.clone())),
-                        Box::new(
-                            el::<_, ConsultationUi, ()>("p", reading.interpretation.clone())
-                                .attr("data-key", "result-prompt"),
-                        ),
-                        Box::new(
-                            el::<_, ConsultationUi, ()>(
-                                "p",
-                                position_rationale(&placement.position),
-                            )
-                            .attr("class", "position-rationale"),
-                        ),
-                    ];
-                    children.push(Box::new(
-                        el::<_, ConsultationUi, ()>("article", card)
-                            .attr("class", "reading-card")
-                            .attr("data-key", "focused-reading")
-                            .attr("aria-live", "polite"),
-                    ));
-                }
+            {
+                let meaning = position_meaning(detail, &placement.position);
+                let card: Vec<ConsultationView> = vec![
+                    Box::new(el::<_, ConsultationUi, ()>("h3", meaning.label.clone())),
+                    Box::new(el::<_, ConsultationUi, ()>("h4", reading.title.clone())),
+                    Box::new(
+                        el::<_, ConsultationUi, ()>("p", reading.interpretation.clone())
+                            .attr("data-key", "result-prompt"),
+                    ),
+                    Box::new(
+                        el::<_, ConsultationUi, ()>("p", meaning.meaning.clone())
+                            .attr("class", "position-rationale")
+                            .attr("data-key", "focused-position-meaning"),
+                    ),
+                ];
+                children.push(Box::new(
+                    el::<_, ConsultationUi, ()>("article", card)
+                        .attr("class", "reading-card")
+                        .attr("data-key", "focused-reading")
+                        .attr("aria-live", "polite"),
+                ));
             }
+            children.push(narrative_view(&narrative, &focused));
             let sections = detail
                 .session
                 .placements
                 .iter()
                 .zip(&detail.readings)
                 .map(|(placement, reading)| {
-                    super::rationale::section(detail, &placement.position, reading)
+                    super::rationale::section(
+                        detail,
+                        &position_meaning(detail, &placement.position),
+                        reading,
+                    )
                 })
                 .collect::<Vec<_>>();
             let details = detail_panel::<cambium::DisclosureState, ()>(&sections);
@@ -143,6 +129,119 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
             .attr("role", "region")
             .attr("aria-label", "Reading")
             .attr("data-key", "region:reading"),
+    )
+}
+
+/// The question and the context it was asked in, shown as part of the
+/// reading rather than in a separate authoring region.
+fn context_with_reading(ui: &ConsultationUi, detail: &ConsultationDetail) -> ConsultationView {
+    let context = &detail.context;
+    let question = context
+        .facts
+        .get("question")
+        .cloned()
+        .unwrap_or_else(|| context.label.clone());
+    let mut facts = vec![format!(
+        "{} · drawn {}",
+        context.label,
+        format_relative_date(detail.session.created_at_ms, ui.journal.now_ms)
+    )];
+    if !context.tags.is_empty() {
+        facts.push(format!(
+            "tags: {}",
+            context.tags.iter().cloned().collect::<Vec<_>>().join(", ")
+        ));
+    }
+    facts.extend(
+        context
+            .facts
+            .iter()
+            .filter(|(name, _)| name.as_str() != "question")
+            .map(|(name, value)| format!("{name}: {value}")),
+    );
+    Box::new(
+        el::<_, ConsultationUi, ()>(
+            "div",
+            vec![
+                Box::new(
+                    el::<_, ConsultationUi, ()>("p", question)
+                        .attr("class", "reading-question")
+                        .attr("data-key", "reading-question"),
+                ) as ConsultationView,
+                Box::new(
+                    el::<_, ConsultationUi, ()>("p", facts.join(" · "))
+                        .attr("class", "reading-context-facts")
+                        .attr("data-key", "reading-context-facts"),
+                ),
+            ],
+        )
+        .attr("class", "reading-context")
+        .attr("data-key", "reading-context")
+        .attr("aria-label", "Question and context"),
+    )
+}
+
+/// Every card's computation in plain words, in draw order. This is the
+/// reading's audit; the receipt below stays available for exact values.
+fn narrative_view(narrative: &ReadingNarrative, focused: &str) -> ConsultationView {
+    let items = narrative
+        .cards
+        .iter()
+        .map(|card| {
+            let current = card.position.name == focused;
+            Box::new(
+                el::<_, ConsultationUi, ()>(
+                    "li",
+                    vec![
+                        Box::new(
+                            el::<_, ConsultationUi, ()>(
+                                "strong",
+                                format!(
+                                    "Card {} of {} · {} · {}",
+                                    card.ordinal, card.count, card.position.label, card.title
+                                ),
+                            )
+                            .attr("class", "narration-heading"),
+                        ) as ConsultationView,
+                        Box::new(
+                            el::<_, ConsultationUi, ()>("p", card.text.clone())
+                                .attr("class", "narration-text"),
+                        ),
+                    ],
+                )
+                .attr(
+                    "class",
+                    if current {
+                        "narration current"
+                    } else {
+                        "narration"
+                    },
+                )
+                .attr("aria-current", if current { "true" } else { "false" })
+                .attr("data-key", format!("narration:{}", card.position.name)),
+            ) as ConsultationView
+        })
+        .collect::<Vec<_>>();
+    Box::new(
+        el::<_, ConsultationUi, ()>(
+            "section",
+            vec![
+                Box::new(el::<_, ConsultationUi, ()>(
+                    "h3",
+                    "How this reading was made",
+                )) as ConsultationView,
+                Box::new(
+                    el::<_, ConsultationUi, ()>("p", narrative.overview.clone())
+                        .attr("class", "narration-overview")
+                        .attr("data-key", "narration-overview"),
+                ),
+                Box::new(el::<_, ConsultationUi, ()>("ol", items).attr("class", "narration-list")),
+            ],
+        )
+        .attr("class", "reading-narrative")
+        .attr("role", "region")
+        .attr("aria-label", "How this reading was made")
+        .attr("data-key", "reading-narrative"),
     )
 }
 

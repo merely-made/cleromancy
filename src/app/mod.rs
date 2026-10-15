@@ -5,20 +5,26 @@
 //! Graphshell owns the portable presentation client, and Servitor stays
 //! reachable at an explicit authority seam. `invoke` holds intent dispatch.
 
-use graphshell::view::{ProjectionLayoutView, ProjectionReceiptView, render_projection_receipt};
+use chirograph::{
+    CapabilityProfile, CarrierNotice, IntentInvocation, IntentResult, PresentationCapability,
+};
 use graphshell_client::{
     ClientState, PresentationResolution, ResolvedPresentation, SnapshotApplyError,
 };
 use graphshell_endpoint::PresentationSource;
-use chirograph::{
-    CapabilityProfile, CarrierNotice, IntentInvocation, IntentResult, PresentationCapability,
+use graphshell_host::view::{
+    ProjectionLayoutView, ProjectionReceiptView, render_projection_receipt,
 };
 use muniment::Backend;
 use servitor::Subject;
 use thiserror::Error;
 
 use crate::enrichment::{EnrichmentError, EnrichmentReport, ExternalProjection, mount_carrier};
-#[cfg(all(feature = "graphshell-admission", not(target_arch = "wasm32")))]
+#[cfg(all(
+    feature = "legacy-receipts",
+    feature = "graphshell-admission",
+    not(target_arch = "wasm32")
+))]
 use crate::host::CleromancyProjectionState;
 use crate::intents::IntentLimits;
 use crate::moirai::clotho::OsEntropy;
@@ -55,19 +61,24 @@ pub struct CleromancyApp<B> {
 /// A resident authority owns the reading graph, Servitor table, and intent
 /// limits once. Every admitted endpoint carries one of these instead, so its
 /// session, action targets, and revision bell cannot overwrite another peer's.
-#[cfg(all(feature = "graphshell-admission", not(target_arch = "wasm32")))]
+#[cfg(all(
+    feature = "legacy-receipts",
+    feature = "graphshell-admission",
+    not(target_arch = "wasm32")
+))]
 pub(crate) struct CleromancyAppSessionState {
     projection: CleromancyProjectionState,
     intent_subject: Option<Subject>,
     pending_notice: bool,
 }
 
-#[cfg(all(feature = "graphshell-admission", not(target_arch = "wasm32")))]
+#[cfg(all(
+    feature = "legacy-receipts",
+    feature = "graphshell-admission",
+    not(target_arch = "wasm32")
+))]
 impl CleromancyAppSessionState {
-    pub(crate) fn admitted(
-        session: chirograph::ProjectionSession,
-        subject: Subject,
-    ) -> Self {
+    pub(crate) fn admitted(session: chirograph::ProjectionSession, subject: Subject) -> Self {
         Self {
             projection: CleromancyProjectionState::for_session(session),
             intent_subject: Some(subject),
@@ -92,7 +103,11 @@ impl<B: Backend> CleromancyApp<B> {
     ///
     /// The swaps keep the existing local-app API intact while the resident
     /// authority serializes access to the shared graph and Servitor audit.
-    #[cfg(all(feature = "graphshell-admission", not(target_arch = "wasm32")))]
+    #[cfg(all(
+        feature = "legacy-receipts",
+        feature = "graphshell-admission",
+        not(target_arch = "wasm32")
+    ))]
     pub(crate) fn with_session_state<R>(
         &mut self,
         state: &mut CleromancyAppSessionState,

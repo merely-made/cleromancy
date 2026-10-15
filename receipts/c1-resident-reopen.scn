@@ -1,0 +1,35 @@
+# A fresh process sees the resident's retained domain, sessions and archive.
+wait
+show-mere
+advance
+wait
+assert snap mere-live-sessions == 3
+assert snap mere-archives == 1
+assert snap sessions == 1
+assert snap readings == 3
+assert snap reflections == 1
+capture recovered
+mere-open-archive
+wait
+assert snap mere-live-sessions == 4
+assert snap sessions == 1
+mere-select-occasion
+wait
+assert snap mere-live-sessions == 4
+assert snap readings == 3
+capture archive-thaw
+resize 420 760
+wait
+assert snap mere-live-sessions == 4
+assert snap readings == 3
+capture compact-archive-reading
+resize 1160 760
+wait
+settle 2
+mere-switch-first
+wait
+assert snap mere-live-sessions == 4
+assert snap sessions == 1
+assert snap readings == 3
+assert snap reflections == 1
+capture original-after-archive
