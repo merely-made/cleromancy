@@ -64,6 +64,10 @@ fn uniform_die_uses_scalar_replay_and_saved_outcome_meaning() {
         let text = support::text_at_key(&h, "focused-reading");
         assert!(text.contains("Outcome"));
         assert!(!text.contains("upright"));
+        let narration = support::text_at_key(&h, "reading-narrative");
+        assert!(narration.contains("Face 1 of 1"));
+        assert!(!narration.contains("Card 1"));
+        assert!(support::text_at_key(&h, "region:trail").contains("1 outcome"));
     });
 }
 
