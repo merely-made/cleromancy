@@ -97,7 +97,13 @@ fn typed_decks_survive_journal_replay_and_forged_metadata_is_refused() {
     let edits = Arc::new(Mutex::new(Vec::new()));
     host.record_edits(edits.clone());
     let mut consultation = Consultation::new(host);
+    let initial = pollster::block_on(
+        consultation.install_tarot_deck("cleromancy.tarot/rws-complete-reflective-v1"),
+    )
+    .unwrap();
+    assert_eq!(consultation.catalog().unwrap().fields.len(), 1);
     let fields = pollster::block_on(consultation.install_typed_tarot_at(1)).unwrap();
+    assert_eq!(fields[0], initial);
     assert_eq!(fields.len(), 2);
     let context = pollster::block_on(
         consultation.save_context_at(ContextDraft::new("C3", "What is available?", ""), 2),

@@ -76,6 +76,9 @@ fn stored_typed_field_replays_and_refuses_unbound_or_malformed_content() {
         .provenance
         .model = None;
     assert!(unlabelled.validate_metadata().is_err());
+    let mut active_link = field.clone();
+    active_link.tarot.as_mut().unwrap().sources[0].url = "javascript:alert(1)".into();
+    assert!(active_link.validate_metadata().is_err());
     let mut missing_source = field.clone();
     missing_source.tarot.as_mut().unwrap().sources.clear();
     assert!(missing_source.validate_metadata().is_err());

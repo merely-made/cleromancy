@@ -154,6 +154,14 @@ pub struct ContentSource {
 
 impl ContentSource {
     pub fn validate(&self) -> bool {
+        if !self.url.starts_with("https://")
+            || self
+                .url
+                .chars()
+                .any(|c| c.is_control() || c.is_whitespace())
+        {
+            return false;
+        }
         [
             &self.id,
             &self.title,

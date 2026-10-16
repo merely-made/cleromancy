@@ -113,7 +113,7 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
         ),
         labelled_control("Stored field", "cleromancy-field", Box::new(field_select)),
         Box::new(
-            button("Add typed tarot decks", |ui: &mut ConsultationUi, _| {
+            button("Add tarot decks", |ui: &mut ConsultationUi, _| {
                 let action = ui.request_typed_decks();
                 ui.record_action(action);
             })
