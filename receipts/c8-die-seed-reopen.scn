@@ -20,3 +20,14 @@ wait
 reveal class reading-narrative
 settle 4
 capture compact-reopened-die-narrative
+
+show-consultation
+settle 8
+c8-control-reveal die-seed
+settle 4
+c8-control-key die-seed
+settle 4
+capture compact-mode-controls
+c8-control-reveal read
+settle 4
+capture compact-roll-control

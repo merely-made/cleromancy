@@ -17,7 +17,7 @@ settle 4
 capture die-method
 c8-control-reveal read
 settle 4
-c8-control-click read
+c8-control-key read
 show-mere
 settle 8
 wait 1800
