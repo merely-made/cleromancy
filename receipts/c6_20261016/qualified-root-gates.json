@@ -1,0 +1,123 @@
+[
+  {
+    "name": "default-check",
+    "source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+    "command": [
+      "cargo",
+      "check",
+      "--locked",
+      "--offline",
+      "--all-targets"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 53.59,
+    "passed": 0,
+    "failed": 0,
+    "ignored": 0,
+    "log": "qualified-root-default-check.log",
+    "sha256": "ce882f71aa971ed71776ae1b1d858ee79eb9f931b44f35aa2abbfc55609a208f"
+  },
+  {
+    "name": "default",
+    "source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--no-fail-fast"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 447.86,
+    "passed": 120,
+    "failed": 0,
+    "ignored": 0,
+    "log": "qualified-root-default.log",
+    "sha256": "acb26cd42f0c40317d1427b6baf5aaf5169e6073aaacc6ac88f995b2db74aef7"
+  },
+  {
+    "name": "historical-check",
+    "source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+    "command": [
+      "cargo",
+      "check",
+      "--locked",
+      "--offline",
+      "--all-targets",
+      "--features",
+      "legacy-receipts,personal-sync,graphshell-admission"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 44.38,
+    "passed": 0,
+    "failed": 0,
+    "ignored": 0,
+    "log": "qualified-root-historical-check.log",
+    "sha256": "1b36a9495bc54f97b862feab215ba12efb832663e1d7f6a693bd7561afc1ab19"
+  },
+  {
+    "name": "historical",
+    "source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--no-fail-fast",
+      "--features",
+      "legacy-receipts,personal-sync,graphshell-admission"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 615.91,
+    "passed": 160,
+    "failed": 0,
+    "ignored": 0,
+    "log": "qualified-root-historical.log",
+    "sha256": "10490e4772c69c445b4634458f5c1eb95779fa47cdb696036c2f2e8692067127"
+  },
+  {
+    "name": "coexistence-check",
+    "source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+    "command": [
+      "cargo",
+      "check",
+      "--locked",
+      "--offline",
+      "--all-targets",
+      "--features",
+      "legacy-receipts,analytic-ephemeris,sky-timeline,personal-sync,graphshell-admission"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 32.99,
+    "passed": 0,
+    "failed": 0,
+    "ignored": 0,
+    "log": "qualified-root-coexistence-check.log",
+    "sha256": "48b9696879139b4812f60c518eb20130612e2dfe1035a8ad6788833b98e710ee"
+  },
+  {
+    "name": "analytic-sky",
+    "source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--features",
+      "legacy-receipts,analytic-ephemeris,sky-timeline,personal-sync,graphshell-admission",
+      "--test",
+      "analytic_consultation",
+      "--test",
+      "analytic_parity",
+      "--test",
+      "sky_timeline"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 52.01,
+    "passed": 4,
+    "failed": 0,
+    "ignored": 0,
+    "log": "qualified-root-analytic-sky.log",
+    "sha256": "f496f242847eb25784b06996c52fb15adeb08a0d865a4ec7f924b1a446ca2ad5"
+  }
+]

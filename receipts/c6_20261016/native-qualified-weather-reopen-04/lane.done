@@ -1,0 +1,9 @@
+RESULT ok
+waited 933 frames
+waited 239 frames
+captured offline-weather-reopened
+captured reopened-consent-off
+capture offline-weather-reopened 2320x1520 digest=83dc856e72d469c3 file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-qualified-weather-reopen-04/offline-weather-reopened.png
+capture reopened-consent-off 2320x1520 digest=e078ff9e5769478b file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-qualified-weather-reopen-04/reopened-consent-off.png
+frames: 2 captured, 0 blank, 2 distinct digests
+presentation: 1193 frames, 1197 redraws, 4 unpresented redraws

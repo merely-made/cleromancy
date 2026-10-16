@@ -1,0 +1,19 @@
+RESULT fail
+wait: still busy after 600 frames
+FAIL: the reopened catalog has no saved session
+waited 329 frames
+FAIL: assert snap situation-weather: no such field
+FAIL: assert snap situation-positions: no such field
+FAIL: assert snap reflections Eq '1': got '0'
+FAIL: assert snap future-place-consent: no such field
+FAIL: assert snap future-weather-consent: no such field
+FAIL: no .situation-weather
+captured offline-weather-reopened
+captured reopened-consent-off
+waited 24 frames
+captured offline-failed-new-request
+capture offline-weather-reopened 2320x1520 digest=a27ee51dcca1aa2e file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-qualified-weather-reopen-01/offline-weather-reopened.png
+capture reopened-consent-off 2320x1520 digest=fd20b5a0a49778db file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-qualified-weather-reopen-01/reopened-consent-off.png
+capture offline-failed-new-request 2320x1520 digest=75bb9d5553600797 file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-qualified-weather-reopen-01/offline-failed-new-request.png
+frames: 3 captured, 0 blank, 3 distinct digests
+presentation: 987 frames, 988 redraws, 1 unpresented redraws

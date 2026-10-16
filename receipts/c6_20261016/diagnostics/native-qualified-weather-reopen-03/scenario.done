@@ -1,0 +1,6 @@
+RESULT fail
+waited 1299 frames
+waited 244 frames
+captured offline-weather-reopened
+captured reopened-consent-off
+FAIL: native presentation stalled for 60000 ms (1823 redraws, 1564 presented frames)

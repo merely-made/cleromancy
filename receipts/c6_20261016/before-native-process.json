@@ -1,0 +1,9 @@
+{
+  "phase": "inspect",
+  "exit": 0,
+  "timeout": false,
+  "prompts": 1,
+  "elapsed_seconds": 11.01,
+  "binary_sha256": "9a498ee88d844083edf7bb337841be26e7567a0f0f7f9fe377e5a0f760599c47",
+  "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+}

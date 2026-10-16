@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/usr/bin/sandbox-exec",
+    "-p",
+    "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))",
+    "/usr/bin/curl",
+    "--fail",
+    "--silent",
+    "--show-error",
+    "--max-time",
+    "6",
+    "https://api.open-meteo.com/"
+  ],
+  "exit": 7,
+  "stderr": "curl: (7) Failed to connect to api.open-meteo.com port 443 after 31 ms: Couldn't connect to server\n",
+  "profile": "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))",
+  "scope": "outbound IP denied; local Unix-domain IPC remains available to the application"
+}

@@ -1,0 +1,559 @@
+{
+  "schema": "cleromancy.c6-situation-qualification/v1",
+  "date": "2026-10-16",
+  "status": "Implemented, software-qualified and bounded native/offline-qualified; publication recorded separately",
+  "source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+  "initial_native_source": "ee97133432a09dac145a95a2112b2682b9b2853d",
+  "supplier": "25cbe8106df3fd6431d83acd756ab6bcabbaba40",
+  "native_sha256": "98f8bf017499415ab18e96f380f2f402d45898e8cdf039e3a0622649d034ff6c",
+  "source_inputs": 198,
+  "prior_receipt_paths": 424,
+  "gates": [
+    {
+      "name": "default-check",
+      "source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "--all-targets"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 53.59,
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "log": "qualified-root-default-check.log",
+      "sha256": "ce882f71aa971ed71776ae1b1d858ee79eb9f931b44f35aa2abbfc55609a208f"
+    },
+    {
+      "name": "default",
+      "source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--no-fail-fast"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 447.86,
+      "passed": 120,
+      "failed": 0,
+      "ignored": 0,
+      "log": "qualified-root-default.log",
+      "sha256": "acb26cd42f0c40317d1427b6baf5aaf5169e6073aaacc6ac88f995b2db74aef7"
+    },
+    {
+      "name": "historical-check",
+      "source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "--all-targets",
+        "--features",
+        "legacy-receipts,personal-sync,graphshell-admission"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 44.38,
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "log": "qualified-root-historical-check.log",
+      "sha256": "1b36a9495bc54f97b862feab215ba12efb832663e1d7f6a693bd7561afc1ab19"
+    },
+    {
+      "name": "historical",
+      "source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--no-fail-fast",
+        "--features",
+        "legacy-receipts,personal-sync,graphshell-admission"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 615.91,
+      "passed": 160,
+      "failed": 0,
+      "ignored": 0,
+      "log": "qualified-root-historical.log",
+      "sha256": "10490e4772c69c445b4634458f5c1eb95779fa47cdb696036c2f2e8692067127"
+    },
+    {
+      "name": "coexistence-check",
+      "source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "--all-targets",
+        "--features",
+        "legacy-receipts,analytic-ephemeris,sky-timeline,personal-sync,graphshell-admission"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 32.99,
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "log": "qualified-root-coexistence-check.log",
+      "sha256": "48b9696879139b4812f60c518eb20130612e2dfe1035a8ad6788833b98e710ee"
+    },
+    {
+      "name": "analytic-sky",
+      "source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--features",
+        "legacy-receipts,analytic-ephemeris,sky-timeline,personal-sync,graphshell-admission",
+        "--test",
+        "analytic_consultation",
+        "--test",
+        "analytic_parity",
+        "--test",
+        "sky_timeline"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 52.01,
+      "passed": 4,
+      "failed": 0,
+      "ignored": 0,
+      "log": "qualified-root-analytic-sky.log",
+      "sha256": "f496f242847eb25784b06996c52fb15adeb08a0d865a4ec7f924b1a446ca2ad5"
+    },
+    {
+      "name": "default",
+      "source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "core/Cargo.toml"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 64.98,
+      "passed": 36,
+      "failed": 0,
+      "ignored": 0,
+      "log": "qualified-core-default.log",
+      "sha256": "e93c7ded3aece1b756109ee9128647708362962f83ca569b709bb15f228bb4b7"
+    },
+    {
+      "name": "legacy",
+      "source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "core/Cargo.toml",
+        "--features",
+        "legacy-receipts"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 56.74,
+      "passed": 37,
+      "failed": 0,
+      "ignored": 0,
+      "log": "qualified-core-legacy.log",
+      "sha256": "5502f43ee6fd63e7bff7cdcb345e55e73e12ac53b7f0edcc139eeab131603c47"
+    },
+    {
+      "name": "sky",
+      "source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "core/Cargo.toml",
+        "--features",
+        "legacy-receipts,sky-timeline"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 94.15,
+      "passed": 38,
+      "failed": 0,
+      "ignored": 0,
+      "log": "qualified-core-sky.log",
+      "sha256": "e0e3517994124aff4fb526e8738a3950fa24b49f11c318cb2802a69f4bdac78e"
+    }
+  ],
+  "native_runs": [
+    {
+      "directory": "native-global-first-01",
+      "scenario": "c6-global.scn",
+      "input_manifest": "source-inputs.json",
+      "process": {
+        "phase": "first",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 104.79,
+        "binary_sha256": "d181c5c13fd39977f267f55894d464f281be792271fb6a97e2837e47943e7e1e",
+        "offline_ip_deny": false,
+        "sandbox_policy": null,
+        "scenario_sha256": "a772ffa18d7a6bebecf3ba2e47fc7adadb36b78062367838015c746ecbe05efb",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "first",
+        "ok": true,
+        "status": "Reflection saved: 51e08ac7e7ed396e44369b8aede2c795806fb47566180e5b4a6466733647cd69",
+        "catalog_ready": true,
+        "sessions": 7,
+        "readings": 3,
+        "reflections": 1,
+        "ids": {
+          "session_id": "e71ffc8833ff02bacc4c13463eb8b3333f59ddbaff507aa2a62ed4d1c01803e7",
+          "reading_id": "872ed5c6fe9ef488af6afc75953a091031e7651af869e35625cda428922170d8",
+          "reflection_id": "51e08ac7e7ed396e44369b8aede2c795806fb47566180e5b4a6466733647cd69"
+        },
+        "log": [
+          "waited 231 frames",
+          "captured global-consent-off",
+          "waited 230 frames",
+          "waited 154 frames",
+          "captured global-recorded",
+          "waited 0 frames",
+          "captured compact-place-off"
+        ]
+      },
+      "captures": [
+        {
+          "file": "compact-place-off.png",
+          "sha256": "e4606c85b347d218f7053d1e6208e5892923d9551e39f1893104ecd1a935bddb",
+          "pixels": [
+            840,
+            1520
+          ],
+          "review": "At 420x760 the place-dependent omissions and weather-off reason wrap legibly; source and navigation controls remain reachable by scrolling."
+        },
+        {
+          "file": "global-consent-off.png",
+          "sha256": "139bed8ba4771a8a7f5edda4b693d47d8279765ca8a53b503cf6a57fcac84ed0",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "At 1160x760 place and weather are visibly off. The copy names the future draw, optional coordinate transmission and saved offline response; Read is reachable."
+        },
+        {
+          "file": "global-recorded.png",
+          "sha256": "54563d7ec0243b348f7396330d5e957c89b8d148114252193bbaac5cbc97e624",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "The new saved reading shows time, Moon phase and illumination, all ten tropical sign positions, explicit missing local facts and weather-off reason. Text wraps within the reading column."
+        }
+      ]
+    },
+    {
+      "directory": "native-weather-first-01",
+      "scenario": "c6-weather.scn",
+      "input_manifest": "source-inputs.json",
+      "process": {
+        "phase": "first",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 139.49,
+        "binary_sha256": "d181c5c13fd39977f267f55894d464f281be792271fb6a97e2837e47943e7e1e",
+        "offline_ip_deny": false,
+        "sandbox_policy": null,
+        "scenario_sha256": "29f2cdee8a1b8fb8cff6432baa9ec044e90ba34c4613341488b3cdb5a58fe577",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "first",
+        "ok": true,
+        "status": "Reflection saved: 8b4a853d404fe4e80c4ce5d57ff39e40f05872f2cd74d1eeac629efba6c2a6c7",
+        "catalog_ready": true,
+        "sessions": 8,
+        "readings": 3,
+        "reflections": 1,
+        "ids": {
+          "session_id": "192f911344c2d7ec6622a6e4d5336c50587d209159689c80d6b3316a131f93d9",
+          "reading_id": "872ed5c6fe9ef488af6afc75953a091031e7651af869e35625cda428922170d8",
+          "reflection_id": "8b4a853d404fe4e80c4ce5d57ff39e40f05872f2cd74d1eeac629efba6c2a6c7"
+        },
+        "log": [
+          "waited 278 frames",
+          "captured weather-explicit-consent",
+          "waited 416 frames",
+          "waited 154 frames",
+          "captured local-sky-and-hour",
+          "captured saved-weather",
+          "waited 0 frames",
+          "captured compact-saved-weather"
+        ]
+      },
+      "captures": [
+        {
+          "file": "compact-saved-weather.png",
+          "sha256": "70949e0f178952d33278354d636bc64d64b6fad4d6c1243d16f8bf93123b15fc",
+          "pixels": [
+            840,
+            1520
+          ],
+          "review": "At 420x760 the complete saved-weather facts, times, model-estimate label, attribution and sky source fit the content width and remain legible."
+        },
+        {
+          "file": "local-sky-and-hour.png",
+          "sha256": "037cadc891c5cb2d4e96de292feae4919de252df6c29ebda3a4e71ec039f8122",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "The saved local sky shows a named traditional planetary hour with its interval, convention and source. Solar search and Earth-orientation approximations are disclosed and weather is labelled as a model estimate."
+        },
+        {
+          "file": "saved-weather.png",
+          "sha256": "0c2f4cf7753c9d59fca83f3ed1467898f0905afa924b9cca00c0626b1aca5d31",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "The actual captured weather shows 13.4 C, 64.0 percent humidity, precipitation, wind, WMO code and valid/retrieved times with provider attribution. Lines wrap within the reading column."
+        },
+        {
+          "file": "weather-explicit-consent.png",
+          "sha256": "c0c6664df243f0659f11ed78f6f332dcab9159cb05b2a1370d1ece733a6af31c",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "At 1160x760 Greenwich public coordinates and the independently enabled weather option are visible. The text discloses sending the entered coordinates to Open-Meteo when Read is used."
+        }
+      ]
+    },
+    {
+      "directory": "native-qualified-weather-reopen-04",
+      "scenario": "c6-offline-weather-reopen.scn",
+      "input_manifest": "qualified-source-inputs.json",
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 78.47,
+        "binary_sha256": "98f8bf017499415ab18e96f380f2f402d45898e8cdf039e3a0622649d034ff6c",
+        "offline_ip_deny": true,
+        "sandbox_policy": "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))",
+        "scenario_sha256": "7b47bc0ba171925914c1b6482c7fd3e08621297e509b7e308a41580260c701ec",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "reopen",
+        "ok": true,
+        "status": "Viewing session: 192f911344c2d7ec6622a6e4d5336c50587d209159689c80d6b3316a131f93d9",
+        "catalog_ready": true,
+        "sessions": 8,
+        "readings": 3,
+        "reflections": 1,
+        "ids": {
+          "session_id": "192f911344c2d7ec6622a6e4d5336c50587d209159689c80d6b3316a131f93d9",
+          "reading_id": "872ed5c6fe9ef488af6afc75953a091031e7651af869e35625cda428922170d8",
+          "reflection_id": "8b4a853d404fe4e80c4ce5d57ff39e40f05872f2cd74d1eeac629efba6c2a6c7"
+        },
+        "log": [
+          "waited 933 frames",
+          "waited 239 frames",
+          "captured offline-weather-reopened",
+          "captured reopened-consent-off"
+        ]
+      },
+      "captures": [
+        {
+          "file": "offline-weather-reopened.png",
+          "sha256": "d175b8893a3f03c93b26189c044f3cd3746c0cc5a4a34d7e1c47cd2e7bc5cd6b",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "A fresh process behind an outbound-IP deny policy shows the same saved weather and original retrieval time, with its provider/model label and source. This is stored evidence, not a refreshed response."
+        },
+        {
+          "file": "reopened-consent-off.png",
+          "sha256": "4816d95c8f892f7d97fdb782c984ee9c9227fa84759c286c41af0d085f9280c1",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "After the fresh reopening both future place and weather choices are off. Viewing the saved place/weather record has not enabled either future consent."
+        }
+      ]
+    },
+    {
+      "directory": "native-qualified-global-reopen-01",
+      "scenario": "c6-retained-global-reopen.scn",
+      "input_manifest": "qualified-source-inputs.json",
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 95.94,
+        "binary_sha256": "98f8bf017499415ab18e96f380f2f402d45898e8cdf039e3a0622649d034ff6c",
+        "offline_ip_deny": true,
+        "sandbox_policy": "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))",
+        "scenario_sha256": "a1e40509fdc209d8f2115be2c940052f45b0856e2cbe70f67be4c851bddc1220",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "reopen",
+        "ok": true,
+        "status": "Viewing session: e71ffc8833ff02bacc4c13463eb8b3333f59ddbaff507aa2a62ed4d1c01803e7",
+        "catalog_ready": true,
+        "sessions": 8,
+        "readings": 3,
+        "reflections": 1,
+        "ids": {
+          "session_id": "e71ffc8833ff02bacc4c13463eb8b3333f59ddbaff507aa2a62ed4d1c01803e7",
+          "reading_id": "872ed5c6fe9ef488af6afc75953a091031e7651af869e35625cda428922170d8",
+          "reflection_id": "51e08ac7e7ed396e44369b8aede2c795806fb47566180e5b4a6466733647cd69"
+        },
+        "log": [
+          "waited 308 frames",
+          "waited 422 frames",
+          "captured global-offline-reopened"
+        ]
+      },
+      "captures": [
+        {
+          "file": "global-offline-reopened.png",
+          "sha256": "663306ded2ae342d8eb339cabe337b9e958815d89684b7fa29b3ea07f9154de2",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "A separate fresh process behind the IP deny policy restores the no-place occasion: exact saved sky and draw time, disclosed missing local facts and weather-off reason are legible."
+        }
+      ]
+    }
+  ],
+  "original_captures": 10,
+  "resident_receiving": {
+    "schema": "mere.cleromancy-c6-intake/v1",
+    "date": "2026-10-16",
+    "status": "Bounded C6 receiving validator qualification passes; publication is separate",
+    "source": "ea7bc55630167aeafe6dffbba914bba8747450da",
+    "integrated_source": "5252473c776c94ec5f9fc32b610f574788caf6ac",
+    "same_integrated_tree": true,
+    "core": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+    "product_supplier": "25cbe8106df3fd6431d83acd756ab6bcabbaba40",
+    "supplier_parent": "72f9c5c73ab9ddd8ba761524388c2406a6d6ffcf",
+    "supplier_changed_paths": [
+      "ports/djinn/src/embedded_reservoir.rs"
+    ],
+    "compiler": "Cargo1.99 rustc/rustdoc1.97.1",
+    "command": "cargo test --locked --offline -p djinn --test embedded_reservoir_validation -- --nocapture --test-threads=1",
+    "passed": 7,
+    "failed": 0,
+    "ignored": 1,
+    "ignore_reason": "Process-child entry is launched explicitly by parent tests",
+    "owners": [
+      "embedded",
+      "daemon",
+      "embedded"
+    ],
+    "files": [
+      {
+        "path": "Cargo.lock",
+        "sha256": "fe6a078f60dfa640ddbf35208219908b459aa25266267cc3208afea747b7f3f8"
+      },
+      {
+        "path": "ports/djinn/src/embedded_reservoir.rs",
+        "sha256": "99e20d439565b478a98842ca8addc3b88e12eb6f8371ed5edbbaa9f3698520b7"
+      },
+      {
+        "path": "ports/djinn/tests/embedded_reservoir_validation.rs",
+        "sha256": "a44266721e7c87d11621ee82d33f47080b6de0fa5507493125f275ab98b3afe2"
+      }
+    ],
+    "logs": [
+      {
+        "path": "owner-current.log",
+        "sha256": "16c7b63f8c265ee1fd75c9789fca93542233246bd25afba8f1d88fc0d18e8eb3"
+      },
+      {
+        "path": "owner-situation-isolated.log",
+        "sha256": "9e272781ff164198d9a76c80a570405b5c3c30987d741329a5cb6946f89e483b"
+      },
+      {
+        "path": "owner-cold-sampled.log",
+        "sha256": "91e2dd79926b3c2804584b25e03419ada6ff1f88c0d43fd05d54a9acf8d93c1d"
+      },
+      {
+        "path": "owner-cold-sample.txt",
+        "sha256": "dd7244ea572908a997ea5f128edb993f7bbc29fc7f175e5203fe230fc95ff77c"
+      },
+      {
+        "path": "owner-patience.log",
+        "sha256": "750a1b20d221370e48696b48fc1370e657147f4f4bea19a31a1ab486317af7ca"
+      },
+      {
+        "path": "owner-qualified.log",
+        "sha256": "7088a70f502e19de2df5f939f69811784ec41592a6a1e515daedfb1333a86e60"
+      },
+      {
+        "path": "sample-owner.py",
+        "sha256": "1b0e13c74612215d6bf5b7951297f875abf01b7b72692e17928f1c01b9e4ee98"
+      }
+    ],
+    "checks": [
+      "Actual saved raw weather response, normalized values and local sky replay exactly on every fresh owner",
+      "Same-schema weather tamper is refused atomically; all durable bytes and projections remain exact",
+      "Original six typed-deck, shuffle, ambient and owner/refusal fixtures remain active",
+      "Endpoint discovery and shutdown remain bounded at five seconds; checked mere route opening allows thirty seconds",
+      "Published incoming Graphshell attention, seeds and reset work is preserved through integration"
+    ],
+    "limits": [
+      "Original five-second cold replay timeout and isolated/sampled retries are retained as failures",
+      "Thirty-second opening is a bounded loading allowance, not a performance or consistently successful startup claim",
+      "The public receiving weather body is a labelled synthetic fixture; the separate native product run captures an actual network response"
+    ]
+  },
+  "stored_occasions": 8,
+  "prior_occasions": 6,
+  "checks": [
+    "Time, Moon phase/illumination and ten tropical sign positions are saved for ordinary native Read",
+    "Place and network weather are independently off by default; missing local facts are explained",
+    "Opted-in Greenwich solar events, hemisphere season and named traditional hour are saved with disclosed approximations",
+    "Actual Open-Meteo response, valid/retrieved times, request and normalized values survive byte-identical fresh-process reopening behind an outbound IP deny policy",
+    "Both C6 complete details and all six earlier occasions, complete C4 views and memory stay exact",
+    "Selected situation records travel through signed v7 personal-sync; historical selections retain v6 encoding",
+    "A malformed situation or tampered weather is refused before resident write across three owners"
+  ],
+  "limits": [
+    "Bounded synthetic/public profile on one Mac; graphical unlock, release performance and the full shared wall remain separate",
+    "Five-second cold-open failures and one thirty-second inspector timeout remain preserved; passing retries do not establish consistently successful startup",
+    "Default-frame-wait, unsupported-selector and combined-flow presentation failures are retained and excluded from the ten accepted originals",
+    "The ordinary worker always records C6 situations; historical and low-level old reading sessions without them remain valid and explicitly labelled without retroactive capture",
+    "Turquet sky era is 1972\u20132098; geocentric tropical convention, finite solar search, UT1/polar-motion approximations, hemisphere-season and mean-solar weekday choices are disclosed",
+    "Open-Meteo supplies a Best Match model estimate; replay stores its evidence rather than asserting an exact underlying model identity or station measurement",
+    "The same 27 inherited formatting-debt files remain; no newly reported file is added"
+  ]
+}

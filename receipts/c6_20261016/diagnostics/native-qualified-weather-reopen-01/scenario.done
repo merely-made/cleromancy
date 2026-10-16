@@ -1,0 +1,14 @@
+RESULT fail
+wait: still busy after 600 frames
+FAIL: the reopened catalog has no saved session
+waited 329 frames
+FAIL: assert snap situation-weather: no such field
+FAIL: assert snap situation-positions: no such field
+FAIL: assert snap reflections Eq '1': got '0'
+FAIL: assert snap future-place-consent: no such field
+FAIL: assert snap future-weather-consent: no such field
+FAIL: no .situation-weather
+captured offline-weather-reopened
+captured reopened-consent-off
+waited 24 frames
+captured offline-failed-new-request

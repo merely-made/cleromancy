@@ -1,0 +1,9 @@
+RESULT fail
+waited 1334 frames
+waited 271 frames
+captured offline-weather-reopened
+captured reopened-consent-off
+waited 40 frames
+captured offline-failed-new-request
+FAIL: unknown Cleromancy scenario verb: reveal role alert
+captured offline-request-error

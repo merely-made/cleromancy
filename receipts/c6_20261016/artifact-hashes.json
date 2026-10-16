@@ -1,0 +1,704 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "17404ea0c643dcd98174b479260b633e2b863b9355b6910df49235bce2b6efe9"
+    },
+    {
+      "path": "after-qualified-global-reopen-domain.json",
+      "sha256": "81e0d4283d11a998efcabb03a392ecb9245c4cb8dbad499086ed235529f9578c"
+    },
+    {
+      "path": "after-qualified-global-reopen-process.json",
+      "sha256": "ce3f1e35e12b64aff89ab59b8db382d7b76a4b6809cfb0b4bd74ee9097e4cc23"
+    },
+    {
+      "path": "after-qualified-global-save-domain.json",
+      "sha256": "891223eac1b9459e297fd31f4f38e5241c62c2137ff548c43fad9576ef40386b"
+    },
+    {
+      "path": "after-qualified-global-save-process.json",
+      "sha256": "46f555ec44deb5b2f1c5a1a8e799cb4c0c767ba1268d79b362e47d503eb178aa"
+    },
+    {
+      "path": "after-qualified-weather-reopen-domain.json",
+      "sha256": "81e0d4283d11a998efcabb03a392ecb9245c4cb8dbad499086ed235529f9578c"
+    },
+    {
+      "path": "after-qualified-weather-reopen-process.json",
+      "sha256": "c6bfb2d1ea25eb281772fbe1a923ead9138d78cfb8ad213fd4094e3e0d324392"
+    },
+    {
+      "path": "after-qualified-weather-save-domain.json",
+      "sha256": "81e0d4283d11a998efcabb03a392ecb9245c4cb8dbad499086ed235529f9578c"
+    },
+    {
+      "path": "after-qualified-weather-save-process.json",
+      "sha256": "c87f29c5cdc938a10483da180e173d544004fbfab054007f45e6b4ec8cdaf15a"
+    },
+    {
+      "path": "before-native-domain.json",
+      "sha256": "0a131140f2460afae993e05e19a5c1a3fe22e886cf6a0bbdaf4a2a58fac0205d"
+    },
+    {
+      "path": "before-native-process.json",
+      "sha256": "9a5ef6ef2bccecda29353840a43ed1b21c995c3b04b33c18ae9b457d424fde71"
+    },
+    {
+      "path": "before-qualified-native-domain.json",
+      "sha256": "81e0d4283d11a998efcabb03a392ecb9245c4cb8dbad499086ed235529f9578c"
+    },
+    {
+      "path": "before-qualified-native-process.json",
+      "sha256": "c87f29c5cdc938a10483da180e173d544004fbfab054007f45e6b4ec8cdaf15a"
+    },
+    {
+      "path": "capture-reviews.json",
+      "sha256": "ceb35f269895dfc3a4ab39ab25f2910e0a1771b2e6c3e53940614f5155e7cbf7"
+    },
+    {
+      "path": "core-default.log",
+      "sha256": "e96bcb473f9a6b1a836edc27f24af4c8963c722df94a0f68f652cbce651f68f3"
+    },
+    {
+      "path": "core-first-check.log",
+      "sha256": "e5aa31fd9e7b38fc0f025dd57d96243e9e0390c9a99a2154185fd30b1ab4da2c"
+    },
+    {
+      "path": "core-gates.json",
+      "sha256": "66e01d84d309f2fdde66928e7980337eb1815f66412a80ebf9988350b2157381"
+    },
+    {
+      "path": "core-legacy.log",
+      "sha256": "743bd578608298241d91d48399015bd370912b7092789fb5f78c1dd34de6c156"
+    },
+    {
+      "path": "core-second-check.log",
+      "sha256": "dd405d28aa63ac9d49b56a056f06ecccc44123985775d98f5032c606adc0b2b7"
+    },
+    {
+      "path": "core-sky.log",
+      "sha256": "a31592fd2e6a7cab54a5983123203737373a4ded3a357a1476716105e43e2d8b"
+    },
+    {
+      "path": "diagnostics/after-weather-save/process.json",
+      "sha256": "5e9076fb1dc9d435684187bf7ce5ff228a5c8a04931800c5280a004ebd719b04"
+    },
+    {
+      "path": "diagnostics/after-weather-save/terminal.log",
+      "sha256": "277be52b07cb616a3f8b96cba9cf9ceabf4f6d10bf2b04e31a6be0762c1e9ff1"
+    },
+    {
+      "path": "diagnostics/before-qualified-native/process.json",
+      "sha256": "9cec236f1d45bb6cd0be007d0484415e430a618b99b511d476cd52c87b099698"
+    },
+    {
+      "path": "diagnostics/before-qualified-native/terminal.log",
+      "sha256": "277be52b07cb616a3f8b96cba9cf9ceabf4f6d10bf2b04e31a6be0762c1e9ff1"
+    },
+    {
+      "path": "diagnostics/cold-profile-native/domain.json",
+      "sha256": "81e0d4283d11a998efcabb03a392ecb9245c4cb8dbad499086ed235529f9578c"
+    },
+    {
+      "path": "diagnostics/cold-profile-native/process.json",
+      "sha256": "c87f29c5cdc938a10483da180e173d544004fbfab054007f45e6b4ec8cdaf15a"
+    },
+    {
+      "path": "diagnostics/cold-profile-native/terminal.log",
+      "sha256": "fb4ba3f6d82bd4f0f52eff5a783d6fa3d5baf2ec4aac0568568887ecf6a9c2eb"
+    },
+    {
+      "path": "diagnostics/native-global-reopen-01/cards.json",
+      "sha256": "ee41391329c651bf4cb389d3f0b16d3f65cb38b735c542dbb18c6b751376b5b0"
+    },
+    {
+      "path": "diagnostics/native-global-reopen-01/global-offline-reopened.png",
+      "sha256": "9a86a73db1ec94583ed370530b14ae4c8d350c3bc20a54abc59bf7984645695a"
+    },
+    {
+      "path": "diagnostics/native-global-reopen-01/lane.done",
+      "sha256": "93289a76fb6925bab478cd688c3b26c50b632bee91aca3c5fb683d5b3a431fec"
+    },
+    {
+      "path": "diagnostics/native-global-reopen-01/process.json",
+      "sha256": "9584ad08def979ac0ae64b5c67cfbfc9ac88c813b42f538a31361f1089f5975f"
+    },
+    {
+      "path": "diagnostics/native-global-reopen-01/receipt.json",
+      "sha256": "d14d624c33a757724797f5c251b596168167a06e1e1362a85dc873ddb5700b46"
+    },
+    {
+      "path": "diagnostics/native-global-reopen-01/scenario.done",
+      "sha256": "45743b2a15728a38a83ec59db2e3b9598f03492d42afde768520727fede0aa23"
+    },
+    {
+      "path": "diagnostics/native-global-reopen-01/shuffled-reading.json",
+      "sha256": "8f7467fc0a3ea057c90521be28efc53f5aa6383ffea514b43e3b3c732961a644"
+    },
+    {
+      "path": "diagnostics/native-global-reopen-01/situated-reading.json",
+      "sha256": "d888bdb02d9d40fd5291de04e24215d4137e2198671edec1d67a086af289df45"
+    },
+    {
+      "path": "diagnostics/native-global-reopen-01/terminal.log",
+      "sha256": "c395614e9e8333663c2aa635f976dc6a359efc485b77159c225a86f9a892b530"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-01/cards.json",
+      "sha256": "ee41391329c651bf4cb389d3f0b16d3f65cb38b735c542dbb18c6b751376b5b0"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-01/lane.done",
+      "sha256": "47c12787488e35d4f5d60434c4081af58fc57f8007850d4faa519cc2a4cef921"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-01/offline-failed-new-request.png",
+      "sha256": "fc99584b3005ac535aa9776534493510e7b468d2a02417c753fda3a5767e6ff0"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-01/offline-weather-reopened.png",
+      "sha256": "e3fbea5f76d508c9da8325b046f55d0152fa2421f0db00dcace683cb6d8e680b"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-01/process.json",
+      "sha256": "8d09b12d92ddaa579352b3f6b9ebaa77fc5ce0234910ea2b776efabc61b9034d"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-01/receipt.json",
+      "sha256": "b57562fa07b5ad4bc19f2e1c2c95e77b8b0e8ef0e50484ed6c9c097256d318a6"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-01/reopened-consent-off.png",
+      "sha256": "73bca3a16ecd7ab0d857bbbc4e2cb191c75800d68834dc5bec7dd706fcbfb75c"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-01/scenario.done",
+      "sha256": "d6cfa61900f6e51e012d3d3bff00030c15e5d639307a6304ae26f1cb37ec2e1f"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-01/shuffled-reading.json",
+      "sha256": "29cda4833f2fc4366fc647eb10bb72a241e5b16d4abe4c937258c2dbdf379bca"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-01/situated-reading.json",
+      "sha256": "fcc8194569075b4cf37a90dd5f3b8ebe84d18125b79ce4d311bc1c1fb7d855be"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-01/terminal.log",
+      "sha256": "3798b6f1e5e7d5c1b362c58843a85398584f478363f7f3d04bf35849975d0ec3"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-02/cards.json",
+      "sha256": "ee41391329c651bf4cb389d3f0b16d3f65cb38b735c542dbb18c6b751376b5b0"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-02/lane.done",
+      "sha256": "66c2e062204bc908c4e3352a6ef5bd437567f9106aae14f83be22daa5c9ab4bb"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-02/offline-failed-new-request.png",
+      "sha256": "c3b41b359969690c5015f6cd86d39389fdab27240d09d8a59e6e8e9637b5a2e2"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-02/offline-request-error.png",
+      "sha256": "aacaf9dd10ca0da9bdc439a9d0c0f323aef0323dc8a9f970d5dba4445119f76a"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-02/offline-weather-reopened.png",
+      "sha256": "09f4dcd6c1ec3594ef58d136d2c49baafd839734c708b3bcf6dfb35ef07742dc"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-02/process.json",
+      "sha256": "ef3168452f7551ad63582c21d547fa05bb561c4dbcc2d27230a9a4b80041b6db"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-02/receipt.json",
+      "sha256": "0930ba1c6e65396c09f9668723777cc3da6ca097aed01403581a6e4a0b0e4fff"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-02/reopened-consent-off.png",
+      "sha256": "7f294ac14bec63922aec3ead93c151de6a3b13a15a627b26cebc4ff43c5ea10c"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-02/scenario.done",
+      "sha256": "58ffdc280511c5e5847f4c48111e947e49e452f4a842782861ace730ee9ba668"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-02/shuffled-reading.json",
+      "sha256": "29cda4833f2fc4366fc647eb10bb72a241e5b16d4abe4c937258c2dbdf379bca"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-02/situated-reading.json",
+      "sha256": "fcc8194569075b4cf37a90dd5f3b8ebe84d18125b79ce4d311bc1c1fb7d855be"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-02/terminal.log",
+      "sha256": "7f82b3031a220a663573d88d93382c17d98c34153f2ccc609387b601d7f46a21"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-03/cards.json",
+      "sha256": "ee41391329c651bf4cb389d3f0b16d3f65cb38b735c542dbb18c6b751376b5b0"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-03/lane.done",
+      "sha256": "b21e36adce5e31a8c0704cfe501620803b0f370df11e6d314a21a6b274a9ab0f"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-03/offline-weather-reopened.png",
+      "sha256": "d175b8893a3f03c93b26189c044f3cd3746c0cc5a4a34d7e1c47cd2e7bc5cd6b"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-03/process.json",
+      "sha256": "b19a42d65d5e7b6870ab8185e7121bc3d50e977c690543b363bab18050dcf3eb"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-03/receipt.json",
+      "sha256": "60686e496fa983474cfe46b2516ce579dcfb2105b5c167a8a1d4ebe365e81716"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-03/reopened-consent-off.png",
+      "sha256": "d01b5b5ed31db3be0fbc3dbf82c16aafcb385bf4653a610485883c7c800bcee8"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-03/scenario.done",
+      "sha256": "33b675eb700d861bd89264421000eae6187c5fd21ebbcd1e53359acabd9232e9"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-03/shuffled-reading.json",
+      "sha256": "29cda4833f2fc4366fc647eb10bb72a241e5b16d4abe4c937258c2dbdf379bca"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-03/situated-reading.json",
+      "sha256": "fcc8194569075b4cf37a90dd5f3b8ebe84d18125b79ce4d311bc1c1fb7d855be"
+    },
+    {
+      "path": "diagnostics/native-qualified-weather-reopen-03/terminal.log",
+      "sha256": "76250b7793cc47a473c2dbb771afd40ffeab5cb7b68c76a04ad2a0dcbb8a1c5e"
+    },
+    {
+      "path": "diagnostics/scenarios/c6-retained-weather-qualified-reopen.scn",
+      "sha256": "72967060a2f49a7795e858d43562a09119b77e2726af5006532a4b30dfee45f3"
+    },
+    {
+      "path": "diagnostics/scenarios/c6-retained-weather-reopen.scn",
+      "sha256": "3a0c0c6c523e57eb6925ad54aab2d52972abfa22dbf77b40c298833d7c533aff"
+    },
+    {
+      "path": "dom-first.log",
+      "sha256": "202a298d4f5dad92934bee17b059efd2a6a6a85ba42120804c1a9fdf3203e208"
+    },
+    {
+      "path": "dom-second.log",
+      "sha256": "c564aee0bb46860827aff56a365ac8fca86248f8d9fa513d744622ef7b300c9a"
+    },
+    {
+      "path": "feature-first-check.log",
+      "sha256": "2a94934b1c07b39648f0810578026bf821c18619250488c27b1113bd11c8cfb8"
+    },
+    {
+      "path": "format-check.log",
+      "sha256": "bea6ca7856a7d26dc6914e99d57b6c388757667fe01a1b0a049b85e03a43ead0"
+    },
+    {
+      "path": "format-debt.json",
+      "sha256": "ff396f34983cb5da74ad157431373d3c5ffdb05fd43584f0d50c328f5c8587ba"
+    },
+    {
+      "path": "intake-equivalence.json",
+      "sha256": "b787c3b530ab65ac119cdfb3a2bf2f8a3dfa0ff280cc34d3eae6d354c851a4cf"
+    },
+    {
+      "path": "mere-core-lock.log",
+      "sha256": "57aaf9c0022267ef465b51efb23321d1174ce151cc8ca0499f6e3d8f0a1cf5d3"
+    },
+    {
+      "path": "mere-receiving-qualification.json",
+      "sha256": "27c4a22581acce5ef76f6a5fd30b8bcd2f001120f9c71c1cfa034387630265cc"
+    },
+    {
+      "path": "native-build.log",
+      "sha256": "e161402e6ddcbffd9cca73ad913733a64136b4b266278de079fe7f9f536c1f45"
+    },
+    {
+      "path": "native-cold-sample.txt",
+      "sha256": "9383deec47483c9ee377a345790d41ddcaaae1279a6d0d90f9e6e186a3dcaa14"
+    },
+    {
+      "path": "native-global-first-01/cards.json",
+      "sha256": "ee41391329c651bf4cb389d3f0b16d3f65cb38b735c542dbb18c6b751376b5b0"
+    },
+    {
+      "path": "native-global-first-01/compact-place-off.png",
+      "sha256": "e4606c85b347d218f7053d1e6208e5892923d9551e39f1893104ecd1a935bddb"
+    },
+    {
+      "path": "native-global-first-01/global-consent-off.png",
+      "sha256": "139bed8ba4771a8a7f5edda4b693d47d8279765ca8a53b503cf6a57fcac84ed0"
+    },
+    {
+      "path": "native-global-first-01/global-recorded.png",
+      "sha256": "54563d7ec0243b348f7396330d5e957c89b8d148114252193bbaac5cbc97e624"
+    },
+    {
+      "path": "native-global-first-01/lane.done",
+      "sha256": "09c4f13a41c228747b71b74abc66f1e2cd55545db80aa4b096e7a9d4e0004b20"
+    },
+    {
+      "path": "native-global-first-01/process.json",
+      "sha256": "b06ed2c8e8b56c0b242c711d594637b80f61c06c348dbe199c5f1bff542b57c7"
+    },
+    {
+      "path": "native-global-first-01/receipt.json",
+      "sha256": "e756fcbae3eba898b590ddba83409201776c2c680375b8359b4a3d51edf66b18"
+    },
+    {
+      "path": "native-global-first-01/scenario.done",
+      "sha256": "24d91d5f7d492e0539dcc4b9f5c594bf287894aa4e825ebc3ca46ebd574e05ce"
+    },
+    {
+      "path": "native-global-first-01/shuffled-reading.json",
+      "sha256": "8f7467fc0a3ea057c90521be28efc53f5aa6383ffea514b43e3b3c732961a644"
+    },
+    {
+      "path": "native-global-first-01/situated-reading.json",
+      "sha256": "d888bdb02d9d40fd5291de04e24215d4137e2198671edec1d67a086af289df45"
+    },
+    {
+      "path": "native-global-first-01/terminal.log",
+      "sha256": "e6e2651d9f242345072cee37606391847bd8cf8765c76d6f4c921a5e2816c77d"
+    },
+    {
+      "path": "native-qualified-global-reopen-01/cards.json",
+      "sha256": "ee41391329c651bf4cb389d3f0b16d3f65cb38b735c542dbb18c6b751376b5b0"
+    },
+    {
+      "path": "native-qualified-global-reopen-01/global-offline-reopened.png",
+      "sha256": "663306ded2ae342d8eb339cabe337b9e958815d89684b7fa29b3ea07f9154de2"
+    },
+    {
+      "path": "native-qualified-global-reopen-01/lane.done",
+      "sha256": "9cf7e5c55bbd80203d2f3527f6b632d73bd85fecbb5b625b038e72b5ffa109de"
+    },
+    {
+      "path": "native-qualified-global-reopen-01/process.json",
+      "sha256": "f844f5170078c999d4c55bbf0b57802f3b9eb8c94faa7bcdcea38948cdaf811a"
+    },
+    {
+      "path": "native-qualified-global-reopen-01/receipt.json",
+      "sha256": "815d43417143d88c709851b0f183bf07f481030f82249277c0d54b7eca7d4b2d"
+    },
+    {
+      "path": "native-qualified-global-reopen-01/scenario.done",
+      "sha256": "c4691999b20ca296d79cc9b0268bfb99a1c041e673f5889f5d461cb0a0223053"
+    },
+    {
+      "path": "native-qualified-global-reopen-01/shuffled-reading.json",
+      "sha256": "8f7467fc0a3ea057c90521be28efc53f5aa6383ffea514b43e3b3c732961a644"
+    },
+    {
+      "path": "native-qualified-global-reopen-01/situated-reading.json",
+      "sha256": "d888bdb02d9d40fd5291de04e24215d4137e2198671edec1d67a086af289df45"
+    },
+    {
+      "path": "native-qualified-global-reopen-01/terminal.log",
+      "sha256": "856dbb7bff4c297dde0d8c5f937f6c2203200991acefcaadf11628c3c9b70a59"
+    },
+    {
+      "path": "native-qualified-weather-reopen-04/cards.json",
+      "sha256": "ee41391329c651bf4cb389d3f0b16d3f65cb38b735c542dbb18c6b751376b5b0"
+    },
+    {
+      "path": "native-qualified-weather-reopen-04/lane.done",
+      "sha256": "262c157c517b688a698be9423687815addabd0c83b20f52d492f6ec046d0e341"
+    },
+    {
+      "path": "native-qualified-weather-reopen-04/offline-weather-reopened.png",
+      "sha256": "d175b8893a3f03c93b26189c044f3cd3746c0cc5a4a34d7e1c47cd2e7bc5cd6b"
+    },
+    {
+      "path": "native-qualified-weather-reopen-04/process.json",
+      "sha256": "c041ea1b7a1d43a1890245b88eda736e1edb7726191d56d8c8b8ed020b8eda42"
+    },
+    {
+      "path": "native-qualified-weather-reopen-04/receipt.json",
+      "sha256": "895b04f2a796fc940159cb8fab500f5fe1dd69fd13249d6bfaec3af4750e1770"
+    },
+    {
+      "path": "native-qualified-weather-reopen-04/reopened-consent-off.png",
+      "sha256": "4816d95c8f892f7d97fdb782c984ee9c9227fa84759c286c41af0d085f9280c1"
+    },
+    {
+      "path": "native-qualified-weather-reopen-04/scenario.done",
+      "sha256": "b12e3e0db2b940e1ce313cdc4f29551a9441205db527021d2dabdd817dfaf5a1"
+    },
+    {
+      "path": "native-qualified-weather-reopen-04/shuffled-reading.json",
+      "sha256": "29cda4833f2fc4366fc647eb10bb72a241e5b16d4abe4c937258c2dbdf379bca"
+    },
+    {
+      "path": "native-qualified-weather-reopen-04/situated-reading.json",
+      "sha256": "fcc8194569075b4cf37a90dd5f3b8ebe84d18125b79ce4d311bc1c1fb7d855be"
+    },
+    {
+      "path": "native-qualified-weather-reopen-04/terminal.log",
+      "sha256": "a923326e7348ffebe20c2209557a7611bc0a01c98f2bde75415f9a82836fe2cc"
+    },
+    {
+      "path": "native-weather-first-01/cards.json",
+      "sha256": "ee41391329c651bf4cb389d3f0b16d3f65cb38b735c542dbb18c6b751376b5b0"
+    },
+    {
+      "path": "native-weather-first-01/compact-saved-weather.png",
+      "sha256": "70949e0f178952d33278354d636bc64d64b6fad4d6c1243d16f8bf93123b15fc"
+    },
+    {
+      "path": "native-weather-first-01/lane.done",
+      "sha256": "1aa222836edd1d009df7df8eaebdc447871d1f3f4284068ada9e5a7ed08243df"
+    },
+    {
+      "path": "native-weather-first-01/local-sky-and-hour.png",
+      "sha256": "037cadc891c5cb2d4e96de292feae4919de252df6c29ebda3a4e71ec039f8122"
+    },
+    {
+      "path": "native-weather-first-01/process.json",
+      "sha256": "3f73a20411b76b48e75b632be965a40e8c1dd1b5232de1f04041c489dad1eee8"
+    },
+    {
+      "path": "native-weather-first-01/receipt.json",
+      "sha256": "2e2cd28cc19b34cd94c175a08039317cb2875cb25f32706852faf1cb4d51a3b6"
+    },
+    {
+      "path": "native-weather-first-01/saved-weather.png",
+      "sha256": "0c2f4cf7753c9d59fca83f3ed1467898f0905afa924b9cca00c0626b1aca5d31"
+    },
+    {
+      "path": "native-weather-first-01/scenario.done",
+      "sha256": "c9a850550918637be4b5c39c89b89a6d4ba476231c009ee0b3e1a797b945c75c"
+    },
+    {
+      "path": "native-weather-first-01/shuffled-reading.json",
+      "sha256": "29cda4833f2fc4366fc647eb10bb72a241e5b16d4abe4c937258c2dbdf379bca"
+    },
+    {
+      "path": "native-weather-first-01/situated-reading.json",
+      "sha256": "fcc8194569075b4cf37a90dd5f3b8ebe84d18125b79ce4d311bc1c1fb7d855be"
+    },
+    {
+      "path": "native-weather-first-01/terminal.log",
+      "sha256": "339876ce79f86980dc1d671fd5bd700347206702a143495604db699b695cee3b"
+    },
+    {
+      "path": "native-weather-first-01/weather-explicit-consent.png",
+      "sha256": "c0c6664df243f0659f11ed78f6f332dcab9159cb05b2a1370d1ece733a6af31c"
+    },
+    {
+      "path": "offline-control.json",
+      "sha256": "84c4a5a6ed8cceb984bbe6f68a945a6031e0a7c258fc7230412cb037fb7a9de5"
+    },
+    {
+      "path": "offline-control.log",
+      "sha256": "f3a063df42c3f36b327c3d0f108ddeb3d1089b2f01c33d97447b12476b6ee765"
+    },
+    {
+      "path": "owner-cold-sample.txt",
+      "sha256": "dd7244ea572908a997ea5f128edb993f7bbc29fc7f175e5203fe230fc95ff77c"
+    },
+    {
+      "path": "owner-cold-sampled.log",
+      "sha256": "91e2dd79926b3c2804584b25e03419ada6ff1f88c0d43fd05d54a9acf8d93c1d"
+    },
+    {
+      "path": "owner-current.log",
+      "sha256": "16c7b63f8c265ee1fd75c9789fca93542233246bd25afba8f1d88fc0d18e8eb3"
+    },
+    {
+      "path": "owner-patience.log",
+      "sha256": "750a1b20d221370e48696b48fc1370e657147f4f4bea19a31a1ab486317af7ca"
+    },
+    {
+      "path": "owner-qualified.log",
+      "sha256": "7088a70f502e19de2df5f939f69811784ec41592a6a1e515daedfb1333a86e60"
+    },
+    {
+      "path": "owner-sample-command.log",
+      "sha256": "249d965eed08492480592efcbd733b80592d264a20de541cf32dd91f1766f701"
+    },
+    {
+      "path": "owner-situation-isolated.log",
+      "sha256": "9e272781ff164198d9a76c80a570405b5c3c30987d741329a5cb6946f89e483b"
+    },
+    {
+      "path": "preserved-diagnostics.json",
+      "sha256": "fe5ae54dc7f2516dd073024ea24796b0379012c9c952c36cfcf26093ce361a4c"
+    },
+    {
+      "path": "prior-receipt-preservation.json",
+      "sha256": "5bb2fb8004684dcf8419f7043a4cc19a49f95d517d76cfa967ecc29124391ad7"
+    },
+    {
+      "path": "qualified-build.log",
+      "sha256": "8065cc1bd4bd5ecefc5a43b5dc73e7bb752a4ef0d835605e8a6656162d3d3d1d"
+    },
+    {
+      "path": "qualified-core-controller.log",
+      "sha256": "e550b8434f96d9129d7eae1eb2c8b7e480f807740cb030cc44aae15d06795cfb"
+    },
+    {
+      "path": "qualified-core-default.log",
+      "sha256": "e93c7ded3aece1b756109ee9128647708362962f83ca569b709bb15f228bb4b7"
+    },
+    {
+      "path": "qualified-core-gates.json",
+      "sha256": "f5569804102c466b6daf7ff84a210fd9f99e115c59c4f733b50a42851b607b9d"
+    },
+    {
+      "path": "qualified-core-legacy.log",
+      "sha256": "5502f43ee6fd63e7bff7cdcb345e55e73e12ac53b7f0edcc139eeab131603c47"
+    },
+    {
+      "path": "qualified-core-sky.log",
+      "sha256": "e0e3517994124aff4fb526e8738a3950fa24b49f11c318cb2802a69f4bdac78e"
+    },
+    {
+      "path": "qualified-root-analytic-sky.log",
+      "sha256": "f496f242847eb25784b06996c52fb15adeb08a0d865a4ec7f924b1a446ca2ad5"
+    },
+    {
+      "path": "qualified-root-coexistence-check.log",
+      "sha256": "48b9696879139b4812f60c518eb20130612e2dfe1035a8ad6788833b98e710ee"
+    },
+    {
+      "path": "qualified-root-controller.log",
+      "sha256": "cb115490fe3cc3f0c9b8eb3d435d625ddd837e18a35a9030ddeab6715795f132"
+    },
+    {
+      "path": "qualified-root-default-check.log",
+      "sha256": "ce882f71aa971ed71776ae1b1d858ee79eb9f931b44f35aa2abbfc55609a208f"
+    },
+    {
+      "path": "qualified-root-default.log",
+      "sha256": "acb26cd42f0c40317d1427b6baf5aaf5169e6073aaacc6ac88f995b2db74aef7"
+    },
+    {
+      "path": "qualified-root-gates.json",
+      "sha256": "cdc21ee08b79f36217e949abc8e162121db0f0038a69c07d99269a7ccef1393f"
+    },
+    {
+      "path": "qualified-root-historical-check.log",
+      "sha256": "1b36a9495bc54f97b862feab215ba12efb832663e1d7f6a693bd7561afc1ab19"
+    },
+    {
+      "path": "qualified-root-historical.log",
+      "sha256": "10490e4772c69c445b4634458f5c1eb95779fa47cdb696036c2f2e8692067127"
+    },
+    {
+      "path": "qualified-source-inputs.json",
+      "sha256": "63b1f0377f151c0e08d960f5605be925a742ed84fd03279b2d64ea5d848fa29b"
+    },
+    {
+      "path": "root-analytic-sky.log",
+      "sha256": "c3e536d167f60803cf76742238202f9d518e5fff7fe8e76f01c268365281a4bb"
+    },
+    {
+      "path": "root-coexistence-check.log",
+      "sha256": "7bef88f316f085fcc1dbb38b125301054f6368ca7d4000d825659d8acbb93044"
+    },
+    {
+      "path": "root-default-check.log",
+      "sha256": "911bdad496ca56f3ab7d9f477820d9890d6aabdb2dde73a698a408ae4f5cd641"
+    },
+    {
+      "path": "root-default.log",
+      "sha256": "5372ef4118dd82eb4b399bb48d32c0cc6256ba9fcae6cc51734b8975f8bf45e8"
+    },
+    {
+      "path": "root-first-check.log",
+      "sha256": "de180e2b9131a2506f4d23494200633019070e9eb9ee2effbf21f3e9fc5b470c"
+    },
+    {
+      "path": "root-gates.json",
+      "sha256": "c6d0b3e77333ab380e659da189d710d8d1be96211f731bd0eb8ae1bf07433793"
+    },
+    {
+      "path": "root-historical-check.log",
+      "sha256": "895240c82a853c674479eaeab6889426ac3c80d7ba44ba0332da23b5ccb3a3ad"
+    },
+    {
+      "path": "root-historical.log",
+      "sha256": "0c2d33c1d7bfa48218e7e06e26ecd4e0dc0fd81400158fc66028c439ae9307bf"
+    },
+    {
+      "path": "run-core-gates.py",
+      "sha256": "016bb88245f097f68542d97b5471c96b0fe472f232077eb05c49315d834d7477"
+    },
+    {
+      "path": "run-inspect.py",
+      "sha256": "da54091236875b39d84cf315cb481498872b4eb9c12a6c82af10fabdf15d7645"
+    },
+    {
+      "path": "run-native.py",
+      "sha256": "ef4dff6dd8295701d04789177408623edc2c75e8d677eb956b059bd1c86c9583"
+    },
+    {
+      "path": "run-qualified-core-gates.py",
+      "sha256": "b12d6489a2df483091910070425cf41ff5662069b8b32384e587a254bbde93a6"
+    },
+    {
+      "path": "run-qualified-inspect.py",
+      "sha256": "2eec56e2a6235d7708da6c8499f485d9c2b462ef2011f3ed651175ab2c2b28d5"
+    },
+    {
+      "path": "run-qualified-native.py",
+      "sha256": "12d399f9a5f634578efc7217a7798bec7832ce63a66c8f263d56a4c02f434387"
+    },
+    {
+      "path": "run-qualified-root-gates.py",
+      "sha256": "6657940f3c2a5ade12450494cc9b565d766bc82490466072d72910cd3d5484a5"
+    },
+    {
+      "path": "run-root-gates.py",
+      "sha256": "5155fe66bc3cb0c591ab53a07ab2d8693de22deb219108301007001f260f5082"
+    },
+    {
+      "path": "sample-native.py",
+      "sha256": "7c2b5869b16c8899dba58814ca788fdb749f015ddaeaeef47e0a33f400f3235f"
+    },
+    {
+      "path": "sample-owner.py",
+      "sha256": "1b0e13c74612215d6bf5b7951297f875abf01b7b72692e17928f1c01b9e4ee98"
+    },
+    {
+      "path": "situation-cached.log",
+      "sha256": "dadf641f5e274ea6d6fde98d63f540a8ef7c4e9c338e339732bdc6fa0b597e46"
+    },
+    {
+      "path": "situation-first.log",
+      "sha256": "e404606d95b61b8cf5f688863433544ddd081847c3bbfd9c4b307e7397cbae00"
+    },
+    {
+      "path": "situation-second.log",
+      "sha256": "241d6f0f09b43653761879d53835dfc65818432ae81d5d77adfd9a5def8b56d6"
+    },
+    {
+      "path": "source-inputs.json",
+      "sha256": "b455b6798c2e8ff7ecef4e01bc084b6b500d2c0c13dd3d74bdd510923a348a41"
+    },
+    {
+      "path": "sync-final-focused.log",
+      "sha256": "05e5fe30ffe24820a08954d65f5260770408aae2790557e3417cc6644c0696be"
+    },
+    {
+      "path": "sync-focused.log",
+      "sha256": "f9c53bad830d9ac1a36526482c311bb0503afc7abb4dae114a29db449505ffc0"
+    },
+    {
+      "path": "sync-second.log",
+      "sha256": "f6d48e4d4f2627ccc4cca176abbab47a0aa5a07b9b7c0e3a0adf92fbef4ff772"
+    },
+    {
+      "path": "sync-third.log",
+      "sha256": "3978d324ce707a98844364d5e27ae32099aa50f5bcf503ceb5799a4d9f69077c"
+    }
+  ]
+}

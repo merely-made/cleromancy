@@ -1,0 +1,63 @@
+[
+  {
+    "name": "default",
+    "source": "ee97133432a09dac145a95a2112b2682b9b2853d",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--manifest-path",
+      "core/Cargo.toml"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 86.98,
+    "passed": 36,
+    "failed": 0,
+    "ignored": 0,
+    "log": "core-default.log",
+    "sha256": "e96bcb473f9a6b1a836edc27f24af4c8963c722df94a0f68f652cbce651f68f3"
+  },
+  {
+    "name": "legacy",
+    "source": "ee97133432a09dac145a95a2112b2682b9b2853d",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--manifest-path",
+      "core/Cargo.toml",
+      "--features",
+      "legacy-receipts"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 70.46,
+    "passed": 37,
+    "failed": 0,
+    "ignored": 0,
+    "log": "core-legacy.log",
+    "sha256": "743bd578608298241d91d48399015bd370912b7092789fb5f78c1dd34de6c156"
+  },
+  {
+    "name": "sky",
+    "source": "ee97133432a09dac145a95a2112b2682b9b2853d",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--manifest-path",
+      "core/Cargo.toml",
+      "--features",
+      "legacy-receipts,sky-timeline"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 88.72,
+    "passed": 38,
+    "failed": 0,
+    "ignored": 0,
+    "log": "core-sky.log",
+    "sha256": "a31592fd2e6a7cab54a5983123203737373a4ded3a357a1476716105e43e2d8b"
+  }
+]

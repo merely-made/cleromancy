@@ -1,0 +1,7 @@
+RESULT ok
+waited 308 frames
+waited 422 frames
+captured global-offline-reopened
+capture global-offline-reopened 2320x1520 digest=447a96214c84128e file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-qualified-global-reopen-01/global-offline-reopened.png
+frames: 1 captured, 0 blank, 1 distinct digests
+presentation: 752 frames, 1616 redraws, 864 unpresented redraws

@@ -1,0 +1,354 @@
+warning: patch `mere-proofs v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+    Checking cfg-if v1.0.5
+    Checking rand_core v0.10.1
+    Checking typenum v1.20.1
+    Checking libc v0.2.190
+    Checking serde_core v1.0.229
+    Checking itoa v1.0.18
+    Checking libm v0.2.16
+    Checking arrayvec v0.7.8
+    Checking zerofrom v0.1.8
+    Checking stable_deref_trait v1.2.1
+    Checking zmij v1.0.23
+    Checking foldhash v0.2.0
+    Checking yoke v0.8.3
+    Checking memchr v2.8.3
+    Checking sha1_smol v1.0.1
+    Checking equivalent v1.0.2
+    Checking hashbrown v0.17.1
+    Checking smallvec v1.16.2
+    Checking constant_time_eq v0.4.2
+    Checking writeable v0.6.4
+    Checking zerovec v0.11.8
+    Checking blake3 v1.8.7
+    Checking litemap v0.8.3
+    Checking zerotrie v0.2.5
+    Checking ptr_meta v0.3.2
+    Checking const-oid v0.10.2
+    Checking utf8_iter v1.0.4
+    Checking getrandom v0.4.3
+    Checking foldhash v0.1.5
+    Checking rancor v0.1.3
+    Checking hybrid-array v0.4.15
+    Checking num-traits v0.2.19
+    Checking simdutf8 v0.1.5
+    Checking zeroize v1.9.1
+    Checking icu_properties_data v2.3.0
+    Checking icu_normalizer_data v2.3.0
+    Checking hashbrown v0.15.5
+    Checking cpufeatures v0.3.1
+    Checking bytecheck v0.8.3
+    Checking fixedbitset v0.5.7
+    Checking bytemuck v1.25.2
+    Checking tinystr v0.8.4
+    Checking potential_utf v0.1.6
+    Checking slab v0.4.12
+    Checking icu_collections v2.3.0
+    Checking icu_locale_core v2.3.0
+    Checking wide v1.7.1
+    Checking munge v0.4.7
+    Checking redb v2.6.4
+    Checking rend v0.5.4
+    Checking cmov v0.5.4
+    Checking rawpointer v0.2.1
+   Compiling unicase v2.10.0
+    Checking pin-project-lite v0.2.17
+    Checking crypto-common v0.2.2
+    Checking block-buffer v0.12.1
+    Checking approx v0.5.1
+    Checking num-complex v0.4.6
+    Checking num-integer v0.1.47
+    Checking inout v0.2.2
+   Compiling mime_guess v2.0.5
+    Checking glam v0.33.12
+    Checking num-rational v0.4.2
+    Checking matrixmultiply v0.3.11
+    Checking ctutils v0.4.3
+    Checking icu_provider v2.3.1
+    Checking strum v0.28.0
+    Checking signature v3.0.0
+    Checking serde v1.0.229
+    Checking serde_json v1.0.151
+    Checking uuid v1.27.0
+    Checking indexmap v2.14.2
+    Checking icu_normalizer v2.3.0
+    Checking digest v0.11.3
+    Checking icu_properties v2.3.0
+    Checking sha2 v0.11.0
+    Checking allocator-api2 v0.2.21
+    Checking slotmap v1.1.1
+    Checking mere-curation v0.1.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+    Checking petgraph v0.8.3
+    Checking subtle v2.6.1
+    Checking fnv v1.0.7
+    Checking grid v1.0.1
+    Checking lexical-util v1.0.7
+    Checking byteorder v1.5.0
+    Checking web-time v1.1.0
+    Checking percent-encoding v2.3.2
+    Checking cfb v0.7.3
+    Checking taffy v0.11.0-experimental-cache-fix.3
+    Checking form_urlencoded v1.2.2
+    Checking lexical-parse-integer v1.0.6
+    Checking idna_adapter v1.2.2
+    Checking curve25519-dalek v5.0.0
+    Checking idna v1.1.0
+    Checking sceno v0.0.5 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+    Checking muniment v0.1.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+    Checking hashbrown v0.16.1
+    Checking numen v0.2.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+    Checking euclid v0.22.14
+    Checking universal-hash v0.6.1
+    Checking cipher v0.5.2
+    Checking ed25519 v3.0.0
+    Checking crossbeam-utils v0.8.23
+    Checking log v0.4.34
+    Checking deranged v0.5.8
+    Checking time-core v0.1.9
+    Checking rkyv v0.8.18
+    Checking futures-core v0.3.34
+    Checking powerfmt v0.2.1
+    Checking robust v1.2.0
+    Checking mime v0.3.17
+    Checking futures-task v0.3.34
+    Checking num-conv v0.2.2
+    Checking crossbeam-channel v0.5.17
+    Checking ena v0.14.4
+    Checking mere-forme v0.2.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+    Checking futures-util v0.3.34
+    Checking accesskit v0.24.1
+    Checking spade v2.15.1
+    Checking thiserror v2.0.21
+    Checking chacha20 v0.10.2
+    Checking ed25519-dalek v3.0.0
+    Checking poly1305 v0.9.1
+    Checking url v2.5.8
+    Checking infer v0.19.0
+    Checking lexical-parse-float v1.0.6
+    Checking time v0.3.55
+    Checking command-menu v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+    Checking aead v0.6.1
+    Checking ordered-float v5.5.0
+    Checking once_cell v1.21.4
+    Checking bitflags v2.13.2
+    Checking either v1.19.0
+    Checking downcast-rs v2.0.2
+    Checking tracing-core v0.1.36
+    Checking thiserror v1.0.69
+    Checking profiling v1.0.18
+    Checking snafu v0.9.2
+    Checking lexical-core v1.0.6
+    Checking chacha20poly1305 v0.11.0
+    Checking insigne v0.0.2 (https://github.com/merely-made/dramatis.git?branch=main#814ffa09)
+    Checking getrandom v0.3.4
+    Checking scenotime v0.0.4 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+    Checking base64 v0.22.1
+    Checking static_assertions v1.1.0
+    Checking tracing v0.1.44
+    Checking hifitime v4.3.1
+    Checking serde_path_to_error v0.1.20
+    Checking getrandom v0.2.17
+    Checking sofars v0.6.1
+    Checking personae v0.3.0 (https://github.com/merely-made/dramatis.git?branch=main#814ffa09)
+    Checking rand_core v0.6.4
+    Checking scenograph v0.0.4 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+    Checking chirograph v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+    Checking turquet v0.17.0 (https://github.com/merely-made/turquet.git?rev=30875f30e83909f3030bc01237a5046e14cde29b#30875f30)
+    Checking chartulary v0.2.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+    Checking simba v0.10.2
+    Checking graphshell-client v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+    Checking mere-kernel v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+    Checking servitor v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+    Checking nalgebra v0.35.0
+    Checking glamx v0.3.1
+    Checking parry2d v0.31.1
+    Checking mere-alembic v0.0.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+    Checking mere v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+    Checking rapier2d v0.36.1
+    Checking seiche v0.0.6 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+    Checking cleromancy-core-acceptance v0.1.0 (/Users/markik/Code/repos/cleromancy/core)
+error[E0433]: cannot find `EdgeAssertion` in `chartulary`
+  --> ../src/host/situation.rs:34:69
+   |
+34 | ...   assert_relation(&mut self.graph,key,session_key,chartulary::EdgeAssertion::Provenance{sub_kind:chartulary::ProvenanceSubKind::...
+   |                                                                   ^^^^^^^^^^^^^ could not find `EdgeAssertion` in `chartulary`
+
+error[E0433]: cannot find `ProvenanceSubKind` in `chartulary`
+  --> ../src/host/situation.rs:34:116
+   |
+34 | ...ovenance{sub_kind:chartulary::ProvenanceSubKind::GeneratedFrom});
+   |                                  ^^^^^^^^^^^^^^^^^ could not find `ProvenanceSubKind` in `chartulary`
+
+error[E0425]: cannot find function `assert_relation` in this scope
+  --> ../src/host/situation.rs:34:9
+   |
+34 | ...   assert_relation(&mut self.graph,key,session_key,chartulary::EdgeAssertion::Provenance{sub_kind:chartulary::ProvenanceSubKind::...
+   |       ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0599]: no method named `map_err` found for struct `AstrologyPosition` in the current scope
+   --> ../src/situation/sky.rs:62:77
+    |
+ 62 |         let position=AstrologyPosition::new(body.name(),longitude,latitude).map_err(error)?;
+    |                                                                             ^^^^^^^ method not found in `AstrologyPosition`
+    |
+   ::: ../src/astrology.rs:129:1
+    |
+129 | pub struct AstrologyPosition {
+    | ---------------------------- method `map_err` not found for this struct
+    |
+    = help: items from traits can only be used if the trait is implemented and in scope
+    = note: the following traits define an item `map_err`, perhaps you need to implement one of them:
+            candidate #1: `futures_util::future::try_future::TryFutureExt`
+            candidate #2: `futures_util::stream::try_stream::TryStreamExt`
+
+error[E0277]: `ValueError` doesn't implement `std::fmt::Display`
+  --> ../src/situation/sky.rs:84:32
+   |
+84 |     let observer=Observer::new(EastLongitude::from_degrees(place.longitude_microdegrees as f64/1e6).map_err(error)?,
+   |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `std::fmt::Display` is not implemented for `ValueError`
+   |
+note: required by a bound in `error`
+  --> ../src/situation/mod.rs:18:29
+   |
+18 | pub(super) fn error(e: impl std::fmt::Display) -> SituationError { SituationError(e.to_string()) }
+   |                             ^^^^^^^^^^^^^^^^^ required by this bound in `error`
+
+error[E0277]: `ValueError` doesn't implement `std::fmt::Display`
+  --> ../src/situation/sky.rs:84:109
+   |
+84 |     let observer=Observer::new(EastLongitude::from_degrees(place.longitude_microdegrees as f64/1e6).map_err(error)?,
+   |                                                                                                             ^^^^^ the trait `std::fmt::Display` is not implemented for `ValueError`
+   |
+note: required by a bound in `error`
+  --> ../src/situation/mod.rs:18:29
+   |
+18 | pub(super) fn error(e: impl std::fmt::Display) -> SituationError { SituationError(e.to_string()) }
+   |                             ^^^^^^^^^^^^^^^^^ required by this bound in `error`
+
+error[E0277]: `ValueError` doesn't implement `std::fmt::Display`
+  --> ../src/situation/sky.rs:85:9
+   |
+85 |         Latitude::from_degrees(place.latitude_microdegrees as f64/1e6).map_err(error)?,Length::from_meters(0.0).map_err(error)?);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `std::fmt::Display` is not implemented for `ValueError`
+   |
+note: required by a bound in `error`
+  --> ../src/situation/mod.rs:18:29
+   |
+18 | pub(super) fn error(e: impl std::fmt::Display) -> SituationError { SituationError(e.to_string()) }
+   |                             ^^^^^^^^^^^^^^^^^ required by this bound in `error`
+
+error[E0277]: `ValueError` doesn't implement `std::fmt::Display`
+  --> ../src/situation/sky.rs:85:80
+   |
+85 |         Latitude::from_degrees(place.latitude_microdegrees as f64/1e6).map_err(error)?,Length::from_meters(0.0).map_err(error)?);
+   |                                                                                ^^^^^ the trait `std::fmt::Display` is not implemented for `ValueError`
+   |
+note: required by a bound in `error`
+  --> ../src/situation/mod.rs:18:29
+   |
+18 | pub(super) fn error(e: impl std::fmt::Display) -> SituationError { SituationError(e.to_string()) }
+   |                             ^^^^^^^^^^^^^^^^^ required by this bound in `error`
+
+error[E0277]: `ValueError` doesn't implement `std::fmt::Display`
+  --> ../src/situation/sky.rs:85:88
+   |
+85 |         Latitude::from_degrees(place.latitude_microdegrees as f64/1e6).map_err(error)?,Length::from_meters(0.0).map_err(error)?);
+   |                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `std::fmt::Display` is not implemented for `ValueError`
+   |
+note: required by a bound in `error`
+  --> ../src/situation/mod.rs:18:29
+   |
+18 | pub(super) fn error(e: impl std::fmt::Display) -> SituationError { SituationError(e.to_string()) }
+   |                             ^^^^^^^^^^^^^^^^^ required by this bound in `error`
+
+error[E0277]: `ValueError` doesn't implement `std::fmt::Display`
+  --> ../src/situation/sky.rs:85:121
+   |
+85 |         Latitude::from_degrees(place.latitude_microdegrees as f64/1e6).map_err(error)?,Length::from_meters(0.0).map_err(error)?);
+   |                                                                                                                         ^^^^^ the trait `std::fmt::Display` is not implemented for `ValueError`
+   |
+note: required by a bound in `error`
+  --> ../src/situation/mod.rs:18:29
+   |
+18 | pub(super) fn error(e: impl std::fmt::Display) -> SituationError { SituationError(e.to_string()) }
+   |                             ^^^^^^^^^^^^^^^^^ required by this bound in `error`
+
+error[E0277]: `ValueError` doesn't implement `std::fmt::Display`
+  --> ../src/situation/sky.rs:86:88
+   |
+86 |     let orientation=EarthOrientation::zero_polar_motion(JulianDate::from_utc_epoch(utc,TimeOffset::from_seconds(0.0).map_err(error)?),
+   |                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `std::fmt::Display` is not implemented for `ValueError`
+   |
+note: required by a bound in `error`
+  --> ../src/situation/mod.rs:18:29
+   |
+18 | pub(super) fn error(e: impl std::fmt::Display) -> SituationError { SituationError(e.to_string()) }
+   |                             ^^^^^^^^^^^^^^^^^ required by this bound in `error`
+
+error[E0277]: `ValueError` doesn't implement `std::fmt::Display`
+  --> ../src/situation/sky.rs:86:126
+   |
+86 |     let orientation=EarthOrientation::zero_polar_motion(JulianDate::from_utc_epoch(utc,TimeOffset::from_seconds(0.0).map_err(error)?),
+   |                                                                                                                              ^^^^^ the trait `std::fmt::Display` is not implemented for `ValueError`
+   |
+note: required by a bound in `error`
+  --> ../src/situation/mod.rs:18:29
+   |
+18 | pub(super) fn error(e: impl std::fmt::Display) -> SituationError { SituationError(e.to_string()) }
+   |                             ^^^^^^^^^^^^^^^^^ required by this bound in `error`
+
+error[E0277]: `ValueError` doesn't implement `std::fmt::Display`
+  --> ../src/situation/sky.rs:89:34
+   |
+89 | ...chWindow::new(tt.offset_days(-2.0).map_err(error)?,tt.offset_days(2.0).map_err(error)?,1800.0/86400.0,1.0/86400.0).map_err(error)?;
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `std::fmt::Display` is not implemented for `ValueError`
+   |
+note: required by a bound in `error`
+  --> ../src/situation/mod.rs:18:29
+   |
+18 | pub(super) fn error(e: impl std::fmt::Display) -> SituationError { SituationError(e.to_string()) }
+   |                             ^^^^^^^^^^^^^^^^^ required by this bound in `error`
+
+error[E0277]: `ValueError` doesn't implement `std::fmt::Display`
+  --> ../src/situation/sky.rs:89:63
+   |
+89 | ...tt.offset_days(-2.0).map_err(error)?,tt.offset_days(2.0).map_err(error)?,1800.0/86400.0,1.0/86400.0).map_err(error)?;
+   |                                 ^^^^^ the trait `std::fmt::Display` is not implemented for `ValueError`
+   |
+note: required by a bound in `error`
+  --> ../src/situation/mod.rs:18:29
+   |
+18 | pub(super) fn error(e: impl std::fmt::Display) -> SituationError { SituationError(e.to_string()) }
+   |                             ^^^^^^^^^^^^^^^^^ required by this bound in `error`
+
+error[E0277]: `ValueError` doesn't implement `std::fmt::Display`
+  --> ../src/situation/sky.rs:89:71
+   |
+89 | ...p_err(error)?,tt.offset_days(2.0).map_err(error)?,1800.0/86400.0,1.0/86400.0).map_err(error)?;
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `std::fmt::Display` is not implemented for `ValueError`
+   |
+note: required by a bound in `error`
+  --> ../src/situation/mod.rs:18:29
+   |
+18 | pub(super) fn error(e: impl std::fmt::Display) -> SituationError { SituationError(e.to_string()) }
+   |                             ^^^^^^^^^^^^^^^^^ required by this bound in `error`
+
+error[E0277]: `ValueError` doesn't implement `std::fmt::Display`
+  --> ../src/situation/sky.rs:89:99
+   |
+89 | ...,tt.offset_days(2.0).map_err(error)?,1800.0/86400.0,1.0/86400.0).map_err(error)?;
+   |                                 ^^^^^ the trait `std::fmt::Display` is not implemented for `ValueError`
+   |
+note: required by a bound in `error`
+  --> ../src/situation/mod.rs:18:29
+   |
+18 | pub(super) fn error(e: impl std::fmt::Display) -> SituationError { SituationError(e.to_string()) }
+   |                             ^^^^^^^^^^^^^^^^^ required by this bound in `error`
+
+Some errors have detailed explanations: E0277, E0425, E0433, E0599.
+For more information about an error, try `rustc --explain E0277`.
+error: could not compile `cleromancy-core-acceptance` (lib) due to 16 previous errors

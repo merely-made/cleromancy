@@ -1,0 +1,17 @@
+wait 1800
+assert snap catalog-ready == true
+c5-control-reveal session:e71ffc8833ff02bacc4c13463eb8b3333f59ddbaff507aa2a62ed4d1c01803e7
+settle 2
+c5-control-click session:e71ffc8833ff02bacc4c13463eb8b3333f59ddbaff507aa2a62ed4d1c01803e7
+wait
+assert snap product-busy == false
+assert snap situation == true
+assert snap situation-place == false
+assert snap situation-weather == false
+assert snap situation-positions == 10
+assert snap future-place-consent == false
+assert snap future-weather-consent == false
+assert snap reflections == 1
+reveal class recorded-situation
+settle 2
+capture global-offline-reopened

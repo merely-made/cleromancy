@@ -1,0 +1,9 @@
+RESULT ok
+waited 278 frames
+captured weather-explicit-consent
+waited 416 frames
+waited 154 frames
+captured local-sky-and-hour
+captured saved-weather
+waited 0 frames
+captured compact-saved-weather
