@@ -1,0 +1,13 @@
+RESULT ok
+waited 231 frames
+captured global-consent-off
+waited 230 frames
+waited 154 frames
+captured global-recorded
+waited 0 frames
+captured compact-place-off
+capture global-consent-off 2320x1520 digest=31d2f87f7ed81d95 file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-global-first-01/global-consent-off.png
+capture global-recorded 2320x1520 digest=e2185e34837809c1 file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-global-first-01/global-recorded.png
+capture compact-place-off 840x1520 digest=983b13afcb436f42 file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-global-first-01/compact-place-off.png
+frames: 3 captured, 0 blank, 3 distinct digests
+presentation: 651 frames, 652 redraws, 1 unpresented redraws

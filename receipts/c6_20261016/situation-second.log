@@ -1,0 +1,17 @@
+warning: patch `mere-proofs v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling cleromancy-core-acceptance v0.1.0 (/Users/markik/Code/repos/cleromancy/core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.01s
+     Running ../tests/situation.rs (core/target/build/debug/deps/situation-204e6bdde62ee86e)
+
+running 3 tests
+test place_off_records_global_facts_and_explicit_missing_local_facts_without_changing_the_draw ... ok
+test polar_and_equatorial_boundaries_are_disclosed_and_weather_never_enables_place ... ok
+test opted_in_weather_replays_from_exact_saved_response_and_tampering_is_refused_before_write has been running for over 60 seconds
+test opted_in_weather_replays_from_exact_saved_response_and_tampering_is_refused_before_write ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 84.69s
+

@@ -1,5 +1,20 @@
 # Cleromancy handoff for Codex, 2026-10-15
 
+**C6 qualified (2026-10-16):** native Read records time and pinned sky facts,
+with place/weather independently off by default. Explicit weather stores the
+actual response and attribution; exact fresh-process reopens pass with outbound
+IP denied and future consent still off. The
+[C6 ledger](../receipts/c6-situation-qualification_20261016.json) and
+[evidence notes](../receipts/c6_20261016/README.md) bind the two save-source and
+reopen-source identities, 120/160 product tests, portable-core 36/37/38, seven
+receiving owner tests and ten reviewed originals. All six earlier occasions,
+complete C4 views/memory and all 424 older receipt/scenario paths remain exact.
+A narrow supplier intake separates endpoint discovery from checked domain
+opening. Startup timeouts and the combined-flow presentation failure remain
+recorded; bounded feature proof does not establish consistent startup or release
+performance. C7 is next. Publication is recorded separately; dated C5 and older
+notes below retain their original scope.
+
 **C5 published (2026-10-16):** shuffled-deck receipts, reversals and seeded
 multi-position tarot reads are implemented. The
 [C5 evidence notes](../receipts/c5_20261016/README.md) and

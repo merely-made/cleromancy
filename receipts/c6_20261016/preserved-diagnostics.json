@@ -1,0 +1,12 @@
+{
+  "attempts": {
+    "native-global-reopen-01": "Historical passing offline reopen on EE and its original supplier; not relabelled to ADC.",
+    "after-weather-save": "Original five-second mere opening times out after the actual weather draw.",
+    "before-qualified-native": "First thirty-second inspector attempt times out under concurrent qualification.",
+    "cold-profile-native": "Successful cold replay on ADC; sampled, no timing/performance claim.",
+    "native-qualified-weather-reopen-01": "Default 600-frame wait advances before catalog readiness. Whole receipt fails.",
+    "native-qualified-weather-reopen-02": "Explicit bounded wait succeeds; optional final reveal uses an unsupported scenario verb. Whole receipt fails.",
+    "native-qualified-weather-reopen-03": "Saved weather and consent views are captured, then the combined optional request-control flow exceeds the native presentation budget. Whole receipt fails."
+  },
+  "policy": "Original images, process results, receipts and logs are retained without overwriting or treating failed complete scenarios as passes."
+}

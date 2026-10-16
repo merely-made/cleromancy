@@ -1,0 +1,16 @@
+wait 1800
+assert snap catalog-ready == true
+advance
+wait
+assert snap product-busy == false
+assert snap situation-weather == true
+assert snap situation-positions == 10
+assert snap reflections == 1
+assert snap future-place-consent == false
+assert snap future-weather-consent == false
+reveal class situation-weather
+settle 2
+capture offline-weather-reopened
+reveal class situation-controls
+settle 2
+capture reopened-consent-off

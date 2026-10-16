@@ -1,0 +1,10 @@
+RESULT fail
+waited 1299 frames
+waited 244 frames
+captured offline-weather-reopened
+captured reopened-consent-off
+capture offline-weather-reopened 2320x1520 digest=83dc856e72d469c3 file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-qualified-weather-reopen-03/offline-weather-reopened.png
+capture reopened-consent-off 2320x1520 digest=bd4fa5ea3b484e37 file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-qualified-weather-reopen-03/reopened-consent-off.png
+frames: 2 captured, 0 blank, 2 distinct digests
+presentation: 1564 frames, 1823 redraws, 259 unpresented redraws
+FAIL: native presentation stalled for 60000 ms (1823 redraws, 1564 presented frames)

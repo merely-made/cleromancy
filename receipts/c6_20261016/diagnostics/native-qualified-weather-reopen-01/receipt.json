@@ -1,0 +1,30 @@
+{
+  "schema": "cleromancy.headed-scenario/v1",
+  "phase": "reopen",
+  "ok": false,
+  "status": "Ready",
+  "catalog_ready": true,
+  "sessions": 8,
+  "readings": 3,
+  "reflections": 1,
+  "ids": {
+    "session_id": "192f911344c2d7ec6622a6e4d5336c50587d209159689c80d6b3316a131f93d9",
+    "reading_id": "872ed5c6fe9ef488af6afc75953a091031e7651af869e35625cda428922170d8",
+    "reflection_id": "8b4a853d404fe4e80c4ce5d57ff39e40f05872f2cd74d1eeac629efba6c2a6c7"
+  },
+  "log": [
+    "wait: still busy after 600 frames",
+    "FAIL: the reopened catalog has no saved session",
+    "waited 329 frames",
+    "FAIL: assert snap situation-weather: no such field",
+    "FAIL: assert snap situation-positions: no such field",
+    "FAIL: assert snap reflections Eq '1': got '0'",
+    "FAIL: assert snap future-place-consent: no such field",
+    "FAIL: assert snap future-weather-consent: no such field",
+    "FAIL: no .situation-weather",
+    "captured offline-weather-reopened",
+    "captured reopened-consent-off",
+    "waited 24 frames",
+    "captured offline-failed-new-request"
+  ]
+}

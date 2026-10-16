@@ -1,0 +1,15 @@
+RESULT ok
+waited 278 frames
+captured weather-explicit-consent
+waited 416 frames
+waited 154 frames
+captured local-sky-and-hour
+captured saved-weather
+waited 0 frames
+captured compact-saved-weather
+capture weather-explicit-consent 2320x1520 digest=55f53edf98c9e68f file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-weather-first-01/weather-explicit-consent.png
+capture local-sky-and-hour 2320x1520 digest=d27e823e0bc979f8 file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-weather-first-01/local-sky-and-hour.png
+capture saved-weather 2320x1520 digest=3867da491a30c9a4 file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-weather-first-01/saved-weather.png
+capture compact-saved-weather 840x1520 digest=db6367923642dd47 file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-weather-first-01/compact-saved-weather.png
+frames: 4 captured, 0 blank, 4 distinct digests
+presentation: 889 frames, 891 redraws, 2 unpresented redraws

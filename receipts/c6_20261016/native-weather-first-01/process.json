@@ -1,0 +1,13 @@
+{
+  "phase": "first",
+  "exit": 0,
+  "timeout": false,
+  "prompts": 1,
+  "elapsed_seconds": 139.49,
+  "binary_sha256": "d181c5c13fd39977f267f55894d464f281be792271fb6a97e2837e47943e7e1e",
+  "offline_ip_deny": false,
+  "sandbox_policy": null,
+  "scenario_sha256": "29f2cdee8a1b8fb8cff6432baa9ec044e90ba34c4613341488b3cdb5a58fe577",
+  "public_fixture": true,
+  "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+}

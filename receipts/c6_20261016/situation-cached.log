@@ -1,0 +1,38 @@
+warning: patch `mere-proofs v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling cleromancy-core-acceptance v0.1.0 (/Users/markik/Code/repos/cleromancy/core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.97s
+     Running unittests ../src/lib.rs (core/target/build/debug/deps/cleromancy-107e6958e5f9dc75)
+
+running 16 tests
+test consultation::journal_policy::tests::date_cutoff_is_inclusive ... ok
+test consultation::journal_policy::tests::relative_dates_use_elapsed_duration_buckets ... ok
+test content::tests::content_editions_are_typed_and_complete ... ok
+test host::domain::tests::rejects_deleted_dependency_and_missing_domain_facet ... ok
+test host::domain::tests::rejects_orphan_domain_facets ... ok
+test host::sky::tests::enumerator_rejects_a_valid_record_at_the_wrong_digest_address ... ok
+test reading::shuffle::tests::rejection_includes_maximum_word_and_refuses_the_short_prefix ... ok
+test host::sky::tests::enumerator_rejects_a_structurally_invalid_canonical_record ... ok
+test situation::sky::tests::unequal_hours_cover_each_boundary_and_keep_the_previous_day_before_sunrise ... ok
+test host::domain::tests::rejects_a_reading_after_its_field_node_is_removed ... ok
+test host::domain::tests::rejects_tampered_unreferenced_sealed_reading ... ok
+test host::domain::tests::preserves_unrelated_unknown_facets ... ok
+test host::domain::tests::rejects_unknown_domain_version_and_multiple_domain_records ... ok
+test host::domain::tests::validates_complete_reading_without_mutating_candidate ... ok
+test host::domain::tests::validates_a_session_and_reflection_and_refuses_a_missing_session ... ok
+test narrative::typed_deck_tests::typed_metadata_identifies_cards_without_a_system_name_prefix ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running ../tests/situation.rs (core/target/build/debug/deps/situation-204e6bdde62ee86e)
+
+running 3 tests
+test place_off_records_global_facts_and_explicit_missing_local_facts_without_changing_the_draw ... ok
+test opted_in_weather_replays_from_exact_saved_response_and_tampering_is_refused_before_write ... ok
+test polar_and_equatorial_boundaries_are_disclosed_and_weather_never_enables_place ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 20.51s
+

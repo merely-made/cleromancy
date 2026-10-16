@@ -1,0 +1,14 @@
+{
+  "initial_source": "ee97133432a09dac145a95a2112b2682b9b2853d",
+  "final_source": "adc434dba77a6287d0132b0e6030f32ea36615f3",
+  "changed_product_inputs": [
+    "Cargo.lock",
+    "core/Cargo.lock"
+  ],
+  "supplier_parent": "72f9c5c73ab9ddd8ba761524388c2406a6d6ffcf",
+  "supplier": "25cbe8106df3fd6431d83acd756ab6bcabbaba40",
+  "supplier_changed_paths": [
+    "ports/djinn/src/embedded_reservoir.rs"
+  ],
+  "same_product_rust_assets_tests": true
+}

@@ -2,19 +2,30 @@
 
 **Date:** 2026-09-23
 
-**C6 implementation checkpoint (2026-10-16):** the ordinary resident-backed
-Read action stages a typed `cleromancy.situation/v1` record beside the saved
-occasion. It records the occasion's time, pinned Turquet 0.17 phase/illumination
-and ten tropical sign positions. Place and weather start off. An explicitly
-entered place enables the disclosed hemisphere-season convention, Turquet's
-USNO conventional solar rise/set search, and a named temporal-hour convention.
-Weather uses the shared bounded fetch handle only after explicit opt-in; the
-exact response body, request, valid/retrieved times, source and normalized
-values are retained. Viewing and domain replay never fetch weather. Personal
-sync carries selected situation records in v7 batches; older batches retain v6.
-Scoped domain, UI and signed-sync checks pass. The final software/native/
-receiving qualification and publication are separate pending gates; no C6
-acceptance is inferred yet. All C5 and earlier receipts retain their identities.
+**C6 qualification (2026-10-16):** ordinary native Read now records a typed
+situation beside the occasion: time, pinned Turquet Moon phase/illumination and
+ten tropical sign positions. Place and weather start off. Explicit place adds
+the disclosed season, solar-event and traditional-hour conventions; explicit
+weather saves the actual Open-Meteo response, request, valid/retrieved times,
+source and normalized values. Viewing and replay never fetch weather or enable
+future consent. Selected personal-sync batches carry situation evidence as v7;
+older selections retain v6.
+
+The [C6 ledger](../receipts/c6-situation-qualification_20261016.json) binds
+120 default/160 historical tests, three all-target checks, four analytic/sky
+tests, portable-core 36/37/38, seven receiving owner tests and ten reviewed
+native originals. Both complete C6 details reopen byte-equal with outbound IP
+traffic denied. Six earlier occasions and complete C4 view/memory data remain
+exact; all 424 prior receipt/scenario paths are unchanged. Save captures retain
+`ee97133` and supplier `72f9c5c73`; final offline reopens bind `adc434d` and the
+narrow startup supplier `25cbe8106`. That intake changes only the two product
+locks, and only resident opening timing in the supplier. No earlier receipt is
+relabelled. The [evidence notes](../receipts/c6_20261016/README.md) and read-only
+verifier retain every diagnostic attempt. Cold startup timing remains bounded
+and imperfect: a thirty-second inspector timeout and the combined-flow
+presentation stall remain explicit. Publication has a separate ledger. C7 is
+the next product phase; the full shared wall retains its separate gates.
+
 **Status (2026-10-16, C5 continuation):** C5 implements a versioned full-deck
 shuffle with recorded seed source, draw index and orientation. Ordinary native
 Cast/Derived tarot readings and host tarot spreads take an ordered prefix without replacement;
@@ -1107,3 +1118,14 @@ orientations and positions, and interpretations.
   identities and supplemental receiving proof. The frozen native receipt, all
   ten reviewed originals and all 333 prior receipt/scenario paths stay exact.
   C6 remains next.
+
+- 2026-10-16: C6 records draw-time sky and opt-in place/weather through the
+  existing resident transaction and product-owned validator. Source `ee97133`
+  supplies the original two native saves. Lock-only intake `adc434d` consumes
+  the narrowly scoped Mere `25cbe8106` cold-replay opening fix; exact offline
+  reopens, current software gates and receiving-owner checks pass with the
+  identities and limits in the C6 ledger. The store has eight reading occasions;
+  the six earlier occasions, full C4 views and kept memory remain exact. All
+  424 prior receipt/scenario paths remain unchanged. Failed waits, an unsupported
+  optional reveal, startup timeouts and the combined-flow presentation stall are
+  retained; none is counted among the ten accepted originals.

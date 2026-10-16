@@ -1,0 +1,15 @@
+RESULT fail
+waited 1334 frames
+waited 271 frames
+captured offline-weather-reopened
+captured reopened-consent-off
+waited 40 frames
+captured offline-failed-new-request
+FAIL: unknown Cleromancy scenario verb: reveal role alert
+captured offline-request-error
+capture offline-weather-reopened 2320x1520 digest=3a6ba808dcbb30d8 file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-qualified-weather-reopen-02/offline-weather-reopened.png
+capture reopened-consent-off 2320x1520 digest=9f7839c9cf1914df file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-qualified-weather-reopen-02/reopened-consent-off.png
+capture offline-failed-new-request 2320x1520 digest=1a4f07770a96f2e7 file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-qualified-weather-reopen-02/offline-failed-new-request.png
+capture offline-request-error 2320x1520 digest=c5eeb425c77cd11d file=/Users/markik/Code/testing/cleromancy/c6-20261016/native-qualified-weather-reopen-02/offline-request-error.png
+frames: 4 captured, 0 blank, 4 distinct digests
+presentation: 1685 frames, 1686 redraws, 1 unpresented redraws

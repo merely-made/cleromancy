@@ -1,0 +1,39 @@
+{
+  "command": "cargo fmt --all -- --check",
+  "exit": 1,
+  "reported_files": [
+    "src/app/invoke.rs",
+    "src/astrology.rs",
+    "src/bin/a16_pattern_selection_receipt.rs",
+    "src/bin/a3_intent_receipt.rs",
+    "src/bin/a5_field_receipt.rs",
+    "src/consultation/drafts.rs",
+    "src/enrichment.rs",
+    "src/ephemeris.rs",
+    "src/ephemeris/analytic.rs",
+    "src/projection.rs",
+    "src/sync/shared.rs",
+    "src/sync_settings.rs",
+    "src/ui/native/appearance.rs",
+    "tests/a1.rs",
+    "tests/a10.rs",
+    "tests/a16.rs",
+    "tests/a2.rs",
+    "tests/a23_resident_sync_consent.rs",
+    "tests/a24_resident_sync_startup.rs",
+    "tests/a3.rs",
+    "tests/a4.rs",
+    "tests/a9.rs",
+    "tests/analytic_consultation.rs",
+    "tests/analytic_parity.rs",
+    "tests/sky_surface_dom.rs",
+    "tests/sky_timeline.rs",
+    "tests/support/mod.rs"
+  ],
+  "count": 27,
+  "new_reported_files": [],
+  "existing_reported_files_changed_by_c6": [
+    "src/astrology.rs",
+    "src/sync/shared.rs"
+  ]
+}

@@ -1,0 +1,846 @@
+Diff in /Users/markik/Code/repos/cleromancy/src/bin/a16_pattern_selection_receipt.rs:4:
+ use std::collections::{BTreeMap, VecDeque};
+ use std::path::{Path, PathBuf};
+ 
++use chirograph::{
++    Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
++    ProjectionSnapshot, ResourceRequest,
++};
+ use cleromancy::moirai::clotho::EntropySource;
+ use cleromancy::servitor::{Cap, Grant, Mode, Subject};
+ use cleromancy::{
+Diff in /Users/markik/Code/repos/cleromancy/src/bin/a16_pattern_selection_receipt.rs:12:
+     CleromancyHost, Concurrence, Reading, ReadingEngine, ReadingError, ReadingSession, a0_fixture,
+ };
+ use graphshell_endpoint::local::LocalCarrier;
+-use chirograph::{
+-    Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
+-    ProjectionSnapshot, ResourceRequest,
+-};
+ use muniment::MemoryBackend;
+ use serde::Serialize;
+ 
+Diff in /Users/markik/Code/repos/cleromancy/src/bin/a16_pattern_selection_receipt.rs:153:
+     match carrier.request(CarrierRequestBody::Discover)? {
+         CarrierResponseBody::Descriptor(descriptor) => {
+             Ok(descriptor.projections[0].request.clone())
+-        }
++        },
+         response => Err(format!("unexpected discovery response: {response:?}").into()),
+     }
+ }
+Diff in /Users/markik/Code/repos/cleromancy/src/bin/a3_intent_receipt.rs:3:
+ 
+ use std::path::{Path, PathBuf};
+ 
++use chirograph::{
++    Carrier, CarrierNotice, CarrierRequestBody, CarrierResponseBody, IntentInvocation,
++    IntentResult, ProjectionRequest, ProjectionSnapshot,
++};
+ use cleromancy::servitor::{Cap, Grant, Mode, Subject};
+ use cleromancy::{
+     CleromancyApp, CleromancyHost, READ_INTENT, READ_SCOPE, Reading, ReadingEngine,
+Diff in /Users/markik/Code/repos/cleromancy/src/bin/a3_intent_receipt.rs:9:
+     ReadingIntentPayload, a0_fixture,
+ };
+ use graphshell_endpoint::local::LocalCarrier;
+-use chirograph::{
+-    Carrier, CarrierNotice, CarrierRequestBody, CarrierResponseBody, IntentInvocation,
+-    IntentResult, ProjectionRequest, ProjectionSnapshot,
+-};
+ use muniment::MemoryBackend;
+ use serde::Serialize;
+ 
+Diff in /Users/markik/Code/repos/cleromancy/src/bin/a5_field_receipt.rs:3:
+ 
+ use std::path::{Path, PathBuf};
+ 
++use chirograph::{
++    Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
++    ProjectionSnapshot,
++};
+ use cleromancy::servitor::{Cap, Grant, Mode, Subject};
+ use cleromancy::{
+     CleromancyApp, CleromancyHost, READ_INTENT, READ_SCOPE, Reading, ReadingIntentPayload,
+Diff in /Users/markik/Code/repos/cleromancy/src/bin/a5_field_receipt.rs:9:
+     a0_fixture,
+ };
+ use graphshell_endpoint::local::LocalCarrier;
+-use chirograph::{
+-    Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
+-    ProjectionSnapshot,
+-};
+ use mere::kernel::graph::{ProvenanceSubKind, RelationKind};
+ use muniment::MemoryBackend;
+ use serde::Serialize;
+Diff in /Users/markik/Code/repos/cleromancy/src/bin/a5_field_receipt.rs:132:
+     {
+         CarrierResponseBody::Descriptor(descriptor) => {
+             Ok(descriptor.projections[0].request.clone())
+-        }
++        },
+         response => Err(format!("unexpected discovery response: {response:?}").into()),
+     }
+ }
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:69:
+                 Ok(payload) => payload,
+                 Err(error) => {
+                     return Ok(rejected(format!("invalid concurrence payload: {error}")));
+-                }
++                },
+             };
+             if payload.schema != CREATE_CONCURRENCE_SCHEMA {
+                 return Ok(rejected(
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:96:
+                 &payload.astrology_facts_digest,
+                 &payload.reading_session_id,
+             ) {
+-                Ok(()) => {}
++                Ok(()) => {},
+                 Err(HostError::MissingReadingDependency { .. }) => {
+                     return Ok(rejected(
+                         "selected facts or reading session was not found in graph truth",
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:103:
+                     ));
+-                }
++                },
+                 Err(error) => return Err(error.into()),
+             }
+             if self
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:118:
+                 Ok(_) => {
+                     self.pending_notice = true;
+                     return Ok(IntentResult::Accepted);
+-                }
++                },
+                 Err(HostError::MissingReadingDependency { .. }) => {
+                     return Ok(rejected(
+                         "selected facts or reading session was not found in graph truth",
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:125:
+                     ));
+-                }
++                },
+                 Err(error) => return Err(error.into()),
+             }
+         }
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:139:
+                     Ok(payload) => payload,
+                     Err(error) => {
+                         return Ok(rejected(format!("invalid composition payload: {error}")));
+-                    }
++                    },
+                 };
+             if payload.schema != COMPOSE_READING_SCHEMA {
+                 return Ok(rejected(
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:166:
+                         Ok(field) => field,
+                         Err(HostError::MissingReadingDependency { .. }) => {
+                             return Ok(rejected("stored field was not found in graph truth"));
+-                        }
++                        },
+                         Err(error) => return Err(error.into()),
+                     }
+-                }
++                },
+             };
+             if field.candidates.is_empty()
+                 || field.candidates.len() > self.intent_limits.max_candidates
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:211:
+                     let result = match (mode, enrichment.as_ref()) {
+                         (crate::SelectionMode::Calculated, Some(evidence)) => {
+                             ReadingEngine::calculate_enriched(&context, &field, evidence)
+-                        }
++                        },
+                         (crate::SelectionMode::Calculated, None) => {
+                             ReadingEngine::calculate(&context, &field)
+-                        }
++                        },
+                         (crate::SelectionMode::Cast, Some(evidence)) => {
+                             ReadingEngine::cast_enriched_with(&context, &field, evidence, entropy)
+-                        }
++                        },
+                         (crate::SelectionMode::Cast, None) => {
+                             ReadingEngine::cast_with(&context, &field, entropy)
+-                        }
++                        },
+                         (crate::SelectionMode::Derived, _) => {
+                             return Ok(rejected(
+                                 "derived selection needs a disclosed seed and domain and is not available through this intent",
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:227:
+                             ));
+-                        }
++                        },
+                     };
+                     let reading = match result {
+                         Ok(reading) => reading,
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:232:
+                         Err(ReadingError::Entropy(error)) => {
+                             return Err(AppError::Intent(format!("entropy failed: {error}")));
+-                        }
++                        },
+                         Err(error) => {
+                             return Ok(rejected(format!(
+                                 "composition request is invalid: {error}"
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:238:
+                             )));
+-                        }
++                        },
+                     };
+                     self.host.record_reading_session_with_entropy(
+                         &context,
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:245:
+                         client_token,
+                         entropy,
+                     )?;
+-                }
++                },
+                 CompositionLayout::ThreeCard => {
+                     match self.host.record_three_card_spread_with_entropy(
+                         &context,
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:253:
+                         client_token,
+                         entropy,
+                     ) {
+-                        Ok(_) => {}
++                        Ok(_) => {},
+                         Err(HostError::Reading(ReadingError::Entropy(error))) => {
+                             return Err(AppError::Intent(format!("entropy failed: {error}")));
+-                        }
++                        },
+                         Err(HostError::Reading(error)) => {
+                             return Ok(rejected(format!(
+                                 "composition request is invalid: {error}"
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:263:
+                             )));
+-                        }
++                        },
+                         Err(error) => return Err(error.into()),
+                     }
+-                }
++                },
+             }
+             self.pending_notice = true;
+             return Ok(IntentResult::Accepted);
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:310:
+                 Ok(_) => {
+                     self.pending_notice = true;
+                     return Ok(IntentResult::Accepted);
+-                }
++                },
+                 Err(HostError::Reading(ReadingError::Entropy(error))) => {
+                     return Err(AppError::Intent(format!("entropy failed: {error}")));
+-                }
++                },
+                 Err(HostError::Reading(error)) => {
+                     return Ok(rejected(format!("spread request is invalid: {error}")));
+-                }
++                },
+                 Err(error) => return Err(error.into()),
+             }
+         }
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:361:
+                 let result = match (intent.intent.as_str(), payload.enrichment.as_ref()) {
+                     (READ_INTENT, Some(evidence)) => {
+                         ReadingEngine::calculate_enriched(&context, &payload.field, evidence)
+-                    }
++                    },
+                     (READ_INTENT, None) => ReadingEngine::calculate(&context, &payload.field),
+                     (SELECT_INTENT, Some(evidence)) => ReadingEngine::cast_enriched_with(
+                         &context,
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:371:
+                     ),
+                     (SELECT_INTENT, None) => {
+                         ReadingEngine::cast_with(&context, &payload.field, entropy)
+-                    }
++                    },
+                     _ => unreachable!("the match is limited to read and select"),
+                 };
+                 match result {
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:378:
+                     Ok(reading) => (payload.field, reading, payload.client_token),
+                     Err(ReadingError::Entropy(error)) => {
+                         return Err(AppError::Intent(format!("entropy failed: {error}")));
+-                    }
++                    },
+                     Err(error) => {
+                         return Ok(rejected(format!("reading request is invalid: {error}")));
+-                    }
++                    },
+                 }
+-            }
++            },
+             ROLL_INTENT => {
+                 let payload = match serde_json::from_slice::<RollIntentPayload>(&intent.payload) {
+                     Ok(payload) => payload,
+Diff in /Users/markik/Code/repos/cleromancy/src/app/invoke.rs:417:
+                     Ok(reading) => (field, reading, payload.client_token),
+                     Err(ReadingError::Entropy(error)) => {
+                         return Err(AppError::Intent(format!("entropy failed: {error}")));
+-                    }
++                    },
+                     Err(error) => {
+                         return Ok(rejected(format!("roll request is invalid: {error}")));
+-                    }
++                    },
+                 }
+-            }
++            },
+             _ => return Ok(rejected("intent is not implemented")),
+         };
+         self.host.record_reading_session_with_entropy(
+Diff in /Users/markik/Code/repos/cleromancy/src/astrology.rs:117:
+                     return Err(AstrologyError::InvalidLongitudeMicrodegrees(longitude));
+                 }
+                 Ok(())
+-            }
++            },
+             _ => Err(AstrologyError::IncompleteLocation),
+         }
+     }
+Diff in /Users/markik/Code/repos/cleromancy/src/consultation/drafts.rs:96:
+             return Err(ConsultationError::InvalidSpread(
+                 "relationship is supports, contradicts, questions, next_step, or elaborates",
+             ));
+-        }
++        },
+     };
+     Ok(SpreadRelation::new(
+         from.to_ascii_lowercase(),
+Diff in /Users/markik/Code/repos/cleromancy/src/consultation/drafts.rs:191:
+         (None, None) => AstrologyMoment::global(instant_utc.trim()),
+         (Some(latitude), Some(longitude)) => {
+             AstrologyMoment::at(instant_utc.trim(), latitude, longitude)
+-        }
++        },
+         _ => {
+             return Err(ConsultationError::InvalidAstrology(
+                 "latitude and longitude are both required when either is given",
+Diff in /Users/markik/Code/repos/cleromancy/src/consultation/drafts.rs:198:
+             ));
+-        }
++        },
+     };
+     let orb = orb_millidegrees
+         .trim()
+Diff in /Users/markik/Code/repos/cleromancy/src/enrichment.rs:3:
+ 
+ use std::collections::BTreeSet;
+ 
+-use graphshell_client::{
+-    ClientState, PresentationResolution, ResolvedContent, ResolvedPresentation,
+-};
+ use chirograph::{
+     CapabilityProfile, Carrier, CarrierError, CarrierRequestBody, CarrierResponseBody,
+     PresentationCapability, ProjectionSession, ResourceRequest,
+Diff in /Users/markik/Code/repos/cleromancy/src/enrichment.rs:12:
++};
++use graphshell_client::{
++    ClientState, PresentationResolution, ResolvedContent, ResolvedPresentation,
+ };
+ use serde::{Deserialize, Serialize};
+ use thiserror::Error;
+Diff in /Users/markik/Code/repos/cleromancy/src/ephemeris/analytic.rs:29:
+     #[error("instant precedes 1972 and has no defined leap-second offset: {0}")]
+     BeforeLeapSecondTable(String),
+     #[error("instant is outside the {body} series validity (Julian year {julian_year:.1})")]
+-    OutsideSeriesRange { body: &'static str, julian_year: f64 },
++    OutsideSeriesRange {
++        body: &'static str,
++        julian_year: f64,
++    },
+     #[error(transparent)]
+     Chart(#[from] AstrologyError),
+ }
+Diff in /Users/markik/Code/repos/cleromancy/src/ephemeris/analytic.rs:81:
+     match error {
+         ApparentError::BeforeLeapSecondEra => {
+             AnalyticEphemerisError::BeforeLeapSecondTable(instant.trim().to_string())
+-        }
++        },
+         ApparentError::InvalidCivilTime => {
+             AnalyticEphemerisError::InvalidInstant(instant.trim().to_string())
+-        }
++        },
+         ApparentError::OutsideSeriesRange { body, julian_year } => {
+             AnalyticEphemerisError::OutsideSeriesRange { body, julian_year }
+-        }
++        },
+     }
+ }
+ 
+Diff in /Users/markik/Code/repos/cleromancy/src/ephemeris.rs:15:
+ mod analytic;
+ 
+ pub use analytic::{
+-    ANALYTIC_EPHEMERIS_ALGORITHM, AnalyticEphemerisAdapter, AnalyticEphemerisError,
+-    TURQUET_VERSION,
++    ANALYTIC_EPHEMERIS_ALGORITHM, AnalyticEphemerisAdapter, AnalyticEphemerisError, TURQUET_VERSION,
+ };
+ 
+Diff in /Users/markik/Code/repos/cleromancy/src/projection.rs:1:
+ // Copyright 2026 Mark AB (markik)
+ // SPDX-License-Identifier: MIT OR Apache-2.0
+ 
+-use graphshell_endpoint::{
+-    IntentSink, PresentationSource, ProjectionCatalog, ProjectionNoticeSource, ProjectionSource,
+-};
+ use chirograph::{
+     CarrierNotice, EndpointDescriptor, IntentInvocation, IntentResult, ProjectionOffer,
+     ProjectionRequest, ProjectionSnapshot, ProtocolVersion, ResourceRequest, ResourceResponse,
+Diff in /Users/markik/Code/repos/cleromancy/src/projection.rs:10:
++};
++use graphshell_endpoint::{
++    IntentSink, PresentationSource, ProjectionCatalog, ProjectionNoticeSource, ProjectionSource,
+ };
+ use muniment::Backend;
+ 
+Diff in /Users/markik/Code/repos/cleromancy/src/sync/shared.rs:94:
+     blake3::hash(&bytes).to_hex().to_string()
+ }
+ 
+-pub(super) fn generic_semantic_kind(kind: SpreadRelationKind) -> mere::kernel::graph::SemanticSubKind {
++pub(super) fn generic_semantic_kind(
++    kind: SpreadRelationKind,
++) -> mere::kernel::graph::SemanticSubKind {
+     match kind {
+         SpreadRelationKind::Supports => mere::kernel::graph::SemanticSubKind::Supports,
+         SpreadRelationKind::Contradicts => mere::kernel::graph::SemanticSubKind::Contradicts,
+Diff in /Users/markik/Code/repos/cleromancy/src/sync_settings.rs:55:
+             Ok(text) => text,
+             Err(error) if error.kind() == std::io::ErrorKind::NotFound => {
+                 return Ok(Self::default());
+-            }
++            },
+             Err(error) => return Err(file_error(path, error)),
+         };
+         let settings: Self =
+Diff in /Users/markik/Code/repos/cleromancy/src/ui/native/appearance.rs:38:
+ 
+ impl Default for AppearanceState {
+     fn default() -> Self {
+-        let available_fonts = cambium_genet_winit_host::available_font_families(&super::fonts::bundled_fonts());
++        let available_fonts =
++            cambium_genet_winit_host::available_font_families(&super::fonts::bundled_fonts());
+         let mut font_editor = tabard_workshop::fonts::FontRoleEditor::new(Default::default());
+         font_editor.set_available_families(available_fonts.clone());
+         Self {
+Diff in /Users/markik/Code/repos/cleromancy/src/ui/native/appearance.rs:123:
+                 ))
+             },
+         }
+-        state.font_editor = tabard_workshop::fonts::FontRoleEditor::new(state.store.choice().fonts.clone());
+-        state.font_editor.set_available_families(state.available_fonts.clone());
++        state.font_editor =
++            tabard_workshop::fonts::FontRoleEditor::new(state.store.choice().fonts.clone());
+         state
++            .font_editor
++            .set_available_families(state.available_fonts.clone());
++        state
+     }
+ 
+     fn path_collision(&self) -> bool {
+Diff in /Users/markik/Code/repos/cleromancy/src/ui/native/appearance.rs:249:
+         Ok(())
+     }
+ 
+-    pub fn font_preferences(&self) -> &tabard::typography::FontPreferences { &self.store.choice().fonts }
++    pub fn font_preferences(&self) -> &tabard::typography::FontPreferences {
++        &self.store.choice().fonts
++    }
+ 
+     pub fn font_diagnostics(&self) -> Vec<String> {
+         let mut messages = Vec::new();
+Diff in /Users/markik/Code/repos/cleromancy/src/ui/native/appearance.rs:256:
+-        for resolved in self.font_preferences().resolve(&self.available_fonts, &super::fonts::defaults()) {
+-            let missing: Vec<_> = resolved.requested.iter().filter(|family| !family.is_generic() && !self.available_fonts.iter().any(|name| name.eq_ignore_ascii_case(family.name()))).map(|family| family.name()).collect();
+-            if !missing.is_empty() { messages.push(format!("{}: {} unavailable here; using {} with glyph fallback. Saved requests are retained.", resolved.role.label(), missing.join(", "), resolved.family.name())); }
++        for resolved in self
++            .font_preferences()
++            .resolve(&self.available_fonts, &super::fonts::defaults())
++        {
++            let missing: Vec<_> = resolved
++                .requested
++                .iter()
++                .filter(|family| {
++                    !family.is_generic()
++                        && !self
++                            .available_fonts
++                            .iter()
++                            .any(|name| name.eq_ignore_ascii_case(family.name()))
++                })
++                .map(|family| family.name())
++                .collect();
++            if !missing.is_empty() {
++                messages.push(format!("{}: {} unavailable here; using {} with glyph fallback. Saved requests are retained.", resolved.role.label(), missing.join(", "), resolved.family.name()));
++            }
+         }
+         messages
+     }
+Diff in /Users/markik/Code/repos/cleromancy/src/ui/native/appearance.rs:401:
+                 format!("{base}\n{}", rules.join("\n"))
+             },
+         };
+-        format!("{themed}\n{}\n{}", tabard_workshop::fonts::FONT_ROLE_CSS, self.font_preferences().css_custom_properties(&self.available_fonts, &super::fonts::defaults()))
++        format!(
++            "{themed}\n{}\n{}",
++            tabard_workshop::fonts::FONT_ROLE_CSS,
++            self.font_preferences()
++                .css_custom_properties(&self.available_fonts, &super::fonts::defaults())
++        )
+     }
+ 
+     pub fn take_stylesheet_change(&mut self) -> Option<String> {
+Diff in /Users/markik/Code/repos/cleromancy/src/ui/native/appearance.rs:500:
+         .map_err(|error| error.to_string())?;
+     Ok(ResolvedThemeChoice {
+         requested: choice.clone(),
+-        resolved: ThemeChoice { fonts: choice.fonts.clone(), ..ThemeChoice::new(PRODUCT_DEFAULT, Some(mode)) },
++        resolved: ThemeChoice {
++            fonts: choice.fonts.clone(),
++            ..ThemeChoice::new(PRODUCT_DEFAULT, Some(mode))
++        },
+         theme,
+         presentation,
+         diagnostics: vec![],
+Diff in /Users/markik/Code/repos/cleromancy/tests/a1.rs:3:
+ 
+ mod support;
+ 
+-use cleromancy::{CleromancyApp, CleromancyHost, ReadingEngine, a0_fixture, a1_fixture};
+ use chirograph::Carrier;
++use cleromancy::{CleromancyApp, CleromancyHost, ReadingEngine, a0_fixture, a1_fixture};
+ use muniment::MemoryBackend;
+ 
+ use support::{fixture_carrier, truth_bytes};
+Diff in /Users/markik/Code/repos/cleromancy/tests/support/mod.rs:1:
+ // Copyright 2026 Mark AB (markik)
+ // SPDX-License-Identifier: MIT OR Apache-2.0
+ 
+-use cleromancy::{Candidate, CleromancyHost, ContextSnapshot, Field, ReadingEngine};
+-use graphshell_endpoint::{PresentationSource, ProjectionSource};
+ use chirograph::{
+     Carrier, CarrierRequestBody, CarrierResponseBody, EndpointDescriptor, ProjectionOffer,
+     ProjectionSession, ResourceRequest,
+Diff in /Users/markik/Code/repos/cleromancy/tests/support/mod.rs:9:
+ };
++use cleromancy::{Candidate, CleromancyHost, ContextSnapshot, Field, ReadingEngine};
++use graphshell_endpoint::{PresentationSource, ProjectionSource};
+ use muniment::{Backend, MemoryBackend};
+ 
+ pub fn fixture_carrier() -> FixtureCarrier {
+Diff in /Users/markik/Code/repos/cleromancy/tests/support/mod.rs:67:
+                         },
+                     }],
+                 }))
+-            }
++            },
+             CarrierRequestBody::Snapshot(request) if request.session == self.session => {
+                 let mut local = request;
+                 local.session = self.host.session();
+Diff in /Users/markik/Code/repos/cleromancy/tests/support/mod.rs:74:
+-                let mut snapshot = self.host.snapshot(local).map_err(|error| {
+-                    chirograph::CarrierError::Refused(error.to_string())
+-                })?;
++                let mut snapshot = self
++                    .host
++                    .snapshot(local)
++                    .map_err(|error| chirograph::CarrierError::Refused(error.to_string()))?;
+                 snapshot.session = self.session.clone();
+                 Ok(CarrierResponseBody::Snapshot(Box::new(snapshot)))
+-            }
++            },
+             CarrierRequestBody::Resource(request) if request.session == self.session => {
+                 let response = self
+                     .host
+Diff in /Users/markik/Code/repos/cleromancy/tests/support/mod.rs:84:
+                         session: self.host.session(),
+                         resource: request.resource,
+                     })
+-                    .map_err(|error| {
+-                        chirograph::CarrierError::Refused(error.to_string())
+-                    })?;
++                    .map_err(|error| chirograph::CarrierError::Refused(error.to_string()))?;
+                 Ok(CarrierResponseBody::Resource(
+                     chirograph::ResourceResponse {
+                         session: self.session.clone(),
+Diff in /Users/markik/Code/repos/cleromancy/tests/support/mod.rs:94:
+                         bytes: response.bytes,
+                     },
+                 ))
+-            }
++            },
+             CarrierRequestBody::Close => {
+                 self.closed = true;
+                 Ok(CarrierResponseBody::Closed)
+Diff in /Users/markik/Code/repos/cleromancy/tests/support/mod.rs:101:
+-            }
++            },
+             _ => Err(chirograph::CarrierError::Refused(
+                 "fixture carrier refused the request".to_string(),
+             )),
+Diff in /Users/markik/Code/repos/cleromancy/tests/support/mod.rs:109:
+         None
+     }
+ 
+-    fn wait_for_notice(
+-        &mut self,
+-    ) -> Result<chirograph::CarrierNotice, chirograph::CarrierError> {
++    fn wait_for_notice(&mut self) -> Result<chirograph::CarrierNotice, chirograph::CarrierError> {
+         Err(chirograph::CarrierError::Refused(
+             "fixture emits no notices".to_string(),
+         ))
+Diff in /Users/markik/Code/repos/cleromancy/tests/a10.rs:1:
++use chirograph::{
++    Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
++    PortableCardV1, ProjectionSnapshot, ResourceRequest,
++};
+ use cleromancy::servitor::{Cap, Grant, Mode, Subject};
+ use cleromancy::{
+     COMPOSE_READING_INTENT, CleromancyApp, CleromancyHost, CompositionLayout,
+Diff in /Users/markik/Code/repos/cleromancy/tests/a10.rs:4:
+     ReadingCompositionIntentPayload, ReadingSession, SelectionMode, ThreeCardSpread, a0_fixture,
+ };
+ use graphshell_endpoint::local::LocalCarrier;
+-use chirograph::{
+-    Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
+-    PortableCardV1, ProjectionSnapshot, ResourceRequest,
+-};
+ use muniment::MemoryBackend;
+ 
+ #[test]
+Diff in /Users/markik/Code/repos/cleromancy/tests/a16.rs:3:
+ 
+ use std::collections::{BTreeMap, VecDeque};
+ 
++use chirograph::{
++    ActionFormError, AdvertisedAction, Carrier, CarrierRequestBody, CarrierResponseBody,
++    IntentInvocation, IntentResult, PortableCardV1, ProjectionSnapshot, ResourceRequest,
++};
+ use cleromancy::moirai::clotho::EntropySource;
+ use cleromancy::servitor::{Cap, Grant, Mode, Subject};
+ use cleromancy::{
+Diff in /Users/markik/Code/repos/cleromancy/tests/a16.rs:11:
+     ReadingError, a0_fixture,
+ };
+ use graphshell_endpoint::local::LocalCarrier;
+-use chirograph::{
+-    ActionFormError, AdvertisedAction, Carrier, CarrierRequestBody, CarrierResponseBody,
+-    IntentInvocation, IntentResult, PortableCardV1, ProjectionSnapshot, ResourceRequest,
+-};
+ use muniment::MemoryBackend;
+ 
+ #[test]
+Diff in /Users/markik/Code/repos/cleromancy/tests/a2.rs:5:
+ 
+ mod support;
+ 
++use chirograph::Carrier;
+ use cleromancy::moirai::clotho::EntropySource;
+ use cleromancy::{
+     CONTEXTUAL_WEIGHT_RULE, CleromancyApp, CleromancyHost, DerivedSelection, Reading,
+Diff in /Users/markik/Code/repos/cleromancy/tests/a2.rs:11:
+     ReadingEngine, ReadingError, SelectionMode, a2_fixture,
+ };
+-use chirograph::Carrier;
+ use muniment::RedbBackend;
+ 
+ use support::{fixture_carrier, truth_bytes};
+Diff in /Users/markik/Code/repos/cleromancy/tests/support/mod.rs:1:
+ // Copyright 2026 Mark AB (markik)
+ // SPDX-License-Identifier: MIT OR Apache-2.0
+ 
+-use cleromancy::{Candidate, CleromancyHost, ContextSnapshot, Field, ReadingEngine};
+-use graphshell_endpoint::{PresentationSource, ProjectionSource};
+ use chirograph::{
+     Carrier, CarrierRequestBody, CarrierResponseBody, EndpointDescriptor, ProjectionOffer,
+     ProjectionSession, ResourceRequest,
+Diff in /Users/markik/Code/repos/cleromancy/tests/support/mod.rs:9:
+ };
++use cleromancy::{Candidate, CleromancyHost, ContextSnapshot, Field, ReadingEngine};
++use graphshell_endpoint::{PresentationSource, ProjectionSource};
+ use muniment::{Backend, MemoryBackend};
+ 
+ pub fn fixture_carrier() -> FixtureCarrier {
+Diff in /Users/markik/Code/repos/cleromancy/tests/support/mod.rs:67:
+                         },
+                     }],
+                 }))
+-            }
++            },
+             CarrierRequestBody::Snapshot(request) if request.session == self.session => {
+                 let mut local = request;
+                 local.session = self.host.session();
+Diff in /Users/markik/Code/repos/cleromancy/tests/support/mod.rs:74:
+-                let mut snapshot = self.host.snapshot(local).map_err(|error| {
+-                    chirograph::CarrierError::Refused(error.to_string())
+-                })?;
++                let mut snapshot = self
++                    .host
++                    .snapshot(local)
++                    .map_err(|error| chirograph::CarrierError::Refused(error.to_string()))?;
+                 snapshot.session = self.session.clone();
+                 Ok(CarrierResponseBody::Snapshot(Box::new(snapshot)))
+-            }
++            },
+             CarrierRequestBody::Resource(request) if request.session == self.session => {
+                 let response = self
+                     .host
+Diff in /Users/markik/Code/repos/cleromancy/tests/support/mod.rs:84:
+                         session: self.host.session(),
+                         resource: request.resource,
+                     })
+-                    .map_err(|error| {
+-                        chirograph::CarrierError::Refused(error.to_string())
+-                    })?;
++                    .map_err(|error| chirograph::CarrierError::Refused(error.to_string()))?;
+                 Ok(CarrierResponseBody::Resource(
+                     chirograph::ResourceResponse {
+                         session: self.session.clone(),
+Diff in /Users/markik/Code/repos/cleromancy/tests/support/mod.rs:94:
+                         bytes: response.bytes,
+                     },
+                 ))
+-            }
++            },
+             CarrierRequestBody::Close => {
+                 self.closed = true;
+                 Ok(CarrierResponseBody::Closed)
+Diff in /Users/markik/Code/repos/cleromancy/tests/support/mod.rs:101:
+-            }
++            },
+             _ => Err(chirograph::CarrierError::Refused(
+                 "fixture carrier refused the request".to_string(),
+             )),
+Diff in /Users/markik/Code/repos/cleromancy/tests/support/mod.rs:109:
+         None
+     }
+ 
+-    fn wait_for_notice(
+-        &mut self,
+-    ) -> Result<chirograph::CarrierNotice, chirograph::CarrierError> {
++    fn wait_for_notice(&mut self) -> Result<chirograph::CarrierNotice, chirograph::CarrierError> {
+         Err(chirograph::CarrierError::Refused(
+             "fixture emits no notices".to_string(),
+         ))
+Diff in /Users/markik/Code/repos/cleromancy/tests/a23_resident_sync_consent.rs:2:
+ // SPDX-License-Identifier: MIT OR Apache-2.0
+ 
+ #![cfg(feature = "legacy-receipts")]
+-
+ #![cfg(all(
+     feature = "graphshell-admission",
+     feature = "personal-sync",
+Diff in /Users/markik/Code/repos/cleromancy/tests/a24_resident_sync_startup.rs:2:
+ // SPDX-License-Identifier: MIT OR Apache-2.0
+ 
+ #![cfg(feature = "legacy-receipts")]
+-
+ #![cfg(all(
+     feature = "graphshell-admission",
+     feature = "personal-sync",
+Diff in /Users/markik/Code/repos/cleromancy/tests/a3.rs:1:
+ // Copyright 2026 Mark AB (markik)
+ // SPDX-License-Identifier: MIT OR Apache-2.0
+ 
++use chirograph::{
++    Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
++    PortableCardV1, ProjectionSnapshot, ResourceRequest,
++};
+ use cleromancy::servitor::{Cap, Grant, Mode, Subject};
+ use cleromancy::{
+     COMPOSE_READING_INTENT, CleromancyApp, CleromancyHost, READ_INTENT, READ_SCOPE, ROLL_INTENT,
+Diff in /Users/markik/Code/repos/cleromancy/tests/a3.rs:8:
+     THREE_CARD_SPREAD_INTENT, a0_fixture,
+ };
+ use graphshell_endpoint::local::LocalCarrier;
+-use chirograph::{
+-    Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
+-    PortableCardV1, ProjectionSnapshot, ResourceRequest,
+-};
+ use muniment::MemoryBackend;
+ 
+ #[test]
+Diff in /Users/markik/Code/repos/cleromancy/tests/a4.rs:107:
+                     if facet == cleromancy::host::CONTEXT_FACET =>
+                 {
+                     Some(value)
+-                }
++                },
+                 _ => None,
+             })
+             .unwrap();
+Diff in /Users/markik/Code/repos/cleromancy/tests/a9.rs:1:
+ // Copyright 2026 Mark AB (markik)
+ // SPDX-License-Identifier: MIT OR Apache-2.0
+ 
++use chirograph::{
++    Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
++    PortableCardV1, ProjectionSnapshot, ResourceRequest,
++};
+ use cleromancy::servitor::{Cap, Grant, Mode, Subject};
+ use cleromancy::{
+     CleromancyApp, CleromancyHost, ReadingSession, THREE_CARD_SPREAD_INTENT, ThreeCardSpread,
+Diff in /Users/markik/Code/repos/cleromancy/tests/a9.rs:7:
+     ThreeCardSpreadIntentPayload, a0_fixture,
+ };
+ use graphshell_endpoint::local::LocalCarrier;
+-use chirograph::{
+-    Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
+-    PortableCardV1, ProjectionSnapshot, ResourceRequest,
+-};
+ use muniment::MemoryBackend;
+ 
+ #[test]
+Diff in /Users/markik/Code/repos/cleromancy/tests/analytic_consultation.rs:2:
+ // SPDX-License-Identifier: MIT OR Apache-2.0
+ 
+ #![cfg(feature = "legacy-receipts")]
+-
+ #![cfg(feature = "analytic-ephemeris")]
+ 
+ use cleromancy::{
+Diff in /Users/markik/Code/repos/cleromancy/tests/analytic_consultation.rs:9:
+-    AnalyticEphemerisAdapter, AstrologyMoment, CleromancyHost, Consultation,
+-    calculate_with_adapter,
++    AnalyticEphemerisAdapter, AstrologyMoment, CleromancyHost, Consultation, calculate_with_adapter,
+ };
+ use muniment::RedbBackend;
+ 
+Diff in /Users/markik/Code/repos/cleromancy/tests/analytic_parity.rs:65:
+             AstrologyMoment::at("2024-04-08T18:00:00Z", 32_776_700, -96_797_000),
+             ECLIPSE_2024,
+         ),
+-        (AstrologyMoment::global("2026-08-13T12:00:00Z"), CURRENT_2026),
++        (
++            AstrologyMoment::global("2026-08-13T12:00:00Z"),
++            CURRENT_2026,
++        ),
+     ];
+ 
+     let mut worst_longitude = 0;
+Diff in /Users/markik/Code/repos/cleromancy/tests/sky_surface_dom.rs:20:
+ #[cfg(feature = "sky-timeline")]
+ use cleromancy::{HostError, SKY_DAY_FACTS_FACET};
+ #[cfg(feature = "sky-timeline")]
+-use taproot::Selector;
+-#[cfg(feature = "sky-timeline")]
+ use muniment::Backend;
+ use muniment::MemoryBackend;
+ #[cfg(not(feature = "sky-timeline"))]
+Diff in /Users/markik/Code/repos/cleromancy/tests/sky_surface_dom.rs:29:
+ use support::harness;
+ #[cfg(feature = "sky-timeline")]
+ use support::{has_key, switch_surface, take_action, text_at_key};
++#[cfg(feature = "sky-timeline")]
++use taproot::Selector;
+ 
+ #[cfg(feature = "sky-timeline")]
+ #[test]
+Diff in /Users/markik/Code/repos/cleromancy/tests/sky_timeline.rs:2:
+ // SPDX-License-Identifier: MIT OR Apache-2.0
+ 
+ #![cfg(feature = "legacy-receipts")]
+-
+ #![cfg(feature = "sky-timeline")]
+ 
+ use cleromancy::CleromancyHost;
