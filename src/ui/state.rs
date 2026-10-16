@@ -522,6 +522,8 @@ impl ConsultationUi {
 
     pub(crate) fn present_die(&mut self, catalog: ConsultationCatalog, digest: &str) {
         self.replace_catalog(catalog);
+        self.clear_selection();
+        self.card_preview = None;
         self.field_select.selected = self
             .catalog
             .fields
@@ -798,6 +800,32 @@ impl ConsultationUi {
 #[cfg(test)]
 mod refresh_tests {
     use super::*;
+
+    #[test]
+    fn choosing_die_opens_a_new_form_without_changing_the_previous_reading() {
+        let mut c =
+            crate::Consultation::new(crate::CleromancyHost::empty(muniment::MemoryBackend::new()));
+        let field = pollster::block_on(c.install_builtin_tarot_at(1)).unwrap();
+        let context = pollster::block_on(c.save_context_at(
+            crate::ContextDraft::new("Previous occasion", "What deserves attention?", ""),
+            2,
+        ))
+        .unwrap();
+        let old =
+            pollster::block_on(c.read(&context, &field, crate::SelectionMode::Calculated)).unwrap();
+        let die = pollster::block_on(c.install_six_sided_die()).unwrap();
+        let catalog = c.catalog().unwrap();
+        let mut ui = ConsultationUi::new(catalog.clone());
+        ui.present_reading(catalog.clone(), old.clone());
+        ui.card_preview = Some((field, "0".into()));
+        ui.present_die(catalog, &die);
+        assert!(ui.detail.is_none());
+        assert!(ui.card_preview.is_none());
+        assert_eq!(ui.catalog.fields[ui.field_select.selected].digest(), die);
+        assert_eq!(ui.mode.selected, 1);
+        assert_eq!(ui.layout.selected, 0);
+        assert_eq!(c.detail(&old.session.id).unwrap(), old);
+    }
 
     #[test]
     fn adding_decks_preserves_selected_field_identity() {

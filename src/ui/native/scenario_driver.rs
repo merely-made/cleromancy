@@ -517,6 +517,7 @@ impl ScenarioDriver<'_, '_> {
             .strip_prefix("c4-")
             .or_else(|| line.strip_prefix("c5-control-"))
             .or_else(|| line.strip_prefix("c7-control-"))
+            .or_else(|| line.strip_prefix("c8-control-"))
         {
             let (action, key) = command.split_once(' ').ok_or("C4 expects action and key")?;
             let key = if key == "c8-saved-os" || key == "c8-saved-seed" {
@@ -569,6 +570,22 @@ impl ScenarioDriver<'_, '_> {
             } else {
                 key.into()
             };
+            if line.starts_with("c8-control-") && key == "save-reflection" {
+                let ui = &self.ctx.runner.state().consultation;
+                let detail = ui
+                    .detail()
+                    .ok_or("C8 reflection requires a selected die occasion")?;
+                if detail.field.rules != crate::UNIFORM_DIE_RULE
+                    || !matches!(
+                        detail.context.label.as_str(),
+                        "C8 operating-system roll" | "C8 public-seed roll"
+                    )
+                {
+                    return Err(
+                        "C8 reflection refuses to write to an older non-die occasion".into(),
+                    );
+                }
+            }
             let node = {
                 let dom = self.ctx.runner.dom();
                 let dom = dom.borrow();
@@ -625,6 +642,16 @@ impl ScenarioDriver<'_, '_> {
         }
         match line {
             "c8-prepare-reflection" => {
+                let detail = self
+                    .ctx
+                    .runner
+                    .state()
+                    .consultation
+                    .detail()
+                    .ok_or("C8 reflection has no current die result")?;
+                if detail.field.rules != crate::UNIFORM_DIE_RULE {
+                    return Err("C8 reflection requires the newly saved die result".into());
+                }
                 self.ctx.runner.update(|state| {
                     state.consultation.reflection = cambium::TextInput::new("Public dice fixture: I recorded this outcome without assigning it a symbolic meaning.");
                 });
