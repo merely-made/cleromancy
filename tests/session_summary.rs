@@ -121,12 +121,12 @@ fn summaries_are_faithful_cheap_and_ordered_like_sessions() {
             summary
                 .placements
                 .iter()
-                .map(|placement| placement.title.as_str())
+                .map(|placement| placement.title.clone())
                 .collect::<Vec<_>>(),
             detail
                 .readings
                 .iter()
-                .map(|reading| reading.title.as_str())
+                .map(|reading| reading.display_title())
                 .collect::<Vec<_>>(),
             "a row shows the cards actually drawn"
         );
