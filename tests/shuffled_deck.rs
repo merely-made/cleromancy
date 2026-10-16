@@ -221,3 +221,27 @@ fn pre_c5_scalar_calculation_and_derived_receipts_remain_byte_equal() {
         );
     }
 }
+
+#[test]
+fn a_typed_spread_captures_one_field_snapshot_within_the_carrier_bound() {
+    let (context, field) = fixture();
+    let mut host = cleromancy::CleromancyHost::empty(muniment::MemoryBackend::new());
+    let edits = std::sync::Arc::new(std::sync::Mutex::new(Vec::new()));
+    host.record_edits(edits.clone());
+    host.record_three_card_spread_at_with_entropy(
+        &context,
+        &field,
+        1000,
+        None,
+        &mut Words { used: 0 },
+    )
+    .unwrap();
+    let captured = edits.lock().unwrap();
+    let encoded = serde_json::to_string(&*captured).unwrap();
+    assert_eq!(encoded.matches("cleromancy.field/v1").count(), 1);
+    assert!(
+        encoded.len() < 220_000,
+        "one typed-deck batch is bounded before envelope expansion: {}",
+        encoded.len()
+    );
+}

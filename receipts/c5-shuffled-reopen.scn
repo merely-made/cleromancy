@@ -14,6 +14,6 @@ assert text C5 public deck
 reveal class reading-spread-cards
 settle 2
 capture reopened-spread
-reveal key narrative reading-narrative
+reveal class reading-narrative
 settle 2
 capture reopened-narrative
