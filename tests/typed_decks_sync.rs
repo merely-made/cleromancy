@@ -25,7 +25,11 @@ fn signed_sync_preserves_complete_decks_and_their_content_revisions() {
         let batch = export_sync_batch(&source, selection).unwrap();
         assert_eq!(batch.fields, 2);
         let identity = InMemoryProvider::from_seed([0xc3; 32]);
-        let roster = SyncRoster::new([identity.master_public_key().to_bytes()]);
+        let peer = InMemoryProvider::from_seed([0xc4; 32]);
+        let roster = SyncRoster::new([
+            identity.master_public_key().to_bytes(),
+            peer.master_public_key().to_bytes(),
+        ]);
         let mut writer = PersonalGraphReplica::for_identity(
             MemoryBackend::new(),
             [0xc3; 32],
@@ -37,7 +41,7 @@ fn signed_sync_preserves_complete_decks_and_their_content_revisions() {
         let receiver = PersonalGraphReplica::for_identity(
             MemoryBackend::new(),
             [0xc3; 32],
-            &identity,
+            &peer,
             roster,
             selection.personal_graph_selection(),
         )

@@ -206,6 +206,11 @@ impl ConsultationUi {
     /// Replace picker and history values after the persistence worker commits a
     /// transaction; the worker is the authority for what remains available.
     pub(crate) fn replace_catalog(&mut self, catalog: ConsultationCatalog) {
+        let selected_field = self
+            .catalog
+            .fields
+            .get(self.field_select.selected)
+            .map(crate::Field::digest);
         if self.detail.as_ref().is_some_and(|detail| {
             !catalog
                 .session_summaries
@@ -215,10 +220,25 @@ impl ConsultationUi {
             self.clear_selection();
         }
         self.context_select.selected = self.context_select.selected.min(catalog.contexts.len());
-        self.field_select.selected = self
-            .field_select
-            .selected
-            .min(catalog.fields.len().saturating_sub(1));
+        self.field_select.selected = selected_field
+            .and_then(|digest| {
+                catalog
+                    .fields
+                    .iter()
+                    .position(|field| field.digest() == digest)
+            })
+            .unwrap_or_else(|| {
+                self.field_select
+                    .selected
+                    .min(catalog.fields.len().saturating_sub(1))
+            });
+        if self
+            .card_preview
+            .as_ref()
+            .is_some_and(|(digest, _)| !catalog.fields.iter().any(|f| f.digest() == *digest))
+        {
+            self.card_preview = None;
+        }
         self.comparison_select.selected = self.comparison_select.selected.min(
             catalog
                 .session_summaries
@@ -693,6 +713,24 @@ impl ConsultationUi {
 #[cfg(test)]
 mod refresh_tests {
     use super::*;
+
+    #[test]
+    fn adding_decks_preserves_selected_field_identity() {
+        let host = crate::CleromancyHost::empty(muniment::MemoryBackend::new());
+        let mut consultation = crate::Consultation::new(host);
+        let selected = pollster::block_on(consultation.install_builtin_tarot_at(1)).unwrap();
+        let mut ui = ConsultationUi::new(consultation.catalog().unwrap());
+        pollster::block_on(consultation.install_typed_tarot_at(2)).unwrap();
+        ui.replace_catalog(consultation.catalog().unwrap());
+        assert_eq!(
+            ui.catalog.fields[ui.field_select.selected].digest(),
+            selected
+        );
+        assert_eq!(ui.catalog.fields.len(), 3);
+        assert!(ui.request_typed_decks().is_some());
+        assert!(ui.status.is_busy());
+        assert!(ui.request_typed_decks().is_none());
+    }
 
     #[test]
     fn catalog_refresh_does_not_complete_a_pending_read() {
