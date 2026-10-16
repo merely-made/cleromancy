@@ -123,3 +123,5 @@ pre, code { font-family: var(--tabard-font-code, monospace); }
 .ambient-item-list button { width: 100%; margin-bottom: 6px; text-align: left; white-space: normal; }
 .ambient-neighborhood p { overflow-wrap: anywhere; }
 .graph-canvas-swatch-node[data-attention="foreground"] { border: 2px solid currentColor; }
+
+.ambient-reader { display: block; width: 100%; min-width: 0; }

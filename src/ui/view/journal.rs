@@ -66,7 +66,22 @@ pub(super) fn journal_region(ui: &ConsultationUi) -> ConsultationView {
             "h3",
             "Examined and kept context",
         )));
-        for entry in &ui.catalog.ambient_memory {
+        let mut memory: Vec<_> = ui.catalog.ambient_memory.iter().collect();
+        memory.sort_by(|a, b| {
+            b.memory
+                .examined_at_ms
+                .cmp(&a.memory.examined_at_ms)
+                .then_with(|| a.memory.id.cmp(&b.memory.id))
+        });
+        children.push(Box::new(el::<_, ConsultationUi, ()>(
+            "p",
+            format!(
+                "Newest {} of {} context records",
+                memory.len().min(crate::JOURNAL_PAGE_SIZE),
+                memory.len()
+            ),
+        )));
+        for entry in memory.into_iter().take(crate::JOURNAL_PAGE_SIZE) {
             children.push(Box::new(
                 el::<_, ConsultationUi, ()>(
                     "p",
