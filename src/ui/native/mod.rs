@@ -314,6 +314,11 @@ fn apply_worker_update(
         WorkerUpdate::Mere { model, catalog } => {
             state.catalog_ready = true;
             runner.update(|state| {
+                let pending_status = state
+                    .consultation
+                    .status
+                    .is_busy()
+                    .then(|| state.consultation.status.clone());
                 let previous = state
                     .mere
                     .model
@@ -356,6 +361,9 @@ fn apply_worker_update(
                     .view
                     .lay_out(&state.mere.model, state.mere.width, state.mere.height);
                 state.consultation.replace_catalog(catalog);
+                if let Some(status) = pending_status {
+                    state.consultation.status = status;
+                }
             });
         },
         WorkerUpdate::GraphSelection {
@@ -382,7 +390,7 @@ fn apply_worker_update(
                     .unwrap_or_else(|| format!("cleromancy://session/{session}"));
                 state.mere.view.focused =
                     Some(mere::kernel::graph::Graph::node_namespace_id(&focus_url).to_string());
-                state.consultation.present_session(catalog, detail);
+                state.consultation.present_external_session(catalog, detail);
                 if let Some(position) = position {
                     state.consultation.reading_focus.insert(session, position);
                 }

@@ -1,0 +1,90 @@
+# Preserves the first native kept item; examines and keeps a different saved reflection.
+# Public calculated fixture; actual resident handoff, no fabricated random source.
+wait
+advance
+wait
+assert snap sessions == 3
+assert snap readings == 3
+assert snap reflections == 1
+assert text What I must release
+c4-reveal open-neighborhood
+settle 2
+c4-click open-neighborhood
+wait
+assert snap ambient-families == 4
+assert snap ambient-scene == spiral
+assert snap ambient-error == false
+reveal class ambient-reader
+settle 2
+capture reading-with-neighborhood
+reveal class ambient-canvas-holder
+settle 12
+assert snap ambient-ticks >= 5
+capture moving-constellation
+c4-reveal ambient-item:reflection:04df9d641f7aa5f61c570f18d683df6a58f0541c7ee6284b2c4cf984ef06e799:focus
+settle 2
+c4-key ambient-item:reflection:04df9d641f7aa5f61c570f18d683df6a58f0541c7ee6284b2c4cf984ef06e799:focus
+settle 4
+assert snap ambient-memory == 1
+c4-reveal ambient-examine
+settle 2
+c4-key ambient-examine
+wait
+assert snap ambient-memory == 2
+assert snap ambient-kept == 1
+assert text Recent memory
+capture examined-history
+c4-reveal ambient-keep
+settle 2
+c4-key ambient-keep
+wait
+assert snap ambient-kept == 2
+c4-reveal ambient-foreground
+settle 2
+c4-click ambient-foreground
+c4-reveal ambient-role:pinned
+settle 2
+c4-key ambient-role:pinned
+c4-reveal ambient-open-reading
+settle 2
+c4-click ambient-open-reading
+wait
+c4-reveal ambient-back
+settle 2
+c4-click ambient-back
+wait
+assert text What I must release
+c4-reveal ambient-motion:flock.boids
+settle 2
+c4-click ambient-motion:flock.boids
+reveal class ambient-canvas-holder
+settle 12
+assert snap ambient-ticks >= 5
+capture living-constellation
+c4-reveal ambient-still
+settle 2
+c4-key ambient-still
+assert snap ambient-still == true
+c4-reveal ambient-scene:grid.default
+settle 2
+c4-click ambient-scene:grid.default
+reveal class ambient-canvas-holder
+settle 2
+capture still-grid
+resize 420 760
+wait
+reveal class ambient-canvas-holder
+settle 2
+capture compact-grid
+c4-reveal ambient-role:pinned
+settle 2
+c4-key ambient-role:pinned
+capture compact-curation
+c4-reveal save-neighborhood
+settle 2
+c4-key save-neighborhood
+wait
+assert snap ambient-memory == 2
+assert snap ambient-kept == 2
+assert snap ambient-still == true
+assert snap ambient-error == false
