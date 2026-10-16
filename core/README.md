@@ -35,3 +35,12 @@ This package is an acceptance boundary, not a second implementation. Its
 library and test paths point directly at the root library and checked-in
 resident-candidate and sky contracts. Immutable portable validator C remains
 distinct from the final native D publication.
+
+C3 continuation (2026-10-16): the new
+[software receipt](../receipts/c3-software-qualification_20261016.json) records
+24/25/26 passing portable gates on Cargo/Rust 1.99.0, separately from the frozen
+C1/MSRV receipt above. Complete typed deck and position-definition snapshots
+are validated as part of each field; old fields omit the new optional members
+and retain their exact encoding. A newly built owner consumes this codec; an
+older resident correctly refuses unfamiliar metadata before write. C3 native
+qualification and standalone-daemon receiving intake remain pending.

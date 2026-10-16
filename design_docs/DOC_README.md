@@ -13,7 +13,7 @@ This is the canonical index for active Cleromancy design documents. See the
 the maintainer and does not exist in this repository yet; the root README is
 the current public overview until it is authored.
 
-Stack intake (2026-10-15): C2 consumes Mere `8b08c98b2` through
+Frozen C2 qualification (2026-10-15): C2 consumes Mere `8b08c98b2` through
 `graphshell-endpoint::door`, `graphshell-host` and `mere-overmap`.
 The [C2 receipt](../receipts/c2-reading-qualification_20261015.json) records
 consumer tests, native authoring/reopening and preserved historical evidence.
@@ -235,8 +235,12 @@ canonical source per repository, 92 default and 130 historical tests, core
 qualification retains its source/capture scope; Mere's lift plan records the
 bounded P4 endpoint consumer proof.
 
-C3 in progress (2026-10-15): the divination plan now records two complete
-78-card text decks, typed identities independent of printed numbers, cited
-Golden Dawn/Thierens overlays, non-writing cross-deck inspection and saved
-content revisions. Existing fields and prior receipts retain their identities.
-The new fixed minor prompts disclose model-assisted editorial provenance.
+C3 software-qualified locally (2026-10-16): the divination plan and
+[software receipt](../receipts/c3-software-qualification_20261016.json) record
+two complete 78-card text decks, typed identity independent of printed number,
+cited Golden Dawn/Thierens overlays, non-writing crosswalk inspection and saved
+content revisions. Gates pass at 100 default, 139 historical and core 24/25/26.
+Existing fields and all prior receipts retain their identities. Fixed minor
+prompts disclose model-assisted editorial provenance. Native create/reopen,
+publication and the standalone-daemon validator intake remain pending; C4/C5
+and shared-wall acceptance are separate.

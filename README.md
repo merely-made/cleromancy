@@ -6,7 +6,7 @@ deterministic, securely cast, or derived from a public seed, and every result
 keeps a replayable receipt that separates context, qualification, selection,
 and interpretation.
 
-## Status (2026-10-15)
+## Status (2026-10-16)
 
 The ordinary product opens the resident-held divination mere; its old private
 snapshot authority is confined to the explicit `legacy-receipts` harness.
@@ -26,6 +26,18 @@ native authoring and fresh-process reopening preserve the saved reading and
 reflection identities. The [C2 receipt](receipts/c2-reading-qualification_20261015.json)
 records source, gates, capture reviews and qualification limits; the
 [divination plan](design_docs/2026-09-23_divination_mere_plan.md) owns phase scope.
+
+C3 is implemented on the local candidate: complete Rider–Waite–Smith and
+Marseille-structure text decks, 78 cards each, with typed identities, suits,
+numbers and ranks. A fresh reading session starts with RWS; **Add tarot decks**
+adds the second choice. A focused card discloses Golden Dawn / Book T and
+Thierens correspondences separately, with source dates and untranscribed axes
+explicit. Cross-deck inspection preserves the saved reading. New fields retain
+their full card and position-definition editions; previous fields keep their
+original encoding. The new fixed minor prompts disclose model-assisted
+editorial provenance. The [C3 software receipt](receipts/c3-software-qualification_20261016.json)
+records passing software gates. Native capture/reopen and publication remain
+pending the coordinated foreground slot.
 
 - The A0-A25 proof ledger is complete (2026-08-02 through 2026-08-07):
   single readings, sealed receipts with replay, field provenance, a 22-card
