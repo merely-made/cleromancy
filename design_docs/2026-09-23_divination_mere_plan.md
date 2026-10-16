@@ -1,3 +1,15 @@
+**C8 first-die preflight (2026-10-16):** one six-sided die is implemented
+through existing resident/scalar replay contracts. Frozen implementation
+`e51964a` passes 130 default and 179 expanded tests (one explicit local-model
+probe ignored in each), plus all four all-target checks. Portable core passes
+41/42/43. Native candidate `a4abd1b` differs only by three scenario files;
+its parser and desktop build pass. Actual capture and fresh-process reopening
+remain pending: the Mac is locked, and Mark has been asked to unlock it.
+The [preflight receipt](../receipts/c8-die-preflight_20261016.json) records
+source identities and the retained failed attempts separately. No C8 acceptance
+or publication follows from this checkpoint. All 618 prior receipt paths and
+the prior eight occasion details plus C4 view/memory values remain preserved.
+
 **C7 publication (2026-10-16):** qualified product receipts are published on
 main at `dba1c183`; coordinated Mere receiving qualification is on main at
 `a4c1814c8`. The integrated receiving gate passes 8 parent tests, with one
