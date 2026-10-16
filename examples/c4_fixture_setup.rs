@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 //! Public C4 acceptance fixture. Domain edits use the ordinary admitted route;
 //! this helper owns no graph files and refuses an unmarked or nonempty profile.
+#[allow(dead_code)]
 #[path = "../tests/support/ambient_fixture.rs"]
 mod fixture;
 use chirograph::{CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult};
@@ -63,21 +64,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             return Err(format!("mint refused: {response:?}").into());
         }
     }
-    let graph = attachment.client_mut().snapshot(graph).await?;
-    let mut cards = HashMap::new();
-    for request in route::card_requests(&graph) {
-        let bytes = attachment
-            .client_mut()
-            .resource(request.session, request.resource)
-            .await?;
-        cards.insert(request.resource, bytes);
-    }
-    let request = route::session_graph_request(&graph, &cards).ok_or("missing complete graph")?;
-    let bytes = attachment
-        .client_mut()
-        .resource(request.session, request.resource)
-        .await?;
-    let envelope: wire::SessionGraphV1 = serde_json::from_slice(&bytes)?;
+    let (mut graph, mut envelope) = read_graph(&mut attachment, graph.clone()).await?;
     let mut host = cleromancy::CleromancyHost::candidate(envelope.clone().into_graph()?)?;
     if inspect {
         let c = cleromancy::Consultation::new(host);
@@ -99,33 +86,99 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
         let edits = Arc::new(Mutex::new(Vec::new()));
         host.record_edits(edits.clone());
-        let (c, detail) = fixture::fixture_on(host);
+        let (_c, detail) = fixture::fixture_on(host);
         let edits = std::mem::take(&mut *edits.lock().unwrap());
-        let intent = IntentInvocation {
-            session: graph.session.clone(),
-            target: sceno::InstanceId(0),
-            observed_epoch: graph.scene.epoch,
-            observed_revision: graph.scene.revision,
-            intent: wire::APPLY_EDITS_INTENT.into(),
-            payload: serde_json::to_vec(&wire::ApplyEditsV1::checked(envelope.revision, edits))?,
-        };
-        let response = attachment
-            .client_mut()
-            .request_body(CarrierRequestBody::Intent(intent))
-            .await?;
-        if !matches!(
-            response,
-            CarrierResponseBody::Intent(IntentResult::Accepted)
-        ) {
-            return Err(format!("fixture refused: {response:?}").into());
+        // Bound the carrier message without weakening domain validation. Each
+        // prefix admitted below is itself a complete replay-valid candidate.
+        let mut offset = 0;
+        let mut batches = Vec::new();
+        while offset < edits.len() {
+            let mut candidate = envelope.clone().into_graph()?;
+            let mut bytes = 0;
+            let mut accepted = 0;
+            for (index, edit) in edits[offset..].iter().enumerate() {
+                bytes += serde_json::to_vec(edit)?.len() + 1;
+                if bytes > 180_000 {
+                    break;
+                }
+                mere::kernel::graph::replay_captured_deltas_onto(
+                    &mut candidate,
+                    vec![edit.clone()],
+                );
+                if cleromancy::host::validate_divination_graph(&candidate).is_ok() {
+                    accepted = index + 1;
+                }
+            }
+            if accepted == 0 {
+                return Err("one valid fixture stage exceeds the bounded carrier batch".into());
+            }
+            let batch = edits[offset..offset + accepted].to_vec();
+            let intent = IntentInvocation {
+                session: graph.session.clone(),
+                target: sceno::InstanceId(0),
+                observed_epoch: graph.scene.epoch,
+                observed_revision: graph.scene.revision,
+                intent: wire::APPLY_EDITS_INTENT.into(),
+                payload: serde_json::to_vec(&wire::ApplyEditsV1::checked(
+                    envelope.revision,
+                    batch,
+                ))?,
+            };
+            let body = CarrierRequestBody::Intent(intent);
+            let encoded = serde_json::to_vec(&body)?.len();
+            if encoded > 900_000 {
+                return Err("fixture carrier exceeds the 900k acceptance bound".into());
+            }
+            let response = attachment.client_mut().request_body(body).await?;
+            if !matches!(
+                response,
+                CarrierResponseBody::Intent(IntentResult::Accepted)
+            ) {
+                return Err(format!("fixture stage refused: {response:?}").into());
+            }
+            offset += accepted;
+            batches.push(serde_json::json!({"deltas":accepted,"encoded_body_bytes":encoded}));
+            let opened = attachment.client_mut().open_session().await?;
+            let request = route::requests(&opened.descriptor)
+                .ok_or("missing graph after fixture stage")?
+                .1;
+            (graph, envelope) = read_graph(&mut attachment, request).await?;
+        }
+        let installed = cleromancy::Consultation::new(cleromancy::CleromancyHost::candidate(
+            envelope.into_graph()?,
+        )?);
+        if installed.detail(&detail.session.id)? != detail {
+            return Err("admitted fixture differs from its calculated source".into());
         }
         println!(
             "{}",
             serde_json::to_string_pretty(
-                &serde_json::json!({"session":detail.session,"detail":detail,"catalog":c.catalog()?,"public_fixture":"calculated readings with repeated position occurrences; not an OS-random cast"})
+                &serde_json::json!({"session":detail.session,"detail":detail,"batches":batches,"public_fixture":"calculated readings with repeated position occurrences; not an OS-random cast"})
             )?
         );
     }
     attachment.close().await?;
     Ok(())
+}
+
+async fn read_graph(
+    attachment: &mut ReservoirAttachment,
+    request: chirograph::ProjectionRequest,
+) -> Result<(chirograph::ProjectionSnapshot, wire::SessionGraphV1), Box<dyn std::error::Error>> {
+    let graph = attachment.client_mut().snapshot(request).await?;
+    let mut cards = HashMap::new();
+    for request in route::card_requests(&graph) {
+        let bytes = attachment
+            .client_mut()
+            .resource(request.session, request.resource)
+            .await?;
+        cards.insert(request.resource, bytes);
+    }
+    let request = route::session_graph_request(&graph, &cards).ok_or("missing complete graph")?;
+    let bytes = attachment
+        .client_mut()
+        .resource(request.session, request.resource)
+        .await?;
+    let envelope: wire::SessionGraphV1 = serde_json::from_slice(&bytes)?;
+    Ok((graph, envelope))
 }
