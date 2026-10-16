@@ -1,0 +1,26 @@
+wait
+advance
+wait
+c4-reveal open-neighborhood
+settle 2
+c4-click open-neighborhood
+wait
+assert snap sessions == 3
+assert snap readings == 3
+assert snap reflections == 1
+assert snap ambient-scene == grid.default
+assert snap ambient-still == true
+assert snap ambient-memory == 2
+assert snap ambient-kept == 2
+assert snap ambient-error == false
+reveal class ambient-canvas-holder
+settle 2
+capture reopened-grid
+c4-reveal ambient-examine
+settle 2
+assert text Saved memory
+capture reopened-saved-history
+c4-reveal save-neighborhood
+settle 2
+c4-key save-neighborhood
+wait

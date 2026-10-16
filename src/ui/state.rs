@@ -334,6 +334,20 @@ impl ConsultationUi {
         self.status = ConsultationStatus::ViewingSession(session_id);
     }
 
+    /// An unsolicited owner focus projection is inspection, not completion of
+    /// the product transaction already queued on the worker.
+    pub(crate) fn present_external_session(
+        &mut self,
+        catalog: ConsultationCatalog,
+        detail: ConsultationDetail,
+    ) {
+        let pending = self.status.is_busy().then(|| self.status.clone());
+        self.present_session(catalog, detail);
+        if let Some(status) = pending {
+            self.status = status;
+        }
+    }
+
     pub fn present_comparison(
         &mut self,
         catalog: ConsultationCatalog,
@@ -741,6 +755,44 @@ mod refresh_tests {
         assert!(ui.request_typed_decks().is_some());
         assert!(ui.status.is_busy());
         assert!(ui.request_typed_decks().is_none());
+    }
+
+    #[test]
+    fn owner_focus_refresh_cannot_complete_loading_or_a_neighborhood_request() {
+        struct Entropy;
+        impl crate::moirai::clotho::EntropySource for Entropy {
+            fn next_u64(&mut self) -> Result<u64, crate::ReadingError> {
+                Ok(0)
+            }
+        }
+        let mut c =
+            crate::Consultation::new(crate::CleromancyHost::empty(muniment::MemoryBackend::new()));
+        let field = pollster::block_on(c.install_builtin_tarot_at(1)).unwrap();
+        let context = pollster::block_on(c.save_context_at(
+            ContextDraft::new("Refresh", "What is still pending?", ""),
+            1,
+        ))
+        .unwrap();
+        let detail = pollster::block_on(c.read_at_with_entropy(
+            &context,
+            &field,
+            SelectionMode::Calculated,
+            2000,
+            2,
+            &mut Entropy,
+        ))
+        .unwrap();
+        let mut ui = ConsultationUi::new(c.catalog().unwrap());
+        ui.request_session(detail.session.id.clone());
+        ui.present_external_session(c.catalog().unwrap(), detail.clone());
+        assert_eq!(ui.status, ConsultationStatus::LoadingSession);
+        ui.status = ConsultationStatus::SavingSetup;
+        ui.present_external_session(c.catalog().unwrap(), detail.clone());
+        assert_eq!(ui.status, ConsultationStatus::SavingSetup);
+        let context = c.ambient_context(&detail.session.id, "focus").unwrap();
+        ui.present_neighborhood(c.catalog().unwrap(), detail, context);
+        assert!(!ui.status.is_busy());
+        assert!(ui.neighborhood_view().is_some());
     }
 
     #[test]
