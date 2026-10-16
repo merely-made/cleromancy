@@ -1,0 +1,49 @@
+wait 1800
+assert snap catalog-ready == true
+show-mere
+wait 1800
+settle 8
+c5-control-reveal session:192f911344c2d7ec6622a6e4d5336c50587d209159689c80d6b3316a131f93d9
+settle 8
+c5-control-click session:192f911344c2d7ec6622a6e4d5336c50587d209159689c80d6b3316a131f93d9
+wait 1800
+assert snap product-busy == false
+assert snap inference-count == 0
+c5-control-reveal inference-formula
+settle 8
+c5-control-click inference-formula
+wait 1800
+assert snap product-busy == false
+assert snap inference-formula-count == 1
+reveal class formula-inference
+settle 8
+capture formula-prompt
+c5-control-reveal inference-model
+settle 8
+c5-control-click inference-model
+wait 3600
+assert snap product-busy == false
+assert snap inference-count == 2
+assert snap inference-model-count == 1
+assert snap inference-kept-count == 0
+reveal class model-inference
+settle 8
+capture model-prompt
+c7-control-reveal inference-keep-model
+settle 8
+c7-control-click inference-keep-model
+wait 1800
+assert snap product-busy == false
+assert snap inference-kept-count == 1
+reveal class model-inference
+settle 8
+capture kept-model-prompt
+resize 420 760
+wait
+reveal class formula-inference
+settle 8
+capture compact-formula-prompt
+
+reveal class model-inference
+settle 8
+capture compact-model-prompt
