@@ -47,6 +47,7 @@ mod projection;
 mod records;
 mod replay;
 mod situation;
+mod inference;
 mod sky;
 mod spreads;
 mod summary;

@@ -286,6 +286,33 @@ impl mesquite::Product for Product {
             .with_field("ambient-error", ui.ambient.error.is_some().to_string());
         if let Some(detail) = ui.detail() {
             snapshot = snapshot
+                .with_field("inference-count", detail.inferences.len().to_string())
+                .with_field(
+                    "inference-kept-count",
+                    detail.kept_inferences.len().to_string(),
+                )
+                .with_field(
+                    "inference-formula-count",
+                    detail
+                        .inferences
+                        .iter()
+                        .filter(|r| {
+                            matches!(r.generation, crate::inference::Generation::Formula { .. })
+                        })
+                        .count()
+                        .to_string(),
+                )
+                .with_field(
+                    "inference-model-count",
+                    detail
+                        .inferences
+                        .iter()
+                        .filter(|r| {
+                            matches!(r.generation, crate::inference::Generation::Model { .. })
+                        })
+                        .count()
+                        .to_string(),
+                )
                 .with_field("situation", detail.situation.is_some().to_string())
                 .with_field(
                     "situation-place",
@@ -417,6 +444,13 @@ impl mesquite::Product for Product {
             std::fs::write(self.dir.join("ambient.json"),serde_json::to_vec_pretty(&serde_json::json!({"view":context.view,"data":context.data,"memory":ctx.runner.state().consultation.catalog.ambient_memory,"ticks":ctx.runner.state().consultation.ambient.ticks,"error":ctx.runner.state().consultation.ambient.error})) .map_err(|e|e.to_string())?).map_err(|e|e.to_string())?;
         }
         if let Some(detail) = ctx.runner.state().consultation.detail() {
+            if !detail.inferences.is_empty() {
+                std::fs::write(
+                    self.dir.join("generated-reading.json"),
+                    serde_json::to_vec_pretty(detail).map_err(|e| e.to_string())?,
+                )
+                .map_err(|e| e.to_string())?;
+            }
             if detail.situation.is_some() {
                 std::fs::write(
                     self.dir.join("situated-reading.json"),
@@ -455,9 +489,24 @@ impl ScenarioDriver<'_, '_> {
         if let Some(command) = line
             .strip_prefix("c4-")
             .or_else(|| line.strip_prefix("c5-control-"))
+            .or_else(|| line.strip_prefix("c7-control-"))
         {
             let (action, key) = command.split_once(' ').ok_or("C4 expects action and key")?;
-            let key = if key == "history" {
+            let key = if key == "inference-keep-model" {
+                let detail = self
+                    .ctx
+                    .runner
+                    .state()
+                    .consultation
+                    .detail()
+                    .ok_or("no current reading")?;
+                let record = detail
+                    .inferences
+                    .iter()
+                    .find(|r| matches!(r.generation, crate::inference::Generation::Model { .. }))
+                    .ok_or("no stored model prompt")?;
+                format!("inference-keep:{}", record.digest())
+            } else if key == "history" {
                 let data = self
                     .ctx
                     .runner

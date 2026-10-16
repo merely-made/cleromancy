@@ -41,6 +41,14 @@ pub enum ConsultationAction {
     },
     ClearGrantedContext,
     InstallTarotDecks,
+    GenerateInference {
+        session_id: String,
+        model: bool,
+    },
+    KeepInference {
+        session_id: String,
+        digest: String,
+    },
     Read {
         context: ConsultationContext,
         field_digest: String,

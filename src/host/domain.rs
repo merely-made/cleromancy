@@ -16,8 +16,9 @@ use crate::{
     ThreeCardSpread,
 };
 
-const DOMAIN_FACETS: [&str; 16] = [
+const DOMAIN_FACETS: [&str; 17] = [
     crate::situation::SITUATION_FACET,
+    crate::inference::INFERENCE_FACET,
     AMBIENT_VIEW_FACET,
     AMBIENT_MEMORY_FACET,
     CONTEXT_FACET,
@@ -105,6 +106,7 @@ impl<B: Backend> CleromancyHost<B> {
         self.astrology_facts()?;
         self.sky_day_facts()?;
         self.reading_situations()?;
+        self.generated_inferences()?;
         self.validate_ambient_records()?;
 
         let readings = self.canonical_facet_values(

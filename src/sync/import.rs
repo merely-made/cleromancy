@@ -28,6 +28,18 @@ pub fn import_sync_projection<B: Backend>(
     projection: &SyncProjection,
     selection: CleromancySyncSelection,
 ) -> Result<CleromancySyncImport, CleromancySyncError> {
+    if selection.includes_reflections() {
+        let mut candidate = CleromancyHost::candidate(host.graph().clone())?;
+        import_validated_projection(&mut candidate, projection, selection)?;
+        crate::host::validate_divination_graph(candidate.graph())?;
+    }
+    import_validated_projection(host, projection, selection)
+}
+fn import_validated_projection<B: Backend>(
+    host: &mut CleromancyHost<B>,
+    projection: &SyncProjection,
+    selection: CleromancySyncSelection,
+) -> Result<CleromancySyncImport, CleromancySyncError> {
     if matches!(selection, CleromancySyncSelection::Off) {
         return Ok(CleromancySyncImport::default());
     }
@@ -37,6 +49,7 @@ pub fn import_sync_projection<B: Backend>(
         ));
     }
     for conflict in &projection.conflicts {
+        let inference = format!("/facet/{}", crate::inference::INFERENCE_FACET);
         let situation = format!("/facet/{SITUATION_FACET}");
         let context = format!("/facet/{CONTEXT_FACET}");
         let field = format!("/facet/{FIELD_FACET}");
@@ -61,13 +74,16 @@ pub fn import_sync_projection<B: Backend>(
                     || conflict.target.ends_with(&chart)
                     || conflict.target.ends_with(&facts)
                     || conflict.target.ends_with(&concurrence)))
-            || (selection.includes_reflections() && conflict.target.ends_with(&reflection))
+            || (selection.includes_reflections()
+                && (conflict.target.ends_with(&reflection)
+                    || conflict.target.ends_with(&inference)))
         {
             return Err(CleromancySyncError::Conflict(conflict.target.clone()));
         }
     }
 
     let DecodedTruth {
+        inferences,
         situations,
         contexts,
         fields,
@@ -424,8 +440,19 @@ pub fn import_sync_projection<B: Backend>(
     for record in &situations {
         host.insert_reading_situation(record)?;
     }
+    for record in &inferences {
+        host.insert_generated_inference(record)?;
+        if projection
+            .graph
+            .get_node_by_url(&format!("cleromancy://inference/{}", record.digest()))
+            .is_some_and(|(_, n)| n.tags.contains("kept"))
+        {
+            host.keep_generated_inference(&record.digest())?;
+        }
+    }
     Ok(CleromancySyncImport {
         situations: situations.len(),
+        inferences: inferences.len(),
         contexts: contexts.len(),
         fields: fields.len(),
         readings: readings.len(),

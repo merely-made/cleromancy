@@ -13,6 +13,7 @@ path = "../src/lib.rs"
 [features]
 default = ["portable-core"]
 portable-core = []
+local-inference = []
 legacy-receipts = []
 # These names mirror root-library cfgs but do not widen this acceptance
 # package beyond its supported sky-timeline gate.
@@ -83,3 +84,7 @@ path = "../tests/shuffled_deck.rs"
 [[test]]
 name = "situation"
 path = "../tests/situation.rs"
+
+[[test]]
+name = "inference"
+path = "../tests/inference.rs"

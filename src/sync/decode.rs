@@ -3,6 +3,7 @@
 
 //! Decoding of the selected facets from an H7 materialized projection.
 
+use crate::inference::{GeneratedInference, INFERENCE_FACET};
 use crate::situation::{ReadingSituation, SITUATION_FACET};
 use chartulary::FacetId;
 use graphshell::personal_sync::SyncProjection;
@@ -22,6 +23,7 @@ use crate::{
 /// Every selected projection value, decoded, identity-checked, and sorted by
 /// canonical identity.
 pub(super) struct DecodedTruth {
+    pub(super) inferences: Vec<GeneratedInference>,
     pub(super) situations: Vec<ReadingSituation>,
     pub(super) contexts: Vec<ContextSnapshot>,
     pub(super) fields: Vec<Field>,
@@ -40,6 +42,8 @@ pub(super) fn decode_projection(
     projection: &SyncProjection,
     selection: CleromancySyncSelection,
 ) -> Result<DecodedTruth, CleromancySyncError> {
+    let inference_facet = FacetId::new(INFERENCE_FACET);
+    let mut inferences = Vec::<GeneratedInference>::new();
     let situation_facet = FacetId::new(SITUATION_FACET);
     let mut situations = Vec::<ReadingSituation>::new();
     let context_facet = FacetId::new(CONTEXT_FACET);
@@ -65,6 +69,7 @@ pub(super) fn decode_projection(
     let mut concurrences = Vec::<Concurrence>::new();
     let mut reflections = Vec::<Reflection>::new();
     for (_, node) in projection.graph.nodes() {
+        let inference = projection.graph.facets().get(&node.id, &inference_facet);
         let situation = projection.graph.facets().get(&node.id, &situation_facet);
         let context = projection.graph.facets().get(&node.id, &context_facet);
         let field = projection.graph.facets().get(&node.id, &field_facet);
@@ -84,6 +89,7 @@ pub(super) fn decode_projection(
         let concurrence = projection.graph.facets().get(&node.id, &concurrence_facet);
         let reflection = projection.graph.facets().get(&node.id, &reflection_facet);
         if [
+            inference.is_some(),
             situation.is_some(),
             context.is_some(),
             field.is_some(),
@@ -107,7 +113,21 @@ pub(super) fn decode_projection(
                 "carries more than one Cleromancy domain facet",
             ));
         }
-        if selection.includes_sessions()
+        if selection.includes_reflections()
+            && let Some(value) = inference
+        {
+            let record: GeneratedInference = serde_json::from_value(value.clone())
+                .map_err(|e| invalid(node.id, e.to_string()))?;
+            record
+                .validate()
+                .map_err(|e| invalid(node.id, e.to_string()))?;
+            validate_identity(
+                node.id,
+                node.url(),
+                &format!("cleromancy://inference/{}", record.digest()),
+            )?;
+            inferences.push(record);
+        } else if selection.includes_sessions()
             && let Some(value) = situation
         {
             let record: ReadingSituation = serde_json::from_value(value.clone())
@@ -268,6 +288,7 @@ pub(super) fn decode_projection(
             reflections.push(reflection);
         }
     }
+    inferences.sort_by_key(GeneratedInference::digest);
     situations.sort_by_key(ReadingSituation::digest);
     contexts.sort_by_key(|context| context.digest());
     fields.sort_by_key(Field::digest);
@@ -282,6 +303,7 @@ pub(super) fn decode_projection(
     reflections.sort_by(|left, right| left.id.cmp(&right.id));
 
     Ok(DecodedTruth {
+        inferences,
         situations,
         contexts,
         fields,

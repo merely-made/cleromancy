@@ -130,3 +130,7 @@ pre, code { font-family: var(--tabard-font-code, monospace); }
 .situation-controls, .recorded-situation { min-width: 0; margin: 12px 0; }
 .situation-controls p, .recorded-situation li { line-height: 1.5; overflow-wrap: anywhere; }
 .recorded-situation li { margin-bottom: 10px; }
+
+.reading-inferences, .generated-inference { min-width: 0; margin: 12px 0; }
+.reading-inferences p { line-height: 1.5; overflow-wrap: anywhere; }
+.inference-inputs { white-space: pre-wrap; overflow-wrap: anywhere; }

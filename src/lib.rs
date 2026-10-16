@@ -30,6 +30,7 @@ pub mod field;
 pub mod granted_ambient;
 pub mod host;
 pub mod intents;
+pub mod inference;
 pub mod moirai;
 pub mod narrative;
 #[cfg(not(feature = "portable-core"))]

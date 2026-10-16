@@ -97,6 +97,7 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
             }
             children.push(narrative_view(&narrative, &focused));
             children.push(super::situation::recorded(detail));
+            children.push(super::inference::generated(ui, detail));
             children.push(super::ambient::neighborhood(ui));
             if let Some(card) = super::typed_card::card_view(ui, detail, &focused) {
                 children.push(card);
