@@ -1,0 +1,12 @@
+{
+  "schema": "cleromancy.dramatis-main-publication/v1",
+  "date": "2026-10-16",
+  "qualified_checkpoint": "ff0c14dfecf7873c919db300c5bbcd6bc52ce2da",
+  "remote_revision_verified": "ff0c14dfecf7873c919db300c5bbcd6bc52ce2da",
+  "remote": "origin",
+  "ref": "refs/heads/main",
+  "tested_source": "7aeb7584e6594229e397ebffe6610bb8849e3b16",
+  "dramatis_source": "2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59",
+  "qualification_receipt": "dramatis-main-intake_20261016.json",
+  "scope": "Software/build qualified main intake; subsequent publication-record commit changes no product logic, lock inputs or frozen evidence. No natal contract or renewed native qualification."
+}
