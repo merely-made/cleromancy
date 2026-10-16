@@ -205,6 +205,23 @@ impl<B: Backend> Consultation<B> {
     }
 
     pub fn detail(&self, session_id: &str) -> Result<ConsultationDetail, ConsultationError> {
+        self.detail_projection(session_id, true)
+    }
+
+    /// C4 consumes reading facts, not generated C7 records. Keep its source
+    /// projection independent; complete resident validation verifies every C7
+    /// record separately before any candidate is admitted.
+    pub(crate) fn ambient_detail(
+        &self,
+        session_id: &str,
+    ) -> Result<ConsultationDetail, ConsultationError> {
+        self.detail_projection(session_id, false)
+    }
+    fn detail_projection(
+        &self,
+        session_id: &str,
+        include_inferences: bool,
+    ) -> Result<ConsultationDetail, ConsultationError> {
         let session = self.host.reading_session_for_id(session_id)?;
         let context = self.host.context_for_digest(&session.context_digest)?;
         let field = self.host.field_for_digest(&session.field_digest)?;
@@ -213,7 +230,11 @@ impl<B: Backend> Consultation<B> {
         let concurrences = self.host.concurrences_for_session(&session.id)?;
         let spread_template = self.host.spread_template_for_session(&session.id)?;
         let situation = self.host.situation_for_session(&session.id)?;
-        let inferences = self.host.inferences_for_session(session_id)?;
+        let inferences = if include_inferences {
+            self.host.inferences_for_session(session_id)?
+        } else {
+            Vec::new()
+        };
         let kept_inferences = inferences
             .iter()
             .filter_map(|r| {

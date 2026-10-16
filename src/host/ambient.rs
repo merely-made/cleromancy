@@ -20,12 +20,14 @@ impl<B: Backend> CleromancyHost<B> {
         let mut reader = CleromancyHost::empty(muniment::MemoryBackend::new());
         reader.graph = self.graph.clone();
         let consultation = Consultation::new(reader);
-        let detail = consultation.detail(session_id).map_err(ambient_error)?;
+        let detail = consultation
+            .ambient_detail(session_id)
+            .map_err(ambient_error)?;
         let catalog = consultation.catalog().map_err(ambient_error)?;
         let history = catalog
             .session_summaries
             .iter()
-            .map(|s| consultation.detail(&s.session_id))
+            .map(|s| consultation.ambient_detail(&s.session_id))
             .collect::<Result<Vec<_>, _>>()
             .map_err(ambient_error)?;
         AmbientEngines::default()

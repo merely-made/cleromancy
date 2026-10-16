@@ -168,3 +168,18 @@ fn real_local_esp_generation_records_actual_output_and_artifact_identity() {
         std::fs::write(path, serde_json::to_vec_pretty(&record).unwrap()).unwrap();
     }
 }
+
+#[test]
+fn generated_records_do_not_change_existing_card_neighborhoods() {
+    let (mut host, session) = fixture();
+    let position = &session.placements[0].position;
+    let before = host.card_neighborhood(&session.id, position).unwrap();
+    let record = GeneratedInference::formula(host.inference_inputs(&session.id).unwrap());
+    host.insert_generated_inference(&record).unwrap();
+    let after = host.card_neighborhood(&session.id, position).unwrap();
+    assert_eq!(
+        serde_json::to_vec(&before).unwrap(),
+        serde_json::to_vec(&after).unwrap()
+    );
+    cleromancy::host::validate_divination_graph(host.graph()).unwrap();
+}
