@@ -1,0 +1,17 @@
+Enter the vault passphrase to start. 
+[cambium-winit] accessibility Installed, 89 nodes projected
+cleromancy: visible install-decks install-typed-decks: painted=(43.0, 42.0, 327.0, 36.0), visible=(43.0, 42.0, 327.0, 36.0)
+cleromancy: visible crosswalk crosswalk:cleromancy.tarot/marseille-complete-reflective-v1: painted=(424.0, 42.0, 693.0, 36.0), visible=(424.0, 42.0, 693.0, 36.0)
+cleromancy: visible crosswalk return-drawn-card: painted=(424.0, 42.0, 693.0, 36.0), visible=(424.0, 42.0, 693.0, 36.0)
+cleromancy: waited 5 frames
+cleromancy: waited 8 frames
+cleromancy: waited 18 frames
+cleromancy: waited 0 frames
+cleromancy: captured typed-card
+cleromancy: captured traditions-wide
+cleromancy: captured marseille-crosswalk
+cleromancy: waited 0 frames
+cleromancy: captured compact-card
+cleromancy: captured compact-book-t
+cleromancy: captured compact-thierens
+cleromancy: RESULT ok (107 frames, 6 captures)

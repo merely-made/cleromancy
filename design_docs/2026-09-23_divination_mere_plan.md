@@ -5,8 +5,9 @@
 source `ef014d7`: two complete typed text decks, independent cited traditions,
 non-writing crosswalk inspection and versioned interpretation data. Native
 create/reopen qualification passes with eight reviewed originals and exact
-reopened identities/card payload. Publication and standalone-daemon validator
-intake remain separate. The
+reopened identities/card payload. Source is published and Mere’s standalone
+validator intake is separately qualified and published; the
+[publication ledger](../receipts/c3-publication-intake_20261016.json) records both. The
 [C3 software receipt](../receipts/c3-software-qualification_20261016.json) owns
 that scope. C1/C2 are integrated on main; C2's original native qualification
 remains bound to `fcfb1a4` and Mere `8b08c98b2`. Later family software intake
@@ -519,8 +520,11 @@ All previous receipts remain frozen. The
 107 creation and 55 fresh-process reopening frames, eight directly reviewed
 originals, reachable crosswalk controls, compact stacked traditions and exact
 session/reading/reflection IDs plus byte-equal card payload. This qualifies
-the bounded C3 product flow; the standalone-daemon intake and full shared
-cutover wall remain separate.
+the bounded C3 product flow. Mere’s standalone-validator receiving intake
+subsequently passes at `7a656097e` and is published at `289d64b1a`: four parent
+tests with one intentional child entry point, complete decks across three
+owners and byte-preserving tamper refusal. The full shared cutover wall remains
+separate.
 
 Cards carry typed axes: number, suit, arcana, and, from each tradition,
 element, planet and sign. Several tarot decks are available as typed data.
@@ -928,3 +932,15 @@ orientations and positions, and interpretations.
   reopening. The [native receipt](../receipts/c3-native-qualification_20261016.json)
   records scope and the separate default-profile inspection window. The earlier
   software receipt and all historical evidence remain unchanged.
+
+- 2026-10-16: Published C3 source/native receipt at `277c6bd`. Mere receives
+  that portable validator, preserves the original untyped owner fixture and
+  adds a two-deck three-owner replay/tamper fixture. It passes before and after
+  merging the incoming Mere main: four parent tests, zero failures, one child
+  entry point launched by parents. The integrated source is `7a656097e`; its
+  receipt is published at `289d64b1a`. Only the Cleromancy lock source changes
+  against incoming main. Published exact native originals and final software
+  gate logs alongside the [publication ledger](../receipts/c3-publication-intake_20261016.json).
+  All 219 prior tracked receipt files, 12 C2 original capture hashes and both
+  product locks remain exact. C3 bounded product and receiving qualification
+  are complete; C4/C5 and the full shared cutover wall remain separate.

@@ -244,5 +244,6 @@ Existing fields and all prior receipts retain their identities. Fixed minor
 prompts disclose model-assisted editorial provenance. The
 [native receipt](../receipts/c3-native-qualification_20261016.json) records
 107 creation and 55 reopening frames, eight reviewed originals, exact IDs and
-byte-equal card payload. Publication and standalone-daemon validator intake
-remain separate; C4/C5 and shared-wall acceptance are separate.
+byte-equal card payload. The [publication ledger](../receipts/c3-publication-intake_20261016.json)
+records published C3 source and Mere’s separately qualified receiving intake.
+C4/C5 and shared-wall acceptance remain separate.
