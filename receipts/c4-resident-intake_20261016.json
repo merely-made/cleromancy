@@ -1,0 +1,64 @@
+{
+  "schema": "cleromancy.c4-resident-intake/v1",
+  "date": "2026-10-16",
+  "status": "Product and receiving implementation qualified locally; coordinated publication pending approval",
+  "product_source": "d6ea9f700cf712de364cf9cb61e74f26d12cd64a",
+  "native_supplier": "72f9c5c73ab9ddd8ba761524388c2406a6d6ffcf",
+  "receiving_source": "8111fa2ba37cfd41797e9f8427b3348af0e4f342",
+  "receiving_receipt_commit": "9b6da81db661ebbb36377f5123010e18c9199820",
+  "receiving_core": "d6ea9f700cf712de364cf9cb61e74f26d12cd64a",
+  "receiving_result": {
+    "passed": 5,
+    "failed": 0,
+    "intentionally_ignored_child_entry": 1,
+    "command": "cargo test --locked -p djinn --test embedded_reservoir_validation",
+    "receipt": "c4_20261016/mere-receiving-qualification.json"
+  },
+  "ownership": "Product supplies immutable full-candidate validator; embedded and daemon residents admit writes. Native root patches cleromancy-core-acceptance to the current product core, receiving Mere lock pins the exact same product Git commit.",
+  "qualified_pin_changes": {
+    "mere": [
+      "59f88e63",
+      "b35819ed",
+      "72f9c5c73"
+    ],
+    "knot": [
+      "11b07360",
+      "0020a50e6ff10a9244f4965609b31f4ac79fd753"
+    ],
+    "other_external_families": "C3 product cohorts remain unchanged; integrated receiving Mere separately retains newer upstream Dramatis19be4831"
+  },
+  "publication": {
+    "approval_required": true,
+    "instruction": "Commit locally; do not push without asking.",
+    "per_repo": [
+      {
+        "repository": "mere",
+        "checkpoint_objects": [
+          "b35819edc7c338284a32a36198b1a54a81c48678",
+          "72f9c5c73ab9ddd8ba761524388c2406a6d6ffcf"
+        ],
+        "final_receiving": "8111fa2ba37cfd41797e9f8427b3348af0e4f342",
+        "action": "Publish frozen supplier objects and integrated receiving commits with their receipts; preserve current upstream main ancestry. Verify locked fetchability before main updates."
+      },
+      {
+        "repository": "cleromancy",
+        "checkpoint_objects": [
+          "c1ff50c0ff6ef824a947ccbd5e223c8fd1d691b2",
+          "d6ea9f700cf712de364cf9cb61e74f26d12cd64a"
+        ],
+        "action": "Publish immutable portable-core checkpoints and final C4 source/receipt head; preserve all prior receipts and source identities."
+      }
+    ],
+    "order": "Stage coordinated supplier/core refs first, verify that exact locked objects are fetchable independently, then update both reviewed main heads and verify remote identities. No force push or history rewrite.",
+    "observed_remote": {
+      "cleromancy": "300ebbd405d81f98cbae5d052def15304080fd4e",
+      "mere": "b31363d2d2de081a76fbbac5272e5f02df851d58"
+    },
+    "scope": "No new publication has been performed for the final chunk/ordered-grid/product/receiving checkpoints. The earlier shared spiral source checkpoint was published separately."
+  },
+  "limits": [
+    "Native uses the frozen supplier, not a relabeled integrated receiving build",
+    "Complete shared wall and stack-wide dynamics milestones remain separately governed",
+    "C5 draw behavior remains unchanged"
+  ]
+}

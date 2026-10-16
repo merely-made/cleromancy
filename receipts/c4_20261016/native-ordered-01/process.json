@@ -1,0 +1,11 @@
+{
+  "phase": "reopen",
+  "exit": 0,
+  "timeout": false,
+  "prompts": 1,
+  "elapsed_seconds": 153.99,
+  "binary_sha256": "71363169ed2ea64009c6c6636e3bbd4f76da4e4a3550c893a1f490850ffeb5b9",
+  "scenario_sha256": "3567f6a8ae10ea9191618f4fb2a1ca472a64826c566ec08155dca237878119bb",
+  "public_fixture": true,
+  "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+}

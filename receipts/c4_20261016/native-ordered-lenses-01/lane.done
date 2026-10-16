@@ -1,0 +1,10 @@
+RESULT ok
+waited 105 frames
+waited 68 frames
+waited 92 frames
+captured three-families
+captured history-lens
+capture three-families 2320x1520 digest=0b6cac82369aa3db file=/Users/markik/Code/testing/cleromancy/c4-20261016/native-ordered-lenses-01/three-families.png
+capture history-lens 2320x1520 digest=9f79c950d6cb3c16 file=/Users/markik/Code/testing/cleromancy/c4-20261016/native-ordered-lenses-01/history-lens.png
+frames: 2 captured, 0 blank, 2 distinct digests
+presentation: 311 frames, 313 redraws, 2 unpresented redraws

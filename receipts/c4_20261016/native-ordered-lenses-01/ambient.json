@@ -1,0 +1,1362 @@
+{
+  "data": {
+    "disclosures": [
+      "Relations use saved divination records only; no neighboring mere is opened and no place or network source is enabled.",
+      "Distances describe this arrangement, not a measured distance between symbolic meanings."
+    ],
+    "items": [
+      {
+        "body": "What beginning asks for curiosity before certainty, and what risk can remain bounded?",
+        "id": "card:76e3f14a01d97af340be9fc6fc816f9b47896763585c832fdea171e0ec823eaa:major-fool",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/76e3f14a01d97af340be9fc6fc816f9b47896763585c832fdea171e0ec823eaa#card/major-fool",
+        "title": "The Fool · Marseille structure · reflective edition 1"
+      },
+      {
+        "body": "What competing impulses need one direction before momentum becomes useful?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-chariot",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-chariot",
+        "title": "The Chariot · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What ending must be acknowledged before transformation becomes more than a slogan?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-death",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-death",
+        "title": "Death · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "Which attachment gains power by remaining unnamed, and what choice would loosen it?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-devil",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-devil",
+        "title": "The Devil · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "Which boundary or structure would make action safer and clearer?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-emperor",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-emperor",
+        "title": "The Emperor · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What needs material care, patience, or room to grow?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-empress",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-empress",
+        "title": "The Empress · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What changes when you stop forcing movement and examine the situation from its underside?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-hanged-man",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-hanged-man",
+        "title": "The Hanged Man · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What becomes audible when you step back from other people's urgency?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-hermit",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-hermit",
+        "title": "The Hermit · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "Which inherited practice is teaching you, and which part deserves examination?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-hierophant",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-hierophant",
+        "title": "The Hierophant · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What is not yet ready to be explained, and what can be learned by listening longer?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-high-priestess",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-high-priestess",
+        "title": "The High Priestess · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What prior decision is asking to be heard, revised, or answered now?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-judgement",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-judgement",
+        "title": "Judgement · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What consequence, obligation, or imbalance needs an exact accounting?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-justice",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-justice",
+        "title": "Justice · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What choice would align relationship, desire, and stated values?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-lovers",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-lovers",
+        "title": "The Lovers · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "Which available skill or tool becomes effective when you give it undivided attention?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-magician",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-magician",
+        "title": "The Magician · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "Which fear, image, or ambiguity needs observation before it is treated as fact?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-moon",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-moon",
+        "title": "The Moon · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What small source of orientation can you trust while repair is still incomplete?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-star",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-star",
+        "title": "The Star · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "Where would patient courage accomplish more than force?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-strength",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-strength",
+        "title": "Strength · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What becomes simpler when it is brought fully into view and shared?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-sun",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-sun",
+        "title": "The Sun · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "Which elements need proportion, exchange, and repeated adjustment rather than a dramatic solution?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-temperance",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-temperance",
+        "title": "Temperance · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What unstable structure is being exposed, and what truth survives its collapse?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-tower",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-tower",
+        "title": "The Tower · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "Which change is already in motion, and where can you respond without pretending to control it?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-wheel-of-fortune",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-wheel-of-fortune",
+        "title": "Wheel of Fortune · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What is actually complete, and what new threshold appears when you name that completion?",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-world",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-world",
+        "title": "The World · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What beginning can you make with what is already available? Consider thought, language and disagreement.",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-ace",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-ace",
+        "title": "Ace of Swords · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What practice needs sustained attention? Consider thought, language and disagreement.",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-eight",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-eight",
+        "title": "Eight of Swords · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What friction needs an honest response? Consider thought, language and disagreement.",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-five",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-five",
+        "title": "Five of Swords · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "Which structure supports this, and where does it constrain? Consider thought, language and disagreement.",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-four",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-four",
+        "title": "Four of Swords · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What responsibility can you exercise with clear boundaries? Consider thought, language and disagreement.",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-king",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-king",
+        "title": "King of Swords · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "Where are you directing your effort, and can you change pace? Consider thought, language and disagreement.",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-knight",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-knight",
+        "title": "Knight of Swords · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What can you complete before taking on more? Consider thought, language and disagreement.",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-nine",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-nine",
+        "title": "Nine of Swords · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What can you learn by approaching this as a beginner? Consider thought, language and disagreement.",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-page",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-page",
+        "title": "Page of Swords · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "How could care and discernment guide your response? Consider thought, language and disagreement.",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-queen",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-queen",
+        "title": "Queen of Swords · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What assumption is worth examining? Consider thought, language and disagreement.",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-seven",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-seven",
+        "title": "Seven of Swords · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What exchange could restore proportion? Consider thought, language and disagreement.",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-six",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-six",
+        "title": "Six of Swords · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What has reached its limit, and what follows? Consider thought, language and disagreement.",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-ten",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-ten",
+        "title": "Ten of Swords · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What could grow through cooperation? Consider thought, language and disagreement.",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-three",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-three",
+        "title": "Three of Swords · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "Which two needs ask to be considered together? Consider thought, language and disagreement.",
+        "id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-two",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-two",
+        "title": "Two of Swords · Rider–Waite–Smith · reflective edition 1"
+      },
+      {
+        "body": "What did I learn?\nA single lens on your question. Notice what fits your experience and what does not.\nWhat beginning asks for curiosity before certainty, and what risk can remain bounded?",
+        "id": "history:0013507c296953c25621234f1fc6f2f10df5d54d10730a071af1a1cd152b57ee:focus",
+        "position": "focus",
+        "session_id": "0013507c296953c25621234f1fc6f2f10df5d54d10730a071af1a1cd152b57ee",
+        "source": "cleromancy://reading/b3ad5f5ae23e69051476ba128945a071dd3c4aaa77834744f12ff55f66045638",
+        "title": "The Fool · Focus"
+      },
+      {
+        "body": "Where did I begin?\nA single lens on your question. Notice what fits your experience and what does not.\nWhat beginning asks for curiosity before certainty, and what risk can remain bounded?",
+        "id": "history:61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661:focus",
+        "position": "focus",
+        "session_id": "61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661",
+        "source": "cleromancy://reading/1ea1918ef5bf0b5ca3bf97956a1869458c062ef4a431bb32d9ea4318daaaf925",
+        "title": "The Fool · Focus"
+      },
+      {
+        "body": "Named “What needs attention” in your layout “Three concerns”. It follows on from “A next step”: a possible next step. “What I must release” questions it: release and attention.\nWhat beginning asks for curiosity before certainty, and what risk can remain bounded?",
+        "id": "reading:5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd:attention",
+        "position": "attention",
+        "session_id": "5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd",
+        "source": "cleromancy://reading/54e2c20f93f342da59b3712cbad658d1c045a0e9fabce18ba18a520774b9c37c",
+        "title": "What needs attention · The Fool"
+      },
+      {
+        "body": "Named “A next step” in your layout “Three concerns”. “What needs attention” follows on from it: a possible next step.\nWhat beginning asks for curiosity before certainty, and what risk can remain bounded?",
+        "id": "reading:5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd:next",
+        "position": "next",
+        "session_id": "5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd",
+        "source": "cleromancy://reading/54e2c20f93f342da59b3712cbad658d1c045a0e9fabce18ba18a520774b9c37c",
+        "title": "A next step · The Fool"
+      },
+      {
+        "body": "Earlier reflection 1",
+        "id": "reflection:04df9d641f7aa5f61c570f18d683df6a58f0541c7ee6284b2c4cf984ef06e799:focus",
+        "position": "focus",
+        "session_id": "61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661",
+        "source": "cleromancy://reflection/04df9d641f7aa5f61c570f18d683df6a58f0541c7ee6284b2c4cf984ef06e799",
+        "title": "Reflection · Focus"
+      },
+      {
+        "body": "Earlier reflection 2",
+        "id": "reflection:794cdef5531500636287a04f67507e5b737597ded28400fb2a5c6439b5c21dc3:focus",
+        "position": "focus",
+        "session_id": "0013507c296953c25621234f1fc6f2f10df5d54d10730a071af1a1cd152b57ee",
+        "source": "cleromancy://reflection/794cdef5531500636287a04f67507e5b737597ded28400fb2a5c6439b5c21dc3",
+        "title": "Reflection · Focus"
+      },
+      {
+        "body": "Moon in Scorpio at 15.500°. Stored observation from 2026-10-16T12:00:00Z using cleromancy.astrology/signs-and-aspects-from-positions/v1. Saved alongside the reading; association does not establish causation.",
+        "id": "sky:d2747d19d69844fa6e8035574127f1f2fdbd5f50743cde359722802fc90c514e:Moon",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://astrology/facts/d2747d19d69844fa6e8035574127f1f2fdbd5f50743cde359722802fc90c514e",
+        "title": "Moon · Scorpio"
+      },
+      {
+        "body": "Sun in Libra at 15.000°. Stored observation from 2026-10-16T12:00:00Z using cleromancy.astrology/signs-and-aspects-from-positions/v1. Saved alongside the reading; association does not establish causation.",
+        "id": "sky:d2747d19d69844fa6e8035574127f1f2fdbd5f50743cde359722802fc90c514e:Sun",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://astrology/facts/d2747d19d69844fa6e8035574127f1f2fdbd5f50743cde359722802fc90c514e",
+        "title": "Sun · Libra"
+      },
+      {
+        "body": "3000 milliseconds since the Unix epoch. This timestamp is stored with the reading session.",
+        "id": "time:5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd",
+        "position": null,
+        "session_id": null,
+        "source": "cleromancy://session/5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd",
+        "title": "Recorded draw time"
+      }
+    ],
+    "position": "foundation",
+    "relations": [
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/76e3f14a01d97af340be9fc6fc816f9b47896763585c832fdea171e0ec823eaa#card/major-fool"
+        ],
+        "family": "correspondence",
+        "id": "00cdfebabf70acca401c6d14a4e61dac1459900cb74241f62f96ed272018a8fd",
+        "item_id": "card:76e3f14a01d97af340be9fc6fc816f9b47896763585c832fdea171e0ec823eaa:major-fool",
+        "method": "typed-archetype-crosswalk/v1",
+        "reason": "The same typed card identity in another saved deck; printed numbering may differ.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-empress"
+        ],
+        "family": "correspondence",
+        "id": "04d4796c2e04eb73234a32ae4ed88018659b41966828b956547462709b1c68d7",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-empress",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-tower"
+        ],
+        "family": "correspondence",
+        "id": "12e835280918d576010c494e80a6ed9471d26a086c62756da90ae8ae8fd0cd70",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-tower",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-page",
+          "https://benebellwen.com/wp-content/uploads/2013/02/mathers-and-felkin-golden-dawn-book-t-the-tarot-1888.pdf"
+        ],
+        "family": "correspondence",
+        "id": "1cc1da88accfc87cc70f0dc06a54004a4311369b144425b18a50da5d4f75d3c6",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-page",
+        "method": "tradition-element-equality/v1",
+        "reason": "Shared element: Air. Golden Dawn / Book T · Book T: The Tarot (Mathers/Felkin transcription) · undated transcription · cleromancy-transcription/1. Only explicit transcribed values are compared.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-judgement"
+        ],
+        "family": "correspondence",
+        "id": "220df4022ecd8777cb267e36521f1033a803c9effb905a7c556c8ef01d07632c",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-judgement",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-sun"
+        ],
+        "family": "correspondence",
+        "id": "30699b47a78b2202c3db7167437f9713edcb887c68feb163d0630eef089ed7c2",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-sun",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-strength"
+        ],
+        "family": "correspondence",
+        "id": "320ea681847d4d21935a5a27ce2456b28119f2b2805c260b365aa591300428bd",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-strength",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.recorded-situation",
+        "evidence": [
+          "cleromancy://concurrence/0929374076b95c85b2c243501ae7c570c57f49c9fe2c500fc705bb99aeb7ce0b",
+          "cleromancy://astrology/facts/d2747d19d69844fa6e8035574127f1f2fdbd5f50743cde359722802fc90c514e"
+        ],
+        "family": "situation",
+        "id": "336bbd6db1d6cd70dd4a5661d7f66ce71dae04bd17bda7eb8ba76ce0e4fa9497",
+        "item_id": "sky:d2747d19d69844fa6e8035574127f1f2fdbd5f50743cde359722802fc90c514e:Moon",
+        "method": "saved-astrology-concurrence/v1",
+        "reason": "A recorded chart fact explicitly associated with this reading; no current sky is fetched.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-eight",
+          "https://benebellwen.com/wp-content/uploads/2013/02/mathers-and-felkin-golden-dawn-book-t-the-tarot-1888.pdf"
+        ],
+        "family": "correspondence",
+        "id": "370f2c77e0257a189f35eeb419f8eebfca3dec4e9a86461335ad1d5cbf6de669",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-eight",
+        "method": "tradition-element-equality/v1",
+        "reason": "Shared element: Air. Golden Dawn / Book T · Book T: The Tarot (Mathers/Felkin transcription) · undated transcription · cleromancy-transcription/1. Only explicit transcribed values are compared.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-ace",
+          "https://benebellwen.com/wp-content/uploads/2013/02/mathers-and-felkin-golden-dawn-book-t-the-tarot-1888.pdf"
+        ],
+        "family": "correspondence",
+        "id": "4dba1240b6667c59a0805798f745254c109c3bb531c47bb2fed862e6ea53b056",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-ace",
+        "method": "tradition-element-equality/v1",
+        "reason": "Shared element: Air. Golden Dawn / Book T · Book T: The Tarot (Mathers/Felkin transcription) · undated transcription · cleromancy-transcription/1. Only explicit transcribed values are compared.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-magician"
+        ],
+        "family": "correspondence",
+        "id": "54d977008b89899f9a0e4df49796dab70d96cc7c228b0f3eaa89f45f9cae03de",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-magician",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-ten",
+          "https://benebellwen.com/wp-content/uploads/2013/02/mathers-and-felkin-golden-dawn-book-t-the-tarot-1888.pdf"
+        ],
+        "family": "correspondence",
+        "id": "56a36afa3d4499d889fb00f06c2b1996e29bc205601cd727498e033e02585d0e",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-ten",
+        "method": "tradition-element-equality/v1",
+        "reason": "Shared element: Air. Golden Dawn / Book T · Book T: The Tarot (Mathers/Felkin transcription) · undated transcription · cleromancy-transcription/1. Only explicit transcribed values are compared.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-emperor"
+        ],
+        "family": "correspondence",
+        "id": "707b03ff927a44c3a04e8e4d71e82f03de5b9582a6015cbd3e088f23af15af47",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-emperor",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-star"
+        ],
+        "family": "correspondence",
+        "id": "70c4f65ad30c37bf3d29295426a3da9ff5b7fc5dfbf54fe283994a096f7d503e",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-star",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-king",
+          "https://benebellwen.com/wp-content/uploads/2013/02/mathers-and-felkin-golden-dawn-book-t-the-tarot-1888.pdf"
+        ],
+        "family": "correspondence",
+        "id": "722cf96ab9b176d7aedd37a796f8513a2c0d2b53edc4c8bc3091877c8b65caab",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-king",
+        "method": "tradition-element-equality/v1",
+        "reason": "Shared element: Air. Golden Dawn / Book T · Book T: The Tarot (Mathers/Felkin transcription) · undated transcription · cleromancy-transcription/1. Only explicit transcribed values are compared.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.authored-positions",
+        "evidence": [
+          "cleromancy://session/5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd"
+        ],
+        "family": "spread",
+        "id": "72401f8e5312dbcd1406d3e8d5a340db01c514eee483c00d3ce0cd2e358d0eae",
+        "item_id": "reading:5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd:attention",
+        "method": "saved-spread-position/v1",
+        "reason": "Saved authored relation: Questions: release and attention",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.card-history",
+        "evidence": [
+          "cleromancy://reading/54e2c20f93f342da59b3712cbad658d1c045a0e9fabce18ba18a520774b9c37c",
+          "cleromancy://session/61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661"
+        ],
+        "family": "history",
+        "id": "754d516f6099f2eb3aa1e8dedd676b37ad98648986b6e50669a0c66694e58a15",
+        "item_id": "history:61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661:focus",
+        "method": "prior-card-occurrence/v1",
+        "reason": "An earlier saved occurrence of this typed card. Position occurrences remain distinct.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-devil"
+        ],
+        "family": "correspondence",
+        "id": "794f0a684df6b44972d2b5eb1da03732e95fbe6680c17ba7de380a82df64aebf",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-devil",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-seven",
+          "https://benebellwen.com/wp-content/uploads/2013/02/mathers-and-felkin-golden-dawn-book-t-the-tarot-1888.pdf"
+        ],
+        "family": "correspondence",
+        "id": "7a4e50dd0893e86ca956d3e0e65f06ce5fd139ecbd160726d58b5149d30da419",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-seven",
+        "method": "tradition-element-equality/v1",
+        "reason": "Shared element: Air. Golden Dawn / Book T · Book T: The Tarot (Mathers/Felkin transcription) · undated transcription · cleromancy-transcription/1. Only explicit transcribed values are compared.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-five",
+          "https://benebellwen.com/wp-content/uploads/2013/02/mathers-and-felkin-golden-dawn-book-t-the-tarot-1888.pdf"
+        ],
+        "family": "correspondence",
+        "id": "7eaca4a2362fd8b35d1391774c130ca9d5695074241821459fb8bfda45bbbdd9",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-five",
+        "method": "tradition-element-equality/v1",
+        "reason": "Shared element: Air. Golden Dawn / Book T · Book T: The Tarot (Mathers/Felkin transcription) · undated transcription · cleromancy-transcription/1. Only explicit transcribed values are compared.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.authored-positions",
+        "evidence": [
+          "cleromancy://session/5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd"
+        ],
+        "family": "spread",
+        "id": "7eae9187be6f09a12bedf76e288b87679d4f12a1a3bf90a261cacbb1a4b3f020",
+        "item_id": "reading:5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd:next",
+        "method": "saved-spread-position/v1",
+        "reason": "Another position in this saved reading; co-membership is not an inferred synergy.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.card-history",
+        "evidence": [
+          "cleromancy://session/61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661"
+        ],
+        "family": "history",
+        "id": "8719adf6cf98ff809a8474ad9090822a2b020d9f9cbf6c1589833090e2e7d065",
+        "item_id": "reflection:04df9d641f7aa5f61c570f18d683df6a58f0541c7ee6284b2c4cf984ef06e799:focus",
+        "method": "saved-reflection-on-occurrence/v1",
+        "reason": "A saved reflection on the reading session containing this earlier occurrence; it is not a claim that the note names this particular card.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.card-history",
+        "evidence": [
+          "cleromancy://reading/54e2c20f93f342da59b3712cbad658d1c045a0e9fabce18ba18a520774b9c37c",
+          "cleromancy://session/0013507c296953c25621234f1fc6f2f10df5d54d10730a071af1a1cd152b57ee"
+        ],
+        "family": "history",
+        "id": "8aefd5f8bba616f75205957ffd218e0dbf03ae06f1f8225bed3da553cce548ad",
+        "item_id": "history:0013507c296953c25621234f1fc6f2f10df5d54d10730a071af1a1cd152b57ee:focus",
+        "method": "prior-card-occurrence/v1",
+        "reason": "An earlier saved occurrence of this typed card. Position occurrences remain distinct.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-hierophant"
+        ],
+        "family": "correspondence",
+        "id": "8afe749818645ddd9a1554b695d28198aad1e765ea67f10cbcba6dc2e5a2be55",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-hierophant",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-lovers"
+        ],
+        "family": "correspondence",
+        "id": "9af14dd4b9bdce7631d3b9ffaabec246ffc3359f80ddf8f34fda8bb88a0c4cd5",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-lovers",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-two",
+          "https://benebellwen.com/wp-content/uploads/2013/02/mathers-and-felkin-golden-dawn-book-t-the-tarot-1888.pdf"
+        ],
+        "family": "correspondence",
+        "id": "a93fc6f5d3df1a6770f863b28a5e45fd4e5d675354f49ef78f70f6c3464841ac",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-two",
+        "method": "tradition-element-equality/v1",
+        "reason": "Shared element: Air. Golden Dawn / Book T · Book T: The Tarot (Mathers/Felkin transcription) · undated transcription · cleromancy-transcription/1. Only explicit transcribed values are compared.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-chariot"
+        ],
+        "family": "correspondence",
+        "id": "a9de3926bd3da2a9543b16aca3523eb4e660184f523c2e5aa873d923968049da",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-chariot",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-temperance"
+        ],
+        "family": "correspondence",
+        "id": "ad6162715b10b007c2d5aec12cd5c261ec4c6793b50f9fbd7188bdff7bc85138",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-temperance",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-four",
+          "https://benebellwen.com/wp-content/uploads/2013/02/mathers-and-felkin-golden-dawn-book-t-the-tarot-1888.pdf"
+        ],
+        "family": "correspondence",
+        "id": "b034fe5747a7d30efaa8d467ca192895ef96df07900cec27ada1eab0dd6f5e12",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-four",
+        "method": "tradition-element-equality/v1",
+        "reason": "Shared element: Air. Golden Dawn / Book T · Book T: The Tarot (Mathers/Felkin transcription) · undated transcription · cleromancy-transcription/1. Only explicit transcribed values are compared.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-wheel-of-fortune"
+        ],
+        "family": "correspondence",
+        "id": "b045696c13d435c2a0be8e6900e92205003689c06a2564942fa527aa3db9c251",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-wheel-of-fortune",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-moon"
+        ],
+        "family": "correspondence",
+        "id": "b17cd18bd1549510de44d6fce93dc3d32d878673454f3fa0a10f2916283d559f",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-moon",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.recorded-situation",
+        "evidence": [
+          "cleromancy://concurrence/0929374076b95c85b2c243501ae7c570c57f49c9fe2c500fc705bb99aeb7ce0b",
+          "cleromancy://astrology/facts/d2747d19d69844fa6e8035574127f1f2fdbd5f50743cde359722802fc90c514e"
+        ],
+        "family": "situation",
+        "id": "b37a74a3474ab9b79f45eb2c27573b6f9fa71fa90f446817a76903b46ae28b50",
+        "item_id": "sky:d2747d19d69844fa6e8035574127f1f2fdbd5f50743cde359722802fc90c514e:Sun",
+        "method": "saved-astrology-concurrence/v1",
+        "reason": "A recorded chart fact explicitly associated with this reading; no current sky is fetched.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-hanged-man"
+        ],
+        "family": "correspondence",
+        "id": "c0e1a404b450f50442ac9284ca0d91f3436f4143942cee2bd4b46d70718faca8",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-hanged-man",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-six",
+          "https://benebellwen.com/wp-content/uploads/2013/02/mathers-and-felkin-golden-dawn-book-t-the-tarot-1888.pdf"
+        ],
+        "family": "correspondence",
+        "id": "c3866502ad86dd7c8e5e12355197ac91d42160cef3a1a2cc6499f640732a254b",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-six",
+        "method": "tradition-element-equality/v1",
+        "reason": "Shared element: Air. Golden Dawn / Book T · Book T: The Tarot (Mathers/Felkin transcription) · undated transcription · cleromancy-transcription/1. Only explicit transcribed values are compared.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.recorded-situation",
+        "evidence": [
+          "cleromancy://session/5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd"
+        ],
+        "family": "situation",
+        "id": "c5e063ec1cfcf9169c32469643886671fdf759c933528cd45915609976fba395",
+        "item_id": "time:5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd",
+        "method": "saved-reading-time/v1",
+        "reason": "The time actually recorded with this reading.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-death"
+        ],
+        "family": "correspondence",
+        "id": "c8ae9e5f8b19fc9dfe949bacc5e66c40a39f2135f9a4b7a23d4d5f8c39a4a245",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-death",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-world"
+        ],
+        "family": "correspondence",
+        "id": "d453bb69f1add34a7640c4e0ac8a1f467741aaff64a22a20ba0c5753931e44d1",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-world",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-queen",
+          "https://benebellwen.com/wp-content/uploads/2013/02/mathers-and-felkin-golden-dawn-book-t-the-tarot-1888.pdf"
+        ],
+        "family": "correspondence",
+        "id": "e1132b5b18f905d42a971bd63b63c3a5cbc07cfeb160fae79c7f6bd5a05650ae",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-queen",
+        "method": "tradition-element-equality/v1",
+        "reason": "Shared element: Air. Golden Dawn / Book T · Book T: The Tarot (Mathers/Felkin transcription) · undated transcription · cleromancy-transcription/1. Only explicit transcribed values are compared.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.card-history",
+        "evidence": [
+          "cleromancy://session/0013507c296953c25621234f1fc6f2f10df5d54d10730a071af1a1cd152b57ee"
+        ],
+        "family": "history",
+        "id": "e489c68e021a989df479aaba7f380167b53bce4cbb4e50c1fce2f5af50333303",
+        "item_id": "reflection:794cdef5531500636287a04f67507e5b737597ded28400fb2a5c6439b5c21dc3:focus",
+        "method": "saved-reflection-on-occurrence/v1",
+        "reason": "A saved reflection on the reading session containing this earlier occurrence; it is not a claim that the note names this particular card.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-three",
+          "https://benebellwen.com/wp-content/uploads/2013/02/mathers-and-felkin-golden-dawn-book-t-the-tarot-1888.pdf"
+        ],
+        "family": "correspondence",
+        "id": "e52392154d4330f105ceac6618abd24218fd7018753e45d4ac72ee3e14063afc",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-three",
+        "method": "tradition-element-equality/v1",
+        "reason": "Shared element: Air. Golden Dawn / Book T · Book T: The Tarot (Mathers/Felkin transcription) · undated transcription · cleromancy-transcription/1. Only explicit transcribed values are compared.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-justice"
+        ],
+        "family": "correspondence",
+        "id": "f2c3a5e80374ba49c540bc2f20ccbdd23aeeed49aaf2673b0d48f24d62167a8f",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-justice",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-nine",
+          "https://benebellwen.com/wp-content/uploads/2013/02/mathers-and-felkin-golden-dawn-book-t-the-tarot-1888.pdf"
+        ],
+        "family": "correspondence",
+        "id": "f6c8901384485920965a4d7dc5ee2f850b2fef368a756eeb4353fa5919596e41",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-nine",
+        "method": "tradition-element-equality/v1",
+        "reason": "Shared element: Air. Golden Dawn / Book T · Book T: The Tarot (Mathers/Felkin transcription) · undated transcription · cleromancy-transcription/1. Only explicit transcribed values are compared.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-high-priestess"
+        ],
+        "family": "correspondence",
+        "id": "fa33eadbcfce4c0831865860b936a1da8d028992435c4073834d3f068f6dc0f9",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-high-priestess",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/major-hermit"
+        ],
+        "family": "correspondence",
+        "id": "fc009b24cd78cae13aebb35c5e5ecc64dc7ff62e9e872430d2b3998b90ac88a4",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-hermit",
+        "method": "typed-arcana-equality/v1",
+        "reason": "Same typed arcana: Major. This is a category relationship, not a similarity score.",
+        "version": 1
+      },
+      {
+        "engine": "cleromancy.typed-correspondence",
+        "evidence": [
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867",
+          "cleromancy://field/aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867#card/swords-knight",
+          "https://benebellwen.com/wp-content/uploads/2013/02/mathers-and-felkin-golden-dawn-book-t-the-tarot-1888.pdf"
+        ],
+        "family": "correspondence",
+        "id": "fec344239cae85fb1ed6e0a02b6c6e4e6940cfd0b3c1e42910220ebac7dde292",
+        "item_id": "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-knight",
+        "method": "tradition-element-equality/v1",
+        "reason": "Shared element: Air. Golden Dawn / Book T · Book T: The Tarot (Mathers/Felkin transcription) · undated transcription · cleromancy-transcription/1. Only explicit transcribed values are compared.",
+        "version": 1
+      }
+    ],
+    "revision": "d161177c4d69735b2bb82b71c2c2e41b6e31f66a52e26fc459049ba70dd7d92e",
+    "session_id": "5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd",
+    "subject": {
+      "body": "What beginning asks for curiosity before certainty, and what risk can remain bounded?",
+      "id": "reading:5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd:foundation",
+      "position": "foundation",
+      "session_id": "5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd",
+      "source": "cleromancy://reading/54e2c20f93f342da59b3712cbad658d1c045a0e9fabce18ba18a520774b9c37c",
+      "title": "The Fool"
+    }
+  },
+  "error": null,
+  "memory": [
+    {
+      "kept": true,
+      "memory": {
+        "examined_at_ms": 1792135897319,
+        "id": "2a5ac14587a277eae0533f285344a07f4bf5b78aa77a37492e5b8a932e61d8e2",
+        "item": {
+          "body": "Where did I begin?\nA single lens on your question. Notice what fits your experience and what does not.\nWhat beginning asks for curiosity before certainty, and what risk can remain bounded?",
+          "id": "history:61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661:focus",
+          "position": "focus",
+          "session_id": "61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661",
+          "source": "cleromancy://reading/1ea1918ef5bf0b5ca3bf97956a1869458c062ef4a431bb32d9ea4318daaaf925",
+          "title": "The Fool · Focus"
+        },
+        "position": "foundation",
+        "reasons": [
+          {
+            "engine": "cleromancy.card-history",
+            "evidence": [
+              "cleromancy://reading/54e2c20f93f342da59b3712cbad658d1c045a0e9fabce18ba18a520774b9c37c",
+              "cleromancy://session/61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661"
+            ],
+            "family": "history",
+            "id": "754d516f6099f2eb3aa1e8dedd676b37ad98648986b6e50669a0c66694e58a15",
+            "item_id": "history:61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661:focus",
+            "method": "prior-card-occurrence/v1",
+            "reason": "An earlier saved occurrence of this typed card. Position occurrences remain distinct.",
+            "version": 1
+          }
+        ],
+        "schema": "cleromancy.ambient-memory/v1",
+        "session_id": "5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd"
+      }
+    },
+    {
+      "kept": true,
+      "memory": {
+        "examined_at_ms": 1792134369445,
+        "id": "a54dd3662e3632d415365ada1f68ec1f2a0ac37aebbfc7e7fec49655458add49",
+        "item": {
+          "body": "Earlier reflection 1",
+          "id": "reflection:04df9d641f7aa5f61c570f18d683df6a58f0541c7ee6284b2c4cf984ef06e799:focus",
+          "position": "focus",
+          "session_id": "61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661",
+          "source": "cleromancy://reflection/04df9d641f7aa5f61c570f18d683df6a58f0541c7ee6284b2c4cf984ef06e799",
+          "title": "Reflection · Focus"
+        },
+        "position": "foundation",
+        "reasons": [
+          {
+            "engine": "cleromancy.card-history",
+            "evidence": [
+              "cleromancy://session/61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661"
+            ],
+            "family": "history",
+            "id": "8719adf6cf98ff809a8474ad9090822a2b020d9f9cbf6c1589833090e2e7d065",
+            "item_id": "reflection:04df9d641f7aa5f61c570f18d683df6a58f0541c7ee6284b2c4cf984ef06e799:focus",
+            "method": "saved-reflection-on-occurrence/v1",
+            "reason": "A saved reflection on the reading session containing this earlier occurrence; it is not a claim that the note names this particular card.",
+            "version": 1
+          }
+        ],
+        "schema": "cleromancy.ambient-memory/v1",
+        "session_id": "5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd"
+      }
+    },
+    {
+      "kept": true,
+      "memory": {
+        "examined_at_ms": 1792133383965,
+        "id": "e048e0d1936141d344e1eb148e0d060c967a170728b575c0c1dbab3067998edf",
+        "item": {
+          "body": "What did I learn?\nA single lens on your question. Notice what fits your experience and what does not.\nWhat beginning asks for curiosity before certainty, and what risk can remain bounded?",
+          "id": "history:0013507c296953c25621234f1fc6f2f10df5d54d10730a071af1a1cd152b57ee:focus",
+          "position": "focus",
+          "session_id": "0013507c296953c25621234f1fc6f2f10df5d54d10730a071af1a1cd152b57ee",
+          "source": "cleromancy://reading/b3ad5f5ae23e69051476ba128945a071dd3c4aaa77834744f12ff55f66045638",
+          "title": "The Fool · Focus"
+        },
+        "position": "foundation",
+        "reasons": [
+          {
+            "engine": "cleromancy.card-history",
+            "evidence": [
+              "cleromancy://reading/54e2c20f93f342da59b3712cbad658d1c045a0e9fabce18ba18a520774b9c37c",
+              "cleromancy://session/0013507c296953c25621234f1fc6f2f10df5d54d10730a071af1a1cd152b57ee"
+            ],
+            "family": "history",
+            "id": "8aefd5f8bba616f75205957ffd218e0dbf03ae06f1f8225bed3da553cce548ad",
+            "item_id": "history:0013507c296953c25621234f1fc6f2f10df5d54d10730a071af1a1cd152b57ee:focus",
+            "method": "prior-card-occurrence/v1",
+            "reason": "An earlier saved occurrence of this typed card. Position occurrences remain distinct.",
+            "version": 1
+          }
+        ],
+        "schema": "cleromancy.ambient-memory/v1",
+        "session_id": "5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd"
+      }
+    }
+  ],
+  "ticks": 0,
+  "view": {
+    "families": [
+      "history"
+    ],
+    "foreground": [
+      "history:0013507c296953c25621234f1fc6f2f10df5d54d10730a071af1a1cd152b57ee:focus",
+      "history:61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661:focus",
+      "reflection:04df9d641f7aa5f61c570f18d683df6a58f0541c7ee6284b2c4cf984ef06e799:focus"
+    ],
+    "pan_milli": [
+      0,
+      0
+    ],
+    "paused": true,
+    "position": "foundation",
+    "positions": {
+      "card:76e3f14a01d97af340be9fc6fc816f9b47896763585c832fdea171e0ec823eaa:major-fool": [
+        80000,
+        0
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-chariot": [
+        160000,
+        0
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-death": [
+        240000,
+        0
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-devil": [
+        320000,
+        0
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-emperor": [
+        400000,
+        0
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-empress": [
+        480000,
+        0
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-hanged-man": [
+        0,
+        56000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-hermit": [
+        80000,
+        56000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-hierophant": [
+        160000,
+        56000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-high-priestess": [
+        240000,
+        56000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-judgement": [
+        320000,
+        56000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-justice": [
+        400000,
+        56000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-lovers": [
+        480000,
+        56000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-magician": [
+        0,
+        112000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-moon": [
+        80000,
+        112000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-star": [
+        160000,
+        112000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-strength": [
+        240000,
+        112000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-sun": [
+        320000,
+        112000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-temperance": [
+        400000,
+        112000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-tower": [
+        480000,
+        112000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-wheel-of-fortune": [
+        0,
+        168000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:major-world": [
+        80000,
+        168000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-ace": [
+        160000,
+        168000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-eight": [
+        240000,
+        168000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-five": [
+        320000,
+        168000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-four": [
+        400000,
+        168000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-king": [
+        480000,
+        168000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-knight": [
+        0,
+        224000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-nine": [
+        80000,
+        224000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-page": [
+        160000,
+        224000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-queen": [
+        240000,
+        224000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-seven": [
+        320000,
+        224000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-six": [
+        400000,
+        224000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-ten": [
+        480000,
+        224000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-three": [
+        0,
+        280000
+      ],
+      "card:aaaec3fa7d1e97ee4065d33429a15a19956f92c90dcdf6c9d57e99ae682f2867:swords-two": [
+        80000,
+        280000
+      ],
+      "history:0013507c296953c25621234f1fc6f2f10df5d54d10730a071af1a1cd152b57ee:focus": [
+        160000,
+        280000
+      ],
+      "history:61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661:focus": [
+        240000,
+        280000
+      ],
+      "reading:5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd:attention": [
+        320000,
+        280000
+      ],
+      "reading:5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd:foundation": [
+        0,
+        0
+      ],
+      "reading:5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd:next": [
+        400000,
+        280000
+      ],
+      "reflection:04df9d641f7aa5f61c570f18d683df6a58f0541c7ee6284b2c4cf984ef06e799:focus": [
+        480000,
+        280000
+      ],
+      "reflection:794cdef5531500636287a04f67507e5b737597ded28400fb2a5c6439b5c21dc3:focus": [
+        0,
+        336000
+      ],
+      "sky:d2747d19d69844fa6e8035574127f1f2fdbd5f50743cde359722802fc90c514e:Moon": [
+        80000,
+        336000
+      ],
+      "sky:d2747d19d69844fa6e8035574127f1f2fdbd5f50743cde359722802fc90c514e:Sun": [
+        160000,
+        336000
+      ],
+      "time:5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd": [
+        240000,
+        336000
+      ]
+    },
+    "reduced_motion": true,
+    "roles": {
+      "history:0013507c296953c25621234f1fc6f2f10df5d54d10730a071af1a1cd152b57ee:focus": "pinned",
+      "history:61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661:focus": "pinned",
+      "reflection:04df9d641f7aa5f61c570f18d683df6a58f0541c7ee6284b2c4cf984ef06e799:focus": "pinned"
+    },
+    "schema": "cleromancy.ambient-view/v1",
+    "session_id": "5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd",
+    "snapshot": {
+      "recipe": {
+        "definition": {
+          "appearance": {
+            "realization": "canvas",
+            "theme": "slate",
+            "title": "Card neighborhood"
+          },
+          "arrangement": {
+            "direction": "coordinates",
+            "kind": "grid.ordered",
+            "spacing": 16
+          },
+          "dynamics": {
+            "spec": "{\"realization\":{\"integrate\":{}},\"root\":{\"id\":\"flock.boids\",\"node\":\"preset\"},\"seed\":104375397257316,\"version\":1}",
+            "version": 1
+          },
+          "encoding": {
+            "color": null,
+            "label": {
+              "kind": "field",
+              "value": "label"
+            },
+            "x": {
+              "kind": "field",
+              "value": "order"
+            },
+            "y": {
+              "kind": "constant",
+              "value": "0"
+            }
+          },
+          "id": "cleromancy.card-neighborhood/v1",
+          "interaction": {
+            "pan": false,
+            "selection": "single",
+            "zoom": false
+          },
+          "label": "Card neighborhood",
+          "provenance": {
+            "author": "Cleromancy",
+            "note": "Disclosed occurrence labels and authored order; relationships retain owner explanations and method provenance.",
+            "source_revision": "1"
+          },
+          "reading": {
+            "key": "occurrence_id",
+            "kind": "nodes",
+            "value": null
+          },
+          "sources": {
+            "divination": {
+              "expects_generation": "d161177c4d69735b2bb82b71c2c2e41b6e31f66a52e26fc459049ba70dd7d92e",
+              "source": {
+                "authority": "resident.divination",
+                "domain": "divination",
+                "resource": "reading:5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd:foundation"
+              }
+            }
+          },
+          "version": 1
+        },
+        "relationship_kind": null,
+        "requirements": {
+          "facet": "explained_relationships",
+          "min_occurrences": 2,
+          "min_relationships": 1
+        }
+      },
+      "selected_occurrence": "history:61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661:focus",
+      "selected_relationship": null,
+      "source_name": "divination"
+    },
+    "zoom_milli": 1000
+  }
+}

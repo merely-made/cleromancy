@@ -1,0 +1,26 @@
+RESULT ok
+waited 213 frames
+waited 87 frames
+waited 429 frames
+captured reading-with-neighborhood
+captured moving-constellation
+waited 77 frames
+captured examined-history
+waited 57 frames
+waited 160 frames
+waited 58 frames
+captured living-constellation
+captured still-grid
+waited 0 frames
+captured compact-grid
+captured compact-curation
+waited 256 frames
+capture reading-with-neighborhood 2320x1520 digest=7e34cb6f051dae4c file=/Users/markik/Code/testing/cleromancy/c4-20261016/native-ordered-01/reading-with-neighborhood.png
+capture moving-constellation 2320x1520 digest=e33870a9eef94153 file=/Users/markik/Code/testing/cleromancy/c4-20261016/native-ordered-01/moving-constellation.png
+capture examined-history 2320x1520 digest=426554e08efdf571 file=/Users/markik/Code/testing/cleromancy/c4-20261016/native-ordered-01/examined-history.png
+capture living-constellation 2320x1520 digest=cfc48e338beeba10 file=/Users/markik/Code/testing/cleromancy/c4-20261016/native-ordered-01/living-constellation.png
+capture still-grid 2320x1520 digest=14010de25203ba4a file=/Users/markik/Code/testing/cleromancy/c4-20261016/native-ordered-01/still-grid.png
+capture compact-grid 840x1520 digest=717038091f507827 file=/Users/markik/Code/testing/cleromancy/c4-20261016/native-ordered-01/compact-grid.png
+capture compact-curation 840x1520 digest=8d6d469ffd34f512 file=/Users/markik/Code/testing/cleromancy/c4-20261016/native-ordered-01/compact-curation.png
+frames: 7 captured, 0 blank, 7 distinct digests
+presentation: 1513 frames, 1514 redraws, 1 unpresented redraws
