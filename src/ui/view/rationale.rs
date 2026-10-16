@@ -14,6 +14,47 @@ pub(super) fn section(
     reading: &Reading,
 ) -> DetailSection {
     let receipt = &reading.receipt;
+    if let Some(draw) = &receipt.shuffle {
+        let source = match &draw.shuffle.source {
+            crate::ShuffleSource::OperatingSystem { .. } => {
+                "A recorded seed from operating-system randomness.".to_string()
+            },
+            crate::ShuffleSource::PublicSeed { seed, domain } => format!(
+                "Public seed “{seed}”, domain “{domain}”; the same inputs reproduce the entire deck."
+            ),
+        };
+        return DetailSection::new(
+            format!("{}: {}", position.label, reading.display_title()),
+            vec![
+                DetailRow::new("The position", position.meaning.clone()),
+                DetailRow::new(
+                    "The shuffle",
+                    format!(
+                        "Fisher–Yates with a versioned BLAKE3 stream: {}. One complete deck, cards taken from the top without replacement.",
+                        draw.shuffle.algorithm
+                    ),
+                ),
+                DetailRow::new("Randomness", source),
+                DetailRow::new(
+                    "This card",
+                    format!(
+                        "Card {} of {} drawn; {}.",
+                        draw.index + 1,
+                        draw.count,
+                        draw.orientation.label()
+                    ),
+                ),
+                DetailRow::new(
+                    "What influenced it",
+                    "Every card occupies one place in the shuffled deck. Context weights do not bias this shuffle.",
+                ),
+                DetailRow::new(
+                    "The interpretation",
+                    "The saved words are the deck's original card prompt. Reversal describes this placement; no reversed interpretation was generated.",
+                ),
+            ],
+        );
+    }
     let selection = match receipt.mode {
         SelectionMode::Cast => {
             "A fresh chance draw chose this result from the available possibilities, using their relative chances."

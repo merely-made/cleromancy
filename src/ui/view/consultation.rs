@@ -214,7 +214,7 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
         Box::new(
             el::<_, ConsultationUi, ()>(
                 "p",
-                "Calculated follows the highest disclosed qualified weight. Cast makes a fresh choice from operating-system cryptographic randomness. Derived hashes the public seed and domain into a replayable choice; it is not fresh entropy. Derived is single-card only. Multi-position layouts are always cast. Chosen chart facts are recorded as a concurrence, never as a cause or interpretation.",
+                "Calculated follows the highest disclosed qualified weight. For tarot, Cast shuffles once using operating-system randomness; Derived shuffles from your public seed and domain. Each card occupies one place in the deck, with upright or reversed orientation, and positions take cards from the top without replacement. Context weights do not bias a deck shuffle. Other collections retain their disclosed selection method. Chosen chart facts are saved alongside the reading.",
             )
             .attr("class", "selection-explanation"),
         ),

@@ -169,6 +169,9 @@ impl ReadingEngine {
         field: &Field,
         receipt: &Receipt,
     ) -> Result<Reading, ReadingError> {
+        if receipt.shuffle.is_some() {
+            return super::shuffle::replay(context, field, receipt);
+        }
         check(receipt.context_digest == context.digest(), "context digest")?;
         check(receipt.field_digest == field.digest(), "field digest")?;
         let qualified = match &receipt.enrichment {
@@ -191,7 +194,7 @@ impl ReadingEngine {
                 )?;
                 require_calculable(field)?;
                 lachesis::calculated_index(&qualified)?
-            }
+            },
             SelectionMode::Cast => {
                 let sample = receipt
                     .sample
@@ -203,7 +206,7 @@ impl ReadingEngine {
                     "cast derivation digest",
                 )?;
                 lachesis::index_for_sample(&qualified, sample)?
-            }
+            },
             SelectionMode::Derived => {
                 let sample = receipt
                     .sample
@@ -220,7 +223,7 @@ impl ReadingEngine {
                     "derived digest",
                 )?;
                 lachesis::index_for_sample(&qualified, sample)?
-            }
+            },
         };
         check(receipt.selected_index == index, "selected index")?;
         check(
@@ -306,6 +309,7 @@ fn make_receipt(
         enrichment,
         derivation: selection.derivation,
         derivation_digest: selection.derivation_digest,
+        shuffle: None,
         qualified_weights: qualified.weights.clone(),
         total_weight: qualified.total,
         sample: selection.sample,
@@ -329,25 +333,25 @@ fn receipt_algorithm(field: &Field, mode: SelectionMode, enriched: bool) -> &'st
         (CONTEXTUAL_WEIGHT_RULE, SelectionMode::Calculated, false) => "contextual-weight/max/v1",
         (CONTEXTUAL_WEIGHT_RULE, SelectionMode::Cast, false) => {
             "os-csprng/rejection-u64+contextual-weight/v1"
-        }
+        },
         (CONTEXTUAL_WEIGHT_RULE, SelectionMode::Derived, false) => {
             "derived-blake3/rejection-u64+contextual-weight/v1"
-        }
+        },
         (UNIFORM_RULE, SelectionMode::Cast, false) => "os-csprng/rejection-u64+uniform/v1",
         (UNIFORM_RULE, SelectionMode::Derived, false) => "derived-blake3/rejection-u64+uniform/v1",
         (UNIFORM_DIE_RULE, SelectionMode::Cast, false) => "os-csprng/rejection-u64+uniform-die/v1",
         (UNIFORM_DIE_RULE, SelectionMode::Derived, false) => {
             "derived-blake3/rejection-u64+uniform-die/v1"
-        }
+        },
         (EXTERNAL_TERM_WEIGHT_RULE, SelectionMode::Calculated, true) => {
             "contextual-weight+external-term-share/max/v1"
-        }
+        },
         (EXTERNAL_TERM_WEIGHT_RULE, SelectionMode::Cast, true) => {
             "os-csprng/rejection-u64+contextual-weight+external-term-share/v1"
-        }
+        },
         (EXTERNAL_TERM_WEIGHT_RULE, SelectionMode::Derived, true) => {
             "derived-blake3/rejection-u64+contextual-weight+external-term-share/v1"
-        }
+        },
         _ => unreachable!("qualification succeeded only for a supported rule and evidence mode"),
     }
 }
@@ -407,7 +411,7 @@ fn require_calculable(field: &Field) -> Result<(), ReadingError> {
     match field.rules.as_str() {
         UNIFORM_RULE | UNIFORM_DIE_RULE => {
             Err(ReadingError::QualificationRequiresCast(field.rules.clone()))
-        }
+        },
         _ => Ok(()),
     }
 }

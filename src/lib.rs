@@ -119,9 +119,10 @@ pub use intents::{
     ThreeCardSpreadIntentPayload,
 };
 pub use reading::{
-    DERIVED_SELECTION_ALGORITHM, DERIVED_SELECTION_SCHEMA, DerivedSelection,
-    EXTERNAL_QUALIFICATION_ALGORITHM, EnrichmentQualification, Reading, ReadingEngine,
-    ReadingError, Receipt, SelectionMode,
+    DERIVED_SELECTION_ALGORITHM, DERIVED_SELECTION_SCHEMA, DeckDraw, DeckShuffle, DerivedSelection,
+    EXTERNAL_QUALIFICATION_ALGORITHM, EnrichmentQualification, Orientation, Reading, ReadingEngine,
+    ReadingError, Receipt, SHUFFLE_ALGORITHM, SHUFFLE_SCHEMA, SHUFFLED_RECEIPT_SCHEMA,
+    SelectionMode, ShuffleSource, ShuffledCard,
 };
 pub use servitor;
 pub use servitors::{ServitorAccess, ServitorAccessError};

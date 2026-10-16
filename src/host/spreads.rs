@@ -21,9 +21,59 @@ impl<B: Backend> CleromancyHost<B> {
         client_token: Option<String>,
         entropy: &mut impl EntropySource,
     ) -> Result<(ReadingSession, ThreeCardSpread, Vec<Reading>), HostError> {
-        let readings = (0..ThreeCardPosition::ALL.len())
-            .map(|_| ReadingEngine::cast_with(context, field, entropy))
-            .collect::<Result<Vec<_>, _>>()?;
+        let readings = if field.is_tarot() {
+            ReadingEngine::shuffle_with(context, field, ThreeCardPosition::ALL.len(), entropy)?
+        } else {
+            (0..ThreeCardPosition::ALL.len())
+                .map(|_| ReadingEngine::cast_with(context, field, entropy))
+                .collect::<Result<Vec<_>, _>>()?
+        };
+        self.finish_three_card(
+            context,
+            field,
+            readings,
+            created_at_ms,
+            client_token,
+            entropy,
+        )
+    }
+
+    pub fn record_three_card_spread_derived_at_with_entropy(
+        &mut self,
+        context: &ContextSnapshot,
+        field: &Field,
+        seed: &str,
+        domain: &str,
+        created_at_ms: u64,
+        client_token: Option<String>,
+        entropy: &mut impl EntropySource,
+    ) -> Result<(ReadingSession, ThreeCardSpread, Vec<Reading>), HostError> {
+        let readings = ReadingEngine::shuffle_derived(
+            context,
+            field,
+            ThreeCardPosition::ALL.len(),
+            seed,
+            domain,
+        )?;
+        self.finish_three_card(
+            context,
+            field,
+            readings,
+            created_at_ms,
+            client_token,
+            entropy,
+        )
+    }
+
+    fn finish_three_card(
+        &mut self,
+        context: &ContextSnapshot,
+        field: &Field,
+        readings: Vec<Reading>,
+        created_at_ms: u64,
+        client_token: Option<String>,
+        entropy: &mut impl EntropySource,
+    ) -> Result<(ReadingSession, ThreeCardSpread, Vec<Reading>), HostError> {
         let placements = ThreeCardPosition::ALL
             .into_iter()
             .zip(&readings)
@@ -74,11 +124,61 @@ impl<B: Backend> CleromancyHost<B> {
         entropy: &mut impl EntropySource,
     ) -> Result<(ReadingSession, Spread, Vec<Reading>), HostError> {
         template.validate()?;
-        let readings = template
-            .positions
-            .iter()
-            .map(|_| ReadingEngine::cast_with(context, field, entropy))
-            .collect::<Result<Vec<_>, _>>()?;
+        let readings = if field.is_tarot() {
+            ReadingEngine::shuffle_with(context, field, template.positions.len(), entropy)?
+        } else {
+            template
+                .positions
+                .iter()
+                .map(|_| ReadingEngine::cast_with(context, field, entropy))
+                .collect::<Result<Vec<_>, _>>()?
+        };
+        self.finish_spread(
+            context,
+            field,
+            template,
+            readings,
+            created_at_ms,
+            client_token,
+            entropy,
+        )
+    }
+
+    pub fn record_spread_derived_at_with_entropy(
+        &mut self,
+        context: &ContextSnapshot,
+        field: &Field,
+        template: &SpreadTemplate,
+        seed: &str,
+        domain: &str,
+        created_at_ms: u64,
+        client_token: Option<String>,
+        entropy: &mut impl EntropySource,
+    ) -> Result<(ReadingSession, Spread, Vec<Reading>), HostError> {
+        template.validate()?;
+        let readings =
+            ReadingEngine::shuffle_derived(context, field, template.positions.len(), seed, domain)?;
+        self.finish_spread(
+            context,
+            field,
+            template,
+            readings,
+            created_at_ms,
+            client_token,
+            entropy,
+        )
+    }
+
+    fn finish_spread(
+        &mut self,
+        context: &ContextSnapshot,
+        field: &Field,
+        template: &SpreadTemplate,
+        readings: Vec<Reading>,
+        created_at_ms: u64,
+        client_token: Option<String>,
+        entropy: &mut impl EntropySource,
+    ) -> Result<(ReadingSession, Spread, Vec<Reading>), HostError> {
         let placements = template
             .positions
             .iter()

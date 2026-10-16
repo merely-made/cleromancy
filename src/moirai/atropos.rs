@@ -8,7 +8,9 @@ use crate::reading::{Reading, Receipt};
 /// Seal a selected candidate and its provenance into an immutable reading.
 pub(crate) fn seal(field: &Field, candidate: &Candidate, receipt: Receipt) -> Reading {
     let id = canonical_digest(&(&field.system, &candidate.id, &receipt));
-    let schema = if receipt.enrichment.is_some() {
+    let schema = if receipt.shuffle.is_some() {
+        "cleromancy.reading/v3"
+    } else if receipt.enrichment.is_some() {
         "cleromancy.reading/v2"
     } else {
         "cleromancy.reading/v1"

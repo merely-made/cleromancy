@@ -77,7 +77,7 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
                 let meaning = position_meaning(detail, &placement.position);
                 let card: Vec<ConsultationView> = vec![
                     Box::new(el::<_, ConsultationUi, ()>("h3", meaning.label.clone())),
-                    Box::new(el::<_, ConsultationUi, ()>("h4", reading.title.clone())),
+                    Box::new(el::<_, ConsultationUi, ()>("h4", reading.display_title())),
                     Box::new(
                         el::<_, ConsultationUi, ()>("p", reading.interpretation.clone())
                             .attr("data-key", "result-prompt"),

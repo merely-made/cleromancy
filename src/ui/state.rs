@@ -459,8 +459,10 @@ impl ConsultationUi {
             };
             ConsultationLayout::Authored(template.id.clone())
         };
-        if !matches!(layout, ConsultationLayout::Single) && mode != SelectionMode::Cast {
-            self.present_error("Multi-position readings are always cast.");
+        if !matches!(layout, ConsultationLayout::Single) && mode == SelectionMode::Calculated {
+            self.present_error(
+                "Choose operating-system randomness or a public seed for a multi-position reading.",
+            );
             return None;
         }
         let astrology_facts_digest = self
@@ -656,15 +658,15 @@ impl ConsultationUi {
         let derivation = detail
             .readings
             .first()
-            .and_then(|reading| reading.receipt.derivation.as_ref());
+            .and_then(|reading| reading.public_seed());
         self.derived_seed = TextInput::new(
             derivation
-                .map(|selection| selection.seed.clone())
+                .map(|selection| selection.0.to_string())
                 .unwrap_or_default(),
         );
         self.derived_domain = TextInput::new(
             derivation
-                .map(|selection| selection.domain.clone())
+                .map(|selection| selection.1.to_string())
                 .unwrap_or_default(),
         );
         self.template_select.selected = detail

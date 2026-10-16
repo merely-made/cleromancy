@@ -387,6 +387,9 @@ impl<B: Backend> Consultation<B> {
         let field = self.host.field_for_digest(field_digest)?;
         let reading = match mode {
             SelectionMode::Calculated => ReadingEngine::calculate(&context, &field)?,
+            SelectionMode::Cast if field.is_tarot() => {
+                ReadingEngine::shuffle_with(&context, &field, 1, entropy)?.remove(0)
+            },
             SelectionMode::Cast => ReadingEngine::cast_with(&context, &field, entropy)?,
             SelectionMode::Derived => return Err(ConsultationError::DerivedSelectionRequired),
         };
@@ -431,9 +434,15 @@ impl<B: Backend> Consultation<B> {
         entropy: &mut impl EntropySource,
     ) -> Result<ConsultationDetail, ConsultationError> {
         self.ensure_writable()?;
+        selection.validate()?;
         let context = self.host.context_for_digest(context_digest)?;
         let field = self.host.field_for_digest(field_digest)?;
-        let reading = ReadingEngine::derive(&context, &field, selection)?;
+        let reading = if field.is_tarot() {
+            ReadingEngine::shuffle_derived(&context, &field, 1, &selection.seed, &selection.domain)?
+                .remove(0)
+        } else {
+            ReadingEngine::derive(&context, &field, selection)?
+        };
         let session = self.host.record_reading_session_at_with_entropy(
             &context,
             &field,
@@ -528,6 +537,52 @@ impl<B: Backend> Consultation<B> {
             entropy,
         )?;
         self.persist(saved_at_secs).await?;
+        self.detail(&session.id)
+    }
+
+    /// Public-seed physical-deck spread; the session nonce identifies the
+    /// occasion independently of its deterministic card order.
+    pub async fn read_seeded_spread(
+        &mut self,
+        context_digest: &str,
+        field_digest: &str,
+        template_id: Option<&str>,
+        selection: &DerivedSelection,
+    ) -> Result<ConsultationDetail, ConsultationError> {
+        self.ensure_writable()?;
+        selection.validate()?;
+        let context = self.host.context_for_digest(context_digest)?;
+        let field = self.host.field_for_digest(field_digest)?;
+        let at = unix_time_ms()?;
+        let mut entropy = OsEntropy;
+        let session = if let Some(id) = template_id {
+            let template = self.host.spread_template_for_id(id)?;
+            self.host
+                .record_spread_derived_at_with_entropy(
+                    &context,
+                    &field,
+                    &template,
+                    &selection.seed,
+                    &selection.domain,
+                    at,
+                    None,
+                    &mut entropy,
+                )?
+                .0
+        } else {
+            self.host
+                .record_three_card_spread_derived_at_with_entropy(
+                    &context,
+                    &field,
+                    &selection.seed,
+                    &selection.domain,
+                    at,
+                    None,
+                    &mut entropy,
+                )?
+                .0
+        };
+        self.persist(at / 1000).await?;
         self.detail(&session.id)
     }
 
