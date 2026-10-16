@@ -1,0 +1,11 @@
+wait 1800
+assert snap catalog-ready == true
+show-mere
+wait 1800
+settle 8
+c5-control-reveal install-six-sided-die
+settle 4
+c5-control-click install-six-sided-die
+wait 1800
+assert snap product-busy == false
+capture after-install

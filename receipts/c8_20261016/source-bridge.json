@@ -1,0 +1,25 @@
+{
+  "software_source": "e51964a9387d1b846171871f0bb1e565ee86a5f7",
+  "native_source": "a4abd1bb6c00d5b174b077ede899aa7ee7b8c8e8",
+  "only_changes": [
+    "receipts/c8-die-os-reopen.scn",
+    "receipts/c8-die-seed-reopen.scn",
+    "receipts/c8-die-seed.scn"
+  ],
+  "implementation_and_dependency_bytes_identical": true,
+  "scenario_parser": "scenario-parser-final.log",
+  "software_counts": {
+    "default": {
+      "passed": 130,
+      "failed": 0,
+      "ignored": 1
+    },
+    "historical": {
+      "passed": 179,
+      "failed": 0,
+      "ignored": 1
+    }
+  },
+  "core_gate_source": "4adc154fc1e6bb44c73c268a44200451abc0d7ef",
+  "core_source_boundary": "Later commits change only UI code, UI tests and scenario assets. Portable-core implementation and lock inputs remain identical."
+}

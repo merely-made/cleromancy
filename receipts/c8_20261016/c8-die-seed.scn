@@ -1,0 +1,46 @@
+wait 1800
+assert snap catalog-ready == true
+show-consultation
+wait 1800
+settle 8
+c5-control-reveal install-six-sided-die
+settle 4
+c5-control-click install-six-sided-die
+wait 1800
+assert snap product-busy == false
+c8-prepare-seed
+c5-control-reveal die-seed
+settle 4
+c5-control-click die-seed
+reveal class die-method
+settle 4
+capture die-method
+c8-control-reveal read
+settle 4
+c8-control-key read
+show-mere
+settle 8
+wait 1800
+assert snap product-busy == false
+assert snap die == true
+assert snap die-seeded == true
+assert snap readings == 1
+assert text Outcome
+c8-prepare-reflection
+c8-control-reveal save-reflection
+settle 4
+c8-control-click save-reflection
+wait 1800
+assert snap product-busy == false
+assert snap reflections == 1
+show-mere
+settle 8
+assert text 6 faces
+reveal class reading-narrative
+settle 4
+capture die-narrative
+resize 420 760
+wait
+reveal class reading-narrative
+settle 4
+capture compact-die-narrative

@@ -1,0 +1,233 @@
+{
+  "schema": "cleromancy.c8-first-die-qualification/v1",
+  "date": "2026-10-16",
+  "status": "bounded first-die native qualification complete; publication recorded separately",
+  "software_source": "e51964a9387d1b846171871f0bb1e565ee86a5f7",
+  "native_source": "a4abd1bb6c00d5b174b077ede899aa7ee7b8c8e8",
+  "native_build": {
+    "source": "a4abd1bb6c00d5b174b077ede899aa7ee7b8c8e8",
+    "unsigned_binary_sha256": "94cafd6ca507f96ff3af6149165721a8d1915dd252bc68ef782f160c093defdb",
+    "signed_binary_sha256": "afe5e4739820b51fb6bda3348018d3b4dd4b0a572de111f508d2b94e3b129699",
+    "command": "cargo build --locked --offline --bin cleromancy",
+    "compiler": "Cargo 1.99; rustc/rustdoc 1.97.1",
+    "bundle": "/Users/markik/Code/testing/cleromancy/c8-20261016/Cleromancy C8 tuned.app",
+    "debug_cpu_overrides": {
+      "cleromancy": 1,
+      "cleromancy-core-acceptance": 1,
+      "serde_json": 2
+    },
+    "locks": "unchanged from qualified C7"
+  },
+  "source_bridge": {
+    "software_source": "e51964a9387d1b846171871f0bb1e565ee86a5f7",
+    "native_source": "a4abd1bb6c00d5b174b077ede899aa7ee7b8c8e8",
+    "only_changes": [
+      "receipts/c8-die-os-reopen.scn",
+      "receipts/c8-die-seed-reopen.scn",
+      "receipts/c8-die-seed.scn"
+    ],
+    "implementation_and_dependency_bytes_identical": true,
+    "scenario_parser": "scenario-parser-final.log",
+    "software_counts": {
+      "default": {
+        "passed": 130,
+        "failed": 0,
+        "ignored": 1
+      },
+      "historical": {
+        "passed": 179,
+        "failed": 0,
+        "ignored": 1
+      }
+    },
+    "core_gate_source": "4adc154fc1e6bb44c73c268a44200451abc0d7ef",
+    "core_source_boundary": "Later commits change only UI code, UI tests and scenario assets. Portable-core implementation and lock inputs remain identical."
+  },
+  "software_checks": {
+    "default": 0,
+    "historical": 0,
+    "no-default-check": 0,
+    "default-check": 0,
+    "personal-check": 0,
+    "admission-check": 0
+  },
+  "portable_core_counts": {
+    "default": 41,
+    "legacy": 42,
+    "sky": 43
+  },
+  "native_runs": {
+    "native-os-create-04": {
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 292.89,
+        "binary_sha256": "afe5e4739820b51fb6bda3348018d3b4dd4b0a572de111f508d2b94e3b129699",
+        "offline_ip_deny": true,
+        "sandbox_policy": "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))",
+        "scenario_sha256": "d8e45989d43de53a853904eb3b4977062c94b52676f800fb30fcdb2b83f2b3ad",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "reopen",
+        "ok": true,
+        "status": "Reflection saved: 2bd927eceef3fdf94ebdf53d7ad6248061cea319a29242428a6aea018499e530",
+        "catalog_ready": true,
+        "sessions": 9,
+        "readings": 1,
+        "reflections": 1,
+        "ids": {
+          "session_id": "b20ff7500e5623ff40d4dc56c0079376aa8a2645d8394208ffea1941f36e6f69",
+          "reading_id": "70fb863ab8443c5028ff4bbef4fdaebe74faa9fafcdb3efea96673f25c1d56ed",
+          "reflection_id": "2bd927eceef3fdf94ebdf53d7ad6248061cea319a29242428a6aea018499e530"
+        },
+        "log": [
+          "waited 1330 frames",
+          "waited 0 frames",
+          "waited 358 frames",
+          "captured die-method",
+          "waited 1341 frames",
+          "waited 749 frames",
+          "captured die-narrative",
+          "waited 0 frames",
+          "captured compact-die-narrative"
+        ]
+      }
+    },
+    "native-os-reopen-01": {
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 111.27,
+        "binary_sha256": "afe5e4739820b51fb6bda3348018d3b4dd4b0a572de111f508d2b94e3b129699",
+        "offline_ip_deny": true,
+        "sandbox_policy": "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))",
+        "scenario_sha256": "6e9b507cd54a187a36b886be01cdf3e97f721d3f5e2045288464f3ee18997d33",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "reopen",
+        "ok": true,
+        "status": "Viewing session: b20ff7500e5623ff40d4dc56c0079376aa8a2645d8394208ffea1941f36e6f69",
+        "catalog_ready": true,
+        "sessions": 9,
+        "readings": 1,
+        "reflections": 1,
+        "ids": {
+          "session_id": "b20ff7500e5623ff40d4dc56c0079376aa8a2645d8394208ffea1941f36e6f69",
+          "reading_id": "70fb863ab8443c5028ff4bbef4fdaebe74faa9fafcdb3efea96673f25c1d56ed",
+          "reflection_id": "2bd927eceef3fdf94ebdf53d7ad6248061cea319a29242428a6aea018499e530"
+        },
+        "log": [
+          "waited 1344 frames",
+          "waited 0 frames",
+          "waited 423 frames",
+          "captured reopened-die-narrative",
+          "waited 0 frames",
+          "captured compact-reopened-die-narrative",
+          "captured compact-mode-controls",
+          "captured compact-roll-control"
+        ]
+      }
+    },
+    "native-seed-create-01": {
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 278.26,
+        "binary_sha256": "afe5e4739820b51fb6bda3348018d3b4dd4b0a572de111f508d2b94e3b129699",
+        "offline_ip_deny": true,
+        "sandbox_policy": "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))",
+        "scenario_sha256": "18b2a1de22a4a1ec8e83d6eb76feb846f2d791561a211da4a00de387e82193bc",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "reopen",
+        "ok": true,
+        "status": "Reflection saved: 95324ff39cd757926a1a0ca8191394b44cdcd30960b999dced5f335075fd35eb",
+        "catalog_ready": true,
+        "sessions": 10,
+        "readings": 1,
+        "reflections": 1,
+        "ids": {
+          "session_id": "640fb1d2159f466db4a97ca229dff7b7df3bd6cc38bb832b14e3c1eb820c004f",
+          "reading_id": "76d8e24cfea32b5ba42cf9197f5f4af2d15cc19f8d5c76493433b07b58a28506",
+          "reflection_id": "95324ff39cd757926a1a0ca8191394b44cdcd30960b999dced5f335075fd35eb"
+        },
+        "log": [
+          "waited 1646 frames",
+          "waited 0 frames",
+          "waited 355 frames",
+          "captured die-method",
+          "waited 1143 frames",
+          "waited 634 frames",
+          "captured die-narrative",
+          "waited 0 frames",
+          "captured compact-die-narrative"
+        ]
+      }
+    },
+    "native-seed-reopen-01": {
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 114.47,
+        "binary_sha256": "afe5e4739820b51fb6bda3348018d3b4dd4b0a572de111f508d2b94e3b129699",
+        "offline_ip_deny": true,
+        "sandbox_policy": "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))",
+        "scenario_sha256": "de23e5353b244fc632e6676dabeb2faa10d3572d57d664855d6eb9ffc9091dd8",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "reopen",
+        "ok": true,
+        "status": "Viewing session: 640fb1d2159f466db4a97ca229dff7b7df3bd6cc38bb832b14e3c1eb820c004f",
+        "catalog_ready": true,
+        "sessions": 10,
+        "readings": 1,
+        "reflections": 1,
+        "ids": {
+          "session_id": "640fb1d2159f466db4a97ca229dff7b7df3bd6cc38bb832b14e3c1eb820c004f",
+          "reading_id": "76d8e24cfea32b5ba42cf9197f5f4af2d15cc19f8d5c76493433b07b58a28506",
+          "reflection_id": "95324ff39cd757926a1a0ca8191394b44cdcd30960b999dced5f335075fd35eb"
+        },
+        "log": [
+          "waited 1362 frames",
+          "waited 0 frames",
+          "waited 451 frames",
+          "captured reopened-die-narrative",
+          "waited 0 frames",
+          "captured compact-reopened-die-narrative",
+          "captured compact-mode-controls",
+          "captured compact-roll-control"
+        ]
+      }
+    }
+  },
+  "accepted_originals": 14,
+  "preserved_diagnostic_originals": 5,
+  "bounded_installation_originals": 1,
+  "preserved_prior_receipt_paths": 618,
+  "prior_occasions_exact": 8,
+  "new_die_occasions": 2,
+  "fresh_reopen_detail_bytes_exact": true,
+  "c4_domain_views_and_memory_exact": true,
+  "evidence": "c8_20261016/artifact-hashes.json",
+  "scope": "One D6, OS or public-seed selection, no interpretation or orientation; no graphical-unlock, performance, release, shared-wall or complete C8 claim."
+}

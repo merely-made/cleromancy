@@ -1,0 +1,14 @@
+{
+  "source": "a4abd1bb6c00d5b174b077ede899aa7ee7b8c8e8",
+  "unsigned_binary_sha256": "94cafd6ca507f96ff3af6149165721a8d1915dd252bc68ef782f160c093defdb",
+  "signed_binary_sha256": "afe5e4739820b51fb6bda3348018d3b4dd4b0a572de111f508d2b94e3b129699",
+  "command": "cargo build --locked --offline --bin cleromancy",
+  "compiler": "Cargo 1.99; rustc/rustdoc 1.97.1",
+  "bundle": "/Users/markik/Code/testing/cleromancy/c8-20261016/Cleromancy C8 tuned.app",
+  "debug_cpu_overrides": {
+    "cleromancy": 1,
+    "cleromancy-core-acceptance": 1,
+    "serde_json": 2
+  },
+  "locks": "unchanged from qualified C7"
+}

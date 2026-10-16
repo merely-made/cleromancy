@@ -1,0 +1,13 @@
+{
+  "phase": "reopen",
+  "exit": 0,
+  "timeout": false,
+  "prompts": 1,
+  "elapsed_seconds": 278.26,
+  "binary_sha256": "afe5e4739820b51fb6bda3348018d3b4dd4b0a572de111f508d2b94e3b129699",
+  "offline_ip_deny": true,
+  "sandbox_policy": "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))",
+  "scenario_sha256": "18b2a1de22a4a1ec8e83d6eb76feb846f2d791561a211da4a00de387e82193bc",
+  "public_fixture": true,
+  "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+}

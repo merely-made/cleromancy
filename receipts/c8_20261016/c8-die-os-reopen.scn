@@ -1,0 +1,33 @@
+wait 1800
+assert snap catalog-ready == true
+show-mere
+wait 1800
+settle 8
+c5-control-reveal c8-saved-os
+settle 4
+c5-control-click c8-saved-os
+wait 1800
+assert snap product-busy == false
+assert snap die == true
+assert snap die-seeded == false
+assert snap readings == 1
+assert text Outcome
+reveal class reading-narrative
+settle 4
+capture reopened-die-narrative
+resize 420 760
+wait
+reveal class reading-narrative
+settle 4
+capture compact-reopened-die-narrative
+
+show-consultation
+settle 8
+c8-control-reveal die-os
+settle 4
+c8-control-key die-os
+settle 4
+capture compact-mode-controls
+c8-control-reveal read
+settle 4
+capture compact-roll-control

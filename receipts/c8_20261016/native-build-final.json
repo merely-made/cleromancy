@@ -1,0 +1,8 @@
+{
+  "source": "a50d31663ae211cc13a68fae3948561e3c773afe",
+  "unsigned_binary_sha256": "e2be7f30d30a1541a98f1057994b3c8cae0f453a8573df48bc38fe31e07c3815",
+  "signed_binary_sha256": "b08d925342cc615474be71825875f52591f46bb4792062bb06496b2128d4bb55",
+  "command": "cargo build --locked --offline --bin cleromancy",
+  "compiler": "Cargo 1.99; rustc/rustdoc 1.97.1",
+  "bundle": "/Users/markik/Code/testing/cleromancy/c8-20261016/Cleromancy C8 qualified.app"
+}
