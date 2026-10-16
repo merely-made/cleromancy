@@ -1,0 +1,10 @@
+{
+  "occasion_count": 8,
+  "all_prior_detail_fields_exact": true,
+  "occasion_ids_with_new_inference_records": [
+    "e71ffc8833ff02bacc4c13463eb8b3333f59ddbaff507aa2a62ed4d1c01803e7"
+  ],
+  "complete_c4_views_exact": true,
+  "complete_c4_memory_exact": true,
+  "c4_memory_count": 3
+}

@@ -1,0 +1,35 @@
+warning: patch `mere-proofs v0.1.0 (https://github.com/merely-made/mere.git?branch=main#25cbe810)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+    Checking muniment v0.1.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking mere-curation v0.1.1 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking numen v0.2.0 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking sceno v0.0.5 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking command-menu v0.1.0 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking mere-forme v0.2.0 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking chartulary v0.2.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking seiche v0.0.6 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking scenotime v0.0.4 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking scenograph v0.0.4 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking chirograph v0.0.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking mere-kernel v0.0.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking servitor v0.0.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking graphshell-client v0.0.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking mere-alembic v0.0.1 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking mere v0.0.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking cleromancy-core-acceptance v0.1.0 (/Users/markik/Code/repos/cleromancy/core)
+warning: unexpected `cfg` condition value: `local-inference`
+ --> ../src/inference/mod.rs:8:11
+  |
+8 | #[cfg(all(feature = "local-inference", not(feature = "portable-core")))]
+  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: expected values for `feature` are: `analytic-ephemeris`, `default`, `graphshell-admission`, `legacy-receipts`, `personal-sync`, `portable-core`, and `sky-timeline`
+  = help: consider adding `local-inference` as a feature in `Cargo.toml`
+  = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+  = note: `#[warn(unexpected_cfgs)]` on by default
+
+warning: `cleromancy-core-acceptance` (lib) generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 8.35s

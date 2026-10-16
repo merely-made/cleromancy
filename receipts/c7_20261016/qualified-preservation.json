@@ -1,0 +1,8 @@
+{
+  "prior_occasions": 8,
+  "all_prior_detail_fields_exact": true,
+  "complete_c4_views_exact": true,
+  "complete_c4_memory_exact": true,
+  "new_inferences": 4,
+  "explicitly_kept_model_prompts": 2
+}

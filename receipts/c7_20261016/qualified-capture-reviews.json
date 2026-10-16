@@ -1,0 +1,110 @@
+[
+  {
+    "path": "native-qualified-create-01/compact-formula-prompt.png",
+    "sha256": "dcf6f667a1ec88eb72fa4fbf753c012258cbd11c62cadea3198efb25930653a6",
+    "reviewer": "Codex independent review of original native capture",
+    "result": "pass",
+    "findings": [
+      "Formula/model labels and prompt outputs are readable at the recorded width.",
+      "Selected history/reflection counts and Recent/Saved memory state are visible.",
+      "Generation inputs start collapsed; Keep and Inspect controls remain reachable.",
+      "The shared mere sidebar retains its existing dense graph presentation; C7 acceptance covers the reading surface."
+    ]
+  },
+  {
+    "path": "native-qualified-create-01/compact-model-prompt.png",
+    "sha256": "f47bb1a91327accf4ba26f5932cb6199317159f422ac190394bea47276f1f23d",
+    "reviewer": "Codex independent review of original native capture",
+    "result": "pass",
+    "findings": [
+      "Formula/model labels and prompt outputs are readable at the recorded width.",
+      "Selected history/reflection counts and Recent/Saved memory state are visible.",
+      "Generation inputs start collapsed; Keep and Inspect controls remain reachable.",
+      "The shared mere sidebar retains its existing dense graph presentation; C7 acceptance covers the reading surface."
+    ]
+  },
+  {
+    "path": "native-qualified-create-01/formula-prompt.png",
+    "sha256": "0192fbe6e5dad1f2939c651f0a2cc4912e07585819232c5d8e3f5436c8745ec1",
+    "reviewer": "Codex independent review of original native capture",
+    "result": "pass",
+    "findings": [
+      "Formula/model labels and prompt outputs are readable at the recorded width.",
+      "Selected history/reflection counts and Recent/Saved memory state are visible.",
+      "Generation inputs start collapsed; Keep and Inspect controls remain reachable.",
+      "The shared mere sidebar retains its existing dense graph presentation; C7 acceptance covers the reading surface."
+    ]
+  },
+  {
+    "path": "native-qualified-create-01/kept-model-prompt.png",
+    "sha256": "6598025a9f110e8bd1f885c8a12ae0bbc6777cc0bb15b4e9db41f51d19bb3ee5",
+    "reviewer": "Codex independent review of original native capture",
+    "result": "pass",
+    "findings": [
+      "Formula/model labels and prompt outputs are readable at the recorded width.",
+      "Selected history/reflection counts and Recent/Saved memory state are visible.",
+      "Generation inputs start collapsed; Keep and Inspect controls remain reachable.",
+      "The shared mere sidebar retains its existing dense graph presentation; C7 acceptance covers the reading surface."
+    ]
+  },
+  {
+    "path": "native-qualified-create-01/model-prompt.png",
+    "sha256": "cbba0fd94f38bb0a3bce0f0632bc6769b0eaee1f65823c35ddb85e7a4dc7b665",
+    "reviewer": "Codex independent review of original native capture",
+    "result": "pass",
+    "findings": [
+      "Formula/model labels and prompt outputs are readable at the recorded width.",
+      "Selected history/reflection counts and Recent/Saved memory state are visible.",
+      "Generation inputs start collapsed; Keep and Inspect controls remain reachable.",
+      "The shared mere sidebar retains its existing dense graph presentation; C7 acceptance covers the reading surface."
+    ]
+  },
+  {
+    "path": "native-qualified-reopen-01/compact-formula-reopened.png",
+    "sha256": "dcf6f667a1ec88eb72fa4fbf753c012258cbd11c62cadea3198efb25930653a6",
+    "reviewer": "Codex independent review of original native capture",
+    "result": "pass",
+    "findings": [
+      "Formula/model labels and prompt outputs are readable at the recorded width.",
+      "Selected history/reflection counts and Recent/Saved memory state are visible.",
+      "Generation inputs start collapsed; Keep and Inspect controls remain reachable.",
+      "The shared mere sidebar retains its existing dense graph presentation; C7 acceptance covers the reading surface."
+    ]
+  },
+  {
+    "path": "native-qualified-reopen-01/compact-model-reopened.png",
+    "sha256": "d34a2b87576d263b82c5af35decde3532e43359cce23b386bf7b4464d7859fdc",
+    "reviewer": "Codex independent review of original native capture",
+    "result": "pass",
+    "findings": [
+      "Formula/model labels and prompt outputs are readable at the recorded width.",
+      "Selected history/reflection counts and Recent/Saved memory state are visible.",
+      "Generation inputs start collapsed; Keep and Inspect controls remain reachable.",
+      "The shared mere sidebar retains its existing dense graph presentation; C7 acceptance covers the reading surface."
+    ]
+  },
+  {
+    "path": "native-qualified-reopen-01/stored-formula-reopened.png",
+    "sha256": "e06dd1822f60c1e1079c8a51571ee5752c90f9b602fe7642d6377ae0f0a2e049",
+    "reviewer": "Codex independent review of original native capture",
+    "result": "pass",
+    "findings": [
+      "Formula/model labels and prompt outputs are readable at the recorded width.",
+      "Selected history/reflection counts and Recent/Saved memory state are visible.",
+      "Generation inputs start collapsed; Keep and Inspect controls remain reachable.",
+      "The shared mere sidebar retains its existing dense graph presentation; C7 acceptance covers the reading surface."
+    ]
+  },
+  {
+    "path": "native-qualified-reopen-01/stored-model-reopened.png",
+    "sha256": "6598025a9f110e8bd1f885c8a12ae0bbc6777cc0bb15b4e9db41f51d19bb3ee5",
+    "reviewer": "Codex independent review of original native capture",
+    "result": "pass",
+    "findings": [
+      "Formula/model labels and prompt outputs are readable at the recorded width.",
+      "Selected history/reflection counts and Recent/Saved memory state are visible.",
+      "Generation inputs start collapsed; Keep and Inspect controls remain reachable.",
+      "The shared mere sidebar retains its existing dense graph presentation; C7 acceptance covers the reading surface."
+    ]
+  }
+]

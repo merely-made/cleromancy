@@ -1,0 +1,20 @@
+RESULT ok
+waited 1095 frames
+waited 0 frames
+waited 352 frames
+waited 433 frames
+captured formula-prompt
+waited 762 frames
+captured model-prompt
+waited 623 frames
+captured kept-model-prompt
+waited 0 frames
+captured compact-formula-prompt
+captured compact-model-prompt
+capture formula-prompt 2320x1520 digest=60a33d7de58bb3e5 file=/Users/markik/Code/testing/cleromancy/c7-20261016/native-qualified-create-01/formula-prompt.png
+capture model-prompt 2320x1520 digest=594aadb9f9033e96 file=/Users/markik/Code/testing/cleromancy/c7-20261016/native-qualified-create-01/model-prompt.png
+capture kept-model-prompt 2320x1520 digest=d76d09a9121be9e5 file=/Users/markik/Code/testing/cleromancy/c7-20261016/native-qualified-create-01/kept-model-prompt.png
+capture compact-formula-prompt 840x1520 digest=f4b5cd411f36889a file=/Users/markik/Code/testing/cleromancy/c7-20261016/native-qualified-create-01/compact-formula-prompt.png
+capture compact-model-prompt 840x1520 digest=ffde35d7c41528c0 file=/Users/markik/Code/testing/cleromancy/c7-20261016/native-qualified-create-01/compact-model-prompt.png
+frames: 5 captured, 0 blank, 5 distinct digests
+presentation: 3394 frames, 3396 redraws, 2 unpresented redraws

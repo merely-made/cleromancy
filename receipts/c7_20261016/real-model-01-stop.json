@@ -1,0 +1,5 @@
+{
+  "pid": 6604,
+  "action": "SIGTERM to this test process only",
+  "reason": "First CPU probe exceeded three minutes with unoptimized ndarray/matrixmultiply dependencies; retain as diagnostic, rebuild those shared kernels optimized."
+}

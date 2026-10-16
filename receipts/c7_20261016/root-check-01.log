@@ -1,0 +1,12 @@
+error: failed to select a version for the requirement `zip = "^0.6"`
+  version 0.6.6 is yanked
+location searched: crates.io index
+required by package `tch v0.22.0`
+    ... which satisfies dependency `tch = "^0.22.0"` of package `burn-tch v0.22.0`
+    ... which satisfies dependency `burn-tch = "^0.22.0"` of package `burn-dispatch v0.22.0`
+    ... which satisfies dependency `burn-dispatch = "^0.22.0"` of package `burn-core v0.22.0`
+    ... which satisfies dependency `burn-core = "^0.22.0"` of package `burn v0.22.0`
+    ... which satisfies dependency `burn = "=0.22.0"` of package `esp v0.1.0 (https://github.com/merely-made/mere.git?branch=main#25cbe810)`
+    ... which satisfies git dependency `esp` (locked to 0.1.0) of package `cleromancy v0.1.0 (/Users/markik/Code/repos/cleromancy)`
+note: offline mode (via `--offline`) can sometimes cause surprising resolution failures
+help: if this error is too confusing you may wish to retry without `--offline`

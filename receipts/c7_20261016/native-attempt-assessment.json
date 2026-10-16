@@ -1,0 +1,24 @@
+{
+  "native-generate-01": {
+    "whole_scenario_ok": false,
+    "failures": [
+      "FAIL: C4 control invisible"
+    ],
+    "scope": "diagnostic only; individual creation actions are observed but whole scenario is not accepted"
+  },
+  "native-reopen-01": {
+    "whole_scenario_ok": true,
+    "failures": [],
+    "scope": "passing bounded native scenario"
+  },
+  "native-final-reopen-01": {
+    "whole_scenario_ok": true,
+    "failures": [],
+    "scope": "passing bounded native scenario"
+  },
+  "native-final-regenerate-01": {
+    "whole_scenario_ok": true,
+    "failures": [],
+    "scope": "passing bounded native scenario"
+  }
+}

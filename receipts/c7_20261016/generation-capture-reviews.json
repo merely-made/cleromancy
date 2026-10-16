@@ -1,0 +1,57 @@
+[
+  {
+    "path": "native-generate-01/compact-formula-prompt.png",
+    "sha256": "d232384846a87e7e2f97ab6152824f8c06c9f4bfd1f0ce5ce164e24f762bf70e",
+    "reviewer": "Codex independent visual inspection of original capture",
+    "result": "generation-and-keeping-visible; presentation-repair-required",
+    "findings": [
+      "Generated label and output are legible; kept capture shows Saved memory.",
+      "Native HTML details does not collapse its input children. Raw history and identity text dominate the reading.",
+      "Retain this original as save-source evidence; repaired source gets separate fresh-process captures."
+    ]
+  },
+  {
+    "path": "native-generate-01/compact-model-prompt.png",
+    "sha256": "c9c47b1f0689535c0a75f87a5b043443a581352d3f238e65b6d55f093e33ea11",
+    "reviewer": "Codex independent visual inspection of original capture",
+    "result": "generation-and-keeping-visible; presentation-repair-required",
+    "findings": [
+      "Generated label and output are legible; kept capture shows Saved memory.",
+      "Native HTML details does not collapse its input children. Raw history and identity text dominate the reading.",
+      "Retain this original as save-source evidence; repaired source gets separate fresh-process captures."
+    ]
+  },
+  {
+    "path": "native-generate-01/formula-prompt.png",
+    "sha256": "ff37de51dbff0ceb3db133132cc0659d61f25d0bfa68fc3a512b6175abda54ad",
+    "reviewer": "Codex independent visual inspection of original capture",
+    "result": "generation-and-keeping-visible; presentation-repair-required",
+    "findings": [
+      "Generated label and output are legible; kept capture shows Saved memory.",
+      "Native HTML details does not collapse its input children. Raw history and identity text dominate the reading.",
+      "Retain this original as save-source evidence; repaired source gets separate fresh-process captures."
+    ]
+  },
+  {
+    "path": "native-generate-01/kept-model-prompt.png",
+    "sha256": "729346b9eb03c75e4abdd4b19f10d46f1f0b99c735d36e6183da9c57f9c17897",
+    "reviewer": "Codex independent visual inspection of original capture",
+    "result": "generation-and-keeping-visible; presentation-repair-required",
+    "findings": [
+      "Generated label and output are legible; kept capture shows Saved memory.",
+      "Native HTML details does not collapse its input children. Raw history and identity text dominate the reading.",
+      "Retain this original as save-source evidence; repaired source gets separate fresh-process captures."
+    ]
+  },
+  {
+    "path": "native-generate-01/model-prompt.png",
+    "sha256": "448e8fbdc91460b1b4c9dc01e8d1861702b4ffd412d133ab4f5c5d188ea68e0c",
+    "reviewer": "Codex independent visual inspection of original capture",
+    "result": "generation-and-keeping-visible; presentation-repair-required",
+    "findings": [
+      "Generated label and output are legible; kept capture shows Saved memory.",
+      "Native HTML details does not collapse its input children. Raw history and identity text dominate the reading.",
+      "Retain this original as save-source evidence; repaired source gets separate fresh-process captures."
+    ]
+  }
+]
