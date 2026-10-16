@@ -18,6 +18,8 @@ capture die-method
 c5-control-reveal read
 settle 4
 c5-control-click read
+show-mere
+settle 8
 wait 1800
 assert snap product-busy == false
 assert snap die == true
@@ -25,9 +27,9 @@ assert snap die-seeded == false
 assert snap readings == 1
 assert text Outcome
 c8-prepare-reflection
-c5-control-reveal save-reflection
+c8-control-reveal save-reflection
 settle 4
-c5-control-click save-reflection
+c8-control-click save-reflection
 wait 1800
 assert snap product-busy == false
 assert snap reflections == 1

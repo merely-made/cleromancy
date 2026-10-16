@@ -261,3 +261,12 @@ opt-level = 3
 opt-level = 3
 [profile.dev.package.burn-dispatch]
 opt-level = 3
+
+# Replay verifies saved typed decks and inference sources in desktop debug builds.
+# Optimize those existing CPU paths without changing validation or stored bytes.
+[profile.dev.package.cleromancy]
+opt-level = 1
+[profile.dev.package.cleromancy-core-acceptance]
+opt-level = 1
+[profile.dev.package.serde_json]
+opt-level = 2
