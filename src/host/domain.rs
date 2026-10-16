@@ -4,7 +4,8 @@
 //! Read-only domain validation for a resident's complete candidate graph.
 //!
 //! Validation uses the same record decoders and replay rules as Cleromancy's
-//! reader. It does not open a store, calculate new sky facts or draw again.
+//! reader. Situation replay uses its pinned offline numerical contract; it
+//! never opens a store, contacts weather services or draws again.
 //! The resident must call it before installing a candidate or writing its log.
 
 use std::collections::BTreeSet;
@@ -15,7 +16,8 @@ use crate::{
     ThreeCardSpread,
 };
 
-const DOMAIN_FACETS: [&str; 15] = [
+const DOMAIN_FACETS: [&str; 16] = [
+    crate::situation::SITUATION_FACET,
     AMBIENT_VIEW_FACET,
     AMBIENT_MEMORY_FACET,
     CONTEXT_FACET,
@@ -102,6 +104,7 @@ impl<B: Backend> CleromancyHost<B> {
         self.sessions()?;
         self.astrology_facts()?;
         self.sky_day_facts()?;
+        self.reading_situations()?;
         self.validate_ambient_records()?;
 
         let readings = self.canonical_facet_values(

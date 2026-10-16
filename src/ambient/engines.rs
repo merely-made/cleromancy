@@ -187,6 +187,19 @@ pub(super) fn situation(
     catalog: &ConsultationCatalog,
     out: &mut Builder,
 ) {
+    if let Some(saved) = &detail.situation {
+        let source = format!("cleromancy://situation/{}", saved.digest());
+        out.add(AmbientItem{id:format!("situation:{}:moon",saved.digest()),title:format!("Moon · {}",saved.sky.phase_band),
+            body:format!("{:.1}% illuminated at {}. {}",saved.sky.illuminated_parts_per_million as f64/10_000.,crate::situation::utc_label(saved.instant_ms),saved.sky.provider),
+            source:source.clone(),session_id:None,position:None},RelationFamily::Situation,&saved.sky.method,
+            "The locally computed sky recorded for this reading occasion; inspection does not recompute a current sky.".into(),vec![source.clone()]);
+        if let Some(weather) = &saved.weather {
+            out.add(AmbientItem{id:format!("situation:{}:weather",saved.digest()),title:"Saved weather model estimate".into(),
+                body:format!("{:.1} °C; wind {:.2} m/s. Valid {}, retrieved {}. {}",weather.values.temperature_millicelsius as f64/1000.,weather.values.wind_millimeters_per_second as f64/1000.,crate::situation::utc_label(weather.values.valid_at_ms),crate::situation::utc_label(weather.retrieved_at_ms),weather.provider),
+                source:source.clone(),session_id:None,position:None},RelationFamily::Situation,&weather.method,
+                "An explicitly requested network response retained with the draw; this view only reads the stored evidence.".into(),vec![source]);
+        }
+    }
     out.add(AmbientItem { id: format!("time:{}", detail.session.id), title: "Recorded draw time".into(), body: format!("{} milliseconds since the Unix epoch. This timestamp is stored with the reading session.", detail.session.created_at_ms),
         source: format!("cleromancy://session/{}", detail.session.id), session_id: None, position: None }, RelationFamily::Situation,
         "saved-reading-time/v1", "The time actually recorded with this reading.".into(), vec![format!("cleromancy://session/{}", detail.session.id)]);

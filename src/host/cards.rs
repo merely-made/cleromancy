@@ -22,6 +22,43 @@ impl<B: Backend> CleromancyHost<B> {
             label: "Address".to_string(),
             value: node.url().to_string(),
         }];
+        if let Some(value) = self.facet_value(key, crate::situation::SITUATION_FACET) {
+            if let Ok(s) =
+                serde_json::from_value::<crate::situation::ReadingSituation>(value.clone())
+            {
+                values.push(CardValueV1 {
+                    label: "Recorded time".into(),
+                    value: crate::situation::utc_label(s.instant_ms),
+                });
+                values.push(CardValueV1 {
+                    label: "Moon".into(),
+                    value: format!(
+                        "{} · {:.1}% illuminated",
+                        s.sky.phase_band,
+                        s.sky.illuminated_parts_per_million as f64 / 10_000.
+                    ),
+                });
+                values.push(CardValueV1 {
+                    label: "Sky source".into(),
+                    value: s.sky.provider,
+                });
+                if let Some(weather) = s.weather {
+                    values.push(CardValueV1 {
+                        label: "Saved weather".into(),
+                        value: format!(
+                            "{:.1} °C · valid {} · {}",
+                            weather.values.temperature_millicelsius as f64 / 1000.,
+                            crate::situation::utc_label(weather.values.valid_at_ms),
+                            weather.provider
+                        ),
+                    });
+                }
+                values.extend(s.unavailable.into_iter().map(|f| CardValueV1 {
+                    label: f.fact,
+                    value: f.reason,
+                }));
+            }
+        }
         if let Some(value) = self.facet_value(key, READING_FACET) {
             if let Ok(reading) = serde_json::from_value::<Reading>(value.clone()) {
                 let enrichment_values = reading.receipt.enrichment.as_ref().map(|qualification| {

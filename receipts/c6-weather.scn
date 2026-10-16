@@ -1,0 +1,30 @@
+wait
+assert snap product-busy == false
+c6-prepare-weather
+reveal class situation-controls
+settle 2
+capture weather-explicit-consent
+c5-control-reveal read
+settle 2
+c5-control-click read
+wait
+assert snap product-busy == false
+assert snap situation == true
+assert snap situation-place == true
+assert snap situation-weather == true
+assert snap situation-positions == 10
+advance
+wait
+assert snap product-busy == false
+assert snap reflections == 1
+reveal class situation-hour
+settle 2
+capture local-sky-and-hour
+reveal class situation-weather
+settle 2
+capture saved-weather
+resize 420 760
+wait
+reveal class situation-weather
+settle 2
+capture compact-saved-weather

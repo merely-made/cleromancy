@@ -120,14 +120,18 @@ fn radio_colors(host: &Host, checked: tinct::Srgb, background: tinct::Srgb, body
             &Selector::role("radio").with_attr("aria-checked", "true"),
         )
     });
-    assert_eq!(selected.len(), 2, "selection mode and reading shape");
+    assert_eq!(
+        selected.len(),
+        4,
+        "selection mode, reading shape, place consent and weather consent"
+    );
     let unselected = host.with_dom(|dom| {
         taproot::matching(
             dom,
             &Selector::role("radio").with_attr("aria-checked", "false"),
         )
     });
-    assert_eq!(unselected.len(), 4);
+    assert_eq!(unselected.len(), 6);
     for (nodes, property, expected) in [
         (&selected, "color", checked),
         (&selected, "background-color", background),

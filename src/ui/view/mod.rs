@@ -24,6 +24,7 @@ mod rationale;
 mod reading;
 mod reading_scene;
 mod shared;
+mod situation;
 #[cfg(feature = "sky-timeline")]
 mod sky;
 mod trail;

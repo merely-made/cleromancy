@@ -872,6 +872,7 @@ mod tests {
                         derivation: None,
                         layout: ConsultationLayout::Single,
                         astrology_facts_digest: None,
+                        situation: Default::default(),
                     })
                     .await
                     .unwrap();

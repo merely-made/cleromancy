@@ -1,0 +1,27 @@
+wait
+advance
+wait
+assert snap product-busy == false
+assert snap situation-weather == true
+assert snap situation-positions == 10
+assert snap reflections == 1
+assert snap future-place-consent == false
+assert snap future-weather-consent == false
+reveal class situation-weather
+settle 2
+capture offline-weather-reopened
+reveal class situation-controls
+settle 2
+capture reopened-consent-off
+# A new explicitly opted-in request fails behind the IP deny policy; the
+# previously saved reading and weather proof remain selected and intact.
+c6-prepare-weather
+c5-control-reveal read
+settle 2
+c5-control-click read
+wait
+assert snap product-busy == false
+assert text No reading was saved
+reveal class situation-weather
+settle 2
+capture offline-failed-new-request

@@ -18,6 +18,7 @@ mod screen;
 mod sky_state;
 mod state;
 mod view;
+mod weather;
 pub(crate) mod worker;
 
 pub use action::{ConsultationAction, ConsultationContext, ConsultationLayout};

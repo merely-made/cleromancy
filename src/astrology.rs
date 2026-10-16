@@ -313,7 +313,7 @@ pub struct AstrologyPlacement {
 }
 
 impl AstrologyPlacement {
-    fn from_position(position: &AstrologyPosition) -> Self {
+    pub(crate) fn from_position(position: &AstrologyPosition) -> Self {
         Self {
             body: position.body.clone(),
             sign: ZodiacSign::from_longitude(position.longitude_millidegrees),

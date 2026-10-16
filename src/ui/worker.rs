@@ -326,7 +326,9 @@ pub(crate) fn execute<B: muniment::Backend>(
             derivation,
             layout,
             astrology_facts_digest,
+            situation,
         } => {
+            let weather = super::weather::collect(&situation)?;
             let context_digest = match context {
                 ConsultationContext::Existing(digest) => digest,
                 ConsultationContext::New(draft) => {
@@ -385,6 +387,9 @@ pub(crate) fn execute<B: muniment::Backend>(
                 )?,
                 None => detail,
             };
+            let snapshot =
+                crate::situation::ReadingSituation::capture(&detail.session, &situation, weather)?;
+            let detail = consultation.record_situation(&snapshot)?;
             let catalog = consultation.catalog()?;
             Ok(WorkerUpdate::Reading { catalog, detail })
         },
