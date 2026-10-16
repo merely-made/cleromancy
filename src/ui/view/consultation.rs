@@ -172,7 +172,7 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
     } else {
         ui.detail.as_ref().and_then(|detail| detail.readings.first()).map(|reading| {
         format!("A question to riff on: Where do I notice {} in my situation today?", reading.title)
-    }).unwrap_or_else(|| "A question to riff on: What deserves my attention in this change? Add a concrete detail, such as a decision at work or a habit you are reconsidering.".into());
+    }).unwrap_or_else(|| "A question to riff on: What deserves my attention in this change? Add a concrete detail, such as a decision at work or a habit you are reconsidering.".into())
     };
     children.push(Box::new(
         el::<_, ConsultationUi, ()>("p", context_example)
