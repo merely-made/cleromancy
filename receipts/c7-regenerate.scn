@@ -1,0 +1,30 @@
+wait 1800
+assert snap catalog-ready == true
+c5-control-reveal session:e71ffc8833ff02bacc4c13463eb8b3333f59ddbaff507aa2a62ed4d1c01803e7
+settle 2
+c5-control-click session:e71ffc8833ff02bacc4c13463eb8b3333f59ddbaff507aa2a62ed4d1c01803e7
+wait 1800
+assert snap product-busy == false
+assert snap inference-count == 2
+assert snap inference-kept-count == 1
+c7-control-reveal inference-formula
+settle 2
+c7-control-click inference-formula
+wait 1800
+assert snap product-busy == false
+assert snap inference-count == 2
+assert snap inference-formula-count == 1
+reveal class formula-inference
+settle 2
+capture formula-regenerated
+c7-control-reveal inference-model
+settle 2
+c7-control-click inference-model
+wait 3600
+assert snap product-busy == false
+assert snap inference-count == 2
+assert snap inference-model-count == 1
+assert snap inference-kept-count == 1
+reveal class model-inference
+settle 2
+capture local-model-regenerated
