@@ -61,12 +61,14 @@ pub(super) fn generated(ui: &ConsultationUi, detail: &ConsultationDetail) -> Con
                 el::<_, ConsultationUi, ()>("p", record.output.clone())
                     .attr("data-key", format!("inference-output:{}", record.digest())),
             ),
-            Box::new(el::<_, ConsultationUi, ()>("p", method)),
+            Box::new(el::<_, ConsultationUi, ()>("p", match &record.generation {
+                Generation::Formula { .. } => "Counts repeated cards in the selected earlier occasions; this prompt recomputes exactly.".to_string(),
+                Generation::Model { model, .. } => format!("Generated locally by {}. The saved output reopens without running the model.", model.model_id),
+            })),
             Box::new(el::<_, ConsultationUi, ()>(
                 "p",
                 format!(
-                    "Inputs: reading occasion {}, {} earlier occasions and {} saved reflections. Context excerpts are limited to 160 characters per question/prompt and 240 per reflection.",
-                    record.inputs.session_id,
+                    "Uses this reading, {} earlier occasions and {} saved reflections. Questions and card prompts use excerpts of up to 160 characters; reflections use up to 240.",
                     record.inputs.history_session_ids.len(),
                     record.inputs.reflection_ids.len()
                 ),
@@ -89,24 +91,40 @@ pub(super) fn generated(ui: &ConsultationUi, detail: &ConsultationDetail) -> Con
                 .attr("data-key", format!("inference-keep:{}", record.digest())),
             ),
         ];
-        let disclosure: Vec<ConsultationView> = vec![
-            Box::new(el::<_, ConsultationUi, ()>(
-                "summary",
-                "Inspect the saved generation inputs",
-            )),
-            Box::new(
+        let digest = record.digest();
+        let expanded = ui.expanded_inference_inputs.contains(&digest);
+        let toggle_digest = digest.clone();
+        items.push(Box::new(
+            button(
+                if expanded {
+                    "Hide generation inputs"
+                } else {
+                    "Inspect generation inputs"
+                },
+                move |ui: &mut ConsultationUi, _| {
+                    if !ui.expanded_inference_inputs.remove(&toggle_digest) {
+                        ui.expanded_inference_inputs.insert(toggle_digest.clone());
+                    }
+                },
+            )
+            .attr("data-key", format!("inference-inspect:{digest}")),
+        ));
+        if expanded {
+            items.push(Box::new(
+                el::<_, ConsultationUi, ()>("p", method).attr("class", "inference-inputs"),
+            ));
+            items.push(Box::new(
                 el::<_, ConsultationUi, ()>("p", record.inputs.context_text.clone())
                     .attr("class", "inference-inputs"),
-            ),
-            Box::new(
+            ));
+            items.push(Box::new(
                 el::<_, ConsultationUi, ()>(
                     "p",
                     serde_json::to_string(&record.generation).expect("generation serializes"),
                 )
                 .attr("class", "inference-inputs"),
-            ),
-        ];
-        items.push(Box::new(el::<_, ConsultationUi, ()>("details", disclosure)));
+            ));
+        }
         children.push(Box::new(
             el::<_, ConsultationUi, ()>("article", items).attr(
                 "class",

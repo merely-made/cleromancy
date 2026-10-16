@@ -121,6 +121,7 @@ pub struct ConsultationUi {
     pub(super) error: Option<String>,
     pub(super) pending_action: Option<ConsultationAction>,
     pub(super) local_model_label: String,
+    pub(super) expanded_inference_inputs: std::collections::BTreeSet<String>,
 }
 
 impl ConsultationUi {
@@ -171,6 +172,7 @@ impl ConsultationUi {
             status: ConsultationStatus::Ready,
             error: None,
             pending_action: None,
+            expanded_inference_inputs: Default::default(),
             local_model_label: {
                 #[cfg(feature = "local-inference")]
                 {
