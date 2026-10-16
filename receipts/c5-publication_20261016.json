@@ -1,0 +1,143 @@
+{
+  "schema": "cleromancy.c5-publication/v1",
+  "date": "2026-10-16",
+  "authorization": "Mark: Push, proceed; C4 publication followed by C5 implementation and qualification, preserving existing work and receipts.",
+  "status": "C5 product and coordinated receiving intake published and independently retrieved",
+  "product_checkpoint": "e94a47ca1532a96cd4773614efebb562afc2d8b7",
+  "native_source": "052e54ffb809390e5a0dacaf78e0811cd974c9b6",
+  "software_source": "73f609b199c76c15f128dd3d1c92dc140bbd17c1",
+  "core_checkpoint": "7b0c5ef604355c7140a6dbc64b53f14d0983c157",
+  "product_supplier": "72f9c5c73ab9ddd8ba761524388c2406a6d6ffcf",
+  "receiving_source": "fbac5567cc47f61e4794016d3cbb82461afee38a",
+  "receiving_published": "81e6805cf55a3d2de90a41ba95a5a21c6f3be929",
+  "knot_source": "b6a6222ede48bacebbc5a533c5930bcab779cee5",
+  "knot_checkpoint": "64fb72a3bbf2499eabbd465f1811a31753882a7c",
+  "remote_refs_at_checkpoint": {
+    "cleromancy": {
+      "refs/heads/codex/c5-core-checkpoint-20261016": "7b0c5ef604355c7140a6dbc64b53f14d0983c157",
+      "refs/heads/codex/c5-qualified-native-20261016": "052e54ffb809390e5a0dacaf78e0811cd974c9b6",
+      "refs/heads/main": "e94a47ca1532a96cd4773614efebb562afc2d8b7"
+    },
+    "mere": {
+      "refs/heads/codex/c5-qualified-owner-20261016": "fbac5567cc47f61e4794016d3cbb82461afee38a",
+      "refs/heads/main": "81e6805cf55a3d2de90a41ba95a5a21c6f3be929"
+    },
+    "knot-editor": {
+      "refs/heads/codex/c5-routed-relation-compat-20261016": "64fb72a3bbf2499eabbd465f1811a31753882a7c",
+      "refs/heads/main": "921b4e06e7eb4fa034cfaefddd9735f3b80ebec6"
+    }
+  },
+  "fresh_remote_fetches": [
+    {
+      "repository": "cleromancy",
+      "expected": "052e54ffb809390e5a0dacaf78e0811cd974c9b6",
+      "actual": "052e54ffb809390e5a0dacaf78e0811cd974c9b6",
+      "exit": 0
+    },
+    {
+      "repository": "cleromancy",
+      "expected": "7b0c5ef604355c7140a6dbc64b53f14d0983c157",
+      "actual": "7b0c5ef604355c7140a6dbc64b53f14d0983c157",
+      "exit": 0
+    },
+    {
+      "repository": "cleromancy",
+      "expected": "e94a47ca1532a96cd4773614efebb562afc2d8b7",
+      "actual": "e94a47ca1532a96cd4773614efebb562afc2d8b7",
+      "exit": 0
+    },
+    {
+      "repository": "knot-editor",
+      "expected": "b6a6222ede48bacebbc5a533c5930bcab779cee5",
+      "actual": "b6a6222ede48bacebbc5a533c5930bcab779cee5",
+      "exit": 0
+    },
+    {
+      "repository": "knot-editor",
+      "expected": "64fb72a3bbf2499eabbd465f1811a31753882a7c",
+      "actual": "64fb72a3bbf2499eabbd465f1811a31753882a7c",
+      "exit": 0
+    },
+    {
+      "repository": "mere",
+      "expected": "fbac5567cc47f61e4794016d3cbb82461afee38a",
+      "actual": "fbac5567cc47f61e4794016d3cbb82461afee38a",
+      "exit": 0
+    },
+    {
+      "repository": "mere",
+      "expected": "81e6805cf55a3d2de90a41ba95a5a21c6f3be929",
+      "actual": "81e6805cf55a3d2de90a41ba95a5a21c6f3be929",
+      "exit": 0
+    }
+  ],
+  "independent_bare_stores_without_alternates": true,
+  "receiving_supplement": {
+    "schema": "mere.cleromancy-c5-publication-integration/v1",
+    "date": "2026-10-16",
+    "source": "fbac5567cc47f61e4794016d3cbb82461afee38a",
+    "integrated_origin_main": "5031ea5fa0cd6264cd701e8734bb6d86d750f494",
+    "core": "7b0c5ef604355c7140a6dbc64b53f14d0983c157",
+    "knot": "b6a6222ede48bacebbc5a533c5930bcab779cee5",
+    "native_product": "052e54ffb809390e5a0dacaf78e0811cd974c9b6",
+    "native_supplier": "72f9c5c73ab9ddd8ba761524388c2406a6d6ffcf",
+    "command": "cargo test --locked --offline -p djinn --test embedded_reservoir_validation",
+    "exit": 0,
+    "passed": 6,
+    "failed": 0,
+    "ignored": 1,
+    "ignore_reason": "The process-child entry is intentionally ignored by the outer runner and launched by its parent tests.",
+    "source_identity": "The gate started with the prepared lock later committed verbatim as fbac5567c; all other source inputs were already committed in8959684dc. No source changed during execution.",
+    "compatibility": {
+      "failed_source": "8959684dcb68b0ec5d5dc2288a77fc5b60ba4012",
+      "failed_exit": 101,
+      "error": "Pinned Knot0020a50 lacks RoutedRelation link_key, marks and strength added by upstream resting-link model.",
+      "fix": "Isolated published-Knot921b4e0-based checkpoint sets synthetic geometry link_key=None, marks=Default, strength=None; receiving lock changes only six Knot source identities. Its standalone lock qualifies separately against Mere5031ea5f."
+    },
+    "files": [
+      {
+        "path": "Cargo.lock",
+        "sha256": "46d09e76bad0718f9d8e188bdb491e66cae347e324f52cf6e4101b295aa6b977"
+      },
+      {
+        "path": "ports/djinn/tests/embedded_reservoir_validation.rs",
+        "sha256": "fa5f3efd103176fdc1411951bfe31889c129676a5e614c2fb5bf65b722d33de1"
+      }
+    ],
+    "logs": [
+      {
+        "path": "owner-publication-integrated.log",
+        "sha256": "a0bba588a8fb7a7707054458c7720b0dfea58305dc6b7234445ce92671a6006f"
+      },
+      {
+        "path": "owner-knot-compat.log",
+        "sha256": "ae91e260d0c2aba4aa34c0c248b3aba872726f7159b39d3c8f312a1ef6c0ea8e"
+      },
+      {
+        "path": "mere-knot-compat-lock.log",
+        "sha256": "d675d3c718d6d2abe34ff08dd982260b0cc5486c491809955f9e726cb2284b4d"
+      }
+    ],
+    "limits": [
+      "No replacement of frozen native or earlier owner receipts",
+      "No renewed Knot native qualification",
+      "Shared wall, release and startup performance retain separate gates"
+    ],
+    "lock_resolution_diagnostic": "mere-knot-compat-lock.log preserves the initial Cargo proposal, which advanced unrelated Genet/netrender families. That proposal was not adopted. The final receiving lock starts at8959684dc and changes only six Knot source identities; published supplier cohorts are preserved."
+  },
+  "knot_supplement": {
+    "receipt": "knot-editor:docs/receipts/2026-10-16_c5_rosette_compat/qualification.json",
+    "source": "b6a6222ede48bacebbc5a533c5930bcab779cee5",
+    "rosette_tests_passed": 1,
+    "all_target_check_exit": 0,
+    "prior_receipts_preserved": 435
+  },
+  "disposition": [
+    "This additive publication record supersedes pending-publication wording in frozen C5 receipts; those receipts are unchanged.",
+    "The newer Mere link-model main was merged intact. Its pinned Knot had an inherited three-field RoutedRelation compile failure; an isolated compatibility checkpoint supplies synthetic defaults and receiving Mere changes only six Knot source identities.",
+    "Knot compatibility is published only on its checkpoint branch; Knot main, its active checkout and earlier native qualification are unchanged.",
+    "The native binary remains source052e54f on supplier72f9c5c73. Later software fixtures and receiving integration are separately source-bound; no newer native qualification is inferred.",
+    "All333 C4-and-earlier Cleromancy receipt/scenario paths remain exact. Public-seed and actual OS-random complete reading proofs reopen byte-identically.",
+    "C6, the complete shared wall, graphical unlock and release/performance retain their separate scope."
+  ]
+}

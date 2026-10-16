@@ -9,7 +9,10 @@ operating-system randomness and public-seed draws are supported. The
 records software, ten reviewed native originals, byte-equal fresh-process
 reopening, exact prior occasion/view/memory preservation and current-consumer
 compatibility evidence. Its frozen native source is `052e54f`; later changes
-adjust acceptance-test expectations only. Publication is recorded separately.
+adjust acceptance-test expectations only. Product checkpoint `e94a47c` and
+coordinated Mere intake `81e6805cf` are published and independently retrieved.
+The [C5 publication ledger](../receipts/c5-publication_20261016.json) records
+the isolated Knot compatibility checkpoint and supersedes frozen pending status.
 All 333 C4-and-earlier receipt/scenario paths remain exact. C6 is the next
 product phase; the full shared wall retains its separate gates.
 
@@ -1077,3 +1080,16 @@ orientations and positions, and interpretations.
   excluded from final acceptance. All 333 prior receipt/scenario paths remain
   unchanged. C6, graphical unlock, release/performance and the shared wall
   retain their own gates.
+
+- 2026-10-16: Published C5 product checkpoint `e94a47c`, native source `052e54f`,
+  portable validator `7b0c5ef` and integrated Mere intake `81e6805cf`. The
+  receiving intake preserves newly published link-model work and passes six
+  real-process owner fixtures with one intentional child entry. Its inherited
+  Knot geometry constructor mismatch is resolved through isolated checkpoint
+  `64fb72a`; Knot main and its native receipts remain unchanged. Knot software
+  checks pass its real two-document rosette fixture and all-target compilation.
+  Independent bare stores retrieve all seven exact publication revisions; the
+  [C5 publication ledger](../receipts/c5-publication_20261016.json) owns the
+  identities and supplemental receiving proof. The frozen native receipt, all
+  ten reviewed originals and all 333 prior receipt/scenario paths stay exact.
+  C6 remains next.
