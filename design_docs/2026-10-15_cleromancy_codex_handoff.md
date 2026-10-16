@@ -1,3 +1,10 @@
+**C7 publication (2026-10-16):** qualified product receipts are published on
+main at `dba1c183`; coordinated Mere receiving qualification is on main at
+`a4c1814c8`. The integrated receiving gate passes 8 parent tests, with one
+intentional child entry ignored. Frozen native/core sources retain their exact
+identities; [publication receipt](../receipts/c7-publication_20261016.json)
+records these separately. C8's first dice slice is now in progress.
+
 # Cleromancy handoff for Codex, 2026-10-15
 
 **C7 bounded qualification (2026-10-16; main publication pending):** versioned
