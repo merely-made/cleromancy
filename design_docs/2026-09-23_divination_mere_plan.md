@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-23
 
-**C6 qualification (2026-10-16):** ordinary native Read now records a typed
+**C6 published and qualified (2026-10-16):** ordinary native Read now records a typed
 situation beside the occasion: time, pinned Turquet Moon phase/illumination and
 ten tropical sign positions. Place and weather start off. Explicit place adds
 the disclosed season, solar-event and traditional-hour conventions; explicit
@@ -23,7 +23,9 @@ locks, and only resident opening timing in the supplier. No earlier receipt is
 relabelled. The [evidence notes](../receipts/c6_20261016/README.md) and read-only
 verifier retain every diagnostic attempt. Cold startup timing remains bounded
 and imperfect: a thirty-second inspector timeout and the combined-flow
-presentation stall remain explicit. Publication has a separate ledger. C7 is
+presentation stall remain explicit. The [C6 publication ledger](../receipts/c6-publication_20261016.json)
+independently verifies product checkpoint `3d45fc5`, supplier `25cbe8106` and
+receiving Mere `623e21bf1`. C7 is
 the next product phase; the full shared wall retains its separate gates.
 
 **Status (2026-10-16, C5 continuation):** C5 implements a versioned full-deck
@@ -1129,3 +1131,9 @@ orientations and positions, and interpretations.
   424 prior receipt/scenario paths remain unchanged. Failed waits, an unsupported
   optional reveal, startup timeouts and the combined-flow presentation stall are
   retained; none is counted among the ten accepted originals.
+
+- 2026-10-16: Published the scoped Mere supplier, product C6 checkpoint and
+  integrated receiving validator in dependency order. Fresh bare GitHub fetches
+  confirm the exact commits and selected source-tree identities, including all
+  198 recorded product inputs. The additive C6 publication ledger leaves the
+  frozen qualification, original captures and all earlier receipts unchanged.

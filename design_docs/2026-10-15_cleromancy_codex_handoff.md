@@ -1,6 +1,6 @@
 # Cleromancy handoff for Codex, 2026-10-15
 
-**C6 qualified (2026-10-16):** native Read records time and pinned sky facts,
+**C6 qualified and published (2026-10-16):** native Read records time and pinned sky facts,
 with place/weather independently off by default. Explicit weather stores the
 actual response and attribution; exact fresh-process reopens pass with outbound
 IP denied and future consent still off. The
@@ -12,7 +12,9 @@ complete C4 views/memory and all 424 older receipt/scenario paths remain exact.
 A narrow supplier intake separates endpoint discovery from checked domain
 opening. Startup timeouts and the combined-flow presentation failure remain
 recorded; bounded feature proof does not establish consistent startup or release
-performance. C7 is next. Publication is recorded separately; dated C5 and older
+performance. C7 is next. The [C6 publication ledger](../receipts/c6-publication_20261016.json)
+verifies product `3d45fc5`, narrow supplier `25cbe8106` and receiving Mere
+`623e21bf1` from fresh GitHub source trees; dated C5 and older
 notes below retain their original scope.
 
 **C5 published (2026-10-16):** shuffled-deck receipts, reversals and seeded
