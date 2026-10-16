@@ -570,12 +570,24 @@ impl ScenarioDriver<'_, '_> {
             } else {
                 key.into()
             };
+            if line.starts_with("c8-control-") && key == "read" {
+                let ui = &self.ctx.runner.state().consultation;
+                if !ui
+                    .catalog
+                    .fields
+                    .get(ui.field_select.selected)
+                    .is_some_and(|f| f.rules == crate::UNIFORM_DIE_RULE)
+                {
+                    return Err("C8 fixture refuses to submit a non-die reading".into());
+                }
+            }
             if line.starts_with("c8-control-") && key == "save-reflection" {
                 let ui = &self.ctx.runner.state().consultation;
                 let detail = ui
                     .detail()
                     .ok_or("C8 reflection requires a selected die occasion")?;
                 if detail.field.rules != crate::UNIFORM_DIE_RULE
+                    || !detail.reflections.is_empty()
                     || !matches!(
                         detail.context.label.as_str(),
                         "C8 operating-system roll" | "C8 public-seed roll"

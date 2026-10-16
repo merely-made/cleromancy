@@ -15,9 +15,9 @@ c5-control-click die-seed
 reveal class die-method
 settle 4
 capture die-method
-c5-control-reveal read
+c8-control-reveal read
 settle 4
-c5-control-click read
+c8-control-click read
 show-mere
 settle 8
 wait 1800
