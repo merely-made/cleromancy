@@ -121,20 +121,25 @@ All of it is on Mere `main`. As of this handoff, Mere `main` is `61fba39d9`.
 - the checks pass;
 - no `codex/c1-*` branch is left unmerged.
 
-### Task 2: move onto the family's next revision
+### Task 2: switch to the family's `branch = "main"` convention
 
-The family is moving to one Murm (`M = fb6360c12b`) and one Mere revision.
-That happens in the repin round defined in the remote mere route spec §7,
-run by the Knot handoff's lane (`knot-editor/design_docs/2026-10-15_knot_codex_handoff.md`).
-Its output Mere is called `R2`.
+Task 1 has landed (`main` is `39d65f7`, the lane merged). The repin round is
+done and Mark ruled the family onto branches (Mere's family composition brief,
+"Family source convention"): first-party rows name their repository as
+`git = "https://github.com/merely-made/<repo>.git", branch = "main"`, with no
+`www.` spelling, no double slash and no `rev`; the committed `Cargo.lock` pins
+the tested revision; a repin is `cargo update -p <package>`. Current tips at
+the time of writing: Mere `4a74b1cf2` (plus a lock-only bump), Murm
+`a3621dc8`, Genet `7af8de32`, netrender `f4f9c0d8`, Knot `3fc16df2`.
 
-1. Wait for `R2`. If it isn't out, ask Mark whether to take current Mere
-   `main` instead.
-2. Move every Mere row, including the double-slash patch rows, to `R2`.
-3. Move every Murm row from `38e9c9b8` to `M`.
-4. Align Genet, Netrender and the vello fork with Mere's own manifest at
-   `R2`.
-5. Make the source changes:
+1. Run the helper that rewrites those rows and drops the same-repository patch
+   tables:
+   `python3 "/Users/markik/Library/Application Support/Claude/side-session-notes/local_3d62af74-7793-41a6-ad04-66e8c1de0af1/to_main.py" <repo-root> mere,murm,netrender,genet,knot-editor`.
+   Leave `dramatis`, the vello fork and any other pinned fork on their `rev`
+   or `tag`. The double-slash workaround goes away: nothing Cleromancy pulls
+   names another spelling once every supplier is on the convention, and Cargo
+   cannot bridge two spellings of one repository.
+2. Make the source changes:
    - `graphshell_client::line` and `graphshell_host::line`, if named
      directly, become `chirograph::line`;
    - `edit_history` becomes `backstep`;
@@ -142,9 +147,11 @@ Its output Mere is called `R2`.
    - anything that named a moved Graphshell module (`view`, `sessions`,
      `canary`, `browser_carrier`, `identity_*`, `resident_mere_proxy`) takes
      its new path.
-6. Run `cargo update`, then confirm `cargo metadata` resolves exactly one
-   Mere family and one Murm family. Use the lane's existing metadata
-   qualification.
+3. Run `cargo update -p <a Mere package> -p mere-transport -p layout-dom-api`,
+   then confirm `cargo metadata` resolves exactly one source for each family
+   repository. If a second source remains, find the dependent (a supplier that
+   still names a repository by `rev`) and report it rather than adding a
+   bridge.
 
 **Checks** (from the README):
 
