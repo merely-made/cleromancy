@@ -13,7 +13,9 @@ bounded installation witness retain their own identities. This qualifies one
 die with OS/public-seed scalar selection, without orientation or assigned
 symbolic meaning. Graphical unlock, general startup/performance, release and
 shared-wall acceptance remain separate; further C8 systems remain unimplemented.
-Publication is recorded separately after the qualified checkpoint is pushed.
+Qualified checkpoint `0fe3503` is pushed and remote-verified on main; the
+[publication record](../receipts/c8-publication_20261016.json) retains the exact
+source and evidence identities.
 
 **C8 first-die preflight (2026-10-16):** one six-sided die is implemented
 through existing resident/scalar replay contracts. Frozen implementation

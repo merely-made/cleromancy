@@ -1,0 +1,15 @@
+{
+  "schema": "cleromancy.c8-publication/v1",
+  "date": "2026-10-16",
+  "remote": "origin",
+  "ref": "refs/heads/main",
+  "qualified_checkpoint": "0fe35036bfcc78d78a20e8af50dfb521abb584b7",
+  "remote_revision_verified": "0fe35036bfcc78d78a20e8af50dfb521abb584b7",
+  "software_source": "e51964a9387d1b846171871f0bb1e565ee86a5f7",
+  "native_source": "a4abd1bb6c00d5b174b077ede899aa7ee7b8c8e8",
+  "qualification_receipt": "c8-first-die-qualification_20261016.json",
+  "artifact_manifest": "c8_20261016/artifact-hashes.json",
+  "scope": "Published bounded first-D6 implementation, software/native receipts and documentation. This subsequent publication-record commit changes no implementation or frozen evidence.",
+  "mere_change_required": false,
+  "prior_receipts_modified": false
+}
