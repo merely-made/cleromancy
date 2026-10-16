@@ -92,6 +92,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         // prefix admitted below is itself a complete replay-valid candidate.
         let mut offset = 0;
         let mut batches = Vec::new();
+        eprintln!("fixture: {} captured edits", edits.len());
         while offset < edits.len() {
             let mut candidate = envelope.clone().into_graph()?;
             let mut bytes = 0;
@@ -142,6 +143,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             let request = route::requests(&opened.descriptor)
                 .ok_or("missing graph after fixture stage")?
                 .1;
+            eprintln!("fixture: accepted prefix {offset}; reading admitted graph");
             (graph, envelope) = read_graph(&mut attachment, request).await?;
         }
         let installed = cleromancy::Consultation::new(cleromancy::CleromancyHost::candidate(
@@ -165,6 +167,7 @@ async fn read_graph(
     attachment: &mut ReservoirAttachment,
     request: chirograph::ProjectionRequest,
 ) -> Result<(chirograph::ProjectionSnapshot, wire::SessionGraphV1), Box<dyn std::error::Error>> {
+    eprintln!("fixture: read projection");
     let graph = attachment.client_mut().snapshot(request).await?;
     let mut cards = HashMap::new();
     for request in route::card_requests(&graph) {
@@ -175,6 +178,7 @@ async fn read_graph(
         cards.insert(request.resource, bytes);
     }
     let request = route::session_graph_request(&graph, &cards).ok_or("missing complete graph")?;
+    eprintln!("fixture: read complete graph resource");
     let bytes = attachment
         .client_mut()
         .resource(request.session, request.resource)

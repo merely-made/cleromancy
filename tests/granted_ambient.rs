@@ -70,6 +70,20 @@ async fn neighboring_preview_requires_its_own_live_grant_and_clears_on_revocatio
                         title: "Permission-scoped public prompt".into(),
                     },
                 );
+                let large = add_node(
+                    graph,
+                    Some(Graph::node_namespace_id("note:large-c4")),
+                    "note:large-c4".into(),
+                    PortablePoint::new(1.0, 1.0),
+                );
+                apply_graph_delta(
+                    graph,
+                    GraphDelta::SetNodeFacet {
+                        key: large,
+                        facet: "public-fixture.large/v1".into(),
+                        value: serde_json::json!({"body":"z".repeat(400_000)}),
+                    },
+                );
             })
             .unwrap();
         session.flush(SystemTime::now()).await.unwrap();
@@ -132,6 +146,61 @@ async fn neighboring_preview_requires_its_own_live_grant_and_clears_on_revocatio
         }
         tokio::time::sleep(Duration::from_millis(10)).await;
     }
+    routes
+        .set_access(
+            &reservoir,
+            mere.id,
+            owner.clone(),
+            false,
+            false,
+            owner.clone(),
+        )
+        .await
+        .unwrap();
+    let mut explicit = graphshell_endpoint::door::app_client::AppBrokerClient::open_route_at(
+        &endpoint,
+        owner.clone(),
+        graphshell_endpoint::door::app_admission::AppRouteId::new(
+            djinn::resident_mere::mere_route_id("notes"),
+        )
+        .unwrap(),
+    )
+    .await
+    .unwrap();
+    let opened = explicit.open_session().await.unwrap();
+    let request = mere_overmap::route::requests(&opened.descriptor).unwrap().1;
+    let graph = explicit.snapshot(request).await.unwrap();
+    let mut cards = std::collections::HashMap::new();
+    for r in mere_overmap::route::card_requests(&graph) {
+        cards.insert(
+            r.resource,
+            explicit.resource(r.session, r.resource).await.unwrap(),
+        );
+    }
+    let r = mere_overmap::route::session_graph_request(&graph, &cards).unwrap();
+    let bytes = explicit
+        .resource(r.session.clone(), r.resource)
+        .await
+        .unwrap();
+    let old_frame = chirograph::ResourceResponse::new(r.session, bytes.clone());
+    assert!(
+        serde_json::to_vec(&old_frame).unwrap().len() > 1024 * 1024,
+        "the real admitted graph requires chunking"
+    );
+    let envelope: mere_overmap::wire::SessionGraphV1 = serde_json::from_slice(&bytes).unwrap();
+    let graph = envelope.into_graph().unwrap();
+    let (_, node) = graph.get_node_by_url("note:large-c4").unwrap();
+    assert_eq!(
+        graph
+            .facets()
+            .get(
+                &node.id,
+                &chartulary::FacetId::new("public-fixture.large/v1")
+            )
+            .unwrap()["body"],
+        "z".repeat(400_000)
+    );
+    explicit.close().await.unwrap();
     assert!(
         GrantedAmbient::open_at(&endpoint, "notes").await.is_err(),
         "explicit access alone does not grant ambient crossing"
