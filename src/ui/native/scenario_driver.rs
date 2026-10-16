@@ -624,16 +624,27 @@ impl ScenarioDriver<'_, '_> {
             return Ok(());
         }
         match line {
+            "c8-prepare-reflection" => {
+                self.ctx.runner.update(|state| {
+                    state.consultation.reflection = cambium::TextInput::new("Public dice fixture: I recorded this outcome without assigning it a symbolic meaning.");
+                });
+                Ok(())
+            },
             "c8-prepare-os" | "c8-prepare-seed" => {
                 let seeded = line == "c8-prepare-seed";
+                let field_index = self
+                    .ctx
+                    .runner
+                    .state()
+                    .consultation
+                    .catalog
+                    .fields
+                    .iter()
+                    .position(|f| f.system == "cleromancy.die/d6")
+                    .ok_or("install die through consultation form before preparing roll")?;
                 self.ctx.runner.update(|state| {
                     let ui = &mut state.consultation;
-                    ui.field_select.selected = ui
-                        .catalog
-                        .fields
-                        .iter()
-                        .position(|f| f.system == "cleromancy.die/d6")
-                        .expect("install die before preparing roll");
+                    ui.field_select.selected = field_index;
                     ui.context_select.selected = 0;
                     ui.context_label = cambium::TextInput::new(if seeded {
                         "C8 public-seed roll"
@@ -944,6 +955,18 @@ impl ScenarioDriver<'_, '_> {
                 Ok(())
             },
             "advance" => self.advance(),
+            "show-consultation" => {
+                if self.ctx.runner.state().mere.open {
+                    self.mere_step("show-mere")?;
+                }
+                self.ctx.runner.update(|state| {
+                    crate::ui::screen::select_surface(
+                        &mut state.consultation.surface_tabs,
+                        crate::ui::screen::ConsultationScreen::Today,
+                    )
+                });
+                Ok(())
+            },
             "show-mere" => {
                 if self.ctx.runner.state().mere.open {
                     Ok(())
