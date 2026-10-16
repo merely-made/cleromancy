@@ -304,7 +304,7 @@ struct Deck {
 
 impl Deck {
     fn of(field: &Field) -> Self {
-        let tarot = field.system.starts_with("cleromancy.tarot/");
+        let tarot = field.tarot.is_some() || field.system.starts_with("cleromancy.tarot/");
         let (noun, singular) = if tarot {
             ("cards", "card")
         } else if field.rules == UNIFORM_DIE_RULE {
@@ -494,5 +494,19 @@ fn chance(weight: u64, total: u64) -> String {
         format!("1 in {total}, about {percent:.1}%")
     } else {
         format!("{weight} of {total} shares, about {percent:.1}%")
+    }
+}
+
+#[cfg(test)]
+mod typed_deck_tests {
+    #[test]
+    fn typed_metadata_identifies_cards_without_a_system_name_prefix() {
+        let mut deck = crate::cards::builtin_decks()[0].clone();
+        deck.id = "local.reflective-deck".into();
+        let field = deck.field(crate::TarotQualification::Contextual).unwrap();
+        let description = super::Deck::of(&field);
+        assert!(description.tarot);
+        assert_eq!(description.singular, "card");
+        assert_eq!(description.name, deck.title);
     }
 }
