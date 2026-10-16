@@ -114,3 +114,12 @@ pre, code { font-family: var(--tabard-font-code, monospace); }
 .correspondence-columns { display: flex; flex-wrap: wrap; gap: 12px; }
 .correspondence { flex: 1 1 260px; min-width: 0; padding: 12px; border: 1px solid #888; }
 .content-credit { font-size: 0.85em; }
+
+.ambient-neighborhood { margin-top: 16px; padding: 12px; border: 1px solid currentColor; border-radius: 8px; }
+.ambient-controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.ambient-controls button { white-space: normal; max-width: 100%; }
+.ambient-canvas-holder { display: block; width: 100%; min-width: 0; }
+.ambient-item-list { display: flex; flex-direction: column; gap: 6px; }
+.ambient-item-list button { text-align: left; white-space: normal; }
+.ambient-neighborhood p { overflow-wrap: anywhere; }
+.graph-canvas-swatch-node[data-attention="foreground"] { border: 2px solid currentColor; }

@@ -28,6 +28,16 @@ use super::{ConsultationAction, ConsultationContext, ConsultationLayout};
 /// A result crossing from the persistence lane back to the native host.
 #[derive(Clone, Debug)]
 pub(crate) enum WorkerUpdate {
+    GrantedContext {
+        cards: Vec<crate::granted_ambient::GrantedCard>,
+        notice: String,
+        complete_request: bool,
+    },
+    Neighborhood {
+        catalog: ConsultationCatalog,
+        detail: ConsultationDetail,
+        context: crate::ambient::AmbientContext,
+    },
     Unavailable {
         message: String,
     },
@@ -244,6 +254,9 @@ fn run(commands: mpsc::Receiver<WorkerCommand>, deliver: impl Fn(WorkerUpdate)) 
             Err(mpsc::RecvTimeoutError::Timeout) => {
                 // Poll the existing admitted connection for external changes;
                 // the route's own notices include graph, policy and lifecycle.
+                if let Some(update) = runtime.block_on(client.poll_granted()) {
+                    deliver(update);
+                }
                 match runtime.block_on(client.take_notice()) {
                     Ok(true) => match runtime.block_on(client.refresh()) {
                         Ok(()) => {
@@ -277,6 +290,31 @@ pub(crate) fn execute<B: muniment::Backend>(
     action: ConsultationAction,
 ) -> Result<WorkerUpdate, ConsultationError> {
     match action {
+        ConsultationAction::OpenNeighborhood {
+            session_id,
+            position,
+        } => neighborhood_update(consultation, &session_id, &position),
+        ConsultationAction::SaveNeighborhood { view } => {
+            pollster::block_on(consultation.save_ambient_view(&view))?;
+            neighborhood_update(consultation, &view.session_id, &view.position)
+        },
+        ConsultationAction::ExamineNeighbor {
+            session_id,
+            position,
+            item_id,
+            keep,
+        } => {
+            pollster::block_on(consultation.remember_ambient(
+                &session_id,
+                &position,
+                &item_id,
+                keep,
+            ))?;
+            neighborhood_update(consultation, &session_id, &position)
+        },
+        ConsultationAction::ReadGrantedContext { .. } | ConsultationAction::ClearGrantedContext => {
+            unreachable!("handled by the admitted resident client")
+        },
         ConsultationAction::InstallTarotDecks => {
             pollster::block_on(consultation.install_typed_tarot())?;
             Ok(WorkerUpdate::Catalog(consultation.catalog()?))
@@ -371,4 +409,16 @@ pub(crate) fn execute<B: muniment::Backend>(
             })
         },
     }
+}
+
+pub(crate) fn neighborhood_update<B: muniment::Backend>(
+    consultation: &Consultation<B>,
+    session_id: &str,
+    position: &str,
+) -> Result<WorkerUpdate, ConsultationError> {
+    Ok(WorkerUpdate::Neighborhood {
+        catalog: consultation.catalog()?,
+        detail: consultation.detail(session_id)?,
+        context: consultation.ambient_context(session_id, position)?,
+    })
 }

@@ -61,6 +61,33 @@ pub(super) fn journal_region(ui: &ConsultationUi) -> ConsultationView {
         }
     }
     paging_controls(&page, &mut children);
+    if !ui.catalog.ambient_memory.is_empty() {
+        children.push(Box::new(el::<_, ConsultationUi, ()>(
+            "h3",
+            "Examined and kept context",
+        )));
+        for entry in &ui.catalog.ambient_memory {
+            children.push(Box::new(
+                el::<_, ConsultationUi, ()>(
+                    "p",
+                    format!(
+                        "{} · {} · examined {} · {}",
+                        entry.memory.item.title,
+                        if entry.kept { "Saved" } else { "Recent" },
+                        crate::format_relative_date(entry.memory.examined_at_ms, ui.journal.now_ms),
+                        entry
+                            .memory
+                            .reasons
+                            .iter()
+                            .map(|r| format!("{} v{}", r.engine, r.version))
+                            .collect::<Vec<_>>()
+                            .join(", ")
+                    ),
+                )
+                .attr("data-key", format!("memory:{}", entry.memory.id)),
+            ));
+        }
+    }
     selected_detail(ui, &mut children);
     comparison(ui, &mut children);
 

@@ -38,6 +38,7 @@ use crate::{
     ReadingSession, SessionError, SpreadError, SpreadRelationKind,
 };
 
+mod ambient;
 mod cards;
 mod catalog;
 mod domain;
@@ -49,6 +50,7 @@ mod sky;
 mod spreads;
 mod summary;
 
+pub use ambient::{AMBIENT_MEMORY_FACET, AMBIENT_VIEW_FACET};
 pub use domain::validate_divination_graph;
 
 pub use summary::{SessionSummary, SummaryPlacement, summarize};
@@ -265,7 +267,9 @@ impl<B: Backend> CleromancyHost<B> {
         #[cfg(feature = "legacy-receipts")]
         if let Some(slots) = &self.slots {
             let document = match &self.persisted_document {
-                Some(document) if !self.dirty && document.graph.timestamp_secs == _saved_at_secs => {
+                Some(document)
+                    if !self.dirty && document.graph.timestamp_secs == _saved_at_secs =>
+                {
                     document.clone()
                 },
                 _ => {

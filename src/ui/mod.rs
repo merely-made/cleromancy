@@ -8,6 +8,7 @@
 //! resident transaction boundary away from the window thread.
 
 mod action;
+mod ambient_state;
 mod chart_state;
 mod journal_state;
 pub mod native;

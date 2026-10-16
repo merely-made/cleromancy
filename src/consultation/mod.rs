@@ -21,6 +21,7 @@ use crate::{
     TarotQualification,
 };
 
+mod ambient;
 mod compare;
 mod drafts;
 mod journal_policy;
@@ -39,6 +40,8 @@ pub use journal_policy::{
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct ConsultationCatalog {
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub ambient_memory: Vec<crate::ambient::MemorySummary>,
     pub contexts: Vec<ContextSnapshot>,
     pub fields: Vec<Field>,
     pub spread_templates: Vec<SpreadTemplate>,
@@ -155,6 +158,11 @@ impl<B: Backend> Consultation<B> {
         &self.host
     }
 
+    /// Return the owned candidate; persistence remains the caller's authority.
+    pub fn into_host(self) -> CleromancyHost<B> {
+        self.host
+    }
+
     pub(crate) fn host_mut_candidate(&mut self) -> &mut CleromancyHost<B> {
         &mut self.host
     }
@@ -175,6 +183,7 @@ impl<B: Backend> Consultation<B> {
             })
             .collect::<Result<Vec<_>, ConsultationError>>()?;
         Ok(ConsultationCatalog {
+            ambient_memory: self.host.ambient_memories()?,
             contexts: self.host.contexts()?,
             fields: self.host.fields()?,
             spread_templates: self.host.spread_templates()?,

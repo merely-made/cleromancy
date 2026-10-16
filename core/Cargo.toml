@@ -30,6 +30,9 @@ mere = { git = "https://github.com/merely-made/mere.git", branch = "main", defau
 muniment = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["redb"] }
 rand_core = { version = "0.6", features = ["getrandom"] }
 sceno = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+scenograph = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+seiche = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["serde"] }
+alembic = { package = "mere-alembic", git = "https://github.com/merely-made/mere.git", branch = "main", features = ["recall"] }
 scenotime = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
@@ -68,3 +71,7 @@ muniment = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 [[test]]
 name = "typed_decks"
 path = "../tests/typed_decks.rs"
+
+[[test]]
+name = "ambient"
+path = "../tests/ambient.rs"

@@ -95,10 +95,11 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
                         .attr("aria-live", "polite"),
                 ));
             }
+            children.push(narrative_view(&narrative, &focused));
+            children.push(super::ambient::neighborhood(ui));
             if let Some(card) = super::typed_card::card_view(ui, detail, &focused) {
                 children.push(card);
             }
-            children.push(narrative_view(&narrative, &focused));
             let sections = detail
                 .session
                 .placements
