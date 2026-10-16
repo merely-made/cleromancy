@@ -1,0 +1,115 @@
+warning: patch `mere-proofs v0.1.0 (https://github.com/merely-made/mere.git?branch=main#25cbe810)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.24s
+     Running unittests ../src/lib.rs (core/target/build/debug/deps/cleromancy-2764ecd429bd4735)
+
+running 16 tests
+test consultation::journal_policy::tests::date_cutoff_is_inclusive ... ok
+test consultation::journal_policy::tests::relative_dates_use_elapsed_duration_buckets ... ok
+test content::tests::content_editions_are_typed_and_complete ... ok
+test host::sky::tests::enumerator_rejects_a_valid_record_at_the_wrong_digest_address ... ok
+test host::domain::tests::rejects_orphan_domain_facets ... ok
+test reading::shuffle::tests::rejection_includes_maximum_word_and_refuses_the_short_prefix ... ok
+test host::domain::tests::rejects_deleted_dependency_and_missing_domain_facet ... ok
+test situation::sky::tests::unequal_hours_cover_each_boundary_and_keep_the_previous_day_before_sunrise ... ok
+test host::sky::tests::enumerator_rejects_a_structurally_invalid_canonical_record ... ok
+test host::domain::tests::rejects_a_reading_after_its_field_node_is_removed ... ok
+test host::domain::tests::preserves_unrelated_unknown_facets ... ok
+test host::domain::tests::rejects_tampered_unreferenced_sealed_reading ... ok
+test host::domain::tests::validates_complete_reading_without_mutating_candidate ... ok
+test host::domain::tests::rejects_unknown_domain_version_and_multiple_domain_records ... ok
+test host::domain::tests::validates_a_session_and_reflection_and_refuses_a_missing_session ... ok
+test narrative::typed_deck_tests::typed_metadata_identifies_cards_without_a_system_name_prefix ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running ../tests/ambient.rs (core/target/build/debug/deps/ambient-b4eb6f60f609897f)
+
+running 3 tests
+test source_engines_keep_occurrences_traditions_and_draw_time_evidence_distinct ... ok
+test malformed_or_unattributed_ambient_writes_are_refused_before_mutation ... ok
+test keeping_uses_shared_memory_levels_and_pose_curation_replays_without_sealed_edits ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 9.34s
+
+     Running ../tests/inference.rs (core/target/build/debug/deps/inference-44a649e804c656ef)
+
+running 5 tests
+test formula_tamper_and_fabricated_sources_are_refused_before_any_change ... ok
+test formula_replays_exactly_and_preserves_draws_and_earlier_details ... ok
+test later_reflections_do_not_rewrite_frozen_inputs ... ok
+test stored_model_output_round_trips_without_model_execution_and_requires_disclosures ... ok
+test generated_records_do_not_change_existing_card_neighborhoods ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.76s
+
+     Running ../tests/resident_candidate.rs (core/target/build/debug/deps/resident_candidate-967a101a682ef9ac)
+
+running 3 tests
+test candidate_constructor_refuses_tampered_resident_graph ... ok
+test candidate_actions_capture_stable_edits_and_leave_input_unchanged ... ok
+test typed_decks_survive_journal_replay_and_forged_metadata_is_refused ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.44s
+
+     Running ../tests/shuffled_deck.rs (core/target/build/debug/deps/shuffled_deck-757a65bc23c9ee5e)
+
+running 4 tests
+test pre_c5_scalar_calculation_and_derived_receipts_remain_byte_equal ... ok
+test a_typed_spread_captures_one_field_snapshot_within_the_carrier_bound ... ok
+test receipt_tampering_and_mixed_or_reordered_session_draws_are_refused_before_mutation ... ok
+test one_full_shuffle_has_no_repeats_and_all_prefixes_share_order_and_orientations ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.96s
+
+     Running ../tests/situation.rs (core/target/build/debug/deps/situation-a749cc94cae9ded5)
+
+running 3 tests
+test place_off_records_global_facts_and_explicit_missing_local_facts_without_changing_the_draw ... ok
+test opted_in_weather_replays_from_exact_saved_response_and_tampering_is_refused_before_write ... ok
+test polar_and_equatorial_boundaries_are_disclosed_and_weather_never_enables_place ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 19.48s
+
+     Running ../tests/sky.rs (core/target/build/debug/deps/sky-8d3a442a93a3ff4e)
+
+running 3 tests
+test validation_rejects_noncanonical_or_out_of_bounds_policy_controls ... ok
+test sky_facts_are_canonical_and_validate_after_json_round_trip ... ok
+test interpretations_bind_facts_and_exact_authored_pack ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running ../tests/sky_host.rs (core/target/build/debug/deps/sky_host-d9d83f18af710dcc)
+
+running 2 tests
+test sky_interpretation_replay_requires_its_facts_dependency ... ok
+test sky_records_persist_as_distinct_digest_nodes_with_provenance ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running ../tests/sky_timeline.rs (core/target/build/debug/deps/sky_timeline-01be1e85a66ba4d9)
+
+running 1 test
+test dallas_eclipse_day_is_a_durable_turquet_timeline_with_authored_interpretations ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 10.87s
+
+     Running ../tests/typed_decks.rs (core/target/build/debug/deps/typed_decks-f3352aef553fc572)
+
+running 3 tests
+test historical_field_encoding_and_original_pack_are_unchanged ... ok
+test complete_decks_crosswalk_typed_identity_and_preserve_disagreement ... ok
+test stored_typed_field_replays_and_refuses_unbound_or_malformed_content ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+   Doc-tests cleromancy
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

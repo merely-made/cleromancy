@@ -1,0 +1,38 @@
+[
+  {
+    "path": "native-install-diagnostic-01/after-install.png",
+    "scope": "diagnostic",
+    "review": "original native capture inspected",
+    "assessment": "Reading-only mere workspace has no Add-die control; no new result. Failed whole scenario retained."
+  },
+  {
+    "path": "native-os-create-02/die-method.png",
+    "scope": "diagnostic",
+    "review": "original native capture inspected",
+    "assessment": "The failed run retained the generic form and no selected die; cannot qualify die-method presentation."
+  },
+  {
+    "path": "native-os-create-02/die-narrative.png",
+    "scope": "diagnostic",
+    "review": "original native capture inspected",
+    "assessment": "Resident attachment timed out; empty reading and refused reflection are visibly disclosed. No die result accepted."
+  },
+  {
+    "path": "native-os-create-02/compact-die-narrative.png",
+    "scope": "diagnostic",
+    "review": "original native capture inspected",
+    "assessment": "Compact capture retains attachment timeout and no-reading error. Failed run, not native acceptance."
+  },
+  {
+    "path": "native-install-diagnostic-02/installed-header.png",
+    "scope": "bounded installation witness",
+    "review": "original native capture inspected",
+    "assessment": "Stored field selects 6-sided die and the OS-random roll control is present; eight prior occasions remain. This does not qualify creation or reopening of a die result."
+  },
+  {
+    "path": "native-os-create-03/die-method.png",
+    "scope": "diagnostic",
+    "review": "original native capture inspected",
+    "assessment": "Equal-weight/no-orientation method and Roll control are legible. Old card narrative remains until a roll saves; this whole process was stopped after roll submission and is not accepted."
+  }
+]

@@ -1,0 +1,15 @@
+RESULT ok
+waited 1646 frames
+waited 0 frames
+waited 355 frames
+captured die-method
+waited 1143 frames
+waited 634 frames
+captured die-narrative
+waited 0 frames
+captured compact-die-narrative
+capture die-method 2320x1520 digest=4c4f3fb7d7c16e1b file=/Users/markik/Code/testing/cleromancy/c8-20261016/native-seed-create-01/die-method.png
+capture die-narrative 2320x1520 digest=d9ad32016ae7f23d file=/Users/markik/Code/testing/cleromancy/c8-20261016/native-seed-create-01/die-narrative.png
+capture compact-die-narrative 840x1520 digest=8c4e6445a6cf5be0 file=/Users/markik/Code/testing/cleromancy/c8-20261016/native-seed-create-01/compact-die-narrative.png
+frames: 3 captured, 0 blank, 3 distinct digests
+presentation: 3877 frames, 3878 redraws, 1 unpresented redraws

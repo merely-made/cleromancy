@@ -1,0 +1,226 @@
+{
+  "session": {
+    "schema": "cleromancy.reading-session/v1",
+    "id": "b20ff7500e5623ff40d4dc56c0079376aa8a2645d8394208ffea1941f36e6f69",
+    "created_at_ms": 1792175226191,
+    "event_nonce": "c593c7ebca29e297de0ddf2811776251",
+    "context_digest": "991721f6a7721bffcfde4c08cad1a0e6121404478e21384cda9b034baed9d6ac",
+    "field_digest": "3ca3ad6cf3f926d7029d76b62fee0e4b25493c0f9877d4f2831cd803df7fb3a4",
+    "placements": [
+      {
+        "position": "focus",
+        "reading_id": "70fb863ab8443c5028ff4bbef4fdaebe74faa9fafcdb3efea96673f25c1d56ed"
+      }
+    ]
+  },
+  "context": {
+    "schema": "cleromancy.context/manual/v1",
+    "label": "C8 operating-system roll",
+    "facts": {
+      "question": "Which face appears on this roll?"
+    },
+    "tags": []
+  },
+  "field": {
+    "system": "cleromancy.die/d6",
+    "rules": "uniform-die/v1",
+    "candidates": [
+      {
+        "id": "1",
+        "title": "Six-sided die: 1",
+        "interpretation": "A uniformly cast face of Six-sided die.",
+        "tags": [],
+        "base_weight": 1
+      },
+      {
+        "id": "2",
+        "title": "Six-sided die: 2",
+        "interpretation": "A uniformly cast face of Six-sided die.",
+        "tags": [],
+        "base_weight": 1
+      },
+      {
+        "id": "3",
+        "title": "Six-sided die: 3",
+        "interpretation": "A uniformly cast face of Six-sided die.",
+        "tags": [],
+        "base_weight": 1
+      },
+      {
+        "id": "4",
+        "title": "Six-sided die: 4",
+        "interpretation": "A uniformly cast face of Six-sided die.",
+        "tags": [],
+        "base_weight": 1
+      },
+      {
+        "id": "5",
+        "title": "Six-sided die: 5",
+        "interpretation": "A uniformly cast face of Six-sided die.",
+        "tags": [],
+        "base_weight": 1
+      },
+      {
+        "id": "6",
+        "title": "Six-sided die: 6",
+        "interpretation": "A uniformly cast face of Six-sided die.",
+        "tags": [],
+        "base_weight": 1
+      }
+    ],
+    "position_meanings": {
+      "schema": "cleromancy.position-meanings/v1",
+      "id": "cleromancy.die.single",
+      "version": "1",
+      "author": "Cleromancy",
+      "date": "2026-10-16",
+      "positions": [
+        {
+          "name": "focus",
+          "label": "Outcome",
+          "meaning": "The face selected by this single roll. Each face has equal weight; your question does not change its probability. No symbolic meaning is assigned to the number."
+        }
+      ]
+    }
+  },
+  "readings": [
+    {
+      "schema": "cleromancy.reading/v1",
+      "id": "70fb863ab8443c5028ff4bbef4fdaebe74faa9fafcdb3efea96673f25c1d56ed",
+      "system": "cleromancy.die/d6",
+      "candidate_id": "3",
+      "title": "Six-sided die: 3",
+      "interpretation": "A uniformly cast face of Six-sided die.",
+      "receipt": {
+        "schema": "cleromancy.receipt/v1",
+        "mode": "cast",
+        "algorithm": "os-csprng/rejection-u64+uniform-die/v1",
+        "context_digest": "991721f6a7721bffcfde4c08cad1a0e6121404478e21384cda9b034baed9d6ac",
+        "field_digest": "3ca3ad6cf3f926d7029d76b62fee0e4b25493c0f9877d4f2831cd803df7fb3a4",
+        "qualified_weights": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "total_weight": 6,
+        "sample": 2,
+        "event_nonce": "9162dc8f5b76eba5079b19555315e1d9",
+        "selected_index": 2,
+        "selected_candidate": "3"
+      }
+    }
+  ],
+  "reflections": [
+    {
+      "schema": "cleromancy.reflection/v1",
+      "id": "2bd927eceef3fdf94ebdf53d7ad6248061cea319a29242428a6aea018499e530",
+      "session_id": "b20ff7500e5623ff40d4dc56c0079376aa8a2645d8394208ffea1941f36e6f69",
+      "created_at_ms": 1792175320523,
+      "event_nonce": "4b328d4fdd8fe6ce8178c59f669241bb",
+      "body": "Public dice fixture: I recorded this outcome without assigning it a symbolic meaning."
+    }
+  ],
+  "concurrences": [],
+  "situation": {
+    "schema": "cleromancy.situation/v1",
+    "session_id": "b20ff7500e5623ff40d4dc56c0079376aa8a2645d8394208ffea1941f36e6f69",
+    "instant_ms": 1792175226191,
+    "place": null,
+    "sky": {
+      "method": "cleromancy.situation/turquet-0.17-30875f3-normalized/v1",
+      "provider": "Turquet 0.17.0@30875f30; analytical apparent ecliptic model3; geocentric tropical signs; eight equal phase sectors centered on 0/45/90…315 degrees",
+      "phase_band": "first-quarter sector",
+      "lunar_elongation_millidegrees": 69305,
+      "illuminated_parts_per_million": 324974,
+      "positions": [
+        {
+          "body": "sun",
+          "sign": "libra",
+          "degree_millidegrees": 23411,
+          "latitude_millidegrees": 0
+        },
+        {
+          "body": "moon",
+          "sign": "capricorn",
+          "degree_millidegrees": 2716,
+          "latitude_millidegrees": -4203
+        },
+        {
+          "body": "mercury",
+          "sign": "scorpio",
+          "degree_millidegrees": 17884,
+          "latitude_millidegrees": -3143
+        },
+        {
+          "body": "venus",
+          "sign": "scorpio",
+          "degree_millidegrees": 4980,
+          "latitude_millidegrees": -7401
+        },
+        {
+          "body": "mars",
+          "sign": "leo",
+          "degree_millidegrees": 10609,
+          "latitude_millidegrees": 1298
+        },
+        {
+          "body": "jupiter",
+          "sign": "leo",
+          "degree_millidegrees": 22222,
+          "latitude_millidegrees": 641
+        },
+        {
+          "body": "saturn",
+          "sign": "aries",
+          "degree_millidegrees": 10351,
+          "latitude_millidegrees": -2710
+        },
+        {
+          "body": "uranus",
+          "sign": "gemini",
+          "degree_millidegrees": 5170,
+          "latitude_millidegrees": -153
+        },
+        {
+          "body": "neptune",
+          "sign": "aries",
+          "degree_millidegrees": 2440,
+          "latitude_millidegrees": -1419
+        },
+        {
+          "body": "pluto",
+          "sign": "aquarius",
+          "degree_millidegrees": 3069,
+          "latitude_millidegrees": -4283
+        }
+      ]
+    },
+    "local": null,
+    "weather": null,
+    "unavailable": [
+      {
+        "fact": "Place",
+        "reason": "Place was not supplied for this draw. Geocentric phase and sign positions do not need it."
+      },
+      {
+        "fact": "Astronomical season",
+        "reason": "Place was not supplied for this draw. Geocentric phase and sign positions do not need it."
+      },
+      {
+        "fact": "Sunrise and sunset",
+        "reason": "Place was not supplied for this draw. Geocentric phase and sign positions do not need it."
+      },
+      {
+        "fact": "Planetary hours",
+        "reason": "Place was not supplied for this draw. Geocentric phase and sign positions do not need it."
+      },
+      {
+        "fact": "Weather",
+        "reason": "Weather is off; no network source was contacted for this draw."
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+RESULT ok
+waited 1389 frames
+waited 515 frames
+captured installed-header
+capture installed-header 2320x1520 digest=956450c767ba2724 file=/Users/markik/Code/testing/cleromancy/c8-20261016/native-install-diagnostic-02/installed-header.png
+frames: 1 captured, 0 blank, 1 distinct digests
+presentation: 1933 frames, 1934 redraws, 1 unpresented redraws

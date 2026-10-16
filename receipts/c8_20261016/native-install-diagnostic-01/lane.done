@@ -1,0 +1,11 @@
+RESULT fail
+waited 1671 frames
+waited 0 frames
+FAIL: missing C4 mounted control install-six-sided-die
+FAIL: missing C4 mounted control install-six-sided-die
+waited 0 frames
+captured after-install
+capture after-install 2320x1520 digest=fe9bdcd311f4970a file=/Users/markik/Code/testing/cleromancy/c8-20261016/native-install-diagnostic-01/after-install.png
+frames: 1 captured, 0 blank, 1 distinct digests
+presentation: 1695 frames, 1696 redraws, 1 unpresented redraws
+FAIL: product completion: Cleromancy durable scenario acceptance failed

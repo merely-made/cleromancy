@@ -1,0 +1,20 @@
+{
+  "schema": "cleromancy.headed-scenario/v1",
+  "phase": "reopen",
+  "ok": false,
+  "status": "Ready",
+  "catalog_ready": true,
+  "sessions": 8,
+  "readings": 0,
+  "reflections": 0,
+  "ids": null,
+  "log": [
+    "waited 1671 frames",
+    "waited 0 frames",
+    "FAIL: missing C4 mounted control install-six-sided-die",
+    "FAIL: missing C4 mounted control install-six-sided-die",
+    "waited 0 frames",
+    "captured after-install",
+    "FAIL: scenario completed without durable session, reading, and reflection ids"
+  ]
+}

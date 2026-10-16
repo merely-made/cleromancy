@@ -1,0 +1,5 @@
+{
+  "reason": "Stop owned historical process before correcting fixture routing and installed-die refresh. Completed preparation default suite passed; historical preparation is diagnostic only.",
+  "runner_pid": 36058,
+  "cargo_pid": 39122
+}

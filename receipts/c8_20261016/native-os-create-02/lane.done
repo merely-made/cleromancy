@@ -1,0 +1,28 @@
+RESULT fail
+waited 1490 frames
+waited 0 frames
+waited 0 frames
+FAIL: install die through consultation form before preparing roll
+FAIL: missing C4 mounted control die-os
+FAIL: missing C4 mounted control die-os
+FAIL: no .die-method
+captured die-method
+waited 0 frames
+FAIL: assert snap die: no such field
+FAIL: assert snap die-seeded: no such field
+FAIL: assert snap readings Eq '1': got '0'
+FAIL: assert text 'Outcome': not on any surface
+waited 0 frames
+FAIL: assert snap reflections Eq '1': got '0'
+FAIL: assert text '6 faces': not on any surface
+FAIL: no .reading-narrative
+captured die-narrative
+waited 0 frames
+FAIL: no .reading-narrative
+captured compact-die-narrative
+capture die-method 2320x1520 digest=736afe2a7e8b923a file=/Users/markik/Code/testing/cleromancy/c8-20261016/native-os-create-02/die-method.png
+capture die-narrative 2320x1520 digest=83971e76360b0029 file=/Users/markik/Code/testing/cleromancy/c8-20261016/native-os-create-02/die-narrative.png
+capture compact-die-narrative 840x1520 digest=01ca52b1387d8e4c file=/Users/markik/Code/testing/cleromancy/c8-20261016/native-os-create-02/compact-die-narrative.png
+frames: 3 captured, 0 blank, 3 distinct digests
+presentation: 1579 frames, 1580 redraws, 1 unpresented redraws
+FAIL: product completion: Cleromancy durable scenario acceptance failed

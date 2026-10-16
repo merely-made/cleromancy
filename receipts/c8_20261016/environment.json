@@ -1,0 +1,7 @@
+{
+  "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+  "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14)\nbinary: rustc\ncommit-hash: 8bab26f4f68e0e26f0bb7960be334d5b520ea452\ncommit-date: 2026-07-14\nhost: aarch64-apple-darwin\nrelease: 1.97.1\nLLVM version: 22.1.6",
+  "rustdoc": "rustdoc 1.97.1 (8bab26f4f 2026-07-14)",
+  "source": "e51964a9387d1b846171871f0bb1e565ee86a5f7",
+  "build_jobs": 4
+}

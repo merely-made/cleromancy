@@ -1,0 +1,15 @@
+RESULT ok
+waited 1362 frames
+waited 0 frames
+waited 451 frames
+captured reopened-die-narrative
+waited 0 frames
+captured compact-reopened-die-narrative
+captured compact-mode-controls
+captured compact-roll-control
+capture reopened-die-narrative 2320x1520 digest=ac8cf0bf2436784d file=/Users/markik/Code/testing/cleromancy/c8-20261016/native-seed-reopen-01/reopened-die-narrative.png
+capture compact-reopened-die-narrative 840x1520 digest=8c4e6445a6cf5be0 file=/Users/markik/Code/testing/cleromancy/c8-20261016/native-seed-reopen-01/compact-reopened-die-narrative.png
+capture compact-mode-controls 840x1520 digest=b80eb57a5c0be8ba file=/Users/markik/Code/testing/cleromancy/c8-20261016/native-seed-reopen-01/compact-mode-controls.png
+capture compact-roll-control 840x1520 digest=d4d86754c2751e2a file=/Users/markik/Code/testing/cleromancy/c8-20261016/native-seed-reopen-01/compact-roll-control.png
+frames: 4 captured, 0 blank, 4 distinct digests
+presentation: 1886 frames, 1887 redraws, 1 unpresented redraws

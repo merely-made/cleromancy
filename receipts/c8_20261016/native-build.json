@@ -1,0 +1,8 @@
+{
+  "source": "426ad94",
+  "unsigned_binary_sha256": "772e4b68e12a08dbc42f52279dd10020198fc70f652df0c5d2d10433062de0ae",
+  "signed_binary_sha256": "91ef2ddc2f47a8722d41276f6e0a851940123a5d0c5685cddf4377857831d408",
+  "built_by": "cargo test --locked --offline; default product binary compiled before test execution",
+  "compiler": "Cargo 1.99, rustc/rustdoc 1.97.1",
+  "bundle": "/Users/markik/Code/testing/cleromancy/c8-20261016/Cleromancy C8.app"
+}

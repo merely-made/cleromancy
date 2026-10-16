@@ -1,3 +1,20 @@
+**C8 first-die qualification (2026-10-16):** the bounded six-sided-die slice
+now passes four whole native processes and review of all 14 original captures:
+operating-system roll, keyboard public-seed roll and actual fresh-process
+reopening of each. Both saved results are face 3; exported reading-detail bytes
+match exactly across each reopening. Final same-disk owner inspection finds
+ten occasions, preserving every field of the prior eight (including C7 prompts
+and keeping), plus complete C4 domain view/memory values. All 618 prior receipt
+paths remain exact. The [qualification ledger](../receipts/c8-first-die-qualification_20261016.json)
+and [evidence notes](../receipts/c8_20261016/README.md) bind software `e51964a`,
+native `a4abd1b`, 130/179 product tests, four all-target checks and core 41/42/43.
+Three scenario-only files separate those sources. Earlier failures and the
+bounded installation witness retain their own identities. This qualifies one
+die with OS/public-seed scalar selection, without orientation or assigned
+symbolic meaning. Graphical unlock, general startup/performance, release and
+shared-wall acceptance remain separate; further C8 systems remain unimplemented.
+Publication is recorded separately after the qualified checkpoint is pushed.
+
 **C8 first-die preflight (2026-10-16):** one six-sided die is implemented
 through existing resident/scalar replay contracts. Frozen implementation
 `e51964a` passes 130 default and 179 expanded tests (one explicit local-model

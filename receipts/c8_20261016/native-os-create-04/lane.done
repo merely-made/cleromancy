@@ -1,0 +1,15 @@
+RESULT ok
+waited 1330 frames
+waited 0 frames
+waited 358 frames
+captured die-method
+waited 1341 frames
+waited 749 frames
+captured die-narrative
+waited 0 frames
+captured compact-die-narrative
+capture die-method 2320x1520 digest=1314783edb5ee387 file=/Users/markik/Code/testing/cleromancy/c8-20261016/native-os-create-04/die-method.png
+capture die-narrative 2320x1520 digest=b763d832513edbd2 file=/Users/markik/Code/testing/cleromancy/c8-20261016/native-os-create-04/die-narrative.png
+capture compact-die-narrative 840x1520 digest=7dd7a3391ceb3f92 file=/Users/markik/Code/testing/cleromancy/c8-20261016/native-os-create-04/compact-die-narrative.png
+frames: 3 captured, 0 blank, 3 distinct digests
+presentation: 3877 frames, 3878 redraws, 1 unpresented redraws

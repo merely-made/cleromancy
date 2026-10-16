@@ -1,0 +1,86 @@
+[
+  {
+    "path": "native-os-create-04/die-method.png",
+    "review": "Original native capture individually inspected",
+    "assessment": "Equal-weight, repeatable independent-roll explanation and Roll control visible; place and weather off. Top of method block is above viewport.",
+    "accepted_scope": "bounded first die"
+  },
+  {
+    "path": "native-os-create-04/die-narrative.png",
+    "review": "Original native capture individually inspected",
+    "assessment": "Face 3, Outcome and operating-system randomness narration are legible with equal odds and unchanged saved situation; compact text wraps within the reader.",
+    "accepted_scope": "bounded first die"
+  },
+  {
+    "path": "native-os-create-04/compact-die-narrative.png",
+    "review": "Original native capture individually inspected",
+    "assessment": "Face 3, Outcome and operating-system randomness narration are legible with equal odds and unchanged saved situation; compact text wraps within the reader.",
+    "accepted_scope": "bounded first die"
+  },
+  {
+    "path": "native-os-reopen-01/reopened-die-narrative.png",
+    "review": "Original native capture individually inspected",
+    "assessment": "Face 3, Outcome and operating-system randomness narration are legible with equal odds and unchanged saved situation; compact text wraps within the reader.",
+    "accepted_scope": "bounded first die"
+  },
+  {
+    "path": "native-os-reopen-01/compact-reopened-die-narrative.png",
+    "review": "Original native capture individually inspected",
+    "assessment": "Face 3, Outcome and operating-system randomness narration are legible with equal odds and unchanged saved situation; compact text wraps within the reader.",
+    "accepted_scope": "bounded first die"
+  },
+  {
+    "path": "native-os-reopen-01/compact-mode-controls.png",
+    "review": "Original native capture individually inspected",
+    "assessment": "Compact randomness choices are fully visible and equal-weight/no-orientation explanation is readable.",
+    "accepted_scope": "bounded first die"
+  },
+  {
+    "path": "native-os-reopen-01/compact-roll-control.png",
+    "review": "Original native capture individually inspected",
+    "assessment": "Compact Roll control is fully visible and reachable; saved prior die reading remains selected.",
+    "accepted_scope": "bounded first die"
+  },
+  {
+    "path": "native-seed-create-01/die-method.png",
+    "review": "Original native capture individually inspected",
+    "assessment": "Public seed and domain inputs are readable, with independent-roll method and place/weather off. Top of method block is above viewport.",
+    "accepted_scope": "bounded first die"
+  },
+  {
+    "path": "native-seed-create-01/die-narrative.png",
+    "review": "Original native capture individually inspected",
+    "assessment": "Face 3, Outcome, exact public seed/domain and equal-odds explanation are readable; compact narration wraps within the reader.",
+    "accepted_scope": "bounded first die"
+  },
+  {
+    "path": "native-seed-create-01/compact-die-narrative.png",
+    "review": "Original native capture individually inspected",
+    "assessment": "Face 3, Outcome, exact public seed/domain and equal-odds explanation are readable; compact narration wraps within the reader.",
+    "accepted_scope": "bounded first die"
+  },
+  {
+    "path": "native-seed-reopen-01/reopened-die-narrative.png",
+    "review": "Original native capture individually inspected",
+    "assessment": "Reopened Face 3, Outcome, public seed/domain and equal-odds explanation match creation; compact narration wraps within reader.",
+    "accepted_scope": "bounded first die"
+  },
+  {
+    "path": "native-seed-reopen-01/compact-reopened-die-narrative.png",
+    "review": "Original native capture individually inspected",
+    "assessment": "Reopened Face 3, Outcome, public seed/domain and equal-odds explanation match creation; compact narration wraps within reader.",
+    "accepted_scope": "bounded first die"
+  },
+  {
+    "path": "native-seed-reopen-01/compact-mode-controls.png",
+    "review": "Original native capture individually inspected",
+    "assessment": "Targeted public-seed control and seed/domain inputs are fully visible; OS option is above viewport. Method and place/weather-off explanation remain readable.",
+    "accepted_scope": "bounded first die"
+  },
+  {
+    "path": "native-seed-reopen-01/compact-roll-control.png",
+    "review": "Original native capture individually inspected",
+    "assessment": "Compact Roll control is fully visible and reachable; saved public-seed reading remains selected.",
+    "accepted_scope": "bounded first die"
+  }
+]
