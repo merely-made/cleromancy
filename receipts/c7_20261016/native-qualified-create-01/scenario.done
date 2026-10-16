@@ -1,0 +1,13 @@
+RESULT ok
+waited 1095 frames
+waited 0 frames
+waited 352 frames
+waited 433 frames
+captured formula-prompt
+waited 762 frames
+captured model-prompt
+waited 623 frames
+captured kept-model-prompt
+waited 0 frames
+captured compact-formula-prompt
+captured compact-model-prompt

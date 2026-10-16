@@ -1,0 +1,829 @@
+{
+  "source": "d5c383c189f9e866a38939dd372ddf6a7556b60b",
+  "files": [
+    {
+      "path": ".cargo/config.toml",
+      "sha256": "af174c7f9ac5ae8e0536a8fd2fa0251e680f23edab3ffbb5098aa914a48cdb01"
+    },
+    {
+      "path": "Cargo.lock",
+      "sha256": "e0d28f4e0c59b4abe6790e90b71c384210de7bb6859ec9bfb8ab6c26e3fd4310"
+    },
+    {
+      "path": "Cargo.toml",
+      "sha256": "bde7a68ae621645b6c00c1a6bb2caa2853c0070b8f9347669fff1fd137dd652c"
+    },
+    {
+      "path": "assets/fonts/.gitattributes",
+      "sha256": "a338386f9fb7d5132eda8d56f213ed363e2749608da34633c8d10cde2823367a"
+    },
+    {
+      "path": "assets/fonts/ibm-plex-mono/IBMPlexMono-Bold.ttf",
+      "sha256": "ac27abd6450a64dd94467580a02fe6235156d5b92f2926ebbc8e7489df64e0be"
+    },
+    {
+      "path": "assets/fonts/ibm-plex-mono/IBMPlexMono-BoldItalic.ttf",
+      "sha256": "af4e05a761e98c1adf064c48a6352c9bec1a6ad70982cd2a544149323391f98e"
+    },
+    {
+      "path": "assets/fonts/ibm-plex-mono/IBMPlexMono-Italic.ttf",
+      "sha256": "3362fc791b0652193328b862c1c5f23a789bc7288b1617fa63302f88689a2a34"
+    },
+    {
+      "path": "assets/fonts/ibm-plex-mono/IBMPlexMono-Regular.ttf",
+      "sha256": "6a3412f058c7d8dfd9170c41e85ade48e5156ecb89356110ca57a0a27734af46"
+    },
+    {
+      "path": "assets/fonts/ibm-plex-mono/OFL.txt",
+      "sha256": "37784b44044a4ffd9256702b7c0982c37e5c8887ba90c6dca0479aea93dc898d"
+    },
+    {
+      "path": "assets/fonts/source-serif-4/OFL.txt",
+      "sha256": "5f94c3fd3a23131a417ab5a0c8452de57e70c3cfb9f604d88241f7065ebf9fd9"
+    },
+    {
+      "path": "assets/fonts/source-serif-4/SourceSerif4-Italic.ttf",
+      "sha256": "15fbc7e4679489a501998c3669272637a6646388ef7e4bd77eebb5bf967a1f42"
+    },
+    {
+      "path": "assets/fonts/source-serif-4/SourceSerif4.ttf",
+      "sha256": "97b2d4da6e3cb494b5a1e66ae176914d852ccabef49e0c02c0df25f3e39aca0b"
+    },
+    {
+      "path": "core/Cargo.lock",
+      "sha256": "2cab596ac6eec0853fe12b736d09d86efa34e716360fe9ed9f8de892dc3d07bd"
+    },
+    {
+      "path": "core/Cargo.toml",
+      "sha256": "bdbdbfeca2b20112b93963756994bc3bf9896eed4ded613e1223b15addfe12a8"
+    },
+    {
+      "path": "examples/c4_fixture_setup.rs",
+      "sha256": "605113c3425fc0b70af94b3ffcf7c7151fcf6d701a47d94a0cba78ed46a04924"
+    },
+    {
+      "path": "examples/c5_legacy_vectors.rs",
+      "sha256": "c250217aeb93cd9fc9f2b55ad5260d9248ecb47ddeaa3aee5148dfe1788c075f"
+    },
+    {
+      "path": "reservation/src/lib.rs",
+      "sha256": "7e7227f6ee2c5e0c8cb95299faf02a1cea9b1aee69dc4359bdf11e97b262993c"
+    },
+    {
+      "path": "src/admitted.rs",
+      "sha256": "3e1690e72c435ef61756e6fc4a2721d10b31c977595afa4ae300abac236d7510"
+    },
+    {
+      "path": "src/ambient/engines.rs",
+      "sha256": "48d0fbe73142e929787efd09984caa94d8d52b139841df0534e65120856d63fe"
+    },
+    {
+      "path": "src/ambient/mod.rs",
+      "sha256": "f7afa829875892d8767c59d242a7ec9f9ff81cd1d43a9f2fb341918ed10eefee"
+    },
+    {
+      "path": "src/ambient/retained.rs",
+      "sha256": "680ecf996d79310dbd02c90a8dc092a180a4d7c6218bb1fb11c0f72eafc70d03"
+    },
+    {
+      "path": "src/ambient_scene.rs",
+      "sha256": "1c8e23411bb8a9e8d2aeb97a91c1288deaadc4ab91902cc022b26a81424faf0e"
+    },
+    {
+      "path": "src/app/invoke.rs",
+      "sha256": "54038ff7d2e5029d7c422bb9f99d30375c9706e86db6addb5492955fe3edb820"
+    },
+    {
+      "path": "src/app/mod.rs",
+      "sha256": "d4178ec0a4fd53439873017163e7ee204285781401d23aee24ddbb1f1362e1c8"
+    },
+    {
+      "path": "src/astrology.rs",
+      "sha256": "85a37ce105cbc4792bf392619ffc32679ccfbdfc7e314c3a4621f1d73dccf54a"
+    },
+    {
+      "path": "src/bin/a15_pattern_receipt.rs",
+      "sha256": "c0237cb4b43db9df01d41ac7181d9cb4ae9a521983121bbaf8e2bdeb516cce01"
+    },
+    {
+      "path": "src/bin/a16_pattern_selection_receipt.rs",
+      "sha256": "35aece6cda8d15186440c78252050437f9e4acf5110dc40fd8918a5cdc672d66"
+    },
+    {
+      "path": "src/bin/a1_enrichment_receipt.rs",
+      "sha256": "b4c56a66394c7603be073af0b47b071372c21cd2c105d29bd05ad7604ecdc4ca"
+    },
+    {
+      "path": "src/bin/a2_enriched_receipt.rs",
+      "sha256": "894c93d50aae8a8746a2de86fbf9502047824f89f1a95529480d77eff74cbdb8"
+    },
+    {
+      "path": "src/bin/a3_intent_receipt.rs",
+      "sha256": "77ffe910e419025179a1baae38488d34f21c83ecbf3c7109d0b29d1987a4e5fa"
+    },
+    {
+      "path": "src/bin/a4_sync_receipt.rs",
+      "sha256": "1cf9eeab03ff48c15f9c7018d23961863a1c29d5b18025d3b8717ca2c9ef6474"
+    },
+    {
+      "path": "src/bin/a5_field_receipt.rs",
+      "sha256": "8d2449ea5d11d44b493743ff9c22958ab70bb3e9ff7a062e2f4fb21c47eb4700"
+    },
+    {
+      "path": "src/bin/a6_tarot_receipt.rs",
+      "sha256": "67cf49a0477cc288c82cacf8049aa497ad6e225cc8be12c8f67434e68a405ce5"
+    },
+    {
+      "path": "src/bin/a7_session_receipt.rs",
+      "sha256": "4565e706ee653988dc07385a0e7cf5985b65aa4f7ec30de7e929c31e3c07a1df"
+    },
+    {
+      "path": "src/bin/a8_three_card_receipt.rs",
+      "sha256": "6c270e0a562b36d4feee1a5982cad52270005fc4567acbfd794a5c195320049e"
+    },
+    {
+      "path": "src/bin/cleromancy_receipt.rs",
+      "sha256": "ec2fd0967b245767aabf6266d3485e703600e64b03642c78ac482d9b3a28aa0e"
+    },
+    {
+      "path": "src/cards.rs",
+      "sha256": "f42c6677a8d2870e7a9f2c07bf199032f35edacc5e13536d2d83c638e270bc7c"
+    },
+    {
+      "path": "src/composer.rs",
+      "sha256": "c0d0462588ce024547c67dd1fa881922a176dc43e83f7b7a90d54df5784db512"
+    },
+    {
+      "path": "src/concurrence.rs",
+      "sha256": "b6096f0347a667521c48d40fc818dc94427f9a472798f4a9b913945c0f66a08e"
+    },
+    {
+      "path": "src/consultation/ambient.rs",
+      "sha256": "344382365eaf67da4118c2ee2400a1263b60b6fb91f02672fbb383f29d8b9242"
+    },
+    {
+      "path": "src/consultation/compare.rs",
+      "sha256": "071548abe585b8a59bd3bddc9b2075b22c52b22447b95527985d54161fd88353"
+    },
+    {
+      "path": "src/consultation/drafts.rs",
+      "sha256": "02000623f88ca5497a652e521d01a237f03e7b3a8ae0328db9059baa553521dc"
+    },
+    {
+      "path": "src/consultation/journal_policy.rs",
+      "sha256": "0dd0d4d8046693cd1a8721af14dc40bc48e5d8b43b39979a00e5924da57e1899"
+    },
+    {
+      "path": "src/consultation/mod.rs",
+      "sha256": "44d6fc3eaeafcd8d9a673c3ff327e11c0d1eaf792eb37b7211d514f6963fde99"
+    },
+    {
+      "path": "src/content.rs",
+      "sha256": "825e227943e8fec3b5723a53b454da2e7d0eca28808b1a797bcd1c5a8ba124e3"
+    },
+    {
+      "path": "src/content/astrology-prompts-v1.json",
+      "sha256": "3390fc4cf15292b994e0b2e449914a71f8cee14a9f26bb0ad4bdb12154179c0f"
+    },
+    {
+      "path": "src/content/position-meanings-v1.json",
+      "sha256": "4562602fd1cc4cc2401939bfd88214d0b35b90e956f0128cec1707951987866a"
+    },
+    {
+      "path": "src/content/rws-major-v1.json",
+      "sha256": "5be2d11d93ade477b51b4bd509e19f8ab1970f4ae9f7952ece94c6e8ee09da36"
+    },
+    {
+      "path": "src/content/tarot-decks-v1.json",
+      "sha256": "0b4392ca5417a94e3cd8a2f501c655e6994894e5183f1611bda1ddf7e88a9785"
+    },
+    {
+      "path": "src/context.rs",
+      "sha256": "bac43d00d8ae0368ba328620f5d809f96001cb18aaa3d6696a639d469cc7bd2c"
+    },
+    {
+      "path": "src/enrichment.rs",
+      "sha256": "410e91718e2fc656deaf86fa72e974f01896f357a50085d92912ac39e80ae6d0"
+    },
+    {
+      "path": "src/ephemeris.rs",
+      "sha256": "7735279542f3e96da9e9cce3b15095aa313c732ecec811cc3489151fe83ebc62"
+    },
+    {
+      "path": "src/ephemeris/analytic.rs",
+      "sha256": "94073b4f65e50a358c63645df051880d5e53a6a2e0b50210a41110cf13273b49"
+    },
+    {
+      "path": "src/field.rs",
+      "sha256": "3d9797c4eb0bc8a650a85d6fd7e73e9cc9fdd83266d32e15c501f66c6d0342c0"
+    },
+    {
+      "path": "src/granted_ambient.rs",
+      "sha256": "5842ecb76573613f83b0f02a5fbf8fa7c6cc31f7dd3cc63634f43666c2aca7bd"
+    },
+    {
+      "path": "src/host/ambient.rs",
+      "sha256": "0ad5d7099f25711c8c88b8330c3942dea67d556ad36a7e77a4d6cfd9a6f1a983"
+    },
+    {
+      "path": "src/host/cards.rs",
+      "sha256": "abb34c45eaa33eacf0fcbee5302324f66ec1d5d8674d8ef7f50739159484edb5"
+    },
+    {
+      "path": "src/host/catalog.rs",
+      "sha256": "c82874f9dc4083b9ff39077e6cda6f0d022b06f4d2a1a1764cb8f30dedc9d8c6"
+    },
+    {
+      "path": "src/host/domain.rs",
+      "sha256": "2ccd1890b3aae1180c97899ad480a9a66fd4e51be860f48de6490f249f6effa5"
+    },
+    {
+      "path": "src/host/inference.rs",
+      "sha256": "ba30f1d38a2a0995981ba387a5bb95859ca26f35ddbf4c53bf0aa26f094c5ef2"
+    },
+    {
+      "path": "src/host/mod.rs",
+      "sha256": "294c1a0f19f641087aadc63a073cf38d6d28738abd2009b2ace70a10dcc94f34"
+    },
+    {
+      "path": "src/host/projection.rs",
+      "sha256": "9a0ec368e2b471c4341e2e1346be9bd9860f0716323d311000bb5451ca5a3168"
+    },
+    {
+      "path": "src/host/records.rs",
+      "sha256": "b60f901857eadae27f53dc0033325d11e97b4e6737d4bdd00d5bcb73c6229f22"
+    },
+    {
+      "path": "src/host/replay.rs",
+      "sha256": "1f58e0fc78af9cfd546d78526ce7f8d9517f430b8af1f0a606d9f9e3f2a638cb"
+    },
+    {
+      "path": "src/host/situation.rs",
+      "sha256": "b8ffe6fecbdbde1463a2b56626e1beaee0612c00ed135f5779de978781ca181e"
+    },
+    {
+      "path": "src/host/sky.rs",
+      "sha256": "db6b93d949571c2a05990762d23005c1ce46b03ebf9fde174795a8445a07c7e5"
+    },
+    {
+      "path": "src/host/spreads.rs",
+      "sha256": "b815f85598cc25fe3a8c1ed272b7c7ddf945a2d98a696b7da160b3b298dddd06"
+    },
+    {
+      "path": "src/host/summary.rs",
+      "sha256": "d687acf3d27ce03bf442948c0536b4708101610359a1b804523ecb9839e4d212"
+    },
+    {
+      "path": "src/inference/local.rs",
+      "sha256": "3ff5ccbcb38f3d93cf3a1d7fa5cae04421a84bd7137a99004a357fb387e576a5"
+    },
+    {
+      "path": "src/inference/mod.rs",
+      "sha256": "27b1223719812d028190a2d220e375af10055a4cd44946324b6cbd35e1d68c8c"
+    },
+    {
+      "path": "src/intents.rs",
+      "sha256": "80f27ae2a774762c7dff59210799510a860e848e2bfcee25d75db2c6d8a8b84c"
+    },
+    {
+      "path": "src/lib.rs",
+      "sha256": "c077138e362222fdb049b902a715fafda69d878c5bd7fb77b43d5791108e1373"
+    },
+    {
+      "path": "src/main.rs",
+      "sha256": "9cafc4804e1c338c41af7027b8b03149923db848a902e9112457a9f7164b78fb"
+    },
+    {
+      "path": "src/moirai/atropos.rs",
+      "sha256": "a65a042af4c07ac545878c63d18fdb7c55dd3525fa8325e26e14c9eb6eb9504d"
+    },
+    {
+      "path": "src/moirai/clotho.rs",
+      "sha256": "4535e46b50340f380d3e3ab27b3cb905d400d836742d90d06ed818cd32241a7d"
+    },
+    {
+      "path": "src/moirai/lachesis.rs",
+      "sha256": "d74df0458d45514fb0863510a86f03cc48da275fbc36ad809db5b950fbbeae8b"
+    },
+    {
+      "path": "src/moirai/mod.rs",
+      "sha256": "d51efd33ce2695348d212b5e712b799ecdd4b6b2fd089826f4bc465ee24a2660"
+    },
+    {
+      "path": "src/narrative.rs",
+      "sha256": "929aa1141be6cb0057935e66ebf7c92f47a15820763ca93ad0298bf79c73e565"
+    },
+    {
+      "path": "src/projection.rs",
+      "sha256": "9c88502a8277ede3b03fa55b34328f88aac74c7c4da55db12d48e6b7ae2d4c4c"
+    },
+    {
+      "path": "src/reading/engine.rs",
+      "sha256": "bcebb2ed792bcb280ba93782d0af29d37cc87b3d42371082bbf097519c11bb65"
+    },
+    {
+      "path": "src/reading/mod.rs",
+      "sha256": "4357d2886a5c76c0a6bb0bc7f7ba95b15b25df006836a6c7cd2b457f8f125801"
+    },
+    {
+      "path": "src/reading/shuffle.rs",
+      "sha256": "420e378b9b41b162c47c526d5f55efec248aeb0d7986b6c50ba5c4aa51ce8508"
+    },
+    {
+      "path": "src/reading_scene.rs",
+      "sha256": "c92c47eaccee775fdb5b8fef0565a3b3ce245cb6043bffab217a802b1af55922"
+    },
+    {
+      "path": "src/servitors.rs",
+      "sha256": "72408bbf88810a6e5ca72447d898bb3913082ccb7ecadf61f1992bd29579958d"
+    },
+    {
+      "path": "src/session.rs",
+      "sha256": "2e433f08a80f035fb8691d3763df6afef23a242745d98e0af40cd5863e5478ce"
+    },
+    {
+      "path": "src/situation/mod.rs",
+      "sha256": "1dbc3983570d0cda954ee786c94d500bf223b2f70982a6c57d42a8ac833b3fdd"
+    },
+    {
+      "path": "src/situation/sky.rs",
+      "sha256": "afac70cc05fa5098965446e853935707be9d5e3cac6d88e473bcc2b1837dd619"
+    },
+    {
+      "path": "src/situation/weather.rs",
+      "sha256": "ae15fb3c022fadce675e6f94724fc0b2c194b4b983ae49142b356bfb6af169b6"
+    },
+    {
+      "path": "src/sky.rs",
+      "sha256": "15ff3a0875da64775feebb416997b5cfadd489c3d5506a1fb70de7607f49bb40"
+    },
+    {
+      "path": "src/sky/turquet.rs",
+      "sha256": "29f7c9b0ddba4b41993db7399586ddebc3acbe163124a1bf7249f1d8d166f90a"
+    },
+    {
+      "path": "src/spread.rs",
+      "sha256": "0d95c7ececa1f9f38b251e584adc6b66047f089fb0934ca7078a9f0ace542fc6"
+    },
+    {
+      "path": "src/sync/collect.rs",
+      "sha256": "911390a1f50aafe35f7ff52ff785516166a78b35f69278dbc0b09a6ec57ad344"
+    },
+    {
+      "path": "src/sync/decode.rs",
+      "sha256": "b8a4bd6e184837f71e952f0bc9a1f9785e3439af90addd8c17285388f71b4226"
+    },
+    {
+      "path": "src/sync/export.rs",
+      "sha256": "3fa9ea9692686d0d6dfc1fced7c8f3f5b7ecca3dc079acf13d614bf3bf7f982a"
+    },
+    {
+      "path": "src/sync/import.rs",
+      "sha256": "e893baed6bfeab42d7399f2f24022d368bf5d65c9f2226242ef13c7c83d55b7c"
+    },
+    {
+      "path": "src/sync/mod.rs",
+      "sha256": "214b1976cd59fe5ee48e6f353608e34acdd3fe78b6dcb7e4704a0c4261eb6813"
+    },
+    {
+      "path": "src/sync/shared.rs",
+      "sha256": "3ff514fd68dea595f0077f57f230374799bd6299386a5eb399737e59935ed664"
+    },
+    {
+      "path": "src/sync_settings.rs",
+      "sha256": "603f3d91ae4489b9806c85b10aefbc23e07264455008cf4f0b41f444b32d96d0"
+    },
+    {
+      "path": "src/tarot.rs",
+      "sha256": "5599d64f1f31cfc33d9bf03cbd2a87366c142b7ba22e16e262a90ed21083d7f9"
+    },
+    {
+      "path": "src/ui/action.rs",
+      "sha256": "fb15377e24dfe9cd3020821c18398f9028a584d77b7af48d383745f7a1f961e1"
+    },
+    {
+      "path": "src/ui/ambient_state.rs",
+      "sha256": "65a5bba73fc27a93f990f68b38cac43cb2d2270b57b2d7fb8caa50501899cad9"
+    },
+    {
+      "path": "src/ui/chart_input.rs",
+      "sha256": "2d04a2751053a3e32f61e491fc010d7c85ffb2c69c2c309b20b1c1dfeeb09c28"
+    },
+    {
+      "path": "src/ui/chart_state.rs",
+      "sha256": "6018ee1353253a93b3b59b45f48c390214e9fd17d03814e32bddfcf111408b3c"
+    },
+    {
+      "path": "src/ui/consultation.css",
+      "sha256": "835c6e334a4140886c23e3d8dc47e824fac694f73986e6ffa98b73f7ea4e9297"
+    },
+    {
+      "path": "src/ui/journal_state.rs",
+      "sha256": "cce9b4017594e19f8b24551efabc159fa4bad9b6aa8cd41098fdeaae66e7fff9"
+    },
+    {
+      "path": "src/ui/mod.rs",
+      "sha256": "4b7a4cfd20d056c5d54a11e33633979bfda60c4ca24855f3cb106abc74a4a778"
+    },
+    {
+      "path": "src/ui/native/ambient.rs",
+      "sha256": "8481e6c577560d58d981fc21abf3ccba6cb10c0cc7c1583f42f20c5e99065f53"
+    },
+    {
+      "path": "src/ui/native/appearance.rs",
+      "sha256": "8040ee39800d9ca4d1ac97bc94a0522891219017f3307e2b13b312b8037c137c"
+    },
+    {
+      "path": "src/ui/native/appearance_host.rs",
+      "sha256": "04aed6f7aa860ad8cbe0bbc7538ca695526f5fe2b11b389bfebf30e2e5291deb"
+    },
+    {
+      "path": "src/ui/native/appearance_tests.rs",
+      "sha256": "a3a3daf55a601920357666830d1cbe1a40bc55d33644fbb0baf8d478a35fb0a8"
+    },
+    {
+      "path": "src/ui/native/appearance_view.rs",
+      "sha256": "525d22d46cda327448dd5337ba15ebc6a65dea600b8b612aa59a76bbba344125"
+    },
+    {
+      "path": "src/ui/native/fonts.rs",
+      "sha256": "7908bdceac498093e9547feddca9f831e97e6a6b629966dcec23e0bc4558a2f9"
+    },
+    {
+      "path": "src/ui/native/mod.rs",
+      "sha256": "438adbc4eff2ee410b13e27ba61424d2beaf80c2750658cc594a2827b7965a10"
+    },
+    {
+      "path": "src/ui/native/scenario_driver.rs",
+      "sha256": "44f12b395ce4f2d4e9c18ca8208445f2c9a092468806a457553bdd55e51f4fcb"
+    },
+    {
+      "path": "src/ui/resident.rs",
+      "sha256": "8b68e138f203e1c8f26cf23b82e44bc337a9cc29b4ecb0efca130dc1ebbbdca0"
+    },
+    {
+      "path": "src/ui/scenario.rs",
+      "sha256": "29d9fab71451b95069d7c9447223669dd5dda20775c8db35c853c1c58f6cbbd8"
+    },
+    {
+      "path": "src/ui/screen.rs",
+      "sha256": "83b5e84234c29c55b01cb809d26abeda1ab681fa1e507131052c15af44806cfe"
+    },
+    {
+      "path": "src/ui/sky_state.rs",
+      "sha256": "0a846560a25e31dfbb5ab1ff29510c395767339fa080e0a3756c3f167c88db8a"
+    },
+    {
+      "path": "src/ui/state.rs",
+      "sha256": "03a8cdffe9c999f99cbbb071d516022c8d516496efbc567d2ab7922751c87d10"
+    },
+    {
+      "path": "src/ui/view/ambient.rs",
+      "sha256": "9c9c9aee48a7dd1357b21683007e02342a237b26569c414a2fa98f515a7ab40b"
+    },
+    {
+      "path": "src/ui/view/astrology_reading.rs",
+      "sha256": "77614e688047076a8755fd343046c281839213728bd59b637fb632431db6ab0f"
+    },
+    {
+      "path": "src/ui/view/chart.rs",
+      "sha256": "53cdb5de0649994642e0004c0bfc03b96ffff14aa77af31e8bac7de3e3481eb6"
+    },
+    {
+      "path": "src/ui/view/chart_aspect.rs",
+      "sha256": "a6741f583ae4c001a26935d690e7f0793ef8d965311e7b30303e97825cc58829"
+    },
+    {
+      "path": "src/ui/view/consultation.rs",
+      "sha256": "c1910db1ee2f95771b2f98cdfbb81cf6e81aa177ed15543dc088706f5ad183b8"
+    },
+    {
+      "path": "src/ui/view/inference.rs",
+      "sha256": "9cf704be9b126264aa9a1d27d28d56334813aae9004837b7a0f2a5abc7003511"
+    },
+    {
+      "path": "src/ui/view/journal.rs",
+      "sha256": "9c7d2119cb73f7124af665d85439f2c9b82d037f217e7ed307d54f653b02ce64"
+    },
+    {
+      "path": "src/ui/view/mod.rs",
+      "sha256": "b3685eddca5353415361659b155144f4ca16187543370a792938b02246ecb5fd"
+    },
+    {
+      "path": "src/ui/view/named_text.rs",
+      "sha256": "42b8f2870958861c898502e4c3f17b8ed169d1c1d30ad5360a6caa6715f54624"
+    },
+    {
+      "path": "src/ui/view/rationale.rs",
+      "sha256": "f0e8c8c31e39fa23732375fc3080d92e71efa570f0170890f042d93714b8bbe2"
+    },
+    {
+      "path": "src/ui/view/reading.rs",
+      "sha256": "6f08b36478d6bbdf1ab2470c236c0206b3ad49216d6e0f0253c404eeb63f7713"
+    },
+    {
+      "path": "src/ui/view/reading_scene.rs",
+      "sha256": "48c08c50adebdf50731d69773aa4ae64a8c799c539b6f49b4dd81d3ef6d58c27"
+    },
+    {
+      "path": "src/ui/view/shared.rs",
+      "sha256": "0a13781ff6c7fbe534b1dbc33c89d778cb5998299c9f3f1b2760329b28d72b91"
+    },
+    {
+      "path": "src/ui/view/situation.rs",
+      "sha256": "7a05f161b8de3f06db5b3f91de63eebb35b3579621cbb57452963feade09440a"
+    },
+    {
+      "path": "src/ui/view/sky.rs",
+      "sha256": "6980b40aea0c73beeb465ce85b730ba181ec1433ad6fcc3dca15b2f7aa970c9e"
+    },
+    {
+      "path": "src/ui/view/trail.rs",
+      "sha256": "e4c260f105442bac15d1314ea34c5b4608ae47d9f199f51f2d2309db80fecb3a"
+    },
+    {
+      "path": "src/ui/view/typed_card.rs",
+      "sha256": "0d1fb9a3b3e10037606a4b972c95990015047ef0b06543e6e3f7accfafce0a59"
+    },
+    {
+      "path": "src/ui/weather.rs",
+      "sha256": "876cf3cc6a3b0c5968a38eef8c4de215483229a93f9797e5bd480c799b677a51"
+    },
+    {
+      "path": "src/ui/worker.rs",
+      "sha256": "aa82a324db6fce06f2934a22474a628517c6e7bfffa897ee3a117a4ff03aea5f"
+    },
+    {
+      "path": "tests/a0.rs",
+      "sha256": "5c1c034780432413a7190ad98d04842f050e5cc37ec4025ea47dfe1ff897d457"
+    },
+    {
+      "path": "tests/a1.rs",
+      "sha256": "5d1b07d34f3b62de98e3a21666a57f8351588dac07995c0c02ec8f0964705858"
+    },
+    {
+      "path": "tests/a10.rs",
+      "sha256": "6d3f5bc2092c898c87f40f17e44ed4ed04b4151ae9c83f41d1d6819380e2947e"
+    },
+    {
+      "path": "tests/a12.rs",
+      "sha256": "1ceb215a35f2af8f9cda312f0be9e81a1cdcca8230d96bd4e0f4258f47b3299d"
+    },
+    {
+      "path": "tests/a13.rs",
+      "sha256": "521e8c28522ccf0e914361349e13726e8214654fc8218e31764330f82d2886aa"
+    },
+    {
+      "path": "tests/a14.rs",
+      "sha256": "65c527be0a70c697b8590da3daaeb075663cbb0d590829b94c8a67a443d3ee62"
+    },
+    {
+      "path": "tests/a15.rs",
+      "sha256": "a9d9a6cbf905c6b0f3db6dff190aa560beaaf93d2fee96058161598cf48c9734"
+    },
+    {
+      "path": "tests/a16.rs",
+      "sha256": "df082e7a82ec1a55dba4eef3f6254c102b956a248b05309f94fd1c069090694c"
+    },
+    {
+      "path": "tests/a17_graphshell_action_draft.rs",
+      "sha256": "d64093252a1b2720d80ccbf03bf522f7519d1b84002e50b314b1d6ab8b314417"
+    },
+    {
+      "path": "tests/a18_admitted_endpoint.rs",
+      "sha256": "7f717bc2711d8fa60a81468e91e38fa175ccbdfd102afa3c9387b0c0f929b5c1"
+    },
+    {
+      "path": "tests/a19_resident_endpoint_catalog.rs",
+      "sha256": "9bfd2a5d83b72c7ab97ddd4f0a6ce7e3838f3d33b8ebb129ee0a9b07e0b2841d"
+    },
+    {
+      "path": "tests/a2.rs",
+      "sha256": "740dc77f83966bece7b772c9e6998bae1ae07124f4105124b4f2e346f6afc3c3"
+    },
+    {
+      "path": "tests/a20_resident_session_authority.rs",
+      "sha256": "6999fb8e767f3542b6e7d75cd376d4055356a64662cfa29bf1023157266867de"
+    },
+    {
+      "path": "tests/a21_resident_persistence.rs",
+      "sha256": "cd049263a756aab89fe96f0ef71342dc8982972d82eba681e8e25804ca1b1add"
+    },
+    {
+      "path": "tests/a22_resident_pattern_sync.rs",
+      "sha256": "a2d0ba2be06f4ea345d707c9db4afb8b815f39bc2ebf03d3af97890fc24275d7"
+    },
+    {
+      "path": "tests/a23_resident_sync_consent.rs",
+      "sha256": "089741a19011a37a72b38d781d40a4fe5f70f359f676d95ab2f313c02d670a27"
+    },
+    {
+      "path": "tests/a24_resident_sync_startup.rs",
+      "sha256": "ab3567b4a28611c2064cd1068c349fc3e6d0837cd343afbae0f946f5b13d5d0c"
+    },
+    {
+      "path": "tests/a25_sync_consent_command.rs",
+      "sha256": "d9d71c96f86792ecae6acbce8f062bbb79a8dbc4c75a3dd268b92aea5ee32d8e"
+    },
+    {
+      "path": "tests/a3.rs",
+      "sha256": "70da55e1d42d7835370782fb2f4f67d441180fffef08476f2633ef1bd02696bc"
+    },
+    {
+      "path": "tests/a4.rs",
+      "sha256": "73313e02bca63402491fb210cdaae658542ab9997bb18ef0600476f26c62ec4c"
+    },
+    {
+      "path": "tests/a5.rs",
+      "sha256": "5643275d2d0065c5bfc16b7b34dd156139d3b0febae5c7394019980fd9882fe7"
+    },
+    {
+      "path": "tests/a6.rs",
+      "sha256": "4a07f224da7c8bb4adacc0f1914781313b481fb08b06da0cd0809c6ac09d82b1"
+    },
+    {
+      "path": "tests/a7.rs",
+      "sha256": "3cadd644777faee7c4f2df816440439e41e7c8a9e5fe9d754812ce5a8d991143"
+    },
+    {
+      "path": "tests/a7_sync.rs",
+      "sha256": "113ab8cfd0ad7040f501e72ab56e71938f58698753226e30c36714af86d77501"
+    },
+    {
+      "path": "tests/a8.rs",
+      "sha256": "f8c367e4e732a1c78ff1a9ebbd013545742709b3968889bc960e7a028224d08e"
+    },
+    {
+      "path": "tests/a8_sync.rs",
+      "sha256": "e89efbda08a8769aee16fd6e5f7d21160faac81de147e0336a3346ec8b5b24ee"
+    },
+    {
+      "path": "tests/a9.rs",
+      "sha256": "dccc45cb7ed3a959dc1409bf2af58bb0e9193ef0b0b08e5b53c7875b85abf0f9"
+    },
+    {
+      "path": "tests/ambient.rs",
+      "sha256": "f22aa4568e57cb9d40b35c74802fb1bfa92b87f45e58c8fffedbc78f79abbd2b"
+    },
+    {
+      "path": "tests/ambient_dom.rs",
+      "sha256": "926064b42faa23c48e36cfc77ecf2c1a2f580886d0419e96925a3224f8387e31"
+    },
+    {
+      "path": "tests/ambient_scene.rs",
+      "sha256": "bec4c467507ca4fa36084ea7055724d1c239c3c4c982205fe961a64d208c8310"
+    },
+    {
+      "path": "tests/analytic_consultation.rs",
+      "sha256": "5c28ee9d4f0e93f2e8bb654c77c2dbab855af9e9061f847a9a0e2f460917c178"
+    },
+    {
+      "path": "tests/analytic_parity.rs",
+      "sha256": "ab0285c16907c2fd96b6af239f05d9af641bf1245f4b34db71a59847a962e51a"
+    },
+    {
+      "path": "tests/authored_consultation.rs",
+      "sha256": "4704023a829cf02fd4dd5e494424f99176e57af563ba2d4afa4e0a5cb7490aa3"
+    },
+    {
+      "path": "tests/authored_spread.rs",
+      "sha256": "97d47ad3f3a8cc61d94f15bfc11c91c6a6ccac1ed46cbd4f2dc908b1dab7d749"
+    },
+    {
+      "path": "tests/authored_spread_sync.rs",
+      "sha256": "fb0807e96c9a61042edd02d1fe84a1595e8302c174539dd7291590f152e91bf1"
+    },
+    {
+      "path": "tests/chart_surface_dom.rs",
+      "sha256": "21a13cdfa5664f5f1cf02ddedbc9371bedb5bad9d79aeba99345bdf43cdfbfac"
+    },
+    {
+      "path": "tests/consultation_authoring_dom.rs",
+      "sha256": "ed1f6f70dbb93b7166a1cccc3fcbee7a17bf67418e2ffbe4acb569756979216e"
+    },
+    {
+      "path": "tests/derived_selection.rs",
+      "sha256": "04eb5dd5c28f58810d020f04a81a79b46f718716b65604f1e6e0336ffdeb7468"
+    },
+    {
+      "path": "tests/fixtures/c3-legacy-field.json",
+      "sha256": "327aa48b377c7d7a053d854bf4a2ba0a30e6a98616cfdc7282e5d5f83410f711"
+    },
+    {
+      "path": "tests/fixtures/c6-open-meteo-current.json",
+      "sha256": "13895c8f17ffef441f9ad1dfdf988e8bbbfe7b924ac3b03d20827d7a5ae2d1da"
+    },
+    {
+      "path": "tests/fixtures/pre-c5-selections.json",
+      "sha256": "3f62d9b288ff4dc20ffc0edde08248e1991deecbd1591f6834148ff40009e4e4"
+    },
+    {
+      "path": "tests/granted_ambient.rs",
+      "sha256": "b654a872155621537824bc3e01e3864aa025bd0efdce1ab011aacf1d7a42f9a7"
+    },
+    {
+      "path": "tests/headed_consultation.rs",
+      "sha256": "d67cfb592c09b78231cb8debf647f1dc6874e6d6207f0b2d4a0e0549ab99ea83"
+    },
+    {
+      "path": "tests/headed_consultation_dom.rs",
+      "sha256": "6c06ff30307706deb6abe15bfb595c2f8ba275bf52751e4d8bb4185d9520da08"
+    },
+    {
+      "path": "tests/inference.rs",
+      "sha256": "86ad93ab53cf5912cbb99c376f8444539c6fffb21f74f0bafc81966e8d38c347"
+    },
+    {
+      "path": "tests/inference_dom.rs",
+      "sha256": "198e3048000ef4d654e5cf125079ae680a6aaa463c37988366045d8c3378a11c"
+    },
+    {
+      "path": "tests/inference_sync.rs",
+      "sha256": "3965831d4529538bd4e3c1fe2ecc02d404f291a7d14249092aadefec168a468b"
+    },
+    {
+      "path": "tests/journal_depth.rs",
+      "sha256": "666d15f22c78918b75360ca8e5d69df493191ad6d3837df38ef8945ef92c65bd"
+    },
+    {
+      "path": "tests/journal_reader_dom.rs",
+      "sha256": "51640762361efa429cce77542faf53b65ce980a99ae61a6510ce614a18a24b62"
+    },
+    {
+      "path": "tests/reading_narrative_dom.rs",
+      "sha256": "0d7ab5e0a053e30962b304d8b7b829072e1bb055c3d4ebc10c72c830ebcaa1e6"
+    },
+    {
+      "path": "tests/resident_candidate.rs",
+      "sha256": "7ae9448b3be67fdc46b8dcc57b87ff95208f18a47545c90cb68b9be390279d08"
+    },
+    {
+      "path": "tests/session_summary.rs",
+      "sha256": "0736d5e630d585389b1ebfc3eb5d149186c15ba623bbd05b2352a666bc24678b"
+    },
+    {
+      "path": "tests/shuffled_deck.rs",
+      "sha256": "4b087b8bdb7c617ab7a434fbe5af4673616bcf66b351871833b7203e4370862d"
+    },
+    {
+      "path": "tests/shuffled_deck_dom.rs",
+      "sha256": "d112334bd90e273081b87bba605d9287c6e0de5142f58ef54c13aeff1ea4910a"
+    },
+    {
+      "path": "tests/situation.rs",
+      "sha256": "840760e9a9f4fd66b7f35bc83e9c46b6d17907d9e6d2e844a39eababb188f7a7"
+    },
+    {
+      "path": "tests/situation_dom.rs",
+      "sha256": "34edddd8ba4cedcff5f905e328a93cfbf1a3e063bf82b5d0e7b5e6b57bde3b79"
+    },
+    {
+      "path": "tests/situation_sync.rs",
+      "sha256": "5b906cee85130f9b7be2ae41b66522c788d9db9325e1cc5cff0cc5a7719c4275"
+    },
+    {
+      "path": "tests/situation_weather_dom.rs",
+      "sha256": "a0cf8a337cc39b30eee19e9a73821c3628c7761c7478b2a6f6dd412226f344ef"
+    },
+    {
+      "path": "tests/sky.rs",
+      "sha256": "a6d0049b95e11194e24a8a6acb32b1992f595c341dca98f076e3b96790737457"
+    },
+    {
+      "path": "tests/sky_host.rs",
+      "sha256": "5b70291446075e909ae062ca7a940681010ad0f36238ba3fb2acd4bb186ea03a"
+    },
+    {
+      "path": "tests/sky_surface_dom.rs",
+      "sha256": "8aab858890592ee7ff7a1449459e782e32b3eb68041de53f3974ffac3c98677b"
+    },
+    {
+      "path": "tests/sky_timeline.rs",
+      "sha256": "bf22fbf0632987f991da23f6670f9b76e3fa6143b82b8a8b55c53f58e2518dbd"
+    },
+    {
+      "path": "tests/support/ambient_fixture.rs",
+      "sha256": "111ccc3cade2d8ab64dcaaba92511b9c5b935eccfa8749136482aab0e0fbd378"
+    },
+    {
+      "path": "tests/support/cleromancy_dom.rs",
+      "sha256": "348ac5ad91264e2098da4a07b2d9b2b830cf28be513d25e8fbadadd361822ae4"
+    },
+    {
+      "path": "tests/support/mod.rs",
+      "sha256": "c9dc94d04ea8f801e87fa05bffc0100f0badd8b43d7bf0de4b5dc94f6f80c20d"
+    },
+    {
+      "path": "tests/typed_cards_dom.rs",
+      "sha256": "c0f6d8a3b3e7ed4663680e5c620b0657cf7667c9790830d3a9591100d773f609"
+    },
+    {
+      "path": "tests/typed_decks.rs",
+      "sha256": "5f8fd1fbe81b9a8e8d96aa4614e529e38820bc61b66ccd83305ff9a5c03bcd9f"
+    },
+    {
+      "path": "tests/typed_decks_sync.rs",
+      "sha256": "4e95f0cbc737b0a1ce5b67b70e5a08d24bb790cdeabe1215c7c4f01df66198a6"
+    }
+  ]
+}

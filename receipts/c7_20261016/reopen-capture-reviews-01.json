@@ -1,0 +1,46 @@
+[
+  {
+    "path": "native-reopen-01/compact-formula-reopened.png",
+    "sha256": "c936c360ca213d2a3c79b8f11dab262c7ca6468c5e41ee3cfdabdb997de586f5",
+    "reviewer": "Codex independent visual inspection of original capture",
+    "result": "pass",
+    "findings": [
+      "Generated label, output, source scope and memory state are legible.",
+      "Inputs begin collapsed with an explicit Inspect generation inputs control.",
+      "Wide and compact layouts wrap model names and text; controls are reachable."
+    ]
+  },
+  {
+    "path": "native-reopen-01/compact-model-reopened.png",
+    "sha256": "881b36e23aac168439846ab028fe196b2990b37999a26b02ec2cec1e17807216",
+    "reviewer": "Codex independent visual inspection of original capture",
+    "result": "pass",
+    "findings": [
+      "Generated label, output, source scope and memory state are legible.",
+      "Inputs begin collapsed with an explicit Inspect generation inputs control.",
+      "Wide and compact layouts wrap model names and text; controls are reachable."
+    ]
+  },
+  {
+    "path": "native-reopen-01/stored-formula-reopened.png",
+    "sha256": "7a04da8348ee5a553092140b35d60c115d5c7d5a3f08f5abf42402a939a0c4a3",
+    "reviewer": "Codex independent visual inspection of original capture",
+    "result": "pass",
+    "findings": [
+      "Generated label, output, source scope and memory state are legible.",
+      "Inputs begin collapsed with an explicit Inspect generation inputs control.",
+      "Wide and compact layouts wrap model names and text; controls are reachable."
+    ]
+  },
+  {
+    "path": "native-reopen-01/stored-model-reopened.png",
+    "sha256": "bdff9d3a53f178ee2a03541deff7ad202f6fc13e73a07a079406dbf883c8f933",
+    "reviewer": "Codex independent visual inspection of original capture",
+    "result": "pass",
+    "findings": [
+      "Generated label, output, source scope and memory state are legible.",
+      "Inputs begin collapsed with an explicit Inspect generation inputs control.",
+      "Wide and compact layouts wrap model names and text; controls are reachable."
+    ]
+  }
+]

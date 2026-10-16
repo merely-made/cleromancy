@@ -1,0 +1,108 @@
+{
+  "schema": "cleromancy.c7-qualification/v1",
+  "date": "2026-10-16",
+  "status": "bounded feature qualified; main publication recorded separately",
+  "native_source": "2e5ef2ad5b0423407ade34d34fc3bf1732387cbf",
+  "software_source": "d5c383c189f9e866a38939dd372ddf6a7556b60b",
+  "portable_core": "d5c383c189f9e866a38939dd372ddf6a7556b60b",
+  "runtime_supplier": "25cbe8106df3fd6431d83acd756ab6bcabbaba40",
+  "receiving_source": "6a0f015a42728b926174b0b04d545cad8f0eaa7b",
+  "receiving_checkpoint": "9b3b27d3c",
+  "input_manifests": [
+    "source-inputs-01.json",
+    "source-inputs-02.json",
+    "source-inputs-final.json",
+    "source-inputs-qualified.json",
+    "software-inputs.json",
+    "software-inputs-before-sync-fix.json"
+  ],
+  "capture_reviews": [
+    "reopen-capture-reviews-01.json",
+    "final-capture-reviews.json",
+    "qualified-capture-reviews.json"
+  ],
+  "native_runs": [
+    {
+      "directory": "native-reopen-01",
+      "input_manifest": "source-inputs-02.json"
+    },
+    {
+      "directory": "native-final-reopen-01",
+      "input_manifest": "source-inputs-final.json"
+    },
+    {
+      "directory": "native-final-regenerate-01",
+      "input_manifest": "source-inputs-final.json"
+    },
+    {
+      "directory": "native-qualified-create-01",
+      "input_manifest": "source-inputs-qualified.json"
+    },
+    {
+      "directory": "native-qualified-reopen-01",
+      "input_manifest": "source-inputs-qualified.json"
+    }
+  ],
+  "accepted_capture_count": 19,
+  "diagnostic_capture_count": 5,
+  "exact_detail_pairs": [
+    [
+      "native-generate-01/generated-reading.json",
+      "native-reopen-01/generated-reading.json"
+    ],
+    [
+      "native-reopen-01/generated-reading.json",
+      "native-final-reopen-01/generated-reading.json"
+    ],
+    [
+      "native-final-reopen-01/generated-reading.json",
+      "native-final-regenerate-01/generated-reading.json"
+    ],
+    [
+      "native-qualified-create-01/generated-reading.json",
+      "native-qualified-reopen-01/generated-reading.json"
+    ]
+  ],
+  "preserved_prior_artifact_count": 439,
+  "software": {
+    "default": {
+      "passed": 126,
+      "failed": 0,
+      "ignored": 1
+    },
+    "expanded_historical": {
+      "passed": 175,
+      "failed": 0,
+      "ignored": 1
+    },
+    "portable_core_passes": [
+      41,
+      42,
+      43
+    ],
+    "all_target_checks": [
+      "default",
+      "no-default-features",
+      "personal-sync",
+      "graphshell-admission"
+    ],
+    "intentional_product_ignore": "real local model probe requires explicit assets; actual generation is independently qualified through the native product"
+  },
+  "proofs": [
+    "Versioned formula-generated prompts replay byte-equal from explicit immutable source selections.",
+    "Real SmolLM2-135M-Instruct generation runs locally through pinned shared ESP; output, identity, artifact hashes and request are stored separately from the sealed reading.",
+    "Clean creation, explicit Keep, normal/compact captures and fresh-process reopening pass with outbound IP denied; reopening has no model configured.",
+    "Canonical resource Keep state crosses the signed H7 wire boundary and is refused with invalid formula/inputs before target mutation.",
+    "The exact Git portable validator passes eight receiving parent tests across fresh owners with durable-byte refusal guards.",
+    "All eight earlier reading occasions retain every prior field; complete C4 domain views/memory and all 439 prior receipt/scenario paths remain exact."
+  ],
+  "boundaries": [
+    "The first creation run wrote observed records but failed a control-visibility guard and has presentation findings; its five captures remain diagnostic, never accepted.",
+    "The preliminary integration matrix ran while sync fixes were being developed and is retained as diagnostic rather than frozen-source qualification.",
+    "The first slow model probe was stopped; optimized shared CPU kernels qualify the later actual native runs. No broad performance or consistent-startup claim follows.",
+    "Native source 2e5ef2a differs from software/core d5c383c only by two committed scenario files; implementation and dependency bytes are identical.",
+    "Earlier native source identities retain their own receipts. Only passing whole scenarios contribute the 19 accepted originals.",
+    "The existing shared mere sidebar remains visually dense; C7 qualifies its reading surface, not a redesigned generic graph.",
+    "Graphical unlock, release packaging, the full shared wall, general H7 extraction and larger/multiple-provider model management retain separate gates."
+  ]
+}

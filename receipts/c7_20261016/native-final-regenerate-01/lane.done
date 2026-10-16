@@ -1,0 +1,11 @@
+RESULT ok
+waited 1105 frames
+waited 322 frames
+waited 449 frames
+captured formula-regenerated
+waited 807 frames
+captured local-model-regenerated
+capture formula-regenerated 2320x1520 digest=dfa8616cf8d9f962 file=/Users/markik/Code/testing/cleromancy/c7-20261016/native-final-regenerate-01/formula-regenerated.png
+capture local-model-regenerated 2320x1520 digest=71721b4326eb2950 file=/Users/markik/Code/testing/cleromancy/c7-20261016/native-final-regenerate-01/local-model-regenerated.png
+frames: 2 captured, 0 blank, 2 distinct digests
+presentation: 2724 frames, 2726 redraws, 2 unpresented redraws

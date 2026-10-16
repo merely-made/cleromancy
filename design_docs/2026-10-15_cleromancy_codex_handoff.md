@@ -1,5 +1,21 @@
 # Cleromancy handoff for Codex, 2026-10-15
 
+**C7 bounded qualification (2026-10-16; main publication pending):** versioned
+history prompts recompute exactly; local shared-ESP model prompts store their
+inputs, model/artifact identities, request and output. They start in Recent
+memory and Keep explicitly promotes them. The [C7 ledger](../receipts/c7-generated-inferences-qualification_20261016.json)
+binds 126 default/175 expanded historical tests, portable-core 41/42/43, four
+all-target checks, eight immutable receiving-owner tests and 19 accepted original
+native captures. Clean creation and exact fresh-process reopening pass offline,
+with no model configured on reopen. All eight prior occasions, C4 domain
+views/memory and all 439 earlier receipt/scenario paths remain exact. Failed
+attempts and five diagnostic originals keep their original identities. Native
+`2e5ef2a` adds only committed scenarios over software/core `d5c383c`; receiving
+`6a0f015a4` uses that exact Git core with no local override. The [evidence notes](../receipts/c7_20261016/README.md)
+separate this bounded acceptance from startup/release/shared-wall gates. Mark's
+next authorized product slice is C8's small dice surface.
+
+
 **C6 qualified and published (2026-10-16):** native Read records time and pinned sky facts,
 with place/weather independently off by default. Explicit weather stores the
 actual response and attribution; exact fresh-process reopens pass with outbound

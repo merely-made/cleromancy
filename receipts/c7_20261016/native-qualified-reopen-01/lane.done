@@ -1,0 +1,15 @@
+RESULT ok
+waited 1319 frames
+waited 0 frames
+waited 471 frames
+captured stored-formula-reopened
+captured stored-model-reopened
+waited 0 frames
+captured compact-formula-reopened
+captured compact-model-reopened
+capture stored-formula-reopened 2320x1520 digest=46f306bb0db5acdf file=/Users/markik/Code/testing/cleromancy/c7-20261016/native-qualified-reopen-01/stored-formula-reopened.png
+capture stored-model-reopened 2320x1520 digest=d76d09a9121be9e5 file=/Users/markik/Code/testing/cleromancy/c7-20261016/native-qualified-reopen-01/stored-model-reopened.png
+capture compact-formula-reopened 840x1520 digest=f4b5cd411f36889a file=/Users/markik/Code/testing/cleromancy/c7-20261016/native-qualified-reopen-01/compact-formula-reopened.png
+capture compact-model-reopened 840x1520 digest=e484c4f68ab7b90c file=/Users/markik/Code/testing/cleromancy/c7-20261016/native-qualified-reopen-01/compact-model-reopened.png
+frames: 4 captured, 0 blank, 4 distinct digests
+presentation: 1867 frames, 1868 redraws, 1 unpresented redraws

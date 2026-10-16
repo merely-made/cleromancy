@@ -1,0 +1,13 @@
+RESULT fail
+waited 929 frames
+FAIL: C4 control invisible
+waited 0 frames
+waited 478 frames
+captured formula-prompt
+waited 657 frames
+captured model-prompt
+waited 434 frames
+captured kept-model-prompt
+waited 0 frames
+captured compact-formula-prompt
+captured compact-model-prompt

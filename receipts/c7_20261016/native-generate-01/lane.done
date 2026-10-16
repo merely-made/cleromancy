@@ -1,0 +1,20 @@
+RESULT fail
+waited 929 frames
+FAIL: C4 control invisible
+waited 0 frames
+waited 478 frames
+captured formula-prompt
+waited 657 frames
+captured model-prompt
+waited 434 frames
+captured kept-model-prompt
+waited 0 frames
+captured compact-formula-prompt
+captured compact-model-prompt
+capture formula-prompt 2320x1520 digest=6f943db627d18f06 file=/Users/markik/Code/testing/cleromancy/c7-20261016/native-generate-01/formula-prompt.png
+capture model-prompt 2320x1520 digest=e11bdf8caa9173ed file=/Users/markik/Code/testing/cleromancy/c7-20261016/native-generate-01/model-prompt.png
+capture kept-model-prompt 2320x1520 digest=1d93b032eeff2f71 file=/Users/markik/Code/testing/cleromancy/c7-20261016/native-generate-01/kept-model-prompt.png
+capture compact-formula-prompt 840x1520 digest=5e0c19201a1086ed file=/Users/markik/Code/testing/cleromancy/c7-20261016/native-generate-01/compact-formula-prompt.png
+capture compact-model-prompt 840x1520 digest=015dbb7e82add275 file=/Users/markik/Code/testing/cleromancy/c7-20261016/native-generate-01/compact-model-prompt.png
+frames: 5 captured, 0 blank, 5 distinct digests
+presentation: 2562 frames, 2563 redraws, 1 unpresented redraws

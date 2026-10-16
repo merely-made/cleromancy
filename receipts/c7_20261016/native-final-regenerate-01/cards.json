@@ -1,0 +1,20 @@
+[
+  {
+    "position": "foundation",
+    "title": "Knight of Swords",
+    "prompt": "Where are you directing your effort, and can you change pace? Consider thought, language and disagreement.",
+    "mode": "derived"
+  },
+  {
+    "position": "tension",
+    "title": "Seven of Wands",
+    "prompt": "What assumption is worth examining? Consider initiative and the use of energy.",
+    "mode": "derived"
+  },
+  {
+    "position": "next_step",
+    "title": "Queen of Swords",
+    "prompt": "How could care and discernment guide your response? Consider thought, language and disagreement.",
+    "mode": "derived"
+  }
+]
