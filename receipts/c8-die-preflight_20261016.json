@@ -1,0 +1,79 @@
+{
+  "schema": "cleromancy.c8-die-preflight/v1",
+  "date": "2026-10-16",
+  "status": "implemented and software verified; native qualification pending screen unlock",
+  "software_source": "e51964a9387d1b846171871f0bb1e565ee86a5f7",
+  "native_candidate_source": "a4abd1bb6c00d5b174b077ede899aa7ee7b8c8e8",
+  "scenario_only_bridge": {
+    "software_source": "e51964a9387d1b846171871f0bb1e565ee86a5f7",
+    "native_source": "a4abd1bb6c00d5b174b077ede899aa7ee7b8c8e8",
+    "only_changes": [
+      "receipts/c8-die-os-reopen.scn",
+      "receipts/c8-die-seed-reopen.scn",
+      "receipts/c8-die-seed.scn"
+    ],
+    "implementation_and_dependency_bytes_identical": true,
+    "scenario_parser": "scenario-parser-final.log",
+    "software_counts": {
+      "default": {
+        "passed": 130,
+        "failed": 0,
+        "ignored": 1
+      },
+      "historical": {
+        "passed": 179,
+        "failed": 0,
+        "ignored": 1
+      }
+    },
+    "core_gate_source": "4adc154fc1e6bb44c73c268a44200451abc0d7ef",
+    "core_source_boundary": "Later commits change only UI code, UI tests and scenario assets. Portable-core implementation and lock inputs remain identical."
+  },
+  "native_candidate": {
+    "source": "a4abd1bb6c00d5b174b077ede899aa7ee7b8c8e8",
+    "unsigned_binary_sha256": "94cafd6ca507f96ff3af6149165721a8d1915dd252bc68ef782f160c093defdb",
+    "signed_binary_sha256": "afe5e4739820b51fb6bda3348018d3b4dd4b0a572de111f508d2b94e3b129699",
+    "command": "cargo build --locked --offline --bin cleromancy",
+    "compiler": "Cargo 1.99; rustc/rustdoc 1.97.1",
+    "bundle": "/Users/markik/Code/testing/cleromancy/c8-20261016/Cleromancy C8 tuned.app",
+    "debug_cpu_overrides": {
+      "cleromancy": 1,
+      "cleromancy-core-acceptance": 1,
+      "serde_json": 2
+    },
+    "locks": "unchanged from qualified C7"
+  },
+  "software_checks": {
+    "default": 0,
+    "historical": 0,
+    "no-default-check": 0,
+    "default-check": 0,
+    "personal-check": 0,
+    "admission-check": 0
+  },
+  "portable_core_counts": {
+    "default": [
+      41,
+      0,
+      0
+    ],
+    "legacy": [
+      42,
+      0,
+      0
+    ],
+    "sky": [
+      43,
+      0,
+      0
+    ]
+  },
+  "native_acceptance": false,
+  "preserved_prior_receipt_paths": 618,
+  "retained_data": "Fresh inspection after interrupted preparation preserves every prior field of all eight occasions, including C7 prompts/keeping, and the complete C4 domain view/memory values.",
+  "first_slice": "One six-sided die; operating-system or public-seed scalar selection; uniform faces; versioned Outcome meaning; no assigned symbolic meaning or orientation.",
+  "scope": "C7 remains published and independently verified. C8 is not accepted or published by this preflight. Earlier preparation failures, captures, process samples and binaries remain retained.",
+  "next_command": "python3 /Users/markik/Code/testing/cleromancy/c8-20261016/run-qualified-family.py",
+  "evidence_directory": "/Users/markik/Code/testing/cleromancy/c8-20261016",
+  "blocking_condition": "Computer-use inventory reports Mac locked. User asked to unlock; do not run dependent desktop qualification until ready."
+}
