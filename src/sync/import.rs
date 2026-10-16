@@ -442,10 +442,13 @@ fn import_validated_projection<B: Backend>(
     }
     for record in &inferences {
         host.insert_generated_inference(record)?;
+        // H7 AddTag is a surface-tag wire event. Translate that carrier's
+        // explicit Keep into the owner's canonical resource-tag action; do
+        // not mistake H7's legacy carrier for a resident graph read-model.
         if projection
             .graph
             .get_node_by_url(&format!("cleromancy://inference/{}", record.digest()))
-            .is_some_and(|(_, n)| n.tags.contains("kept"))
+            .is_some_and(|(_, node)| node.tags.contains("kept"))
         {
             host.keep_generated_inference(&record.digest())?;
         }
