@@ -1,0 +1,21 @@
+{
+  "consumer": "Isocosm",
+  "source": "1b030ea92a389df3e8f2518ca11c5bc7e963f4b4",
+  "local_head": "20cb030fcc982db8fc89fa557918b8de5961543c",
+  "status": "No current Cleromancy dependency or pinned integration remains",
+  "manifest_search_exit": 1,
+  "manifest_matches": "",
+  "removal_commit": "9c991e87",
+  "ruling": 600,
+  "source_inputs": [
+    {
+      "path": "crates/isometry-genet/src/seeded_selection.rs",
+      "sha256": "c4182b945f1542af1f2850e9bfecb07cb6e1dba216640ad9d0ae1afacaebff1d"
+    },
+    {
+      "path": "mesocosm/design_docs/2026-09-18_wing_design_plan.md",
+      "sha256": "110c6e9be37c2f82167a4f41ed70466bc5de34482a7c519887c0cc12da1391c8"
+    }
+  ],
+  "compatibility": "The old consumer gate is superseded by the source-verified removal. Pre-C5 scalar derived-selection bytes are separately retained and compared against vectors emitted before implementation. No current Isocosm runtime compatibility pass is claimed."
+}

@@ -1,0 +1,10 @@
+RESULT ok
+waited 199 frames
+waited 291 frames
+waited 273 frames
+captured os-spread
+captured os-narrative
+capture os-spread 2320x1520 digest=fe36cc60e36ce3a8 file=/Users/markik/Code/testing/cleromancy/c5-20261016/native-os-first-01/os-spread.png
+capture os-narrative 2320x1520 digest=7d2ac1a0e7085372 file=/Users/markik/Code/testing/cleromancy/c5-20261016/native-os-first-01/os-narrative.png
+frames: 2 captured, 0 blank, 2 distinct digests
+presentation: 787 frames, 788 redraws, 1 unpresented redraws

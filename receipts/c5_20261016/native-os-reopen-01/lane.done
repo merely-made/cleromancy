@@ -1,0 +1,9 @@
+RESULT ok
+waited 189 frames
+waited 142 frames
+captured reopened-os-spread
+captured reopened-os-narrative
+capture reopened-os-spread 2320x1520 digest=610933c5bfd12712 file=/Users/markik/Code/testing/cleromancy/c5-20261016/native-os-reopen-01/reopened-os-spread.png
+capture reopened-os-narrative 2320x1520 digest=91390c8e631e8296 file=/Users/markik/Code/testing/cleromancy/c5-20261016/native-os-reopen-01/reopened-os-narrative.png
+frames: 2 captured, 0 blank, 2 distinct digests
+presentation: 354 frames, 357 redraws, 3 unpresented redraws

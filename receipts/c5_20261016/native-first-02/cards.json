@@ -1,0 +1,20 @@
+[
+  {
+    "position": "foundation",
+    "title": "The High Priestess",
+    "prompt": "What is not yet ready to be explained, and what can be learned by listening longer?",
+    "mode": "derived"
+  },
+  {
+    "position": "tension",
+    "title": "The Empress",
+    "prompt": "What needs material care, patience, or room to grow?",
+    "mode": "derived"
+  },
+  {
+    "position": "next_step",
+    "title": "Ace of Pentacles",
+    "prompt": "What beginning can you make with what is already available? Consider resources, work and material care.",
+    "mode": "derived"
+  }
+]

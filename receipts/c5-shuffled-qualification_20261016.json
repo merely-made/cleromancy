@@ -1,0 +1,270 @@
+{
+  "schema": "cleromancy.c5-shuffled-qualification/v1",
+  "date": "2026-10-16",
+  "status": "C5 implementation, software and bounded native qualification complete; coordinated publication recorded separately",
+  "native_source": "052e54ffb809390e5a0dacaf78e0811cd974c9b6",
+  "software_source": "73f609b199c76c15f128dd3d1c92dc140bbd17c1",
+  "supplier": "72f9c5c73ab9ddd8ba761524388c2406a6d6ffcf",
+  "same_production_inputs": true,
+  "changed_test_inputs": [
+    "tests/headed_consultation.rs",
+    "tests/headed_consultation_dom.rs",
+    "tests/session_summary.rs"
+  ],
+  "native_sha256": "6dc9f99736fe7e9a9d00fba33c2e449e7beea2b4fcef2098f3f5b020513b0ddc",
+  "compiler": "Cargo1.99 rustc/rustdoc1.97.1",
+  "gates": [
+    {
+      "name": "check",
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "--all-targets"
+      ],
+      "exit": 0,
+      "elapsed": 3.39,
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c5_20261016/complete-check.log",
+      "sha256": "01b8d790ee671262f0967e55a8a338ce8427c516aab46301afa008d9ea1fe2dd",
+      "source": "a248d140a4530d4d841c1d5994fcbd26eafbbed4"
+    },
+    {
+      "name": "default",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--no-fail-fast"
+      ],
+      "exit": 0,
+      "elapsed": 220.95,
+      "passed": 114,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c5_20261016/complete-default.log",
+      "sha256": "414b5270793f96e6c28dba07490553441563786a76c4d9b046314d47a9ab08ec",
+      "source": "a248d140a4530d4d841c1d5994fcbd26eafbbed4"
+    },
+    {
+      "name": "historical",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--no-fail-fast",
+        "--features",
+        "legacy-receipts,personal-sync,graphshell-admission"
+      ],
+      "exit": 0,
+      "elapsed": 277.22,
+      "passed": 153,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c5_20261016/closed-historical.log",
+      "sha256": "2fb52f263583adfe208016a3dfece5d2389ce584b6df0d037ed9515cf9f6a293",
+      "source": "73f609b199c76c15f128dd3d1c92dc140bbd17c1"
+    },
+    {
+      "name": "historical-check",
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "--all-targets",
+        "--features",
+        "legacy-receipts,personal-sync,graphshell-admission"
+      ],
+      "exit": 0,
+      "elapsed": 59.97,
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c5_20261016/closed-historical-check.log",
+      "sha256": "d26f03b9c47d1e5cde9d2ed05c38102bd4c22caf14ba7dd35ca39ce70c42465b",
+      "source": "73f609b199c76c15f128dd3d1c92dc140bbd17c1"
+    },
+    {
+      "name": "sky",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--features",
+        "legacy-receipts,sky-timeline",
+        "--test",
+        "sky_timeline"
+      ],
+      "exit": 0,
+      "elapsed": 71.02,
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c5_20261016/closed-sky.log",
+      "sha256": "277080cbb87887a7a17c4e23adbd4e513afa348ba402cb157f274da0970529ad",
+      "source": "73f609b199c76c15f128dd3d1c92dc140bbd17c1"
+    },
+    {
+      "name": "core-default",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "core/Cargo.toml"
+      ],
+      "source": "052e54ffb809390e5a0dacaf78e0811cd974c9b6",
+      "exit": 0,
+      "passed": 32,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c5_20261016/qualified-core-default.log",
+      "sha256": "a0848873361d9d71f766178b4a5fcd869dd566fb6bc3f349f912d36776f68690"
+    },
+    {
+      "name": "core-legacy",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "core/Cargo.toml",
+        "--features",
+        "legacy-receipts"
+      ],
+      "source": "052e54ffb809390e5a0dacaf78e0811cd974c9b6",
+      "exit": 0,
+      "passed": 33,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c5_20261016/qualified-core-legacy.log",
+      "sha256": "fa7da387a8c9b75ce812342be0723a010d70f9f45087c9801832b084510d2662"
+    },
+    {
+      "name": "core-sky",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "core/Cargo.toml",
+        "--features",
+        "legacy-receipts,sky-timeline"
+      ],
+      "source": "052e54ffb809390e5a0dacaf78e0811cd974c9b6",
+      "exit": 0,
+      "passed": 34,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c5_20261016/qualified-core-sky.log",
+      "sha256": "da22dcb9d6e42a3fe2febf77cf11cd0cc20ac160abf8cc7b82f1d42e617e9706"
+    },
+    {
+      "name": "receiving-three-owner",
+      "command": "cargo test --locked --offline -p djinn --test embedded_reservoir_validation",
+      "source": "f21ba258e9478a0051e6671183d03d5f4c8748fc",
+      "core": "7b0c5ef604355c7140a6dbc64b53f14d0983c157",
+      "exit": 0,
+      "passed": 6,
+      "failed": 0,
+      "ignored": 1,
+      "ignore_reason": "The process-child entry is intentionally ignored by the outer runner and launched explicitly by parent tests.",
+      "log": "c5_20261016/owner-integrated.log",
+      "sha256": "49aae22b1559dc18dc636f2176eaf7cc4d06e08e26e10941924d678e02ac3938"
+    }
+  ],
+  "original_captures": 10,
+  "native_processes": 4,
+  "receipt_schema": "cleromancy.receipt/v5",
+  "reading_schema": "cleromancy.reading/v3",
+  "shuffle_method": "cleromancy.shuffle/blake3-fisher-yates-u64-rejection/v1",
+  "native": "c5-native-qualification_20261016.json",
+  "receiving": "c5_20261016/mere-receiving-qualification.json",
+  "preservation": {
+    "baseline": "1c2f8d62d725c0f0c988f74125364d4e08734088",
+    "prior_paths": 333,
+    "original_C4_occasions": 3,
+    "all_prior_occasions": 5,
+    "complete_C4_view_and_kept_memory_exact": true,
+    "public_seed_and_OS_proof_reopen_byte_equal": true
+  },
+  "legacy_compatibility": "Four exact scalar calculation/derived vectors emitted before implementation remain byte-equal; original scalar v1-v4 entry points and explicit historical receipt tests remain active.",
+  "current_consumer": {
+    "consumer": "Isocosm",
+    "source": "1b030ea92a389df3e8f2518ca11c5bc7e963f4b4",
+    "local_head": "20cb030fcc982db8fc89fa557918b8de5961543c",
+    "status": "No current Cleromancy dependency or pinned integration remains",
+    "manifest_search_exit": 1,
+    "manifest_matches": "",
+    "removal_commit": "9c991e87",
+    "ruling": 600,
+    "source_inputs": [
+      {
+        "path": "crates/isometry-genet/src/seeded_selection.rs",
+        "sha256": "c4182b945f1542af1f2850e9bfecb07cb6e1dba216640ad9d0ae1afacaebff1d"
+      },
+      {
+        "path": "mesocosm/design_docs/2026-09-18_wing_design_plan.md",
+        "sha256": "110c6e9be37c2f82167a4f41ed70466bc5de34482a7c519887c0cc12da1391c8"
+      }
+    ],
+    "compatibility": "The old consumer gate is superseded by the source-verified removal. Pre-C5 scalar derived-selection bytes are separately retained and compared against vectors emitted before implementation. No current Isocosm runtime compatibility pass is claimed."
+  },
+  "formatting_debt": {
+    "command": "cargo fmt --all -- --check",
+    "exit": 1,
+    "reported_files": [
+      "src/app/invoke.rs",
+      "src/astrology.rs",
+      "src/bin/a16_pattern_selection_receipt.rs",
+      "src/bin/a3_intent_receipt.rs",
+      "src/bin/a5_field_receipt.rs",
+      "src/consultation/drafts.rs",
+      "src/enrichment.rs",
+      "src/ephemeris.rs",
+      "src/ephemeris/analytic.rs",
+      "src/projection.rs",
+      "src/sync/shared.rs",
+      "src/sync_settings.rs",
+      "src/ui/native/appearance.rs",
+      "tests/a1.rs",
+      "tests/a10.rs",
+      "tests/a16.rs",
+      "tests/a2.rs",
+      "tests/a23_resident_sync_consent.rs",
+      "tests/a24_resident_sync_startup.rs",
+      "tests/a3.rs",
+      "tests/a4.rs",
+      "tests/a9.rs",
+      "tests/analytic_consultation.rs",
+      "tests/analytic_parity.rs",
+      "tests/sky_surface_dom.rs",
+      "tests/sky_timeline.rs",
+      "tests/support/mod.rs"
+    ],
+    "count": 27,
+    "changed_since_c4": []
+  },
+  "qualification_notes": [
+    "Default114/check ran at a248d14; final153 historical/check/sky ran at the later software source after changing only the feature-gated legacy persistence test and external scenario files. All production inputs match frozen native052e54f.",
+    "Real receiving owner uses portable core7b0c5ef, whose compiled production closure matches frozen native052e54f; shared supplier pin remains72f9c5c73.",
+    "Oversized combined two-deck fixture setup was split into bounded replay-valid candidate transactions; final graph, 1MiB frame limit and atomic tamper refusal remain unchanged.",
+    "Diagnostic selector/packet/test-expectation failures are preserved; they are not final passes."
+  ],
+  "limits": [
+    "Bounded debug desktop qualification; no release packaging, graphical unlock or startup performance claim",
+    "Complete shared cutover wall and C6 situation remain separate work",
+    "No independent second visual reviewer claimed",
+    "Current Isocosm has removed Cleromancy; no Isocosm runtime integration pass claimed"
+  ]
+}

@@ -1,0 +1,9 @@
+RESULT ok
+waited 220 frames
+waited 297 frames
+captured reopened-spread
+captured reopened-narrative
+capture reopened-spread 2320x1520 digest=79f9ea6da0ba27a2 file=/Users/markik/Code/testing/cleromancy/c5-20261016/native-reopen-01/reopened-spread.png
+capture reopened-narrative 2320x1520 digest=2fa84311f2f9fb52 file=/Users/markik/Code/testing/cleromancy/c5-20261016/native-reopen-01/reopened-narrative.png
+frames: 2 captured, 0 blank, 2 distinct digests
+presentation: 541 frames, 543 redraws, 2 unpresented redraws

@@ -1,0 +1,126 @@
+[
+  {
+    "schema": "cleromancy.reading/v1",
+    "id": "25a0c4f63165959707feb8f3b3f639ff85404ff30d4f507bbe2f1955e4ab4616",
+    "system": "cleromancy.fixture-system/v1",
+    "candidate_id": "threshold",
+    "title": "Attend to the threshold",
+    "interpretation": "Notice what has already changed before deciding what should change next.",
+    "receipt": {
+      "schema": "cleromancy.receipt/v1",
+      "mode": "calculated",
+      "algorithm": "contextual-weight/max/v1",
+      "context_digest": "39f07c6a6036b0984950c40bd651b133bc7d718b0e476afce0ca90f0554e5fe6",
+      "field_digest": "c8ec8a3f932ad98853c3767247eff08f48b59fc519dc64575134b4c8cfd90132",
+      "qualified_weights": [
+        6,
+        3,
+        2
+      ],
+      "total_weight": 11,
+      "sample": null,
+      "event_nonce": null,
+      "selected_index": 0,
+      "selected_candidate": "threshold"
+    }
+  },
+  {
+    "schema": "cleromancy.reading/v1",
+    "id": "bde41df2b70e0d59f270119bd4d15652bb27aa365f4baa7c476758ceb5657b1c",
+    "system": "cleromancy.fixture-system/v1",
+    "candidate_id": "wander",
+    "title": "Permit an unplanned move",
+    "interpretation": "Leave one part of the next step deliberately unspecified.",
+    "receipt": {
+      "schema": "cleromancy.receipt/v3",
+      "mode": "derived",
+      "algorithm": "derived-blake3/rejection-u64+contextual-weight/v1",
+      "context_digest": "39f07c6a6036b0984950c40bd651b133bc7d718b0e476afce0ca90f0554e5fe6",
+      "field_digest": "c8ec8a3f932ad98853c3767247eff08f48b59fc519dc64575134b4c8cfd90132",
+      "derivation": {
+        "schema": "cleromancy.derived-selection/v1",
+        "algorithm": "cleromancy.derived-selection/blake3-u64-rejection/v1",
+        "seed": "public-fixture-seed",
+        "domain": "cleromancy.test/derived"
+      },
+      "derivation_digest": "0c13413c0ae338e9be7efdc067f9d32fab5c62fa78481f81439441c3b1e6a6d0",
+      "qualified_weights": [
+        6,
+        3,
+        2
+      ],
+      "total_weight": 11,
+      "sample": 10,
+      "event_nonce": null,
+      "selected_index": 2,
+      "selected_candidate": "wander"
+    }
+  },
+  {
+    "schema": "cleromancy.reading/v1",
+    "id": "419f7dc37ae4e9e78a6df7e76f51556b7cf0ebb7fec8dbdbb3564368f7d81594",
+    "system": "fixture.derived-die/v1",
+    "candidate_id": "face-2",
+    "title": "Face 2",
+    "interpretation": "Face 2 is the disclosed result.",
+    "receipt": {
+      "schema": "cleromancy.receipt/v3",
+      "mode": "derived",
+      "algorithm": "derived-blake3/rejection-u64+uniform-die/v1",
+      "context_digest": "39f07c6a6036b0984950c40bd651b133bc7d718b0e476afce0ca90f0554e5fe6",
+      "field_digest": "5d2e0fd37d759eb7ab23a0ac51226535b20a1f5a127e7079dc90aa0549da3881",
+      "derivation": {
+        "schema": "cleromancy.derived-selection/v1",
+        "algorithm": "cleromancy.derived-selection/blake3-u64-rejection/v1",
+        "seed": "roll-2026-08-08",
+        "domain": "cleromancy.test/die"
+      },
+      "derivation_digest": "43b18fd3b909facf26bb8c1d3636776178784e18f9974f8b5446e737b6218397",
+      "qualified_weights": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "total_weight": 6,
+      "sample": 1,
+      "event_nonce": null,
+      "selected_index": 1,
+      "selected_candidate": "face-2"
+    }
+  },
+  {
+    "schema": "cleromancy.reading/v1",
+    "id": "76323360a2b72456c81bc48bdb1627795978a5701e2f5d9ab3b53b42f789a75d",
+    "system": "cleromancy.fixture-system/v1",
+    "candidate_id": "measure",
+    "title": "Measure the structure",
+    "interpretation": "Name the constraint that is doing useful work and the one that has become habit.",
+    "receipt": {
+      "schema": "cleromancy.receipt/v3",
+      "mode": "derived",
+      "algorithm": "derived-blake3/rejection-u64+contextual-weight/v1",
+      "context_digest": "39f07c6a6036b0984950c40bd651b133bc7d718b0e476afce0ca90f0554e5fe6",
+      "field_digest": "c8ec8a3f932ad98853c3767247eff08f48b59fc519dc64575134b4c8cfd90132",
+      "derivation": {
+        "schema": "cleromancy.derived-selection/v1",
+        "algorithm": "cleromancy.derived-selection/blake3-u64-rejection/v1",
+        "seed": "isocosm-compatibility",
+        "domain": "generator-choice"
+      },
+      "derivation_digest": "ea995b6490c98c5e4cb396c71d3a3debfe36dccafca1e385c5534e92d6122cfb",
+      "qualified_weights": [
+        6,
+        3,
+        2
+      ],
+      "total_weight": 11,
+      "sample": 7,
+      "event_nonce": null,
+      "selected_index": 1,
+      "selected_candidate": "measure"
+    }
+  }
+]

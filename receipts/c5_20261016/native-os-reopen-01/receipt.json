@@ -1,0 +1,21 @@
+{
+  "schema": "cleromancy.headed-scenario/v1",
+  "phase": "reopen",
+  "ok": true,
+  "status": "Viewing session: cc522effa0e25d0e330885c8fa05ab327b49fc36e415f46d5cdf882f2eb84308",
+  "catalog_ready": true,
+  "sessions": 6,
+  "readings": 3,
+  "reflections": 1,
+  "ids": {
+    "session_id": "cc522effa0e25d0e330885c8fa05ab327b49fc36e415f46d5cdf882f2eb84308",
+    "reading_id": "9c4275bab76a9d9541450b98305738b2066a83cd2e3e19cda611169fa89c7830",
+    "reflection_id": "db6a3b7d98334bb3b13cc78a434c1b8d2c8a25966f29a897fd39b22c0101077b"
+  },
+  "log": [
+    "waited 189 frames",
+    "waited 142 frames",
+    "captured reopened-os-spread",
+    "captured reopened-os-narrative"
+  ]
+}

@@ -1,5 +1,15 @@
 # Cleromancy handoff for Codex, 2026-10-15
 
+**C5 continuation (2026-10-16):** shuffled-deck receipts, reversals and seeded
+multi-position tarot reads are implemented. The
+[C5 evidence notes](../receipts/c5_20261016/README.md) and
+[qualification ledger](../receipts/c5-shuffled-qualification_20261016.json)
+retain source-bound software, ten original native captures, exact fresh-process
+reopening and receiving-owner proof. Current Isocosm has removed its
+Cleromancy dependency; historical scalar derived bytes remain tested. All 333
+C4-and-earlier receipt/scenario paths remain exact. C6 is the next product
+phase. C4's publication record and all older receipts remain unchanged below.
+
 **Current continuation (2026-10-16):** published C3 remains intact. C4 is now
 implemented, software-qualified and bounded native-qualified at product `d6ea9f7`, frozen supplier
 `72f9c5c73`, with eleven reviewed originals and exact sealed-reading/full-view/
