@@ -11,7 +11,7 @@ use mere::kernel::graph::Graph;
 #[test]
 fn candidate_actions_capture_stable_edits_and_leave_input_unchanged() {
     let input = Graph::new();
-    let before = serde_json::to_value(input.to_snapshot()).unwrap();
+    let before = graph_state(&input);
     let mut host = CleromancyHost::candidate(input.clone()).unwrap();
     let edits = Arc::new(Mutex::new(Vec::new()));
     host.record_edits(edits.clone());
@@ -31,7 +31,7 @@ fn candidate_actions_capture_stable_edits_and_leave_input_unchanged() {
     cleromancy::host::validate_divination_graph(&replayed).unwrap();
     let replayed = Consultation::new(CleromancyHost::candidate(replayed).unwrap());
     assert_eq!(replayed.detail(&detail.session.id).unwrap(), detail);
-    assert_eq!(serde_json::to_value(input.to_snapshot()).unwrap(), before);
+    assert_eq!(graph_state(&input), before);
     cleromancy::host::validate_divination_graph(consultation.host().graph()).unwrap();
     let reopened =
         Consultation::new(CleromancyHost::candidate(consultation.host().graph().clone()).unwrap());
@@ -89,4 +89,68 @@ fn default_transformer_neither_loads_nor_rewrites_the_retired_slot() {
         preserved
     );
     assert_eq!(consultation.catalog().unwrap().fields.len(), 1);
+}
+
+#[test]
+fn typed_decks_survive_journal_replay_and_forged_metadata_is_refused() {
+    let mut host = CleromancyHost::candidate(Graph::new()).unwrap();
+    let edits = Arc::new(Mutex::new(Vec::new()));
+    host.record_edits(edits.clone());
+    let mut consultation = Consultation::new(host);
+    let fields = pollster::block_on(consultation.install_typed_tarot_at(1)).unwrap();
+    assert_eq!(fields.len(), 2);
+    let context = pollster::block_on(
+        consultation.save_context_at(ContextDraft::new("C3", "What is available?", ""), 2),
+    )
+    .unwrap();
+    let detail =
+        pollster::block_on(consultation.read(&context, &fields[0], SelectionMode::Calculated))
+            .unwrap();
+    let saved = consultation.host().graph().to_snapshot();
+    let recorded = edits.lock().unwrap().clone();
+    let replayed = mere::kernel::graph::replay_captured_deltas(recorded);
+    let reopened = Consultation::new(CleromancyHost::candidate(replayed).unwrap());
+    assert_eq!(reopened.detail(&detail.session.id).unwrap(), detail);
+    assert_eq!(reopened.catalog().unwrap().fields.len(), 2);
+    let meaning = cleromancy::narrative::position_meaning(&detail, "focus");
+    assert_eq!(
+        meaning.meaning,
+        detail
+            .field
+            .position_meanings
+            .as_ref()
+            .unwrap()
+            .positions
+            .iter()
+            .find(|p| p.name == "focus")
+            .unwrap()
+            .meaning
+    );
+    let mut graph = consultation.host().graph().clone();
+    let id = graph
+        .get_node_by_url(&format!("cleromancy://field/{}", fields[0]))
+        .unwrap()
+        .1
+        .id;
+    let facet = chartulary::FacetId::new(cleromancy::host::FIELD_FACET);
+    let mut value = graph.facets().get(&id, &facet).unwrap().clone();
+    value["tarot"]["cards"][0]["interpretation"]["text"] = serde_json::json!("unbound replacement");
+    graph
+        .facets_mut()
+        .set(id, facet, value, &chartulary::AcceptAll)
+        .unwrap();
+    assert!(cleromancy::host::validate_divination_graph(&graph).is_err());
+    assert_eq!(graph_state(consultation.host().graph()), {
+        let mut value = serde_json::to_value(saved).unwrap();
+        value.as_object_mut().unwrap().remove("timestamp_secs");
+        value
+    });
+}
+
+// to_snapshot stamps a new serialization time; compare the graph's durable
+// contents, not the wall clock at which each inspection was performed.
+fn graph_state(graph: &Graph) -> serde_json::Value {
+    let mut value = serde_json::to_value(graph.to_snapshot()).unwrap();
+    value.as_object_mut().unwrap().remove("timestamp_secs");
+    value
 }

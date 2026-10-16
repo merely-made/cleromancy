@@ -65,7 +65,7 @@ impl ResidentConsultation {
             && client.consultation()?.host().is_empty()
         {
             let (mut consultation, edits) = client.candidate()?;
-            consultation.install_builtin_tarot().await.map_err(err)?;
+            consultation.install_typed_tarot().await.map_err(err)?;
             client.commit(edits).await?;
             client.refresh().await?;
         }
@@ -349,7 +349,7 @@ impl ResidentConsultation {
             if !consultation.host().is_empty() {
                 return Err("the newly minted session changed before initialization".into());
             }
-            consultation.install_builtin_tarot().await.map_err(err)?;
+            consultation.install_typed_tarot().await.map_err(err)?;
             self.commit(edits).await?;
             self.refresh().await?;
         }

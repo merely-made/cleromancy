@@ -23,6 +23,7 @@ pub enum ConsultationLayout {
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum ConsultationAction {
+    InstallTarotDecks,
     Read {
         context: ConsultationContext,
         field_digest: String,

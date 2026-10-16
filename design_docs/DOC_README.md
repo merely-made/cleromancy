@@ -234,3 +234,9 @@ canonical source per repository, 92 default and 130 historical tests, core
 18/19/20, active sky/sync fixtures and both all-target checks. Prior native
 qualification retains its source/capture scope; Mere's lift plan records the
 bounded P4 endpoint consumer proof.
+
+C3 in progress (2026-10-15): the divination plan now records two complete
+78-card text decks, typed identities independent of printed numbers, cited
+Golden Dawn/Thierens overlays, non-writing cross-deck inspection and saved
+content revisions. Existing fields and prior receipts retain their identities.
+The new fixed minor prompts disclose model-assisted editorial provenance.

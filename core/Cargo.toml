@@ -64,3 +64,7 @@ path = "../tests/resident_candidate.rs"
 [patch.crates-io]
 mere-proofs = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 muniment = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+
+[[test]]
+name = "typed_decks"
+path = "../tests/typed_decks.rs"

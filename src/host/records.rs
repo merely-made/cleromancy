@@ -27,6 +27,7 @@ impl<B: Backend> CleromancyHost<B> {
     /// field, so replay does not depend on a catalog or caller remaining
     /// installed.
     pub fn insert_field(&mut self, field: &Field) -> Result<NodeKey, HostError> {
+        field.validate_metadata()?;
         let address = format!("cleromancy://field/{}", field.digest());
         let key = self.upsert_node(&address, &field.system, ["field", field.system.as_str()]);
         self.set_facet(key, FIELD_FACET, serde_json::to_value(field).unwrap())?;

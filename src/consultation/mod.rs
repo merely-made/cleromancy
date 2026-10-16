@@ -230,6 +230,28 @@ impl<B: Backend> Consultation<B> {
         Ok(digest)
     }
 
+    /// Install complete immutable deck snapshots through the existing owner action.
+    pub async fn install_typed_tarot(&mut self) -> Result<Vec<String>, ConsultationError> {
+        self.install_typed_tarot_at(unix_time_secs()?).await
+    }
+
+    pub async fn install_typed_tarot_at(
+        &mut self,
+        saved_at_secs: u64,
+    ) -> Result<Vec<String>, ConsultationError> {
+        self.ensure_writable()?;
+        let mut digests = Vec::new();
+        for deck in crate::cards::builtin_decks() {
+            let field = deck
+                .field(TarotQualification::Contextual)
+                .map_err(HostError::from)?;
+            digests.push(field.digest());
+            self.host.insert_field(&field)?;
+        }
+        self.persist(saved_at_secs).await?;
+        Ok(digests)
+    }
+
     pub async fn save_context(&mut self, draft: ContextDraft) -> Result<String, ConsultationError> {
         self.save_context_at(draft, unix_time_secs()?).await
     }

@@ -112,6 +112,13 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             question_state,
         ),
         labelled_control("Stored field", "cleromancy-field", Box::new(field_select)),
+        Box::new(
+            button("Add typed tarot decks", |ui: &mut ConsultationUi, _| {
+                let action = ui.request_typed_decks();
+                ui.record_action(action);
+            })
+            .attr("data-key", "install-typed-decks"),
+        ),
         labelled_control("Selection mode", "cleromancy-mode", Box::new(mode)),
         labelled_control("Reading shape", "cleromancy-layout", Box::new(layout)),
     ];
@@ -264,7 +271,9 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
 }
 
 fn field_label(field: &Field) -> String {
-    if field.system == RWS_MAJOR_ARCANA_ID {
+    if let Some(deck) = &field.tarot {
+        format!("{} ({} cards)", deck.title, deck.cards.len())
+    } else if field.system == RWS_MAJOR_ARCANA_ID {
         "Rider-Waite-Smith Major Arcana".to_string()
     } else {
         field.system.clone()

@@ -1,0 +1,248 @@
+{
+  "system": "cleromancy.tarot/rws-major-reflective-v1",
+  "rules": "uniform/v1",
+  "candidates": [
+    {
+      "id": "major-00-fool",
+      "title": "The Fool",
+      "interpretation": "What beginning asks for curiosity before certainty, and what risk can remain bounded?",
+      "tags": [
+        "beginning",
+        "openness",
+        "risk"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-01-magician",
+      "title": "The Magician",
+      "interpretation": "Which available skill or tool becomes effective when you give it undivided attention?",
+      "tags": [
+        "agency",
+        "attention",
+        "skill"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-02-high-priestess",
+      "title": "The High Priestess",
+      "interpretation": "What is not yet ready to be explained, and what can be learned by listening longer?",
+      "tags": [
+        "ambiguity",
+        "intuition",
+        "silence"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-03-empress",
+      "title": "The Empress",
+      "interpretation": "What needs material care, patience, or room to grow?",
+      "tags": [
+        "abundance",
+        "embodiment",
+        "nurture"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-04-emperor",
+      "title": "The Emperor",
+      "interpretation": "Which boundary or structure would make action safer and clearer?",
+      "tags": [
+        "authority",
+        "boundary",
+        "structure"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-05-hierophant",
+      "title": "The Hierophant",
+      "interpretation": "Which inherited practice is teaching you, and which part deserves examination?",
+      "tags": [
+        "institution",
+        "teaching",
+        "tradition"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-06-lovers",
+      "title": "The Lovers",
+      "interpretation": "What choice would align relationship, desire, and stated values?",
+      "tags": [
+        "choice",
+        "relationship",
+        "values"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-07-chariot",
+      "title": "The Chariot",
+      "interpretation": "What competing impulses need one direction before momentum becomes useful?",
+      "tags": [
+        "direction",
+        "discipline",
+        "momentum"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-08-strength",
+      "title": "Strength",
+      "interpretation": "Where would patient courage accomplish more than force?",
+      "tags": [
+        "courage",
+        "patience",
+        "restraint"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-09-hermit",
+      "title": "The Hermit",
+      "interpretation": "What becomes audible when you step back from other people's urgency?",
+      "tags": [
+        "guidance",
+        "inquiry",
+        "solitude"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-10-wheel-of-fortune",
+      "title": "Wheel of Fortune",
+      "interpretation": "Which change is already in motion, and where can you respond without pretending to control it?",
+      "tags": [
+        "chance",
+        "change",
+        "cycle"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-11-justice",
+      "title": "Justice",
+      "interpretation": "What consequence, obligation, or imbalance needs an exact accounting?",
+      "tags": [
+        "accountability",
+        "balance",
+        "consequence"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-12-hanged-man",
+      "title": "The Hanged Man",
+      "interpretation": "What changes when you stop forcing movement and examine the situation from its underside?",
+      "tags": [
+        "perspective",
+        "surrender",
+        "suspension"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-13-death",
+      "title": "Death",
+      "interpretation": "What ending must be acknowledged before transformation becomes more than a slogan?",
+      "tags": [
+        "ending",
+        "release",
+        "transformation"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-14-temperance",
+      "title": "Temperance",
+      "interpretation": "Which elements need proportion, exchange, and repeated adjustment rather than a dramatic solution?",
+      "tags": [
+        "exchange",
+        "integration",
+        "moderation"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-15-devil",
+      "title": "The Devil",
+      "interpretation": "Which attachment gains power by remaining unnamed, and what choice would loosen it?",
+      "tags": [
+        "appetite",
+        "attachment",
+        "constraint"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-16-tower",
+      "title": "The Tower",
+      "interpretation": "What unstable structure is being exposed, and what truth survives its collapse?",
+      "tags": [
+        "instability",
+        "revelation",
+        "rupture"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-17-star",
+      "title": "The Star",
+      "interpretation": "What small source of orientation can you trust while repair is still incomplete?",
+      "tags": [
+        "hope",
+        "orientation",
+        "renewal"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-18-moon",
+      "title": "The Moon",
+      "interpretation": "Which fear, image, or ambiguity needs observation before it is treated as fact?",
+      "tags": [
+        "fear",
+        "imagination",
+        "uncertainty"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-19-sun",
+      "title": "The Sun",
+      "interpretation": "What becomes simpler when it is brought fully into view and shared?",
+      "tags": [
+        "clarity",
+        "recognition",
+        "vitality"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-20-judgement",
+      "title": "Judgement",
+      "interpretation": "What prior decision is asking to be heard, revised, or answered now?",
+      "tags": [
+        "calling",
+        "reckoning",
+        "revision"
+      ],
+      "base_weight": 1
+    },
+    {
+      "id": "major-21-world",
+      "title": "The World",
+      "interpretation": "What is actually complete, and what new threshold appears when you name that completion?",
+      "tags": [
+        "completion",
+        "passage",
+        "wholeness"
+      ],
+      "base_weight": 1
+    }
+  ]
+}

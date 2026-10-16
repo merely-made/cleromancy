@@ -319,6 +319,61 @@ struct ScenarioDriver<'a, 'ctx> {
 impl ScenarioDriver<'_, '_> {
     fn app_step(&mut self, line: &str) -> Result<(), String> {
         match line {
+            "c3-read" => {
+                let mut error = None;
+                self.ctx.runner.update(|state| {
+                    let ui = &mut state.consultation;
+                    let Some(index) = ui.catalog.fields.iter().position(|f| {
+                        f.tarot
+                            .as_ref()
+                            .is_some_and(|d| d.id == "cleromancy.tarot/rws-complete-reflective-v1")
+                    }) else {
+                        error = Some("C3 RWS typed deck is missing".to_string());
+                        return;
+                    };
+                    ui.context_label = cambium::TextInput::new("C3 patient courage");
+                    ui.question = cambium::TextInput::new("What can I meet patiently?");
+                    ui.tags = cambium::TextInput::new("courage");
+                    ui.field_select.selected = index;
+                    ui.mode.selected = 0;
+                    ui.layout.selected = 0;
+                    let action = ui.request_read();
+                    ui.record_action(action);
+                    error = ui.error().map(str::to_string);
+                });
+                if let Some(error) = error {
+                    return Err(error);
+                }
+                self.state.scenario_stage = 1;
+                submit_pending(self.ctx.runner, self.state.worker.as_ref());
+                Ok(())
+            },
+            "c3-crosswalk" | "c3-return" => {
+                let key = if line == "c3-crosswalk" {
+                    "crosswalk:cleromancy.tarot/marseille-complete-reflective-v1"
+                } else {
+                    "return-drawn-card"
+                };
+                let node = {
+                    let dom = self.ctx.runner.dom();
+                    let dom = dom.borrow();
+                    taproot::matching(
+                        &dom,
+                        &taproot::Selector::role("button").with_attr("data-key", key),
+                    )
+                    .into_iter()
+                    .next()
+                    .ok_or("C3 inspection control missing")?
+                };
+                let (_, _, width, height) = self
+                    .ctx
+                    .painted_rect(node)
+                    .ok_or("C3 inspection control is not painted")?;
+                self.ctx
+                    .runner
+                    .dispatch_click(node, cambium::PointerClick::at((width / 2.0, height / 2.0)));
+                Ok(())
+            },
             "c2-author-layout" => {
                 self.ctx.runner.update(|state| {
                     let ui = &mut state.consultation;

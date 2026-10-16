@@ -26,6 +26,7 @@ mod shared;
 #[cfg(feature = "sky-timeline")]
 mod sky;
 mod trail;
+mod typed_card;
 
 use chart::chart_region;
 use consultation::consultation_region;

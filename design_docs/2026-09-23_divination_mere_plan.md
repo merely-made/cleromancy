@@ -491,6 +491,25 @@ that every card is upright.
 
 ### C3. Typed cards and several decks
 
+**Implementation in progress (2026-10-15):** C3 adds two complete 78-card
+text decks, Rider–Waite–Smith and a Marseille-structure reflective edition.
+Printed numbering is independent of cross-deck identity, including Strength
+VIII/XI, Justice XI/VIII and the unnumbered Marseille Fool. This is a text
+edition, not a reproduction of Noblet's incomplete surviving pack or artwork.
+Golden Dawn / Book T and Thierens (1930) are separate cited correspondence
+overlays; untranscribed axes remain absent. The undated Book T transcription
+is labelled as such, with its consultation date, rather than assigned a guessed
+publication date. Full typed card and position-definition snapshots are stored
+with each new field and validated before write/replay. Existing untyped fields
+retain their original serialization and identities. The astrology edition-1
+prose moves from view match arms into an independently versioned data pack;
+SkyRulePack already carries its typed version and digest. New minor-card prompts are fixed Codex/GPT-6-assisted editorial templates,
+labelled with their model family, method, inputs and stored output; major
+prompts copy the existing authored text unchanged. This is pack-authoring
+provenance, not per-reading generation. C3 does not change
+the independent draw or implement C4/C5. Tests and consumer qualification are
+in progress; all previous receipts remain frozen.
+
 Cards carry typed axes: number, suit, arcana, and, from each tradition,
 element, planet and sign. Several tarot decks are available as typed data.
 Each tradition's correspondences are recorded with their source and date and
@@ -864,3 +883,9 @@ orientations and positions, and interpretations.
   12 C2 capture hashes. Mere's lift plan records the P4 endpoint proof. Native
   qualification remains bound to its original source; this does not accept
   the shared wall or implement C3.
+
+- 2026-10-15: Mark authorized C3 typed cards/decks with prior work and receipts
+  preserved. Began complete typed deck snapshots and resident validation,
+  explicit cross-deck inspection, two independently cited traditions, saved
+  position definitions and versioned authored content. No dependency update
+  or older receipt rewrite is part of this phase.

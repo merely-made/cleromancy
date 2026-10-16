@@ -13,9 +13,11 @@ mod admitted;
 #[cfg(not(feature = "portable-core"))]
 pub mod app;
 pub mod astrology;
+pub mod cards;
 pub mod composer;
 pub mod concurrence;
 pub mod consultation;
+pub mod content;
 pub mod context;
 pub mod enrichment;
 #[cfg(all(not(feature = "portable-core"), feature = "analytic-ephemeris"))]
