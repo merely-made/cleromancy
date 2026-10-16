@@ -1,0 +1,812 @@
+{
+  "schema": "cleromancy.c3-software-qualification/v1",
+  "date": "2026-10-16",
+  "source_commit": "ef014d78baada1c1c4df6d38388a30514b066c93",
+  "status": "C3 implemented and software-qualified; native qualification pending foreground slot",
+  "publication": "local commits only; not pushed",
+  "gates": {
+    "build": {
+      "command": [
+        "cargo",
+        "build",
+        "--locked",
+        "--bin",
+        "cleromancy"
+      ],
+      "exit": 0,
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "log": "/Users/markik/Code/testing/cleromancy/c3-20261015/verified-build.log",
+      "sha256": "269879c15f35116624d8f254f545456c9a100b910e089829761c067614824bc1"
+    },
+    "default": {
+      "command": [
+        "cargo",
+        "test",
+        "--locked"
+      ],
+      "exit": 0,
+      "passed": 100,
+      "failed": 0,
+      "ignored": 0,
+      "log": "/Users/markik/Code/testing/cleromancy/c3-20261015/verified-default.log",
+      "sha256": "35264efef60e6e092a28589c16b35febe9c6b3835144816927d864e71f113a91"
+    },
+    "historical": {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--features",
+        "legacy-receipts,personal-sync,graphshell-admission"
+      ],
+      "exit": 0,
+      "passed": 139,
+      "failed": 0,
+      "ignored": 0,
+      "log": "/Users/markik/Code/testing/cleromancy/c3-20261015/verified-historical.log",
+      "sha256": "55a3d72b86f73158ed3af1d62011700848da6f44223799ea08f8d3cdd05e9a00"
+    },
+    "sky": {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--features",
+        "legacy-receipts,sky-timeline",
+        "--test",
+        "sky_timeline"
+      ],
+      "exit": 0,
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "log": "/Users/markik/Code/testing/cleromancy/c3-20261015/verified-sky.log",
+      "sha256": "91e0816e4010d2ee27a62f37976dd29989c693c7ea87ea5cf5485410b645bbbc"
+    },
+    "check": {
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--all-targets"
+      ],
+      "exit": 0,
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "log": "/Users/markik/Code/testing/cleromancy/c3-20261015/verified-check.log",
+      "sha256": "badb1d6b3038083608446fe23aa6cb508281abcd44e6144d464ec0efeb660ada"
+    },
+    "check-features": {
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--features",
+        "personal-sync,graphshell-admission",
+        "--all-targets"
+      ],
+      "exit": 0,
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "log": "/Users/markik/Code/testing/cleromancy/c3-20261015/verified-check-features.log",
+      "sha256": "4b4132ea9dc7ee6b632d57c82fcc3a99a7026ef1c316cd7d3239540c671af7c2"
+    },
+    "core": {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--manifest-path",
+        "core/Cargo.toml"
+      ],
+      "exit": 0,
+      "passed": 24,
+      "failed": 0,
+      "ignored": 0,
+      "log": "/Users/markik/Code/testing/cleromancy/c3-20261015/verified-core.log",
+      "sha256": "20a301c1ff6cfe54a0744685e21bdb2a6c4b475c2e3af5d9303b58c18594f7b0"
+    },
+    "core-legacy": {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--manifest-path",
+        "core/Cargo.toml",
+        "--features",
+        "legacy-receipts"
+      ],
+      "exit": 0,
+      "passed": 25,
+      "failed": 0,
+      "ignored": 0,
+      "log": "/Users/markik/Code/testing/cleromancy/c3-20261015/verified-core-legacy.log",
+      "sha256": "24b40164bc7820ea15e4d883082addf3e44fd4281b44eb71a1193dba5d728cde"
+    },
+    "core-sky": {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--manifest-path",
+        "core/Cargo.toml",
+        "--features",
+        "legacy-receipts,sky-timeline"
+      ],
+      "exit": 0,
+      "passed": 26,
+      "failed": 0,
+      "ignored": 0,
+      "log": "/Users/markik/Code/testing/cleromancy/c3-20261015/verified-core-sky.log",
+      "sha256": "be11af2f5f6111bf33e13b96895b64f72aaee6fa45359255c5762ae541fc6ad3"
+    },
+    "personal-sync": {
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--features",
+        "personal-sync",
+        "--all-targets"
+      ],
+      "exit": 0,
+      "log": "/Users/markik/Code/testing/cleromancy/c3-20261015/verified-personal-sync.log",
+      "sha256": "72f106b02a8dbefc7a8b6c06993f95c846e6bf53e9c1a214c46767286bcf63c0",
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    },
+    "admission": {
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--features",
+        "graphshell-admission",
+        "--all-targets"
+      ],
+      "exit": 0,
+      "log": "/Users/markik/Code/testing/cleromancy/c3-20261015/verified-admission.log",
+      "sha256": "488ee5b7739b4b8a740cacf57dac59f27327e95ed22ad5de2e4d1f5266383c58",
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    }
+  },
+  "toolchains": {
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+    "rustdoc": "rustdoc 1.99.0 (b940084d7 2026-09-28)"
+  },
+  "source_inputs": {
+    "Cargo.lock": {
+      "sha256": "5d7ab5e9f2e236ad154d921ef9e03f9fc4bb0cb03b66166c890641d5f6aac874",
+      "git_blob": "865c237b8ba112da979df69df9242cda104432a5"
+    },
+    "Cargo.toml": {
+      "sha256": "e81e8365e727f84d697be1b6dfa146b9ab94c964f699c4edb289ee88911ecb4f",
+      "git_blob": "cf5ac87d67cd88c6ea63b41297ab7b8ea35da666"
+    },
+    "core/Cargo.lock": {
+      "sha256": "5243d20498d821cd499bddc54e0c2ef5796a8bc1d10d9980187da9805a562f67",
+      "git_blob": "4a58e2c025ba4d760bfb937a5b246620cdc1006c"
+    },
+    "core/Cargo.toml": {
+      "sha256": "548783b1c8e0f6f9eb7fda7534603a804694446e0732b9e0062a6fb60eba573c",
+      "git_blob": "43762fcb130a49316eb5854ee8a50595fd71a27c"
+    },
+    "receipts/c3-typed-cards.scn": {
+      "sha256": "6e33846cf9dfaef07d32d04d688fc2e16053f4e1a4d815f29b4776ab3b37b1ea",
+      "git_blob": "5d23935f0e2c5b3bff37725da35831b664d7f28a"
+    },
+    "receipts/c3-typed-reopen.scn": {
+      "sha256": "50042b9bdc74d302baacab810e1d910f2fc8b94b3127cd31dd1d716614e76905",
+      "git_blob": "6507978d2a74ffb3aad3b008964a2051823ff947"
+    },
+    "src/admitted.rs": {
+      "sha256": "3e1690e72c435ef61756e6fc4a2721d10b31c977595afa4ae300abac236d7510",
+      "git_blob": "bb40a726c477394e9e1e95300bb50b527094676b"
+    },
+    "src/app/invoke.rs": {
+      "sha256": "54038ff7d2e5029d7c422bb9f99d30375c9706e86db6addb5492955fe3edb820",
+      "git_blob": "180a157ecb8731cc32c8dfa586136e03440ab3c1"
+    },
+    "src/app/mod.rs": {
+      "sha256": "d4178ec0a4fd53439873017163e7ee204285781401d23aee24ddbb1f1362e1c8",
+      "git_blob": "3588f1e09a2c8e7e662cd494dd867de161225468"
+    },
+    "src/astrology.rs": {
+      "sha256": "f732065615e8b5b40db4e6f5386ed110c668dd8f2a6581ef9dd921c84431485d",
+      "git_blob": "dc7b9da604f870a0e04e3eae6ec7b6b0c30021ab"
+    },
+    "src/bin/a15_pattern_receipt.rs": {
+      "sha256": "c0237cb4b43db9df01d41ac7181d9cb4ae9a521983121bbaf8e2bdeb516cce01",
+      "git_blob": "d41e54a1a582df117bafbbc1d15aa3e0bf2e5434"
+    },
+    "src/bin/a16_pattern_selection_receipt.rs": {
+      "sha256": "35aece6cda8d15186440c78252050437f9e4acf5110dc40fd8918a5cdc672d66",
+      "git_blob": "a7c6de3eaf74b53cda12bf248bd7c6c10a898e04"
+    },
+    "src/bin/a1_enrichment_receipt.rs": {
+      "sha256": "b4c56a66394c7603be073af0b47b071372c21cd2c105d29bd05ad7604ecdc4ca",
+      "git_blob": "70a89e31aae87d7fa7934a6c0d4d49191e00b7d1"
+    },
+    "src/bin/a2_enriched_receipt.rs": {
+      "sha256": "894c93d50aae8a8746a2de86fbf9502047824f89f1a95529480d77eff74cbdb8",
+      "git_blob": "61541edc436e4e9bbeb3fb7d2ffdb10dd0785180"
+    },
+    "src/bin/a3_intent_receipt.rs": {
+      "sha256": "77ffe910e419025179a1baae38488d34f21c83ecbf3c7109d0b29d1987a4e5fa",
+      "git_blob": "b2b03461e83a77bef545505d2c41ca283699f5dd"
+    },
+    "src/bin/a4_sync_receipt.rs": {
+      "sha256": "1cf9eeab03ff48c15f9c7018d23961863a1c29d5b18025d3b8717ca2c9ef6474",
+      "git_blob": "215cde53084bd654d655b7e11e667898d7373eec"
+    },
+    "src/bin/a5_field_receipt.rs": {
+      "sha256": "8d2449ea5d11d44b493743ff9c22958ab70bb3e9ff7a062e2f4fb21c47eb4700",
+      "git_blob": "ddfccf57ad3e42ef4e1bad1e059a0bbfdb514438"
+    },
+    "src/bin/a6_tarot_receipt.rs": {
+      "sha256": "67cf49a0477cc288c82cacf8049aa497ad6e225cc8be12c8f67434e68a405ce5",
+      "git_blob": "d86c8e5ad9ac573a0dc8fd85f8d15436610226ab"
+    },
+    "src/bin/a7_session_receipt.rs": {
+      "sha256": "4565e706ee653988dc07385a0e7cf5985b65aa4f7ec30de7e929c31e3c07a1df",
+      "git_blob": "0c272feeaa61d2108c80ce4e83a72814178e6973"
+    },
+    "src/bin/a8_three_card_receipt.rs": {
+      "sha256": "6c270e0a562b36d4feee1a5982cad52270005fc4567acbfd794a5c195320049e",
+      "git_blob": "fda5ca57a7b94ed046ca50eaaebe2e8783db3834"
+    },
+    "src/bin/cleromancy_receipt.rs": {
+      "sha256": "ec2fd0967b245767aabf6266d3485e703600e64b03642c78ac482d9b3a28aa0e",
+      "git_blob": "0ab1e7e3f96b18c31d150615ad82c72ae217273e"
+    },
+    "src/cards.rs": {
+      "sha256": "f42c6677a8d2870e7a9f2c07bf199032f35edacc5e13536d2d83c638e270bc7c",
+      "git_blob": "d58a43ae6a88a43cd23135dea2cfe714c0ebbb4f"
+    },
+    "src/composer.rs": {
+      "sha256": "c0d0462588ce024547c67dd1fa881922a176dc43e83f7b7a90d54df5784db512",
+      "git_blob": "f51d01e0f615c0cc362d074458a0e11408fcecbc"
+    },
+    "src/concurrence.rs": {
+      "sha256": "b6096f0347a667521c48d40fc818dc94427f9a472798f4a9b913945c0f66a08e",
+      "git_blob": "6c4a0d45a21f469da77113b8b4b19296a59a5186"
+    },
+    "src/consultation/compare.rs": {
+      "sha256": "071548abe585b8a59bd3bddc9b2075b22c52b22447b95527985d54161fd88353",
+      "git_blob": "577ed55443b44b0b5cc8c1cb265b15877907f5f1"
+    },
+    "src/consultation/drafts.rs": {
+      "sha256": "02000623f88ca5497a652e521d01a237f03e7b3a8ae0328db9059baa553521dc",
+      "git_blob": "c6d8ce6944fdba368771eaf3cb2b6aa77204f5fa"
+    },
+    "src/consultation/journal_policy.rs": {
+      "sha256": "0dd0d4d8046693cd1a8721af14dc40bc48e5d8b43b39979a00e5924da57e1899",
+      "git_blob": "1b07dadb03697a1358ace9db016de637b4dfc28b"
+    },
+    "src/consultation/mod.rs": {
+      "sha256": "d3eec4f1e1a213d442ec19c45c67853d59cf8422f8ebdeac2615d81bf9003202",
+      "git_blob": "eb52b0def179618718fb929a922931c9db5fd919"
+    },
+    "src/content.rs": {
+      "sha256": "825e227943e8fec3b5723a53b454da2e7d0eca28808b1a797bcd1c5a8ba124e3",
+      "git_blob": "0d9f6ca129dae2ca37d670eab3e3a022b2837664"
+    },
+    "src/content/astrology-prompts-v1.json": {
+      "sha256": "3390fc4cf15292b994e0b2e449914a71f8cee14a9f26bb0ad4bdb12154179c0f",
+      "git_blob": "80790a0f8c4012618d8f980e2a8c8866bc68d3f6"
+    },
+    "src/content/position-meanings-v1.json": {
+      "sha256": "4562602fd1cc4cc2401939bfd88214d0b35b90e956f0128cec1707951987866a",
+      "git_blob": "93c055c21fe2efb421f1cee14a1b3e3ca3ce2c99"
+    },
+    "src/content/rws-major-v1.json": {
+      "sha256": "5be2d11d93ade477b51b4bd509e19f8ab1970f4ae9f7952ece94c6e8ee09da36",
+      "git_blob": "03f131cfdfc679913609f23dbbbda9465cda33f4"
+    },
+    "src/content/tarot-decks-v1.json": {
+      "sha256": "0b4392ca5417a94e3cd8a2f501c655e6994894e5183f1611bda1ddf7e88a9785",
+      "git_blob": "d1434ffdea283065d5a50971ec79414804475b76"
+    },
+    "src/context.rs": {
+      "sha256": "bac43d00d8ae0368ba328620f5d809f96001cb18aaa3d6696a639d469cc7bd2c",
+      "git_blob": "8a68edfda233132682702a955cf87b2a8f91e412"
+    },
+    "src/enrichment.rs": {
+      "sha256": "410e91718e2fc656deaf86fa72e974f01896f357a50085d92912ac39e80ae6d0",
+      "git_blob": "40de805b2cf8c777488a8ac12546374a1f6b826a"
+    },
+    "src/ephemeris.rs": {
+      "sha256": "7735279542f3e96da9e9cce3b15095aa313c732ecec811cc3489151fe83ebc62",
+      "git_blob": "cfa430551b2424fc517d50aafe3321d66a5460ad"
+    },
+    "src/ephemeris/analytic.rs": {
+      "sha256": "94073b4f65e50a358c63645df051880d5e53a6a2e0b50210a41110cf13273b49",
+      "git_blob": "22e1405fa5baa91e3ba3d7a0a1c7d13c1173d2f4"
+    },
+    "src/field.rs": {
+      "sha256": "956437fd112554d56c57147a75ec3422b5eef235bb68311d576c4cced7c4e430",
+      "git_blob": "89e91807cfb304079d3dd518fea5f93abf0cec23"
+    },
+    "src/host/cards.rs": {
+      "sha256": "e830175fc8e385d8d68f1b69c64671c17807495c75290b209301a48780079452",
+      "git_blob": "4a8372ed504ba4e864d4ea30cc9256b9b0c73b86"
+    },
+    "src/host/catalog.rs": {
+      "sha256": "c82874f9dc4083b9ff39077e6cda6f0d022b06f4d2a1a1764cb8f30dedc9d8c6",
+      "git_blob": "187892911b0e075adaffe493fd8afa9c15ce8770"
+    },
+    "src/host/domain.rs": {
+      "sha256": "950c56516eb6587153c613e6f8f99315fe81af7a3ae87d8a027b6ff4e31aaafb",
+      "git_blob": "3d0e33c1da3e8284a9e5dff11e17419926733252"
+    },
+    "src/host/mod.rs": {
+      "sha256": "6c883489220b4817352ecd60063ea54a870e4336b89b6c005a937294d72e37e3",
+      "git_blob": "fc449ebd62155105bf581975ff16cf8e9a287d88"
+    },
+    "src/host/projection.rs": {
+      "sha256": "9a0ec368e2b471c4341e2e1346be9bd9860f0716323d311000bb5451ca5a3168",
+      "git_blob": "755f149c9a586324be1534cb50964c91283e3b91"
+    },
+    "src/host/records.rs": {
+      "sha256": "b92a2d9c1c41fa76d9cbb0889bea4c3ac341dee7e3b220d416dd603ae4e5ab3e",
+      "git_blob": "26de6e447d7b0c11fdbcebccd7c1a8d20dc119ad"
+    },
+    "src/host/replay.rs": {
+      "sha256": "1f58e0fc78af9cfd546d78526ce7f8d9517f430b8af1f0a606d9f9e3f2a638cb",
+      "git_blob": "838e8432869ee0c1e719ac1922d3e62e261754e7"
+    },
+    "src/host/sky.rs": {
+      "sha256": "db6b93d949571c2a05990762d23005c1ce46b03ebf9fde174795a8445a07c7e5",
+      "git_blob": "e6627356e5fb2c4af61d4f11753ad029a4016ddc"
+    },
+    "src/host/spreads.rs": {
+      "sha256": "75c5b8cd460ef98ded7c799d21fcfb5915165604a1437901eedf0e4f0bdd102b",
+      "git_blob": "2f50058c5d67fce544205d913deb3a9982d54402"
+    },
+    "src/host/summary.rs": {
+      "sha256": "cfac665a5eed1c56ebe05a181fcf66dda33159a647c4879c6587645dca1e53b3",
+      "git_blob": "6b6d2f4d9247f16597bf4f4509d78b7d63a1bc41"
+    },
+    "src/intents.rs": {
+      "sha256": "80f27ae2a774762c7dff59210799510a860e848e2bfcee25d75db2c6d8a8b84c",
+      "git_blob": "b60f65520cc3752b36dc94f6c0038cd5e656ad40"
+    },
+    "src/lib.rs": {
+      "sha256": "4fc0ba36ce6e2ce37f904b1894d0639d948484aa4604c092835cabf919526bbd",
+      "git_blob": "ec8b110c8a04e59eff374d1a38e0180a6a629946"
+    },
+    "src/main.rs": {
+      "sha256": "9cafc4804e1c338c41af7027b8b03149923db848a902e9112457a9f7164b78fb",
+      "git_blob": "5057130c497c9ed4a91c11167ee70dfa65d71ed7"
+    },
+    "src/moirai/atropos.rs": {
+      "sha256": "2a8e1b2021e879b8487da00e307c22a03aca60a5b18efb2d5fc627899f242e66",
+      "git_blob": "7ab90061cfc77ff20b52e508c16c8a441ad63662"
+    },
+    "src/moirai/clotho.rs": {
+      "sha256": "4535e46b50340f380d3e3ab27b3cb905d400d836742d90d06ed818cd32241a7d",
+      "git_blob": "5cb61db4b1754db213ecd129a1c614e128c04d2c"
+    },
+    "src/moirai/lachesis.rs": {
+      "sha256": "d74df0458d45514fb0863510a86f03cc48da275fbc36ad809db5b950fbbeae8b",
+      "git_blob": "dec09a6cd42ae460ded99c33f80dca43c52f9169"
+    },
+    "src/moirai/mod.rs": {
+      "sha256": "d51efd33ce2695348d212b5e712b799ecdd4b6b2fd089826f4bc465ee24a2660",
+      "git_blob": "2e8927ffff7235e0192bdbfa85d4fbaf3ade31c3"
+    },
+    "src/narrative.rs": {
+      "sha256": "be8bf7d311c2bd226833ac9a2635a4d17f2fdd8d1eeacd9555bc4947822c0460",
+      "git_blob": "554060c3b7eeee8eae029dffa95fd34f6b25e2cb"
+    },
+    "src/projection.rs": {
+      "sha256": "9c88502a8277ede3b03fa55b34328f88aac74c7c4da55db12d48e6b7ae2d4c4c",
+      "git_blob": "fbb720ed872a361875f898ab7a016f7a9a3010eb"
+    },
+    "src/reading/engine.rs": {
+      "sha256": "fd3258078b1b2b5f856025781c39068b2b68c76c97419c2438a77a8939ebb871",
+      "git_blob": "c08e2e41cecc26922dc37aabccea3099614e009f"
+    },
+    "src/reading/mod.rs": {
+      "sha256": "ce0ea310fe63c086e5fa4d00bc56f814586954f78cb17c668c11d86ee6e0ea21",
+      "git_blob": "58284d3e2bbbd49dc7830143f31bc93dd41e1ae3"
+    },
+    "src/reading_scene.rs": {
+      "sha256": "c92c47eaccee775fdb5b8fef0565a3b3ce245cb6043bffab217a802b1af55922",
+      "git_blob": "97acf08c5e6051354770d6d5b6e7b1ba66ce1d01"
+    },
+    "src/servitors.rs": {
+      "sha256": "72408bbf88810a6e5ca72447d898bb3913082ccb7ecadf61f1992bd29579958d",
+      "git_blob": "7638918bb55c317c7722245874f4a0449eb07838"
+    },
+    "src/session.rs": {
+      "sha256": "2e433f08a80f035fb8691d3763df6afef23a242745d98e0af40cd5863e5478ce",
+      "git_blob": "b6c95ed53a873ce59bccb439f3b50bdcd58b7285"
+    },
+    "src/sky.rs": {
+      "sha256": "15ff3a0875da64775feebb416997b5cfadd489c3d5506a1fb70de7607f49bb40",
+      "git_blob": "d75119ad081592516539214f99fa95e42e13d20f"
+    },
+    "src/sky/turquet.rs": {
+      "sha256": "29f7c9b0ddba4b41993db7399586ddebc3acbe163124a1bf7249f1d8d166f90a",
+      "git_blob": "3f1a7e91301b1eb960596720e7759781a70a1548"
+    },
+    "src/spread.rs": {
+      "sha256": "0d95c7ececa1f9f38b251e584adc6b66047f089fb0934ca7078a9f0ace542fc6",
+      "git_blob": "b0cff840505237ffa8425a46c7b946b86b926ec3"
+    },
+    "src/sync/collect.rs": {
+      "sha256": "788015adcadc5bad5ffd2a135864063260d79b35ae6d044d21cf289f0201c9d0",
+      "git_blob": "7cb5e6f5a93f3594600c3c2f863e651401423bcf"
+    },
+    "src/sync/decode.rs": {
+      "sha256": "f108613d73ebb633466acde6dc2d51551bb5c7bb395a831d0db17884279e4b59",
+      "git_blob": "b6a5505c62fd216ffc6eaa7f37606e7d96405ee0"
+    },
+    "src/sync/export.rs": {
+      "sha256": "c65cc6b1339b1416b70b46a4a8c510eb36e78da30ade4c15d1f83f885ce1dc40",
+      "git_blob": "184c598fc2531cd1f57c47ca243adb45b7518b20"
+    },
+    "src/sync/import.rs": {
+      "sha256": "ec919f84ccd35622b106a57a0efbdaad929e6cc48f134fe7535fe7da4db4e1d6",
+      "git_blob": "bdcf0abdf1c991313f3a67a338269ac10fe84a7d"
+    },
+    "src/sync/mod.rs": {
+      "sha256": "4712fe1d44812918968ae7f7b7913aa331788ee413bf283a90455f01d556682e",
+      "git_blob": "676b611160be423cb8525f8a2daebb0fddd8ec5a"
+    },
+    "src/sync/shared.rs": {
+      "sha256": "1e1042119ff97b3153ed2b7284c027c93f311ab1accddfc71521d8777bde6a01",
+      "git_blob": "a64b67bfebbc823fd0af15e06d4c3fa92b180b1c"
+    },
+    "src/sync_settings.rs": {
+      "sha256": "603f3d91ae4489b9806c85b10aefbc23e07264455008cf4f0b41f444b32d96d0",
+      "git_blob": "a87b0f57c8ded165484deed82cfc2dd846818e2c"
+    },
+    "src/tarot.rs": {
+      "sha256": "5599d64f1f31cfc33d9bf03cbd2a87366c142b7ba22e16e262a90ed21083d7f9",
+      "git_blob": "df22ae1b07deca1032789a4adc0b43aa2f28e8d2"
+    },
+    "src/ui/action.rs": {
+      "sha256": "ff27c418387be36c4f80d7b1ab2bb7791ce5666716cc0b92d31b62e4b60f99f7",
+      "git_blob": "42119cda68312134e77bac840118aac5ca2cfa9b"
+    },
+    "src/ui/chart_input.rs": {
+      "sha256": "2d04a2751053a3e32f61e491fc010d7c85ffb2c69c2c309b20b1c1dfeeb09c28",
+      "git_blob": "ec956155e6c8c9d764db0f96fdc97f2d98298fca"
+    },
+    "src/ui/chart_state.rs": {
+      "sha256": "6018ee1353253a93b3b59b45f48c390214e9fd17d03814e32bddfcf111408b3c",
+      "git_blob": "349d109c0a636dae018f1919d57ad0650c02211f"
+    },
+    "src/ui/consultation.css": {
+      "sha256": "19d69464ed37ebab081472a75f1708c1d02dd9854ec14e7897b65615d3e07325",
+      "git_blob": "80556d368878fc3c1d092b0260da927ca8bb3b87"
+    },
+    "src/ui/journal_state.rs": {
+      "sha256": "cce9b4017594e19f8b24551efabc159fa4bad9b6aa8cd41098fdeaae66e7fff9",
+      "git_blob": "816c385b2960371f8e88a401667c06e86eafff67"
+    },
+    "src/ui/mod.rs": {
+      "sha256": "24fc280c86ec84d7808cc38b140106e69a8af2ec5327628ee6f04c857ca55fc9",
+      "git_blob": "54833eec693f11b542e11312f6488f42fcbb3f83"
+    },
+    "src/ui/native/appearance.rs": {
+      "sha256": "8040ee39800d9ca4d1ac97bc94a0522891219017f3307e2b13b312b8037c137c",
+      "git_blob": "0de33b88a778bb3d4c4a322f31ec13742109954a"
+    },
+    "src/ui/native/appearance_host.rs": {
+      "sha256": "04aed6f7aa860ad8cbe0bbc7538ca695526f5fe2b11b389bfebf30e2e5291deb",
+      "git_blob": "15d91da64345ea82ba2e1b4c48df82838733a422"
+    },
+    "src/ui/native/appearance_tests.rs": {
+      "sha256": "84993d29e8c5f8d739be8b9311586ec461a8f1273a33b83fdbf3e21a608547fc",
+      "git_blob": "00062f0aab20b2bd65e9d996264178e9f7ea0abf"
+    },
+    "src/ui/native/appearance_view.rs": {
+      "sha256": "525d22d46cda327448dd5337ba15ebc6a65dea600b8b612aa59a76bbba344125",
+      "git_blob": "a6fccd3e80d28eee4a6a84538297437e722f943a"
+    },
+    "src/ui/native/fonts.rs": {
+      "sha256": "7908bdceac498093e9547feddca9f831e97e6a6b629966dcec23e0bc4558a2f9",
+      "git_blob": "3b9a35af2f3f9125b3a04ccbb6271825befded4d"
+    },
+    "src/ui/native/mod.rs": {
+      "sha256": "f5ee206e367fe293d32dc0e67e3573644357e76c6172e854e982616e357be7ab",
+      "git_blob": "e14c2ad62c2ef8181f75997d98eb9a07440bc827"
+    },
+    "src/ui/native/scenario_driver.rs": {
+      "sha256": "62d80bbf52c98ccc6728bb20aad83240ff2150ed881da53f4f3813bf258dbfa3",
+      "git_blob": "f33274d50890cfc21ccd35be63aecf1c50d95098"
+    },
+    "src/ui/resident.rs": {
+      "sha256": "a0a7bdaf0b3e8e148ca7d0244b3e5c0b5ded3873be97986bd71cce7902696d82",
+      "git_blob": "432a3132f9dba8d02dfced264fb288214200b7fa"
+    },
+    "src/ui/scenario.rs": {
+      "sha256": "29d9fab71451b95069d7c9447223669dd5dda20775c8db35c853c1c58f6cbbd8",
+      "git_blob": "2b1c99104c607674c134b2c4d3ad4fd6944c75c5"
+    },
+    "src/ui/screen.rs": {
+      "sha256": "83b5e84234c29c55b01cb809d26abeda1ab681fa1e507131052c15af44806cfe",
+      "git_blob": "55e3a48afa8b39911be961cdb5fad6c60f4a2a43"
+    },
+    "src/ui/sky_state.rs": {
+      "sha256": "0a846560a25e31dfbb5ab1ff29510c395767339fa080e0a3756c3f167c88db8a",
+      "git_blob": "c3caa31c2966510cf7f2d3e037de6b7bc25fcfcf"
+    },
+    "src/ui/state.rs": {
+      "sha256": "b954970053ed3e9787bcfe1f89f32ce40c83940e60ad1e7c499d0e442164ef2e",
+      "git_blob": "6f2d8c3dd22068370be543a7a41ee068bd67915f"
+    },
+    "src/ui/view/astrology_reading.rs": {
+      "sha256": "77614e688047076a8755fd343046c281839213728bd59b637fb632431db6ab0f",
+      "git_blob": "9d4497a6c313d7dc0906dbae1c77d1b6f6f59f32"
+    },
+    "src/ui/view/chart.rs": {
+      "sha256": "53cdb5de0649994642e0004c0bfc03b96ffff14aa77af31e8bac7de3e3481eb6",
+      "git_blob": "1e951d791c8094c45f2f7dc516b0dda869619cae"
+    },
+    "src/ui/view/chart_aspect.rs": {
+      "sha256": "a6741f583ae4c001a26935d690e7f0793ef8d965311e7b30303e97825cc58829",
+      "git_blob": "5d5e6a7be943837931e39ec5f62652039e1898fa"
+    },
+    "src/ui/view/consultation.rs": {
+      "sha256": "4f3e28d4d13efd0e0191c02f01b5480963befc872ec57154bead12c5a201c049",
+      "git_blob": "cb5aff975184c4ed5b136bed6414dda03c7d49cd"
+    },
+    "src/ui/view/journal.rs": {
+      "sha256": "d2ecbb9359388ec8448da05066a82c0286f45a0af4d1ef1c18f0b94397d6efb4",
+      "git_blob": "701673258df66ec1116e3f92987f7a6dc4c04d57"
+    },
+    "src/ui/view/mod.rs": {
+      "sha256": "631e98dcf2172568727553933167ea94d02292b48c27c4bb3e6e37ce063bd49b",
+      "git_blob": "a80372e42819c5aa8e3111d4dbbf4edfc3a3416c"
+    },
+    "src/ui/view/named_text.rs": {
+      "sha256": "42b8f2870958861c898502e4c3f17b8ed169d1c1d30ad5360a6caa6715f54624",
+      "git_blob": "f272d828581d33626d3943895a84084d78192886"
+    },
+    "src/ui/view/rationale.rs": {
+      "sha256": "4848787c981a8cc8495bf51caeddf2979fa978e7a25706d5932117e949ff99e4",
+      "git_blob": "c7e8a9e6d363e17a988db4fb3a806aa8158f4504"
+    },
+    "src/ui/view/reading.rs": {
+      "sha256": "f17369485776ed97fcd9278ac82bb5af46bb0e91119635a1480e5dd3d77b4810",
+      "git_blob": "d819d2298a47e1895c73f3bcf09f4ab5f0525787"
+    },
+    "src/ui/view/reading_scene.rs": {
+      "sha256": "6441a23ac65c1661bf6f0f593d0716abd4abb6f778a48cfa5bcb312db4785421",
+      "git_blob": "0e3fcd34264baf8169b34ac72c1344bfe7544e4c"
+    },
+    "src/ui/view/shared.rs": {
+      "sha256": "0a13781ff6c7fbe534b1dbc33c89d778cb5998299c9f3f1b2760329b28d72b91",
+      "git_blob": "fff56a4b0f1c9e5cddc4814b6851ce7c36799f3f"
+    },
+    "src/ui/view/sky.rs": {
+      "sha256": "6980b40aea0c73beeb465ce85b730ba181ec1433ad6fcc3dca15b2f7aa970c9e",
+      "git_blob": "6af6c22a53bde97c8b0e62fda1d729cc4778572a"
+    },
+    "src/ui/view/trail.rs": {
+      "sha256": "e4c260f105442bac15d1314ea34c5b4608ae47d9f199f51f2d2309db80fecb3a",
+      "git_blob": "dcbca317e246fc2365801b77425e055d3e6306bd"
+    },
+    "src/ui/view/typed_card.rs": {
+      "sha256": "0d1fb9a3b3e10037606a4b972c95990015047ef0b06543e6e3f7accfafce0a59",
+      "git_blob": "71d05ac2a6785901a4ceeab30a569be8d00870e3"
+    },
+    "src/ui/worker.rs": {
+      "sha256": "e81a248b0c6796152a45aa50690e442baa21b998b229d1d8181761aac9f8c3a6",
+      "git_blob": "0b80dc9200098b9a994b614f46b2f7f87d91860f"
+    }
+  },
+  "native": {
+    "status": "pending foreground-slot answer; not launched",
+    "build": {
+      "source": "ef014d78baada1c1c4df6d38388a30514b066c93",
+      "path": "/Users/markik/Code/testing/cleromancy/c3-20261015/Cleromancy C3 candidate.app/Contents/MacOS/Cleromancy",
+      "sha256": "d489806da608465fa1d475081575ecc5cc421ba5a173835ccb8ebd7eafa1d0ad",
+      "build_exit": 0
+    },
+    "scenarios": [
+      "receipts/c3-typed-cards.scn",
+      "receipts/c3-typed-reopen.scn"
+    ],
+    "fixture": {
+      "command": [
+        "/Users/markik/Code/testing/cleromancy/c1-20261013/native-Fc51-preserved-binaries/c1-receipt-host",
+        "/tmp/c3-20261015.sock",
+        "/Users/markik/Code/testing/cleromancy/c3-20261015/profile",
+        "provision-ordinary"
+      ],
+      "exit": 0,
+      "helper_sha256": "254bc72be0fb0f3ef6b739a54c310c131a1e19132fa090f3225926ab308460d6",
+      "scope": "Public identity provisioning only; no copied domain graph or owner data."
+    },
+    "scope": "Prepared isolated public fixture; no native capture/reopen acceptance is claimed."
+  },
+  "content": {
+    "decks": 2,
+    "cards_per_deck": 78,
+    "crosswalk": "Typed major archetype or minor suit/rank, independent of printed number/title",
+    "correspondences": [
+      "Golden Dawn / Book T",
+      "Thierens"
+    ],
+    "source_dates": "Publication date when known; undated Book T transcription explicitly labelled with consultation date.",
+    "prompt_provenance": "Existing Major Arcana text copied unchanged. Fixed minor prompts disclose Codex/GPT-6-assisted editorial origin, method, inputs and stored output; no runtime model calls.",
+    "positions": "Versioned definition pack stored with new fields; authored templates retain precedence.",
+    "astrology": "Original edition-1 prose transcribed unchanged into an independently versioned typed data pack; pack identity/digest is exposed by the view.",
+    "sky": "Existing typed/versioned SkyRulePack retained."
+  },
+  "preservation": {
+    "baseline": "6cd7a11",
+    "prior_tracked_receipts": 219,
+    "all_prior_receipt_blobs_exact": true,
+    "original_c2_capture_hashes_exact": 12,
+    "legacy_field_encoding": "Absent metadata fields are skipped; the independent pre-C3 fixture serializes byte-equal and its derived receipt replays.",
+    "initial_session": "One typed RWS field, preserving existing lifecycle scene assertions. Explicit Add tarot decks installs the second choice.",
+    "dependency_locks": "No family update in C3; prior committed dependency locks retained."
+  },
+  "regressions": [
+    "Stable field selection survives sorted catalog additions.",
+    "Crosswalk inspection emits no product action and preserves the saved reading.",
+    "Malformed, duplicate, future-schema or unbound deck data and active-protocol source links are refused.",
+    "Complete decks and content revisions round-trip through signed personal sync."
+  ],
+  "format": {
+    "baseline": "6cd7a11",
+    "remaining_files": [
+      {
+        "path": "src/app/invoke.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "src/astrology.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "src/bin/a16_pattern_selection_receipt.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "src/bin/a3_intent_receipt.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "src/bin/a5_field_receipt.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "src/consultation/drafts.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "src/enrichment.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "src/ephemeris.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "src/ephemeris/analytic.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "src/host/mod.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "src/projection.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "src/reading/engine.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "src/sync/shared.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "src/sync_settings.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "src/ui/native/appearance.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "tests/a1.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "tests/a10.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "tests/a16.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "tests/a2.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "tests/a23_resident_sync_consent.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "tests/a24_resident_sync_startup.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "tests/a3.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "tests/a4.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "tests/a9.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "tests/analytic_consultation.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "tests/analytic_parity.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "tests/sky_surface_dom.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "tests/sky_timeline.rs",
+        "byte_identical_to_baseline": true
+      },
+      {
+        "path": "tests/support/mod.rs",
+        "byte_identical_to_baseline": true
+      }
+    ],
+    "changed_files_with_findings": []
+  },
+  "retained_exclusions": [
+    {
+      "log": "typed-decks.log",
+      "reason": "Initial test wrongly requested calculated selection from a uniform field; production cast requirement retained."
+    },
+    {
+      "log": "typed-dom.log",
+      "reason": "Graph snapshot serialization timestamps differed between inspections; semantic graph comparison excludes only that freshly stamped top-level clock."
+    },
+    {
+      "log": "focused-final.log",
+      "reason": "The pre-existing candidate input guard exposed the same serialization-clock race; all durable graph contents remain compared."
+    },
+    {
+      "logs": "Other intermediate/delivery logs in the evidence directory",
+      "reason": "Retained development evidence; verified-* gates above bind the final source."
+    }
+  ],
+  "limits": [
+    "No native capture/reopen or graphical unlock qualification on this candidate yet.",
+    "C1/shared cutover and C4/C5 gates remain separate. Draws remain independent and upright.",
+    "Previously running older resident validators need receiving intake before accepting the new field metadata; no older owner is silently bypassed.",
+    "Mere standalone-validator lock intake follows publication of this candidate."
+  ],
+  "evidence_directory": "/Users/markik/Code/testing/cleromancy/c3-20261015"
+}

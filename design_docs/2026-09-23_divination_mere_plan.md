@@ -1,15 +1,16 @@
 # Cleromancy: the divination mere, and a reading that explains itself
 
 **Date:** 2026-09-23
-**Status (2026-10-15):** C1/C2 are merged and published on main. C2's bounded
-native author/reopen qualification remains bound to Mere `8b08c98b2` and source
-`fcfb1a4`. The later family intake uses canonical `branch = "main"` sources
-with exact revisions in the committed locks (Mere `59f88e63`, Murm `cba46d85`,
-Genet `e37762d7`). Its personal-sync compatibility follow-up and software intake checks pass;
-CPU intake checks and the frozen native qualification are separate gates.
-C1's shared cutover gates retain their scope. See the
-[C2 qualification receipt](../receipts/c2-reading-qualification_20261015.json).
-Shared appearance and font roles retain their separate published receipts.
+**Status (2026-10-16):** C3 is implemented and software-qualified on local
+source `ef014d7`: two complete typed text decks, independent cited traditions,
+non-writing crosswalk inspection and versioned interpretation data. Native
+create/reopen capture and publication await the coordinated foreground slot;
+no C3 phase acceptance is inferred. The
+[C3 software receipt](../receipts/c3-software-qualification_20261016.json) owns
+that scope. C1/C2 are integrated on main; C2's original native qualification
+remains bound to `fcfb1a4` and Mere `8b08c98b2`. Later family software intake
+uses committed locks at Mere `59f88e63`. C1's shared cutover gates and all older
+appearance/font and native receipts retain their source identities.
 
 The ordinary product attaches to the resident-held divination mere. Its private
 snapshot and admitted authority APIs are confined to the nondefault
@@ -491,7 +492,7 @@ that every card is upright.
 
 ### C3. Typed cards and several decks
 
-**Implementation in progress (2026-10-15):** C3 adds two complete 78-card
+**Implementation and software qualification (2026-10-16):** C3 adds two complete 78-card
 text decks, Rider–Waite–Smith and a Marseille-structure reflective edition.
 Printed numbering is independent of cross-deck identity, including Strength
 VIII/XI, Justice XI/VIII and the unnumbered Marseille Fool. This is a text
@@ -507,8 +508,13 @@ SkyRulePack already carries its typed version and digest. New minor-card prompts
 labelled with their model family, method, inputs and stored output; major
 prompts copy the existing authored text unchanged. This is pack-authoring
 provenance, not per-reading generation. C3 does not change
-the independent draw or implement C4/C5. Tests and consumer qualification are
-in progress; all previous receipts remain frozen.
+the independent draw or implement C4/C5. Software qualification passes at `ef014d7`: 100 default and 139 historical
+feature tests, portable-core gates at 24/25/26, one active sky fixture and
+both all-target checks. The signed-sync fixture preserves both complete deck
+snapshots and their content revisions. The DOM fixture checks independent
+tradition columns, compact bounds and inspection without a product action.
+All previous receipts remain frozen. Native capture/reopen is pending the
+foreground-slot answer required by the current handoff.
 
 Cards carry typed axes: number, suit, arcana, and, from each tradition,
 element, planet and sign. Several tarot decks are available as typed data.
@@ -889,3 +895,22 @@ orientations and positions, and interpretations.
   explicit cross-deck inspection, two independently cited traditions, saved
   position definitions and versioned authored content. No dependency update
   or older receipt rewrite is part of this phase.
+
+- 2026-10-16: C3 software qualification passes on `ef014d7`; see the
+  [software receipt](../receipts/c3-software-qualification_20261016.json).
+  The final candidate retains one initial RWS field so earlier lifecycle
+  scenes' one-field/one-node mint contract is unchanged. The explicit Add
+  tarot decks action installs the second choice, and sorted catalog updates
+  preserve the selected field by digest. Existing fields serialize byte-equal
+  to the independent pre-C3 fixture. All 219 prior tracked receipt files and
+  12 C2 capture hashes remain exact. The input-preservation tests now compare
+  durable graph contents while excluding only `to_snapshot`'s fresh top-level
+  serialization clock, which exposed an inherited one-second race; no domain
+  timestamp, epoch or durable-byte guard is waived. Remaining formatting
+  findings are confined to 29 files byte-identical to the pre-C3 baseline.
+  Prepared native create/reopen scenes use an isolated public fixture and a
+  frozen binary; they have not run while the foreground slot is pending.
+  Source is committed locally, not pushed. After native qualification and
+  publication, Mere's standalone-daemon lock must receive the C3 validator;
+  older resident codecs correctly refuse unfamiliar field metadata before
+  write. No older owner is bypassed, and C4/C5/shared-wall gates stay separate.
