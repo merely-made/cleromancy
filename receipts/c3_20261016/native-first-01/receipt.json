@@ -1,0 +1,28 @@
+{
+  "schema": "cleromancy.headed-scenario/v1",
+  "phase": "first",
+  "ok": true,
+  "status": "Reflection saved: bff6c9e1d8a9a505ac4b76ff16748deafda976115e4fb3fd63aa26ede220040b",
+  "catalog_ready": true,
+  "sessions": 1,
+  "readings": 1,
+  "reflections": 1,
+  "ids": {
+    "session_id": "d339a40716dade5f26e8027cb0b05bd6750650300c280a7b2f01674b9e2730d9",
+    "reading_id": "5ff1fe67d46fb3103f2a8d1dfae217b90d187fabf25e905b20f9a7a825d2990f",
+    "reflection_id": "bff6c9e1d8a9a505ac4b76ff16748deafda976115e4fb3fd63aa26ede220040b"
+  },
+  "log": [
+    "waited 5 frames",
+    "waited 8 frames",
+    "waited 18 frames",
+    "waited 0 frames",
+    "captured typed-card",
+    "captured traditions-wide",
+    "captured marseille-crosswalk",
+    "waited 0 frames",
+    "captured compact-card",
+    "captured compact-book-t",
+    "captured compact-thierens"
+  ]
+}

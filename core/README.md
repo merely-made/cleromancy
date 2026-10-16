@@ -44,4 +44,7 @@ are validated as part of each field; old fields omit the new optional members
 and retain their exact encoding. A newly built owner consumes this codec; an
 older resident correctly refuses unfamiliar metadata before write. The [C3 native receipt](../receipts/c3-native-qualification_20261016.json)
 now records bounded create/reopen qualification on the matching product codec.
-Standalone-daemon receiving intake remains separate.
+Mere’s standalone receiving intake is now separately qualified at `7a656097e`
+and published with its receipt at `289d64b1a`; the
+[publication ledger](../receipts/c3-publication-intake_20261016.json) records that
+intake and the original product qualification without repinning the product.

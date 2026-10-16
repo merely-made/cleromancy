@@ -1,0 +1,9 @@
+RESULT ok
+waited 14 frames
+waited 0 frames
+captured reopened-typed-card
+captured reopened-crosswalk
+capture reopened-typed-card 2320x1520 digest=e744651c22f60456 file=/Users/markik/Code/testing/cleromancy/c3-20261015/native-reopen-01/reopened-typed-card.png
+capture reopened-crosswalk 2320x1520 digest=793db2f886fc98af file=/Users/markik/Code/testing/cleromancy/c3-20261015/native-reopen-01/reopened-crosswalk.png
+frames: 2 captured, 0 blank, 2 distinct digests
+presentation: 55 frames, 56 redraws, 1 unpresented redraws

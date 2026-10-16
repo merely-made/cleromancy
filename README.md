@@ -39,7 +39,8 @@ editorial provenance. The [C3 software receipt](receipts/c3-software-qualificati
 records passing software gates. The [C3 native receipt](receipts/c3-native-qualification_20261016.json)
 records creation, compact presentation, crosswalk inspection and fresh-process
 reopening: eight reviewed originals, exact reading identities and byte-equal
-card payload. Publication and standalone-daemon validator intake follow separately.
+card payload. The [publication and receiving ledger](receipts/c3-publication-intake_20261016.json)
+records the published source and Mere’s qualified standalone-validator intake.
 
 - The A0-A25 proof ledger is complete (2026-08-02 through 2026-08-07):
   single readings, sealed receipts with replay, field provenance, a 22-card

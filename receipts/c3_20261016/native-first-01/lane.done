@@ -1,0 +1,20 @@
+RESULT ok
+waited 5 frames
+waited 8 frames
+waited 18 frames
+waited 0 frames
+captured typed-card
+captured traditions-wide
+captured marseille-crosswalk
+waited 0 frames
+captured compact-card
+captured compact-book-t
+captured compact-thierens
+capture typed-card 2320x1520 digest=84751bac7cbe43a7 file=/Users/markik/Code/testing/cleromancy/c3-20261015/native-first-01/typed-card.png
+capture traditions-wide 2320x1520 digest=3870df7c0ba385e0 file=/Users/markik/Code/testing/cleromancy/c3-20261015/native-first-01/traditions-wide.png
+capture marseille-crosswalk 2320x1520 digest=420e7950f4243785 file=/Users/markik/Code/testing/cleromancy/c3-20261015/native-first-01/marseille-crosswalk.png
+capture compact-card 840x1520 digest=cdb9e76ea2f85a5f file=/Users/markik/Code/testing/cleromancy/c3-20261015/native-first-01/compact-card.png
+capture compact-book-t 840x1520 digest=3e8fc1f9895f0712 file=/Users/markik/Code/testing/cleromancy/c3-20261015/native-first-01/compact-book-t.png
+capture compact-thierens 840x1520 digest=ed5539f04ac3f2c0 file=/Users/markik/Code/testing/cleromancy/c3-20261015/native-first-01/compact-thierens.png
+frames: 6 captured, 0 blank, 6 distinct digests
+presentation: 107 frames, 109 redraws, 2 unpresented redraws
