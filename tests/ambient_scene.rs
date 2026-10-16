@@ -64,10 +64,23 @@ fn shared_projection_and_dynamics_keep_source_occurrences_and_position_pins() {
 fn both_shared_scenes_and_living_motion_bind_and_filters_only_select_disclosed_relations() {
     let (c, detail) = support::fixture();
     let mut context = c.ambient_context(&detail.session.id, "foundation").unwrap();
-    for kind in ["spiral", "grid.default"] {
+    for kind in ["spiral", "grid.default", "grid.ordered"] {
         context.view.snapshot.recipe.definition.arrangement.kind = kind.into();
         let runtime = NeighborhoodRuntime::new(&context.data, &context.view).unwrap();
         assert!(!runtime.scene().items.is_empty());
+        if kind == "grid.ordered" {
+            assert!(
+                runtime
+                    .scene()
+                    .items
+                    .iter()
+                    .map(|i| i.transform.translate.y.to_bits())
+                    .collect::<std::collections::BTreeSet<_>>()
+                    .len()
+                    > 1,
+                "ordered grid must wrap into multiple rows"
+            );
+        }
     }
     context.view.snapshot.recipe.definition.dynamics =
         Some(supported_motion("flock.boids").unwrap());

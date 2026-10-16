@@ -1,0 +1,111 @@
+# Preserves two existing kept items; qualifies the opt-in ordered grid and keeps a third source item.
+# Public calculated fixture; actual resident handoff, no fabricated random source.
+wait
+assert snap product-busy == false
+advance
+wait
+assert snap product-busy == false
+assert snap sessions == 3
+assert snap readings == 3
+assert snap reflections == 1
+assert text What I must release
+c4-reveal open-neighborhood
+settle 2
+c4-click open-neighborhood
+wait
+assert snap product-busy == false
+assert snap ambient-families == 4
+assert snap ambient-scene == grid.default
+assert snap ambient-still == true
+c4-reveal ambient-still
+settle 2
+c4-key ambient-still
+c4-reveal ambient-scene:spiral
+settle 2
+c4-click ambient-scene:spiral
+c4-reveal ambient-motion:spring.rapier
+settle 2
+c4-click ambient-motion:spring.rapier
+assert snap ambient-still == false
+assert snap ambient-scene == spiral
+assert snap ambient-error == false
+reveal class ambient-reader
+settle 2
+capture reading-with-neighborhood
+reveal class ambient-canvas-holder
+settle 12
+assert snap ambient-ticks >= 5
+capture moving-constellation
+c4-reveal ambient-item:history:61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661:focus
+settle 2
+c4-key ambient-item:history:61f00dbd382956710d540710d2bcd2785fe026ee44f091f5f1b4cdc320a9e661:focus
+settle 4
+assert snap ambient-memory == 2
+c4-reveal ambient-examine
+settle 2
+c4-key ambient-examine
+wait
+assert snap product-busy == false
+assert snap ambient-memory == 3
+assert snap ambient-kept == 2
+assert text Recent memory
+capture examined-history
+c4-reveal ambient-keep
+settle 2
+c4-key ambient-keep
+wait
+assert snap product-busy == false
+assert snap ambient-kept == 3
+c4-reveal ambient-foreground
+settle 2
+c4-click ambient-foreground
+c4-reveal ambient-role:pinned
+settle 2
+c4-key ambient-role:pinned
+c4-reveal ambient-open-reading
+settle 2
+c4-click ambient-open-reading
+wait
+assert snap product-busy == false
+c4-reveal ambient-back
+settle 2
+c4-click ambient-back
+wait
+assert snap product-busy == false
+assert text What I must release
+c4-reveal ambient-motion:flock.boids
+settle 2
+c4-click ambient-motion:flock.boids
+reveal class ambient-canvas-holder
+settle 12
+assert snap ambient-ticks >= 5
+capture living-constellation
+c4-reveal ambient-still
+settle 2
+c4-key ambient-still
+assert snap ambient-still == true
+c4-reveal ambient-scene:grid.ordered
+settle 2
+c4-click ambient-scene:grid.ordered
+reveal class ambient-canvas-holder
+settle 2
+capture still-grid
+resize 420 760
+wait
+assert snap product-busy == false
+reveal class ambient-canvas-holder
+settle 2
+capture compact-grid
+c4-reveal ambient-role:pinned
+settle 2
+c4-key ambient-role:pinned
+capture compact-curation
+c4-reveal save-neighborhood
+settle 2
+c4-key save-neighborhood
+wait
+assert snap product-busy == false
+assert snap ambient-memory == 3
+assert snap ambient-kept == 3
+assert snap ambient-still == true
+assert snap ambient-error == false
