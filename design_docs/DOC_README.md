@@ -58,9 +58,10 @@ consumer tests, native authoring/reopening and preserved historical evidence.
 - Verify the headed reading at its ordinary window size. Tall DOM harnesses
   and saved-data checks do not establish that controls fit or that card
   results are visible; acceptance includes painted bounds and native capture.
-- Keep the Mere and Genet dependency family on one immutable integration pin
-  when adopting a platform consumer; branch references can create a second
-  source identity and split shared types in downstream products.
+- Follow the family source convention: canonical Git URL and `branch = "main"`
+  for each first-party repository, with exact tested revisions in committed
+  lockfiles. Mixing URL spellings or branch/revision references creates extra
+  source identities and splits shared types in downstream products.
 - Keep font requests separate from local availability and realized glyph metrics.
   Unset roles preserve product defaults; sizes and spacing remain app-owned.
   Failed saves cannot change the applied font, and authored CSS retains ordinary
@@ -122,10 +123,10 @@ consumer tests, native authoring/reopening and preserved historical evidence.
 ## Consultation, projection, and residency
 
 - [Codex handoff (October 15)](2026-10-15_cleromancy_codex_handoff.md): where
-  Cleromancy stands after the Mere stack lift (its lane already consumes
-  `graphshell-host` at Mere `8b08c98b2`; only `personal_sync` still needs the
-  port), and ordered tasks: land the C1 lane on `main`, move onto the family's
-  next Mere and Murm (`main` `fb6360c12b`) revisions, and record P4's receipt.
+  Cleromancy stands after the Mere stack lift: C1/C2 are merged, the canonical
+  branch-source manifests and locks are published, and personal-sync's optional
+  assertion-basis follow-up completes intake. P4's endpoint receipt is separate
+  from removal of the personal-sync port dependency.
 
 - [Shared application appearance acceptance](receipts/tabard_20261011/README.md):
   landed native Tabard choice/workshop/title bar, strict Save/Apply, four modes,
@@ -221,6 +222,15 @@ owner guards. The full shared wall and final documentation remain pending.
 
 Main integration (2026-10-15): the resident/C2 lane and superseded portable
 branch are merged; [integration checks](../receipts/main-integration_20261015.json)
-pass with the qualified product tree unchanged. The handoff owns the pending
-coordinated R2 intake. Endpoint registration/admission uses graphshell-host;
+pass with the qualified product tree unchanged. The later coordinated round
+and branch-source convention are published; the handoff owns the personal-sync
+source follow-up and intake checks. Endpoint registration/admission uses graphshell-host;
 personal-sync still uses the Graphshell port.
+
+Family software intake (2026-10-15): `9aae258` supplies the optional assertion
+basis in selected-sync exports. The
+[family intake receipt](../receipts/family-intake_20261015.json) records one
+canonical source per repository, 92 default and 130 historical tests, core
+18/19/20, active sky/sync fixtures and both all-target checks. Prior native
+qualification retains its source/capture scope; Mere's lift plan records the
+bounded P4 endpoint consumer proof.

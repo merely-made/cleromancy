@@ -10,9 +10,13 @@ and interpretation.
 
 The ordinary product opens the resident-held divination mere; its old private
 snapshot authority is confined to the explicit `legacy-receipts` harness.
-The C1 branch now consumes the extracted application door, serving views and
-mere route from the stack at Mere `8b08c98b2`. Main-branch integration and the
-shared cutover qualification remain separate from this consumer intake.
+C1/C2 are merged on main and consume the extracted application door, serving
+views and mere route from their stack crates. Family dependencies use canonical
+Git URLs with `branch = "main"`; the committed locks record the tested revisions.
+The original native C2 intake at Mere `8b08c98b2` and the later family software
+checks have separate scopes. Full shared cutover qualification remains open. The
+[family intake receipt](receipts/family-intake_20261015.json) records the
+completed software checks and personal-sync compatibility follow-up.
 
 C2 narrates each card's computation, keeps authored position labels and
 meanings, shows context with the reading and offers reflection examples.

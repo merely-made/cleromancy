@@ -1,8 +1,10 @@
 # Cleromancy handoff for Codex, 2026-10-15
 
 **Status (2026-10-15 continuation):** C1/C2 lane published and merged on main;
-integration CPU checks pass. The coordinated R2 intake
-remains pending. The historical handoff below records its original inputs.
+integration CPU checks pass. The coordinated family round and branch-source
+manifest/lock switch have since landed. Personal-sync compatibility and all
+requested software intake checks pass at `9aae258`. Historical sections retain
+their inputs; the original native qualification keeps its frozen supplier scope.
 
 **Original status:** handoff, written for the Codex lane to execute in order. It covers
 what the Mere stack lift changed under Cleromancy on 2026-10-15 and what
@@ -10,7 +12,7 @@ Cleromancy still owes. Every ruling quoted here is Mark's and is settled. If
 a task needs a decision that isn't here, stop and ask Mark, giving concrete
 options.
 
-## 1. Where Cleromancy stands
+## 1. Historical context at handoff creation
 
 ### `main` is behind the lane
 
@@ -59,7 +61,8 @@ The lane already solved one-source resolution with a double-slash Mere URL
 (`https://www.github.com/merely-made//mere.git`). It is a redirect-equivalent
 spelling that patches both historical Mere spellings to one immutable
 replacement, because Cargo refuses to patch a source to another revision of
-itself. Keep using it. Knot and Turnstone hit the same Cargo limit today.
+itself. That was the frozen C2 workaround; Task 2 below supersedes it. Current
+family manifests use one canonical URL and branch reference, and no alias bridge.
 
 ### What changed in Mere and Murm since `8b08c98b2`
 
@@ -88,8 +91,10 @@ All of it is on Mere `main`. As of this handoff, Mere `main` is `61fba39d9`.
 - **Git:** land work on `main` as it goes green. Merge lane branches into
   `main`, don't stack new ones. Fetch first, and never rebase or force-push.
   Mark has authorized pushing.
-- **Platform family:** pin one immutable Mere, Genet, Netrender and Murm
-  family, and update those pins together.
+- **Platform family (superseded by the later source-convention ruling):**
+  the frozen qualification used one immutable supplier family. Current manifests
+  use canonical URLs with `branch = "main"`; committed locks preserve the exact
+  tested revisions. See Task 2 and Mere's family composition brief.
 - **Remote mere route:** the dialable host starts only once a trusted root
   other than the persona's exists. Device roots derive from the persona, and
   pairing issues grants. Place roots come from the place record. See
@@ -123,8 +128,11 @@ All of it is on Mere `main`. As of this handoff, Mere `main` is `61fba39d9`.
 
 ### Task 2: switch to the family's `branch = "main"` convention
 
-**Status: manifests and lock done 2026-10-15 (Claude, at Mark's direction);
-the product-code follow-up below is open.** Cleromancy's rows for Mere, Murm,
+**Status: complete 2026-10-15.** The manifest/lock switch landed in `a4364de`
+and `22df4c9`; the product source follow-up is `9aae258`. All requested software
+checks pass; see the [intake receipt](../receipts/family-intake_20261015.json).
+
+**Manifest/lock checkpoint (Claude, at Mark's direction):** Cleromancy's rows for Mere, Murm,
 Genet, netrender, Knot, Cleromancy (its own package, patched by path for
 Mere's Djinn pin) and dramatis name their repository as `git =
 "https://github.com/merely-made/<repo>.git", branch = "main"`; the www and
@@ -135,8 +143,8 @@ Mere `59f88e63`, Murm `cba46d85`, Genet `e37762d7`, netrender `f4f9c0d8`, Knot
 <package>` (use the full package id when a name is ambiguous, for example
 `cargo update -p 'https://github.com/merely-made/mere.git#mere-kernel@0.0.2'`).
 
-**Open: the moved Mere needs two source changes (no product code was touched
-in the switch).** At that state `cargo check --all-targets`,
+**Historical failure at the manifest/lock checkpoint (fixed by `9aae258`):**
+No product code was touched in the switch. At that state `cargo check --all-targets`,
 `--features graphshell-admission --all-targets`, the `core/` check and
 `cargo test` pass, but `cargo check --features personal-sync --all-targets`
 fails: 15 `E0063` errors, "missing field `basis` in initializer of
@@ -211,3 +219,24 @@ Progress line there yourself if you can push Mere.
   admitted session use `graphshell-host`; `src/admitted.rs` still has its
   feature-gated `graphshell::personal_sync` import. The port also remains in
   the resolved graph; this is the endpoint-path receipt, not L13 acceptance.
+
+## Completed software intake (2026-10-15)
+
+- The coordinated round and subsequent family source convention supersede the
+  earlier wait for R2. The receiving locks already resolve Mere `59f88e63`,
+  Murm `cba46d85`, Genet `e37762d7`, Netrender `f4f9c0d8`, Knot `11b07360`
+  and Dramatis `5c89001a` through one canonical branch source per repository.
+- `9aae258` fixes all 15 missing optional assertion-basis initializers without
+  inventing evidence or changing the absent-field wire representation.
+- Gates pass: 92 default tests; 130 historical-feature tests; portable core
+  18/19/20; 5 focused sync fixtures; 1 active sky-timeline fixture; separate
+  personal-sync and graphshell-admission all-target checks. The historical
+  suite includes both P4 admission/catalog runtime tests.
+- All 218 tracked prior receipt files and all 12 original C2 capture hashes
+  remain exact. Frozen C2 source blobs and reopen IDs/card bytes also match.
+  The [family intake receipt](../receipts/family-intake_20261015.json) records
+  current software checks separately from the unchanged native evidence.
+- Mere's lift plan and index now record the bounded P4 consumer proof. The
+  Graphshell port remains in the dependency graph; L13/P8 is still separate.
+  No new foreground run, graphical-unlock or complete shared-wall acceptance
+  is claimed by this software intake.

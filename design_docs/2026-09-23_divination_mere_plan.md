@@ -1,13 +1,14 @@
 # Cleromancy: the divination mere, and a reading that explains itself
 
 **Date:** 2026-09-23
-**Status (2026-10-15):** C2 implementation and bounded native author/reopen
-qualification are complete on the working C1 branch, after Mark authorized
-C2 to proceed independently of the shared cutover wall. The stack intake is
-Mere `8b08c98b2`, with the extracted application door, serving views and mere
-route consumed from their stack crates. C1's original qualification ledger,
-shared cutover gates and publication identities retain their separate scope.
-See the [C2 qualification receipt](../receipts/c2-reading-qualification_20261015.json).
+**Status (2026-10-15):** C1/C2 are merged and published on main. C2's bounded
+native author/reopen qualification remains bound to Mere `8b08c98b2` and source
+`fcfb1a4`. The later family intake uses canonical `branch = "main"` sources
+with exact revisions in the committed locks (Mere `59f88e63`, Murm `cba46d85`,
+Genet `e37762d7`). Its personal-sync compatibility follow-up and software intake checks pass;
+CPU intake checks and the frozen native qualification are separate gates.
+C1's shared cutover gates retain their scope. See the
+[C2 qualification receipt](../receipts/c2-reading-qualification_20261015.json).
 Shared appearance and font roles retain their separate published receipts.
 
 The ordinary product attaches to the resident-held divination mere. Its private
@@ -847,3 +848,19 @@ orientations and positions, and interpretations.
   these CPU checks from frozen native qualification. P4 registration/admission
   imports use graphshell-host. Coordinated R2 intake remains pending before
   further product implementation; no new C1 shared-wall acceptance is implied.
+
+- 2026-10-15: Resumed the family intake after fetching current sources. The
+  coordinated repin and subsequent branch-source convention had already landed
+  in the supplier family and Cleromancy (`a4364de`, `22df4c9`). The pending work
+  was 15 missing optional assertion-basis fields in personal-sync export.
+  Structural and saved-template links now explicitly supply no evidence basis;
+  the omitted optional field preserves the prior wire shape. Signed replication,
+  replay and re-export fixtures check that compatibility. At `9aae258`, the
+  receiving gates pass: 92 default tests, 130 historical-feature tests, core
+  18/19/20, 5 focused sync fixtures, 1 active sky-timeline fixture and both
+  personal-sync/admission all-target checks. The
+  [family intake receipt](../receipts/family-intake_20261015.json) records the
+  one-source closure and preservation of all 218 prior tracked receipts and
+  12 C2 capture hashes. Mere's lift plan records the P4 endpoint proof. Native
+  qualification remains bound to its original source; this does not accept
+  the shared wall or implement C3.
