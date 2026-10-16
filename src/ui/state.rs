@@ -522,14 +522,22 @@ impl ConsultationUi {
 
     pub(crate) fn present_die(&mut self, catalog: ConsultationCatalog, digest: &str) {
         self.replace_catalog(catalog);
-        self.clear_selection();
-        self.card_preview = None;
-        self.field_select.selected = self
+        // Another admitted writer may withdraw an unused field after the ACK.
+        let Some(index) = self
             .catalog
             .fields
             .iter()
             .position(|f| f.digest() == digest)
-            .expect("installed die in catalog");
+        else {
+            self.present_error(
+                "The die is no longer available in this session. Add it again before rolling.",
+            );
+            return;
+        };
+        self.clear_selection();
+        self.card_preview = None;
+        self.error = None;
+        self.field_select.selected = index;
         self.mode.selected = 1;
         self.layout.selected = 0;
         self.status = ConsultationStatus::Ready;
@@ -813,12 +821,17 @@ mod refresh_tests {
         .unwrap();
         let old =
             pollster::block_on(c.read(&context, &field, crate::SelectionMode::Calculated)).unwrap();
+        let previous_catalog = c.catalog().unwrap();
         let die = pollster::block_on(c.install_six_sided_die()).unwrap();
         let catalog = c.catalog().unwrap();
         let mut ui = ConsultationUi::new(catalog.clone());
         ui.present_reading(catalog.clone(), old.clone());
         ui.card_preview = Some((field, "0".into()));
+        ui.present_die(previous_catalog, &die);
+        assert_eq!(ui.detail.as_ref(), Some(&old));
+        assert!(ui.error.as_ref().unwrap().contains("no longer available"));
         ui.present_die(catalog, &die);
+        assert!(ui.error.is_none());
         assert!(ui.detail.is_none());
         assert!(ui.card_preview.is_none());
         assert_eq!(ui.catalog.fields[ui.field_select.selected].digest(), die);

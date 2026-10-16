@@ -95,7 +95,15 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
                         .attr("aria-live", "polite"),
                 ));
             }
-            children.push(narrative_view(&narrative, &focused));
+            children.push(narrative_view(
+                &narrative,
+                &focused,
+                if detail.field.rules == crate::UNIFORM_DIE_RULE {
+                    "Face"
+                } else {
+                    "Card"
+                },
+            ));
             children.push(super::situation::recorded(detail));
             if detail.field.rules != crate::UNIFORM_DIE_RULE {
                 children.push(super::inference::generated(ui, detail));
@@ -191,7 +199,7 @@ fn context_with_reading(ui: &ConsultationUi, detail: &ConsultationDetail) -> Con
 
 /// Every card's computation in plain words, in draw order. This is the
 /// reading's audit; the receipt below stays available for exact values.
-fn narrative_view(narrative: &ReadingNarrative, focused: &str) -> ConsultationView {
+fn narrative_view(narrative: &ReadingNarrative, focused: &str, noun: &str) -> ConsultationView {
     let items = narrative
         .cards
         .iter()
@@ -205,7 +213,7 @@ fn narrative_view(narrative: &ReadingNarrative, focused: &str) -> ConsultationVi
                             el::<_, ConsultationUi, ()>(
                                 "strong",
                                 format!(
-                                    "Card {} of {} · {} · {}",
+                                    "{noun} {} of {} · {} · {}",
                                     card.ordinal, card.count, card.position.label, card.title
                                 ),
                             )

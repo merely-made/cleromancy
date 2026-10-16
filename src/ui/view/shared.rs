@@ -107,7 +107,11 @@ pub(super) fn saved_reflections(ui: &ConsultationUi, children: &mut Vec<Consulta
 }
 
 /// One saved occasion as an openable row.
-pub(super) fn session_row(summary: &SessionSummary, now_ms: u64) -> ConsultationView {
+pub(super) fn session_row(
+    summary: &SessionSummary,
+    now_ms: u64,
+    fields: &[crate::Field],
+) -> ConsultationView {
     let id = summary.session_id.clone();
     let relative_date = format_relative_date(summary.created_at_ms, now_ms);
     let modes = summary
@@ -117,10 +121,17 @@ pub(super) fn session_row(summary: &SessionSummary, now_ms: u64) -> Consultation
         .collect::<Vec<_>>();
     let mode_text = modes.join(" and ");
     let placement_count = summary.placement_count();
-    let placement_text = format!(
-        "{placement_count} placement/card{}",
-        plural(placement_count)
-    );
+    let die = fields
+        .iter()
+        .any(|f| f.rules == crate::UNIFORM_DIE_RULE && f.digest() == summary.field_digest);
+    let placement_text = if die {
+        format!("{placement_count} outcome{}", plural(placement_count))
+    } else {
+        format!(
+            "{placement_count} placement/card{}",
+            plural(placement_count)
+        )
+    };
     let card_text = summary
         .placements
         .iter()
@@ -135,11 +146,12 @@ pub(super) fn session_row(summary: &SessionSummary, now_ms: u64) -> Consultation
         mode_text,
     );
     let aria_label = format!(
-        "Open session {}. Context: {}. Date: {}. {}. Cards: {}. Modes: {}.",
+        "Open session {}. Context: {}. Date: {}. {}. {}: {}. Modes: {}.",
         summary.session_id,
         summary.context_label,
         relative_date,
         placement_text,
+        if die { "Outcomes" } else { "Cards" },
         card_text,
         mode_text,
     );

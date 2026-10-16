@@ -57,7 +57,7 @@ pub(super) fn journal_region(ui: &ConsultationUi) -> ConsultationView {
         children.push(Box::new(el::<_, ConsultationUi, ()>("p", message)));
     } else {
         for summary in &page.summaries {
-            children.push(session_row(summary, ui.journal.now_ms));
+            children.push(session_row(summary, ui.journal.now_ms, &ui.catalog.fields));
         }
     }
     paging_controls(&page, &mut children);

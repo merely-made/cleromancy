@@ -167,9 +167,13 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             Box::new(layout),
         ));
     }
-    let context_example = ui.detail.as_ref().and_then(|detail| detail.readings.first()).map(|reading| {
+    let context_example = if die {
+        "A question to riff on: What am I exploring with this roll? Add the setting or question you want to remember alongside its outcome.".to_string()
+    } else {
+        ui.detail.as_ref().and_then(|detail| detail.readings.first()).map(|reading| {
         format!("A question to riff on: Where do I notice {} in my situation today?", reading.title)
     }).unwrap_or_else(|| "A question to riff on: What deserves my attention in this change? Add a concrete detail, such as a decision at work or a habit you are reconsidering.".into());
+    };
     children.push(Box::new(
         el::<_, ConsultationUi, ()>("p", context_example)
             .attr("class", "context-explanation")
@@ -262,7 +266,7 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
         Box::new(
             el::<_, ConsultationUi, ()>(
                 "p",
-                "Calculated follows the highest disclosed qualified weight. For tarot, Cast shuffles once using operating-system randomness; Derived shuffles from your public seed and domain. Each card occupies one place in the deck, with upright or reversed orientation, and positions take cards from the top without replacement. Context weights do not bias a deck shuffle. Other collections retain their disclosed selection method. Chosen chart facts are saved alongside the reading.",
+                if die { "The saved question and situation stay with this roll. You can add a reflection after seeing its outcome. Chosen chart facts are saved alongside the roll." } else { "Calculated follows the highest disclosed qualified weight. For tarot, Cast shuffles once using operating-system randomness; Derived shuffles from your public seed and domain. Each card occupies one place in the deck, with upright or reversed orientation, and positions take cards from the top without replacement. Context weights do not bias a deck shuffle. Other collections retain their disclosed selection method. Chosen chart facts are saved alongside the reading." },
             )
             .attr("class", "selection-explanation"),
         ),
