@@ -1,0 +1,14 @@
+wait
+advance
+wait
+assert snap product-busy == false
+assert snap situation == true
+assert snap situation-place == false
+assert snap situation-weather == false
+assert snap situation-positions == 10
+assert snap future-place-consent == false
+assert snap future-weather-consent == false
+assert snap reflections == 1
+reveal class recorded-situation
+settle 2
+capture global-offline-reopened

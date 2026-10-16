@@ -48,6 +48,7 @@ pub enum ConsultationAction {
         derivation: Option<DerivedSelection>,
         layout: ConsultationLayout,
         astrology_facts_digest: Option<String>,
+        situation: crate::situation::SituationPreferences,
     },
     SaveSpreadTemplate {
         draft: SpreadTemplateDraft,

@@ -572,6 +572,8 @@ fn consultation_text_slot(
     match marker {
         "cleromancy-context-label" => field!(context_label),
         "cleromancy-question" => field!(question),
+        "cleromancy-place-latitude" => field!(place_latitude),
+        "cleromancy-place-longitude" => field!(place_longitude),
         "cleromancy-tags" => field!(tags),
         "cleromancy-additional-facts" => field!(additional_facts),
         "cleromancy-derived-seed" => field!(derived_seed),

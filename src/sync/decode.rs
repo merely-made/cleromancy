@@ -3,6 +3,7 @@
 
 //! Decoding of the selected facets from an H7 materialized projection.
 
+use crate::situation::{ReadingSituation, SITUATION_FACET};
 use chartulary::FacetId;
 use graphshell::personal_sync::SyncProjection;
 
@@ -21,6 +22,7 @@ use crate::{
 /// Every selected projection value, decoded, identity-checked, and sorted by
 /// canonical identity.
 pub(super) struct DecodedTruth {
+    pub(super) situations: Vec<ReadingSituation>,
     pub(super) contexts: Vec<ContextSnapshot>,
     pub(super) fields: Vec<Field>,
     pub(super) readings: Vec<Reading>,
@@ -38,6 +40,8 @@ pub(super) fn decode_projection(
     projection: &SyncProjection,
     selection: CleromancySyncSelection,
 ) -> Result<DecodedTruth, CleromancySyncError> {
+    let situation_facet = FacetId::new(SITUATION_FACET);
+    let mut situations = Vec::<ReadingSituation>::new();
     let context_facet = FacetId::new(CONTEXT_FACET);
     let field_facet = FacetId::new(FIELD_FACET);
     let reading_facet = FacetId::new(READING_FACET);
@@ -61,6 +65,7 @@ pub(super) fn decode_projection(
     let mut concurrences = Vec::<Concurrence>::new();
     let mut reflections = Vec::<Reflection>::new();
     for (_, node) in projection.graph.nodes() {
+        let situation = projection.graph.facets().get(&node.id, &situation_facet);
         let context = projection.graph.facets().get(&node.id, &context_facet);
         let field = projection.graph.facets().get(&node.id, &field_facet);
         let reading = projection.graph.facets().get(&node.id, &reading_facet);
@@ -79,6 +84,7 @@ pub(super) fn decode_projection(
         let concurrence = projection.graph.facets().get(&node.id, &concurrence_facet);
         let reflection = projection.graph.facets().get(&node.id, &reflection_facet);
         if [
+            situation.is_some(),
             context.is_some(),
             field.is_some(),
             reading.is_some(),
@@ -101,7 +107,18 @@ pub(super) fn decode_projection(
                 "carries more than one Cleromancy domain facet",
             ));
         }
-        if let Some(value) = context {
+        if selection.includes_sessions()
+            && let Some(value) = situation
+        {
+            let record: ReadingSituation = serde_json::from_value(value.clone())
+                .map_err(|e| invalid(node.id, e.to_string()))?;
+            validate_identity(
+                node.id,
+                node.url(),
+                &format!("cleromancy://situation/{}", record.digest()),
+            )?;
+            situations.push(record);
+        } else if let Some(value) = context {
             let context: ContextSnapshot = serde_json::from_value(value.clone())
                 .map_err(|e| invalid(node.id, format!("context facet does not decode: {e}")))?;
             validate_identity(
@@ -251,6 +268,7 @@ pub(super) fn decode_projection(
             reflections.push(reflection);
         }
     }
+    situations.sort_by_key(ReadingSituation::digest);
     contexts.sort_by_key(|context| context.digest());
     fields.sort_by_key(Field::digest);
     readings.sort_by(|left, right| left.id.cmp(&right.id));
@@ -264,6 +282,7 @@ pub(super) fn decode_projection(
     reflections.sort_by(|left, right| left.id.cmp(&right.id));
 
     Ok(DecodedTruth {
+        situations,
         contexts,
         fields,
         readings,

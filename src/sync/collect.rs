@@ -3,6 +3,7 @@
 
 //! Collection of the selected local graph truth for export.
 
+use crate::situation::{ReadingSituation, SITUATION_FACET};
 use muniment::Backend;
 
 use super::shared::{SelectedNode, invalid, selected_node, validate_identity};
@@ -19,6 +20,7 @@ use crate::{
 
 /// Every selected node, decoded, identity-checked, and sorted by node id.
 pub(super) struct SelectedTruth {
+    pub(super) situations: Vec<(ReadingSituation, SelectedNode)>,
     pub(super) contexts: Vec<(String, SelectedNode)>,
     pub(super) fields: Vec<(String, SelectedNode)>,
     pub(super) readings: Vec<(Reading, SelectedNode)>,
@@ -36,6 +38,7 @@ pub(super) fn collect_selected<B: Backend>(
     host: &CleromancyHost<B>,
     selection: CleromancySyncSelection,
 ) -> Result<SelectedTruth, CleromancySyncError> {
+    let mut situations = Vec::<(ReadingSituation, SelectedNode)>::new();
     let mut contexts = Vec::<(String, SelectedNode)>::new();
     let mut fields = Vec::<(String, SelectedNode)>::new();
     let mut readings = Vec::<(Reading, SelectedNode)>::new();
@@ -50,6 +53,7 @@ pub(super) fn collect_selected<B: Backend>(
 
     if selection.includes_contexts() {
         for (key, node) in host.graph().nodes() {
+            let situation = host.facet_value(key, SITUATION_FACET);
             let context = host.facet_value(key, CONTEXT_FACET);
             let field = host.facet_value(key, FIELD_FACET);
             let reading = host.facet_value(key, READING_FACET);
@@ -62,6 +66,7 @@ pub(super) fn collect_selected<B: Backend>(
             let concurrence = host.facet_value(key, CONCURRENCE_FACET);
             let reflection = host.facet_value(key, REFLECTION_FACET);
             if [
+                situation.is_some(),
                 context.is_some(),
                 field.is_some(),
                 reading.is_some(),
@@ -84,7 +89,22 @@ pub(super) fn collect_selected<B: Backend>(
                     "carries more than one Cleromancy domain facet",
                 ));
             }
-            if let Some(value) = context {
+            if selection.includes_sessions()
+                && let Some(value) = situation
+            {
+                let record: ReadingSituation = serde_json::from_value(value.clone())
+                    .map_err(|e| invalid(node.id, e.to_string()))?;
+                let session = host.reading_session_for_id(&record.session_id)?;
+                record
+                    .verify(&session)
+                    .map_err(|e| invalid(node.id, e.to_string()))?;
+                validate_identity(
+                    node.id,
+                    node.url(),
+                    &format!("cleromancy://situation/{}", record.digest()),
+                )?;
+                situations.push((record, selected_node(node, SITUATION_FACET, value.clone())));
+            } else if let Some(value) = context {
                 let context: ContextSnapshot = serde_json::from_value(value.clone())
                     .map_err(|e| invalid(node.id, format!("context facet does not decode: {e}")))?;
                 let digest = context.digest();
@@ -260,6 +280,7 @@ pub(super) fn collect_selected<B: Backend>(
         }
     }
 
+    situations.sort_by_key(|(_, node)| node.id);
     contexts.sort_by_key(|(_, node)| node.id);
     fields.sort_by_key(|(_, node)| node.id);
     readings.sort_by_key(|(_, node)| node.id);
@@ -273,6 +294,7 @@ pub(super) fn collect_selected<B: Backend>(
     reflections.sort_by_key(|(_, node)| node.id);
 
     Ok(SelectedTruth {
+        situations,
         contexts,
         fields,
         readings,

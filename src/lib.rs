@@ -38,6 +38,7 @@ pub mod reading;
 pub mod reading_scene;
 pub mod servitors;
 pub mod session;
+pub mod situation;
 pub mod sky;
 pub mod spread;
 #[cfg(all(

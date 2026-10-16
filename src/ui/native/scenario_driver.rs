@@ -73,6 +73,19 @@ mod presentation_tests {
     #[test]
     fn resident_scenario_sources_parse_with_the_shared_assertion_grammar() {
         for (name, script) in [
+            ("C6 global", include_str!("../../../receipts/c6-global.scn")),
+            (
+                "C6 global offline reopen",
+                include_str!("../../../receipts/c6-global-reopen.scn"),
+            ),
+            (
+                "C6 weather",
+                include_str!("../../../receipts/c6-weather.scn"),
+            ),
+            (
+                "C6 weather offline reopen",
+                include_str!("../../../receipts/c6-weather-reopen.scn"),
+            ),
             (
                 "seed",
                 include_str!("../../../receipts/c1-resident-seed.scn"),
@@ -273,6 +286,41 @@ impl mesquite::Product for Product {
             .with_field("ambient-error", ui.ambient.error.is_some().to_string());
         if let Some(detail) = ui.detail() {
             snapshot = snapshot
+                .with_field("situation", detail.situation.is_some().to_string())
+                .with_field(
+                    "situation-place",
+                    detail
+                        .situation
+                        .as_ref()
+                        .is_some_and(|s| s.place.is_some())
+                        .to_string(),
+                )
+                .with_field(
+                    "situation-weather",
+                    detail
+                        .situation
+                        .as_ref()
+                        .is_some_and(|s| s.weather.is_some())
+                        .to_string(),
+                )
+                .with_field(
+                    "situation-positions",
+                    detail
+                        .situation
+                        .as_ref()
+                        .map_or(0, |s| s.sky.positions.len())
+                        .to_string(),
+                )
+                .with_field(
+                    "future-place-consent",
+                    (ui.place_consent.selected == 1).to_string(),
+                )
+                .with_field(
+                    "future-weather-consent",
+                    (ui.weather_consent.selected == 1).to_string(),
+                )
+                .with_field("product-error", ui.error().unwrap_or(""));
+            snapshot = snapshot
                 .with_field(
                     "shuffled",
                     detail
@@ -369,6 +417,13 @@ impl mesquite::Product for Product {
             std::fs::write(self.dir.join("ambient.json"),serde_json::to_vec_pretty(&serde_json::json!({"view":context.view,"data":context.data,"memory":ctx.runner.state().consultation.catalog.ambient_memory,"ticks":ctx.runner.state().consultation.ambient.ticks,"error":ctx.runner.state().consultation.ambient.error})) .map_err(|e|e.to_string())?).map_err(|e|e.to_string())?;
         }
         if let Some(detail) = ctx.runner.state().consultation.detail() {
+            if detail.situation.is_some() {
+                std::fs::write(
+                    self.dir.join("situated-reading.json"),
+                    serde_json::to_vec_pretty(detail).map_err(|e| e.to_string())?,
+                )
+                .map_err(|e| e.to_string())?;
+            }
             if detail.readings.iter().any(|r| r.receipt.shuffle.is_some()) {
                 let proof = serde_json::json!({"context":detail.context,"field":detail.field,"session":detail.session,"readings":detail.readings,"template":detail.spread_template,"reflections":detail.reflections});
                 std::fs::write(
@@ -476,6 +531,38 @@ impl ScenarioDriver<'_, '_> {
             return Ok(());
         }
         match line {
+            "c6-prepare-global" | "c6-prepare-weather" => {
+                let weather = line == "c6-prepare-weather";
+                self.ctx.runner.update(|state| {
+                    let ui = &mut state.consultation;
+                    ui.context_select.selected = 0;
+                    ui.context_label = cambium::TextInput::new(if weather {
+                        "C6 public Greenwich weather"
+                    } else {
+                        "C6 without place"
+                    });
+                    ui.question =
+                        cambium::TextInput::new("What detail of this occasion deserves attention?");
+                    ui.tags = cambium::TextInput::default();
+                    ui.additional_facts = cambium::TextInput::default();
+                    ui.layout.selected = 1;
+                    ui.mode.selected = 2;
+                    ui.derived_seed = cambium::TextInput::new("C6 public situation");
+                    ui.derived_domain = cambium::TextInput::new("cleromancy.c6/qualification");
+                    ui.astrology_facts_select.selected = 0;
+                    ui.set_place_for_draw(if weather {
+                        Some(
+                            crate::situation::ReadingPlace::new(51_476_900, 0)
+                                .expect("public Greenwich coordinates"),
+                        )
+                    } else {
+                        None
+                    });
+                    ui.set_weather_for_draw(weather);
+                });
+                self.state.scenario_stage = 1;
+                Ok(())
+            },
             "c5-read" => {
                 let mut error = None;
                 self.ctx.runner.update(|state| {

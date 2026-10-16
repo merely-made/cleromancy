@@ -24,6 +24,7 @@ pub fn export_sync_batch<B: Backend>(
     selection: CleromancySyncSelection,
 ) -> Result<CleromancySyncBatch, CleromancySyncError> {
     let SelectedTruth {
+        situations,
         contexts,
         fields,
         readings,
@@ -93,6 +94,7 @@ pub fn export_sync_batch<B: Backend>(
                 .iter()
                 .map(|(_, node)| (&node.address, node.id)),
         )
+        .chain(situations.iter().map(|(_, node)| (&node.address, node.id)))
         .chain(reflections.iter().map(|(_, node)| (&node.address, node.id)))
         .map(|(address, id)| (address.clone(), id))
         .collect::<BTreeMap<_, _>>();
@@ -127,6 +129,9 @@ pub fn export_sync_batch<B: Backend>(
         }
     }
     let mut events = Vec::new();
+    for (_, node) in &situations {
+        append_node_events(&mut events, node);
+    }
     for (_, node) in &contexts {
         append_node_events(&mut events, node);
     }
@@ -470,11 +475,36 @@ pub fn export_sync_batch<B: Backend>(
         });
     }
 
-    let digest = batch_digest(selection, &events);
+    for (record, node) in &situations {
+        let session = sessions
+            .iter()
+            .find(|(s, _)| s.id == record.session_id)
+            .ok_or_else(|| invalid(node.id, "situation has no selected reading session"))?;
+        record
+            .verify(&session.0)
+            .map_err(|e| invalid(node.id, e.to_string()))?;
+        events.push(PersonalGraphEvent::AssertRelation {
+            statement_id: None,
+            asserted_at_ms: None,
+            basis: None,
+            from: node.id,
+            to: session.1.id,
+            assertion: EdgeAssertion::Provenance {
+                sub_kind: mere::kernel::graph::ProvenanceSubKind::GeneratedFrom,
+            },
+        });
+    }
+    let schema = if situations.is_empty() {
+        SYNC_BATCH_SCHEMA
+    } else {
+        super::SITUATED_SYNC_BATCH_SCHEMA
+    };
+    let digest = batch_digest(schema, selection, &events);
     Ok(CleromancySyncBatch {
-        schema: SYNC_BATCH_SCHEMA,
+        schema,
         selection,
         events,
+        situations: situations.len(),
         contexts: contexts.len(),
         fields: fields.len(),
         readings: readings.len(),

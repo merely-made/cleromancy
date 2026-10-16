@@ -1,6 +1,20 @@
 # Cleromancy: the divination mere, and a reading that explains itself
 
 **Date:** 2026-09-23
+
+**C6 implementation checkpoint (2026-10-16):** the ordinary resident-backed
+Read action stages a typed `cleromancy.situation/v1` record beside the saved
+occasion. It records the occasion's time, pinned Turquet 0.17 phase/illumination
+and ten tropical sign positions. Place and weather start off. An explicitly
+entered place enables the disclosed hemisphere-season convention, Turquet's
+USNO conventional solar rise/set search, and a named temporal-hour convention.
+Weather uses the shared bounded fetch handle only after explicit opt-in; the
+exact response body, request, valid/retrieved times, source and normalized
+values are retained. Viewing and domain replay never fetch weather. Personal
+sync carries selected situation records in v7 batches; older batches retain v6.
+Scoped domain, UI and signed-sync checks pass. The final software/native/
+receiving qualification and publication are separate pending gates; no C6
+acceptance is inferred yet. All C5 and earlier receipts retain their identities.
 **Status (2026-10-16, C5 continuation):** C5 implements a versioned full-deck
 shuffle with recorded seed source, draw index and orientation. Ordinary native
 Cast/Derived tarot readings and host tarot spreads take an ordered prefix without replacement;

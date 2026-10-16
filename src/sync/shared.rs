@@ -11,7 +11,7 @@ use serde::Serialize;
 use serde_json::Value;
 use uuid::Uuid;
 
-use super::{CleromancySyncError, CleromancySyncSelection, SYNC_BATCH_SCHEMA};
+use super::{CleromancySyncError, CleromancySyncSelection};
 use crate::SpreadRelationKind;
 
 #[derive(Clone)]
@@ -75,6 +75,7 @@ pub(super) fn validate_identity(
 }
 
 pub(super) fn batch_digest(
+    schema: &'static str,
     selection: CleromancySyncSelection,
     events: &[PersonalGraphEvent],
 ) -> String {
@@ -85,7 +86,7 @@ pub(super) fn batch_digest(
         events: &'a [PersonalGraphEvent],
     }
     let bytes = serde_json::to_vec(&DigestInput {
-        schema: SYNC_BATCH_SCHEMA,
+        schema,
         selection,
         events,
     })

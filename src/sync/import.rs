@@ -5,6 +5,7 @@
 
 use std::collections::{BTreeMap, BTreeSet};
 
+use crate::situation::SITUATION_FACET;
 use graphshell::personal_sync::SyncProjection;
 use mere::kernel::graph::Graph;
 use muniment::Backend;
@@ -36,6 +37,7 @@ pub fn import_sync_projection<B: Backend>(
         ));
     }
     for conflict in &projection.conflicts {
+        let situation = format!("/facet/{SITUATION_FACET}");
         let context = format!("/facet/{CONTEXT_FACET}");
         let field = format!("/facet/{FIELD_FACET}");
         let reading = format!("/facet/{READING_FACET}");
@@ -49,7 +51,8 @@ pub fn import_sync_projection<B: Backend>(
         let reflection = format!("/facet/{REFLECTION_FACET}");
         if conflict.target.ends_with(&context)
             || (selection.includes_readings()
-                && (conflict.target.ends_with(&field)
+                && (conflict.target.ends_with(&situation)
+                    || conflict.target.ends_with(&field)
                     || conflict.target.ends_with(&reading)
                     || conflict.target.ends_with(&session)
                     || conflict.target.ends_with(&spread)
@@ -65,6 +68,7 @@ pub fn import_sync_projection<B: Backend>(
     }
 
     let DecodedTruth {
+        situations,
         contexts,
         fields,
         readings,
@@ -158,6 +162,11 @@ pub fn import_sync_projection<B: Backend>(
             reflections
                 .iter()
                 .map(|reflection| format!("cleromancy://reflection/{}", reflection.id)),
+        )
+        .chain(
+            situations
+                .iter()
+                .map(|s| format!("cleromancy://situation/{}", s.digest())),
         )
         .collect::<BTreeSet<_>>();
     for facts in &facts {
@@ -324,6 +333,27 @@ pub fn import_sync_projection<B: Backend>(
             }
         }
     }
+    let mut situation_sessions = BTreeSet::new();
+    for record in &situations {
+        let id = Graph::node_namespace_id(&format!("cleromancy://situation/{}", record.digest()));
+        let session = sessions_by_id
+            .get(&record.session_id)
+            .ok_or_else(|| invalid(id, "situation has no selected reading session"))?;
+        record
+            .verify(session)
+            .map_err(|e| invalid(id, e.to_string()))?;
+        if !situation_sessions.insert(&record.session_id) {
+            return Err(invalid(id, "duplicate situation for a reading occasion"));
+        }
+        if let Some(old) = host.situation_for_session(&record.session_id)? {
+            if old != *record {
+                return Err(invalid(
+                    id,
+                    "existing occasion has a different sealed situation",
+                ));
+            }
+        }
+    }
     for reflection in &reflections {
         if !sessions_by_id.contains_key(&reflection.session_id) {
             return Err(CleromancySyncError::MissingReflectionSession {
@@ -391,7 +421,11 @@ pub fn import_sync_projection<B: Backend>(
     for reflection in &reflections {
         host.insert_reflection(sessions_by_id[&reflection.session_id], reflection)?;
     }
+    for record in &situations {
+        host.insert_reading_situation(record)?;
+    }
     Ok(CleromancySyncImport {
+        situations: situations.len(),
         contexts: contexts.len(),
         fields: fields.len(),
         readings: readings.len(),

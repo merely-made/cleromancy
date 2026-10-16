@@ -1,0 +1,27 @@
+wait
+assert snap product-busy == false
+c6-prepare-global
+reveal class situation-controls
+settle 2
+capture global-consent-off
+c5-control-reveal read
+settle 2
+c5-control-click read
+wait
+assert snap product-busy == false
+assert snap situation == true
+assert snap situation-place == false
+assert snap situation-weather == false
+assert snap situation-positions == 10
+advance
+wait
+assert snap product-busy == false
+assert snap reflections == 1
+reveal class recorded-situation
+settle 2
+capture global-recorded
+resize 420 760
+wait
+reveal class situation-unavailable-0
+settle 2
+capture compact-place-off

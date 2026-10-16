@@ -83,6 +83,8 @@ pub struct ConsultationDetail {
     /// position name never overrides them.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub spread_template: Option<SpreadTemplate>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub situation: Option<crate::situation::ReadingSituation>,
 }
 
 /// A replay-derived comparison of two sealed session receipts. It never writes
@@ -116,6 +118,8 @@ pub struct ReceiptComparisonEntry {
 
 #[derive(Debug, Error)]
 pub enum ConsultationError {
+    #[error(transparent)]
+    Situation(#[from] crate::situation::SituationError),
     #[error(transparent)]
     Astrology(#[from] AstrologyError),
     #[error(transparent)]
@@ -202,6 +206,7 @@ impl<B: Backend> Consultation<B> {
         let reflections = self.host.reflections_for_session(&session.id)?;
         let concurrences = self.host.concurrences_for_session(&session.id)?;
         let spread_template = self.host.spread_template_for_session(&session.id)?;
+        let situation = self.host.situation_for_session(&session.id)?;
         Ok(ConsultationDetail {
             session,
             context,
@@ -210,6 +215,7 @@ impl<B: Backend> Consultation<B> {
             reflections,
             concurrences,
             spread_template,
+            situation,
         })
     }
 
@@ -651,7 +657,7 @@ impl<B: Backend> Consultation<B> {
         self.detail(session_id)
     }
 
-    fn ensure_writable(&self) -> Result<(), ConsultationError> {
+    pub(crate) fn ensure_writable(&self) -> Result<(), ConsultationError> {
         if self.faulted {
             Err(ConsultationError::Faulted)
         } else {

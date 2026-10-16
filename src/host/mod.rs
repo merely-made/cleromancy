@@ -46,6 +46,7 @@ mod domain;
 mod projection;
 mod records;
 mod replay;
+mod situation;
 mod sky;
 mod spreads;
 mod summary;

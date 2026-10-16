@@ -31,6 +31,10 @@ mod shared;
 pub use export::export_sync_batch;
 pub use import::import_sync_projection;
 
+pub const SITUATED_SYNC_BATCH_SCHEMA: &str = "cleromancy.sync-batch/v7";
+fn no_situations(v: &usize) -> bool {
+    *v == 0
+}
 pub const SYNC_BATCH_SCHEMA: &str = "cleromancy.sync-batch/v6";
 
 /// The explicit local setting controlling which Cleromancy truth may enter
@@ -105,6 +109,7 @@ impl CleromancySyncSelection {
             facets.push(FIELD_FACET);
             facets.push(READING_FACET);
             facets.push(SESSION_FACET);
+            facets.push(crate::situation::SITUATION_FACET);
             facets.push(THREE_CARD_SPREAD_FACET);
             facets.push(SPREAD_TEMPLATE_FACET);
             facets.push(SPREAD_FACET);
@@ -145,6 +150,8 @@ impl FromStr for CleromancySyncSelection {
 /// replica or resident `PersonalSyncHost` to author.
 #[derive(Clone, Debug, PartialEq, Serialize)]
 pub struct CleromancySyncBatch {
+    #[serde(skip_serializing_if = "no_situations")]
+    pub situations: usize,
     pub schema: &'static str,
     pub selection: CleromancySyncSelection,
     pub events: Vec<PersonalGraphEvent>,
@@ -173,6 +180,8 @@ impl CleromancySyncBatch {
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize)]
 pub struct CleromancySyncImport {
+    #[serde(skip_serializing_if = "no_situations")]
+    pub situations: usize,
     pub contexts: usize,
     pub fields: usize,
     pub readings: usize,

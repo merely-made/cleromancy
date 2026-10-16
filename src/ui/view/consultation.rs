@@ -168,6 +168,7 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
         )
         .attr("data-key", "explore-astrology"),
     ));
+    children.push(super::situation::controls(ui));
     children.push(Box::new(
         button("Read", |ui: &mut ConsultationUi, _| {
             let action = ui.request_read();

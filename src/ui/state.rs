@@ -78,6 +78,10 @@ pub struct ConsultationUi {
     pub(super) question: TextInput,
     pub(super) tags: TextInput,
     pub(super) additional_facts: TextInput,
+    pub(super) place_consent: RadioGroup,
+    pub(super) place_latitude: TextInput,
+    pub(super) place_longitude: TextInput,
+    pub(super) weather_consent: RadioGroup,
     pub(super) field_select: SelectState,
     pub(super) mode: RadioGroup,
     pub(super) derived_seed: TextInput,
@@ -129,6 +133,10 @@ impl ConsultationUi {
             question: TextInput::default(),
             tags: TextInput::default(),
             additional_facts: TextInput::default(),
+            place_consent: RadioGroup::new(0).with_label("Place for this draw"),
+            place_latitude: TextInput::default(),
+            place_longitude: TextInput::default(),
+            weather_consent: RadioGroup::new(0).with_label("Weather for this draw"),
             field_select: SelectState::new(0).with_label("Stored field"),
             mode: RadioGroup::new(1).with_label("Selection mode"),
             derived_seed: TextInput::default(),
@@ -471,6 +479,13 @@ impl ConsultationUi {
             .checked_sub(1)
             .and_then(|index| self.catalog.astrology_facts.get(index))
             .map(|facts| facts.digest());
+        let situation = match self.situation_preferences() {
+            Ok(value) => value,
+            Err(error) => {
+                self.present_error(error.to_string());
+                return None;
+            },
+        };
         let action = ConsultationAction::Read {
             context,
             field_digest: field.digest(),
@@ -478,6 +493,7 @@ impl ConsultationUi {
             derivation,
             layout,
             astrology_facts_digest,
+            situation,
         };
         self.error = None;
         self.status = ConsultationStatus::SavingReading;
@@ -808,5 +824,38 @@ mod refresh_tests {
             ui.status.is_busy(),
             "the reading's detail has not arrived yet"
         );
+    }
+}
+
+impl ConsultationUi {
+    pub fn situation_preferences(
+        &self,
+    ) -> Result<crate::situation::SituationPreferences, crate::situation::SituationError> {
+        let place = if self.place_consent.selected == 1 {
+            Some(crate::situation::ReadingPlace::from_degrees(
+                self.place_latitude.text(),
+                self.place_longitude.text(),
+            )?)
+        } else {
+            None
+        };
+        let value = crate::situation::SituationPreferences {
+            place,
+            weather: self.weather_consent.selected == 1,
+        };
+        value.validate()?;
+        Ok(value)
+    }
+    pub fn set_place_for_draw(&mut self, place: Option<crate::situation::ReadingPlace>) {
+        self.place_consent.selected = usize::from(place.is_some());
+        if let Some(place) = place {
+            self.place_latitude =
+                TextInput::new(format!("{:.6}", place.latitude_microdegrees as f64 / 1e6));
+            self.place_longitude =
+                TextInput::new(format!("{:.6}", place.longitude_microdegrees as f64 / 1e6));
+        }
+    }
+    pub fn set_weather_for_draw(&mut self, enabled: bool) {
+        self.weather_consent.selected = usize::from(enabled);
     }
 }

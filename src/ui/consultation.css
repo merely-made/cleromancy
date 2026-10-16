@@ -125,3 +125,8 @@ pre, code { font-family: var(--tabard-font-code, monospace); }
 .graph-canvas-swatch-node[data-attention="foreground"] { border: 2px solid currentColor; }
 
 .ambient-reader { display: block; width: 100%; min-width: 0; }
+
+/* C6 facts stay readable beside the saved narrative at every width. */
+.situation-controls, .recorded-situation { min-width: 0; margin: 12px 0; }
+.situation-controls p, .recorded-situation li { line-height: 1.5; overflow-wrap: anywhere; }
+.recorded-situation li { margin-bottom: 10px; }
