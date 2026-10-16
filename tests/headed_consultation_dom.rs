@@ -360,12 +360,12 @@ fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
     assert!(has_text_in_id(
         &h,
         "cleromancy-workings-panel",
-        "The choice"
+        "The shuffle"
     ));
     assert!(has_text_in_id(
         &h,
         "cleromancy-workings-panel",
-        "A fresh chance draw chose this result from the available possibilities, using their relative chances."
+        "One complete deck, cards taken from the top without replacement."
     ));
     assert!(!has_text_in_id(
         &h,
