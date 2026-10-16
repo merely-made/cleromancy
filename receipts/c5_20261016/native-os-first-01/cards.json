@@ -1,0 +1,20 @@
+[
+  {
+    "position": "foundation",
+    "title": "Five of Wands",
+    "prompt": "What friction needs an honest response? Consider initiative and the use of energy.",
+    "mode": "cast"
+  },
+  {
+    "position": "tension",
+    "title": "Temperance",
+    "prompt": "Which elements need proportion, exchange, and repeated adjustment rather than a dramatic solution?",
+    "mode": "cast"
+  },
+  {
+    "position": "next_step",
+    "title": "Judgement",
+    "prompt": "What prior decision is asking to be heard, revised, or answered now?",
+    "mode": "cast"
+  }
+]

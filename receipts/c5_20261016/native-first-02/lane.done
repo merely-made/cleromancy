@@ -1,0 +1,17 @@
+RESULT ok
+waited 156 frames
+waited 133 frames
+waited 134 frames
+waited 428 frames
+waited 251 frames
+captured ordered-spread
+captured shuffled-narrative
+waited 0 frames
+captured compact-third-card
+captured compact-narrative
+capture ordered-spread 2320x1520 digest=6504f97a88c70fb5 file=/Users/markik/Code/testing/cleromancy/c5-20261016/native-first-02/ordered-spread.png
+capture shuffled-narrative 2320x1520 digest=bfd75190a3597443 file=/Users/markik/Code/testing/cleromancy/c5-20261016/native-first-02/shuffled-narrative.png
+capture compact-third-card 840x1520 digest=64b2129e05605947 file=/Users/markik/Code/testing/cleromancy/c5-20261016/native-first-02/compact-third-card.png
+capture compact-narrative 840x1520 digest=3c68f316818f20fb file=/Users/markik/Code/testing/cleromancy/c5-20261016/native-first-02/compact-narrative.png
+frames: 4 captured, 0 blank, 4 distinct digests
+presentation: 1149 frames, 1150 redraws, 1 unpresented redraws

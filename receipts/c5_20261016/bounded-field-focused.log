@@ -1,0 +1,17 @@
+warning: patch `mere-proofs v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling cleromancy-core-acceptance v0.1.0 (/Users/markik/Code/repos/cleromancy/core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.16s
+     Running ../tests/shuffled_deck.rs (core/target/build/debug/deps/shuffled_deck-fbaad1854c170e36)
+
+running 4 tests
+test pre_c5_scalar_calculation_and_derived_receipts_remain_byte_equal ... ok
+test a_typed_spread_captures_one_field_snapshot_within_the_carrier_bound ... ok
+test receipt_tampering_and_mixed_or_reordered_session_draws_are_refused_before_mutation ... ok
+test one_full_shuffle_has_no_repeats_and_all_prefixes_share_order_and_orientations ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.97s
+

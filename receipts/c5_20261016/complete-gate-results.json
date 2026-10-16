@@ -1,0 +1,55 @@
+[
+  {
+    "name": "check",
+    "command": [
+      "cargo",
+      "check",
+      "--locked",
+      "--offline",
+      "--all-targets"
+    ],
+    "exit": 0,
+    "elapsed": 3.39,
+    "passed": 0,
+    "failed": 0,
+    "ignored": 0,
+    "log": "/Users/markik/Code/testing/cleromancy/c5-20261016/complete-check.log",
+    "sha256": "01b8d790ee671262f0967e55a8a338ce8427c516aab46301afa008d9ea1fe2dd"
+  },
+  {
+    "name": "default",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--no-fail-fast"
+    ],
+    "exit": 0,
+    "elapsed": 220.95,
+    "passed": 114,
+    "failed": 0,
+    "ignored": 0,
+    "log": "/Users/markik/Code/testing/cleromancy/c5-20261016/complete-default.log",
+    "sha256": "414b5270793f96e6c28dba07490553441563786a76c4d9b046314d47a9ab08ec"
+  },
+  {
+    "name": "historical",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--no-fail-fast",
+      "--features",
+      "legacy-receipts,personal-sync,graphshell-admission"
+    ],
+    "exit": 101,
+    "elapsed": 415.23,
+    "passed": 152,
+    "failed": 1,
+    "ignored": 0,
+    "log": "/Users/markik/Code/testing/cleromancy/c5-20261016/complete-historical.log",
+    "sha256": "29bedcc0ac0fde98c01fac70096fe950be2ae2ec83ee5f3e4d6ca2b7decee8f7"
+  }
+]

@@ -1,7 +1,19 @@
 # Cleromancy: the divination mere, and a reading that explains itself
 
 **Date:** 2026-09-23
-**Status (2026-10-16, C4 continuation):** C4 is implemented, software-qualified and bounded native-qualified
+**Status (2026-10-16, C5 continuation):** C5 implements a versioned full-deck
+shuffle with recorded seed source, draw index and orientation. Ordinary native
+Cast/Derived tarot readings and host tarot spreads take an ordered prefix without replacement;
+operating-system randomness and public-seed draws are supported. The
+[C5 qualification ledger](../receipts/c5-shuffled-qualification_20261016.json)
+records software, ten reviewed native originals, byte-equal fresh-process
+reopening, exact prior occasion/view/memory preservation and current-consumer
+compatibility evidence. Its frozen native source is `052e54f`; later changes
+adjust acceptance-test expectations only. Publication is recorded separately.
+All 333 C4-and-earlier receipt/scenario paths remain exact. C6 is the next
+product phase; the full shared wall retains its separate gates.
+
+**Published C4 checkpoint (unchanged scope):** C4 is implemented, software-qualified and bounded native-qualified
 on frozen product `d6ea9f7` and shared supplier `72f9c5c73`. Eleven reviewed
 original captures cover motion, explicit Examine/Keep, earlier-reading
 navigation, the two-dimensional ordered grid, compact controls, fresh-process
@@ -716,6 +728,35 @@ as completion of those phases.
 
 ### C5. The shuffled deck
 
+**Implementation and bounded qualification (2026-10-16):** new shuffled
+receipts use `cleromancy.receipt/v5` and sealed readings v3. A versioned
+Fisher–Yates permutation and BLAKE3 stream determine every card and orientation
+before any prefix is drawn. Every session placement must share that shuffle,
+its declared draw count and the correct ordinal. Invalid orientation, order,
+source, method or receipt data is refused before durable writes. An oversized
+spread is refused before consuming entropy. Existing scalar calculation and
+derived-selection entry points keep their v1–v4 bytes; four vectors emitted
+from published pre-C5 production code match exactly after implementation.
+
+The ordinary native UI supports seeded single, three-card and authored tarot
+layouts, restores the public seed/domain controls, narrates each orientation
+and draw index, and exposes orientation in card and journal labels. Reversal
+leaves the cited deck's saved prompt unchanged. Historical independent
+receipts continue to replay and narrate their actual method. The final native
+flow uses a saved custom position label and the existing public C4 profile;
+fresh reopening preserves the complete shuffled-reading proof byte for byte,
+including context, field, session, template and reflection. All prior occasions
+and C4 view/kept-memory payloads remain exact. See the
+[C5 evidence notes](../receipts/c5_20261016/README.md).
+
+The current-consumer audit checks published Isocosm `1b030ea9` directly.
+Ruling 600 removed the Cleromancy dependency at `9c991e87`; no current
+Cleromancy manifest/lock pin remains, and generator choice uses Isocosm's own
+entropy tape. This supersedes the historical integration-pin premise below.
+No current Isocosm runtime compatibility pass is claimed; old scalar derived
+receipts have a separate byte-equality gate. The original criterion and dated
+consumer history remain visible.
+
 One shuffle per reading; cards come off the top in order with no repeats;
 orientation, now including reversals, comes from the shuffle. The receipt
 records the shuffle method and its source of randomness, either the operating
@@ -1020,3 +1061,19 @@ orientations and positions, and interpretations.
   [publication ledger](../receipts/c4-publication_20261016.json) supersedes the
   frozen ledgers’ pending-publication status. C5 proceeds with historical
   receipts and derived-selection bytes preserved.
+
+- 2026-10-16: Mark authorized C4 publication and proceeding to C5. Implemented
+  one full-deck shuffle, reversals, recorded OS/public seed sources, exact
+  prefix/session validation and updated native narration/labels. Frozen native
+  source `052e54f` has ten reviewed originals and byte-equal full-reading
+  reopening; later product commits change acceptance tests only. All earlier
+  occasions, the complete C4 view and its three kept-memory records remain
+  exact. The current published Isocosm audit establishes its removed Cleromancy
+  integration; four pre-C5 scalar vectors stay byte-equal. The two-deck owner
+  fixture seeds through bounded replay-valid candidate transactions after its
+  combined packet exceeded one frame; final graph and atomic refusal guards
+  remain exact, with six active tests and one intentional child entry. Earlier
+  packet/selector/test-expectation attempts retain their identities and are
+  excluded from final acceptance. All 333 prior receipt/scenario paths remain
+  unchanged. C6, graphical unlock, release/performance and the shared wall
+  retain their own gates.

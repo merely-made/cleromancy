@@ -1,0 +1,60 @@
+[
+  {
+    "name": "historical",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--no-fail-fast",
+      "--features",
+      "legacy-receipts,personal-sync,graphshell-admission"
+    ],
+    "exit": 0,
+    "elapsed": 277.22,
+    "passed": 153,
+    "failed": 0,
+    "ignored": 0,
+    "log": "/Users/markik/Code/testing/cleromancy/c5-20261016/closed-historical.log",
+    "sha256": "2fb52f263583adfe208016a3dfece5d2389ce584b6df0d037ed9515cf9f6a293"
+  },
+  {
+    "name": "historical-check",
+    "command": [
+      "cargo",
+      "check",
+      "--locked",
+      "--offline",
+      "--all-targets",
+      "--features",
+      "legacy-receipts,personal-sync,graphshell-admission"
+    ],
+    "exit": 0,
+    "elapsed": 59.97,
+    "passed": 0,
+    "failed": 0,
+    "ignored": 0,
+    "log": "/Users/markik/Code/testing/cleromancy/c5-20261016/closed-historical-check.log",
+    "sha256": "d26f03b9c47d1e5cde9d2ed05c38102bd4c22caf14ba7dd35ca39ce70c42465b"
+  },
+  {
+    "name": "sky",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--features",
+      "legacy-receipts,sky-timeline",
+      "--test",
+      "sky_timeline"
+    ],
+    "exit": 0,
+    "elapsed": 71.02,
+    "passed": 1,
+    "failed": 0,
+    "ignored": 0,
+    "log": "/Users/markik/Code/testing/cleromancy/c5-20261016/closed-sky.log",
+    "sha256": "277080cbb87887a7a17c4e23adbd4e513afa348ba402cb157f274da0970529ad"
+  }
+]

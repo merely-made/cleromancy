@@ -1,0 +1,254 @@
+{
+  "reviewer": "Direct original-image review by this agent; no independent second reviewer claimed",
+  "runs": [
+    {
+      "directory": "c5_20261016/native-first-02",
+      "scenario": "c5-shuffled-deck.scn",
+      "process": {
+        "phase": "first",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 115.91,
+        "binary_sha256": "6dc9f99736fe7e9a9d00fba33c2e449e7beea2b4fcef2098f3f5b020513b0ddc",
+        "scenario_sha256": "4ce4cec613e0f0ba3a43b5d44cd379df0980144c57575548dbe02982b22fd81e",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "first",
+        "ok": true,
+        "status": "Reflection saved: 14e9a7d97b738df7e2dfa58af4fb06024ef6c529ebb4f430f42826ae4c1e5cfb",
+        "catalog_ready": true,
+        "sessions": 5,
+        "readings": 3,
+        "reflections": 1,
+        "ids": {
+          "session_id": "839c2046c5bcde2d8168fc76ba4728fa2660b18c26dd6ed736b05d2c2a5d6748",
+          "reading_id": "9cad3278dd034240b5a022204dd48bea2990e1a386e265ed67ec6bf04a10547d",
+          "reflection_id": "14e9a7d97b738df7e2dfa58af4fb06024ef6c529ebb4f430f42826ae4c1e5cfb"
+        },
+        "log": [
+          "waited 156 frames",
+          "waited 133 frames",
+          "waited 134 frames",
+          "waited 428 frames",
+          "waited 251 frames",
+          "captured ordered-spread",
+          "captured shuffled-narrative",
+          "waited 0 frames",
+          "captured compact-third-card",
+          "captured compact-narrative"
+        ]
+      },
+      "captures": [
+        {
+          "file": "compact-narrative.png",
+          "sha256": "172cb8074f32f50640a4174a4c71afd1a7eaaf1e3d8dc14cac90007ea6190066",
+          "pixels": [
+            840,
+            1520
+          ],
+          "review": "At 420x760 the first complete narration wraps within the content width; subsequent cards remain available by scrolling."
+        },
+        {
+          "file": "compact-third-card.png",
+          "sha256": "851790102bab6d6384fb59850051bbca685e9c82e90dc6433ecc3a0b72d0b47a",
+          "pixels": [
+            840,
+            1520
+          ],
+          "review": "At 420x760 the third card and its reversed label fit the content width; saved custom position meaning and focused card text wrap."
+        },
+        {
+          "file": "ordered-spread.png",
+          "sha256": "3f9a433dd7ba0353e49774de4691cdf3e2afd20269f81e26124fecd8b53ecc72",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "All three distinct cards and their reversed labels are legible at 1160x760; saved custom position labels and public seed controls are visible."
+        },
+        {
+          "file": "shuffled-narrative.png",
+          "sha256": "0e10302a25ae23428d1e459d86ecaa8668cdafa979a075833ee9b0bd48f30db0",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "All three ordered narration entries disclose the same shuffle, public seed/domain, card orientation, deck and draw index; full text is accessible and legible."
+        }
+      ]
+    },
+    {
+      "directory": "c5_20261016/native-reopen-01",
+      "scenario": "c5-shuffled-reopen.scn",
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 45.98,
+        "binary_sha256": "6dc9f99736fe7e9a9d00fba33c2e449e7beea2b4fcef2098f3f5b020513b0ddc",
+        "scenario_sha256": "c303be6ceb0093db08e97ca12558299b15150f57b190641edb080647c7aac178",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "reopen",
+        "ok": true,
+        "status": "Viewing session: 839c2046c5bcde2d8168fc76ba4728fa2660b18c26dd6ed736b05d2c2a5d6748",
+        "catalog_ready": true,
+        "sessions": 5,
+        "readings": 3,
+        "reflections": 1,
+        "ids": {
+          "session_id": "839c2046c5bcde2d8168fc76ba4728fa2660b18c26dd6ed736b05d2c2a5d6748",
+          "reading_id": "9cad3278dd034240b5a022204dd48bea2990e1a386e265ed67ec6bf04a10547d",
+          "reflection_id": "14e9a7d97b738df7e2dfa58af4fb06024ef6c529ebb4f430f42826ae4c1e5cfb"
+        },
+        "log": [
+          "waited 220 frames",
+          "waited 297 frames",
+          "captured reopened-spread",
+          "captured reopened-narrative"
+        ]
+      },
+      "captures": [
+        {
+          "file": "reopened-narrative.png",
+          "sha256": "5aa5a97f586ad2d160077e771aac299ba1bd01f5f767c5af02c277e1fcfb1fd0",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "Fresh process retains the full ordered shuffle narration and saved custom position meanings."
+        },
+        {
+          "file": "reopened-spread.png",
+          "sha256": "5f41d58a611f9777f5c6aee2e99ece2fd2a9bfed464bcb7b65e386b17c06b65b",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "Fresh process restores the same three distinct cards, orientations, custom template label and public-seed controls."
+        }
+      ]
+    },
+    {
+      "directory": "c5_20261016/native-os-first-01",
+      "scenario": "c5-os-shuffle.scn",
+      "process": {
+        "phase": "first",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 71.41,
+        "binary_sha256": "6dc9f99736fe7e9a9d00fba33c2e449e7beea2b4fcef2098f3f5b020513b0ddc",
+        "scenario_sha256": "5129fba70fcf7b85e144d710655faefd34632c9303fc8045175bc6a24c81238b",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "first",
+        "ok": true,
+        "status": "Reflection saved: db6a3b7d98334bb3b13cc78a434c1b8d2c8a25966f29a897fd39b22c0101077b",
+        "catalog_ready": true,
+        "sessions": 6,
+        "readings": 3,
+        "reflections": 1,
+        "ids": {
+          "session_id": "cc522effa0e25d0e330885c8fa05ab327b49fc36e415f46d5cdf882f2eb84308",
+          "reading_id": "9c4275bab76a9d9541450b98305738b2066a83cd2e3e19cda611169fa89c7830",
+          "reflection_id": "db6a3b7d98334bb3b13cc78a434c1b8d2c8a25966f29a897fd39b22c0101077b"
+        },
+        "log": [
+          "waited 199 frames",
+          "waited 291 frames",
+          "waited 273 frames",
+          "captured os-spread",
+          "captured os-narrative"
+        ]
+      },
+      "captures": [
+        {
+          "file": "os-narrative.png",
+          "sha256": "69ee0de44ed20703c0eb91a23178aa28d31a7afb89921c2eab97550da2421394",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "All three narration entries disclose one Fisher-Yates shuffle using a recorded OS seed, the complete 78-card deck, draw index and saved orientation. Text fits and is readable."
+        },
+        {
+          "file": "os-spread.png",
+          "sha256": "e5d9580b760ba867678600b6a865adb2d7144875807b632cf2c532c4b963fd5f",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "At 1160x760 the actual OS-random draw shows three distinct cards with two reversed and one upright; labels, focused card and position meaning are legible."
+        }
+      ]
+    },
+    {
+      "directory": "c5_20261016/native-os-reopen-01",
+      "scenario": "c5-os-reopen.scn",
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 42.14,
+        "binary_sha256": "6dc9f99736fe7e9a9d00fba33c2e449e7beea2b4fcef2098f3f5b020513b0ddc",
+        "scenario_sha256": "68eddf29a51846cfa20441063a7d6b859d726d3042bbe5e738c219cb5dcb1559",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "reopen",
+        "ok": true,
+        "status": "Viewing session: cc522effa0e25d0e330885c8fa05ab327b49fc36e415f46d5cdf882f2eb84308",
+        "catalog_ready": true,
+        "sessions": 6,
+        "readings": 3,
+        "reflections": 1,
+        "ids": {
+          "session_id": "cc522effa0e25d0e330885c8fa05ab327b49fc36e415f46d5cdf882f2eb84308",
+          "reading_id": "9c4275bab76a9d9541450b98305738b2066a83cd2e3e19cda611169fa89c7830",
+          "reflection_id": "db6a3b7d98334bb3b13cc78a434c1b8d2c8a25966f29a897fd39b22c0101077b"
+        },
+        "log": [
+          "waited 189 frames",
+          "waited 142 frames",
+          "captured reopened-os-spread",
+          "captured reopened-os-narrative"
+        ]
+      },
+      "captures": [
+        {
+          "file": "reopened-os-narrative.png",
+          "sha256": "8fdbbd0ab6d23129fdbf19801df0e73c0bc49701a2225f344a6336be1fbde086",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "A fresh process retains the complete OS-seeded method narration and all three saved orientations and draw positions."
+        },
+        {
+          "file": "reopened-os-spread.png",
+          "sha256": "69c72d205825e4119a7138001ba82235f664fd1c8ede9a6d6ab3548065394bc5",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "A fresh process restores the same Five of Wands reversed, Temperance reversed and Judgement upright, with saved position meaning and Cast controls."
+        }
+      ]
+    }
+  ]
+}

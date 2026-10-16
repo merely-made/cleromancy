@@ -1,0 +1,11 @@
+{
+  "native_first_01": {
+    "directory": "/Users/markik/Code/testing/cleromancy/c5-20261016/native-first-01",
+    "source": "ec049b7e5a356b4e72db18d3133d3e03bb1a62b2",
+    "disposition": "Persisted a valid shuffled reading/reflection; two capture selectors were wrong, so this run is excluded from final native acceptance. Its saved occasion remains intact in the profile.",
+    "receipt_sha256": "d5bbf19f93b64924a15eb763ce06c7cfe5de6457bbc51ed3d8d850f11aaf162b"
+  },
+  "owner_packet_attempts": "owner-initial.log and owner-final.log preserve the oversized combined two-deck setup packets. Bounded complete-candidate transactions replace only fixture seeding; final graph and refusal guards remain exact.",
+  "software_attempts": "Initial matrices preserve outdated UI-title/row assertions and an interrupted test-only correction. Final matrix uses current committed test expectations; production inputs remain identical to the frozen native source.",
+  "evidence_root": "/Users/markik/Code/testing/cleromancy/c5-20261016"
+}
