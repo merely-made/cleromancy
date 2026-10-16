@@ -9,8 +9,10 @@ link the software, native and receiving ledgers. Final product gates pass
 and portable-core 27/28/29. Integrated Mere `8111fa2ba`
 receives the same portable validator and passes five active owner fixtures
 with one intentional process-child entry. All 267 prior receipt/scenario paths
-remain exact. Final C4 publication awaits Mark's approval under the standing
-Git rule; do not treat local Cargo-cache objects as remotely published. The
+remain exact. Mark authorized C4 publication and proceeding. Product `29d4f3b` and integrated
+Mere `9b6da81db` are published; exact checkpoint objects were retrieved from
+GitHub in fresh bare repositories. The additive
+[publication ledger](../receipts/c4-publication_20261016.json) records verification. The
 coordinated per-repository plan is in the
 [receiving ledger](../receipts/c4-resident-intake_20261016.json). C5 is the next
 product phase. The dated handoff and older completion notes below retain their

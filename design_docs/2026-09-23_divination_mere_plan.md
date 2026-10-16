@@ -15,7 +15,9 @@ the results are recorded separately in the
 The integrated Mere receiving validator passes five active real-process owner
 fixtures with one intentional child entry; its source and the coordinated
 publication plan are in the [receiving ledger](../receipts/c4-resident-intake_20261016.json).
-Final C4 publication is pending Mark's approval. All 267 prior tracked receipt
+C4 source and the integrated receiving validator are now published; the
+[publication ledger](../receipts/c4-publication_20261016.json) verifies the
+remote identities and fresh checkpoint retrieval. All 267 prior tracked receipt
 and scenario paths remain byte-identical to `300ebbd`. The full shared cutover
 wall and stack-wide dynamics milestones keep their separate gates; C5 remains
 the next product phase.
@@ -1010,3 +1012,11 @@ orientations and positions, and interpretations.
   paths remain exact. Final C4 source/receipt publication is pending Mark's
   approval; the shared wall, graphical unlock, performance and C5 retain their
   own gates.
+
+- 2026-10-16: Mark authorized publication and proceeding. Published C4 product
+  `29d4f3b` and integrated Mere `9b6da81db`, staged all four required supplier/core
+  checkpoint refs and verified their exact objects in independent fresh bare
+  repositories. Both remote main identities match. The additive
+  [publication ledger](../receipts/c4-publication_20261016.json) supersedes the
+  frozen ledgers’ pending-publication status. C5 proceeds with historical
+  receipts and derived-selection bytes preserved.
