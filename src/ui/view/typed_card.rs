@@ -55,15 +55,10 @@ pub(super) fn card_view(
             .attr("data-key", "typed-card-axes"),
         ),
         Box::new(
-            el::<_, ConsultationUi, ()>("p", card.interpretation.text.clone())
-                .attr("data-key", "typed-card-prompt"),
-        ),
-        Box::new(
             el::<_, ConsultationUi, ()>(
                 "p",
                 format!(
-                    "{} · version {} · {} · {}",
-                    card.interpretation.id,
+                    "Prompt · version {} · {} · {}",
                     card.interpretation.version,
                     card.interpretation.author,
                     card.interpretation.date
@@ -85,6 +80,10 @@ pub(super) fn card_view(
         ));
     }
     if ui.card_preview.is_some() {
+        items.push(Box::new(
+            el::<_, ConsultationUi, ()>("p", card.interpretation.text.clone())
+                .attr("data-key", "typed-card-prompt"),
+        ));
         items.push(Box::new(
             button("Return to drawn card", |ui: &mut ConsultationUi, _| {
                 ui.card_preview = None;
@@ -152,7 +151,7 @@ pub(super) fn card_view(
             )),
             Box::new(el::<_, ConsultationUi, ()>("p", source.locator.clone())),
             Box::new(
-                el::<_, ConsultationUi, ()>("a", source.url.clone())
+                el::<_, ConsultationUi, ()>("a", source.title.clone())
                     .attr("href", source.url.clone()),
             ),
         ];
