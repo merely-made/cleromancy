@@ -123,35 +123,28 @@ All of it is on Mere `main`. As of this handoff, Mere `main` is `61fba39d9`.
 
 ### Task 2: switch to the family's `branch = "main"` convention
 
-Task 1 has landed (`main` is `39d65f7`, the lane merged). The repin round is
-done and Mark ruled the family onto branches (Mere's family composition brief,
-"Family source convention"): first-party rows name their repository as
-`git = "https://github.com/merely-made/<repo>.git", branch = "main"`, with no
-`www.` spelling, no double slash and no `rev`; the committed `Cargo.lock` pins
-the tested revision; a repin is `cargo update -p <package>`. Current tips at
-the time of writing: Mere `4a74b1cf2` (plus a lock-only bump), Murm
-`a3621dc8`, Genet `7af8de32`, netrender `f4f9c0d8`, Knot `3fc16df2`.
+**Status: manifests and lock done 2026-10-15 (Claude, at Mark's direction);
+the product-code follow-up below is open.** Cleromancy's rows for Mere, Murm,
+Genet, netrender, Knot, Cleromancy (its own package, patched by path for
+Mere's Djinn pin) and dramatis name their repository as `git =
+"https://github.com/merely-made/<repo>.git", branch = "main"`; the www and
+double-slash spellings and every same-repository bridge table are gone.
+`Cargo.lock` and `core/Cargo.lock` resolve one source per family repository:
+Mere `59f88e63`, Murm `cba46d85`, Genet `e37762d7`, netrender `f4f9c0d8`, Knot
+`11b07360`, dramatis `5c89001a`. A repin from here is `cargo update -p
+<package>` (use the full package id when a name is ambiguous, for example
+`cargo update -p 'https://github.com/merely-made/mere.git#mere-kernel@0.0.2'`).
 
-1. Run the helper that rewrites those rows and drops the same-repository patch
-   tables:
-   `python3 "/Users/markik/Library/Application Support/Claude/side-session-notes/local_3d62af74-7793-41a6-ad04-66e8c1de0af1/to_main.py" <repo-root> mere,murm,netrender,genet,knot-editor`.
-   Leave `dramatis`, the vello fork and any other pinned fork on their `rev`
-   or `tag`. The double-slash workaround goes away: nothing Cleromancy pulls
-   names another spelling once every supplier is on the convention, and Cargo
-   cannot bridge two spellings of one repository.
-2. Make the source changes:
-   - `graphshell_client::line` and `graphshell_host::line`, if named
-     directly, become `chirograph::line`;
-   - `edit_history` becomes `backstep`;
-   - any `match` on `MereViewRequest` or `SessionStep` gets a wildcard arm;
-   - anything that named a moved Graphshell module (`view`, `sessions`,
-     `canary`, `browser_carrier`, `identity_*`, `resident_mere_proxy`) takes
-     its new path.
-3. Run `cargo update -p <a Mere package> -p mere-transport -p layout-dom-api`,
-   then confirm `cargo metadata` resolves exactly one source for each family
-   repository. If a second source remains, find the dependent (a supplier that
-   still names a repository by `rev`) and report it rather than adding a
-   bridge.
+**Open: the moved Mere needs two source changes (no product code was touched
+in the switch).** At that state `cargo check --all-targets`,
+`--features graphshell-admission --all-targets`, the `core/` check and
+`cargo test` pass, but `cargo check --features personal-sync --all-targets`
+fails: 15 `E0063` errors, "missing field `basis` in initializer of
+`PersonalGraphEvent`" (a field Mere added), in the library and its tests. Fix
+those initializers (the earlier list below still applies where a hit is left:
+`graphshell_client::line` to `chirograph::line`, `edit_history` to `backstep`,
+wildcard arms on `MereViewRequest` and `SessionStep`, moved Graphshell module
+paths), then run the checks and record the counts in the divination plan.
 
 **Checks** (from the README):
 
