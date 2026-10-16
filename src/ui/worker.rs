@@ -315,6 +315,34 @@ pub(crate) fn execute<B: muniment::Backend>(
         ConsultationAction::ReadGrantedContext { .. } | ConsultationAction::ClearGrantedContext => {
             unreachable!("handled by the admitted resident client")
         },
+        ConsultationAction::GenerateInference { session_id, model } => {
+            let inputs = consultation.host().inference_inputs(&session_id)?;
+            let record = if model {
+                #[cfg(feature = "local-inference")]
+                {
+                    let directory = std::env::var_os("CLEROMANCY_MODEL_DIR").ok_or_else(|| crate::inference::InferenceError("No local model is configured. Configure a local ESP model before generating.".into()))?;
+                    crate::inference::local::generate(inputs, std::path::Path::new(&directory))?
+                }
+                #[cfg(not(feature = "local-inference"))]
+                {
+                    return Err(crate::inference::InferenceError("This build has no local ESP runtime. Enable local-inference to generate a model prompt.".into()).into());
+                }
+            } else {
+                crate::inference::GeneratedInference::formula(inputs)
+            };
+            let detail = consultation.record_inference(&record)?;
+            Ok(WorkerUpdate::Session {
+                catalog: consultation.catalog()?,
+                detail,
+            })
+        },
+        ConsultationAction::KeepInference { session_id, digest } => {
+            let detail = consultation.keep_inference(&session_id, &digest)?;
+            Ok(WorkerUpdate::Session {
+                catalog: consultation.catalog()?,
+                detail,
+            })
+        },
         ConsultationAction::InstallTarotDecks => {
             pollster::block_on(consultation.install_typed_tarot())?;
             Ok(WorkerUpdate::Catalog(consultation.catalog()?))

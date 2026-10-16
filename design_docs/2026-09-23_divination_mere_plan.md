@@ -818,6 +818,18 @@ source, and what it returns is stored with the reading.
 
 ### C7. Generated inferences
 
+**Implementation intake (2026-10-16; qualification in progress):** Mark authorized
+C7 followed by a small C8 dice slice, and chose a small local model through
+Mere ESP. The first C7 methods are a versioned exact history-reflection formula
+and a local ESP reflection example. Immutable inference records reference an
+explicit selection of earlier occasions and reflections; model identity,
+artifact hashes, request and output are stored separately from the sealed draw.
+The reflection-example purpose starts in Alembic Recent memory; Keep is an
+explicit owner action. Personal sync includes generated text only with the full
+reflection consent selection. Native generation, fresh-process reopening,
+receiving-owner validation and final publication remain qualification gates.
+No C7 acceptance is claimed by this intake.
+
 Formula-derived prompts and synergistic readings over the person's history
 recompute exactly. Model-generated ones are stored when produced and labelled,
 and enter the keeping level their model and purpose set.

@@ -15,10 +15,11 @@ categories = ["gui"]
 publish = false
 
 [features]
-default = []
+default = ["local-inference"]
 # Used by the nested acceptance package to compile the portable product core
 # without Cleromancy's retired native Genet layout seam.
 portable-core = []
+local-inference = ["dep:esp", "esp/decoder", "dep:sha2"]
 # Historical private-store receipt fixtures; never enabled by the ordinary app.
 legacy-receipts = []
 # The data-free analytic engine. No kernel, no download, no filesystem.
@@ -31,6 +32,8 @@ graphshell-admission = ["graphshell-host/native"]
 # Cargo.lock records the exact tested revisions; intake updates the lock.
 # The original C1/C2 qualification retains its frozen supplier identities.
 [dependencies]
+esp = { git = "https://github.com/merely-made/mere.git", branch = "main", optional = true, default-features = false }
+sha2 = { version = "0.10", optional = true }
 fetch = { package = "mere-fetch", git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false }
 djinn = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false }
 mere-overmap = { git = "https://github.com/merely-made/mere.git", branch = "main" }
@@ -237,3 +240,24 @@ tulle = { git = "https://github.com/merely-made/murm.git", branch = "main" }
 
 
 
+
+# The shared CPU decoder needs optimized tensor kernels even in desktop debug
+# builds; this does not change the selected backend or sampling contract.
+[profile.dev.package.esp]
+opt-level = 3
+[profile.dev.package.burn-ndarray]
+opt-level = 3
+[profile.dev.package.gemm]
+opt-level = 3
+[profile.dev.package.gemm-f32]
+opt-level = 3
+[profile.dev.package.gemm-common]
+opt-level = 3
+[profile.dev.package.matrixmultiply]
+opt-level = 3
+[profile.dev.package.ndarray]
+opt-level = 3
+[profile.dev.package.burn-tensor]
+opt-level = 3
+[profile.dev.package.burn-dispatch]
+opt-level = 3

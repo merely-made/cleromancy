@@ -24,6 +24,7 @@ pub fn export_sync_batch<B: Backend>(
     selection: CleromancySyncSelection,
 ) -> Result<CleromancySyncBatch, CleromancySyncError> {
     let SelectedTruth {
+        inferences,
         situations,
         contexts,
         fields,
@@ -94,6 +95,7 @@ pub fn export_sync_batch<B: Backend>(
                 .iter()
                 .map(|(_, node)| (&node.address, node.id)),
         )
+        .chain(inferences.iter().map(|(_, node)| (&node.address, node.id)))
         .chain(situations.iter().map(|(_, node)| (&node.address, node.id)))
         .chain(reflections.iter().map(|(_, node)| (&node.address, node.id)))
         .map(|(address, id)| (address.clone(), id))
@@ -129,6 +131,9 @@ pub fn export_sync_batch<B: Backend>(
         }
     }
     let mut events = Vec::new();
+    for (_, node) in &inferences {
+        append_node_events(&mut events, node);
+    }
     for (_, node) in &situations {
         append_node_events(&mut events, node);
     }
@@ -494,7 +499,28 @@ pub fn export_sync_batch<B: Backend>(
             },
         });
     }
-    let schema = if situations.is_empty() {
+    for (record, node) in &inferences {
+        for id in
+            std::iter::once(&record.inputs.session_id).chain(&record.inputs.history_session_ids)
+        {
+            let target = session_ids
+                .get(id)
+                .ok_or_else(|| invalid(node.id, "inference has an unselected source occasion"))?;
+            events.push(PersonalGraphEvent::AssertRelation {
+                statement_id: None,
+                asserted_at_ms: None,
+                basis: None,
+                from: node.id,
+                to: *target,
+                assertion: EdgeAssertion::Provenance {
+                    sub_kind: mere::kernel::graph::ProvenanceSubKind::GeneratedFrom,
+                },
+            });
+        }
+    }
+    let schema = if !inferences.is_empty() {
+        super::INFERENCE_SYNC_BATCH_SCHEMA
+    } else if situations.is_empty() {
         SYNC_BATCH_SCHEMA
     } else {
         super::SITUATED_SYNC_BATCH_SCHEMA
@@ -505,6 +531,7 @@ pub fn export_sync_batch<B: Backend>(
         selection,
         events,
         situations: situations.len(),
+        inferences: inferences.len(),
         contexts: contexts.len(),
         fields: fields.len(),
         readings: readings.len(),

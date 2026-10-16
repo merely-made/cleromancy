@@ -31,6 +31,7 @@ mod shared;
 pub use export::export_sync_batch;
 pub use import::import_sync_projection;
 
+pub const INFERENCE_SYNC_BATCH_SCHEMA: &str = "cleromancy.sync-batch/v8";
 pub const SITUATED_SYNC_BATCH_SCHEMA: &str = "cleromancy.sync-batch/v7";
 fn no_situations(v: &usize) -> bool {
     *v == 0
@@ -119,6 +120,7 @@ impl CleromancySyncSelection {
         }
         if self.includes_reflections() {
             facets.push(REFLECTION_FACET);
+            facets.push(crate::inference::INFERENCE_FACET);
         }
         PersonalSyncSelection::default().with_facets(facets)
     }
@@ -152,6 +154,8 @@ impl FromStr for CleromancySyncSelection {
 pub struct CleromancySyncBatch {
     #[serde(skip_serializing_if = "no_situations")]
     pub situations: usize,
+    #[serde(skip_serializing_if = "no_situations")]
+    pub inferences: usize,
     pub schema: &'static str,
     pub selection: CleromancySyncSelection,
     pub events: Vec<PersonalGraphEvent>,
@@ -182,6 +186,8 @@ impl CleromancySyncBatch {
 pub struct CleromancySyncImport {
     #[serde(skip_serializing_if = "no_situations")]
     pub situations: usize,
+    #[serde(skip_serializing_if = "no_situations")]
+    pub inferences: usize,
     pub contexts: usize,
     pub fields: usize,
     pub readings: usize,

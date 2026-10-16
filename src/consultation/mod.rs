@@ -85,6 +85,10 @@ pub struct ConsultationDetail {
     pub spread_template: Option<SpreadTemplate>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub situation: Option<crate::situation::ReadingSituation>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub inferences: Vec<crate::inference::GeneratedInference>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub kept_inferences: Vec<String>,
 }
 
 /// A replay-derived comparison of two sealed session receipts. It never writes
@@ -120,6 +124,8 @@ pub struct ReceiptComparisonEntry {
 pub enum ConsultationError {
     #[error(transparent)]
     Situation(#[from] crate::situation::SituationError),
+    #[error(transparent)]
+    Inference(#[from] crate::inference::InferenceError),
     #[error(transparent)]
     Astrology(#[from] AstrologyError),
     #[error(transparent)]
@@ -207,6 +213,22 @@ impl<B: Backend> Consultation<B> {
         let concurrences = self.host.concurrences_for_session(&session.id)?;
         let spread_template = self.host.spread_template_for_session(&session.id)?;
         let situation = self.host.situation_for_session(&session.id)?;
+        let inferences = self.host.inferences_for_session(session_id)?;
+        let kept_inferences = inferences
+            .iter()
+            .filter_map(|r| {
+                let key = self
+                    .host
+                    .graph()
+                    .get_node_by_url(&format!("cleromancy://inference/{}", r.digest()))?
+                    .0;
+                matches!(
+                    alembic::memory_levels::level_of(self.host.graph(), key),
+                    alembic::memory_levels::MemoryLevel::LongTerm
+                )
+                .then(|| r.digest())
+            })
+            .collect();
         Ok(ConsultationDetail {
             session,
             context,
@@ -216,6 +238,8 @@ impl<B: Backend> Consultation<B> {
             concurrences,
             spread_template,
             situation,
+            inferences,
+            kept_inferences,
         })
     }
 

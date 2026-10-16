@@ -120,6 +120,7 @@ pub struct ConsultationUi {
     pub(super) status: ConsultationStatus,
     pub(super) error: Option<String>,
     pub(super) pending_action: Option<ConsultationAction>,
+    pub(super) local_model_label: String,
 }
 
 impl ConsultationUi {
@@ -170,6 +171,17 @@ impl ConsultationUi {
             status: ConsultationStatus::Ready,
             error: None,
             pending_action: None,
+            local_model_label: {
+                #[cfg(feature = "local-inference")]
+                {
+                    crate::inference::local::configured_label()
+                        .unwrap_or_else(|| "No local model is configured.".into())
+                }
+                #[cfg(not(feature = "local-inference"))]
+                {
+                    "This build does not include a local model runtime.".into()
+                }
+            },
         }
     }
 
