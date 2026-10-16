@@ -1,0 +1,16 @@
+wait
+assert snap product-busy == false
+advance
+wait
+assert snap product-busy == false
+assert snap shuffled == true
+assert snap unique-cards == 3
+assert snap reflections == 1
+assert text operating system
+assert text cannot repeat
+reveal class reading-spread-cards
+settle 2
+capture reopened-os-spread
+reveal class reading-narrative
+settle 2
+capture reopened-os-narrative
