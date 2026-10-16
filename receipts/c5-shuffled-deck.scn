@@ -25,7 +25,7 @@ assert text cannot repeat
 reveal class reading-spread-cards
 settle 2
 capture ordered-spread
-reveal key narrative reading-narrative
+reveal class reading-narrative
 settle 2
 capture shuffled-narrative
 resize 420 760
@@ -34,6 +34,6 @@ assert snap product-busy == false
 c5-control-reveal scene-card:next_step
 settle 2
 capture compact-third-card
-reveal key narrative narration:foundation
+reveal class narration-list
 settle 2
 capture compact-narrative

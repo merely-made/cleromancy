@@ -30,7 +30,13 @@ impl<B: Backend> CleromancyHost<B> {
         field.validate_metadata()?;
         let address = format!("cleromancy://field/{}", field.digest());
         let key = self.upsert_node(&address, &field.system, ["field", field.system.as_str()]);
-        self.set_facet(key, FIELD_FACET, serde_json::to_value(field).unwrap())?;
+        let value = serde_json::to_value(field).unwrap();
+        // A session and each of its readings share this immutable field.
+        // Capturing its large typed snapshot repeatedly can overflow the
+        // carrier even though the candidate graph contains just one copy.
+        if self.facet_value(key, FIELD_FACET) != Some(&value) {
+            self.set_facet(key, FIELD_FACET, value)?;
+        }
         Ok(key)
     }
 
