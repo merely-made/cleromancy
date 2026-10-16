@@ -1,0 +1,29 @@
+{
+  "schema": "cleromancy.position-meanings/v1",
+  "id": "cleromancy.builtin-positions",
+  "version": "1",
+  "author": "Cleromancy",
+  "date": "2026-10-15",
+  "positions": [
+    {
+      "name": "foundation",
+      "label": "Foundation",
+      "meaning": "The ground you are starting from: what supports the situation, or what you are taking for granted."
+    },
+    {
+      "name": "tension",
+      "label": "Tension",
+      "meaning": "Read against the foundation: what complicates it, challenges it, or asks for a different response."
+    },
+    {
+      "name": "next_step",
+      "label": "Next step",
+      "meaning": "A possible response to that tension: something to try or attend to, rather than a promised outcome."
+    },
+    {
+      "name": "focus",
+      "label": "Focus",
+      "meaning": "A single lens on your question. Notice what fits your experience and what does not."
+    }
+  ]
+}

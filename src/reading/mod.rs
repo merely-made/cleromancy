@@ -130,6 +130,8 @@ pub struct Reading {
 
 #[derive(Debug, Error, PartialEq, Eq)]
 pub enum ReadingError {
+    #[error("typed tarot deck is invalid or differs from its field: {0}")]
+    InvalidDeck(String),
     #[error("the system has no candidates")]
     EmptyField,
     #[error("qualified weight must be nonzero")]

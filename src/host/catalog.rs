@@ -26,6 +26,9 @@ impl<B: Backend> CleromancyHost<B> {
         let mut fields = self.canonical_facet_values(FIELD_FACET, Field::digest, |digest| {
             format!("cleromancy://field/{digest}")
         })?;
+        for field in &fields {
+            field.validate_metadata()?;
+        }
         fields.sort_by_key(|field| {
             (
                 field.system.to_lowercase(),
@@ -225,6 +228,7 @@ impl<B: Backend> CleromancyHost<B> {
                 reason: "field digest does not match its canonical address".to_string(),
             });
         }
+        field.validate_metadata()?;
         Ok(field)
     }
 

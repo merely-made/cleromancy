@@ -277,6 +277,10 @@ pub(crate) fn execute<B: muniment::Backend>(
     action: ConsultationAction,
 ) -> Result<WorkerUpdate, ConsultationError> {
     match action {
+        ConsultationAction::InstallTarotDecks => {
+            pollster::block_on(consultation.install_typed_tarot())?;
+            Ok(WorkerUpdate::Catalog(consultation.catalog()?))
+        },
         ConsultationAction::Read {
             context,
             field_digest,

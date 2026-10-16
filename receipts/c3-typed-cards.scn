@@ -1,0 +1,45 @@
+# C3 complete decks and non-writing cross-deck inspection.
+wait
+assert snap fields == 2
+c3-read
+wait
+assert snap readings == 1
+advance
+wait
+assert snap reflections == 1
+assert text Strength
+assert text number: 8
+assert text Golden Dawn / Book T
+assert text Thierens
+reveal key typed-card typed-card
+settle 2
+capture typed-card
+reveal key correspondence-columns card-correspondences
+settle 2
+capture traditions-wide
+reveal key crosswalk crosswalk:cleromancy.tarot/marseille-complete-reflective-v1
+settle 2
+assert visible key crosswalk crosswalk:cleromancy.tarot/marseille-complete-reflective-v1
+c3-crosswalk
+settle 2
+assert text number: 11
+reveal key typed-card typed-card
+settle 2
+capture marseille-crosswalk
+reveal key crosswalk return-drawn-card
+settle 2
+assert visible key crosswalk return-drawn-card
+c3-return
+settle 2
+assert text number: 8
+resize 420 760
+wait
+reveal key typed-card typed-card
+settle 2
+capture compact-card
+reveal key correspondence correspondence:book-t
+settle 2
+capture compact-book-t
+reveal key correspondence correspondence:thierens-1930
+settle 2
+capture compact-thierens

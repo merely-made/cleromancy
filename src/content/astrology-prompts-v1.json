@@ -1,0 +1,138 @@
+{
+  "schema": "cleromancy.astrology-prompts/v1",
+  "id": "cleromancy.astrology-symbolic-prompts",
+  "version": "1",
+  "author": "Cleromancy",
+  "date": "2026-10-15 (data edition; original edition-1 prose preserved)",
+  "intro": "Read the chart as a set of symbolic prompts. Start with a placement that catches your attention, then consider how the aspects connect its themes.",
+  "body_themes": [
+    {
+      "body": "sun",
+      "theme": "purpose and self-expression"
+    },
+    {
+      "body": "moon",
+      "theme": "emotional needs and familiar habits"
+    },
+    {
+      "body": "mercury",
+      "theme": "thinking, learning, and communication"
+    },
+    {
+      "body": "venus",
+      "theme": "affection, pleasure, and what you value"
+    },
+    {
+      "body": "mars",
+      "theme": "initiative, desire, and the use of effort"
+    },
+    {
+      "body": "jupiter",
+      "theme": "growth, confidence, and possibility"
+    },
+    {
+      "body": "saturn",
+      "theme": "limits, responsibility, and patient work"
+    },
+    {
+      "body": "uranus",
+      "theme": "freedom and changes to established patterns"
+    },
+    {
+      "body": "neptune",
+      "theme": "imagination, ideals, and uncertainty"
+    },
+    {
+      "body": "pluto",
+      "theme": "power, endings, and deep change"
+    }
+  ],
+  "sign_themes": [
+    {
+      "sign": "aries",
+      "approach": "initiative and directness",
+      "question": "Where would taking a first step clarify things?"
+    },
+    {
+      "sign": "taurus",
+      "approach": "steadiness and tangible needs",
+      "question": "What deserves patient care, and what are you holding too tightly?"
+    },
+    {
+      "sign": "gemini",
+      "approach": "curiosity and conversation",
+      "question": "What changes when you ask a different question?"
+    },
+    {
+      "sign": "cancer",
+      "approach": "care and belonging",
+      "question": "What helps you feel supported enough to respond honestly?"
+    },
+    {
+      "sign": "leo",
+      "approach": "creative expression and visibility",
+      "question": "What would you make or say if you allowed it to matter?"
+    },
+    {
+      "sign": "virgo",
+      "approach": "attention and useful practice",
+      "question": "What small adjustment would improve the whole?"
+    },
+    {
+      "sign": "libra",
+      "approach": "reciprocity and balance",
+      "question": "Whose perspective could help you make a fairer choice?"
+    },
+    {
+      "sign": "scorpio",
+      "approach": "depth and trust",
+      "question": "What needs an honest encounter rather than a quick explanation?"
+    },
+    {
+      "sign": "sagittarius",
+      "approach": "exploration and meaning",
+      "question": "Which assumption would benefit from a wider view?"
+    },
+    {
+      "sign": "capricorn",
+      "approach": "structure and commitment",
+      "question": "What can you sustain, and what responsibility is actually yours?"
+    },
+    {
+      "sign": "aquarius",
+      "approach": "independence and collective possibility",
+      "question": "What pattern could you question with others?"
+    },
+    {
+      "sign": "pisces",
+      "approach": "sensitivity and imagination",
+      "question": "Where could compassion help, and where would a clearer boundary help?"
+    }
+  ],
+  "aspect_themes": [
+    {
+      "kind": "conjunction",
+      "text": "Bring these themes together. Where do they reinforce each other, and where might they become difficult to separate?"
+    },
+    {
+      "kind": "sextile",
+      "text": "Look for an opening between these themes. What small act could help them cooperate?"
+    },
+    {
+      "kind": "square",
+      "text": "Look for friction between these themes. What adjustment would make room for both?"
+    },
+    {
+      "kind": "trine",
+      "text": "Look for ease between these themes. What available strength could you put to deliberate use?"
+    },
+    {
+      "kind": "opposition",
+      "text": "Consider these themes as two ends of a conversation. What does each need from the other?"
+    }
+  ],
+  "placement_template": "Consider {topic} through {approach}. {question}",
+  "aspect_template": "Consider {first} alongside {second}. {lens}",
+  "retrograde": " This body is marked retrograde in the saved chart. As a symbolic lens, revisit an old approach to this theme before pushing ahead.",
+  "rationale": "The saved chart supplies the positions. Each sign occupies a 30-degree part of the zodiac; aspects connect bodies near particular angles, allowing a margin of {orb} degrees in this chart. Cleromancy's symbolic prompts (edition 1) pair a body with a theme, a sign with an approach, and an aspect with a relationship. These are authored invitations to reflect, not predictions or measured effects. This reading concerns the saved moment; it does not infer a birth chart, houses, or a rising sign."
+}

@@ -97,7 +97,19 @@ pub fn reading_layout(detail: &ConsultationDetail) -> ReadingLayout {
     };
     ReadingLayout {
         name,
-        positions: names.iter().map(|name| built_in_position(name)).collect(),
+        positions: names
+            .iter()
+            .map(|name| {
+                built_in_position(
+                    name,
+                    detail
+                        .field
+                        .position_meanings
+                        .as_ref()
+                        .unwrap_or(crate::content::position_pack()),
+                )
+            })
+            .collect(),
     }
 }
 
@@ -149,7 +161,16 @@ pub fn position_meaning(detail: &ConsultationDetail, name: &str) -> PositionMean
         .positions
         .into_iter()
         .find(|position| position.name == name)
-        .unwrap_or_else(|| built_in_position(name))
+        .unwrap_or_else(|| {
+            built_in_position(
+                name,
+                detail
+                    .field
+                    .position_meanings
+                    .as_ref()
+                    .unwrap_or(crate::content::position_pack()),
+            )
+        })
 }
 
 /// Starting points for a reflection, taken from the reading itself: the
@@ -242,31 +263,12 @@ fn authored_position(template: &SpreadTemplate, name: &str) -> PositionMeaning {
     }
 }
 
-fn built_in_position(name: &str) -> PositionMeaning {
-    let built_in = match name {
-        "foundation" => Some((
-            "Foundation",
-            "The ground you are starting from: what supports the situation, or what you are taking for granted.",
-        )),
-        "tension" => Some((
-            "Tension",
-            "Read against the foundation: what complicates it, challenges it, or asks for a different response.",
-        )),
-        "next_step" => Some((
-            "Next step",
-            "A possible response to that tension: something to try or attend to, rather than a promised outcome.",
-        )),
-        "focus" => Some((
-            "Focus",
-            "A single lens on your question. Notice what fits your experience and what does not.",
-        )),
-        _ => None,
-    };
-    match built_in {
-        Some((label, meaning)) => PositionMeaning {
+fn built_in_position(name: &str, pack: &crate::content::PositionPack) -> PositionMeaning {
+    match pack.positions.iter().find(|position| position.name == name) {
+        Some(position) => PositionMeaning {
             name: name.to_string(),
-            label: label.to_string(),
-            meaning: meaning.to_string(),
+            label: position.label.clone(),
+            meaning: position.meaning.clone(),
             source: MeaningSource::BuiltIn,
         },
         None => PositionMeaning {
@@ -310,7 +312,9 @@ impl Deck {
         } else {
             ("possibilities", "possibility")
         };
-        let name = if field.system == RWS_MAJOR_ARCANA_ID {
+        let name = if let Some(deck) = &field.tarot {
+            deck.title.clone()
+        } else if field.system == RWS_MAJOR_ARCANA_ID {
             RWS_MAJOR_ARCANA_TITLE.to_string()
         } else {
             field.system.clone()

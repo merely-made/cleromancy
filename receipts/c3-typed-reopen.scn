@@ -1,0 +1,27 @@
+# New process, same resident graph and saved deck snapshots.
+wait
+advance
+wait
+assert snap fields == 2
+assert snap readings == 1
+assert snap reflections == 1
+assert text number: 8
+assert text What can I meet patiently?
+reveal key typed-card typed-card
+settle 2
+capture reopened-typed-card
+reveal key crosswalk crosswalk:cleromancy.tarot/marseille-complete-reflective-v1
+settle 2
+assert visible key crosswalk crosswalk:cleromancy.tarot/marseille-complete-reflective-v1
+c3-crosswalk
+settle 2
+assert text number: 11
+reveal key typed-card typed-card
+settle 2
+capture reopened-crosswalk
+reveal key crosswalk return-drawn-card
+settle 2
+assert visible key crosswalk return-drawn-card
+c3-return
+settle 2
+assert text number: 8

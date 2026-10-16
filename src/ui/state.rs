@@ -69,6 +69,8 @@ impl ConsultationStatus {
 
 #[derive(Clone, Debug, PartialEq)]
 pub struct ConsultationUi {
+    /// Inspection of another deck never changes the saved reading.
+    pub(crate) card_preview: Option<(String, String)>,
     pub(super) catalog: ConsultationCatalog,
     pub(super) context_select: SelectState,
     pub(super) context_label: TextInput,
@@ -118,6 +120,7 @@ pub struct ConsultationUi {
 impl ConsultationUi {
     pub fn new(catalog: ConsultationCatalog) -> Self {
         Self {
+            card_preview: None,
             catalog,
             context_select: SelectState::new(0).with_label("Context"),
             context_label: TextInput::default(),
@@ -442,6 +445,15 @@ impl ConsultationUi {
         Some(action)
     }
 
+    pub(super) fn request_typed_decks(&mut self) -> Option<ConsultationAction> {
+        if self.status.is_busy() {
+            return None;
+        }
+        self.error = None;
+        self.status = ConsultationStatus::SavingSetup;
+        Some(ConsultationAction::InstallTarotDecks)
+    }
+
     pub(super) fn request_spread_template(&mut self) -> Option<ConsultationAction> {
         if self.template_label.text().trim().is_empty()
             || self.template_positions.text().trim().is_empty()
@@ -572,6 +584,7 @@ impl ConsultationUi {
     }
 
     fn adopt_detail(&mut self, catalog: ConsultationCatalog, detail: ConsultationDetail) {
+        self.card_preview = None;
         // Refresh the display clock after a draw; the startup clock precedes
         // new readings and would incorrectly label them "in the future".
         self.journal.now_ms = std::time::SystemTime::now()

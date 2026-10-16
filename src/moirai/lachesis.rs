@@ -73,6 +73,7 @@ fn qualify_uniform(field: &Field) -> Result<QualifiedField, ReadingError> {
 }
 
 fn validate_candidates(field: &Field, require_unit_weight: bool) -> Result<(), ReadingError> {
+    field.validate_metadata()?;
     if field.candidates.is_empty() {
         return Err(ReadingError::EmptyField);
     }

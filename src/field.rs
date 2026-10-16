@@ -56,6 +56,11 @@ pub struct Field {
     pub system: String,
     pub rules: String,
     pub candidates: Vec<Candidate>,
+    /// Complete typed content used by this field. Absent on historical fields.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub tarot: Option<crate::cards::TarotDeck>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub position_meanings: Option<crate::content::PositionPack>,
 }
 
 impl Field {
@@ -68,10 +73,40 @@ impl Field {
             system: system.into(),
             rules: rules.into(),
             candidates: candidates.into_iter().collect(),
+            tarot: None,
+            position_meanings: None,
         }
     }
 
     pub fn digest(&self) -> String {
         canonical_digest(self)
+    }
+
+    pub fn validate_metadata(&self) -> Result<(), crate::ReadingError> {
+        if let Some(pack) = &self.position_meanings {
+            if !pack.validate() {
+                return Err(crate::ReadingError::InvalidDeck("position meanings".into()));
+            }
+        }
+        if let Some(deck) = &self.tarot {
+            deck.validate()?;
+            if self.system != deck.id
+                || self.candidates.len() != deck.cards.len()
+                || self
+                    .candidates
+                    .iter()
+                    .zip(&deck.cards)
+                    .any(|(candidate, card)| {
+                        candidate.id != card.id
+                            || candidate.title != card.title
+                            || candidate.interpretation != card.interpretation.text
+                            || candidate.tags != card.tags
+                            || candidate.base_weight != 1
+                    })
+            {
+                return Err(crate::ReadingError::InvalidDeck(deck.id.clone()));
+            }
+        }
+        Ok(())
     }
 }
