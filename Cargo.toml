@@ -27,12 +27,9 @@ sky-timeline = ["dep:turquet-timeline"]
 personal-sync = ["graphshell/personal-sync", "dep:uuid"]
 graphshell-admission = ["graphshell-host/native"]
 
-# The frozen C1 family is pinned to Mere `8b08c98b23f1ed074f5d88f26f1d2620cda4491a`
-# and the exact Genet commit `ae3d9f5d9721fc6b0d5faa58bb6798ee63307be1` that
-# it consumes. Cargo keys a git source by URL plus reference, so a branch
-# reference beside these commits would resolve a second source family and
-# split shared types in consumers such as Isometry. Update these pins together
-# when the platform integration moves.
+# Family repositories share a canonical Git URL and branch = "main".
+# Cargo.lock records the exact tested revisions; intake updates the lock.
+# The original C1/C2 qualification retains its frozen supplier identities.
 [dependencies]
 djinn = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false }
 mere-overmap = { git = "https://github.com/merely-made/mere.git", branch = "main" }

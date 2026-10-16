@@ -27,6 +27,21 @@ fn signed_personal_replicas_rematerialize_a_replayable_reading() {
         let batch = export_sync_batch(&source, selection).unwrap();
         assert_eq!((batch.contexts, batch.fields, batch.readings), (1, 1, 1));
 
+        // Older signed batches omit assertion basis. The new optional field
+        // must neither invent evidence nor change this wire representation.
+        let mut relations = 0;
+        for event in &batch.events {
+            if let PersonalGraphEvent::AssertRelation { basis, .. } = event {
+                relations += 1;
+                assert!(basis.is_none());
+                let wire = serde_json::to_value(event).unwrap();
+                assert!(wire.get("basis").is_none());
+                let decoded: PersonalGraphEvent = serde_json::from_value(wire).unwrap();
+                assert_eq!(decoded, *event);
+            }
+        }
+        assert_eq!(relations, 2);
+
         let alice_identity = InMemoryProvider::from_seed([0x11; 32]);
         let bob_identity = InMemoryProvider::from_seed([0x22; 32]);
         let alice_subject = alice_identity.master_public_key().to_bytes();
