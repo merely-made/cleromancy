@@ -39,10 +39,29 @@ fn signed_sync_preserves_generated_prompts_only_with_reflection_consent_and_refu
         let formula = GeneratedInference::formula(source.inference_inputs(&session.id).unwrap());
         source.insert_generated_inference(&formula).unwrap();
         source.keep_generated_inference(&formula.digest()).unwrap();
+        let source_key = source
+            .graph()
+            .get_node_by_url(&format!("cleromancy://inference/{}", formula.digest()))
+            .unwrap()
+            .0;
+        assert!(
+            source.graph().shown_resource_id(source_key).is_some(),
+            "exercise a resource-bound resident-style record"
+        );
+        assert!(
+            !source
+                .graph()
+                .get_node(source_key)
+                .unwrap()
+                .tags
+                .contains("kept"),
+            "the legacy field is not the resource-tag projection"
+        );
         let selection = CleromancySyncSelection::ContextsReadingsAndReflections;
         let batch = export_sync_batch(&source, selection).unwrap();
         assert_eq!(batch.schema, "cleromancy.sync-batch/v8");
         assert_eq!(batch.inferences, 1);
+        assert!(batch.events.iter().any(|event| matches!(event, graphshell::personal_sync::PersonalGraphEvent::AddTag { node, tag } if *node == source.graph().get_node(source_key).unwrap().id && tag == "kept")));
         assert_eq!(
             export_sync_batch(&source, CleromancySyncSelection::Contexts)
                 .unwrap()
@@ -91,6 +110,16 @@ fn signed_sync_preserves_generated_prompts_only_with_reflection_consent_and_refu
                 .unwrap()
                 .inferences,
             1
+        );
+        let target_key = target
+            .graph()
+            .get_node_by_url(&format!("cleromancy://inference/{}", formula.digest()))
+            .unwrap()
+            .0;
+        assert_eq!(
+            alembic::memory_levels::level_of(target.graph(), target_key),
+            alembic::memory_levels::MemoryLevel::LongTerm,
+            "selected sync retains the explicit Keep action"
         );
         let restored = target
             .inferences_for_session(&session.id)

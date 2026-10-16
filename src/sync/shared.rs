@@ -6,7 +6,7 @@
 use std::collections::BTreeSet;
 
 use graphshell::personal_sync::PersonalGraphEvent;
-use mere::kernel::graph::Graph;
+use mere::kernel::graph::{Graph, NodeKey};
 use serde::Serialize;
 use serde_json::Value;
 use uuid::Uuid;
@@ -25,15 +25,21 @@ pub(super) struct SelectedNode {
 }
 
 pub(super) fn selected_node(
-    node: &mere::kernel::graph::Node,
+    graph: &Graph,
+    key: NodeKey,
     facet: &'static str,
     value: Value,
 ) -> SelectedNode {
+    let node = graph.get_node(key).expect("enumerated source node");
     SelectedNode {
         id: node.id,
         address: node.url().to_string(),
         title: node.title.clone(),
-        tags: node.tags.iter().cloned().collect(),
+        tags: graph
+            .node_content_tags(key)
+            .unwrap_or_default()
+            .into_iter()
+            .collect(),
         facet,
         value,
     }
@@ -94,7 +100,9 @@ pub(super) fn batch_digest(
     blake3::hash(&bytes).to_hex().to_string()
 }
 
-pub(super) fn generic_semantic_kind(kind: SpreadRelationKind) -> mere::kernel::graph::SemanticSubKind {
+pub(super) fn generic_semantic_kind(
+    kind: SpreadRelationKind,
+) -> mere::kernel::graph::SemanticSubKind {
     match kind {
         SpreadRelationKind::Supports => mere::kernel::graph::SemanticSubKind::Supports,
         SpreadRelationKind::Contradicts => mere::kernel::graph::SemanticSubKind::Contradicts,

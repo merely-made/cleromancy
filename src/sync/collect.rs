@@ -107,7 +107,10 @@ pub(super) fn collect_selected<B: Backend>(
                 if !host.generated_inferences()?.contains(&record) {
                     return Err(invalid(node.id, "unverified generated inference"));
                 }
-                inferences.push((record, selected_node(node, INFERENCE_FACET, value.clone())));
+                inferences.push((
+                    record,
+                    selected_node(host.graph(), key, INFERENCE_FACET, value.clone()),
+                ));
             } else if selection.includes_sessions()
                 && let Some(value) = situation
             {
@@ -122,7 +125,10 @@ pub(super) fn collect_selected<B: Backend>(
                     node.url(),
                     &format!("cleromancy://situation/{}", record.digest()),
                 )?;
-                situations.push((record, selected_node(node, SITUATION_FACET, value.clone())));
+                situations.push((
+                    record,
+                    selected_node(host.graph(), key, SITUATION_FACET, value.clone()),
+                ));
             } else if let Some(value) = context {
                 let context: ContextSnapshot = serde_json::from_value(value.clone())
                     .map_err(|e| invalid(node.id, format!("context facet does not decode: {e}")))?;
@@ -132,7 +138,10 @@ pub(super) fn collect_selected<B: Backend>(
                     node.url(),
                     &format!("cleromancy://context/{digest}"),
                 )?;
-                contexts.push((digest, selected_node(node, CONTEXT_FACET, value.clone())));
+                contexts.push((
+                    digest,
+                    selected_node(host.graph(), key, CONTEXT_FACET, value.clone()),
+                ));
             } else if selection.includes_readings()
                 && let Some(value) = field
             {
@@ -140,7 +149,10 @@ pub(super) fn collect_selected<B: Backend>(
                     .map_err(|e| invalid(node.id, format!("field facet does not decode: {e}")))?;
                 let digest = field.digest();
                 validate_identity(node.id, node.url(), &format!("cleromancy://field/{digest}"))?;
-                fields.push((digest, selected_node(node, FIELD_FACET, value.clone())));
+                fields.push((
+                    digest,
+                    selected_node(host.graph(), key, FIELD_FACET, value.clone()),
+                ));
             } else if selection.includes_readings()
                 && let Some(value) = reading
             {
@@ -151,7 +163,10 @@ pub(super) fn collect_selected<B: Backend>(
                     node.url(),
                     &format!("cleromancy://reading/{}", reading.id),
                 )?;
-                readings.push((reading, selected_node(node, READING_FACET, value.clone())));
+                readings.push((
+                    reading,
+                    selected_node(host.graph(), key, READING_FACET, value.clone()),
+                ));
             } else if selection.includes_sessions()
                 && let Some(value) = session
             {
@@ -165,7 +180,10 @@ pub(super) fn collect_selected<B: Backend>(
                     node.url(),
                     &format!("cleromancy://session/{}", session.id),
                 )?;
-                sessions.push((session, selected_node(node, SESSION_FACET, value.clone())));
+                sessions.push((
+                    session,
+                    selected_node(host.graph(), key, SESSION_FACET, value.clone()),
+                ));
             } else if selection.includes_sessions()
                 && let Some(value) = spread
             {
@@ -181,7 +199,7 @@ pub(super) fn collect_selected<B: Backend>(
                 )?;
                 spreads.push((
                     spread,
-                    selected_node(node, THREE_CARD_SPREAD_FACET, value.clone()),
+                    selected_node(host.graph(), key, THREE_CARD_SPREAD_FACET, value.clone()),
                 ));
             } else if selection.includes_sessions()
                 && let Some(value) = spread_template
@@ -203,7 +221,7 @@ pub(super) fn collect_selected<B: Backend>(
                 )?;
                 spread_templates.push((
                     template,
-                    selected_node(node, SPREAD_TEMPLATE_FACET, value.clone()),
+                    selected_node(host.graph(), key, SPREAD_TEMPLATE_FACET, value.clone()),
                 ));
             } else if selection.includes_sessions()
                 && let Some(value) = authored_spread
@@ -222,7 +240,10 @@ pub(super) fn collect_selected<B: Backend>(
                     node.url(),
                     &format!("cleromancy://spread/{}", spread.id),
                 )?;
-                authored_spreads.push((spread, selected_node(node, SPREAD_FACET, value.clone())));
+                authored_spreads.push((
+                    spread,
+                    selected_node(host.graph(), key, SPREAD_FACET, value.clone()),
+                ));
             } else if selection.includes_astrology()
                 && let Some(value) = chart
             {
@@ -240,7 +261,7 @@ pub(super) fn collect_selected<B: Backend>(
                 )?;
                 charts.push((
                     chart,
-                    selected_node(node, ASTROLOGY_CHART_FACET, value.clone()),
+                    selected_node(host.graph(), key, ASTROLOGY_CHART_FACET, value.clone()),
                 ));
             } else if selection.includes_astrology()
                 && let Some(value) = facts_value
@@ -255,7 +276,7 @@ pub(super) fn collect_selected<B: Backend>(
                 )?;
                 facts.push((
                     astrology_facts,
-                    selected_node(node, ASTROLOGY_FACTS_FACET, value.clone()),
+                    selected_node(host.graph(), key, ASTROLOGY_FACTS_FACET, value.clone()),
                 ));
             } else if selection.includes_concurrences()
                 && let Some(value) = concurrence
@@ -274,7 +295,7 @@ pub(super) fn collect_selected<B: Backend>(
                 )?;
                 concurrences.push((
                     concurrence,
-                    selected_node(node, CONCURRENCE_FACET, value.clone()),
+                    selected_node(host.graph(), key, CONCURRENCE_FACET, value.clone()),
                 ));
             } else if selection.includes_reflections()
                 && let Some(value) = reflection
@@ -293,7 +314,7 @@ pub(super) fn collect_selected<B: Backend>(
                 )?;
                 reflections.push((
                     reflection,
-                    selected_node(node, REFLECTION_FACET, value.clone()),
+                    selected_node(host.graph(), key, REFLECTION_FACET, value.clone()),
                 ));
             }
         }
