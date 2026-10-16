@@ -16,3 +16,12 @@ capture stored-formula-reopened
 reveal class model-inference
 settle 2
 capture stored-model-reopened
+
+resize 420 760
+wait
+reveal class formula-inference
+settle 2
+capture compact-formula-reopened
+reveal class model-inference
+settle 2
+capture compact-model-reopened
