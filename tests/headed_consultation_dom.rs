@@ -273,7 +273,7 @@ fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
     ))
     .unwrap();
     assert_eq!(detail.readings.len(), 3);
-    let expected_title = detail.readings[0].title.clone();
+    let expected_title = detail.readings[0].display_title();
     let expected_prompt = detail.readings[0].interpretation.clone();
     let expected_tension = detail.readings[1].interpretation.clone();
     let unchanged_session = detail.session.clone();
