@@ -348,8 +348,10 @@ impl ScenarioDriver<'_, '_> {
                 submit_pending(self.ctx.runner, self.state.worker.as_ref());
                 Ok(())
             },
-            "c3-crosswalk" | "c3-return" => {
-                let key = if line == "c3-crosswalk" {
+            "c3-install" | "c3-crosswalk" | "c3-return" => {
+                let key = if line == "c3-install" {
+                    "install-typed-decks"
+                } else if line == "c3-crosswalk" {
                     "crosswalk:cleromancy.tarot/marseille-complete-reflective-v1"
                 } else {
                     "return-drawn-card"
@@ -372,6 +374,9 @@ impl ScenarioDriver<'_, '_> {
                 self.ctx
                     .runner
                     .dispatch_click(node, cambium::PointerClick::at((width / 2.0, height / 2.0)));
+                if line == "c3-install" {
+                    submit_pending(self.ctx.runner, self.state.worker.as_ref());
+                }
                 Ok(())
             },
             "c2-author-layout" => {

@@ -1,5 +1,11 @@
 # C3 complete decks and non-writing cross-deck inspection.
 wait
+assert snap fields == 1
+reveal key install-decks install-typed-decks
+settle 2
+assert visible key install-decks install-typed-decks
+c3-install
+wait
 assert snap fields == 2
 c3-read
 wait
