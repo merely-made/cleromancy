@@ -1,0 +1,31 @@
+# Read-only relation-family inspection after the retained candidate is saved.
+wait
+advance
+wait
+c4-reveal open-neighborhood
+settle 2
+c4-click open-neighborhood
+wait
+assert snap ambient-families == 4
+assert snap ambient-memory == 2
+assert snap ambient-kept == 2
+c4-reveal ambient-lens:Correspondence
+settle 2
+c4-key ambient-lens:Correspondence
+assert snap ambient-families == 3
+reveal class ambient-canvas-holder
+settle 2
+capture three-families
+c4-reveal ambient-lens:Situation
+settle 2
+c4-key ambient-lens:Situation
+c4-reveal ambient-lens:Spread
+settle 2
+c4-key ambient-lens:Spread
+assert snap ambient-families == 1
+reveal class ambient-canvas-holder
+settle 2
+capture history-lens
+assert snap ambient-memory == 2
+assert snap ambient-kept == 2
+assert snap ambient-error == false
