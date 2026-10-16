@@ -1,0 +1,20 @@
+# The ordinary native first-step draw uses the production OsEntropy provider.
+wait
+assert snap product-busy == false
+advance
+wait
+assert snap product-busy == false
+assert snap shuffled == true
+assert snap unique-cards == 3
+advance
+wait
+assert snap product-busy == false
+assert snap reflections == 1
+assert text operating system
+assert text cannot repeat
+reveal class reading-spread-cards
+settle 2
+capture os-spread
+reveal class reading-narrative
+settle 2
+capture os-narrative
