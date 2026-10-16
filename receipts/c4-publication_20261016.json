@@ -1,0 +1,46 @@
+{
+  "schema": "cleromancy.c4-publication/v1",
+  "date": "2026-10-16",
+  "authorization": "Mark: Push, proceed",
+  "status": "Coordinated C4 source and receiving commits published; remote identities and independent object retrieval verified",
+  "published": {
+    "cleromancy_main": "29d4f3b34b0c5abdb7e72b647fd22a8381c365b8",
+    "mere_main": "9b6da81db661ebbb36377f5123010e18c9199820",
+    "native_product": "d6ea9f700cf712de364cf9cb61e74f26d12cd64a",
+    "native_supplier": "72f9c5c73ab9ddd8ba761524388c2406a6d6ffcf"
+  },
+  "fresh_remote_fetches": [
+    {
+      "repository": "mere",
+      "requested": "b35819edc7c338284a32a36198b1a54a81c48678",
+      "received": "b35819edc7c338284a32a36198b1a54a81c48678",
+      "exit": 0,
+      "log_sha256": "ff52dde8c4eced1073aea38f500bdda29b6360acfcc5bfaf098e98f44aaacdf7"
+    },
+    {
+      "repository": "mere",
+      "requested": "72f9c5c73ab9ddd8ba761524388c2406a6d6ffcf",
+      "received": "72f9c5c73ab9ddd8ba761524388c2406a6d6ffcf",
+      "exit": 0,
+      "log_sha256": "4656d8151b1b563b0ba69e64ae84ee66c2dafe4ded6458c4dd74a109dfb46b2c"
+    },
+    {
+      "repository": "cleromancy",
+      "requested": "c1ff50c0ff6ef824a947ccbd5e223c8fd1d691b2",
+      "received": "c1ff50c0ff6ef824a947ccbd5e223c8fd1d691b2",
+      "exit": 0,
+      "log_sha256": "758d1588941d605d4a9d509c44ed6d2588e8d1d3284d46c6fcf0497096d75e51"
+    },
+    {
+      "repository": "cleromancy",
+      "requested": "d6ea9f700cf712de364cf9cb61e74f26d12cd64a",
+      "received": "d6ea9f700cf712de364cf9cb61e74f26d12cd64a",
+      "exit": 0,
+      "log_sha256": "0123f50100c6dd3b9b1a187abf3c6d9da0b8fd99141bbaa7877f13876806ec2b"
+    }
+  ],
+  "verification": "New bare repositories without shared Cargo/Git alternates fetched each exact checkpoint directly from GitHub with depth=1 and blob filtering. All requested and received commit IDs match. git ls-remote independently confirms both main heads and checkpoint refs.",
+  "frozen_receipts": "C4 software/native/receiving qualification ledgers retain their pre-publication wording and exact identities. This additive publication record supersedes only their pending-publication status.",
+  "native_scope": "Eleven reviewed originals and exact sealed data/view/memory reopen retain frozen product/supplier source; no native rerun inferred from publication.",
+  "next_phase": "C5 shuffled deck is authorized to proceed; existing derived selection bytes and historical receipts remain compatibility gates."
+}
