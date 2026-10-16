@@ -42,5 +42,6 @@ C3 continuation (2026-10-16): the new
 C1/MSRV receipt above. Complete typed deck and position-definition snapshots
 are validated as part of each field; old fields omit the new optional members
 and retain their exact encoding. A newly built owner consumes this codec; an
-older resident correctly refuses unfamiliar metadata before write. C3 native
-qualification and standalone-daemon receiving intake remain pending.
+older resident correctly refuses unfamiliar metadata before write. The [C3 native receipt](../receipts/c3-native-qualification_20261016.json)
+now records bounded create/reopen qualification on the matching product codec.
+Standalone-daemon receiving intake remains separate.

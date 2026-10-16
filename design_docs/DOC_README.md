@@ -235,12 +235,14 @@ canonical source per repository, 92 default and 130 historical tests, core
 qualification retains its source/capture scope; Mere's lift plan records the
 bounded P4 endpoint consumer proof.
 
-C3 software-qualified locally (2026-10-16): the divination plan and
+C3 software and bounded native qualification (2026-10-16): the divination plan and
 [software receipt](../receipts/c3-software-qualification_20261016.json) record
 two complete 78-card text decks, typed identity independent of printed number,
 cited Golden Dawn/Thierens overlays, non-writing crosswalk inspection and saved
 content revisions. Gates pass at 100 default, 139 historical and core 24/25/26.
 Existing fields and all prior receipts retain their identities. Fixed minor
-prompts disclose model-assisted editorial provenance. Native create/reopen,
-publication and the standalone-daemon validator intake remain pending; C4/C5
-and shared-wall acceptance are separate.
+prompts disclose model-assisted editorial provenance. The
+[native receipt](../receipts/c3-native-qualification_20261016.json) records
+107 creation and 55 reopening frames, eight reviewed originals, exact IDs and
+byte-equal card payload. Publication and standalone-daemon validator intake
+remain separate; C4/C5 and shared-wall acceptance are separate.
