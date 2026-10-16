@@ -51,8 +51,12 @@ pub(crate) fn resident_reader_view(ui: &ConsultationUi) -> ConsultationView {
             el::<_, ConsultationUi, ()>("p", error.to_string()).attr("role", "alert"),
         ));
     }
-    children.push(reading_region(ui));
-    children.push(trail_region(ui));
+    if ui.ambient.context.is_some() {
+        children.push(reading::ambient_reader(ui));
+    } else {
+        children.push(reading_region(ui));
+        children.push(trail_region(ui));
+    }
     Box::new(
         el::<_, ConsultationUi, ()>("div", children)
             .attr("class", "cleromancy-consultation cleromancy-mere-reading"),
@@ -101,6 +105,9 @@ pub fn consultation_view(ui: &ConsultationUi) -> ConsultationView {
 
     let screen = ui.screen();
     let regions = match screen {
+        ConsultationScreen::Today if ui.ambient.context.is_some() => {
+            vec![reading::ambient_reader(ui)]
+        },
         ConsultationScreen::Today => vec![
             consultation_region(ui),
             Box::new(
@@ -138,7 +145,7 @@ pub fn consultation_view(ui: &ConsultationUi) -> ConsultationView {
                     el::<_, ConsultationUi, ()>("main", regions)
                         .attr(
                             "class",
-                            if screen == ConsultationScreen::Today {
+                            if screen == ConsultationScreen::Today && ui.ambient.context.is_none() {
                                 "cleromancy-regions consultation-columns"
                             } else {
                                 "cleromancy-regions"

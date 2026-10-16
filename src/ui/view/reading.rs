@@ -287,3 +287,40 @@ fn workings_state(ui: &mut ConsultationUi) -> &mut cambium::DisclosureState {
 fn never_disclosure_action(_: &mut cambium::DisclosureState, _: ()) {
     unreachable!("disclosures do not bubble unit actions")
 }
+
+/// Focused neighborhood workspace: keep the question and exact current card
+/// narration alongside the scene while authoring and deck-reference surfaces
+/// remain available through Close. The animated tree stays bounded.
+pub(super) fn ambient_reader(ui: &ConsultationUi) -> ConsultationView {
+    let detail = ui
+        .detail
+        .as_ref()
+        .expect("an active neighborhood has a reading");
+    let position = ui.focused_position(detail);
+    let narrative = narrate(detail);
+    let mut children: Vec<ConsultationView> = vec![context_with_reading(ui, detail)];
+    if let Some(card) = narrative.cards.iter().find(|c| c.position.name == position) {
+        children.push(Box::new(el::<_, ConsultationUi, ()>(
+            "h2",
+            format!(
+                "{} · {} · card {} of {}",
+                card.position.label, card.title, card.ordinal, card.count
+            ),
+        )));
+        children.push(Box::new(
+            el::<_, ConsultationUi, ()>("p", card.position.meaning.clone())
+                .attr("data-key", "focused-position-meaning"),
+        ));
+        children.push(Box::new(
+            el::<_, ConsultationUi, ()>("p", card.text.clone())
+                .attr("data-key", "focused-card-narration"),
+        ));
+    }
+    children.push(super::ambient::neighborhood(ui));
+    Box::new(
+        el::<_, ConsultationUi, ()>("section", children)
+            .attr("class", "ambient-reader")
+            .attr("role", "region")
+            .attr("aria-label", "Reading and card neighborhood"),
+    )
+}
