@@ -365,7 +365,7 @@ fn retained_consultation_dispatches_a_complete_reading_and_reflection() {
     assert!(has_text_in_id(
         &h,
         "cleromancy-workings-panel",
-        "One complete deck, cards taken from the top without replacement."
+        "Fisher–Yates with a versioned BLAKE3 stream: cleromancy.shuffle/blake3-fisher-yates-u64-rejection/v1. One complete deck, cards taken from the top without replacement."
     ));
     assert!(!has_text_in_id(
         &h,
