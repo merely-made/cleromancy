@@ -1,0 +1,2 @@
+# Preserve raw tool/PTY bytes, including original CRLF and trailing spaces.
+*.log -text -diff -whitespace

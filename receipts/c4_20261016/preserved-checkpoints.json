@@ -1,0 +1,218 @@
+{
+  "external_evidence": "/Users/markik/Code/testing/cleromancy/c4-20261016",
+  "historical_runs": [
+    {
+      "directory": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-first-01",
+      "reason": "Full reading authoring tree prevented timely captures; superseded by focused ambient workspace.",
+      "process": {
+        "phase": "reopen",
+        "exit": -15,
+        "timeout": true,
+        "prompts": 1,
+        "elapsed_seconds": 180.09,
+        "binary_sha256": "e674496989f546df9cfe251831019df5f51ca4e9660fedcdb8c75d79cd5a1b51",
+        "scenario_sha256": "35837ce3f19eac9244f5399523516677e838d39106737da93dd4b10c8ad6e502",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "original_captures": [],
+      "receipt_sha256": null,
+      "accepted_for_current_source": false
+    },
+    {
+      "directory": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-first-02",
+      "reason": "Full-tree relayout remained too slow; one checkpoint capture only.",
+      "process": {
+        "phase": "reopen",
+        "exit": -15,
+        "timeout": true,
+        "prompts": 1,
+        "elapsed_seconds": 180.21,
+        "binary_sha256": "35d2f930802a7db552c77999c59892968567ef6102175ead762e69668e5a18c2",
+        "scenario_sha256": "35837ce3f19eac9244f5399523516677e838d39106737da93dd4b10c8ad6e502",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "original_captures": [
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-first-02/moving-constellation.png",
+          "sha256": "1954024584448ff0754112225bb924a4ede0ed755adb1c5020f73622afe0eb89"
+        }
+      ],
+      "receipt_sha256": null,
+      "accepted_for_current_source": false
+    },
+    {
+      "directory": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-first-03",
+      "reason": "Historical successful legacy-grid checkpoint; compact layout review prompted the new opt-in shared ordered grid.",
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 149.41,
+        "binary_sha256": "89bb505e7a1c1dc7ee0fa4160e94df18ccf88e3363de1ae538207070a2500470",
+        "scenario_sha256": "35837ce3f19eac9244f5399523516677e838d39106737da93dd4b10c8ad6e502",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "original_captures": [
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-first-03/compact-curation.png",
+          "sha256": "782fe9c7f49390c29a0ae82d51f4807ce35415e6210bc7d53e6a99401abe4818"
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-first-03/compact-grid.png",
+          "sha256": "b413fd184302ebaab0e04c513f46a461a1900273d38fd0e2d010da40b8020b11"
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-first-03/examined-history.png",
+          "sha256": "6db0eb2ed3d6d9c97758ef7581232b2bd0f4bbdbd9bd5e875ee26e44d2800a85"
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-first-03/living-constellation.png",
+          "sha256": "06dc44f753302913f9c9265dc7240fb25f6294cb2d39c5c3d757959fec56c682"
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-first-03/moving-constellation.png",
+          "sha256": "7be0150e8afd99b2d3c2a78bb92b1e1dc45f3535d8f311419766ee1523b56c97"
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-first-03/still-grid.png",
+          "sha256": "683f84bdf00d755059aa7574ef64217af798dae69467c1707463f666c05c6ac2"
+        }
+      ],
+      "receipt_sha256": "296212335596cd1bf602c6fe82479448fbae5b4590f4b5f2e4814a26100cd5f5",
+      "accepted_for_current_source": false
+    },
+    {
+      "directory": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-reopen-01",
+      "reason": "Reopen action raced an unsolicited selection/status update; regression and busy-state fix precede final source.",
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 26.42,
+        "binary_sha256": "89bb505e7a1c1dc7ee0fa4160e94df18ccf88e3363de1ae538207070a2500470",
+        "scenario_sha256": "65de7107826145d25c39c9512d20a56b398ee40984c76e32fc96da9c09430d3d",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "original_captures": [
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-reopen-01/reopened-grid.png",
+          "sha256": "8db7ef8e44eb060b1894223e9c743c7049a2a04b17c8240ecb5ea9f3bd5299ca"
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-reopen-01/reopened-saved-history.png",
+          "sha256": "4f59cf3ca4c785d2c3b58e8e728bf56096e9376a2f89b8cdcc8d6752ce3528c8"
+        }
+      ],
+      "receipt_sha256": "9699976b831ebd5cffcc68a465e9d16763b4165f2e80742379f622ead24fc14f",
+      "accepted_for_current_source": false
+    },
+    {
+      "directory": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-reopen-02",
+      "reason": "Successful earlier source checkpoint; retains legacy grid identity.",
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 87.37,
+        "binary_sha256": "65dd3db309549153c54741c242d7fd314dd6c2f5ae378123359bca4727ef8150",
+        "scenario_sha256": "65de7107826145d25c39c9512d20a56b398ee40984c76e32fc96da9c09430d3d",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "original_captures": [
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-reopen-02/reopened-grid.png",
+          "sha256": "683f84bdf00d755059aa7574ef64217af798dae69467c1707463f666c05c6ac2"
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-reopen-02/reopened-saved-history.png",
+          "sha256": "2ee570913d71ab9c67d8fda515a3aac5ce9dccc4fa7e3a87b12bf6bc80194580"
+        }
+      ],
+      "receipt_sha256": "7ea9b3e389b306a302cd0af83985537f63a86d1e76b33d607b14a0e366768661",
+      "accepted_for_current_source": false
+    },
+    {
+      "directory": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-retained-01",
+      "reason": "Successful earlier retained legacy-grid checkpoint; not relabeled as ordered-grid source.",
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 238.08,
+        "binary_sha256": "65dd3db309549153c54741c242d7fd314dd6c2f5ae378123359bca4727ef8150",
+        "scenario_sha256": "e85b9505e82d31e7336a16c5230066c2868eabd793c6b3adaf73b093bec1608b",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "original_captures": [
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-retained-01/compact-curation.png",
+          "sha256": "0fd864f5f2c2dfb3ea58ed2393a33e47d8a39644f642238e1888b931cf32aa2d"
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-retained-01/compact-grid.png",
+          "sha256": "c1dde948717f8d4ad6fd196d2f0f3167bf125e46f306e950f0986cadf145aadf"
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-retained-01/examined-history.png",
+          "sha256": "7b878aac4eaeb1b84ebeb4eb647ac38be18fda1b2f7a4bfb027c39ae394e12e8"
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-retained-01/living-constellation.png",
+          "sha256": "fd5a5f8ed248d6994f7bc5fb51884ad623300d1b035bcbdeeb6a44ac05387b54"
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-retained-01/moving-constellation.png",
+          "sha256": "a02091a7d28f60e65d7b07538f69f0e7942af88afbbf2b08abf74e421fd57e88"
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-retained-01/reading-with-neighborhood.png",
+          "sha256": "f446d5a6f175f23c3fa81dfe048f2c4a00c7117044e78626fc2692e7e7979a44"
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-retained-01/still-grid.png",
+          "sha256": "a428c06d44f362b99a0507ca2ccd0e606ad4c6a53cb3fb2f9ac74dba0b6f010c"
+        }
+      ],
+      "receipt_sha256": "1e6046b8126a7c30353e2d32148dd09745079efeadd9aa7fbb16a731585fed9e",
+      "accepted_for_current_source": false
+    },
+    {
+      "directory": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-final-reopen-01",
+      "reason": "Receipt reported a still-busy wait after a redundant save; excluded from final completed-ack acceptance.",
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 90.36,
+        "binary_sha256": "65dd3db309549153c54741c242d7fd314dd6c2f5ae378123359bca4727ef8150",
+        "scenario_sha256": "acd900fe5590592871effb5153f217a3d9a8bc055eea103217248fc6744f464c",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "original_captures": [
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-final-reopen-01/reopened-grid.png",
+          "sha256": "fb748700ebd196e85a7413729b7addfec8065c171cb48cf13a4a04da7bce70e1"
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c4-20261016/native-final-reopen-01/reopened-saved-history.png",
+          "sha256": "907ea80c1f57bf248b505a2e3f028d90caed86836b5e6bbebf7549fe8133f64c"
+        }
+      ],
+      "receipt_sha256": "53dc4884d42dae4aa6e8e1a04e72d17d5a2d1b334f3646e1511f881b072cdc32",
+      "accepted_for_current_source": false
+    }
+  ],
+  "other_diagnostics": "Original unbounded frame, bounded resource-read, parallel binary overwrite and fixture/precision failures remain in this external directory; no diagnostic is counted as current acceptance."
+}

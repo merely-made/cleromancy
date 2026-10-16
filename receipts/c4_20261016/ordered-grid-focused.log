@@ -1,0 +1,133 @@
+    Blocking waiting for file lock on package cache
+warning: patch `murm v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `ipc-channel v0.22.0 (https://github.com/merely-made/genet.git?branch=main#e37762d7)` was not used in the crate graph
+warning: patch `p2panda-auth v0.7.1 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)` was not used in the crate graph
+warning: patch `p2panda-stream v0.7.1 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)` was not used in the crate graph
+warning: patch `embedded-graphics v0.8.2 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `embedded-graphics-core v0.4.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `murm v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `outrider v0.3.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `postilion v0.3.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `radio-face v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `radio-hand v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `selvage v0.1.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `seneschal v0.2.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `tulle v0.2.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+    Blocking waiting for file lock on package cache
+   Compiling mere-curation v0.1.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling muniment v0.1.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling sceno v0.0.5 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling command-menu v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling tinct v0.1.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling workbench v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling backstep v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling numen v0.2.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling inker v0.1.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling meristem v0.2.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling illume v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mere-surface-api v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mere-forme v0.2.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling sprigging v0.2.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling tabard v0.0.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling incipit v0.2.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling chartulary v0.2.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling scenograph v0.0.4 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling scenotime v0.0.4 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling armillary v0.1.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling esp v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mere-proofs v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling errand v0.4.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling chirograph v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling seiche v0.0.6 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling scenomise v0.0.5 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling stickleback v0.1.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling document-canvas v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling uxtree v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mere-page-load v0.0.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling graphshell-client v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling knot-file-catalog v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#0020a50e)
+   Compiling mere-kernel v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling eidetic v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling cambium v0.3.3 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling nematic v0.1.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling luggage v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mere-webrtc-carrier v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)
+   Compiling knot-capture v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#0020a50e)
+   Compiling servitor v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling reference-data v0.0.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mora-cmudict v0.0.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling script-rhai v0.0.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling platen v0.0.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling knot-composition v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#0020a50e)
+   Compiling mere-fleece v0.0.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mere-apparatus v0.0.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mere-document-lanes v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling cambium-winit v0.3.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling knot-editor-host v0.1.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling knot-document v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#0020a50e)
+   Compiling cambium-rootstock v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mere-transport v0.0.2 (https://github.com/merely-made/murm.git?branch=main#cba46d85)
+   Compiling pelt-core v0.2.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling cambium-winit-a11y v0.3.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mesquite v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling cambium-genet-winit-host v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mere-alembic v0.0.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mere-cartography v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling tabard-workshop v0.0.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mere-mesh v0.0.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling pandect v0.1.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling pictograph v0.2.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling graphshell-endpoint v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mere-fetch v0.0.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling castellan v0.0.3 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mere v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mere-view v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling mere-overmap v0.1.0 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling cleromancy-core-acceptance v0.1.0 (/Users/markik/Code/repos/cleromancy/core)
+   Compiling graphshell-host v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling distillery v0.0.1 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling knot-editor v0.0.3 (https://github.com/merely-made/knot-editor.git?branch=main#0020a50e)
+   Compiling graphshell v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling djinn v0.0.2 (https://github.com/merely-made/mere.git?branch=main#72f9c5c7)
+   Compiling cleromancy v0.1.0 (/Users/markik/Code/repos/cleromancy)
+warning: linker stderr: ld: __eh_frame section too large (max 16MB) to encode dwarf unwind offsets in compact unwind table, performance of exception handling might be affected
+  |
+  = note: `#[warn(linker_messages)]` on by default
+
+warning: `cleromancy` (bin "cleromancy") generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 01s
+     Running tests/ambient.rs (target/build/debug/deps/ambient-c63165ed7f17a7a8)
+
+running 3 tests
+test source_engines_keep_occurrences_traditions_and_draw_time_evidence_distinct ... ok
+test malformed_or_unattributed_ambient_writes_are_refused_before_mutation ... ok
+test keeping_uses_shared_memory_levels_and_pose_curation_replays_without_sealed_edits ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 9.10s
+
+     Running tests/ambient_dom.rs (target/build/debug/deps/ambient_dom-6f0da87f5e394be4)
+
+running 1 test
+test accessible_neighborhood_separates_focus_examination_keeping_and_curation ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 12.12s
+
+     Running tests/ambient_scene.rs (target/build/debug/deps/ambient_scene-ff2f76c66b1e4621)
+
+running 2 tests
+test both_shared_scenes_and_living_motion_bind_and_filters_only_select_disclosed_relations ... ok
+test shared_projection_and_dynamics_keep_source_occurrences_and_position_pins ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 4.51s
+
+     Running tests/granted_ambient.rs (target/build/debug/deps/granted_ambient-0497d676d3c85d51)
+
+running 1 test
+test neighboring_preview_requires_its_own_live_grant_and_clears_on_revocation ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.52s
+

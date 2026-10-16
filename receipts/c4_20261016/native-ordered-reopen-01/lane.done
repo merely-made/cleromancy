@@ -1,0 +1,10 @@
+RESULT ok
+waited 103 frames
+waited 71 frames
+waited 91 frames
+captured reopened-grid
+captured reopened-saved-history
+capture reopened-grid 2320x1520 digest=1cb6610c5f471c0c file=/Users/markik/Code/testing/cleromancy/c4-20261016/native-ordered-reopen-01/reopened-grid.png
+capture reopened-saved-history 2320x1520 digest=3440cdb93f05b20a file=/Users/markik/Code/testing/cleromancy/c4-20261016/native-ordered-reopen-01/reopened-saved-history.png
+frames: 2 captured, 0 blank, 2 distinct digests
+presentation: 297 frames, 298 redraws, 1 unpresented redraws

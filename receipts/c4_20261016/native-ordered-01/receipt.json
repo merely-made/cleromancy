@@ -1,0 +1,33 @@
+{
+  "schema": "cleromancy.headed-scenario/v1",
+  "phase": "reopen",
+  "ok": true,
+  "status": "Viewing session: 5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd",
+  "catalog_ready": true,
+  "sessions": 3,
+  "readings": 3,
+  "reflections": 1,
+  "ids": {
+    "session_id": "5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd",
+    "reading_id": "54e2c20f93f342da59b3712cbad658d1c045a0e9fabce18ba18a520774b9c37c",
+    "reflection_id": "23a03ac409334d62f39c847d7643723428466eb275c53dc1a30a90ad30267a16"
+  },
+  "log": [
+    "waited 213 frames",
+    "waited 87 frames",
+    "waited 429 frames",
+    "captured reading-with-neighborhood",
+    "captured moving-constellation",
+    "waited 77 frames",
+    "captured examined-history",
+    "waited 57 frames",
+    "waited 160 frames",
+    "waited 58 frames",
+    "captured living-constellation",
+    "captured still-grid",
+    "waited 0 frames",
+    "captured compact-grid",
+    "captured compact-curation",
+    "waited 256 frames"
+  ]
+}

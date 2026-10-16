@@ -1,0 +1,366 @@
+{
+  "reviewer": "Direct original-image review by this agent; no independent second reviewer claimed",
+  "runs": [
+    {
+      "directory": "c4_20261016/native-ordered-01",
+      "scenario": "c4-ordered-grid.scn",
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 153.99,
+        "binary_sha256": "71363169ed2ea64009c6c6636e3bbd4f76da4e4a3550c893a1f490850ffeb5b9",
+        "scenario_sha256": "3567f6a8ae10ea9191618f4fb2a1ca472a64826c566ec08155dca237878119bb",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "reopen",
+        "ok": true,
+        "status": "Viewing session: 5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd",
+        "catalog_ready": true,
+        "sessions": 3,
+        "readings": 3,
+        "reflections": 1,
+        "ids": {
+          "session_id": "5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd",
+          "reading_id": "54e2c20f93f342da59b3712cbad658d1c045a0e9fabce18ba18a520774b9c37c",
+          "reflection_id": "23a03ac409334d62f39c847d7643723428466eb275c53dc1a30a90ad30267a16"
+        },
+        "log": [
+          "waited 213 frames",
+          "waited 87 frames",
+          "waited 429 frames",
+          "captured reading-with-neighborhood",
+          "captured moving-constellation",
+          "waited 77 frames",
+          "captured examined-history",
+          "waited 57 frames",
+          "waited 160 frames",
+          "waited 58 frames",
+          "captured living-constellation",
+          "captured still-grid",
+          "waited 0 frames",
+          "captured compact-grid",
+          "captured compact-curation",
+          "waited 256 frames"
+        ]
+      },
+      "captures": [
+        {
+          "file": "compact-curation.png",
+          "sha256": "aa5f3d6b14ec9d6db562c947715b2802d7bafdca67936e1bf586e6553c948b92",
+          "pixels": [
+            840,
+            1520
+          ],
+          "review": "Pinned control and saved history explanation are readable at compact width; text alternatives wrap without horizontal clipping."
+        },
+        {
+          "file": "compact-grid.png",
+          "sha256": "0bb92f8b59502d83ef38fd6330c5272df05fabad265faf996f14f0e6fee78354",
+          "pixels": [
+            840,
+            1520
+          ],
+          "review": "At 420x760 logical pixels the ordered grid remains two-dimensional, its disclosure wraps and Examine/Keep controls fit the content width."
+        },
+        {
+          "file": "examined-history.png",
+          "sha256": "d164f3f4080f2256521cdeacdcc3b08192b3f89aa45246af326c3934ada9a540",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "Recent memory state, earlier question and history engine/method/version are readable. Examine has not yet promoted keeping."
+        },
+        {
+          "file": "living-constellation.png",
+          "sha256": "94a23043c0e09202e82f4db4ffb2ad41244806cecaaef8085540051185cacc70",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "Shared flock composition paints the same disclosed neighborhood after earlier-reading navigation and return; meaningful actions remain reachable."
+        },
+        {
+          "file": "moving-constellation.png",
+          "sha256": "30653916debb1108dfb426080a1b40823db5be59f633a6d2bb3b19c6df9fa84d",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "Motion-enabled shared spring constellation is painted with current focus and retained foreground rings; equivalent text actions follow the canvas."
+        },
+        {
+          "file": "reading-with-neighborhood.png",
+          "sha256": "f446d5a6f175f23c3fa81dfe048f2c4a00c7117044e78626fc2692e7e7979a44",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "Question, authored What I must release label and calculation narration are legible above the neighborhood controls. Fixture dates are synthetic."
+        },
+        {
+          "file": "still-grid.png",
+          "sha256": "054c1e90981b5da90f9517de95cf09df1c3934b30d02c4460a3c27765e0f9e9f",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "Ordered grid has distinct rows and columns with focus and three foreground/pinned occurrences; still state is disclosed."
+        }
+      ],
+      "files": [
+        {
+          "path": "ambient.json",
+          "sha256": "1f8f97fe69673501ab09f29d4c44b75bd2c3f94ce692384fa56939983cf41b5d"
+        },
+        {
+          "path": "cards.json",
+          "sha256": "4c32815e6ba42a43814164bc4ba10fa76391cb8ccb47cced9f0da05639d6c3b0"
+        },
+        {
+          "path": "compact-curation.png",
+          "sha256": "aa5f3d6b14ec9d6db562c947715b2802d7bafdca67936e1bf586e6553c948b92"
+        },
+        {
+          "path": "compact-grid.png",
+          "sha256": "0bb92f8b59502d83ef38fd6330c5272df05fabad265faf996f14f0e6fee78354"
+        },
+        {
+          "path": "examined-history.png",
+          "sha256": "d164f3f4080f2256521cdeacdcc3b08192b3f89aa45246af326c3934ada9a540"
+        },
+        {
+          "path": "lane.done",
+          "sha256": "1df0994876434ec3a36e524f7c1eeccbbb9e01de98c0ac2ab0a80c9d8ed19c72"
+        },
+        {
+          "path": "living-constellation.png",
+          "sha256": "94a23043c0e09202e82f4db4ffb2ad41244806cecaaef8085540051185cacc70"
+        },
+        {
+          "path": "moving-constellation.png",
+          "sha256": "30653916debb1108dfb426080a1b40823db5be59f633a6d2bb3b19c6df9fa84d"
+        },
+        {
+          "path": "process.json",
+          "sha256": "06b847e2b22d0be32f3620b6725d6be038b6f7f65b995050a7f9d277cd30fa3a"
+        },
+        {
+          "path": "reading-with-neighborhood.png",
+          "sha256": "f446d5a6f175f23c3fa81dfe048f2c4a00c7117044e78626fc2692e7e7979a44"
+        },
+        {
+          "path": "receipt.json",
+          "sha256": "b56591e1c14fb025a3d5325e4a266bb8cf2b9f3a979ffd1703c2cae3ac5e8e15"
+        },
+        {
+          "path": "scenario.done",
+          "sha256": "60f763ad769e3bc006c30467d340dfc0a8d59f9f84dec35a52aad7cd4b6bb76f"
+        },
+        {
+          "path": "still-grid.png",
+          "sha256": "054c1e90981b5da90f9517de95cf09df1c3934b30d02c4460a3c27765e0f9e9f"
+        },
+        {
+          "path": "terminal.log",
+          "sha256": "73ceb3467a13b1a9fe1af0820626e6db33c15eda7dbc08a494791a13f3ab4a06"
+        }
+      ]
+    },
+    {
+      "directory": "c4_20261016/native-ordered-reopen-01",
+      "scenario": "c4-ordered-grid-reopen.scn",
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 31.1,
+        "binary_sha256": "71363169ed2ea64009c6c6636e3bbd4f76da4e4a3550c893a1f490850ffeb5b9",
+        "scenario_sha256": "bc7c80829df53c971faa0e3ce3ee8a10e3d6de36581dd590fbd9cb91fbb486d1",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "reopen",
+        "ok": true,
+        "status": "Viewing session: 5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd",
+        "catalog_ready": true,
+        "sessions": 3,
+        "readings": 3,
+        "reflections": 1,
+        "ids": {
+          "session_id": "5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd",
+          "reading_id": "54e2c20f93f342da59b3712cbad658d1c045a0e9fabce18ba18a520774b9c37c",
+          "reflection_id": "23a03ac409334d62f39c847d7643723428466eb275c53dc1a30a90ad30267a16"
+        },
+        "log": [
+          "waited 103 frames",
+          "waited 71 frames",
+          "waited 91 frames",
+          "captured reopened-grid",
+          "captured reopened-saved-history"
+        ]
+      },
+      "captures": [
+        {
+          "file": "reopened-grid.png",
+          "sha256": "2bad3d16f75c083093cddcf934268d90771788370aa7285c7f6bd94a89f48d19",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "Fresh process restores ordered grid geometry, selected occurrence and all three foreground rings in still mode."
+        },
+        {
+          "file": "reopened-saved-history.png",
+          "sha256": "8a30209736f8956eb1d4257faf2008e677d7a07a6811951889426f5009482266",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "Fresh process shows Saved memory and the preserved earlier question and history engine explanation."
+        }
+      ],
+      "files": [
+        {
+          "path": "ambient.json",
+          "sha256": "1f8f97fe69673501ab09f29d4c44b75bd2c3f94ce692384fa56939983cf41b5d"
+        },
+        {
+          "path": "cards.json",
+          "sha256": "4c32815e6ba42a43814164bc4ba10fa76391cb8ccb47cced9f0da05639d6c3b0"
+        },
+        {
+          "path": "lane.done",
+          "sha256": "c0a86b7f8cf9c36619ef60652646ed22d5f9e91fa1083d61fd851f9e3580e203"
+        },
+        {
+          "path": "process.json",
+          "sha256": "f5829e507987b4a0b269ea69ee562826ce3afba8f81c9e52897603088264fd61"
+        },
+        {
+          "path": "receipt.json",
+          "sha256": "28a9b817faa08209850a6eaf92961624c4dddc95eb95d4467a88287f117a4090"
+        },
+        {
+          "path": "reopened-grid.png",
+          "sha256": "2bad3d16f75c083093cddcf934268d90771788370aa7285c7f6bd94a89f48d19"
+        },
+        {
+          "path": "reopened-saved-history.png",
+          "sha256": "8a30209736f8956eb1d4257faf2008e677d7a07a6811951889426f5009482266"
+        },
+        {
+          "path": "scenario.done",
+          "sha256": "ed9d0a536e21cfcd9540fdccc137e991a899d040c141c5b54125ef87feab94fb"
+        },
+        {
+          "path": "terminal.log",
+          "sha256": "7f6d54272c634e3894ce075faf77bec68a5aeaab7ea39ca416a10a71ba6da491"
+        }
+      ]
+    },
+    {
+      "directory": "c4_20261016/native-ordered-lenses-01",
+      "scenario": "c4-ordered-grid-lenses.scn",
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 31.62,
+        "binary_sha256": "71363169ed2ea64009c6c6636e3bbd4f76da4e4a3550c893a1f490850ffeb5b9",
+        "scenario_sha256": "347901f59e8b7c9ce0471921c9a7b96f900364336eb7b45d4dd541fd30d93348",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "reopen",
+        "ok": true,
+        "status": "Viewing session: 5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd",
+        "catalog_ready": true,
+        "sessions": 3,
+        "readings": 3,
+        "reflections": 1,
+        "ids": {
+          "session_id": "5149ee0287691dd4a13e8e69afbf85ac36c59f4a00be5b13da2aa2d1c6648efd",
+          "reading_id": "54e2c20f93f342da59b3712cbad658d1c045a0e9fabce18ba18a520774b9c37c",
+          "reflection_id": "23a03ac409334d62f39c847d7643723428466eb275c53dc1a30a90ad30267a16"
+        },
+        "log": [
+          "waited 105 frames",
+          "waited 68 frames",
+          "waited 92 frames",
+          "captured three-families",
+          "captured history-lens"
+        ]
+      },
+      "captures": [
+        {
+          "file": "history-lens.png",
+          "sha256": "87c9d47cb9355ad4477b596a283a043ace1cff2ac0390b2812bc4af1d5d2ea0d",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "History-only scene retains separate earlier card and reflection occurrences; filtering does not keep or delete data."
+        },
+        {
+          "file": "three-families.png",
+          "sha256": "652d0ad6106dc070af11ba193b3544f74278fb71bb99363b284c0e43447a99fa",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "Correspondence-off scene hides correspondence nodes while retained selected/pinned history items remain available."
+        }
+      ],
+      "files": [
+        {
+          "path": "ambient.json",
+          "sha256": "97b88c7594fc856af38de3b595396c681b45ab54e5808737f1155617d9ed059b"
+        },
+        {
+          "path": "cards.json",
+          "sha256": "4c32815e6ba42a43814164bc4ba10fa76391cb8ccb47cced9f0da05639d6c3b0"
+        },
+        {
+          "path": "history-lens.png",
+          "sha256": "87c9d47cb9355ad4477b596a283a043ace1cff2ac0390b2812bc4af1d5d2ea0d"
+        },
+        {
+          "path": "lane.done",
+          "sha256": "6bb0e83d9bda7d86abc2c92c2874fd0b8814623ce453f87addcd8c49fe65aaf0"
+        },
+        {
+          "path": "process.json",
+          "sha256": "2025861e68c137552e0b73a71cd4bd939223de77f3a14cb6489cd374299d39df"
+        },
+        {
+          "path": "receipt.json",
+          "sha256": "e85206448da716b43218bca7c34ae0a371373d1d92eb85f33e83e8e6f1232714"
+        },
+        {
+          "path": "scenario.done",
+          "sha256": "2d627ab078e548eec6a1b3b67d077ecd379b4655b3681757fca746d722db9d95"
+        },
+        {
+          "path": "terminal.log",
+          "sha256": "b63a38c3133a35a00808a1f10cf3b7391ecc4786ce66db346da332f22046604e"
+        },
+        {
+          "path": "three-families.png",
+          "sha256": "652d0ad6106dc070af11ba193b3544f74278fb71bb99363b284c0e43447a99fa"
+        }
+      ]
+    }
+  ]
+}

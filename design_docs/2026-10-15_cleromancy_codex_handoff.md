@@ -1,5 +1,21 @@
 # Cleromancy handoff for Codex, 2026-10-15
 
+**Current continuation (2026-10-16):** published C3 remains intact. C4 is now
+implemented, software-qualified and bounded native-qualified at product `d6ea9f7`, frozen supplier
+`72f9c5c73`, with eleven reviewed originals and exact sealed-reading/full-view/
+memory reopening. The [C4 evidence notes](../receipts/c4_20261016/README.md)
+link the software, native and receiving ledgers. Final product gates pass
+108 default/147 historical tests, both all-target checks, the active sky fixture
+and portable-core 27/28/29. Integrated Mere `8111fa2ba`
+receives the same portable validator and passes five active owner fixtures
+with one intentional process-child entry. All 267 prior receipt/scenario paths
+remain exact. Final C4 publication awaits Mark's approval under the standing
+Git rule; do not treat local Cargo-cache objects as remotely published. The
+coordinated per-repository plan is in the
+[receiving ledger](../receipts/c4-resident-intake_20261016.json). C5 is the next
+product phase. The dated handoff and older completion notes below retain their
+historical scope.
+
 **Status (2026-10-15 continuation):** C1/C2 lane published and merged on main;
 integration CPU checks pass. The coordinated family round and branch-source
 manifest/lock switch have since landed. Personal-sync compatibility and all

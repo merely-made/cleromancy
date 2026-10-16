@@ -1,7 +1,26 @@
 # Cleromancy: the divination mere, and a reading that explains itself
 
 **Date:** 2026-09-23
-**Status (2026-10-16):** C3 is implemented, software-qualified and bounded native-qualified on
+**Status (2026-10-16, C4 continuation):** C4 is implemented, software-qualified and bounded native-qualified
+on frozen product `d6ea9f7` and shared supplier `72f9c5c73`. Eleven reviewed
+original captures cover motion, explicit Examine/Keep, earlier-reading
+navigation, the two-dimensional ordered grid, compact controls, fresh-process
+reopening and independent relation-family selection. Three sealed reading
+details remain exact; the complete saved view and memory payload reopen
+exactly. The [C4 native receipt](../receipts/c4-native-qualification_20261016.json)
+owns that scope. Final software gates pass 108 default and 147 historical-feature
+tests, both all-target checks, one active sky fixture and portable-core 27/28/29;
+the results are recorded separately in the
+[C4 software receipt](../receipts/c4-software-qualification_20261016.json).
+The integrated Mere receiving validator passes five active real-process owner
+fixtures with one intentional child entry; its source and the coordinated
+publication plan are in the [receiving ledger](../receipts/c4-resident-intake_20261016.json).
+Final C4 publication is pending Mark's approval. All 267 prior tracked receipt
+and scenario paths remain byte-identical to `300ebbd`. The full shared cutover
+wall and stack-wide dynamics milestones keep their separate gates; C5 remains
+the next product phase.
+
+**Published C3 checkpoint (unchanged scope):** C3 is implemented, software-qualified and bounded native-qualified on
 source `ef014d7`: two complete typed text decks, independent cited traditions,
 non-writing crosswalk inspection and versioned interpretation data. Native
 create/reopen qualification passes with eight reviewed originals and exact
@@ -539,6 +558,36 @@ data, so nothing interpretive is hardcoded in a view.
 
 ### C4. The ambient card view
 
+**Implementation and bounded native qualification (2026-10-16):** the product
+binds four disclosed relation families—cited correspondences, prior card
+occurrences/reflections, saved situation facts and positions in the current
+reading—to the shared relationship compiler, canvas and versioned dynamics
+spec. The default uses Spiral with shared spring dynamics; the person can
+choose shared flock motion, pause/still, or the opt-in shared `grid.ordered`.
+The old `grid.default` remains replayable. No product force law or additional
+persistence owner is installed.
+
+The focused workspace retains the question, saved position meaning and C2
+narration. Keyboard text alternatives expose the same inspection, keeping and
+curation actions as the scene. Focus, foreground and placement roles remain
+independent of keeping. Examine records shared Recent memory; explicit Keep
+promotes it to Saved memory. Owner actions and full-candidate validation guard
+these records and their exact source-derived reasons. Optional neighboring
+context uses the resident's per-app/per-mere ambient route; a real-resident
+fixture verifies denial and live revocation without granting product authority.
+
+Native qualification uses the existing public calculated fixture with repeated
+cards, two earlier occasions, reflections, recorded sky observations and a
+custom position label. It preserves the three sealed reading details, two
+previously kept items and then adds one explicitly kept history item. Actual
+fresh processes restore the full recipe/spec, selected occurrence, camera,
+46 positions at thousandth-unit precision, three placement roles, foreground
+choices and all three memory records. Lens-only inspection leaves the stored
+view unchanged. See the [C4 evidence notes](../receipts/c4_20261016/README.md).
+Historical failed/checkpoint attempts retain their source identities and are
+excluded from the eleven final originals. This bounded consumer proof does
+not close the full shared wall or assert a stack-wide G4b2/T2 milestone.
+
 Around a card in focus, registered engines generate its ambient tier. Each item
 carries its reason, method and engine version. The ambient tier holds:
 - cards near it on each axis;
@@ -944,3 +993,20 @@ orientations and positions, and interpretations.
   All 219 prior tracked receipt files, 12 C2 original capture hashes and both
   product locks remain exact. C3 bounded product and receiving qualification
   are complete; C4/C5 and the full shared cutover wall remain separate.
+
+- 2026-10-16: C4 binds product-owned, source-disclosed card neighborhoods to
+  shared relationship compilation, canvas and dynamics. Frozen `d6ea9f7`
+  consumes Mere `72f9c5c73`; the compatible Knot intake is `0020a50e` and the
+  other product supplier cohorts remain unchanged. The implementation fixes
+  native large-resource reads through verified chunks, preserves busy product
+  actions across unsolicited view updates, and adds the opt-in shared ordered
+  grid after compact review exposed the old single-row layout. The final
+  software gates pass 108 default/147 historical tests, both all-target checks,
+  the active sky fixture and portable-core 27/28/29. The final
+  native three-process flow has eleven reviewed originals and exact sealed
+  data/full-view/memory reopening; prior attempts remain separate. Integrated
+  Mere `8111fa2ba` receives the exact portable validator and passes five active
+  owner tests with one intentional child entry. All 267 prior receipt/scenario
+  paths remain exact. Final C4 source/receipt publication is pending Mark's
+  approval; the shared wall, graphical unlock, performance and C5 retain their
+  own gates.

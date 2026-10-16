@@ -1,0 +1,257 @@
+{
+  "schema": "cleromancy.c4-software-qualification/v1",
+  "date": "2026-10-16",
+  "source_commit": "d6ea9f700cf712de364cf9cb61e74f26d12cd64a",
+  "status": "C4 implemented, software-qualified and bounded native-qualified; coordinated publication pending approval",
+  "compiler": "Cargo 1.99 with explicit rustc/rustdoc 1.97.1",
+  "gates": [
+    {
+      "name": "check",
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "--all-targets"
+      ],
+      "exit": 0,
+      "elapsed": 45.28,
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c4_20261016/ordered-final-check.log",
+      "sha256": "913de70990f9a8605c9f9e905b372675b1678eed2a347d75db006fcf4d8c94a3"
+    },
+    {
+      "name": "default",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline"
+      ],
+      "exit": 0,
+      "elapsed": 260.97,
+      "passed": 108,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c4_20261016/ordered-final-default.log",
+      "sha256": "b72b3fb5706f6b234dfb9067d06e2fe06abf169a42d42a313148565fe39443e7"
+    },
+    {
+      "name": "historical",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--features",
+        "legacy-receipts,personal-sync,graphshell-admission"
+      ],
+      "exit": 0,
+      "elapsed": 339.4,
+      "passed": 147,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c4_20261016/ordered-final-historical.log",
+      "sha256": "1ac9aa2e4e5cf7c3f3710cc84801a8c7b963f0b386d510d870dc85aac44dd6d6"
+    },
+    {
+      "name": "historical-check",
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "--all-targets",
+        "--features",
+        "legacy-receipts,personal-sync,graphshell-admission"
+      ],
+      "exit": 0,
+      "elapsed": 15.74,
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c4_20261016/ordered-final-historical-check.log",
+      "sha256": "bc87d23574701afe65b189c89d816c60814ac7f58d679201724144f6f81b83ba"
+    },
+    {
+      "name": "sky",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--features",
+        "legacy-receipts,sky-timeline",
+        "--test",
+        "sky_timeline"
+      ],
+      "exit": 0,
+      "elapsed": 41.73,
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "log": "c4_20261016/ordered-final-sky.log",
+      "sha256": "bdfaa794b7b6f482a18e5e21ca289bbd7837f10df0071fb77c4e872e06bb7220"
+    },
+    {
+      "name": "ordered-grid-build.log",
+      "command": "cargo build --locked --offline --bin cleromancy --example c4_fixture_setup",
+      "exit": 0,
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "source": "d6ea9f700cf712de364cf9cb61e74f26d12cd64a",
+      "log": "c4_20261016/ordered-grid-build.log",
+      "sha256": "502e4735751dc40e3422ff02fedac4a3c0e62814a18e9e210d2e1787eaea48db"
+    },
+    {
+      "name": "ordered-grid-core-second.log",
+      "command": "cargo test --locked --offline (core)",
+      "exit": 0,
+      "passed": 27,
+      "failed": 0,
+      "ignored": 0,
+      "source": "d6ea9f700cf712de364cf9cb61e74f26d12cd64a",
+      "log": "c4_20261016/ordered-grid-core-second.log",
+      "sha256": "158d186fe1f2133a0bb4ee245b4edd55c32340a48cb199bd64bf42d70f4f0bbd"
+    },
+    {
+      "name": "ordered-core-legacy.log",
+      "command": "cargo test --locked --offline --features legacy-receipts (core)",
+      "exit": 0,
+      "passed": 28,
+      "failed": 0,
+      "ignored": 0,
+      "source": "d6ea9f700cf712de364cf9cb61e74f26d12cd64a",
+      "log": "c4_20261016/ordered-core-legacy.log",
+      "sha256": "8061ee9cb9af8b90fd978e70e8478633d85882201d2be9995d776977c83a846e"
+    },
+    {
+      "name": "ordered-core-sky.log",
+      "command": "cargo test --locked --offline --features legacy-receipts,sky-timeline (core)",
+      "exit": 0,
+      "passed": 29,
+      "failed": 0,
+      "ignored": 0,
+      "source": "d6ea9f700cf712de364cf9cb61e74f26d12cd64a",
+      "log": "c4_20261016/ordered-core-sky.log",
+      "sha256": "12e3fa4ba8d999288ef255c74ff99d4d67690405ea8e62b80c059054f2720617"
+    },
+    {
+      "name": "ordered-grid-committed.log",
+      "command": "cargo test --locked --offline -p scenomise --lib",
+      "exit": 0,
+      "passed": 184,
+      "failed": 0,
+      "ignored": 0,
+      "source": "72f9c5c73ab9ddd8ba761524388c2406a6d6ffcf",
+      "log": "c4_20261016/ordered-grid-committed.log",
+      "sha256": "d5e4d15897a501dd3004fae49e7abd5a8b2dc991d53347405418b84effc82424"
+    },
+    {
+      "name": "shared-chunks-minimum.log",
+      "command": "cargo test --locked --offline -p graphshell-endpoint",
+      "exit": 0,
+      "passed": 32,
+      "failed": 0,
+      "ignored": 0,
+      "source": "19a02b3258f8063f54118227e2d093adce151ae8",
+      "log": "c4_20261016/shared-chunks-minimum.log",
+      "sha256": "a83156eb52177c28d3afa52f4d0f3299bec15839319fb4513519df6262e6ad30"
+    },
+    {
+      "name": "ordered-integrated-owner-online.log",
+      "command": "cargo test --locked -p djinn --test embedded_reservoir_validation",
+      "exit": 0,
+      "passed": 5,
+      "failed": 0,
+      "ignored": 1,
+      "source": "8111fa2ba37cfd41797e9f8427b3348af0e4f342",
+      "log": "c4_20261016/ordered-integrated-owner-online.log",
+      "sha256": "c6e34d53532f072cf122805a8c1b0a7f1cbb9661cfecd987578e7bfebe63d70d"
+    }
+  ],
+  "locked_git_sources": {
+    "root": [
+      "git+https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bcb9f2a9d798b1c25b2ec2f47c0416bd65",
+      "git+https://github.com/mark-ik/vello?rev=276b46648c08f3d2062e70559afa999842e1873c#276b46648c08f3d2062e70559afa999842e1873c",
+      "git+https://github.com/merely-made/dramatis.git?branch=main#5c89001a6ff1aac3f6105ed50b6ae5f09c9f27e2",
+      "git+https://github.com/merely-made/genet.git?branch=main#e37762d752e423dc43f920bd728c83f70c47f2cc",
+      "git+https://github.com/merely-made/knot-editor.git?branch=main#0020a50e6ff10a9244f4965609b31f4ac79fd753",
+      "git+https://github.com/merely-made/mere.git?branch=main#72f9c5c73ab9ddd8ba761524388c2406a6d6ffcf",
+      "git+https://github.com/merely-made/murm.git?branch=main#cba46d859d12660b8d85002d0a203e250a88975a",
+      "git+https://github.com/merely-made/netrender.git?branch=main#f4f9c0d87e6a6030b61075a45118055dfe6a12df",
+      "git+https://github.com/merely-made/turquet.git?rev=30875f30e83909f3030bc01237a5046e14cde29b#30875f30e83909f3030bc01237a5046e14cde29b"
+    ],
+    "core": [
+      "git+https://github.com/merely-made/dramatis.git?branch=main#814ffa09f7826f55b4b9e977306b053e751b5e8e",
+      "git+https://github.com/merely-made/mere.git?branch=main#72f9c5c73ab9ddd8ba761524388c2406a6d6ffcf",
+      "git+https://github.com/merely-made/turquet.git?rev=30875f30e83909f3030bc01237a5046e14cde29b#30875f30e83909f3030bc01237a5046e14cde29b"
+    ]
+  },
+  "native_binary_sha256": "71363169ed2ea64009c6c6636e3bbd4f76da4e4a3550c893a1f490850ffeb5b9",
+  "native_receipt": "c4-native-qualification_20261016.json",
+  "source_inventory": "c4_20261016/ordered-compiled-inputs.json",
+  "exact_product_source_inputs": 183,
+  "prior_receipts": {
+    "baseline": "300ebbd405d81f98cbae5d052def15304080fd4e",
+    "count": 267,
+    "all_byte_identical": true,
+    "manifest": "c4_20261016/prior-receipt-preservation.json"
+  },
+  "formatting_debt": {
+    "command": "cargo fmt --all -- --check",
+    "exit": 1,
+    "reported_files": [
+      "src/app/invoke.rs",
+      "src/astrology.rs",
+      "src/bin/a16_pattern_selection_receipt.rs",
+      "src/bin/a3_intent_receipt.rs",
+      "src/bin/a5_field_receipt.rs",
+      "src/consultation/drafts.rs",
+      "src/enrichment.rs",
+      "src/ephemeris.rs",
+      "src/ephemeris/analytic.rs",
+      "src/projection.rs",
+      "src/reading/engine.rs",
+      "src/sync/shared.rs",
+      "src/sync_settings.rs",
+      "src/ui/native/appearance.rs",
+      "tests/a1.rs",
+      "tests/a10.rs",
+      "tests/a16.rs",
+      "tests/a2.rs",
+      "tests/a23_resident_sync_consent.rs",
+      "tests/a24_resident_sync_startup.rs",
+      "tests/a3.rs",
+      "tests/a4.rs",
+      "tests/a9.rs",
+      "tests/analytic_consultation.rs",
+      "tests/analytic_parity.rs",
+      "tests/sky_surface_dom.rs",
+      "tests/sky_timeline.rs",
+      "tests/support/mod.rs"
+    ],
+    "count": 28,
+    "changed_since_c3": [],
+    "interpretation": "All reported files remain byte-identical to the C3 baseline"
+  },
+  "execution": "Root gates run serially after freezing the native binary, so historical CLI tests never race a default build overwriting CARGO_BIN_EXE. Portable-core jobs use their separate target. No gate failure or intentionally ignored child is hidden.",
+  "boundaries": [
+    "One resident persistence/admission owner; no store-file reads from ordinary product",
+    "Four product relation families carry source/reason/method/engine/version",
+    "Shared relationship compiler/canvas/DynamicsSpec; no private force catalog",
+    "Selection, foreground, placement roles and keeping remain independent",
+    "Candidate-local exact-neighborhood reuse is keyed by session and position and discarded after validation",
+    "Real-resident neighboring ambient route denies absent grants and clears cards on live revocation",
+    "Shared native resource assembly verifies scope, totals, chunks, progress and hashes; 1MiB carrier cap remains unchanged"
+  ],
+  "limits": [
+    "Full-tree formatting remains inherited debt in 28 unchanged files",
+    "No C5 shuffled-deck change",
+    "Shared full-wall and G4b2/T2 gates retain separate ownership",
+    "Native debug acceptance does not establish release packaging, graphical unlock or performance"
+  ]
+}
