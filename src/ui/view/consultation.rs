@@ -117,7 +117,8 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
                 let action = ui.request_typed_decks();
                 ui.record_action(action);
             })
-            .attr("data-key", "install-typed-decks"),
+            .attr("data-key", "install-typed-decks")
+            .attr("class", "install-decks"),
         ),
         labelled_control("Selection mode", "cleromancy-mode", Box::new(mode)),
         labelled_control("Reading shape", "cleromancy-layout", Box::new(layout)),
