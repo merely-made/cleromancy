@@ -1,0 +1,278 @@
+{
+  "schema": "cleromancy.c3-native-qualification/v1",
+  "date": "2026-10-16",
+  "status": "C3 bounded native create, crosswalk, compact and fresh-process reopen qualified",
+  "source_commit": "ef014d78baada1c1c4df6d38388a30514b066c93",
+  "software_receipt": "c3-software-qualification_20261016.json",
+  "binary": {
+    "source": "ef014d78baada1c1c4df6d38388a30514b066c93",
+    "path": "/Users/markik/Code/testing/cleromancy/c3-20261015/Cleromancy C3 candidate.app/Contents/MacOS/Cleromancy",
+    "sha256": "d489806da608465fa1d475081575ecc5cc421ba5a173835ccb8ebd7eafa1d0ad",
+    "build_exit": 0
+  },
+  "runs": [
+    {
+      "directory": "/Users/markik/Code/testing/cleromancy/c3-20261015/native-first-01",
+      "process": {
+        "phase": "first",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 36.3,
+        "binary_sha256": "d489806da608465fa1d475081575ecc5cc421ba5a173835ccb8ebd7eafa1d0ad",
+        "scenario_sha256": "6e33846cf9dfaef07d32d04d688fc2e16053f4e1a4d815f29b4776ab3b37b1ea",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "first",
+        "ok": true,
+        "status": "Reflection saved: bff6c9e1d8a9a505ac4b76ff16748deafda976115e4fb3fd63aa26ede220040b",
+        "catalog_ready": true,
+        "sessions": 1,
+        "readings": 1,
+        "reflections": 1,
+        "ids": {
+          "session_id": "d339a40716dade5f26e8027cb0b05bd6750650300c280a7b2f01674b9e2730d9",
+          "reading_id": "5ff1fe67d46fb3103f2a8d1dfae217b90d187fabf25e905b20f9a7a825d2990f",
+          "reflection_id": "bff6c9e1d8a9a505ac4b76ff16748deafda976115e4fb3fd63aa26ede220040b"
+        },
+        "log": [
+          "waited 5 frames",
+          "waited 8 frames",
+          "waited 18 frames",
+          "waited 0 frames",
+          "captured typed-card",
+          "captured traditions-wide",
+          "captured marseille-crosswalk",
+          "waited 0 frames",
+          "captured compact-card",
+          "captured compact-book-t",
+          "captured compact-thierens"
+        ]
+      },
+      "presented_frames": 107,
+      "capture_count": 6,
+      "files": {
+        "cards.json": {
+          "sha256": "0fea7f32d46d29dec448363942b5ab78a67aa3530b753a920bbd949b83553a4a"
+        },
+        "compact-book-t.png": {
+          "sha256": "5d4e6789607e916a6d08edd4132226c7e985ba06df479764dda4220a93d912e3"
+        },
+        "compact-card.png": {
+          "sha256": "3cdd62e388236e2369159855f91dfb29c783352132408d61915e64453278522b"
+        },
+        "compact-thierens.png": {
+          "sha256": "a8a2dd3645d9ca2a63189102d9f8c3edee73db858f38ef868e670fc2dc6951e2"
+        },
+        "lane.done": {
+          "sha256": "c7a5f23a175636aabb8444c2369b0a6be72720313e0401b4e0721d88ee63a7c6"
+        },
+        "marseille-crosswalk.png": {
+          "sha256": "e13994aa0441a93737bfbcc1a97a2981c6c5f6b67531d0a9e38aa9d89a97b684"
+        },
+        "process.json": {
+          "sha256": "74def98f046830e1c0e4217abb97bd18131a1ee1746a11ada0c39e2cbec363e2"
+        },
+        "receipt.json": {
+          "sha256": "d5515fce3b632da960e77deb0529f545e85d4f9ead6e1f96d92a6c360b99909d"
+        },
+        "scenario.done": {
+          "sha256": "f76a9bd73c869a17bd1264595ab81fad392dc42f7a752b5aed546fdb346dbb54"
+        },
+        "terminal.log": {
+          "sha256": "34afebeca0bc2ba58e0c1074c77b91ab9e6a3d922e9e41f6634708df19f6160c"
+        },
+        "traditions-wide.png": {
+          "sha256": "f726e7e54970b0bf61a05f0eb34c39198a3cd4a540999a12e4e328f7e653d654"
+        },
+        "typed-card.png": {
+          "sha256": "fea32234a2fc7fc5a632071e55ffba12b41b9496a7d95076e25e16a756af92a7"
+        }
+      },
+      "captures": [
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c3-20261015/native-first-01/compact-book-t.png",
+          "sha256": "5d4e6789607e916a6d08edd4132226c7e985ba06df479764dda4220a93d912e3",
+          "pixels": [
+            840,
+            1520
+          ],
+          "review": "Book T block wraps within compact bounds; Thierens below and complete crosswalk button visible after scrolling.",
+          "reviewed": true
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c3-20261015/native-first-01/compact-card.png",
+          "sha256": "3cdd62e388236e2369159855f91dfb29c783352132408d61915e64453278522b",
+          "pixels": [
+            840,
+            1520
+          ],
+          "review": "420 logical pixel width: card title wraps, typed number and credit readable; tradition columns stack without horizontal clipping. Lower content continues by scrolling.",
+          "reviewed": true
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c3-20261015/native-first-01/compact-thierens.png",
+          "sha256": "a8a2dd3645d9ca2a63189102d9f8c3edee73db858f38ef868e670fc2dc6951e2",
+          "pixels": [
+            840,
+            1520
+          ],
+          "review": "Thierens source block and crosswalk action fit compact width; reading narrative continues below.",
+          "reviewed": true
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c3-20261015/native-first-01/marseille-crosswalk.png",
+          "sha256": "e13994aa0441a93737bfbcc1a97a2981c6c5f6b67531d0a9e38aa9d89a97b684",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "Strength XI and Marseille edition visible, fixed prompt and return action readable; saved narration remains RWS.",
+          "reviewed": true
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c3-20261015/native-first-01/traditions-wide.png",
+          "sha256": "f726e7e54970b0bf61a05f0eb34c39198a3cd4a540999a12e4e328f7e653d654",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "Separate Book T and Thierens columns with Leo/Aquarius disagreement, source dates, version and coverage; narrative remains tied to saved RWS reading.",
+          "reviewed": true
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c3-20261015/native-first-01/typed-card.png",
+          "sha256": "fea32234a2fc7fc5a632071e55ffba12b41b9496a7d95076e25e16a756af92a7",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "Strength VIII, deck edition and prompt credit legible; two independent tradition columns; source credits and inspection action readable.",
+          "reviewed": true
+        }
+      ]
+    },
+    {
+      "directory": "/Users/markik/Code/testing/cleromancy/c3-20261015/native-reopen-01",
+      "process": {
+        "phase": "reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 21.84,
+        "binary_sha256": "d489806da608465fa1d475081575ecc5cc421ba5a173835ccb8ebd7eafa1d0ad",
+        "scenario_sha256": "50042b9bdc74d302baacab810e1d910f2fc8b94b3127cd31dd1d716614e76905",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "receipt": {
+        "schema": "cleromancy.headed-scenario/v1",
+        "phase": "reopen",
+        "ok": true,
+        "status": "Viewing session: d339a40716dade5f26e8027cb0b05bd6750650300c280a7b2f01674b9e2730d9",
+        "catalog_ready": true,
+        "sessions": 1,
+        "readings": 1,
+        "reflections": 1,
+        "ids": {
+          "session_id": "d339a40716dade5f26e8027cb0b05bd6750650300c280a7b2f01674b9e2730d9",
+          "reading_id": "5ff1fe67d46fb3103f2a8d1dfae217b90d187fabf25e905b20f9a7a825d2990f",
+          "reflection_id": "bff6c9e1d8a9a505ac4b76ff16748deafda976115e4fb3fd63aa26ede220040b"
+        },
+        "log": [
+          "waited 14 frames",
+          "waited 0 frames",
+          "captured reopened-typed-card",
+          "captured reopened-crosswalk"
+        ]
+      },
+      "presented_frames": 55,
+      "capture_count": 2,
+      "files": {
+        "cards.json": {
+          "sha256": "0fea7f32d46d29dec448363942b5ab78a67aa3530b753a920bbd949b83553a4a"
+        },
+        "lane.done": {
+          "sha256": "663c5dd1968de6b436a79da24963b96a8651019387d4ae6d47d5b949a00cc199"
+        },
+        "process.json": {
+          "sha256": "facb8cc3b79faa59abe1f5f356ec2d1dc16e8cbc6a46e1faba368fde25880071"
+        },
+        "receipt.json": {
+          "sha256": "30eef69cd106aba3461a662b47614f5870d516f84d21d88c790194d77c70aa35"
+        },
+        "reopened-crosswalk.png": {
+          "sha256": "916c739ebf893b9934945efa8e2136ef718d14bece922147f591acf9911525ba"
+        },
+        "reopened-typed-card.png": {
+          "sha256": "deafd46838b397ba6d74b96e67b142e8b970da7bf7c7f4e41f499b9a9676103c"
+        },
+        "scenario.done": {
+          "sha256": "e38679ff0a8039e622b2fb869ca5a5efde2515b91f2ea983eb36e0d4cb33c971"
+        },
+        "terminal.log": {
+          "sha256": "bcf1883a253de3f91ec71e2a1df41c6fb611e183e852a0210d8a6a1de4abe3d8"
+        }
+      },
+      "captures": [
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c3-20261015/native-reopen-01/reopened-crosswalk.png",
+          "sha256": "916c739ebf893b9934945efa8e2136ef718d14bece922147f591acf9911525ba",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "Fresh process can inspect Marseille Strength XI and exposes Return to drawn card while retaining RWS narration.",
+          "reviewed": true
+        },
+        {
+          "path": "/Users/markik/Code/testing/cleromancy/c3-20261015/native-reopen-01/reopened-typed-card.png",
+          "sha256": "deafd46838b397ba6d74b96e67b142e8b970da7bf7c7f4e41f499b9a9676103c",
+          "pixels": [
+            2320,
+            1520
+          ],
+          "review": "Fresh process restores Strength VIII and source-bearing independent tradition columns.",
+          "reviewed": true
+        }
+      ]
+    }
+  ],
+  "persistence": {
+    "ids_exact": {
+      "session_id": "d339a40716dade5f26e8027cb0b05bd6750650300c280a7b2f01674b9e2730d9",
+      "reading_id": "5ff1fe67d46fb3103f2a8d1dfae217b90d187fabf25e905b20f9a7a825d2990f",
+      "reflection_id": "bff6c9e1d8a9a505ac4b76ff16748deafda976115e4fb3fd63aa26ede220040b"
+    },
+    "cards_byte_equal": true,
+    "cards_sha256": "0fea7f32d46d29dec448363942b5ab78a67aa3530b753a920bbd949b83553a4a",
+    "fields_after_reopen": 2,
+    "readings": 1,
+    "reflections": 1,
+    "scope": "Scenario assertions plus exact session/reading/reflection identifiers and exported card payload. This is not an all-files-byte-equality guard."
+  },
+  "visual_review": {
+    "originals": 8,
+    "reviewer": "Codex direct review of every original capture",
+    "scope": "Single reviewer; no independent second reviewer claimed."
+  },
+  "preservation": {
+    "prior_tracked_receipts_exact": 219,
+    "original_c2_capture_hashes_retained": 12,
+    "prior_software_receipt_unchanged": true
+  },
+  "observations": [
+    "After the successful first scenario exited, inspecting its app path via computer use launched a separate default-profile window. It refused reservoir attachment because that profile has no persona wallet. The window was terminated before the isolated reopen; it is not native acceptance evidence.",
+    "Compact captured content is scroll-positioned; it does not claim the entire long reading fits one viewport."
+  ],
+  "limits": [
+    "Controlled production terminal unlock with PATH=/bin; graphical unlock is not qualified.",
+    "Two successful scenario processes are bounded evidence, not startup reliability or performance qualification.",
+    "C4 ambient scenes, C5 shuffle/reversals and the full shared cutover wall remain separate.",
+    "Mere standalone-daemon receiving validator intake remains pending publication."
+  ],
+  "publication": "Local source and receipt commits; remote publication recorded separately."
+}

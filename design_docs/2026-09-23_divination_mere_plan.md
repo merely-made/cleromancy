@@ -1,11 +1,12 @@
 # Cleromancy: the divination mere, and a reading that explains itself
 
 **Date:** 2026-09-23
-**Status (2026-10-16):** C3 is implemented and software-qualified on local
+**Status (2026-10-16):** C3 is implemented, software-qualified and bounded native-qualified on
 source `ef014d7`: two complete typed text decks, independent cited traditions,
 non-writing crosswalk inspection and versioned interpretation data. Native
-create/reopen capture and publication await the coordinated foreground slot;
-no C3 phase acceptance is inferred. The
+create/reopen qualification passes with eight reviewed originals and exact
+reopened identities/card payload. Publication and standalone-daemon validator
+intake remain separate. The
 [C3 software receipt](../receipts/c3-software-qualification_20261016.json) owns
 that scope. C1/C2 are integrated on main; C2's original native qualification
 remains bound to `fcfb1a4` and Mere `8b08c98b2`. Later family software intake
@@ -513,8 +514,13 @@ feature tests, portable-core gates at 24/25/26, one active sky fixture and
 both all-target checks. The signed-sync fixture preserves both complete deck
 snapshots and their content revisions. The DOM fixture checks independent
 tradition columns, compact bounds and inspection without a product action.
-All previous receipts remain frozen. Native capture/reopen is pending the
-foreground-slot answer required by the current handoff.
+All previous receipts remain frozen. The
+[native receipt](../receipts/c3-native-qualification_20261016.json) now records
+107 creation and 55 fresh-process reopening frames, eight directly reviewed
+originals, reachable crosswalk controls, compact stacked traditions and exact
+session/reading/reflection IDs plus byte-equal card payload. This qualifies
+the bounded C3 product flow; the standalone-daemon intake and full shared
+cutover wall remain separate.
 
 Cards carry typed axes: number, suit, arcana, and, from each tradition,
 element, planet and sign. Several tarot decks are available as typed data.
@@ -914,3 +920,11 @@ orientations and positions, and interpretations.
   publication, Mere's standalone-daemon lock must receive the C3 validator;
   older resident codecs correctly refuse unfamiliar field metadata before
   write. No older owner is bypassed, and C4/C5/shared-wall gates stay separate.
+
+- 2026-10-16: Mark authorized the foreground slot and unlocked the screen.
+  Frozen `ef014d7` passes both original C3 scenarios through production terminal
+  unlock on the isolated public fixture: 107/55 frames, six/two captures. All
+  eight originals are reviewed; IDs and card bytes match after fresh-process
+  reopening. The [native receipt](../receipts/c3-native-qualification_20261016.json)
+  records scope and the separate default-profile inspection window. The earlier
+  software receipt and all historical evidence remain unchanged.

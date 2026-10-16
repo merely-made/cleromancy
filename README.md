@@ -27,7 +27,7 @@ reflection identities. The [C2 receipt](receipts/c2-reading-qualification_202610
 records source, gates, capture reviews and qualification limits; the
 [divination plan](design_docs/2026-09-23_divination_mere_plan.md) owns phase scope.
 
-C3 is implemented on the local candidate: complete Rider–Waite–Smith and
+C3 is implemented and bounded native qualification passes: complete Rider–Waite–Smith and
 Marseille-structure text decks, 78 cards each, with typed identities, suits,
 numbers and ranks. A fresh reading session starts with RWS; **Add tarot decks**
 adds the second choice. A focused card discloses Golden Dawn / Book T and
@@ -36,8 +36,10 @@ explicit. Cross-deck inspection preserves the saved reading. New fields retain
 their full card and position-definition editions; previous fields keep their
 original encoding. The new fixed minor prompts disclose model-assisted
 editorial provenance. The [C3 software receipt](receipts/c3-software-qualification_20261016.json)
-records passing software gates. Native capture/reopen and publication remain
-pending the coordinated foreground slot.
+records passing software gates. The [C3 native receipt](receipts/c3-native-qualification_20261016.json)
+records creation, compact presentation, crosswalk inspection and fresh-process
+reopening: eight reviewed originals, exact reading identities and byte-equal
+card payload. Publication and standalone-daemon validator intake follow separately.
 
 - The A0-A25 proof ledger is complete (2026-08-02 through 2026-08-07):
   single readings, sealed receipts with replay, field provenance, a 22-card
