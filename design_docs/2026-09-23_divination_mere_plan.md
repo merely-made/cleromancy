@@ -10,7 +10,8 @@ portable-core 41/42/43 and desktop build. All 802 earlier receipt paths remain
 exact, and the existing C7/C8 evidence verifiers pass. This software/build
 intake does not renew native qualification. The separate local natal subject
 contract remains unpublished and is excluded from this supplier revision.
-Publication is recorded separately after pushing the qualified checkpoint.
+Qualified checkpoint `ff0c14d` is pushed and remote-verified on main; see the
+[publication record](../receipts/dramatis-main-publication_20261016.json).
 
 **C8 first-die qualification (2026-10-16):** the bounded six-sided-die slice
 now passes four whole native processes and review of all 14 original captures:
