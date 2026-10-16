@@ -62,6 +62,14 @@ pub(super) fn spread_view(ui: &ConsultationUi) -> ConsultationView {
                 .as_ref()
                 .is_some_and(|detail| detail.session.id == session)
             {
+                if ui
+                    .ambient
+                    .context
+                    .as_ref()
+                    .is_some_and(|c| c.data.position != target)
+                {
+                    ui.ambient.close();
+                }
                 ui.card_preview = None;
                 ui.reading_focus.insert(session.clone(), target.clone());
             }

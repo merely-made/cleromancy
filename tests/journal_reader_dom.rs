@@ -23,6 +23,7 @@ use support::{
 fn journal_rows_filter_compose_clear_and_page_without_product_actions() {
     let now_ms = unix_ms();
     let catalog = ConsultationCatalog {
+        ambient_memory: Vec::new(),
         contexts: Vec::new(),
         fields: Vec::new(),
         spread_templates: Vec::new(),

@@ -23,6 +23,23 @@ pub enum ConsultationLayout {
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum ConsultationAction {
+    OpenNeighborhood {
+        session_id: String,
+        position: String,
+    },
+    SaveNeighborhood {
+        view: crate::ambient::AmbientView,
+    },
+    ExamineNeighbor {
+        session_id: String,
+        position: String,
+        item_id: String,
+        keep: bool,
+    },
+    ReadGrantedContext {
+        domain: String,
+    },
+    ClearGrantedContext,
     InstallTarotDecks,
     Read {
         context: ConsultationContext,

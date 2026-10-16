@@ -21,6 +21,7 @@ use super::worker::{WorkerUpdate, execute};
 use crate::{CleromancyHost, Consultation};
 
 pub(crate) struct ResidentConsultation {
+    granted: Option<crate::granted_ambient::GrantedAmbient>,
     attachment: ReservoirAttachment,
     sessions: ProjectionSnapshot,
     graph_projection: ProjectionSnapshot,
@@ -44,6 +45,7 @@ impl ResidentConsultation {
             .map_err(err)?;
         let graph_projection = attachment.client_mut().snapshot(graph).await.map_err(err)?;
         let mut client = Self {
+            granted: None,
             attachment,
             sessions,
             graph_projection,
@@ -217,13 +219,68 @@ impl ResidentConsultation {
 
     pub async fn action(&mut self, action: ConsultationAction) -> Result<WorkerUpdate, String> {
         self.saved_notice = None;
+        match &action {
+            ConsultationAction::ClearGrantedContext => {
+                if let Some(reader) = self.granted.take() {
+                    let _ = reader.close().await;
+                }
+                return Ok(WorkerUpdate::GrantedContext {
+                    cards: Vec::new(),
+                    notice: "Neighboring context cleared.".into(),
+                    complete_request: true,
+                });
+            },
+            ConsultationAction::ReadGrantedContext { domain } => {
+                if let Some(reader) = self.granted.take() {
+                    let _ = reader.close().await;
+                }
+                let opened = tokio::time::timeout(
+                    std::time::Duration::from_secs(2),
+                    crate::granted_ambient::GrantedAmbient::open_at(
+                        &graphshell_endpoint::door::app_admission::configured_app_endpoint(),
+                        domain,
+                    ),
+                )
+                .await
+                .unwrap_or_else(|_| Err("ambient source connection timed out".into()));
+                match opened {
+                    Ok(reader) => {
+                        self.granted = Some(reader);
+                        let mut update =
+                            self.poll_granted()
+                                .await
+                                .unwrap_or(WorkerUpdate::GrantedContext {
+                                    cards: Vec::new(),
+                                    notice: "No granted context is available.".into(),
+                                    complete_request: true,
+                                });
+                        if let WorkerUpdate::GrantedContext {
+                            complete_request, ..
+                        } = &mut update
+                        {
+                            *complete_request = true;
+                        }
+                        return Ok(update);
+                    },
+                    Err(error) => {
+                        return Ok(WorkerUpdate::GrantedContext {
+                            cards: Vec::new(),
+                            notice: format!("No ambient grant or readable source: {error}"),
+                            complete_request: true,
+                        });
+                    },
+                }
+            },
+            _ => {},
+        }
         self.refresh().await?;
         let (mut consultation, edits) = self.candidate()?;
         let update = execute(&mut consultation, action).map_err(err)?;
         self.commit(edits).await?;
         self.refresh().await?;
         let selected = match &update {
-            WorkerUpdate::Reading { detail, .. }
+            WorkerUpdate::Neighborhood { detail, .. }
+            | WorkerUpdate::Reading { detail, .. }
             | WorkerUpdate::Reflection { detail, .. }
             | WorkerUpdate::Session { detail, .. }
             | WorkerUpdate::Comparison { detail, .. } => {
@@ -495,6 +552,30 @@ impl ResidentConsultation {
         }
     }
 
+    pub async fn poll_granted(&mut self) -> Option<WorkerUpdate> {
+        let reader = self.granted.as_mut()?;
+        match tokio::time::timeout(std::time::Duration::from_secs(2), reader.refresh()).await {
+            Ok(Ok(true)) => Some(WorkerUpdate::GrantedContext {
+                cards: reader.cards().to_vec(),
+                notice: "Read-only context from the resident’s live ambient grant.".into(),
+                complete_request: false,
+            }),
+            Ok(Ok(false)) => None,
+            result => {
+                let notice = match result {
+                    Ok(Err(error)) => format!("Ambient context withdrawn: {error}"),
+                    _ => "Ambient source timed out; previous context was withdrawn.".into(),
+                };
+                self.granted = None;
+                Some(WorkerUpdate::GrantedContext {
+                    cards: Vec::new(),
+                    notice,
+                    complete_request: false,
+                })
+            },
+        }
+    }
+
     pub async fn close(self) -> Result<(), String> {
         self.attachment.close().await.map_err(err)
     }
@@ -523,6 +604,16 @@ fn owner_update(
     // the candidate captured before that commit.
     let refreshed =
         match result {
+            WorkerUpdate::Neighborhood {
+                detail, context, ..
+            } => Some(
+                super::worker::neighborhood_update(
+                    consultation,
+                    &detail.session.id,
+                    &context.data.position,
+                )
+                .map_err(err)?,
+            ),
             WorkerUpdate::Reading { detail, .. } => consultation
                 .detail(&detail.session.id)
                 .ok()

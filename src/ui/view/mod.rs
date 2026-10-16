@@ -13,6 +13,7 @@ use super::screen::{self, ConsultationScreen};
 use super::state::ConsultationUi;
 use crate::SelectionMode;
 
+mod ambient;
 mod astrology_reading;
 pub(super) mod chart;
 pub(super) mod chart_aspect;

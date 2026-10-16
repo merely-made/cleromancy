@@ -10,6 +10,9 @@
     not(target_arch = "wasm32")
 ))]
 mod admitted;
+pub mod ambient;
+#[cfg(not(feature = "portable-core"))]
+pub mod ambient_scene;
 #[cfg(not(feature = "portable-core"))]
 pub mod app;
 pub mod astrology;
@@ -23,6 +26,8 @@ pub mod enrichment;
 #[cfg(all(not(feature = "portable-core"), feature = "analytic-ephemeris"))]
 pub mod ephemeris;
 pub mod field;
+#[cfg(not(feature = "portable-core"))]
+pub mod granted_ambient;
 pub mod host;
 pub mod intents;
 pub mod moirai;

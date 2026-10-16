@@ -69,6 +69,7 @@ impl ConsultationStatus {
 
 #[derive(Clone, Debug, PartialEq)]
 pub struct ConsultationUi {
+    pub(crate) ambient: super::ambient_state::AmbientUi,
     /// Inspection of another deck never changes the saved reading.
     pub(crate) card_preview: Option<(String, String)>,
     pub(super) catalog: ConsultationCatalog,
@@ -120,6 +121,7 @@ pub struct ConsultationUi {
 impl ConsultationUi {
     pub fn new(catalog: ConsultationCatalog) -> Self {
         Self {
+            ambient: Default::default(),
             card_preview: None,
             catalog,
             context_select: SelectState::new(0).with_label("Context"),
@@ -164,6 +166,7 @@ impl ConsultationUi {
     }
 
     pub(crate) fn clear_selection(&mut self) {
+        self.ambient = Default::default();
         self.detail = None;
         self.comparison = None;
         self.reading_focus.clear();
@@ -604,6 +607,14 @@ impl ConsultationUi {
     }
 
     fn adopt_detail(&mut self, catalog: ConsultationCatalog, detail: ConsultationDetail) {
+        if self
+            .ambient
+            .context
+            .as_ref()
+            .is_some_and(|c| c.data.session_id != detail.session.id)
+        {
+            self.ambient.close();
+        }
         self.card_preview = None;
         // Refresh the display clock after a draw; the startup clock precedes
         // new readings and would incorrectly label them "in the future".

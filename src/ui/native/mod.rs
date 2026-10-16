@@ -23,6 +23,7 @@ use crate::ui::scenario::{self, Phase};
 use crate::ui::worker::{ConsultationWorker, WorkerUpdate, spawn};
 use crate::{ConsultationCatalog, ConsultationUi, ConsultationView};
 
+mod ambient;
 mod appearance;
 mod appearance_host;
 #[cfg(test)]
@@ -89,6 +90,7 @@ pub fn run(data_root: &Path) -> Result<(), String> {
 
 fn empty_catalog() -> ConsultationCatalog {
     ConsultationCatalog {
+        ambient_memory: Vec::new(),
         contexts: Vec::new(),
         fields: Vec::new(),
         spread_templates: Vec::new(),
@@ -121,6 +123,7 @@ fn hooks(state: Rc<RefCell<NativeState>>) -> HostHooks<ApplicationUi, Applicatio
         dispatch_action(ctx, &dispatching);
     });
     let mut previews = tabard_workshop::native_host::PreviewBindings::default();
+    let mut ambient_runtime = None;
     hooks.frame = Box::new(move |ctx| {
         if ctx.runner.state().appearance.editor_open {
             previews.register(
@@ -167,7 +170,7 @@ fn hooks(state: Rc<RefCell<NativeState>>) -> HostHooks<ApplicationUi, Applicatio
         }
         sync_chart_angle_strip(ctx);
         sync_chart_aspect_dimension(ctx);
-        false
+        ambient::sync(ctx, &mut ambient_runtime)
     });
     let run = state.borrow_mut().scenario.take();
     let mut lane = run.map(|run| scenario_driver::lane(state.clone(), run));
@@ -261,6 +264,28 @@ fn apply_worker_update(
     update: WorkerUpdate,
 ) {
     match update {
+        WorkerUpdate::GrantedContext {
+            cards,
+            notice,
+            complete_request,
+        } => runner.update(move |state| {
+            state.consultation.ambient.granted_cards = cards;
+            state.consultation.ambient.granted_notice = notice;
+            if complete_request {
+                state.consultation.status = super::ConsultationStatus::Ready;
+            }
+        }),
+        WorkerUpdate::Neighborhood {
+            catalog,
+            detail,
+            context,
+        } => {
+            runner.update(move |state| {
+                state
+                    .consultation
+                    .present_neighborhood(catalog, detail, context)
+            });
+        },
         WorkerUpdate::Unavailable { message } => {
             state.catalog_ready = true;
             state

@@ -253,6 +253,41 @@ impl mesquite::Product for Product {
                 .with_field("reading-id", ids.reading_id)
                 .with_field("reflection-id", ids.reflection_id);
         }
+        let ui = &ctx.runner.state().consultation;
+        snapshot = snapshot
+            .with_field(
+                "ambient-memory",
+                ui.catalog.ambient_memory.len().to_string(),
+            )
+            .with_field(
+                "ambient-kept",
+                ui.catalog
+                    .ambient_memory
+                    .iter()
+                    .filter(|m| m.kept)
+                    .count()
+                    .to_string(),
+            )
+            .with_field("ambient-ticks", ui.ambient.ticks.to_string())
+            .with_field("ambient-error", ui.ambient.error.is_some().to_string());
+        if let Some(c) = &ui.ambient.context {
+            snapshot = snapshot
+                .with_field(
+                    "ambient-scene",
+                    c.view.snapshot.recipe.definition.arrangement.kind.clone(),
+                )
+                .with_field("ambient-still", c.view.reduced_motion.to_string())
+                .with_field("ambient-paused", c.view.paused.to_string())
+                .with_field("ambient-families", c.view.families.len().to_string())
+                .with_field(
+                    "ambient-focus",
+                    c.view
+                        .snapshot
+                        .selected_occurrence
+                        .clone()
+                        .unwrap_or_default(),
+                );
+        }
         snapshot
     }
     fn viewport(&self, ctx: &ConsultationCtx<'_>) -> Option<mesquite::Viewport> {
@@ -299,6 +334,9 @@ impl mesquite::Product for Product {
         ctx: &mut ConsultationCtx<'_>,
         outcome: &taproot::Outcome,
     ) -> Result<(), String> {
+        if let Some(context) = &ctx.runner.state().consultation.ambient.context {
+            std::fs::write(self.dir.join("ambient.json"),serde_json::to_vec_pretty(&serde_json::json!({"view":context.view,"data":context.data,"memory":ctx.runner.state().consultation.catalog.ambient_memory,"ticks":ctx.runner.state().consultation.ambient.ticks,"error":ctx.runner.state().consultation.ambient.error})) .map_err(|e|e.to_string())?).map_err(|e|e.to_string())?;
+        }
         scenario::write_done(
             &self.dir,
             self.phase,
@@ -318,6 +356,81 @@ struct ScenarioDriver<'a, 'ctx> {
 
 impl ScenarioDriver<'_, '_> {
     fn app_step(&mut self, line: &str) -> Result<(), String> {
+        if let Some(command) = line.strip_prefix("c4-") {
+            let (action, key) = command.split_once(' ').ok_or("C4 expects action and key")?;
+            let key = if key == "history" {
+                let data = self
+                    .ctx
+                    .runner
+                    .state()
+                    .consultation
+                    .neighborhood_data()
+                    .ok_or("no C4 neighborhood")?;
+                format!(
+                    "ambient-item:{}",
+                    data.items
+                        .iter()
+                        .find(|i| i.id.starts_with("history:"))
+                        .ok_or("no earlier occurrence")?
+                        .id
+                )
+            } else {
+                key.into()
+            };
+            let node = {
+                let dom = self.ctx.runner.dom();
+                let dom = dom.borrow();
+                taproot::matching(
+                    &dom,
+                    &taproot::Selector::role("button").with_attr("data-key", &key),
+                )
+                .into_iter()
+                .next()
+                .ok_or_else(|| format!("missing C4 mounted control {key}"))?
+            };
+            if action == "reveal" {
+                self.ctx
+                    .scroll_into_view(node, cambium_genet_winit_host::ScrollAlign::Start);
+                return Ok(());
+            }
+            let painted = self.ctx.painted_rect(node).ok_or("C4 control unpainted")?;
+            let visible = self.ctx.visible_rect(node).ok_or("C4 control invisible")?;
+            if painted.2 <= 0.0
+                || painted.3 <= 0.0
+                || [
+                    painted.0 - visible.0,
+                    painted.1 - visible.1,
+                    painted.2 - visible.2,
+                    painted.3 - visible.3,
+                ]
+                .iter()
+                .any(|v| v.abs() > 1.0)
+            {
+                return Err(format!(
+                    "C4 control clipped: {key}: {painted:?} {visible:?}"
+                ));
+            }
+            eprintln!("cleromancy: C4 {action} {key}: painted={painted:?}, visible={visible:?}");
+            match action {
+                "click" => {
+                    self.ctx.runner.dispatch_click(
+                        node,
+                        cambium::PointerClick::at((painted.2 / 2.0, painted.3 / 2.0)),
+                    );
+                },
+                "key" => {
+                    self.ctx.runner.set_focus(Some(node));
+                    self.ctx
+                        .runner
+                        .dispatch_key(cambium::KeyEvent::new(cambium::Key::Named(
+                            cambium::NamedKey::Enter,
+                        )));
+                },
+                _ => return Err("unknown C4 action".into()),
+            };
+            submit_pending(self.ctx.runner, self.state.worker.as_ref());
+            return Ok(());
+        }
         match line {
             "c3-read" => {
                 let mut error = None;
