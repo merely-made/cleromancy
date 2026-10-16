@@ -1,0 +1,8 @@
+{
+  "schema": "cleromancy.position-meanings/v1",
+  "id": "cleromancy.die.single",
+  "version": "1",
+  "author": "Cleromancy",
+  "date": "2026-10-16",
+  "positions": [{"name": "focus", "label": "Outcome", "meaning": "The face selected by this single roll. Each face has equal weight; your question does not change its probability. No symbolic meaning is assigned to the number."}]
+}

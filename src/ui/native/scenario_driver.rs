@@ -114,6 +114,14 @@ mod presentation_tests {
             taproot::Scenario::parse(script)
                 .unwrap_or_else(|error| panic!("{name} scenario: {error}"));
         }
+        for script in [
+            include_str!("../../../receipts/c8-die-os.scn"),
+            include_str!("../../../receipts/c8-die-seed.scn"),
+            include_str!("../../../receipts/c8-die-os-reopen.scn"),
+            include_str!("../../../receipts/c8-die-seed-reopen.scn"),
+        ] {
+            taproot::Scenario::parse(script).expect("C8 die scenario");
+        }
         assert!(taproot::Scenario::parse("assert snap readings = 3").is_err());
     }
 
@@ -286,6 +294,18 @@ impl mesquite::Product for Product {
             .with_field("ambient-error", ui.ambient.error.is_some().to_string());
         if let Some(detail) = ui.detail() {
             snapshot = snapshot
+                .with_field(
+                    "die",
+                    (detail.field.rules == crate::UNIFORM_DIE_RULE).to_string(),
+                )
+                .with_field(
+                    "die-seeded",
+                    detail
+                        .readings
+                        .first()
+                        .is_some_and(|r| r.receipt.mode == crate::SelectionMode::Derived)
+                        .to_string(),
+                )
                 .with_field("inference-count", detail.inferences.len().to_string())
                 .with_field(
                     "inference-kept-count",
@@ -444,6 +464,13 @@ impl mesquite::Product for Product {
             std::fs::write(self.dir.join("ambient.json"),serde_json::to_vec_pretty(&serde_json::json!({"view":context.view,"data":context.data,"memory":ctx.runner.state().consultation.catalog.ambient_memory,"ticks":ctx.runner.state().consultation.ambient.ticks,"error":ctx.runner.state().consultation.ambient.error})) .map_err(|e|e.to_string())?).map_err(|e|e.to_string())?;
         }
         if let Some(detail) = ctx.runner.state().consultation.detail() {
+            if detail.field.rules == crate::UNIFORM_DIE_RULE {
+                std::fs::write(
+                    self.dir.join("die-reading.json"),
+                    serde_json::to_vec_pretty(detail).map_err(|e| e.to_string())?,
+                )
+                .map_err(|e| e.to_string())?;
+            }
             if !detail.inferences.is_empty() {
                 std::fs::write(
                     self.dir.join("generated-reading.json"),
@@ -492,7 +519,24 @@ impl ScenarioDriver<'_, '_> {
             .or_else(|| line.strip_prefix("c7-control-"))
         {
             let (action, key) = command.split_once(' ').ok_or("C4 expects action and key")?;
-            let key = if key == "inference-keep-model" {
+            let key = if key == "c8-saved-os" || key == "c8-saved-seed" {
+                let label = if key == "c8-saved-os" {
+                    "C8 operating-system roll"
+                } else {
+                    "C8 public-seed roll"
+                };
+                let summary = self
+                    .ctx
+                    .runner
+                    .state()
+                    .consultation
+                    .catalog
+                    .session_summaries
+                    .iter()
+                    .find(|s| s.context_label == label)
+                    .ok_or("no saved C8 occasion")?;
+                format!("session:{}", summary.session_id)
+            } else if key == "inference-keep-model" {
                 let detail = self
                     .ctx
                     .runner
@@ -580,6 +624,36 @@ impl ScenarioDriver<'_, '_> {
             return Ok(());
         }
         match line {
+            "c8-prepare-os" | "c8-prepare-seed" => {
+                let seeded = line == "c8-prepare-seed";
+                self.ctx.runner.update(|state| {
+                    let ui = &mut state.consultation;
+                    ui.field_select.selected = ui
+                        .catalog
+                        .fields
+                        .iter()
+                        .position(|f| f.system == "cleromancy.die/d6")
+                        .expect("install die before preparing roll");
+                    ui.context_select.selected = 0;
+                    ui.context_label = cambium::TextInput::new(if seeded {
+                        "C8 public-seed roll"
+                    } else {
+                        "C8 operating-system roll"
+                    });
+                    ui.question = cambium::TextInput::new("Which face appears on this roll?");
+                    ui.tags = cambium::TextInput::default();
+                    ui.additional_facts = cambium::TextInput::default();
+                    ui.layout.selected = 0;
+                    ui.mode.selected = if seeded { 2 } else { 1 };
+                    ui.derived_seed = cambium::TextInput::new("C8 public die");
+                    ui.derived_domain = cambium::TextInput::new("cleromancy.c8/qualification");
+                    ui.astrology_facts_select.selected = 0;
+                    ui.set_place_for_draw(None);
+                    ui.set_weather_for_draw(false);
+                });
+                self.state.scenario_stage = 1;
+                Ok(())
+            },
             "c6-prepare-global" | "c6-prepare-weather" => {
                 let weather = line == "c6-prepare-weather";
                 self.ctx.runner.update(|state| {

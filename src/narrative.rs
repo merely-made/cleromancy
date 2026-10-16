@@ -90,6 +90,8 @@ pub fn reading_layout(detail: &ConsultationDetail) -> ReadingLayout {
     }
     let name = if names == THREE_CARD_POSITIONS {
         "the three-card layout".to_string()
+    } else if names == ["focus"] && detail.field.rules == UNIFORM_DIE_RULE {
+        "a single die roll".to_string()
     } else if names == ["focus"] {
         "a single-card reading".to_string()
     } else {
@@ -314,6 +316,8 @@ impl Deck {
         };
         let name = if let Some(deck) = &field.tarot {
             deck.title.clone()
+        } else if field.rules == UNIFORM_DIE_RULE {
+            format!("a {}-sided die", field.candidates.len())
         } else if field.system == RWS_MAJOR_ARCANA_ID {
             RWS_MAJOR_ARCANA_TITLE.to_string()
         } else {

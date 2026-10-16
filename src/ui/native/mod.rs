@@ -396,6 +396,13 @@ fn apply_worker_update(
                 }
             });
         },
+        WorkerUpdate::Die {
+            catalog,
+            field_digest,
+        } => {
+            state.catalog_ready = true;
+            runner.update(|state| state.consultation.present_die(catalog, &field_digest));
+        },
         WorkerUpdate::Catalog(catalog) => {
             state.catalog_ready = true;
             runner.update(|state| {
