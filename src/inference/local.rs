@@ -21,8 +21,8 @@ pub fn configured_label() -> Option<String> {
     )
     .ok()?;
     Some(format!(
-        "Configured local model: {} at {}. Reading data stays on this device.",
-        manifest.model_id, manifest.revision
+        "Configured local model: {}. Reading data stays on this device; generation is greedy, with a 64-token limit.",
+        manifest.model_id
     ))
 }
 pub fn generate(
