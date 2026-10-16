@@ -69,7 +69,7 @@ pub(super) fn neighborhood(ui: &ConsultationUi) -> ConsultationView {
         )
         .attr("data-key", "ambient-still"),
     ));
-    for (label, kind) in [("Constellation", "spiral"), ("Grid scene", "grid.default")] {
+    for (label, kind) in [("Constellation", "spiral"), ("Grid scene", "grid.ordered")] {
         controls.push(Box::new(
             button(label, move |ui: &mut ConsultationUi, _| {
                 if let Some(c) = &mut ui.ambient.context {
@@ -83,7 +83,7 @@ pub(super) fn neighborhood(ui: &ConsultationUi) -> ConsultationView {
                     ));
                     c.view.snapshot.recipe = draft.to_recipe().expect("supported arrangement edit");
                     c.view.positions.clear();
-                    c.view.paused = kind == "grid.default";
+                    c.view.paused = kind == "grid.ordered";
                     ui.ambient.generation += 1;
                 }
             })

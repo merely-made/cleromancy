@@ -139,6 +139,13 @@ impl<B: Backend> CleromancyHost<B> {
     pub(super) fn validate_ambient_view(&self, view: &AmbientView) -> Result<(), HostError> {
         view.validate().map_err(ambient_error)?;
         let data = self.card_neighborhood(&view.session_id, &view.position)?;
+        self.validate_view_disclosure(view, &data)
+    }
+    fn validate_view_disclosure(
+        &self,
+        view: &AmbientView,
+        data: &CardNeighborhood,
+    ) -> Result<(), HostError> {
         let known = |id: &str| data.item(id).is_some();
         if view
             .snapshot
@@ -169,14 +176,25 @@ impl<B: Backend> CleromancyHost<B> {
         Ok(())
     }
     pub(super) fn validate_ambient_records(&self) -> Result<(), HostError> {
+        // One exact source computation per occasion/position for this candidate.
+        // This cache is discarded after validation; it is not a store or owner.
+        let mut neighborhoods = std::collections::BTreeMap::new();
         for view in self.ambient_views()? {
-            self.validate_ambient_view(&view)?;
+            let key = (view.session_id.clone(), view.position.clone());
+            if !neighborhoods.contains_key(&key) {
+                neighborhoods.insert(key.clone(), self.card_neighborhood(&key.0, &key.1)?);
+            }
+            self.validate_view_disclosure(&view, &neighborhoods[&key])?;
         }
         for summary in self.ambient_memories()? {
             let record = summary.memory;
-            let data = self.card_neighborhood(&record.session_id, &record.position)?;
-            let rebuilt = AmbientMemory::new(&data, &record.item.id, record.examined_at_ms)
-                .map_err(ambient_error)?;
+            let key = (record.session_id.clone(), record.position.clone());
+            if !neighborhoods.contains_key(&key) {
+                neighborhoods.insert(key.clone(), self.card_neighborhood(&key.0, &key.1)?);
+            }
+            let rebuilt =
+                AmbientMemory::new(&neighborhoods[&key], &record.item.id, record.examined_at_ms)
+                    .map_err(ambient_error)?;
             if rebuilt != record {
                 return Err(ambient_error(
                     "ambient memory differs from its exact source-backed engine result",

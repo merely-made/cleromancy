@@ -86,11 +86,38 @@ fn keeping_uses_shared_memory_levels_and_pose_curation_replays_without_sealed_ed
     host.examine_ambient(&detail.session.id, "foundation", &item, true, 5000)
         .unwrap();
     assert!(host.ambient_memories().unwrap()[0].kept);
+    // A second position has a different subject and disclosed spread items.
+    // Candidate validation must not reuse the first position's neighborhood.
+    let other = host
+        .ambient_context(&detail.session.id, "attention")
+        .unwrap();
+    let original_subject = other
+        .data
+        .items
+        .iter()
+        .find(|i| i.id == format!("reading:{}:foundation", detail.session.id))
+        .unwrap()
+        .id
+        .clone();
+    let mut other_view = other.view;
+    other_view.snapshot.recipe.definition.arrangement.kind = "grid.ordered".into();
+    host.insert_ambient_view(&other_view).unwrap();
+    host.examine_ambient(
+        &detail.session.id,
+        "attention",
+        &original_subject,
+        true,
+        6000,
+    )
+    .unwrap();
     assert_eq!(sealed(host.graph()), before_sealed);
     let mut replay = c.host().graph().clone();
     mere::kernel::graph::replay_captured_deltas_onto(&mut replay, edits.lock().unwrap().clone());
     let reopened = CleromancyHost::candidate(replay).unwrap();
-    assert_eq!(reopened.ambient_views().unwrap(), vec![view]);
+    let views = reopened.ambient_views().unwrap();
+    assert_eq!(views.len(), 2);
+    assert!(views.contains(&view) && views.contains(&other_view));
+    assert_eq!(reopened.ambient_memories().unwrap().len(), 2);
     assert!(reopened.ambient_memories().unwrap()[0].kept);
     assert_eq!(
         Consultation::new(reopened)

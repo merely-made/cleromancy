@@ -255,6 +255,7 @@ impl mesquite::Product for Product {
         }
         let ui = &ctx.runner.state().consultation;
         snapshot = snapshot
+            .with_field("product-busy", ui.status().is_busy().to_string())
             .with_field(
                 "ambient-memory",
                 ui.catalog.ambient_memory.len().to_string(),

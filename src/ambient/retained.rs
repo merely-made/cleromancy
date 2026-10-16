@@ -106,7 +106,7 @@ impl AmbientView {
         self.snapshot
             .validate()
             .map_err(|e| format!("ambient recipe: {e:?}"))?;
-        if !["spiral", "grid.default"]
+        if !["spiral", "grid.default", "grid.ordered"]
             .contains(&self.snapshot.recipe.definition.arrangement.kind.as_str())
         {
             return Err("unsupported neighborhood arrangement".into());
