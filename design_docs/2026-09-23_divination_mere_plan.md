@@ -1,3 +1,10 @@
+**C7 publication (2026-10-16):** qualified product receipts are published on
+main at `dba1c183`; coordinated Mere receiving qualification is on main at
+`a4c1814c8`. The integrated receiving gate passes 8 parent tests, with one
+intentional child entry ignored. Frozen native/core sources retain their exact
+identities; [publication receipt](../receipts/c7-publication_20261016.json)
+records these separately. C8's first dice slice is now in progress.
+
 # Cleromancy: the divination mere, and a reading that explains itself
 
 **Date:** 2026-09-23
@@ -688,6 +695,27 @@ position meanings, interpretation revisions and reflections. Scene dynamics
 do not silently draw again, rewrite an interpretation or promote keeping.
 Cleromancy must demonstrate its own save/reopen and moving-selection behavior;
 Graphshell or another product's receipts are not consumer adoption.
+
+**Deck swatch and dealing proposal (Mark, 2026-10-16).** A deck can be a
+scoped subgraph presented as an embedded swatch. Multiple selected cards can
+open a floating comparison surface while their source positions remain in the
+scene. Selecting a deck definition differs from selecting an occurrence in a
+saved reading: the latter retains occasion, position and orientation. Zellij's
+floating panes are the interaction reference, not a claim that node-selection
+behavior is supplied by Zellij.
+
+A reading layout can supply the receiving positions in an interactive backdrop.
+Clicking the shuffled deck reveals its next card into the next position; the
+remaining order stays hidden. The existing sealed shuffle determines the draw,
+while a shared scene composition can animate dealing and settling. Pausing,
+reduced motion, dragging and frame timing must preserve the selection. A first
+consumer may seal the full reading once and save a reveal cursor separately;
+that choice must be disclosed. Truly incomplete readings require a distinct
+draft and completion contract, not a silent change to sealed reading semantics.
+Graphshell/Scenograph own the linked swatch, floating presentation and backdrop
+mechanisms; Cleromancy owns deck membership, draw/reveal actions and position
+meaning. S2/B1 remain separate shared adoption gates. This proposal does not
+change C7 then small C8 execution order or qualify a new scene implementation.
 
 A dynamics-based cast is a later exploration candidate, not this scene's draw
 method or a C5 requirement. It would require an explicitly chosen selection

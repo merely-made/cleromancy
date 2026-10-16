@@ -1,0 +1,20 @@
+{
+  "schema": "cleromancy.c7-publication/v1",
+  "date": "2026-10-16",
+  "product_main_receipt_checkpoint": "dba1c183a0795484d2d818940570496902bfb0bf",
+  "product_native_source": "2e5ef2ad5b0423407ade34d34fc3bf1732387cbf",
+  "portable_validator": "d5c383c189f9e866a38939dd372ddf6a7556b60b",
+  "mere_main_receipt_checkpoint": "a4c1814c8eaac5bcccc7b10379cbdf389e5a6661",
+  "mere_integrated_test_source": "1e003b3b44257f96be4e58901c21aa1b7b7a4c6c",
+  "receiving_gate": {
+    "passed": 8,
+    "failed": 0,
+    "ignored": 1
+  },
+  "verified": "Both main refs checked with git ls-remote after successful pushes.",
+  "boundaries": [
+    "C7 native and original receiving source identities remain frozen.",
+    "Mere integrated check retains both its oversized C4 fixture diagnostic and bounded replay-valid repair. Carrier limit and complete final-state guards unchanged.",
+    "Product supplier remains Mere 25cbe810; no broader consumer repin is claimed."
+  ]
+}
