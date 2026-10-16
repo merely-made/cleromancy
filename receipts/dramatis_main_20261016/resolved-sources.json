@@ -1,0 +1,53 @@
+{
+  "root-platform": {
+    "packages": [
+      {
+        "name": "chatelaine",
+        "version": "0.0.3",
+        "source": "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+      },
+      {
+        "name": "dramatis",
+        "version": "0.0.3",
+        "source": "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+      },
+      {
+        "name": "insigne",
+        "version": "0.0.2",
+        "source": "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+      },
+      {
+        "name": "notochord",
+        "version": "0.1.1",
+        "source": "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+      },
+      {
+        "name": "personae",
+        "version": "0.3.0",
+        "source": "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+      }
+    ],
+    "metadata_sha256": "53c1769fbfd808586d02c3fdc3a619ce5267e520d5b66552f64fb93802474d85",
+    "dramatis_sources": [
+      "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+    ]
+  },
+  "core": {
+    "packages": [
+      {
+        "name": "insigne",
+        "version": "0.0.2",
+        "source": "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+      },
+      {
+        "name": "personae",
+        "version": "0.3.0",
+        "source": "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+      }
+    ],
+    "metadata_sha256": "eb6ee68b1076dcc8439eab51a31920048e2378c357961321f68d356bed758137",
+    "dramatis_sources": [
+      "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+    ]
+  }
+}

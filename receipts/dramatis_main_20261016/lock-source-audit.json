@@ -1,0 +1,6 @@
+{
+  "package_names_versions_and_source_selectors_unchanged": true,
+  "only_revision_intake": "dramatis.git main 2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59",
+  "root_extra_changes": "Cargo also re-resolved existing registry dependency edges; no package added, removed or version changed. Validate through the software gates.",
+  "core_extra_changes": null
+}

@@ -1,0 +1,224 @@
+{
+  "schema": "cleromancy.dramatis-main-intake/v1",
+  "date": "2026-10-16",
+  "status": "software and desktop build qualified; publication recorded separately",
+  "source": "7aeb7584e6594229e397ebffe6610bb8849e3b16",
+  "dramatis_main": "2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59",
+  "previous_root": "5c89001a6ff1aac3f6105ed50b6ae5f09c9f27e2",
+  "previous_core": "814ffa09f7826f55b4b9e977306b053e751b5e8e",
+  "resolved_graphs": {
+    "root-platform": {
+      "packages": [
+        {
+          "name": "chatelaine",
+          "version": "0.0.3",
+          "source": "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+        },
+        {
+          "name": "dramatis",
+          "version": "0.0.3",
+          "source": "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+        },
+        {
+          "name": "insigne",
+          "version": "0.0.2",
+          "source": "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+        },
+        {
+          "name": "notochord",
+          "version": "0.1.1",
+          "source": "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+        },
+        {
+          "name": "personae",
+          "version": "0.3.0",
+          "source": "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+        }
+      ],
+      "metadata_sha256": "53c1769fbfd808586d02c3fdc3a619ce5267e520d5b66552f64fb93802474d85",
+      "dramatis_sources": [
+        "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+      ]
+    },
+    "core": {
+      "packages": [
+        {
+          "name": "insigne",
+          "version": "0.0.2",
+          "source": "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+        },
+        {
+          "name": "personae",
+          "version": "0.3.0",
+          "source": "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+        }
+      ],
+      "metadata_sha256": "eb6ee68b1076dcc8439eab51a31920048e2378c357961321f68d356bed758137",
+      "dramatis_sources": [
+        "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+      ]
+    }
+  },
+  "checks": {
+    "default": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline"
+      ],
+      "passed": 130,
+      "failed": 0,
+      "ignored": 1
+    },
+    "expanded": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--features",
+        "legacy-receipts,analytic-ephemeris,sky-timeline,personal-sync,graphshell-admission"
+      ],
+      "passed": 179,
+      "failed": 0,
+      "ignored": 1
+    },
+    "all-targets": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "--all-targets"
+      ],
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    },
+    "no-default": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "--all-targets",
+        "--no-default-features"
+      ],
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    },
+    "personal-sync": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "--all-targets",
+        "--features",
+        "personal-sync"
+      ],
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    },
+    "graphshell-admission": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "--all-targets",
+        "--features",
+        "graphshell-admission"
+      ],
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    },
+    "core-default": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "core/Cargo.toml",
+        "--locked",
+        "--offline"
+      ],
+      "passed": 41,
+      "failed": 0,
+      "ignored": 0
+    },
+    "core-legacy": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "core/Cargo.toml",
+        "--locked",
+        "--offline",
+        "--features",
+        "legacy-receipts"
+      ],
+      "passed": 42,
+      "failed": 0,
+      "ignored": 0
+    },
+    "core-sky": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "core/Cargo.toml",
+        "--locked",
+        "--offline",
+        "--features",
+        "legacy-receipts,sky-timeline"
+      ],
+      "passed": 43,
+      "failed": 0,
+      "ignored": 0
+    },
+    "desktop-build": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "build",
+        "--locked",
+        "--offline",
+        "--bin",
+        "cleromancy"
+      ],
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    }
+  },
+  "source_inputs": {
+    "source": "7aeb7584e6594229e397ebffe6610bb8849e3b16",
+    "files": {
+      "Cargo.toml": "8698c04c21fb1a0dad774d8350497077d375c36566d752aae3e5dc2f7597d6ab",
+      "Cargo.lock": "bab499a5b0b8aee0eb8c7a1aebcd8c611948d8f8709412b580965baf89813f95",
+      "core/Cargo.toml": "bdbdbfeca2b20112b93963756994bc3bf9896eed4ded613e1223b15addfe12a8",
+      "core/Cargo.lock": "ea41fa4a6b494f14f562184b37df147b8591e6b251e95c7bdccbc2f2467660aa",
+      "rust-toolchain.toml": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228",
+      ".cargo/config.toml": "af174c7f9ac5ae8e0536a8fd2fa0251e680f23edab3ffbb5098aa914a48cdb01"
+    }
+  },
+  "prior_receipt_paths_intact": 802,
+  "old_c7_c8_verifiers": "pass",
+  "desktop_binary_sha256": "4da5f201ae251f4838be289fe69dab8b82bde1315a81b4f489e5b8aae0046623",
+  "evidence": "dramatis_main_20261016/artifact-hashes.json",
+  "native_requalified": false,
+  "natal_contract_included": false
+}

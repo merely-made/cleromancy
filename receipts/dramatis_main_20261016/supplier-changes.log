@@ -1,0 +1,4 @@
+2f27f1a Release transient Sennet material from the existing scoped child
+3d4ba32 Record qualified Sennet derivation and scoped custody receiving gates
+19be483 Derive scoped public Sennet node numbers for Signalman custody
+814ffa0 Drop the weave merge driver rules from .gitattributes
