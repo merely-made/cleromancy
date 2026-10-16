@@ -327,6 +327,22 @@ impl<B: Backend> Consultation<B> {
         Ok(digests)
     }
 
+    /// Add the first dice surface using the existing uniform roll field and replay rules.
+    pub async fn install_six_sided_die(&mut self) -> Result<String, ConsultationError> {
+        self.ensure_writable()?;
+        let mut field = crate::RollIntentPayload::new(6)
+            .with_label("Six-sided die")
+            .field();
+        field.position_meanings = Some(
+            serde_json::from_str(include_str!("../content/die-position-v1.json"))
+                .expect("bundled die position"),
+        );
+        let digest = field.digest();
+        self.host.insert_field(&field)?;
+        self.persist(unix_time_secs()?).await?;
+        Ok(digest)
+    }
+
     pub async fn save_context(&mut self, draft: ContextDraft) -> Result<String, ConsultationError> {
         self.save_context_at(draft, unix_time_secs()?).await
     }

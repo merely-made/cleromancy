@@ -431,6 +431,12 @@ impl ConsultationUi {
             self.present_error("Choose a stored field before reading.");
             return None;
         };
+        if field.rules == crate::UNIFORM_DIE_RULE
+            && (self.mode.selected == 0 || self.layout.selected != 0)
+        {
+            self.present_error("Choose operating-system randomness or a public seed, and a single outcome, for this die roll.");
+            return None;
+        }
         let context = if self.context_select.selected == 0 {
             if self.context_label.text().trim().is_empty() || self.question.text().trim().is_empty()
             {
@@ -512,6 +518,28 @@ impl ConsultationUi {
         self.error = None;
         self.status = ConsultationStatus::SavingReading;
         Some(action)
+    }
+
+    pub(crate) fn present_die(&mut self, catalog: ConsultationCatalog, digest: &str) {
+        self.replace_catalog(catalog);
+        self.field_select.selected = self
+            .catalog
+            .fields
+            .iter()
+            .position(|f| f.digest() == digest)
+            .expect("installed die in catalog");
+        self.mode.selected = 1;
+        self.layout.selected = 0;
+        self.status = ConsultationStatus::Ready;
+    }
+
+    pub(super) fn request_die(&mut self) -> Option<ConsultationAction> {
+        if self.status.is_busy() {
+            return None;
+        }
+        self.error = None;
+        self.status = ConsultationStatus::SavingSetup;
+        Some(ConsultationAction::InstallSixSidedDie)
     }
 
     pub(super) fn request_typed_decks(&mut self) -> Option<ConsultationAction> {

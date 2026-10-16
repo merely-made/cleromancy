@@ -51,6 +51,10 @@ pub(crate) enum WorkerUpdate {
         catalog: ConsultationCatalog,
     },
     Catalog(ConsultationCatalog),
+    Die {
+        catalog: ConsultationCatalog,
+        field_digest: String,
+    },
     SavedNotice(String),
     #[cfg(feature = "analytic-ephemeris")]
     AstrologyChart {
@@ -341,6 +345,13 @@ pub(crate) fn execute<B: muniment::Backend>(
             Ok(WorkerUpdate::Session {
                 catalog: consultation.catalog()?,
                 detail,
+            })
+        },
+        ConsultationAction::InstallSixSidedDie => {
+            let field_digest = pollster::block_on(consultation.install_six_sided_die())?;
+            Ok(WorkerUpdate::Die {
+                catalog: consultation.catalog()?,
+                field_digest,
             })
         },
         ConsultationAction::InstallTarotDecks => {

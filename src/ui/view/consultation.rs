@@ -43,6 +43,11 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
     let field_select = map_action(select(&ui.field_select, &field_refs), never_select_action);
     let field_select = map_state(field_select, field_select_state);
 
+    let die = ui
+        .catalog
+        .fields
+        .get(ui.field_select.selected)
+        .is_some_and(|f| f.rules == crate::UNIFORM_DIE_RULE);
     let mode = map_action(
         radio_group(&ui.mode, &["Calculated", "Cast", "Derived"]),
         never_radio_action,
@@ -120,9 +125,48 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             .attr("data-key", "install-typed-decks")
             .attr("class", "install-decks"),
         ),
-        labelled_control("Selection mode", "cleromancy-mode", Box::new(mode)),
-        labelled_control("Reading shape", "cleromancy-layout", Box::new(layout)),
+        Box::new(
+            button("Add a six-sided die", |ui: &mut ConsultationUi, _| {
+                let action = ui.request_die();
+                ui.record_action(action);
+            })
+            .attr("data-key", "install-six-sided-die"),
+        ),
     ];
+    if die {
+        for (label, key, selected) in [
+            ("Use operating-system randomness", "die-os", 1),
+            ("Use a public seed", "die-seed", 2),
+        ] {
+            children.push(Box::new(
+                button(label, move |ui: &mut ConsultationUi, _| {
+                    ui.mode.selected = selected;
+                    ui.layout.selected = 0;
+                })
+                .attr("data-key", key)
+                .attr(
+                    "aria-pressed",
+                    if ui.mode.selected == selected {
+                        "true"
+                    } else {
+                        "false"
+                    },
+                ),
+            ));
+        }
+        children.push(Box::new(el::<_, ConsultationUi, ()>("p", "One roll, one outcome. All six faces have equal weight. Separate rolls may repeat a face. A public seed and domain reproduce the same result with the same saved context. There is no orientation or assigned symbolic meaning.").attr("data-key", "die-method").attr("class", "die-method")));
+    } else {
+        children.push(labelled_control(
+            "Selection mode",
+            "cleromancy-mode",
+            Box::new(mode),
+        ));
+        children.push(labelled_control(
+            "Reading shape",
+            "cleromancy-layout",
+            Box::new(layout),
+        ));
+    }
     let context_example = ui.detail.as_ref().and_then(|detail| detail.readings.first()).map(|reading| {
         format!("A question to riff on: Where do I notice {} in my situation today?", reading.title)
     }).unwrap_or_else(|| "A question to riff on: What deserves my attention in this change? Add a concrete detail, such as a decision at work or a habit you are reconsidering.".into());
@@ -131,7 +175,7 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
             .attr("class", "context-explanation")
             .attr("data-key", "context-example"),
     ));
-    if ui.layout.selected == 2 {
+    if !die && ui.layout.selected == 2 {
         children.push(labelled_control(
             "Authored layout",
             "cleromancy-template-select",
@@ -170,10 +214,13 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
     ));
     children.push(super::situation::controls(ui));
     children.push(Box::new(
-        button("Read", |ui: &mut ConsultationUi, _| {
-            let action = ui.request_read();
-            ui.record_action(action);
-        })
+        button(
+            if die { "Roll the die" } else { "Read" },
+            |ui: &mut ConsultationUi, _| {
+                let action = ui.request_read();
+                ui.record_action(action);
+            },
+        )
         .attr("data-key", "read")
         .attr("aria-label", "Read this consultation")
         .attr("class", "read-button"),
@@ -275,6 +322,8 @@ pub(super) fn consultation_region(ui: &ConsultationUi) -> ConsultationView {
 fn field_label(field: &Field) -> String {
     if let Some(deck) = &field.tarot {
         format!("{} ({} cards)", deck.title, deck.cards.len())
+    } else if field.rules == crate::UNIFORM_DIE_RULE {
+        format!("{}-sided die", field.candidates.len())
     } else if field.system == RWS_MAJOR_ARCANA_ID {
         "Rider-Waite-Smith Major Arcana".to_string()
     } else {

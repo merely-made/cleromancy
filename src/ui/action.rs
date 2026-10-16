@@ -41,6 +41,7 @@ pub enum ConsultationAction {
     },
     ClearGrantedContext,
     InstallTarotDecks,
+    InstallSixSidedDie,
     GenerateInference {
         session_id: String,
         model: bool,
