@@ -47,7 +47,7 @@ fn saved_tarot_consultation_and_reflection_reopen_exactly() {
         ["change", "reflection"]
     );
 
-    let mut cast_entropy = FixedEntropy::new([7, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66]);
+    let mut cast_entropy = FixedEntropy::new([7, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77]);
     let cast = pollster::block_on(consultation.read_at_with_entropy(
         &context_digest,
         &field_digest,
@@ -59,7 +59,13 @@ fn saved_tarot_consultation_and_reflection_reopen_exactly() {
     .unwrap();
     assert_eq!(cast.readings.len(), 1);
     assert_eq!(cast.readings[0].receipt.mode, SelectionMode::Cast);
-    assert_eq!(cast.readings[0].receipt.sample, Some(7));
+    assert_eq!(cast.readings[0].receipt.sample, None);
+    let draw = cast.readings[0].receipt.shuffle.as_ref().unwrap();
+    assert_eq!((draw.index, draw.count), (0, 1));
+    assert!(matches!(
+        draw.shuffle.source,
+        cleromancy::ShuffleSource::OperatingSystem { .. }
+    ));
     let cast_session_id = cast.session.id.clone();
 
     let mut calculated_entropy = FixedEntropy::new([0x77, 0x88]);
