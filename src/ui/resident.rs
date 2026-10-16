@@ -650,6 +650,10 @@ fn owner_update(
                             comparison,
                         })
                 }),
+            WorkerUpdate::Die { field_digest, .. } => Some(WorkerUpdate::Die {
+                catalog: catalog.clone(),
+                field_digest,
+            }),
             #[cfg(feature = "analytic-ephemeris")]
             WorkerUpdate::AstrologyChart { facts_digest, .. } => {
                 Some(WorkerUpdate::AstrologyChart {
@@ -726,6 +730,34 @@ fn err(error: impl std::fmt::Display) -> String {
 mod tests {
     use super::*;
     use scenotime::{Revision, SceneEpoch};
+
+    #[test]
+    fn installed_die_survives_owner_refresh_with_authoritative_catalog() {
+        let mut c = Consultation::new(CleromancyHost::empty(MemoryBackend::new()));
+        let digest = pollster::block_on(c.install_six_sided_die()).unwrap();
+        let stale = Consultation::new(CleromancyHost::empty(MemoryBackend::new()))
+            .catalog()
+            .unwrap();
+        match owner_update(
+            &c,
+            WorkerUpdate::Die {
+                catalog: stale,
+                field_digest: digest.clone(),
+            },
+        )
+        .unwrap()
+        {
+            WorkerUpdate::Die {
+                catalog,
+                field_digest,
+            } => {
+                assert_eq!(field_digest, digest);
+                assert_eq!(catalog.fields.len(), 1);
+                assert_eq!(catalog.fields[0].digest(), digest);
+            },
+            other => panic!("installed field selection was lost: {other:?}"),
+        }
+    }
 
     fn envelope() -> session_item::SessionGraphV1 {
         let graph = Graph::new();

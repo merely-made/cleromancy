@@ -1,6 +1,6 @@
 wait 1800
 assert snap catalog-ready == true
-show-mere
+show-consultation
 wait 1800
 settle 8
 c5-control-reveal install-six-sided-die
@@ -24,6 +24,15 @@ assert snap die == true
 assert snap die-seeded == true
 assert snap readings == 1
 assert text Outcome
+c8-prepare-reflection
+c5-control-reveal save-reflection
+settle 4
+c5-control-click save-reflection
+wait 1800
+assert snap product-busy == false
+assert snap reflections == 1
+show-mere
+settle 8
 assert text 6 faces
 reveal class reading-narrative
 settle 4
