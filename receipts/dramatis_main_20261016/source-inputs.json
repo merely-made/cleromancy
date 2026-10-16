@@ -1,0 +1,11 @@
+{
+  "source": "7aeb7584e6594229e397ebffe6610bb8849e3b16",
+  "files": {
+    "Cargo.toml": "8698c04c21fb1a0dad774d8350497077d375c36566d752aae3e5dc2f7597d6ab",
+    "Cargo.lock": "bab499a5b0b8aee0eb8c7a1aebcd8c611948d8f8709412b580965baf89813f95",
+    "core/Cargo.toml": "bdbdbfeca2b20112b93963756994bc3bf9896eed4ded613e1223b15addfe12a8",
+    "core/Cargo.lock": "ea41fa4a6b494f14f562184b37df147b8591e6b251e95c7bdccbc2f2467660aa",
+    "rust-toolchain.toml": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228",
+    ".cargo/config.toml": "af174c7f9ac5ae8e0536a8fd2fa0251e680f23edab3ffbb5098aa914a48cdb01"
+  }
+}

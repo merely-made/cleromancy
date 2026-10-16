@@ -1,14 +1,16 @@
-**Dramatis main intake (2026-10-16; qualification in progress):** the app
-and portable-core manifests already use canonical `dramatis.git` with
-`branch = "main"`. Cargo updates both locks to published supplier
-`2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59`, replacing root `5c89001` and
-core `814ffa0`. No other package version or Git source revision changes.
-Cargo also regenerates root registry dependency edges; the scoped software
-matrix must qualify those bytes. Done conditions are one Dramatis source in
-each resolved graph, default/expanded product tests, all-target feature checks,
-portable-core gates and intact earlier receipts. Native qualification remains
-bound to the older frozen C7/C8 sources. The separate Dramatis natal-contract
-lane is unpublished and is not part of this main intake.
+**Dramatis main intake (2026-10-16; software qualified):** both the app and
+portable-core lockfiles now resolve published Dramatis main
+`2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59` through the existing canonical
+`branch = "main"` declarations. Each resolved graph has one Dramatis source.
+No imports or product logic changed; Cargo also regenerated existing registry
+dependency edges without changing any package versions or other Git revisions.
+The [intake receipt](../receipts/dramatis-main-intake_20261016.json) binds the
+committed source, default/expanded product suites, four all-target checks,
+portable-core 41/42/43 and desktop build. All 802 earlier receipt paths remain
+exact, and the existing C7/C8 evidence verifiers pass. This software/build
+intake does not renew native qualification. The separate local natal subject
+contract remains unpublished and is excluded from this supplier revision.
+Publication is recorded separately after pushing the qualified checkpoint.
 
 **C8 first-die qualification (2026-10-16):** the bounded six-sided-die slice
 now passes four whole native processes and review of all 14 original captures:
@@ -1236,3 +1238,5 @@ orientations and positions, and interpretations.
   confirm the exact commits and selected source-tree identities, including all
   198 recorded product inputs. The additive C6 publication ledger leaves the
   frozen qualification, original captures and all earlier receipts unchanged.
+
+- 2026-10-16: Published-main Dramatis intake aligns the app and portable-core locks at `2f27f1a`. Source `7aeb758` passes 130/179 product tests (one intentional model probe ignored per suite), four all-target checks, portable 41/42/43 and desktop build. All 802 prior receipt paths and C7/C8 frozen verifiers remain exact. No import/product-source change, native recertification or unpublished natal-contract adoption is inferred. Publication is recorded separately.

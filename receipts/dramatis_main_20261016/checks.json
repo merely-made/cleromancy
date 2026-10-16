@@ -1,0 +1,148 @@
+{
+  "source": "7aeb7584e6594229e397ebffe6610bb8849e3b16",
+  "results": {
+    "default": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline"
+      ],
+      "passed": 130,
+      "failed": 0,
+      "ignored": 1
+    },
+    "expanded": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--features",
+        "legacy-receipts,analytic-ephemeris,sky-timeline,personal-sync,graphshell-admission"
+      ],
+      "passed": 179,
+      "failed": 0,
+      "ignored": 1
+    },
+    "all-targets": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "--all-targets"
+      ],
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    },
+    "no-default": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "--all-targets",
+        "--no-default-features"
+      ],
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    },
+    "personal-sync": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "--all-targets",
+        "--features",
+        "personal-sync"
+      ],
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    },
+    "graphshell-admission": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "--all-targets",
+        "--features",
+        "graphshell-admission"
+      ],
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    },
+    "core-default": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "core/Cargo.toml",
+        "--locked",
+        "--offline"
+      ],
+      "passed": 41,
+      "failed": 0,
+      "ignored": 0
+    },
+    "core-legacy": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "core/Cargo.toml",
+        "--locked",
+        "--offline",
+        "--features",
+        "legacy-receipts"
+      ],
+      "passed": 42,
+      "failed": 0,
+      "ignored": 0
+    },
+    "core-sky": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "core/Cargo.toml",
+        "--locked",
+        "--offline",
+        "--features",
+        "legacy-receipts,sky-timeline"
+      ],
+      "passed": 43,
+      "failed": 0,
+      "ignored": 0
+    },
+    "desktop-build": {
+      "exit": 0,
+      "command": [
+        "cargo",
+        "build",
+        "--locked",
+        "--offline",
+        "--bin",
+        "cleromancy"
+      ],
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    }
+  }
+}

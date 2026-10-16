@@ -1,0 +1,84 @@
+{"source": "7aeb7584e6594229e397ebffe6610bb8849e3b16", "command": ["cargo", "check", "--locked", "--offline", "--all-targets"], "RUSTC": "/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustc", "RUSTDOC": "/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustdoc", "CARGO_BUILD_JOBS": "4"}
+warning: patch `murm v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `ipc-channel v0.22.0 (https://github.com/merely-made/genet.git?branch=main#e37762d7)` was not used in the crate graph
+warning: patch `p2panda-auth v0.7.1 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)` was not used in the crate graph
+warning: patch `p2panda-stream v0.7.1 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)` was not used in the crate graph
+warning: patch `embedded-graphics v0.8.2 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `embedded-graphics-core v0.4.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `murm v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `outrider v0.3.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `postilion v0.3.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `radio-face v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `radio-hand v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `selvage v0.1.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `seneschal v0.2.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `tulle v0.2.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+    Checking constant_time_eq v0.4.2
+   Compiling data-encoding-macro-internal v0.1.19
+    Checking constant_time_eq v0.1.5
+    Checking chatelaine v0.0.3 (https://github.com/merely-made/dramatis.git?branch=main#2f27f1a9)
+    Checking blake3 v1.8.7
+    Checking data-encoding-macro v0.1.21
+    Checking muniment v0.1.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking insigne v0.0.2 (https://github.com/merely-made/dramatis.git?branch=main#2f27f1a9)
+    Checking p2panda-core v0.7.1 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)
+    Checking personae v0.3.0 (https://github.com/merely-made/dramatis.git?branch=main#2f27f1a9)
+    Checking chartulary v0.2.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking iroh-base v1.3.0
+    Checking chirograph v0.0.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking notochord v0.1.1 (https://github.com/merely-made/dramatis.git?branch=main#2f27f1a9)
+    Checking p2panda-store v0.7.1 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)
+    Checking p2panda-discovery v0.7.1 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)
+    Checking mere-kernel v0.0.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking eidetic v0.0.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking p2panda-sync v0.7.1 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)
+    Checking p2panda-encryption v0.7.1 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)
+    Checking iroh-dns v1.3.0
+    Checking iroh-tickets v1.0.0
+    Checking mere-proofs v0.1.0 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking iroh-relay v1.3.0
+    Checking bao-tree v0.16.1
+    Checking dramatis v0.0.3 (https://github.com/merely-made/dramatis.git?branch=main#2f27f1a9)
+    Checking mere-alembic v0.0.1 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking mere-cartography v0.0.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking pandect v0.1.1 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking pictograph v0.2.0 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking mere-fleece v0.0.1 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking iroh v1.3.0
+    Checking graphshell-client v0.0.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking graphshell-endpoint v0.0.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking mere-document-lanes v0.1.0 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking knot-file-catalog v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#0020a50e)
+    Checking iroh-mdns-address-lookup v0.6.0
+    Checking iroh-gossip v0.101.0
+    Checking iroh-util v0.6.0
+    Checking iroh-blobs v0.103.1
+    Checking knot-capture v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#0020a50e)
+    Checking mere-p2panda-net v0.7.5 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)
+    Checking servitor v0.0.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking mere-webrtc-carrier v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)
+    Checking reference-data v0.0.1 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking knot-composition v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#0020a50e)
+    Checking stickleback v0.1.1 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking pelt-core v0.2.0 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking mere-fetch v0.0.1 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking castellan v0.0.3 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking mere-transport v0.0.2 (https://github.com/merely-made/murm.git?branch=main#cba46d85)
+    Checking knot-site v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#0020a50e)
+    Checking tabard-workshop v0.0.1 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking mere-mesh v0.0.1 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking graphshell-host v0.0.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking knot-editor v0.0.3 (https://github.com/merely-made/knot-editor.git?branch=main#0020a50e)
+    Checking distillery v0.0.1 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking mere v0.0.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking mere-view v0.1.0 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking cleromancy-core-acceptance v0.1.0 (/Users/markik/Code/repos/cleromancy/core)
+    Checking mere-overmap v0.1.0 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking graphshell v0.0.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking djinn v0.0.2 (https://github.com/merely-made/mere.git?branch=main#25cbe810)
+    Checking cleromancy v0.1.0 (/Users/markik/Code/repos/cleromancy)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1m 28s
