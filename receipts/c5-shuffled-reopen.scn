@@ -1,0 +1,19 @@
+wait
+assert snap product-busy == false
+advance
+wait
+assert snap product-busy == false
+assert snap readings == 3
+assert snap shuffled == true
+assert snap unique-cards == 3
+assert snap reversed-cards >= 1
+assert snap reflections == 1
+assert text What I must release
+assert text Fisher–Yates
+assert text C5 public deck
+reveal class reading-spread-cards
+settle 2
+capture reopened-spread
+reveal key narrative reading-narrative
+settle 2
+capture reopened-narrative

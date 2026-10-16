@@ -111,7 +111,7 @@ pub fn summarize(
                 .find(|reading| reading.id == placement.reading_id)?;
             Some(SummaryPlacement {
                 position: placement.position.clone(),
-                title: reading.title.clone(),
+                title: reading.display_title(),
                 candidate_id: reading.candidate_id.clone(),
                 mode: reading.receipt.mode,
             })

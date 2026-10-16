@@ -9,8 +9,13 @@ use thiserror::Error;
 use crate::enrichment::SealedEnrichment;
 
 mod engine;
+mod shuffle;
 
 pub use engine::ReadingEngine;
+pub use shuffle::{
+    DeckDraw, DeckShuffle, Orientation, SHUFFLE_ALGORITHM, SHUFFLE_SCHEMA, SHUFFLED_RECEIPT_SCHEMA,
+    ShuffleSource, ShuffledCard,
+};
 
 pub const EXTERNAL_QUALIFICATION_ALGORITHM: &str =
     "cleromancy.qualification/external-term-share/v1";
@@ -54,7 +59,7 @@ impl DerivedSelection {
         Ok(selection)
     }
 
-    fn validate(&self) -> Result<(), ReadingError> {
+    pub(crate) fn validate(&self) -> Result<(), ReadingError> {
         if self.schema != DERIVED_SELECTION_SCHEMA {
             return Err(ReadingError::InvalidDerivation(
                 "selection schema does not match the contract".to_string(),
@@ -107,6 +112,8 @@ pub struct Receipt {
     pub derivation: Option<DerivedSelection>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub derivation_digest: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub shuffle: Option<DeckDraw>,
     pub qualified_weights: Vec<u64>,
     pub total_weight: u64,
     pub sample: Option<u64>,
@@ -126,6 +133,34 @@ pub struct Reading {
     pub title: String,
     pub interpretation: String,
     pub receipt: Receipt,
+}
+
+impl Reading {
+    pub fn orientation(&self) -> Orientation {
+        self.receipt
+            .shuffle
+            .as_ref()
+            .map_or(Orientation::Upright, |draw| draw.orientation)
+    }
+    pub fn display_title(&self) -> String {
+        if self.receipt.shuffle.is_some() {
+            format!("{} · {}", self.title, self.orientation().label())
+        } else {
+            self.title.clone()
+        }
+    }
+    pub fn public_seed(&self) -> Option<(&str, &str)> {
+        if let Some(draw) = &self.receipt.shuffle {
+            return match &draw.shuffle.source {
+                ShuffleSource::PublicSeed { seed, domain } => Some((seed, domain)),
+                ShuffleSource::OperatingSystem { .. } => None,
+            };
+        }
+        self.receipt
+            .derivation
+            .as_ref()
+            .map(|d| (d.seed.as_str(), d.domain.as_str()))
+    }
 }
 
 #[derive(Debug, Error, PartialEq, Eq)]

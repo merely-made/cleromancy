@@ -75,3 +75,7 @@ path = "../tests/typed_decks.rs"
 [[test]]
 name = "ambient"
 path = "../tests/ambient.rs"
+
+[[test]]
+name = "shuffled_deck"
+path = "../tests/shuffled_deck.rs"

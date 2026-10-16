@@ -271,6 +271,36 @@ impl mesquite::Product for Product {
             )
             .with_field("ambient-ticks", ui.ambient.ticks.to_string())
             .with_field("ambient-error", ui.ambient.error.is_some().to_string());
+        if let Some(detail) = ui.detail() {
+            snapshot = snapshot
+                .with_field(
+                    "shuffled",
+                    detail
+                        .readings
+                        .iter()
+                        .all(|r| r.receipt.shuffle.is_some())
+                        .to_string(),
+                )
+                .with_field(
+                    "unique-cards",
+                    detail
+                        .readings
+                        .iter()
+                        .map(|r| &r.candidate_id)
+                        .collect::<std::collections::BTreeSet<_>>()
+                        .len()
+                        .to_string(),
+                )
+                .with_field(
+                    "reversed-cards",
+                    detail
+                        .readings
+                        .iter()
+                        .filter(|r| r.orientation() == crate::Orientation::Reversed)
+                        .count()
+                        .to_string(),
+                );
+        }
         if let Some(c) = &ui.ambient.context {
             snapshot = snapshot
                 .with_field(
@@ -338,6 +368,16 @@ impl mesquite::Product for Product {
         if let Some(context) = &ctx.runner.state().consultation.ambient.context {
             std::fs::write(self.dir.join("ambient.json"),serde_json::to_vec_pretty(&serde_json::json!({"view":context.view,"data":context.data,"memory":ctx.runner.state().consultation.catalog.ambient_memory,"ticks":ctx.runner.state().consultation.ambient.ticks,"error":ctx.runner.state().consultation.ambient.error})) .map_err(|e|e.to_string())?).map_err(|e|e.to_string())?;
         }
+        if let Some(detail) = ctx.runner.state().consultation.detail() {
+            if detail.readings.iter().any(|r| r.receipt.shuffle.is_some()) {
+                let proof = serde_json::json!({"context":detail.context,"field":detail.field,"session":detail.session,"readings":detail.readings,"template":detail.spread_template,"reflections":detail.reflections});
+                std::fs::write(
+                    self.dir.join("shuffled-reading.json"),
+                    serde_json::to_vec_pretty(&proof).map_err(|e| e.to_string())?,
+                )
+                .map_err(|e| e.to_string())?;
+            }
+        }
         scenario::write_done(
             &self.dir,
             self.phase,
@@ -357,7 +397,10 @@ struct ScenarioDriver<'a, 'ctx> {
 
 impl ScenarioDriver<'_, '_> {
     fn app_step(&mut self, line: &str) -> Result<(), String> {
-        if let Some(command) = line.strip_prefix("c4-") {
+        if let Some(command) = line
+            .strip_prefix("c4-")
+            .or_else(|| line.strip_prefix("c5-control-"))
+        {
             let (action, key) = command.split_once(' ').ok_or("C4 expects action and key")?;
             let key = if key == "history" {
                 let data = self
@@ -433,6 +476,50 @@ impl ScenarioDriver<'_, '_> {
             return Ok(());
         }
         match line {
+            "c5-read" => {
+                let mut error = None;
+                self.ctx.runner.update(|state| {
+                    let ui = &mut state.consultation;
+                    let Some(field) = ui.catalog.fields.iter().position(|f| {
+                        f.tarot
+                            .as_ref()
+                            .is_some_and(|d| d.id == "cleromancy.tarot/rws-complete-reflective-v1")
+                    }) else {
+                        error = Some("missing C5 typed deck".into());
+                        return;
+                    };
+                    let Some(template) = ui
+                        .catalog
+                        .spread_templates
+                        .iter()
+                        .position(|t| t.label == "C2 Letting go")
+                    else {
+                        error = Some("missing saved custom layout".into());
+                        return;
+                    };
+                    ui.context_select.selected = 0;
+                    ui.context_label = cambium::TextInput::new("C5 one shuffled deck");
+                    ui.question = cambium::TextInput::new("What can I release next?");
+                    ui.tags = cambium::TextInput::new("");
+                    ui.additional_facts = cambium::TextInput::new("");
+                    ui.field_select.selected = field;
+                    ui.mode.selected = 2;
+                    ui.derived_seed = cambium::TextInput::new("C5 public deck");
+                    ui.derived_domain = cambium::TextInput::new("cleromancy.c5/qualification");
+                    ui.layout.selected = 2;
+                    ui.template_select.selected = template + 1;
+                    ui.astrology_facts_select.selected = 0;
+                    let action = ui.request_read();
+                    ui.record_action(action);
+                    error = ui.error().map(str::to_string);
+                });
+                if let Some(error) = error {
+                    return Err(error);
+                }
+                self.state.scenario_stage = 1;
+                submit_pending(self.ctx.runner, self.state.worker.as_ref());
+                Ok(())
+            },
             "c3-read" => {
                 let mut error = None;
                 self.ctx.runner.update(|state| {

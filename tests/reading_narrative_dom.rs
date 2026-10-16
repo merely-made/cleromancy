@@ -54,15 +54,41 @@ fn authored_reading() -> (
         3,
     ))
     .unwrap();
-    let detail = pollster::block_on(consultation.read_spread_at_with_entropy(
-        &context_digest,
-        &field_digest,
-        &template_id,
-        1_000,
-        4,
-        &mut repeating_draw(),
-    ))
+    // Preserve C2's independent repeated-card fixture as a historical receipt.
+    // New public tarot draws use C5's shuffled deck; old receipts still narrate
+    // and replay their actual independent method.
+    let mut host = consultation.into_host();
+    let context = host.context_for_digest(&context_digest).unwrap();
+    let field = host.field_for_digest(&field_digest).unwrap();
+    let template = host.spread_template_for_id(&template_id).unwrap();
+    let mut entropy = repeating_draw();
+    let readings = (0..3)
+        .map(|_| cleromancy::ReadingEngine::cast_with(&context, &field, &mut entropy).unwrap())
+        .collect::<Vec<_>>();
+    let session = cleromancy::ReadingSession::with_placements(
+        1000,
+        "00000000000000000000000000000001",
+        context.digest(),
+        field.digest(),
+        template
+            .positions
+            .iter()
+            .zip(&readings)
+            .map(|(p, r)| cleromancy::ReadingPlacement {
+                position: p.name.clone(),
+                reading_id: r.id.clone(),
+            })
+            .collect(),
+        None,
+    )
     .unwrap();
+    host.insert_session(&context, &field, &readings, &session)
+        .unwrap();
+    let spread = cleromancy::Spread::new(&template, &session).unwrap();
+    host.insert_spread(&session, &readings, &template, &spread)
+        .unwrap();
+    let consultation = Consultation::new(host);
+    let detail = consultation.detail(&session.id).unwrap();
     let catalog = consultation.catalog().unwrap();
     (consultation, catalog, detail)
 }
@@ -97,7 +123,7 @@ fn narration_reports_method_deck_chance_orientation_position_and_order() {
         "A chance draw using your computer's operating-system randomness chose The Fool",
         "from the 22 cards of Major Arcana: reflective prompts",
         "It shared none of your saved tags, so it kept its starting weight: 1 in 22, about 4.5%.",
-        "The Fool is upright; this deck has no reversed cards.",
+        "The Fool is upright; this recorded selection did not include reversals.",
         "It sits in “What I must release”, position 1 of 3 in “Letting go”.",
         "Each position draws from the full deck separately, so a card can come up more than once.",
     ] {
@@ -158,11 +184,11 @@ fn derived_and_built_in_readings_narrate_their_own_inputs() {
     .unwrap();
     let card = &narrate(&derived).cards[0];
     assert!(card.text.contains(
-        "A repeatable draw from the seed “river stone” in the domain “morning”, which gives the same result every time"
+        "One Fisher–Yates shuffle using the public seed “river stone” in the domain “morning”"
     ));
     assert!(
         card.text
-            .contains("It is the only card in a single-card reading, in the position “Focus”.")
+            .contains("card 1 of 1 drawn from the top, in “Focus” in a single-card reading")
     );
     assert!(!card.text.contains("separately"));
 
@@ -180,7 +206,7 @@ fn derived_and_built_in_readings_narrate_their_own_inputs() {
     assert!(
         narrative.cards[1]
             .text
-            .contains("position 2 of 3 in the three-card layout")
+            .contains("card 2 of 3 drawn from the top, in “Tension” in the three-card layout")
     );
     assert!(matches!(
         narrative.cards[1].position.source,

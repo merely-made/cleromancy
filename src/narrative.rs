@@ -358,6 +358,27 @@ fn card_text(
     earlier: Option<&str>,
 ) -> String {
     let receipt = &reading.receipt;
+    if let Some(draw) = &receipt.shuffle {
+        let randomness = match &draw.shuffle.source {
+            crate::ShuffleSource::OperatingSystem { .. } => {
+                "a recorded random seed from your operating system".to_string()
+            },
+            crate::ShuffleSource::PublicSeed { seed, domain } => {
+                format!("the public seed “{seed}” in the domain “{domain}”")
+            },
+        };
+        return format!(
+            "One Fisher–Yates shuffle using {randomness} ordered all {} cards of {} and set their orientations. {} is {}, card {} of {} drawn from the top, in “{}” in {}. Each card has one place in this shuffled deck, so cards cannot repeat. Context weights do not bias this shuffle. The saved words are the deck's original card prompt; reversal changes the placement, without inventing a reversed interpretation.",
+            deck.size,
+            deck.name,
+            reading.title,
+            draw.orientation.label(),
+            draw.index + 1,
+            draw.count,
+            position.label,
+            layout.name
+        );
+    }
     let count = detail.session.placements.len();
     let mut sentences = Vec::new();
     let method = match receipt.mode {
@@ -396,7 +417,7 @@ fn card_text(
     }
     if deck.tarot {
         sentences.push(format!(
-            "{} is upright; this deck has no reversed cards.",
+            "{} is upright; this recorded selection did not include reversals.",
             reading.title
         ));
     }

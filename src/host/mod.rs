@@ -515,7 +515,12 @@ impl<B: Backend> CleromancyHost<B> {
         if session.field_digest != field.digest() {
             return Err(SessionError::InvalidSession("bound field digest".to_string()).into());
         }
-        for placement in &session.placements {
+        let first_draw = session
+            .placements
+            .iter()
+            .filter_map(|p| readings.iter().find(|r| r.id == p.reading_id))
+            .find_map(|reading| reading.receipt.shuffle.as_ref());
+        for (ordinal, placement) in session.placements.iter().enumerate() {
             let reading = readings
                 .iter()
                 .find(|reading| reading.id == placement.reading_id)
@@ -532,6 +537,20 @@ impl<B: Backend> CleromancyHost<B> {
                 return Err(
                     SessionError::InvalidSession("reading field digest".to_string()).into(),
                 );
+            }
+            if let Some(first) = first_draw {
+                let draw = reading.receipt.shuffle.as_ref().ok_or_else(|| {
+                    ReadingError::ReceiptMismatch("mixed shuffled and independent session".into())
+                })?;
+                if draw.shuffle != first.shuffle
+                    || draw.index != ordinal
+                    || draw.count != session.placements.len()
+                {
+                    return Err(ReadingError::ReceiptMismatch(
+                        "session must take one ordered prefix of one shuffle".into(),
+                    )
+                    .into());
+                }
             }
             let replayed = ReadingEngine::replay(context, field, &reading.receipt)?;
             if replayed != *reading {

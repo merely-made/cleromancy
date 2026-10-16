@@ -64,6 +64,9 @@ pub struct Field {
 }
 
 impl Field {
+    pub fn is_tarot(&self) -> bool {
+        self.tarot.is_some() || self.system.starts_with("cleromancy.tarot/")
+    }
     pub fn new(
         system: impl Into<String>,
         rules: impl Into<String>,

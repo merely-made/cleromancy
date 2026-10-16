@@ -43,7 +43,7 @@ pub(super) fn spread_view(ui: &ConsultationUi) -> ConsultationView {
                     .attr("data-key", format!("reading-position:{position}")),
             ),
             Box::new(
-                el::<_, ConsultationUi, ()>("span", reading.title.clone())
+                el::<_, ConsultationUi, ()>("span", reading.display_title())
                     .attr("class", "scene-title")
                     .attr(
                         "data-key",
@@ -75,8 +75,12 @@ pub(super) fn spread_view(ui: &ConsultationUi) -> ConsultationView {
             }
         })
         .attr("class", "scene-card")
+        .attr("data-orientation", reading.orientation().label())
         .attr("data-key", format!("scene-card:{position}"))
-        .attr("aria-label", format!("{label}: {}", reading.title))
+        .attr(
+            "aria-label",
+            format!("{label}: {}", reading.display_title()),
+        )
         .attr("title", meaning.meaning.clone())
         .attr(
             "aria-pressed",

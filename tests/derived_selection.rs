@@ -115,8 +115,8 @@ fn local_consultation_persists_and_reopens_the_derived_descriptor() {
     .unwrap();
     let session_id = detail.session.id.clone();
     assert_eq!(
-        detail.readings[0].receipt.derivation.as_ref(),
-        Some(&selection)
+        detail.readings[0].public_seed(),
+        Some((selection.seed.as_str(), selection.domain.as_str()))
     );
     assert_eq!(detail.readings[0].receipt.event_nonce, None);
     drop(consultation);
@@ -124,8 +124,8 @@ fn local_consultation_persists_and_reopens_the_derived_descriptor() {
     let reopened = Consultation::new(pollster::block_on(CleromancyHost::open(backend)).unwrap());
     let reopened_detail = reopened.detail(&session_id).unwrap();
     assert_eq!(
-        reopened_detail.readings[0].receipt.derivation.as_ref(),
-        Some(&selection)
+        reopened_detail.readings[0].public_seed(),
+        Some((selection.seed.as_str(), selection.domain.as_str()))
     );
     assert_eq!(
         reopened

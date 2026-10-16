@@ -348,6 +348,30 @@ pub(crate) fn execute<B: muniment::Backend>(
                         return Err(ConsultationError::UnexpectedDerivation);
                     },
                 },
+                ConsultationLayout::ThreeCard if mode == SelectionMode::Derived => {
+                    pollster::block_on(
+                        consultation.read_seeded_spread(
+                            &context_digest,
+                            &field_digest,
+                            None,
+                            derivation
+                                .as_ref()
+                                .ok_or(ConsultationError::DerivedSelectionRequired)?,
+                        ),
+                    )?
+                },
+                ConsultationLayout::Authored(ref template_id) if mode == SelectionMode::Derived => {
+                    pollster::block_on(
+                        consultation.read_seeded_spread(
+                            &context_digest,
+                            &field_digest,
+                            Some(template_id),
+                            derivation
+                                .as_ref()
+                                .ok_or(ConsultationError::DerivedSelectionRequired)?,
+                        ),
+                    )?
+                },
                 ConsultationLayout::ThreeCard => pollster::block_on(
                     consultation.read_three_card(&context_digest, &field_digest),
                 )?,

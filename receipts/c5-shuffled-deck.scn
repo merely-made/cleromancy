@@ -1,0 +1,39 @@
+# New public-seed shuffled draw using a saved custom layout and mounted UI actions.
+wait
+assert snap product-busy == false
+c3-install
+wait
+assert snap product-busy == false
+c2-author-layout
+wait
+assert snap product-busy == false
+c5-read
+wait
+assert snap product-busy == false
+assert snap readings == 3
+assert snap shuffled == true
+assert snap unique-cards == 3
+assert snap reversed-cards >= 1
+advance
+wait
+assert snap product-busy == false
+assert snap reflections == 1
+assert text What I must release
+assert text Fisher–Yates
+assert text C5 public deck
+assert text cannot repeat
+reveal class reading-spread-cards
+settle 2
+capture ordered-spread
+reveal key narrative reading-narrative
+settle 2
+capture shuffled-narrative
+resize 420 760
+wait
+assert snap product-busy == false
+c5-control-reveal scene-card:next_step
+settle 2
+capture compact-third-card
+reveal key narrative narration:foundation
+settle 2
+capture compact-narrative
