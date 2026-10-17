@@ -1,0 +1,35 @@
+    Updating crates.io index
+    Updating git repository `https://github.com/merely-made/netrender.git`
+    Updating git repository `https://github.com/merely-made/genet.git`
+    Updating git repository `https://github.com/merely-made/murm.git`
+    Updating git repository `https://github.com/merely-made/dramatis.git`
+    Updating git repository `https://github.com/mark-ik/vello`
+    Updating git repository `https://github.com/merely-made/cleromancy.git`
+    Updating git repository `https://github.com/merely-made/mere.git`
+    Updating git repository `https://github.com/merely-made/netrender.git`
+warning: spurious network error (3 tries remaining): could not read from remote repository; class=Net (12); code=Eof (-20)
+warning: spurious network error (2 tries remaining): could not read from remote repository; class=Net (12); code=Eof (-20)
+warning: spurious network error (1 try remaining): could not read from remote repository; class=Net (12); code=Eof (-20)
+error: failed to get `paint_list_api` as a dependency of package `genet-livery v0.0.4 (https://github.com/merely-made/genet.git?branch=main#ec5d8b99)`
+    ... which satisfies git dependency `genet-livery` of package `tabard v0.0.2 (/Users/markik/Code/testing/cleromancy/c7-20261016/mere-receiving/crates/system/tabard)`
+    ... which satisfies path dependency `tabard` of package `mere v0.0.2 (/Users/markik/Code/testing/cleromancy/c7-20261016/mere-receiving/crates/mere)`
+
+Caused by:
+  failed to load source for dependency `paint_list_api`
+
+Caused by:
+  unable to update https://github.com/merely-made/netrender.git?rev=e8cda06efc11c11595f2fa1bb30bce7e72979537
+
+Caused by:
+  failed to fetch into: /Users/markik/.cargo/git/db/netrender-a79f0762881dec01
+
+Caused by:
+  revision e8cda06efc11c11595f2fa1bb30bce7e72979537 not found
+
+Caused by:
+  network failure seems to have happened
+  if a proxy or similar is necessary `net.git-fetch-with-cli` may help here
+  https://doc.rust-lang.org/cargo/reference/config.html#netgit-fetch-with-cli
+
+Caused by:
+  could not read from remote repository; class=Net (12); code=Eof (-20)

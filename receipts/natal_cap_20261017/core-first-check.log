@@ -1,0 +1,42 @@
+    Blocking waiting for file lock on package cache
+    Updating git repository `https://github.com/merely-made/turquet.git`
+warning: patch `mere-proofs v0.1.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+    Blocking waiting for file lock on package cache
+     Locking 1 package to highest Rust 1.97.1 compatible version
+      Adding turquet v0.17.0 (https://github.com/merely-made/turquet.git?rev=8e3755bbd0d40343eb4750b072801c941ff32802#8e3755bb)
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Checking muniment v0.1.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking mere-curation v0.1.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking numen v0.2.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking insigne v0.0.2 (https://github.com/merely-made/dramatis.git?branch=main#cf562f47)
+    Checking mere-forme v0.2.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking sceno v0.0.5 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking chartulary v0.2.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking command-menu v0.1.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking personae v0.3.0 (https://github.com/merely-made/dramatis.git?branch=main#cf562f47)
+    Checking siphasher v1.0.4
+    Checking phf_shared v0.12.1
+    Checking scenotime v0.0.4 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking gaz v0.0.2 (https://github.com/merely-made/dramatis.git?branch=main#cf562f47)
+    Checking phf v0.12.1
+    Checking dramatis v0.0.3 (https://github.com/merely-made/dramatis.git?branch=main#cf562f47)
+    Checking chirograph v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking chrono v0.4.45
+    Checking mere-kernel v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking chrono-tz v0.10.4
+    Checking servitor v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking seiche v0.0.6 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking graphshell-client v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking scenograph v0.0.4 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking turquet v0.17.0 (https://github.com/merely-made/turquet.git?rev=e2f65c021a6bf744ab5fe77121e0441a46b47306#e2f65c02)
+    Checking turquet v0.17.0 (https://github.com/merely-made/turquet.git?rev=8e3755bbd0d40343eb4750b072801c941ff32802#8e3755bb)
+    Checking mere-personal-facts v0.1.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking mere-alembic v0.0.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking mere v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking cleromancy-core-acceptance v0.1.0 (/Users/markik/Code/repos/cleromancy/core)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 15.72s

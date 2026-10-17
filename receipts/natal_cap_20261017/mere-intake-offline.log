@@ -1,0 +1,15 @@
+error: failed to get `paint_list_api` as a dependency of package `genet-livery v0.0.4 (https://github.com/merely-made/genet.git?branch=main#ec5d8b99)`
+    ... which satisfies git dependency `genet-livery` of package `tabard v0.0.2 (/Users/markik/Code/testing/cleromancy/c7-20261016/mere-receiving/crates/system/tabard)`
+    ... which satisfies path dependency `tabard` of package `mere v0.0.2 (/Users/markik/Code/testing/cleromancy/c7-20261016/mere-receiving/crates/mere)`
+
+Caused by:
+  failed to load source for dependency `paint_list_api`
+
+Caused by:
+  unable to update https://github.com/merely-made/netrender.git?rev=e8cda06efc11c11595f2fa1bb30bce7e72979537
+
+Caused by:
+  failed to lookup reference in preexisting repository, and can't check for updates in offline mode (--offline)
+
+Caused by:
+  revspec 'e8cda06efc11c11595f2fa1bb30bce7e72979537' not found; class=Reference (4); code=NotFound (-3)

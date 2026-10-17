@@ -1,0 +1,14 @@
+RESULT ok
+waited 383 frames
+waited 0 frames
+captured reopen-observed-motion
+captured reopen-placidus
+captured reopen-approximate
+waited 109 frames
+captured reopen-shared-facts
+capture reopen-observed-motion 2320x1520 digest=d2831ed924b2d5b4 file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-reopen-01/reopen-observed-motion.png
+capture reopen-placidus 2320x1520 digest=29a173896b6b19c0 file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-reopen-01/reopen-placidus.png
+capture reopen-approximate 2320x1520 digest=72b9b7ec5f2f3eef file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-reopen-01/reopen-approximate.png
+capture reopen-shared-facts 2320x1520 digest=4abde88cafdbb428 file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-reopen-01/reopen-shared-facts.png
+frames: 4 captured, 0 blank, 4 distinct digests
+presentation: 533 frames, 534 redraws, 1 unpresented redraws

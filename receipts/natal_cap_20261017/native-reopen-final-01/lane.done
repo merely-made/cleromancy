@@ -1,0 +1,16 @@
+RESULT ok
+waited 1485 frames
+waited 0 frames
+captured reopen-observed-motion
+captured reopen-placidus
+captured reopen-approximate
+waited 464 frames
+captured reopen-shared-facts
+captured reopen-polar-unavailable
+capture reopen-observed-motion 2320x1520 digest=1aa81fce8e3e740c file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-reopen-final-01/reopen-observed-motion.png
+capture reopen-placidus 2320x1520 digest=b7138791288b9ec5 file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-reopen-final-01/reopen-placidus.png
+capture reopen-approximate 2320x1520 digest=ad0d2cede0d0e6e3 file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-reopen-final-01/reopen-approximate.png
+capture reopen-shared-facts 2320x1520 digest=77d024b1e9eca4bf file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-reopen-final-01/reopen-shared-facts.png
+capture reopen-polar-unavailable 2320x1520 digest=71f8d5bb6669135a file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-reopen-final-01/reopen-polar-unavailable.png
+frames: 5 captured, 0 blank, 5 distinct digests
+presentation: 1999 frames, 2000 redraws, 1 unpresented redraws

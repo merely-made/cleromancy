@@ -1,0 +1,66 @@
+wait 1800
+assert snap catalog-ready == true
+assert snap mere-unavailable == false
+show-chart
+wait 1800
+assert snap natal-count == 1
+c5-control-reveal natal-open
+c5-control-key natal-open
+wait 1800
+assert snap birth-count == 2
+natal-prepare-birth
+c5-control-reveal natal-birth-1
+c5-control-key natal-birth-1
+c5-control-reveal natal-houses-placidus
+c5-control-key natal-houses-placidus
+c5-control-reveal natal-read
+c5-control-key natal-read
+wait 1800
+assert snap natal-count == 2
+assert snap natal-placidus == 1
+reveal class natal-houses
+settle 4
+assert text Placidus houses and ascendant
+capture placidus-approximate
+reveal class natal-motion
+settle 4
+capture motion-wide
+natal-prepare-reflection
+c5-control-reveal natal-latest-reflect
+c5-control-key natal-latest-reflect
+wait 1800
+assert snap natal-reflections == 2
+natal-prepare-observed
+c5-control-reveal natal-read
+c5-control-key natal-read
+wait 1800
+assert snap natal-count == 3
+assert snap natal-observed == 1
+reveal class natal-motion
+settle 4
+assert text Observed Earth orientation
+capture observed-motion
+reveal class natal-houses
+settle 4
+capture placidus-observed
+c5-control-reveal natal-details
+c5-control-key natal-details
+reveal class natal-motion
+settle 4
+capture supplement-provenance
+resize 420 760
+wait
+reveal class natal-houses
+settle 4
+capture compact-placidus
+reveal class natal-motion
+settle 4
+capture compact-motion
+resize 1160 760
+wait
+natal-clear-observed
+natal-prepare-polar
+c5-control-reveal natal-save-birth
+c5-control-key natal-save-birth
+wait 1800
+assert snap birth-count == 3
