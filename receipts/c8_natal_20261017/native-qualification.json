@@ -1,0 +1,23 @@
+{
+  "source": "f6d2425430493099204097742dfda1e044a8813c",
+  "runs": [
+    "native-create-04",
+    "native-reopen-04",
+    "native-overview-04"
+  ],
+  "original_captures_reviewed": 12,
+  "typed_readings_and_reflections_equal_across_three_processes": true,
+  "shared_catalog_equal_across_create_and_reopen": true,
+  "birth_correction_retains_original_natal_inputs": true,
+  "exported_hashes": {
+    "readings": "fef33e6404035011e0a04ef9d53104e588c4df1a5eb97f34e681b054ec1ce82a",
+    "reflections": "24937244c4d3ec9f2ea22335ee7e5ba96cbcb5510ec592666b48e68a72592c17",
+    "shared": "641e79e2065a4d64855fcf2cc1563b3c0bf22613f78170abfb4b8f2f7fe925c2"
+  },
+  "limits": [
+    "Public synthetic fixtures only",
+    "Production NativeOrTerminal fallback through PATH=/bin; graphical unlock is not qualified",
+    "No full-database byte-equality, browser-wall or hardware performance claim",
+    "Earlier startup, asynchronous-action and receipt-layout diagnostic runs remain preserved"
+  ]
+}

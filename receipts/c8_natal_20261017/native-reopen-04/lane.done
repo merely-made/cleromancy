@@ -1,0 +1,13 @@
+RESULT ok
+waited 8 frames
+waited 0 frames
+waited 0 frames
+captured natal-reopen
+captured reopened-computation
+waited 0 frames
+captured compact-reopen
+capture natal-reopen 2320x1520 digest=2688848aff891c92 file=/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-reopen-04/natal-reopen.png
+capture reopened-computation 2320x1520 digest=2976b1c55444c952 file=/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-reopen-04/reopened-computation.png
+capture compact-reopen 840x1520 digest=62a9522021910d40 file=/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-reopen-04/compact-reopen.png
+frames: 3 captured, 0 blank, 3 distinct digests
+presentation: 50 frames, 51 redraws, 1 unpresented redraws

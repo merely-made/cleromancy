@@ -247,3 +247,5 @@ prompts disclose model-assisted editorial provenance. The
 byte-equal card payload. The [publication ledger](../receipts/c3-publication-intake_20261016.json)
 records published C3 source and Mere’s separately qualified receiving intake.
 C4/C5 and shared-wall acceptance remain separate.
+
+Bounded shared natal qualification (2026-10-17): the [divination plan](2026-09-23_divination_mere_plan.md) and [C8 natal receipt](../receipts/c8-natal-qualification_20261017.json) bind shared birth resources, exact natal inputs, software gates, native captures and offline reopening. Earlier C7/C8 receipts retain their original scope.

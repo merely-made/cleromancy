@@ -1,18 +1,22 @@
-**C8 shared natal work (2026-10-16; implementation in progress):** Mark
-has authorized shared subject/resource associations, reusable birth facts and
-Cleromancy natal readings. Dramatis supplies the strict plain contracts;
-Djinn composes a `personal-facts` domain validator into daemon and embedded
-owners. Revisions and scoped Gaz local contacts use the existing resident
-session/journal/archive path, with no application-owned store. Cleromancy
-will reference the exact shared revision and retain its authorized input
-snapshot, civil-time resolution, chart, interpretation edition and reflections.
-Unknown/approximate time and civil-time folds/gaps remain explicit. Existing
-chart and card schemas/content keep their original bytes. Done conditions:
-shared revision/tamper/scope tests, real cross-application persistence and
-refusal, exact offline natal replay, wide/compact keyboard native capture and
-fresh-process reopen, plus preserved prior receipts and the existing public
-profile. Supplier implementation, software, native qualification and publication
-remain separate checkpoints. No natal acceptance is claimed by this status.
+**C8 shared natal qualification (2026-10-17; bounded):** source `f6d2425`
+consumes published Dramatis `cf562f4` and Mere `8498608cb`. Shared subject/resource
+associations and reusable birth revisions use the resident-owned `personal-facts`
+mere; natal occasions retain their exact authorized birth snapshot, civil-time
+resolution, chart, authored interpretation edition and reflections. Corrections
+append revisions without changing prior readings. All four all-target checks,
+136/185 product tests and portable-core
+46/47/48 gates pass. The product suites each retain their intentional
+model-probe ignore. Three fresh native processes pass with twelve reviewed original
+captures, keyboard admission/disclosure, compact controls and offline reopening.
+Exact natal/reflection exports and the shared create/reopen catalog match; all 838
+prior Cleromancy receipt paths, nine Dramatis receipts and 22 prior public-profile
+files remain exact. Earlier failed startup, busy-state and receipt-layout trials
+remain preserved. See the [qualification receipt](../receipts/c8-natal-qualification_20261017.json).
+This first slice calculates geocentric tropical placements/aspects for exact UTC
+birth years 1972–2098; unknown/approximate time is preserved without an invented
+chart. Houses, rising sign, retrograde calculation and graphical unlock remain
+separate work. Publication and the daemon's immutable portable-validator intake
+are recorded separately; this receipt does not close another shared gate.
 
 **Dramatis main intake (2026-10-16; software qualified):** both the app and
 portable-core lockfiles now resolve published Dramatis main

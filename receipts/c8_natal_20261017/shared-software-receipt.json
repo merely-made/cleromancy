@@ -1,0 +1,43 @@
+{
+  "schema": "mere.personal-facts-software/v1",
+  "implementation": "8498608cb",
+  "broker_process_test_source": "9a1af6f9e02b2743b1014c2e081b4b06cc4ce522",
+  "dramatis": "cf562f47f33ab0b6ad0db1c5ac3123775769979e",
+  "compiler": "Cargo 1.99; rustc/rustdoc 1.97.1",
+  "checks": [
+    {
+      "command": "cargo test -p mere-personal-facts --locked --offline",
+      "passed": 7,
+      "failed": 0,
+      "log": "/Users/markik/Code/testing/cleromancy/c8-natal-20261016/mere-facts-integrated.log",
+      "log_sha256": "b8d33b6750328e0429e5b44b5c9250b3082a4978c695f81376777d68b4a987f9"
+    },
+    {
+      "command": "cargo test -p djinn --lib personal_facts_two_apps --locked --offline",
+      "passed": 1,
+      "failed": 0,
+      "log": "/Users/markik/Code/testing/cleromancy/c8-natal-20261016/mere-resident-facts-test.log",
+      "log_sha256": "469a63d04a9e2ecf426e96f8076db305f79051747f6f3c4a2edd66d531f4b1ab"
+    },
+    {
+      "command": "cargo test -p djinn --test personal_facts --locked --offline",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 1,
+      "child_processes": 2,
+      "ignored_reason": "parent launches the exact ignored child entry in two fresh processes",
+      "log": "/Users/markik/Code/testing/cleromancy/c8-natal-20261016/mere-fresh-process-01.log",
+      "log_sha256": "643fb2c6824957a6826abc9194543ba705312f55b6d6f270ca273bda374031be"
+    }
+  ],
+  "claims": [
+    "Two admitted applications see the same contact and birth revisions",
+    "Corrections retain both immutable revisions",
+    "Fresh owner processes reopen exact catalog and associations",
+    "Tampered existing revision is refused without installing the candidate"
+  ],
+  "limits": [
+    "Software fixtures use a public ephemeral identity; product encrypted native unlock has a separate qualification",
+    "Opaque external references confer no access or identity proof"
+  ]
+}
