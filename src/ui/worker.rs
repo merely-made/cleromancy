@@ -28,6 +28,11 @@ use super::{ConsultationAction, ConsultationContext, ConsultationLayout};
 /// A result crossing from the persistence lane back to the native host.
 #[derive(Clone, Debug)]
 pub(crate) enum WorkerUpdate {
+    BirthFacts {
+        catalog: Option<djinn::personal_facts::PersonalFactsCatalog>,
+        notice: String,
+    },
+
     GrantedContext {
         cards: Vec<crate::granted_ambient::GrantedCard>,
         notice: String,
@@ -294,6 +299,30 @@ pub(crate) fn execute<B: muniment::Backend>(
     action: ConsultationAction,
 ) -> Result<WorkerUpdate, ConsultationError> {
     match action {
+        ConsultationAction::ReflectNatal { id, body } => {
+            use rand_core::RngCore;
+            let mut nonce = [0u8; 16];
+            rand_core::OsRng.fill_bytes(&mut nonce);
+            let nonce: String = nonce.iter().map(|b| format!("{b:02x}")).collect();
+            let at = std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap_or_default()
+                .as_millis() as u64;
+            let reflection =
+                crate::Reflection::new(id, at, nonce, body).map_err(crate::HostError::from)?;
+            consultation
+                .host_mut_candidate()
+                .insert_natal_reflection(&reflection)?;
+            Ok(WorkerUpdate::Catalog(consultation.catalog()?))
+        },
+
+        ConsultationAction::RefreshBirthFacts
+        | ConsultationAction::CreateSubject { .. }
+        | ConsultationAction::SaveBirthFacts { .. }
+        | ConsultationAction::CreateNatal { .. } => {
+            unreachable!("personal facts require the admitted resident lane")
+        },
+
         ConsultationAction::OpenNeighborhood {
             session_id,
             position,

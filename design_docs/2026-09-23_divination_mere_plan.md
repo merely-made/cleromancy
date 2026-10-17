@@ -1,3 +1,19 @@
+**C8 shared natal work (2026-10-16; implementation in progress):** Mark
+has authorized shared subject/resource associations, reusable birth facts and
+Cleromancy natal readings. Dramatis supplies the strict plain contracts;
+Djinn composes a `personal-facts` domain validator into daemon and embedded
+owners. Revisions and scoped Gaz local contacts use the existing resident
+session/journal/archive path, with no application-owned store. Cleromancy
+will reference the exact shared revision and retain its authorized input
+snapshot, civil-time resolution, chart, interpretation edition and reflections.
+Unknown/approximate time and civil-time folds/gaps remain explicit. Existing
+chart and card schemas/content keep their original bytes. Done conditions:
+shared revision/tamper/scope tests, real cross-application persistence and
+refusal, exact offline natal replay, wide/compact keyboard native capture and
+fresh-process reopen, plus preserved prior receipts and the existing public
+profile. Supplier implementation, software, native qualification and publication
+remain separate checkpoints. No natal acceptance is claimed by this status.
+
 **Dramatis main intake (2026-10-16; software qualified):** both the app and
 portable-core lockfiles now resolve published Dramatis main
 `2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59` through the existing canonical

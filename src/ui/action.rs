@@ -23,6 +23,23 @@ pub enum ConsultationLayout {
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum ConsultationAction {
+    ReflectNatal {
+        id: String,
+        body: String,
+    },
+    RefreshBirthFacts,
+    CreateSubject {
+        label: String,
+    },
+    SaveBirthFacts {
+        facts: dramatis::birth::BirthFacts,
+    },
+    CreateNatal {
+        resource: dramatis::resources::ResourceRef,
+        question: String,
+        fold: crate::natal::FoldChoice,
+    },
+
     OpenNeighborhood {
         session_id: String,
         position: String,

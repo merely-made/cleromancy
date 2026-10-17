@@ -90,6 +90,8 @@ pub fn run(data_root: &Path) -> Result<(), String> {
 
 fn empty_catalog() -> ConsultationCatalog {
     ConsultationCatalog {
+        natal_readings: Vec::new(),
+        natal_reflections: Vec::new(),
         ambient_memory: Vec::new(),
         contexts: Vec::new(),
         fields: Vec::new(),
@@ -264,6 +266,17 @@ fn apply_worker_update(
     update: WorkerUpdate,
 ) {
     match update {
+        WorkerUpdate::BirthFacts { catalog, notice } => runner.update(move |state| {
+            let ui=&mut state.consultation;
+            let subject=ui.birth_catalog.as_ref().and_then(|c|c.subjects.get(ui.birth_subject)).map(|s|s.subject.clone());
+            let birth=ui.birth_catalog.as_ref().and_then(|c|c.births.get(ui.birth_revision)).map(|b|b.resource.clone());
+            ui.birth_subject=catalog.as_ref().and_then(|c|c.subjects.iter().position(|s|Some(&s.subject)==subject.as_ref())).unwrap_or(0);
+            ui.birth_revision=catalog.as_ref().and_then(|c|c.births.iter().position(|b|Some(&b.resource)==birth.as_ref())).unwrap_or(0);
+            ui.birth_catalog = catalog;
+            state.consultation.status = super::ConsultationStatus::Ready;
+            state.consultation.error = Some(notice);
+        }),
+
         WorkerUpdate::GrantedContext {
             cards,
             notice,
@@ -301,6 +314,7 @@ fn apply_worker_update(
                 state.mere.model.actions.clear();
                 state.mere.pending = None;
                 state.mere.model.archive = None;
+                state.consultation.birth_catalog = None;
                 state.consultation.clear_selection();
                 state.consultation.replace_catalog(empty_catalog());
                 state.mere.model.status =
@@ -577,6 +591,18 @@ fn consultation_text_slot(
         };
     }
     match marker {
+        "cleromancy-natal-reflection" => field!(natal_reflection),
+        "cleromancy-natal-name" => field!(natal_name),
+        "cleromancy-natal-date" => field!(natal_date),
+        "cleromancy-natal-time" => field!(natal_time),
+        "cleromancy-natal-zone" => field!(natal_zone),
+        "cleromancy-natal-place" => field!(natal_place),
+        "cleromancy-natal-latitude" => field!(natal_latitude),
+        "cleromancy-natal-longitude" => field!(natal_longitude),
+        "cleromancy-natal-source" => field!(natal_source),
+        "cleromancy-natal-question" => field!(natal_question),
+        "cleromancy-natal-fold" => field!(natal_fold),
+
         "cleromancy-context-label" => field!(context_label),
         "cleromancy-question" => field!(question),
         "cleromancy-place-latitude" => field!(place_latitude),

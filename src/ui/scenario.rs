@@ -21,11 +21,15 @@ pub use taproot::Outcome;
 pub(crate) enum Phase {
     First,
     Reopen,
+    NatalFirst,
+    NatalReopen,
 }
 
 impl Phase {
     pub(crate) fn parse(value: &str) -> Result<Self, String> {
         match value {
+            "natal-first" => Ok(Self::NatalFirst),
+            "natal-reopen" => Ok(Self::NatalReopen),
             "first" => Ok(Self::First),
             "reopen" => Ok(Self::Reopen),
             _ => Err(format!(

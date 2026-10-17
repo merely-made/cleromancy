@@ -4,6 +4,8 @@
 //! Stored chart receipts and manual chart import. Calculation remains an
 //! optional adapter action, while this reader only projects saved values.
 
+mod natal;
+
 use cambium::{
     AngleStripMark, GridColumn, GridSpec, GridView, RangeScrubber, RangeScrubberEvent,
     RangeScrubberPin, TextInput, button, custom_leaf, data_grid, el, map_state, range_scrubber,
@@ -55,7 +57,8 @@ pub(super) fn chart_region(ui: &ConsultationUi) -> ConsultationView {
         },
     );
     let picker = map_state(scrubber, chart_state);
-    let mut children = vec![
+    let mut children = natal::region(ui);
+    children.extend(vec![
         Box::new(el::<_, ConsultationUi, ()>("h2", "Chart")) as ConsultationView,
         Box::new(
             el::<_, ConsultationUi, ()>(
@@ -69,7 +72,7 @@ pub(super) fn chart_region(ui: &ConsultationUi) -> ConsultationView {
             "cleromancy-chart-select",
             Box::new(el::<_, ConsultationUi, ()>("div", picker).attr("data-key", "chart-scrubber")),
         ),
-    ];
+    ]);
     if let Some(stored) = ui
         .catalog
         .astrology_charts

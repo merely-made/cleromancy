@@ -29,10 +29,11 @@ pub mod field;
 #[cfg(not(feature = "portable-core"))]
 pub mod granted_ambient;
 pub mod host;
-pub mod intents;
 pub mod inference;
+pub mod intents;
 pub mod moirai;
 pub mod narrative;
+pub mod natal;
 #[cfg(not(feature = "portable-core"))]
 mod projection;
 pub mod reading;
