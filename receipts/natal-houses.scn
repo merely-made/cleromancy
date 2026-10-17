@@ -1,3 +1,4 @@
+# Historical first-attempt diagnostic; qualified staged scenarios and exact catalog selection are retained in natal_houses_20261017/.
 wait 1800
 assert snap catalog-ready == true
 assert snap mere-unavailable == false

@@ -1,0 +1,446 @@
+{
+  "error": null,
+  "log": [
+    "waited 20 frames",
+    "waited 2 frames",
+    "waited 0 frames",
+    "waited 0 frames",
+    "waited 9 frames",
+    "captured missing-place",
+    "waited 8 frames",
+    "waited 1 frames",
+    "captured saved-placed-revision"
+  ],
+  "ok": true,
+  "phase": "natal_first",
+  "probe_events": [],
+  "readings": [
+    {
+      "birth": {
+        "facts": {
+          "date": {
+            "day": 1,
+            "month": 1,
+            "year": 2000
+          },
+          "place": null,
+          "schema": "dramatis.birth-facts/v1",
+          "source": {
+            "label": "Public synthetic fixture; no real birth data",
+            "reference": null
+          },
+          "subject": {
+            "Contact": {
+              "anchor": "urn:uuid:bd774ada-19b5-432b-8a1e-2b0ab49b14a6",
+              "scope": "00000000-0000-0000-0000-00c120261013"
+            }
+          },
+          "time": {
+            "Known": {
+              "hour": 12,
+              "minute": 0,
+              "second": 0
+            }
+          },
+          "timezone": "UTC"
+        },
+        "resource": {
+          "domain": "personal-facts",
+          "id": "mere://personal-facts/birth/0c9b089d905e0885c6e5a3237ed35b51b1c4148d55ce92ca61b9df9f613dad87",
+          "revision": "0c9b089d905e0885c6e5a3237ed35b51b1c4148d55ce92ca61b9df9f613dad87"
+        }
+      },
+      "created_at_ms": 1792217841538,
+      "fold": "refuse",
+      "houses": {
+        "earth_rotation": "UT1 approximated as UTC (UT1−UTC = 0); no polar-motion correction or downloaded Earth-orientation data",
+        "method": "cleromancy.natal-houses/turquet-tropical-iau2006-2000a/v1",
+        "outcome": {
+          "kind": "unavailable",
+          "reason": "No recorded birthplace coordinates. Houses and ascendant require explicit latitude and longitude; no place was inferred."
+        },
+        "schema": "cleromancy.natal-houses/v1",
+        "supplier": "Turquet 0.17.0@e2f65c021a6bf744ab5fe77121e0441a46b47306",
+        "system": "equal",
+        "ut1_minus_utc_milliseconds": 0
+      },
+      "id": "2db32fe8917d71e2996660a42fc04681ed2aee2fe4defd12e9a8da35da7d5092",
+      "nonce": "a1fe6947e7c2ac84e03b3e66d9891057",
+      "orb_millidegrees": 1000,
+      "outcome": {
+        "chart": {
+          "algorithm": "cleromancy.natal/turquet-0.17-30875f30/v1",
+          "engine": "Turquet 0.17.0@30875f30",
+          "ephemeris": "analytical apparent geocentric tropical; no houses, ascendant or retrograde calculation",
+          "moment": {
+            "instant_utc": "2000-01-01T12:00:00+00:00"
+          },
+          "positions": [
+            {
+              "body": "jupiter",
+              "latitude_millidegrees": -1262,
+              "longitude_millidegrees": 25253
+            },
+            {
+              "body": "mars",
+              "latitude_millidegrees": -1068,
+              "longitude_millidegrees": 327963
+            },
+            {
+              "body": "mercury",
+              "latitude_millidegrees": -995,
+              "longitude_millidegrees": 271889
+            },
+            {
+              "body": "moon",
+              "latitude_millidegrees": 5171,
+              "longitude_millidegrees": 223324
+            },
+            {
+              "body": "neptune",
+              "latitude_millidegrees": 235,
+              "longitude_millidegrees": 303193
+            },
+            {
+              "body": "pluto",
+              "latitude_millidegrees": 10855,
+              "longitude_millidegrees": 251455
+            },
+            {
+              "body": "saturn",
+              "latitude_millidegrees": -2445,
+              "longitude_millidegrees": 40396
+            },
+            {
+              "body": "sun",
+              "latitude_millidegrees": 0,
+              "longitude_millidegrees": 280369
+            },
+            {
+              "body": "uranus",
+              "latitude_millidegrees": -658,
+              "longitude_millidegrees": 314809
+            },
+            {
+              "body": "venus",
+              "latitude_millidegrees": 2066,
+              "longitude_millidegrees": 241566
+            }
+          ],
+          "schema": "cleromancy.astrology-chart/v1"
+        },
+        "edition": "cleromancy.astrology/natal-reflective-v1",
+        "edition_digest": "cc97dc721838fa8aab9480774056d67fc12c320959480b54dddb6ba5489ff928",
+        "facts": {
+          "algorithm": "cleromancy.astrology/signs-and-aspects-from-positions/v1",
+          "aspects": [
+            {
+              "exact_millidegrees": 120000,
+              "first": "saturn",
+              "kind": "trine",
+              "orb_millidegrees": 27,
+              "second": "sun",
+              "separation_millidegrees": 120027
+            }
+          ],
+          "chart_digest": "b7daeb8cf77a8d2dc2d0dc9fd4d34d1aba2d1e818ec509fe49cedde1738cafc2",
+          "orb_millidegrees": 1000,
+          "placements": [
+            {
+              "body": "jupiter",
+              "degree_millidegrees": 25253,
+              "latitude_millidegrees": -1262,
+              "sign": "aries"
+            },
+            {
+              "body": "mars",
+              "degree_millidegrees": 27963,
+              "latitude_millidegrees": -1068,
+              "sign": "aquarius"
+            },
+            {
+              "body": "mercury",
+              "degree_millidegrees": 1889,
+              "latitude_millidegrees": -995,
+              "sign": "capricorn"
+            },
+            {
+              "body": "moon",
+              "degree_millidegrees": 13324,
+              "latitude_millidegrees": 5171,
+              "sign": "scorpio"
+            },
+            {
+              "body": "neptune",
+              "degree_millidegrees": 3193,
+              "latitude_millidegrees": 235,
+              "sign": "aquarius"
+            },
+            {
+              "body": "pluto",
+              "degree_millidegrees": 11455,
+              "latitude_millidegrees": 10855,
+              "sign": "sagittarius"
+            },
+            {
+              "body": "saturn",
+              "degree_millidegrees": 10396,
+              "latitude_millidegrees": -2445,
+              "sign": "taurus"
+            },
+            {
+              "body": "sun",
+              "degree_millidegrees": 10369,
+              "latitude_millidegrees": 0,
+              "sign": "capricorn"
+            },
+            {
+              "body": "uranus",
+              "degree_millidegrees": 14809,
+              "latitude_millidegrees": -658,
+              "sign": "aquarius"
+            },
+            {
+              "body": "venus",
+              "degree_millidegrees": 1566,
+              "latitude_millidegrees": 2066,
+              "sign": "sagittarius"
+            }
+          ],
+          "schema": "cleromancy.astrology-facts/v1"
+        },
+        "kind": "calculated",
+        "prompts": [
+          {
+            "key": "astrology-prompt:sun",
+            "text": "Consider purpose and self-expression through structure and commitment. What can you sustain, and what responsibility is actually yours?",
+            "title": "Sun in Capricorn"
+          },
+          {
+            "key": "astrology-prompt:moon",
+            "text": "Consider emotional needs and familiar habits through depth and trust. What needs an honest encounter rather than a quick explanation?",
+            "title": "Moon in Scorpio"
+          },
+          {
+            "key": "astrology-prompt:mercury",
+            "text": "Consider thinking, learning, and communication through structure and commitment. What can you sustain, and what responsibility is actually yours?",
+            "title": "Mercury in Capricorn"
+          },
+          {
+            "key": "astrology-prompt:venus",
+            "text": "Consider affection, pleasure, and what you value through exploration and meaning. Which assumption would benefit from a wider view?",
+            "title": "Venus in Sagittarius"
+          },
+          {
+            "key": "astrology-prompt:mars",
+            "text": "Consider initiative, desire, and the use of effort through independence and collective possibility. What pattern could you question with others?",
+            "title": "Mars in Aquarius"
+          },
+          {
+            "key": "astrology-prompt:jupiter",
+            "text": "Consider growth, confidence, and possibility through initiative and directness. Where would taking a first step clarify things?",
+            "title": "Jupiter in Aries"
+          },
+          {
+            "key": "astrology-prompt:saturn",
+            "text": "Consider limits, responsibility, and patient work through steadiness and tangible needs. What deserves patient care, and what are you holding too tightly?",
+            "title": "Saturn in Taurus"
+          },
+          {
+            "key": "astrology-prompt:uranus",
+            "text": "Consider freedom and changes to established patterns through independence and collective possibility. What pattern could you question with others?",
+            "title": "Uranus in Aquarius"
+          },
+          {
+            "key": "astrology-prompt:neptune",
+            "text": "Consider imagination, ideals, and uncertainty through independence and collective possibility. What pattern could you question with others?",
+            "title": "Neptune in Aquarius"
+          },
+          {
+            "key": "astrology-prompt:pluto",
+            "text": "Consider power, endings, and deep change through exploration and meaning. Which assumption would benefit from a wider view?",
+            "title": "Pluto in Sagittarius"
+          },
+          {
+            "key": "astrology-aspect:0",
+            "text": "Consider limits, responsibility, and patient work alongside purpose and self-expression. Look for ease between these themes. What available strength could you put to deliberate use?",
+            "title": "saturn · Trine · sun"
+          }
+        ],
+        "resolution": {
+          "fold": "refuse",
+          "offset_seconds": 0,
+          "timezone": "UTC",
+          "tzdb": "2025b",
+          "utc": "2000-01-01T12:00:00+00:00"
+        }
+      },
+      "persona": "00000000-0000-0000-0000-00c120261013",
+      "question": "Which themes can I reflect on in this synthetic natal occasion?",
+      "schema": "cleromancy.natal-reading/v1",
+      "subject_label": "Public synthetic natal subject"
+    }
+  ],
+  "reflections": [
+    {
+      "body": "Public natal fixture: an authored prompt offers a question, not a prediction.",
+      "created_at_ms": 1792217843698,
+      "event_nonce": "0ed37c45de0a2c949d6e25dd8a70b507",
+      "id": "dfdf0df297c83e2f4d53aabf085a73cc5db07f82a361f851fae89849d5ebde8b",
+      "schema": "cleromancy.reflection/v1",
+      "session_id": "2db32fe8917d71e2996660a42fc04681ed2aee2fe4defd12e9a8da35da7d5092"
+    }
+  ],
+  "schema": "cleromancy.natal-native/v1",
+  "shared": {
+    "associations": [
+      {
+        "relationship": "About",
+        "resource": {
+          "domain": "personal-facts",
+          "id": "mere://personal-facts/contact/1abefa1300b02cc923d176086f514ba8b7bf05508f0e7f4c00035a41568f7354",
+          "revision": "1abefa1300b02cc923d176086f514ba8b7bf05508f0e7f4c00035a41568f7354"
+        },
+        "schema": "dramatis.subject-resource-association/v1",
+        "subject": {
+          "Contact": {
+            "anchor": "urn:uuid:bd774ada-19b5-432b-8a1e-2b0ab49b14a6",
+            "scope": "00000000-0000-0000-0000-00c120261013"
+          }
+        }
+      },
+      {
+        "relationship": "About",
+        "resource": {
+          "domain": "personal-facts",
+          "id": "mere://personal-facts/birth/0c9b089d905e0885c6e5a3237ed35b51b1c4148d55ce92ca61b9df9f613dad87",
+          "revision": "0c9b089d905e0885c6e5a3237ed35b51b1c4148d55ce92ca61b9df9f613dad87"
+        },
+        "schema": "dramatis.subject-resource-association/v1",
+        "subject": {
+          "Contact": {
+            "anchor": "urn:uuid:bd774ada-19b5-432b-8a1e-2b0ab49b14a6",
+            "scope": "00000000-0000-0000-0000-00c120261013"
+          }
+        }
+      },
+      {
+        "relationship": "About",
+        "resource": {
+          "domain": "divination",
+          "id": "cleromancy://natal/2db32fe8917d71e2996660a42fc04681ed2aee2fe4defd12e9a8da35da7d5092",
+          "revision": "2db32fe8917d71e2996660a42fc04681ed2aee2fe4defd12e9a8da35da7d5092"
+        },
+        "schema": "dramatis.subject-resource-association/v1",
+        "subject": {
+          "Contact": {
+            "anchor": "urn:uuid:bd774ada-19b5-432b-8a1e-2b0ab49b14a6",
+            "scope": "00000000-0000-0000-0000-00c120261013"
+          }
+        }
+      },
+      {
+        "relationship": "About",
+        "resource": {
+          "domain": "personal-facts",
+          "id": "mere://personal-facts/birth/bbb65ab2715127a1835fb4bd70e78e25b243827f18254aa4ee4027c697ad43a7",
+          "revision": "bbb65ab2715127a1835fb4bd70e78e25b243827f18254aa4ee4027c697ad43a7"
+        },
+        "schema": "dramatis.subject-resource-association/v1",
+        "subject": {
+          "Contact": {
+            "anchor": "urn:uuid:bd774ada-19b5-432b-8a1e-2b0ab49b14a6",
+            "scope": "00000000-0000-0000-0000-00c120261013"
+          }
+        }
+      }
+    ],
+    "births": [
+      {
+        "facts": {
+          "date": {
+            "day": 1,
+            "month": 1,
+            "year": 2000
+          },
+          "place": null,
+          "schema": "dramatis.birth-facts/v1",
+          "source": {
+            "label": "Public synthetic fixture; no real birth data",
+            "reference": null
+          },
+          "subject": {
+            "Contact": {
+              "anchor": "urn:uuid:bd774ada-19b5-432b-8a1e-2b0ab49b14a6",
+              "scope": "00000000-0000-0000-0000-00c120261013"
+            }
+          },
+          "time": {
+            "Known": {
+              "hour": 12,
+              "minute": 0,
+              "second": 0
+            }
+          },
+          "timezone": "UTC"
+        },
+        "resource": {
+          "domain": "personal-facts",
+          "id": "mere://personal-facts/birth/0c9b089d905e0885c6e5a3237ed35b51b1c4148d55ce92ca61b9df9f613dad87",
+          "revision": "0c9b089d905e0885c6e5a3237ed35b51b1c4148d55ce92ca61b9df9f613dad87"
+        }
+      },
+      {
+        "facts": {
+          "date": {
+            "day": 1,
+            "month": 1,
+            "year": 2000
+          },
+          "place": {
+            "label": "Public New York coordinate fixture",
+            "latitude_microdegrees": 40712800,
+            "longitude_microdegrees": -74006000,
+            "precision": "User supplied; coordinate rounding to microdegrees"
+          },
+          "schema": "dramatis.birth-facts/v1",
+          "source": {
+            "label": "Public synthetic fixture; no real birth data",
+            "reference": null
+          },
+          "subject": {
+            "Contact": {
+              "anchor": "urn:uuid:bd774ada-19b5-432b-8a1e-2b0ab49b14a6",
+              "scope": "00000000-0000-0000-0000-00c120261013"
+            }
+          },
+          "time": {
+            "Known": {
+              "hour": 12,
+              "minute": 0,
+              "second": 0
+            }
+          },
+          "timezone": "UTC"
+        },
+        "resource": {
+          "domain": "personal-facts",
+          "id": "mere://personal-facts/birth/bbb65ab2715127a1835fb4bd70e78e25b243827f18254aa4ee4027c697ad43a7",
+          "revision": "bbb65ab2715127a1835fb4bd70e78e25b243827f18254aa4ee4027c697ad43a7"
+        }
+      }
+    ],
+    "persona": "00000000-0000-0000-0000-00c120261013",
+    "subjects": [
+      {
+        "label": "Public synthetic natal subject",
+        "subject": {
+          "Contact": {
+            "anchor": "urn:uuid:bd774ada-19b5-432b-8a1e-2b0ab49b14a6",
+            "scope": "00000000-0000-0000-0000-00c120261013"
+          }
+        }
+      }
+    ]
+  }
+}

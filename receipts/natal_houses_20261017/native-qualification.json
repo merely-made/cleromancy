@@ -1,0 +1,22 @@
+{
+  "source": "ca562db9cb15af5d6f80a153dd9a1e8c78275c22",
+  "binary_sha256": "851421a7cb4337016af9218dfcd92c010c15c5e689cef20d6971a89fe0e06f02",
+  "runs": [
+    "native-setup-03",
+    "native-create-03",
+    "native-reopen-03",
+    "native-catalog-03"
+  ],
+  "accepted_originals_reviewed": 13,
+  "exact_records_and_reflections_after_reopen": true,
+  "exact_shared_catalog_across_two_fresh_processes": true,
+  "create_catalog_scope": "Create UI cache retains four associations; the two newly acknowledged natal links appear on the fresh authoritative read, giving six. Birth resources and subjects are exact across create/reopen.",
+  "earlier_missing_place_reading_and_reflection_preserved": true,
+  "two_explicit_house_systems_share_one_authorized_birth_revision": true,
+  "bounds": [
+    "Public synthetic fixture; encrypted terminal unlock in real owned PTY",
+    "Outbound IP denied in all four accepted processes",
+    "No full-database byte equality, performance, graphical unlock or browser-wall renewal claim",
+    "Earlier failed selection/draft/setup trials remain separate diagnostic evidence"
+  ]
+}

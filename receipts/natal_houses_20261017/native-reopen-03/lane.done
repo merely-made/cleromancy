@@ -1,0 +1,15 @@
+RESULT ok
+waited 69 frames
+waited 0 frames
+captured reopened-whole
+captured reopened-equal
+captured reopened-missing-place
+waited 29 frames
+waited 0 frames
+captured compact-reopened-equal
+capture reopened-whole 2320x1520 digest=fcfc2fbe28347402 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-reopen-03/reopened-whole.png
+capture reopened-equal 2320x1520 digest=8773456f684518fd file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-reopen-03/reopened-equal.png
+capture reopened-missing-place 2320x1520 digest=68633216e53a6588 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-reopen-03/reopened-missing-place.png
+capture compact-reopened-equal 840x1520 digest=cd9288be345d2745 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-reopen-03/compact-reopened-equal.png
+frames: 4 captured, 0 blank, 4 distinct digests
+presentation: 147 frames, 148 redraws, 1 unpresented redraws

@@ -1,0 +1,132 @@
+[
+  {
+    "path": "native-setup-03/missing-place.png",
+    "sha256": "ade434018256804fdb4bfda4a38022d5777335e60baa9f23481b5b1ced40dbcc",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Missing recorded coordinates are explained; no inferred ascendant or house result."
+  },
+  {
+    "path": "native-setup-03/saved-placed-revision.png",
+    "sha256": "f30ccb1c3c0be1d386236d48d8ea38e86315d4b09f60f07cdccb16bfbe75fe2d",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Saved birth revision controls and explicit house choices remain reachable; earlier revision stays selected until the person chooses another."
+  },
+  {
+    "path": "native-create-03/compact-equal.png",
+    "sha256": "17ea584c4ed00a87eb6e2bcb65afb97c6352b6498e5c1abca913fe933d21c74f",
+    "physical_pixels": [
+      840,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Chosen system, ascendant, MC and cusp list are readable; compact text wraps and lower rows continue by scrolling."
+  },
+  {
+    "path": "native-create-03/compact-whole.png",
+    "sha256": "d74281dd68d766dea753f139841ddd08a8e46740cf038e340c42e7428e69c9e9",
+    "physical_pixels": [
+      840,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Chosen system, ascendant, MC and cusp list are readable; compact text wraps and lower rows continue by scrolling."
+  },
+  {
+    "path": "native-create-03/equal-house.png",
+    "sha256": "239d1b5a56f3e2393689d234ab2d4bdc6477490527c7c7dfb6b77872297e93bf",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Chosen system, ascendant, MC and cusp list are readable; compact text wraps and lower rows continue by scrolling."
+  },
+  {
+    "path": "native-create-03/equal-narrative.png",
+    "sha256": "dfca6289882054328bb9a32abf903c44ccc00ad7574c3e085c899c9b57688a8d",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Narration includes chosen system, rising sign and disclosed UT1 approximation alongside original planetary interpretation."
+  },
+  {
+    "path": "native-create-03/house-receipt.png",
+    "sha256": "1db40d20e4458822af27726504eb7b1db006b4efc721dd1833f4278dd3778668",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Calculation-details toggle leaves the house geometry readable. This capture does not claim every lower provenance field is simultaneously visible."
+  },
+  {
+    "path": "native-create-03/whole-sign.png",
+    "sha256": "227af574ce78f5076e67a142d6c89667b5dda138cfcee8b163a177387f2a6393",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Chosen system, ascendant, MC and cusp list are readable; compact text wraps and lower rows continue by scrolling."
+  },
+  {
+    "path": "native-reopen-03/compact-reopened-equal.png",
+    "sha256": "5e1583c0d5cd8abe48dccac4ba7d14e337908c60b327c2ea5cde65d8f43caea4",
+    "physical_pixels": [
+      840,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Chosen system, ascendant, MC and cusp list are readable; compact text wraps and lower rows continue by scrolling."
+  },
+  {
+    "path": "native-reopen-03/reopened-equal.png",
+    "sha256": "227a05f3be11b9ba183aa5dd204815095f784c4ba5e5605d8f96caf51f4fdee2",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Chosen system, ascendant, MC and cusp list are readable; compact text wraps and lower rows continue by scrolling."
+  },
+  {
+    "path": "native-reopen-03/reopened-missing-place.png",
+    "sha256": "385999a22f35f2fec9dd76e356d634b9e9b43f99d5fa2f86b554a9b14778ad12",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Missing recorded coordinates are explained; no inferred ascendant or house result."
+  },
+  {
+    "path": "native-reopen-03/reopened-whole.png",
+    "sha256": "d6ada5b8f3bc1e0f9e9bd8f1a1ef7fea99ade2347bb83191a14216282251de1c",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Chosen system, ascendant, MC and cusp list are readable; compact text wraps and lower rows continue by scrolling."
+  },
+  {
+    "path": "native-catalog-03/verified-equal-catalog.png",
+    "sha256": "88a49663006376c7608d349cde8d4a9dd9c0ddf670a4956fd67ccc67098526fd",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Chosen system, ascendant, MC and cusp list are readable; compact text wraps and lower rows continue by scrolling."
+  }
+]

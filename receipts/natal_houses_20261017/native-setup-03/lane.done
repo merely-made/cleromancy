@@ -1,0 +1,14 @@
+RESULT ok
+waited 20 frames
+waited 2 frames
+waited 0 frames
+waited 0 frames
+waited 9 frames
+captured missing-place
+waited 8 frames
+waited 1 frames
+captured saved-placed-revision
+capture missing-place 2320x1520 digest=06d3c8a86ea8729b file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-setup-03/missing-place.png
+capture saved-placed-revision 2320x1520 digest=d4a7145df672faf5 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-setup-03/saved-placed-revision.png
+frames: 2 captured, 0 blank, 2 distinct digests
+presentation: 90 frames, 91 redraws, 1 unpresented redraws

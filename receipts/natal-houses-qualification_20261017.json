@@ -1,0 +1,168 @@
+{
+  "schema": "cleromancy.natal-houses-qualification/v1",
+  "date": "2026-10-17",
+  "status": "software and bounded native qualified; publication verified separately",
+  "source": "ca562db9cb15af5d6f80a153dd9a1e8c78275c22",
+  "turquet_houses": "e2f65c021a6bf744ab5fe77121e0441a46b47306",
+  "turquet_planets": "30875f30e83909f3030bc01237a5046e14cde29b",
+  "mere_native": "d03e367bd64a8dc2c03e67458539aa8dc5ccf9a5",
+  "mere_daemon_intake": "34f7f08dbd71a5f0b5d3f2ab8c880af039a56cdb",
+  "pack": "natal_houses_20261017",
+  "software": {
+    "desktop-build": {
+      "exit": 0,
+      "source": "ca562db9cb15af5d6f80a153dd9a1e8c78275c22",
+      "args": [
+        "build",
+        "--bin",
+        "cleromancy"
+      ]
+    },
+    "check-default": {
+      "exit": 0,
+      "source": "ca562db9cb15af5d6f80a153dd9a1e8c78275c22",
+      "args": [
+        "check",
+        "--all-targets"
+      ]
+    },
+    "check-no-default": {
+      "exit": 0,
+      "source": "ca562db9cb15af5d6f80a153dd9a1e8c78275c22",
+      "args": [
+        "check",
+        "--no-default-features",
+        "--all-targets"
+      ]
+    },
+    "check-personal": {
+      "exit": 0,
+      "source": "ca562db9cb15af5d6f80a153dd9a1e8c78275c22",
+      "args": [
+        "check",
+        "--features",
+        "personal-sync",
+        "--all-targets"
+      ]
+    },
+    "check-admission": {
+      "exit": 0,
+      "source": "ca562db9cb15af5d6f80a153dd9a1e8c78275c22",
+      "args": [
+        "check",
+        "--features",
+        "graphshell-admission",
+        "--all-targets"
+      ]
+    },
+    "test-default": {
+      "exit": 0,
+      "source": "ca562db9cb15af5d6f80a153dd9a1e8c78275c22",
+      "args": [
+        "test"
+      ]
+    },
+    "test-historical": {
+      "exit": 0,
+      "source": "ca562db9cb15af5d6f80a153dd9a1e8c78275c22",
+      "args": [
+        "test",
+        "--features",
+        "legacy-receipts,analytic-ephemeris,sky-timeline,personal-sync,graphshell-admission"
+      ]
+    },
+    "core-default": {
+      "exit": 0,
+      "source": "ca562db9cb15af5d6f80a153dd9a1e8c78275c22",
+      "args": [
+        "test"
+      ]
+    },
+    "core-legacy": {
+      "exit": 0,
+      "source": "ca562db9cb15af5d6f80a153dd9a1e8c78275c22",
+      "args": [
+        "test",
+        "--features",
+        "legacy-receipts"
+      ]
+    },
+    "core-sky": {
+      "exit": 0,
+      "source": "ca562db9cb15af5d6f80a153dd9a1e8c78275c22",
+      "args": [
+        "test",
+        "--features",
+        "legacy-receipts,sky-timeline"
+      ]
+    }
+  },
+  "test_counts": {
+    "test-default": {
+      "passed": 139,
+      "failed": 0,
+      "ignored": 1
+    },
+    "test-historical": {
+      "passed": 188,
+      "failed": 0,
+      "ignored": 1
+    },
+    "core-default": {
+      "passed": 49,
+      "failed": 0,
+      "ignored": 0
+    },
+    "core-legacy": {
+      "passed": 50,
+      "failed": 0,
+      "ignored": 0
+    },
+    "core-sky": {
+      "passed": 51,
+      "failed": 0,
+      "ignored": 0
+    }
+  },
+  "native": {
+    "source": "ca562db9cb15af5d6f80a153dd9a1e8c78275c22",
+    "binary_sha256": "851421a7cb4337016af9218dfcd92c010c15c5e689cef20d6971a89fe0e06f02",
+    "runs": [
+      "native-setup-03",
+      "native-create-03",
+      "native-reopen-03",
+      "native-catalog-03"
+    ],
+    "accepted_originals_reviewed": 13,
+    "exact_records_and_reflections_after_reopen": true,
+    "exact_shared_catalog_across_two_fresh_processes": true,
+    "create_catalog_scope": "Create UI cache retains four associations; the two newly acknowledged natal links appear on the fresh authoritative read, giving six. Birth resources and subjects are exact across create/reopen.",
+    "earlier_missing_place_reading_and_reflection_preserved": true,
+    "two_explicit_house_systems_share_one_authorized_birth_revision": true,
+    "bounds": [
+      "Public synthetic fixture; encrypted terminal unlock in real owned PTY",
+      "Outbound IP denied in all four accepted processes",
+      "No full-database byte equality, performance, graphical unlock or browser-wall renewal claim",
+      "Earlier failed selection/draft/setup trials remain separate diagnostic evidence"
+    ]
+  },
+  "preservation": {
+    "cleromancy": {
+      "checked": 945,
+      "changed": []
+    },
+    "turquet": {
+      "checked": 31,
+      "changed": []
+    }
+  },
+  "bounds": [
+    "Whole Sign and Equal House only; no Placidus substitution",
+    "Existing planetary edition and natal records remain unchanged; optional house extension only on newly chosen readings",
+    "Exact-time numerical window remains UTC birth years 1972\u20132098; place/coordinates are explicit",
+    "UT1 approximated as UTC; no downloaded EOP, polar-motion correction or refraction",
+    "Longitude-only planetary house membership; numeric facts carry no new symbolic house interpretation",
+    "Graphical unlock, browser-wall, performance and full-database byte equality remain separate",
+    "Earlier preliminary house source/failed trials retain their original identities and are not final edition acceptance"
+  ]
+}

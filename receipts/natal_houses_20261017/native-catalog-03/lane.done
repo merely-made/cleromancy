@@ -1,0 +1,8 @@
+RESULT ok
+waited 74 frames
+waited 0 frames
+waited 17 frames
+captured verified-equal-catalog
+capture verified-equal-catalog 2320x1520 digest=38827517bfb87f10 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-catalog-03/verified-equal-catalog.png
+frames: 1 captured, 0 blank, 1 distinct digests
+presentation: 113 frames, 114 redraws, 1 unpresented redraws

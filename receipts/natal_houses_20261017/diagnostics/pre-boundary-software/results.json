@@ -1,0 +1,11 @@
+{
+  "desktop-build": {
+    "exit": 0,
+    "source": "4461e3f3932c7fbdd283d090cf7a25e85a90b0e1",
+    "args": [
+      "build",
+      "--bin",
+      "cleromancy"
+    ]
+  }
+}
