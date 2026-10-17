@@ -364,6 +364,7 @@ impl ResidentConsultation {
                 fold,
                 houses,
                 orientation,
+                aspects,
             } => {
                 let catalog = client.catalog().await?;
                 let birth=catalog.births.iter().find(|b|b.resource==resource).ok_or("Selected birth revision is no longer available from the admitted shared domain")?.clone();
@@ -388,6 +389,11 @@ impl ResidentConsultation {
                     natal_nonce(),
                 )?;
                 let reading = reading.with_supplement(houses, orientation)?;
+                let reading = if let Some(rules) = aspects {
+                    reading.with_aspects(rules)?
+                } else {
+                    reading
+                };
                 self.refresh().await?;
                 let (mut candidate, edits) = self.candidate()?;
                 candidate

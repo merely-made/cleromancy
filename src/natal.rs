@@ -69,6 +69,8 @@ pub struct NatalReading {
     pub houses: Option<crate::natal_houses::HouseReceipt>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub supplement: Option<crate::natal_cap::NatalSupplement>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub aspects: Option<crate::natal_aspects::AspectReceipt>,
 }
 impl NatalReading {
     pub fn new(
@@ -95,6 +97,7 @@ impl NatalReading {
             outcome,
             houses: None,
             supplement: None,
+            aspects: None,
         };
         value.id = value.identity();
         value.validate()?;
@@ -114,6 +117,13 @@ impl NatalReading {
         orientation: Option<crate::natal_cap::OrientationSnapshot>,
     ) -> Result<Self, String> {
         self.supplement = Some(crate::natal_cap::calculate(&self, houses, orientation)?);
+        self.id = self.identity();
+        self.validate()?;
+        Ok(self)
+    }
+    /// Explicitly opt in to saved per-aspect rules and geometric results.
+    pub fn with_aspects(mut self, rules: crate::natal_aspects::AspectRules) -> Result<Self, String> {
+        self.aspects = Some(crate::natal_aspects::calculate(&self, rules)?);
         self.id = self.identity();
         self.validate()?;
         Ok(self)
@@ -150,6 +160,11 @@ impl NatalReading {
         if let Some(s) = &self.supplement {
             if *s != crate::natal_cap::calculate(&self, s.house_system, s.orientation.clone())? {
                 return Err("Natal supplement differs from its retained inputs".into());
+            }
+        }
+        if let Some(receipt) = &self.aspects {
+            if *receipt != crate::natal_aspects::calculate(self, receipt.rules)? {
+                return Err("Natal aspects differ from their retained rules and chart".into());
             }
         }
         Ok(())

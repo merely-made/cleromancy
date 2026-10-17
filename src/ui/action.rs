@@ -40,6 +40,7 @@ pub enum ConsultationAction {
         fold: crate::natal::FoldChoice,
         houses: Option<crate::natal_cap::HouseChoice>,
         orientation: Option<crate::natal_cap::OrientationSnapshot>,
+        aspects: Option<crate::natal_aspects::AspectRules>,
     },
 
     OpenNeighborhood {

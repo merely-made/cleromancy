@@ -34,6 +34,7 @@ pub mod intents;
 pub mod moirai;
 pub mod narrative;
 pub mod natal;
+pub mod natal_aspects;
 pub mod natal_houses;
 pub mod natal_cap;
 #[cfg(not(feature = "portable-core"))]

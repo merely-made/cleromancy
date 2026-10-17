@@ -286,6 +286,15 @@ impl mesquite::Product for Product {
             )
             .with_field("natal-count", ui.catalog.natal_readings.len().to_string())
             .with_field(
+                "natal-aspects",
+                ui.catalog
+                    .natal_readings
+                    .iter()
+                    .filter(|r| r.aspects.is_some())
+                    .count()
+                    .to_string(),
+            )
+            .with_field(
                 "natal-houses-count",
                 ui.catalog
                     .natal_readings
@@ -772,6 +781,25 @@ impl ScenarioDriver<'_, '_> {
             return Ok(());
         }
         match line {
+            "natal-aspects-exact-draft" => {
+                self.ctx.runner.update(|s| {
+                    s.consultation.natal_aspect_orbs =
+                        std::array::from_fn(|_| cambium::TextInput::new("0"))
+                });
+                Ok(())
+            },
+            "natal-select-aspects" => {
+                self.ctx.runner.update(|s| {
+                    s.consultation.natal_selected = s
+                        .consultation
+                        .catalog
+                        .natal_readings
+                        .iter()
+                        .find(|r| r.aspects.is_some())
+                        .map(|r| r.id.clone())
+                });
+                Ok(())
+            },
             "natal-prepare-subject" => {
                 self.ctx.runner.update(|s| {
                     s.consultation.natal_name =

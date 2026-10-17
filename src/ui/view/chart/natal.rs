@@ -186,6 +186,60 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
             eop,
         ));
         views.push(Box::new(el("p", "Paste an observed IERS excerpt covering the birth instant to use measured Earth orientation. Blank uses the disclosed UT1 = UTC approximation. Nothing is fetched automatically. Placidus is unavailable in polar regions; no alternate system is substituted.")));
+        views.push(Box::new(el("h3", "Aspects for this new occasion")));
+        let aspect_choices: Vec<ConsultationView> = vec![
+            Box::new(
+                button("Explicit aspect rules", |ui: &mut ConsultationUi, _| {
+                    ui.natal_aspects_enabled = true
+                })
+                .attr("data-key", "natal-aspects-on")
+                .attr("class", "natal-aspect-choice")
+                .attr("aria-pressed", ui.natal_aspects_enabled.to_string()),
+            ),
+            Box::new(
+                button(
+                    "Original 1° aspect edition",
+                    |ui: &mut ConsultationUi, _| ui.natal_aspects_enabled = false,
+                )
+                .attr("data-key", "natal-aspects-off")
+                .attr("class", "natal-aspect-choice")
+                .attr("aria-pressed", (!ui.natal_aspects_enabled).to_string()),
+            ),
+        ];
+        views.push(Box::new(
+            el("div", aspect_choices)
+                .attr("role", "group")
+                .attr("aria-label", "Natal aspect edition"),
+        ));
+        if ui.natal_aspects_enabled {
+            views.push(Box::new(el("p", "Orbs are inclusive maximum differences from the exact angle. The editable product preset is conjunction/opposition 8°, trine/square 6°, sextile 4°. These are chosen geometric rules, with no luminary bonus or applying/separating claim. Zero admits exact matches only. All matching kinds are retained when wide orbs overlap.")));
+            for (index, (label, id, get)) in [
+                (
+                    "Conjunction orb degrees",
+                    "natal-orb-conjunction",
+                    conjunction_orb as fn(&mut ConsultationUi) -> &mut TextInput,
+                ),
+                (
+                    "Opposition orb degrees",
+                    "natal-orb-opposition",
+                    opposition_orb,
+                ),
+                ("Trine orb degrees", "natal-orb-trine", trine_orb),
+                ("Square orb degrees", "natal-orb-square", square_orb),
+                ("Sextile orb degrees", "natal-orb-sextile", sextile_orb),
+            ]
+            .into_iter()
+            .enumerate()
+            {
+                views.push(labelled_text(
+                    label,
+                    id,
+                    false,
+                    &ui.natal_aspect_orbs[index],
+                    get,
+                ));
+            }
+        }
         views.push(Box::new(
             button("Create natal reading", |ui: &mut ConsultationUi, _| {
                 let choice = match ui.natal_fold.text().trim() {
@@ -202,11 +256,23 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
                     .as_ref()
                     .and_then(|c| c.births.get(ui.birth_revision))
                 {
+                    let aspects = if ui.natal_aspects_enabled {
+                        match aspect_rules(ui) {
+                            Ok(rules) => Some(rules),
+                            Err(error) => {
+                                ui.error = Some(error);
+                                return;
+                            },
+                        }
+                    } else {
+                        None
+                    };
                     let action = ConsultationAction::CreateNatal {
                         resource: birth.resource.clone(),
                         question: ui.natal_question.text().to_string(),
                         fold: choice,
                         houses: ui.natal_house_system,
+                        aspects,
                         orientation: (!ui.natal_eop.text().trim().is_empty()).then(|| {
                             crate::natal_cap::OrientationSnapshot {
                                 finals2000a: ui.natal_eop.text().to_string(),
@@ -267,7 +333,7 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
                 prompts,
                 ..
             } => {
-                views.push(Box::new(el("p",format!("I resolved the saved civil birth time in {} to {}. Turquet calculates {} geocentric tropical placements; aspects use a {} degree orb. {} {}",resolution.timezone,resolution.utc.replace('T'," ").replace("+00:00"," UTC"),facts.placements.len(),reading.orb_millidegrees as f64/1000.,crate::content::natal_pack().intro,house_summary(reading))).attr("data-key","natal-narration").attr("class","natal-narration")));
+                views.push(Box::new(el("p",format!("I resolved the saved civil birth time in {} to {}. Turquet calculates {} geocentric tropical placements; the original calculation edition retains a {} degree aspect orb. Explicit aspect rules, when chosen, appear below. {} {}",resolution.timezone,resolution.utc.replace('T'," ").replace("+00:00"," UTC"),facts.placements.len(),reading.orb_millidegrees as f64/1000.,crate::content::natal_pack().intro,house_summary(reading))).attr("data-key","natal-narration").attr("class","natal-narration")));
                 views.push(Box::new(
                     button(
                         if ui.natal_details {
@@ -310,6 +376,34 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
                     views.push(Box::new(el("p", prompt.text.clone())));
                 }
             },
+        }
+        if let Some(receipt) = &reading.aspects {
+            let mut aspect_views: Vec<ConsultationView> =
+                vec![Box::new(el("h3", "Natal aspects · explicit orb rules"))];
+            let rules = receipt.rules;
+            aspect_views.push(Box::new(el("p", format!("Inclusive orbs: conjunction {:.3}°, opposition {:.3}°, trine {:.3}°, square {:.3}°, sextile {:.3}°. Shortest geocentric tropical longitude separation, from the saved millidegree positions. No latitude, house or motion adjustment.", rules.conjunction_millidegrees as f64/1000., rules.opposition_millidegrees as f64/1000., rules.trine_millidegrees as f64/1000., rules.square_millidegrees as f64/1000., rules.sextile_millidegrees as f64/1000.))));
+            match &receipt.outcome {
+                crate::natal_aspects::AspectOutcome::Unavailable { reason } => {
+                    aspect_views.push(Box::new(el("p", reason.clone())))
+                },
+                crate::natal_aspects::AspectOutcome::Calculated { hits, .. } => {
+                    if hits.is_empty() {
+                        aspect_views
+                            .push(Box::new(el("p", "No pairs meet these saved orb rules.")));
+                    }
+                    for hit in hits {
+                        aspect_views.push(Box::new(el("p", format!("{} · {:?} · {}: separation {:.3}°; deviation {:.3}° from {:.0}°; allowed orb {:.3}°", hit.first, hit.kind, hit.second, hit.separation_millidegrees as f64/1000., hit.orb_millidegrees as f64/1000., hit.exact_millidegrees as f64/1000., rules.orb_millidegrees(hit.kind) as f64/1000.))));
+                    }
+                },
+            }
+            if ui.natal_details {
+                aspect_views.push(Box::new(el("p", format!("Aspect method {}; schema {}. Original chart and its earlier calculation edition remain inspectable in the sealed receipt.", receipt.method, receipt.schema))));
+            }
+            views.push(Box::new(
+                el("section", aspect_views)
+                    .attr("class", "natal-aspects")
+                    .attr("data-key", "natal-aspects"),
+            ));
         }
         if let Some(s) = &reading.supplement {
             let mut motion_views: Vec<ConsultationView> =
@@ -638,5 +732,75 @@ fn house_summary(reading: &crate::natal::NatalReading) -> String {
                 h.earth_rotation
             ),
         },
+    }
+}
+
+fn conjunction_orb(ui: &mut ConsultationUi) -> &mut TextInput {
+    &mut ui.natal_aspect_orbs[0]
+}
+fn opposition_orb(ui: &mut ConsultationUi) -> &mut TextInput {
+    &mut ui.natal_aspect_orbs[1]
+}
+fn trine_orb(ui: &mut ConsultationUi) -> &mut TextInput {
+    &mut ui.natal_aspect_orbs[2]
+}
+fn square_orb(ui: &mut ConsultationUi) -> &mut TextInput {
+    &mut ui.natal_aspect_orbs[3]
+}
+fn sextile_orb(ui: &mut ConsultationUi) -> &mut TextInput {
+    &mut ui.natal_aspect_orbs[4]
+}
+fn aspect_rules(ui: &ConsultationUi) -> Result<crate::natal_aspects::AspectRules, String> {
+    let mut values = [0; 5];
+    for (index, input) in ui.natal_aspect_orbs.iter().enumerate() {
+        let label = ["Conjunction", "Opposition", "Trine", "Square", "Sextile"][index];
+        if input.text().trim().is_empty() {
+            return Err(format!(
+                "{label} orb: enter degrees, including 0 for exact matches."
+            ));
+        }
+        values[index] = crate::ui::chart_input::degrees(input.text(), 3)
+            .map_err(|error| format!("{label} orb: {error}"))?
+            .parse::<u32>()
+            .map_err(|_| format!("{label} orb cannot be negative."))?;
+        if values[index] > 180_000 {
+            return Err(format!("{label} orb must be at most 180 degrees."));
+        }
+    }
+    let rules = crate::natal_aspects::AspectRules {
+        conjunction_millidegrees: values[0],
+        opposition_millidegrees: values[1],
+        trine_millidegrees: values[2],
+        square_millidegrees: values[3],
+        sextile_millidegrees: values[4],
+    };
+    rules.validate()?;
+    Ok(rules)
+}
+
+#[cfg(test)]
+mod aspect_input_tests {
+    use super::*;
+    fn ui() -> ConsultationUi {
+        let consultation =
+            crate::Consultation::new(crate::CleromancyHost::empty(muniment::MemoryBackend::new()));
+        ConsultationUi::new(consultation.catalog().unwrap())
+    }
+    #[test]
+    fn explicit_orbs_parse_exactly_and_refuse_invalid_input() {
+        let mut ui = ui();
+        assert!(!ui.natal_aspects_enabled);
+        assert_eq!(
+            aspect_rules(&ui).unwrap(),
+            crate::natal_aspects::AspectRules::default()
+        );
+        ui.natal_aspect_orbs[0] = TextInput::new("0.001");
+        assert_eq!(aspect_rules(&ui).unwrap().conjunction_millidegrees, 1);
+        for invalid in ["-1", "180.001", "NaN", "1.0001", ""] {
+            ui.natal_aspect_orbs[0] = TextInput::new(invalid);
+            assert!(aspect_rules(&ui).is_err(), "{invalid}");
+        }
+        ui.natal_aspect_orbs[0] = TextInput::new("0");
+        assert_eq!(aspect_rules(&ui).unwrap().conjunction_millidegrees, 0);
     }
 }
