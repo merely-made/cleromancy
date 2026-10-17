@@ -101,6 +101,8 @@ pub struct ConsultationUi {
     pub(super) astrology_orb: TextInput,
     pub(super) astrology_positions: TextInput,
     pub(super) comparison_select: SelectState,
+    pub(super) birth_notice: String,
+    pub(super) natal_selected: Option<String>,
     pub(super) birth_catalog: Option<djinn::personal_facts::PersonalFactsCatalog>,
     pub(super) natal_reflection: TextInput,
     pub(super) birth_subject: usize,
@@ -172,6 +174,8 @@ impl ConsultationUi {
             astrology_orb: TextInput::new("1"),
             astrology_positions: TextInput::default(),
             comparison_select: SelectState::new(0).with_label("Compare with"),
+            birth_notice: String::new(),
+            natal_selected: None,
             birth_catalog: None,
             natal_reflection: TextInput::default(),
             birth_subject: 0,
@@ -247,6 +251,9 @@ impl ConsultationUi {
         self.error.as_deref()
     }
     pub(crate) fn record_action(&mut self, action: Option<ConsultationAction>) {
+        if matches!(action, Some(ConsultationAction::CreateNatal { .. })) {
+            self.natal_selected = None;
+        }
         self.pending_action = action;
     }
 

@@ -267,14 +267,38 @@ fn apply_worker_update(
 ) {
     match update {
         WorkerUpdate::BirthFacts { catalog, notice } => runner.update(move |state| {
-            let ui=&mut state.consultation;
-            let subject=ui.birth_catalog.as_ref().and_then(|c|c.subjects.get(ui.birth_subject)).map(|s|s.subject.clone());
-            let birth=ui.birth_catalog.as_ref().and_then(|c|c.births.get(ui.birth_revision)).map(|b|b.resource.clone());
-            ui.birth_subject=catalog.as_ref().and_then(|c|c.subjects.iter().position(|s|Some(&s.subject)==subject.as_ref())).unwrap_or(0);
-            ui.birth_revision=catalog.as_ref().and_then(|c|c.births.iter().position(|b|Some(&b.resource)==birth.as_ref())).unwrap_or(0);
+            let ui = &mut state.consultation;
+            let subject = ui
+                .birth_catalog
+                .as_ref()
+                .and_then(|c| c.subjects.get(ui.birth_subject))
+                .map(|s| s.subject.clone());
+            let birth = ui
+                .birth_catalog
+                .as_ref()
+                .and_then(|c| c.births.get(ui.birth_revision))
+                .map(|b| b.resource.clone());
+            ui.birth_subject = catalog
+                .as_ref()
+                .and_then(|c| {
+                    c.subjects
+                        .iter()
+                        .position(|s| Some(&s.subject) == subject.as_ref())
+                })
+                .unwrap_or(0);
+            ui.birth_revision = catalog
+                .as_ref()
+                .and_then(|c| {
+                    c.births
+                        .iter()
+                        .position(|b| Some(&b.resource) == birth.as_ref())
+                })
+                .unwrap_or(0);
+            let failed = catalog.is_none();
             ui.birth_catalog = catalog;
+            ui.birth_notice = notice.clone();
             state.consultation.status = super::ConsultationStatus::Ready;
-            state.consultation.error = Some(notice);
+            state.consultation.error = failed.then_some(notice);
         }),
 
         WorkerUpdate::GrantedContext {
