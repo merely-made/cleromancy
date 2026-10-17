@@ -185,6 +185,7 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
             .attr("data-key", format!("natal-select-{}", reading.id)),
         ));
     }
+    let history=std::mem::take(&mut views);
     let selected = ui
         .natal_selected
         .as_ref()
@@ -220,18 +221,13 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
                 views.push(Box::new(el("p",format!("I resolved the saved civil birth time in {} to {}. Turquet calculates {} geocentric tropical placements; aspects use a {} degree orb. {}",resolution.timezone,resolution.utc.replace('T'," ").replace("+00:00"," UTC"),facts.placements.len(),reading.orb_millidegrees as f64/1000.,crate::content::natal_pack().intro)).attr("data-key","natal-narration").attr("class","natal-narration")));
                 views.push(Box::new(
                     button(
-                        if ui.natal_details {
-                            "Hide calculation details"
-                        } else {
-                            "Show calculation details"
-                        },
-                        |ui: &mut ConsultationUi, _| ui.natal_details = !ui.natal_details,
-                    )
-                    .attr("data-key", "natal-details"),
-                ));
-                if ui.natal_details {
-                    views.push(Box::new(el("p",format!("Birth resource {} at revision {}; timezone database {}; selected UTC offset {} seconds; repeated-time choice {:?}; numerical method {}. No houses, rising sign or retrograde calculation.",reading.birth.resource.id,reading.birth.resource.revision,resolution.tzdb,resolution.offset_seconds,resolution.fold,crate::natal::METHOD))));
-                }
+                        // Keep one receipt slot mounted so toggling cannot shift the
+                // retained prompt nodes into a different semantic role.
+                let receipt=if ui.natal_details {
+                    format!("Birth resource {} at revision {}; timezone database {}; selected UTC offset {} seconds; repeated-time choice {:?}; numerical method {}. No houses, rising sign or retrograde calculation.",reading.birth.resource.id,reading.birth.resource.revision,resolution.tzdb,resolution.offset_seconds,resolution.fold,crate::natal::METHOD)
+                } else {String::new()};
+                views.push(Box::new(el("p",receipt).attr("data-key","natal-calculation-receipt")));
+
                 for prompt in prompts {
                     views.push(Box::new(el("h4", prompt.title.clone())));
                     views.push(Box::new(el("p", prompt.text.clone())));
@@ -284,8 +280,11 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
             .attr("data-key", format!("natal-reflect-{}", reading.id)),
         ));
     }
-    views.extend(form);
-    views
+    vec![
+        Box::new(el("section",history).attr("data-key","natal-history")),
+        Box::new(el("section",views).attr("data-key","natal-focused-occasion")),
+        Box::new(el("section",form).attr("data-key","natal-birth-authoring")),
+    ]
 }
 fn draft(ui: &ConsultationUi) -> Result<dramatis::birth::BirthFacts, String> {
     let subject = ui
