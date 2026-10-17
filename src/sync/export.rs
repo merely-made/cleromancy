@@ -16,7 +16,7 @@ use crate::{CleromancyHost, HostError, ThreeCardRelationKind};
 
 /// Project the current local graph into the generic H7 event vocabulary.
 /// These structural and saved-template links carry no asserted evidence basis.
-/// Leaving the optional basis absent also preserves the existing event bytes.
+/// Leaving optional basis and assertion version absent preserves legacy event bytes.
 /// Nothing is authored here: the caller still owns identity, roster, durable
 /// store, transport, and the moment at which this batch is published.
 pub fn export_sync_batch<B: Backend>(
@@ -181,6 +181,7 @@ pub fn export_sync_batch<B: Backend>(
             statement_id: None,
             asserted_at_ms: None,
             basis: None,
+            assertion_version: None,
             from: node.id,
             to: context,
             assertion: EdgeAssertion::Provenance {
@@ -197,6 +198,7 @@ pub fn export_sync_batch<B: Backend>(
             statement_id: None,
             asserted_at_ms: None,
             basis: None,
+            assertion_version: None,
             from: node.id,
             to: field,
             assertion: EdgeAssertion::Provenance {
@@ -215,6 +217,7 @@ pub fn export_sync_batch<B: Backend>(
             statement_id: None,
             asserted_at_ms: None,
             basis: None,
+            assertion_version: None,
             from: node.id,
             to: context,
             assertion: EdgeAssertion::Provenance {
@@ -231,6 +234,7 @@ pub fn export_sync_batch<B: Backend>(
             statement_id: None,
             asserted_at_ms: None,
             basis: None,
+            assertion_version: None,
             from: node.id,
             to: field,
             assertion: EdgeAssertion::Provenance {
@@ -248,6 +252,7 @@ pub fn export_sync_batch<B: Backend>(
                 statement_id: None,
                 asserted_at_ms: None,
                 basis: None,
+                assertion_version: None,
                 from: node.id,
                 to: reading,
                 assertion: EdgeAssertion::Containment {
@@ -267,6 +272,7 @@ pub fn export_sync_batch<B: Backend>(
             statement_id: None,
             asserted_at_ms: None,
             basis: None,
+            assertion_version: None,
             from: node.id,
             to: session,
             assertion: EdgeAssertion::Provenance {
@@ -289,6 +295,7 @@ pub fn export_sync_batch<B: Backend>(
                 statement_id: None,
                 asserted_at_ms: None,
                 basis: None,
+                assertion_version: None,
                 from: node.id,
                 to: reading,
                 assertion: EdgeAssertion::Containment {
@@ -307,6 +314,7 @@ pub fn export_sync_batch<B: Backend>(
                 statement_id: None,
                 asserted_at_ms: None,
                 basis: None,
+                assertion_version: None,
                 from: reading_ids[from_id],
                 to: reading_ids[to_id],
                 assertion: EdgeAssertion::Semantic {
@@ -361,6 +369,7 @@ pub fn export_sync_batch<B: Backend>(
             statement_id: None,
             asserted_at_ms: None,
             basis: None,
+            assertion_version: None,
             from: node.id,
             to: session,
             assertion: EdgeAssertion::Provenance {
@@ -371,6 +380,7 @@ pub fn export_sync_batch<B: Backend>(
             statement_id: None,
             asserted_at_ms: None,
             basis: None,
+            assertion_version: None,
             from: node.id,
             to: template,
             assertion: EdgeAssertion::Provenance {
@@ -393,6 +403,7 @@ pub fn export_sync_batch<B: Backend>(
                 statement_id: None,
                 asserted_at_ms: None,
                 basis: None,
+                assertion_version: None,
                 from: node.id,
                 to: reading,
                 assertion: EdgeAssertion::Containment {
@@ -411,6 +422,7 @@ pub fn export_sync_batch<B: Backend>(
                 statement_id: None,
                 asserted_at_ms: None,
                 basis: None,
+                assertion_version: None,
                 from: reading_ids[*from_id],
                 to: reading_ids[*to_id],
                 assertion: EdgeAssertion::Semantic {
@@ -432,6 +444,7 @@ pub fn export_sync_batch<B: Backend>(
             statement_id: None,
             asserted_at_ms: None,
             basis: None,
+            assertion_version: None,
             from: node.id,
             to: chart,
             assertion: EdgeAssertion::Provenance {
@@ -451,6 +464,7 @@ pub fn export_sync_batch<B: Backend>(
                 statement_id: None,
                 asserted_at_ms: None,
                 basis: None,
+                assertion_version: None,
                 from: node.id,
                 to: member_id,
                 assertion: EdgeAssertion::Containment {
@@ -470,6 +484,7 @@ pub fn export_sync_batch<B: Backend>(
             statement_id: None,
             asserted_at_ms: None,
             basis: None,
+            assertion_version: None,
             from: node.id,
             to: session,
             assertion: EdgeAssertion::Semantic {
@@ -492,6 +507,7 @@ pub fn export_sync_batch<B: Backend>(
             statement_id: None,
             asserted_at_ms: None,
             basis: None,
+            assertion_version: None,
             from: node.id,
             to: session.1.id,
             assertion: EdgeAssertion::Provenance {
@@ -510,6 +526,7 @@ pub fn export_sync_batch<B: Backend>(
                 statement_id: None,
                 asserted_at_ms: None,
                 basis: None,
+                assertion_version: None,
                 from: node.id,
                 to: *target,
                 assertion: EdgeAssertion::Provenance {
