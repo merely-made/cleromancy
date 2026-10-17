@@ -34,6 +34,7 @@ pub mod intents;
 pub mod moirai;
 pub mod narrative;
 pub mod natal;
+pub mod natal_houses;
 #[cfg(not(feature = "portable-core"))]
 mod projection;
 pub mod reading;

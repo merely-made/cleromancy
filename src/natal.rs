@@ -65,6 +65,8 @@ pub struct NatalReading {
     pub fold: FoldChoice,
     pub orb_millidegrees: u32,
     pub outcome: NatalOutcome,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub houses: Option<crate::natal_houses::HouseReceipt>,
 }
 impl NatalReading {
     pub fn new(
@@ -89,10 +91,18 @@ impl NatalReading {
             fold,
             orb_millidegrees: 1000,
             outcome,
+            houses: None,
         };
         value.id = value.identity();
         value.validate()?;
         Ok(value)
+    }
+    /// Add a versioned house receipt without rewriting any existing natal v1.
+    pub fn with_houses(mut self, system: crate::natal_houses::HouseSystem) -> Result<Self, String> {
+        self.houses = Some(crate::natal_houses::calculate(&self, system)?);
+        self.id = self.identity();
+        self.validate()?;
+        Ok(self)
     }
     fn identity(&self) -> String {
         let mut v = serde_json::to_value(self).expect("serializable natal");
@@ -117,6 +127,11 @@ impl NatalReading {
         }
         if self.outcome != calculate(&self.birth, self.fold, self.orb_millidegrees)? {
             return Err("natal computation differs from its receipt".into());
+        }
+        if let Some(receipt) = &self.houses {
+            if *receipt != crate::natal_houses::calculate(self, receipt.system)? {
+                return Err("Natal house computation differs from its receipt".into());
+            }
         }
         Ok(())
     }

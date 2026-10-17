@@ -1,0 +1,32 @@
+wait 1800
+assert snap catalog-ready == true
+assert snap mere-unavailable == false
+show-chart
+wait 1800
+assert snap natal-count == 3
+assert snap natal-houses-count == 2
+assert snap natal-reflections == 1
+natal-select-whole
+reveal class natal-houses
+settle 4
+capture reopened-whole
+natal-select-equal
+reveal class natal-houses
+settle 4
+capture reopened-equal
+natal-select-missing-place
+reveal class natal-houses
+settle 4
+assert text No recorded birthplace coordinates
+capture reopened-missing-place
+c5-control-reveal natal-open
+c5-control-click natal-open
+wait 1800
+assert snap birth-count == 2
+assert snap subject-count == 1
+resize 420 760
+wait
+natal-select-equal
+reveal class natal-houses
+settle 4
+capture compact-reopened-equal

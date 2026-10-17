@@ -1,3 +1,12 @@
+**Houses/ascendant extension (2026-10-17; in progress):** Mark selected
+Whole Sign and Equal House first. Turquet owns typed TT/UT1 horizon geometry;
+Cleromancy retains explicit system, original coordinates, Earth-rotation
+approximation, cusps and longitude-only planetary assignments in an optional
+versioned extension. Absent extensions preserve original natal v1 bytes and
+replay. Missing time/place and degenerate rising geometry explain unavailable
+results without inferred location or another system. Software, native reopening
+and publication remain separate gates.
+
 **Current shared natal intake (2026-10-17; bounded qualification complete):**
 Cleromancy `a684361` consumes Mere `d03e367bd` and Dramatis `cf562f4`.
 The resident checks newly introduced profile references against its actual vault

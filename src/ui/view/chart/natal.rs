@@ -9,7 +9,7 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
         Box::new(el("h2", "Personal natal readings")),
         Box::new(el(
             "p",
-            "Choose a shared subject and saved birth revision. Birth facts are reusable across applications; a natal reading retains the exact revision it used. Place and timezone are supplied explicitly. This edition calculates geocentric tropical placements and aspects, without houses or rising sign.",
+            "Choose a shared subject and saved birth revision. Birth facts are reusable across applications; a natal reading retains the exact revision it used. Place and timezone are supplied explicitly. Choose placements only, Whole Sign, or Equal House. Houses and ascendant require an exact birth time and explicit birthplace coordinates.",
         )),
         Box::new(
             button("Open shared birth facts", |ui: &mut ConsultationUi, _| {
@@ -143,6 +143,36 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
             fold,
             "fold"
         );
+        views.push(Box::new(el("p", "House system for this new occasion")));
+        for (choice, label, key) in [
+            (None, "Placements only", "natal-houses-none"),
+            (
+                Some(crate::natal_houses::HouseSystem::WholeSign),
+                "Whole Sign",
+                "natal-houses-whole",
+            ),
+            (
+                Some(crate::natal_houses::HouseSystem::Equal),
+                "Equal House",
+                "natal-houses-equal",
+            ),
+        ] {
+            views.push(Box::new(
+                button(
+                    format!(
+                        "{}{}",
+                        if ui.natal_house_system == choice {
+                            "Selected: "
+                        } else {
+                            ""
+                        },
+                        label
+                    ),
+                    move |ui: &mut ConsultationUi, _| ui.natal_house_system = choice,
+                )
+                .attr("data-key", key),
+            ));
+        }
         views.push(Box::new(
             button("Create natal reading", |ui: &mut ConsultationUi, _| {
                 let choice = match ui.natal_fold.text().trim() {
@@ -163,6 +193,7 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
                         resource: birth.resource.clone(),
                         question: ui.natal_question.text().to_string(),
                         fold: choice,
+                        houses: ui.natal_house_system,
                     };
                     ui.record_action(Some(action));
                 }
@@ -218,7 +249,7 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
                 prompts,
                 ..
             } => {
-                views.push(Box::new(el("p",format!("I resolved the saved civil birth time in {} to {}. Turquet calculates {} geocentric tropical placements; aspects use a {} degree orb. {}",resolution.timezone,resolution.utc.replace('T'," ").replace("+00:00"," UTC"),facts.placements.len(),reading.orb_millidegrees as f64/1000.,crate::content::natal_pack().intro)).attr("data-key","natal-narration").attr("class","natal-narration")));
+                views.push(Box::new(el("p",format!("I resolved the saved civil birth time in {} to {}. Turquet calculates {} geocentric tropical placements; aspects use a {} degree orb. {} {}",resolution.timezone,resolution.utc.replace('T'," ").replace("+00:00"," UTC"),facts.placements.len(),reading.orb_millidegrees as f64/1000.,crate::content::natal_pack().intro,house_summary(reading))).attr("data-key","natal-narration").attr("class","natal-narration")));
                 views.push(Box::new(
                     button(
                         if ui.natal_details {
@@ -234,13 +265,18 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
                 // retained prompt nodes into a different semantic role.
                 let receipt = if ui.natal_details {
                     format!(
-                        "Birth resource {} at revision {}; timezone database {}; selected UTC offset {} seconds; repeated-time choice {:?}; numerical method {}. No houses, rising sign or retrograde calculation.",
+                        "Birth resource {} at revision {}; timezone database {}; selected UTC offset {} seconds; repeated-time choice {:?}; numerical method {}. {}",
                         reading.birth.resource.id,
                         reading.birth.resource.revision,
                         resolution.tzdb,
                         resolution.offset_seconds,
                         resolution.fold,
-                        crate::natal::METHOD
+                        crate::natal::METHOD,
+                        if reading.houses.is_some() {
+                            "House results and their method are shown below. No retrograde calculation."
+                        } else {
+                            "No houses, rising sign or retrograde calculation."
+                        }
                     )
                 } else {
                     String::new()
@@ -255,6 +291,54 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
                 }
             },
         }
+        let mut house_views: Vec<ConsultationView> = Vec::new();
+        if let Some(receipt) = &reading.houses {
+            use crate::natal_houses::HouseOutcome;
+            house_views.push(Box::new(el(
+                "h3",
+                format!("{} houses and ascendant", receipt.system.label()),
+            )));
+            match &receipt.outcome {
+                HouseOutcome::Unavailable { reason } => {
+                    house_views.push(Box::new(el("p", reason.clone())))
+                },
+                HouseOutcome::Calculated {
+                    ascendant_microdegrees,
+                    midheaven_microdegrees,
+                    cusps_microdegrees,
+                    placements,
+                } => {
+                    let angle = |value: u32| {
+                        format!(
+                            "{:?} {:.3}°",
+                            crate::astrology::ZodiacSign::from_longitude(value / 1000),
+                            (value % 30_000_000) as f64 / 1e6
+                        )
+                    };
+                    house_views.push(Box::new(el("p",format!("Ascendant (rising sign): {}. Midheaven: {}. Birthplace: {}. {}. Airless tropical geometry; planetary houses use longitude only.",angle(*ascendant_microdegrees),angle(*midheaven_microdegrees),reading.birth.facts.place.as_ref().map(|p|p.label.as_str()).unwrap_or("unspecified"),receipt.earth_rotation))));
+                    for (i, cusp) in cusps_microdegrees.iter().enumerate() {
+                        house_views.push(Box::new(el(
+                            "p",
+                            format!("House {} begins at {}", i + 1, angle(*cusp)),
+                        )));
+                    }
+                    for p in placements {
+                        house_views.push(Box::new(el(
+                            "p",
+                            format!("{} in house {}", p.body, p.house),
+                        )));
+                    }
+                },
+            }
+            if ui.natal_details {
+                house_views.push(Box::new(el("p",format!("House method {}; supplier {}; selected system {:?}; {}. Longitude angles retained in microdegrees.",receipt.method,receipt.supplier,receipt.system,receipt.earth_rotation))));
+            }
+        }
+        views.push(Box::new(
+            el("section", house_views)
+                .attr("data-key", "natal-houses")
+                .attr("class", "natal-houses"),
+        ));
         for reflection in ui
             .catalog
             .natal_reflections
@@ -425,5 +509,25 @@ fn time_label(time: &dramatis::birth::BirthTime) -> String {
             second,
             uncertainty_seconds,
         } => format!("approximately {hour:02}:{minute:02}:{second:02} ±{uncertainty_seconds}s"),
+    }
+}
+
+fn house_summary(reading: &crate::natal::NatalReading) -> String {
+    use crate::natal_houses::HouseOutcome;
+    match reading.houses.as_ref() {
+        None => String::new(),
+        Some(h) => match &h.outcome {
+            HouseOutcome::Unavailable { reason } => format!("{}: {}", h.system.label(), reason),
+            HouseOutcome::Calculated {
+                ascendant_microdegrees: a,
+                ..
+            } => format!(
+                "{}: ascendant (rising sign) {:?} {:.3}°. {}.",
+                h.system.label(),
+                crate::astrology::ZodiacSign::from_longitude(*a / 1000),
+                (*a % 30_000_000) as f64 / 1e6,
+                h.earth_rotation
+            ),
+        },
     }
 }

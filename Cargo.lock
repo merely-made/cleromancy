@@ -2324,7 +2324,8 @@ dependencies = [
  "tinct",
  "tokio",
  "turquet 0.1.0",
- "turquet 0.17.0",
+ "turquet 0.17.0 (git+https://github.com/merely-made/turquet.git?branch=main)",
+ "turquet 0.17.0 (git+https://github.com/merely-made/turquet.git?rev=30875f30e83909f3030bc01237a5046e14cde29b)",
  "uuid",
 ]
 
@@ -2352,7 +2353,8 @@ dependencies = [
  "serde_json",
  "servitor",
  "thiserror 2.0.21",
- "turquet 0.17.0",
+ "turquet 0.17.0 (git+https://github.com/merely-made/turquet.git?branch=main)",
+ "turquet 0.17.0 (git+https://github.com/merely-made/turquet.git?rev=30875f30e83909f3030bc01237a5046e14cde29b)",
 ]
 
 [[package]]
@@ -13992,6 +13994,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "aaab0da052813130615e7b30bf5be2ddf1f12bf33a2b60c76d5ed822c7cfd271"
 dependencies = [
  "hifitime",
+]
+
+[[package]]
+name = "turquet"
+version = "0.17.0"
+source = "git+https://github.com/merely-made/turquet.git?branch=main#4c27a6b2fe41147a9b36765058049dc9af02b398"
+dependencies = [
+ "hifitime",
+ "sofars",
 ]
 
 [[package]]

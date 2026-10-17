@@ -282,7 +282,7 @@ pub enum ZodiacSign {
 }
 
 impl ZodiacSign {
-    fn from_longitude(longitude_millidegrees: u32) -> Self {
+    pub(crate) fn from_longitude(longitude_millidegrees: u32) -> Self {
         const SIGNS: [ZodiacSign; 12] = [
             ZodiacSign::Aries,
             ZodiacSign::Taurus,
