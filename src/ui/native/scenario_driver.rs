@@ -286,6 +286,22 @@ impl mesquite::Product for Product {
             )
             .with_field("natal-count", ui.catalog.natal_readings.len().to_string())
             .with_field(
+                "natal-houses-count",
+                ui.catalog
+                    .natal_readings
+                    .iter()
+                    .filter(|r| {
+                        r.houses.as_ref().is_some_and(|h| {
+                            matches!(
+                                h.outcome,
+                                crate::natal_houses::HouseOutcome::Calculated { .. }
+                            )
+                        })
+                    })
+                    .count()
+                    .to_string(),
+            )
+            .with_field(
                 "natal-reflections",
                 ui.catalog.natal_reflections.len().to_string(),
             )
@@ -735,6 +751,47 @@ impl ScenarioDriver<'_, '_> {
                     ui.natal_question = cambium::TextInput::new(
                         "Which themes can I reflect on in this synthetic natal occasion?",
                     );
+                });
+                Ok(())
+            },
+            "natal-prepare-place" => {
+                self.ctx.runner.update(|s| {
+                    let ui = &mut s.consultation;
+                    ui.natal_place = cambium::TextInput::new("Public New York coordinate fixture");
+                    ui.natal_latitude = cambium::TextInput::new("40.7128");
+                    ui.natal_longitude = cambium::TextInput::new("-74.0060");
+                });
+                Ok(())
+            },
+            "natal-select-whole" | "natal-select-equal" | "natal-select-missing-place" => {
+                let target = match line {
+                    "natal-select-whole" => Some(crate::natal_houses::HouseSystem::WholeSign),
+                    _ => Some(crate::natal_houses::HouseSystem::Equal),
+                };
+                let missing = line == "natal-select-missing-place";
+                self.ctx.runner.update(|s| {
+                    let ui = &mut s.consultation;
+                    ui.natal_selected = ui
+                        .catalog
+                        .natal_readings
+                        .iter()
+                        .find(|r| {
+                            r.houses.as_ref().is_some_and(|h| {
+                                if missing {
+                                    matches!(
+                                        h.outcome,
+                                        crate::natal_houses::HouseOutcome::Unavailable { .. }
+                                    )
+                                } else {
+                                    Some(h.system) == target
+                                        && matches!(
+                                            h.outcome,
+                                            crate::natal_houses::HouseOutcome::Calculated { .. }
+                                        )
+                                }
+                            })
+                        })
+                        .map(|r| r.id.clone());
                 });
                 Ok(())
             },
