@@ -1,0 +1,13 @@
+{
+  "developer_id_present": true,
+  "selected_identity": "F34BED12F567A1A10BDF9163E216B22DAF01838E",
+  "keychain_unlocked": true,
+  "actual_signing_succeeded": false,
+  "timestamped_runtime_attempt_exit": 1,
+  "plain_no_timestamp_attempt_exit": 1,
+  "os_error": "errSecInternalComponent",
+  "cause": "Unconfirmed; default keychain reports unlocked; no access rules were changed",
+  "identity_inventory_sha256": "174b35d67ffb2212c000fc77052225a2493aad4bd0459d65fdc361bc54b2ad08",
+  "final_archive_signing": "ad-hoc; explicit bounded fallback",
+  "user_assistance_requested": true
+}

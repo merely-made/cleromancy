@@ -1,0 +1,7 @@
+{
+  "default_keychain_status": 0,
+  "status_query": 0,
+  "flags": 7,
+  "unlocked": true,
+  "inspection": "status flags only; no key material read or access settings changed"
+}

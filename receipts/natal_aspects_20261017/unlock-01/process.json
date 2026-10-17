@@ -1,0 +1,13 @@
+{
+  "phase": "natal-reopen",
+  "exit": 0,
+  "timeout": false,
+  "prompts": 0,
+  "elapsed_seconds": 197.58,
+  "binary_sha256": "9abef3dc97cd831a6f7f1b7223d5152e637223821e5d37da151bdf522c3b1fad",
+  "offline_ip_deny": true,
+  "sandbox_policy": "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))",
+  "scenario_sha256": "fceabf49743679f7ae2dd00638ab744937450d78550fee47b6ad443a14d81b17",
+  "public_fixture": true,
+  "unlock": "production NativeOrTerminal; graphical UI only; no terminal answer"
+}

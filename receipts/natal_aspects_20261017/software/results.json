@@ -1,0 +1,98 @@
+{
+  "desktop-build": {
+    "exit": 0,
+    "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+    "args": [
+      "build",
+      "--bin",
+      "cleromancy"
+    ]
+  },
+  "ui-orb-input": {
+    "exit": 0,
+    "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+    "args": [
+      "test",
+      "--lib",
+      "explicit_orbs_parse_exactly_and_refuse_invalid_input"
+    ]
+  },
+  "check-default": {
+    "exit": 0,
+    "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+    "args": [
+      "check",
+      "--all-targets"
+    ]
+  },
+  "check-no-default": {
+    "exit": 0,
+    "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+    "args": [
+      "check",
+      "--no-default-features",
+      "--all-targets"
+    ]
+  },
+  "check-personal": {
+    "exit": 0,
+    "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+    "args": [
+      "check",
+      "--features",
+      "personal-sync",
+      "--all-targets"
+    ]
+  },
+  "check-admission": {
+    "exit": 0,
+    "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+    "args": [
+      "check",
+      "--features",
+      "graphshell-admission",
+      "--all-targets"
+    ]
+  },
+  "test-default": {
+    "exit": 0,
+    "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+    "args": [
+      "test"
+    ]
+  },
+  "test-historical": {
+    "exit": 0,
+    "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+    "args": [
+      "test",
+      "--features",
+      "legacy-receipts,analytic-ephemeris,sky-timeline,personal-sync,graphshell-admission"
+    ]
+  },
+  "core-default": {
+    "exit": 0,
+    "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+    "args": [
+      "test"
+    ]
+  },
+  "core-legacy": {
+    "exit": 0,
+    "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+    "args": [
+      "test",
+      "--features",
+      "legacy-receipts"
+    ]
+  },
+  "core-sky": {
+    "exit": 0,
+    "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+    "args": [
+      "test",
+      "--features",
+      "legacy-receipts,sky-timeline"
+    ]
+  }
+}

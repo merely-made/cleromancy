@@ -1,0 +1,15 @@
+test_changed_bytes_are_rejected (test_package.BundleIntegrityTests) ... ok
+test_clean_allowlist_passes_with_native_tools_stubbed (test_package.BundleIntegrityTests) ... ok
+test_executable_mode_loss_is_rejected (test_package.BundleIntegrityTests) ... ok
+test_non_arm64_binary_is_rejected (test_package.BundleIntegrityTests) ... ok
+test_non_system_dylib_is_rejected (test_package.BundleIntegrityTests) ... ok
+test_symlink_is_rejected (test_package.BundleIntegrityTests) ... ok
+test_unlisted_store_is_rejected (test_package.BundleIntegrityTests) ... ok
+test_development_certificate_is_not_a_developer_id_release_identity (test_package.DeveloperIdentityTests) ... ok
+test_timestamp_and_runtime_are_required (test_package.DeveloperIdentityTests) ... ok
+test_timestamped_runtime_identity_is_recorded (test_package.DeveloperIdentityTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.019s
+
+OK

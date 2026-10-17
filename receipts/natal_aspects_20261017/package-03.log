@@ -1,0 +1,2 @@
+/usr/bin/codesign failed (1): /Users/markik/Code/testing/cleromancy/aspects-release-20261017/package-03/Cleromancy Aspects Signed Candidate.app/Contents/MacOS/cleromancy-bin: replacing existing signature
+/Users/markik/Code/testing/cleromancy/aspects-release-20261017/package-03/Cleromancy Aspects Signed Candidate.app/Contents/MacOS/cleromancy-bin: errSecInternalComponent

@@ -1,0 +1,20 @@
+{
+  "local": "128961d18795cafca51b39899c3c6fab58591705",
+  "remote": "128961d18795cafca51b39899c3c6fab58591705",
+  "verified": true,
+  "source_commit": "8c8e048ea520053d32ff788d64cb7d0816dbff08",
+  "evidence_commit": "8eef90598293de913495623510b071af8bb9fb58",
+  "owner_tests": 230,
+  "intentional_child_entry_ignores": 3,
+  "files": {
+    "Cargo.lock.diff": "98d8f0e797ece3f71ef9ba23c2081632bbcab097e3dd889276a258dc87964189",
+    "natal-committed.log": "e6c75964e5799b2d57b528fc8554eca99b73e35610129ec937379e4d54f1cd24",
+    "qualification.json": "ad97999290749ca054f88c8fc553c79f2af523e0a6743fe08dc5006aedba561e",
+    "owner-gates.log": "b351a2e005401460ec1781f65c2b3f1b7fe73419d170199f84e9d0c09c68ac22",
+    "natal-committed.json": "2da5d2a227573836a4ee55502be3eb07149220db6f23ef8003472706a18df288",
+    "core-resolution.json": "4233f9037b90e85b9c3d145133494240fb8f1aa3755e60300cf5b275999d9e0d",
+    "natal-owner-02.log": "f2f12b8062ea5ed34747e9f21cc65f5c4d0060d38dc014a64ca6246c424eec4a",
+    "README.md": "73786a21b5907dd374b657388fa52baf55f0a93537d84086940e4e1d21dff9a2",
+    "scope-verification.json": "078e4a039f0a8dee09cbdef9fae4008d64e11cdf775679c9acfb20ddaea54705"
+  }
+}

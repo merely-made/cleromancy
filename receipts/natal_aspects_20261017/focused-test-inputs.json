@@ -1,0 +1,35 @@
+{
+  "base_head": "8472bc8dca53c2646baea0f864db9d1d0578fd61",
+  "working_tree": true,
+  "source_sha256": {
+    "src/natal_aspects.rs": "5b0d358460012a4cd2aa07acbb8a24a9b9300c0995f087f7cd4a5d0488ede9ee",
+    "src/natal.rs": "48910dbe69cdb77d930797879ed737584630570d1c53a73d7ae5db133335f59e",
+    "src/lib.rs": "a686002ecbb5df5fa75a000c20abd957b974f6604671f61e2473f763eda8fef1",
+    "tests/natal.rs": "485b269fe1d1c5a21348ef546252cfd014b0b358582bd6ed3e040d83dc2ae8e2",
+    "src/ui/action.rs": "224e3991af2fc1ae1f457851c2202bf63be93cae28a965840b56dd85b82788c1",
+    "src/ui/resident.rs": "2c28853e9148979bac5685e7ba31d174a5f9d8575a9daed592fd2d321cb2c402",
+    "src/ui/state.rs": "ca76c9851b39f3db6f352b16a0524ffde6c0ef689ec6e9014d26b5c5db1d6849",
+    "src/ui/view/chart/natal.rs": "087bc4638e688a210a5cd6f0cf8d4a0765175f72e35976516e39bc379ae0ab2d",
+    "src/ui/native/scenario_driver.rs": "74fdffb27d7e50abde5e8db8a49bdafbfe6ea5ecdbcdbec1768efb68668665d3",
+    "Cargo.toml": "6274d5435e09ea4855da0abc8ab257241d272993a9a32e0d2c447cd9ff33428e",
+    "Cargo.lock": "0933493051c61a410b96de101bf681fb3be72a22998e40f0de2bf40e334c3b69",
+    "core/Cargo.toml": "36253ece8de5a34d3458e6a4746f1baf22807bc927517eaa9d85e0dd7f9d2a24",
+    "core/Cargo.lock": "ecbf13d754a4cd1c857cce998e2618b091a926707c915cdc78d1b897d9db9a62"
+  },
+  "toolchain": {
+    "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+    "rustdoc": "rustdoc 1.97.1 (8bab26f4f 2026-07-14)",
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)"
+  },
+  "environment": {
+    "TMPDIR": "/tmp",
+    "CARGO_BUILD_JOBS": "4"
+  },
+  "snapshot_note": "Hashes captured during root compilation. Parent UI changes continued during this gate; this snapshot does not qualify final UI source.",
+  "domain_hashes_unchanged_at_root_exit": {
+    "src/natal_aspects.rs": true,
+    "src/natal.rs": true,
+    "src/lib.rs": true,
+    "tests/natal.rs": true
+  }
+}

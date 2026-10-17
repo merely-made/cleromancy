@@ -1,0 +1,12 @@
+wait 1800
+assert snap catalog-ready == true
+assert snap mere-unavailable == false
+show-chart
+wait 1800
+assert snap natal-count == 4
+assert snap natal-reflections == 2
+natal-select-observed
+reveal class natal-motion
+settle 4
+assert text Observed Earth orientation
+capture graphical-unlocked

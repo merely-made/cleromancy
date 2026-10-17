@@ -1,0 +1,12 @@
+{
+  "archive": "Cleromancy-0.1.0-macos-arm64-debug.zip",
+  "sha256": "af8d308c4c6d69f160980375a685406b99d511de6bb1da010119bf5b72689ff3",
+  "archive_roundtrip_verified": true,
+  "bundle_verified": true,
+  "source_revision": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+  "profile": "debug",
+  "notarized": false,
+  "signing": "ad-hoc",
+  "executed": false
+}
+License inventory: 1163 packages; 138 missing text sets (see verification.json)

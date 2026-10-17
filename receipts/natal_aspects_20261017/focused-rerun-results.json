@@ -1,0 +1,31 @@
+{
+  "gates": [
+    {
+      "gate": "root-natal-rerun",
+      "command": [
+        "/Users/markik/.rustup/toolchains/1.99.0-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--test",
+        "natal"
+      ],
+      "exit_code": -15
+    }
+  ],
+  "source_hashes_unchanged": {
+    "src/lib.rs": true,
+    "src/natal.rs": true,
+    "src/natal_aspects.rs": true,
+    "tests/natal.rs": true,
+    "src/ui/action.rs": true,
+    "src/ui/resident.rs": true,
+    "src/ui/state.rs": true,
+    "src/ui/native/scenario_driver.rs": true,
+    "src/ui/view/chart/natal.rs": true,
+    "Cargo.toml": true,
+    "Cargo.lock": true,
+    "core/Cargo.toml": true,
+    "core/Cargo.lock": true
+  }
+}
