@@ -2324,8 +2324,8 @@ dependencies = [
  "tinct",
  "tokio",
  "turquet 0.1.0",
- "turquet 0.17.0 (git+https://github.com/merely-made/turquet.git?branch=main)",
  "turquet 0.17.0 (git+https://github.com/merely-made/turquet.git?rev=30875f30e83909f3030bc01237a5046e14cde29b)",
+ "turquet 0.17.0 (git+https://github.com/merely-made/turquet.git?rev=e2f65c021a6bf744ab5fe77121e0441a46b47306)",
  "uuid",
 ]
 
@@ -2353,8 +2353,8 @@ dependencies = [
  "serde_json",
  "servitor",
  "thiserror 2.0.21",
- "turquet 0.17.0 (git+https://github.com/merely-made/turquet.git?branch=main)",
  "turquet 0.17.0 (git+https://github.com/merely-made/turquet.git?rev=30875f30e83909f3030bc01237a5046e14cde29b)",
+ "turquet 0.17.0 (git+https://github.com/merely-made/turquet.git?rev=e2f65c021a6bf744ab5fe77121e0441a46b47306)",
 ]
 
 [[package]]
@@ -13999,7 +13999,7 @@ dependencies = [
 [[package]]
 name = "turquet"
 version = "0.17.0"
-source = "git+https://github.com/merely-made/turquet.git?branch=main#4c27a6b2fe41147a9b36765058049dc9af02b398"
+source = "git+https://github.com/merely-made/turquet.git?rev=30875f30e83909f3030bc01237a5046e14cde29b#30875f30e83909f3030bc01237a5046e14cde29b"
 dependencies = [
  "hifitime",
  "sofars",
@@ -14008,7 +14008,7 @@ dependencies = [
 [[package]]
 name = "turquet"
 version = "0.17.0"
-source = "git+https://github.com/merely-made/turquet.git?rev=30875f30e83909f3030bc01237a5046e14cde29b#30875f30e83909f3030bc01237a5046e14cde29b"
+source = "git+https://github.com/merely-made/turquet.git?rev=e2f65c021a6bf744ab5fe77121e0441a46b47306#e2f65c021a6bf744ab5fe77121e0441a46b47306"
 dependencies = [
  "hifitime",
  "sofars",

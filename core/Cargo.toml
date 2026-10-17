@@ -45,7 +45,7 @@ serde_json = "1"
 servitor = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 thiserror = "2"
 turquet-timeline = { package = "turquet", git = "https://github.com/merely-made/turquet.git", rev = "30875f30e83909f3030bc01237a5046e14cde29b", version = "=0.17.0" }
-turquet-houses = { package = "turquet", git = "https://github.com/merely-made/turquet.git", branch = "main", version = "=0.17.0" }
+turquet-houses = { package = "turquet", git = "https://github.com/merely-made/turquet.git", rev = "e2f65c021a6bf744ab5fe77121e0441a46b47306", version = "=0.17.0" }
 
 [dev-dependencies]
 personae = { git = "https://github.com/merely-made/dramatis.git", branch = "main" }

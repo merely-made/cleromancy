@@ -85,7 +85,7 @@ pub fn calculate(reading: &NatalReading, system: HouseSystem) -> Result<HouseRec
         schema: "cleromancy.natal-houses/v1".into(),
         system,
         method: METHOD.into(),
-        supplier: "Turquet 0.17.0@4c27a6b2fe41147a9b36765058049dc9af02b398".into(),
+        supplier: "Turquet 0.17.0@e2f65c021a6bf744ab5fe77121e0441a46b47306".into(),
         earth_rotation: EARTH_ROTATION.into(),
         ut1_minus_utc_milliseconds: 0,
         outcome,
