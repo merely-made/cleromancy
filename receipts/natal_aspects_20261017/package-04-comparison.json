@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "binary_source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+  "native_executed_package": "package-01",
+  "final_package": "package-04",
+  "changed_files": [
+    "Contents/_CodeSignature/CodeResources",
+    "Contents/_CodeSignature/CodeDirectory",
+    "Contents/Resources/package-manifest.json",
+    "Contents/Resources/INSTALL.txt"
+  ],
+  "qualified_payload_and_launcher_unchanged": true,
+  "payload_sha256": "f9c9c5f5eb89a0f8658d7c66d528370e5ea5ccba5afda7f6fa7a78fcd7fcd01a",
+  "original_archive": "b3a7d8624f40f810563a15440028a85f33f8db19331f8e05d3251171a2aa8e56",
+  "final_archive": "a1a3ea9f361510719c2362d5badba54ebda8ac7d5076dc2db80cf316feabb618"
+}

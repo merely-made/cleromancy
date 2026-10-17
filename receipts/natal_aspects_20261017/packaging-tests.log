@@ -1,0 +1,12 @@
+test_changed_bytes_are_rejected (test_package.BundleIntegrityTests) ... ok
+test_clean_allowlist_passes_with_native_tools_stubbed (test_package.BundleIntegrityTests) ... ok
+test_executable_mode_loss_is_rejected (test_package.BundleIntegrityTests) ... ok
+test_non_arm64_binary_is_rejected (test_package.BundleIntegrityTests) ... ok
+test_non_system_dylib_is_rejected (test_package.BundleIntegrityTests) ... ok
+test_symlink_is_rejected (test_package.BundleIntegrityTests) ... ok
+test_unlisted_store_is_rejected (test_package.BundleIntegrityTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.020s
+
+OK

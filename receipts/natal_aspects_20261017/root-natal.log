@@ -1,0 +1,48 @@
+Started UTC: 2026-10-17T12:34:06.594112+00:00
+Command: ['/Users/markik/.rustup/toolchains/1.99.0-aarch64-apple-darwin/bin/cargo', 'test', '--locked', '--offline', '--test', 'natal']
+warning: patch `murm v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `ipc-channel v0.22.0 (https://github.com/merely-made/genet.git?branch=main#e37762d7)` was not used in the crate graph
+warning: patch `p2panda-auth v0.7.1 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)` was not used in the crate graph
+warning: patch `p2panda-stream v0.7.1 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)` was not used in the crate graph
+warning: patch `embedded-graphics v0.8.2 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `embedded-graphics-core v0.4.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `murm v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `outrider v0.3.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `postilion v0.3.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `radio-face v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `radio-hand v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `selvage v0.1.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `seneschal v0.2.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `tulle v0.2.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling cleromancy-core-acceptance v0.1.0 (/Users/markik/Code/repos/cleromancy/core)
+   Compiling djinn v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+   Compiling cleromancy v0.1.0 (/Users/markik/Code/repos/cleromancy)
+error[E0308]: mismatched types
+   --> src/ui/native/scenario_driver.rs:794:20
+    |
+794 |                 Ok(true)
+    |                 -- ^^^^ expected `()`, found `bool`
+    |                 |
+    |                 arguments to this enum variant are incorrect
+    |
+help: the type constructed contains `bool` due to the type of the argument passed
+   --> src/ui/native/scenario_driver.rs:794:17
+    |
+794 |                 Ok(true)
+    |                 ^^^----^
+    |                    |
+    |                    this argument influences the type of `Ok`
+note: tuple variant defined here
+   --> /Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/result.rs:561:5
+    |
+561 |     Ok(#[stable(feature = "rust1", since = "1.0.0")] T),
+    |     ^^
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `cleromancy` (lib) due to 1 previous error
+
+EXIT_CODE=101

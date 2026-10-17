@@ -1,0 +1,137 @@
+{
+  "ok": true,
+  "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+  "runs": [
+    {
+      "run": "native-create-01",
+      "process": {
+        "phase": "natal-first",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 149.28,
+        "binary_sha256": "f9c9c5f5eb89a0f8658d7c66d528370e5ea5ccba5afda7f6fa7a78fcd7fcd01a",
+        "offline_ip_deny": true,
+        "sandbox_policy": "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))",
+        "scenario_sha256": "698dc794381c9b9618ce096e3817214e0b12f5ea1f56525bd2a6247871f02de7",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "readings": 6,
+      "reflections": 2
+    },
+    {
+      "run": "native-reopen-01",
+      "process": {
+        "phase": "natal-reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 59.56,
+        "binary_sha256": "f9c9c5f5eb89a0f8658d7c66d528370e5ea5ccba5afda7f6fa7a78fcd7fcd01a",
+        "offline_ip_deny": true,
+        "sandbox_policy": "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))",
+        "scenario_sha256": "67d8a734c3c9236a87c38547e216679f23d2d11c8b6c64390d1c3c8cf40352d5",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "readings": 6,
+      "reflections": 2
+    },
+    {
+      "run": "installed-reopen-01",
+      "process": {
+        "phase": "natal-reopen",
+        "exit": 0,
+        "timeout": false,
+        "prompts": 1,
+        "elapsed_seconds": 86.48,
+        "binary_sha256": "f9c9c5f5eb89a0f8658d7c66d528370e5ea5ccba5afda7f6fa7a78fcd7fcd01a",
+        "offline_ip_deny": true,
+        "sandbox_policy": "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))",
+        "scenario_sha256": "67d8a734c3c9236a87c38547e216679f23d2d11c8b6c64390d1c3c8cf40352d5",
+        "public_fixture": true,
+        "unlock": "production NativeOrTerminal in owned PTY, PATH=/bin"
+      },
+      "readings": 6,
+      "reflections": 2
+    }
+  ],
+  "captures": [
+    {
+      "path": "native-create-01/aspect-choice-and-orbs.png",
+      "sha256": "d7454b9d2b508414efd1b1d2401e5a440cbcc23279d0c763e90e767e9ca73b14",
+      "width": 2320,
+      "height": 1520,
+      "review": "All five editable degree inputs and explicit pressed choice readable; preset disclosed. Ordinary window; dimensions recorded from the original PNG."
+    },
+    {
+      "path": "native-create-01/aspects-exact-zero.png",
+      "sha256": "28094d7db21ca4c790bfeffcded2f177bf309d50ed211e6f47dedde47c82ad0b",
+      "width": 2320,
+      "height": 1520,
+      "review": "All five zero orbs displayed, honest no-match result, earlier motion facts and reflection controls readable."
+    },
+    {
+      "path": "native-create-01/aspects-preset-compact.png",
+      "sha256": "cf97f167fd2c7fe1e1736b73366085a613b826ea58b9d6070ebb0ce00aace22a",
+      "width": 840,
+      "height": 1520,
+      "review": "All ten aspect pairs wrap at compact 420 logical width without horizontal clipping; motion section continues below viewport."
+    },
+    {
+      "path": "native-create-01/aspects-preset-wide.png",
+      "sha256": "2dbef2aec2c3a3b4983229f5d1fc2754a7a648b7b0a2a53194f7b813ac6f7bbc",
+      "width": 2320,
+      "height": 1520,
+      "review": "All ten retained aspect pairs, separation/deviation/orb disclosure readable; lower motion section continues by scrolling."
+    },
+    {
+      "path": "native-reopen-01/reopened-aspects-compact.png",
+      "sha256": "67f5afc87a516af229e7749f2c2d05ef8f5bb0fb90295866ebebe66b3912427b",
+      "width": 840,
+      "height": 1520,
+      "review": "Saved aspect receipt wraps at compact width; subsequent content remains scrollable."
+    },
+    {
+      "path": "native-reopen-01/reopened-aspects-wide.png",
+      "sha256": "28094d7db21ca4c790bfeffcded2f177bf309d50ed211e6f47dedde47c82ad0b",
+      "width": 2320,
+      "height": 1520,
+      "review": "Saved aspect receipt presented after fresh encrypted offline startup; text remains legible."
+    },
+    {
+      "path": "native-reopen-01/reopened-shared-subject.png",
+      "sha256": "2a76066d62417c031c9da13fe8d9ec03bc3cda8135f07bb55c858fa1b2660ce2",
+      "width": 2320,
+      "height": 1520,
+      "review": "Shared subject/birth controls and saved revision catalog reopened; only visible subset claimed."
+    },
+    {
+      "path": "installed-reopen-01/reopened-aspects-compact.png",
+      "sha256": "16c6bdd3e4a21a41e3c921c67075a8888fb8c775f692c52a3bc3fdcaa319e7a0",
+      "width": 840,
+      "height": 1520,
+      "review": "Saved aspect receipt wraps at compact width; subsequent content remains scrollable."
+    },
+    {
+      "path": "installed-reopen-01/reopened-aspects-wide.png",
+      "sha256": "28094d7db21ca4c790bfeffcded2f177bf309d50ed211e6f47dedde47c82ad0b",
+      "width": 2320,
+      "height": 1520,
+      "review": "Saved aspect receipt presented after fresh encrypted offline startup; text remains legible."
+    },
+    {
+      "path": "installed-reopen-01/reopened-shared-subject.png",
+      "sha256": "ab83055ef884b2d6af0287e03f4b8ccddf434276b99687e95728d4bc7f4f2f0b",
+      "width": 2320,
+      "height": 1520,
+      "review": "Shared subject/birth controls and saved revision catalog reopened; only visible subset claimed."
+    }
+  ],
+  "exact_retained_readings": 6,
+  "preserved_original_readings": 4,
+  "preserved_reflections": 2,
+  "unlock": "production terminal fallback; graphical lane remains separate",
+  "execution": "packaged arm64 payload; final run relocated from extracted archive; shell launcher remains separately unqualified"
+}

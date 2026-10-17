@@ -6,7 +6,21 @@ deterministic, securely cast, or derived from a public seed, and every result
 keeps a replayable receipt that separates context, qualification, selection,
 and interpretation.
 
-## Status (2026-10-16)
+## Status (2026-10-17)
+
+Personal natal readings use shared subjects and retained birth revisions. They
+support Whole Sign, Equal House and Placidus, apparent direct/retrograde motion,
+and explicitly supplied observed Earth orientation. New occasions can also retain
+editable conjunction, opposition, trine, square and sextile orb rules, with the
+computed separation and deviation for each matching pair. Earlier reading
+editions and their identities remain intact.
+
+The [natal-aspects qualification](receipts/natal-aspects-qualification_20261017.json)
+binds 150/199 product tests, core 59/60/61, native wide/compact presentation and
+exact offline fresh-process reopening. A verified Apple Silicon app archive is
+available as a local development candidate. Graphical unlock, Developer ID key
+access, notarization and public distribution readiness remain separate open gates;
+see the [follow-up plan](design_docs/2026-10-17_aspects_unlock_packaging_plan.md).
 
 The ordinary product opens the resident-held divination mere; its old private
 snapshot authority is confined to the explicit `legacy-receipts` harness.
@@ -78,9 +92,10 @@ records the published source and Mere’s qualified standalone-validator intake.
   general visibility policy remain caller-owned.
 
 The canonical plan index is [design_docs/DOC_README.md](design_docs/DOC_README.md).
-The current ephemeris proof does not implement houses or topocentric positions.
-Generated interpretations are planned in C7, with their inputs and method/model
-identity retained; they are not prohibited by the product's standing rules.
+Natal houses use separately retained Turquet editions; topocentric planetary
+positions remain outside the current natal surface. C7 supplies labelled formula
+prompts and stored local-model outputs with retained inputs and method/model
+identity. Optional model inference requires a separately configured model.
 
 ## Use
 

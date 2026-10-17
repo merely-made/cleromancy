@@ -1,0 +1,20 @@
+{
+  "error": null,
+  "log": [
+    "wait: still busy after 1800 frames",
+    "FAIL: assert snap catalog-ready Eq 'true': got 'false'",
+    "wait: still busy after 1800 frames",
+    "FAIL: assert snap natal-count Eq '4': got '0'",
+    "FAIL: assert snap natal-reflections Eq '2': got '0'",
+    "FAIL: no .natal-motion",
+    "FAIL: assert text 'Observed Earth orientation': not on any surface",
+    "captured graphical-unlocked"
+  ],
+  "ok": false,
+  "phase": "natal_reopen",
+  "probe_events": [],
+  "readings": [],
+  "reflections": [],
+  "schema": "cleromancy.natal-native/v1",
+  "shared": null
+}

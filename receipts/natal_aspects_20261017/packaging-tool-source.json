@@ -1,0 +1,10 @@
+{
+  "source": "913b6674f1d5c9aa4e36e9884b4c15b6d9c98175",
+  "binary_source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+  "files": {
+    "packaging/macos/package.py": "40076cc6817d83ae601dd39addb2cb22986846f282d033a98c9e9364142bc045",
+    "packaging/macos/test_package.py": "eaa6abb58f982680f4a9b736466072975d34dac0ee621db40640c3778e146ffe",
+    "packaging/macos/INSTALL.txt": "200add1647b4d84485f3f12cae4e79683212396b1a2e28d2f3348851fd4914ea",
+    "packaging/macos/README.md": "15f73be03f2afacb1de9c2fbe977419572843e4bd58cda8a2620b0d3ba44fbec"
+  }
+}
