@@ -4,7 +4,8 @@ Cleromancy retains explicit system, original coordinates, Earth-rotation
 approximation, cusps and longitude-only planetary assignments in an optional
 versioned extension. Absent extensions preserve original natal v1 bytes and
 replay. Missing time/place and degenerate rising geometry explain unavailable
-results without inferred location or another system. Software, native reopening
+results without inferred location or another system. The new numerical edition pins corrected Turquet `e2f65c0` immutably; earlier
+`4c27a6b` supplier/preflight results retain their identities. Software, native reopening
 and publication remain separate gates.
 
 **Current shared natal intake (2026-10-17; bounded qualification complete):**
