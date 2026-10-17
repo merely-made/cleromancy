@@ -1,0 +1,71 @@
+{
+  "ok": true,
+  "runs": [
+    {
+      "run": "launch-01",
+      "elapsed_seconds": 101.7,
+      "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+      "payload_sha256": "68e515677997e6d546e652b454cc9464b9e7eede9486b3f5eeb055e646e9bb8c",
+      "entry_sha256": "fa0802759623b56ed4056ceb48a2d69e8776c2c84195fb866faabfbbbe3d5618",
+      "scenario_sha256": "9522bed20895776af13118a6d46e4c78f0eedb20327850be261a3ba7c15917a5",
+      "exit": 0
+    },
+    {
+      "run": "reopen-01",
+      "elapsed_seconds": 130.05,
+      "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+      "payload_sha256": "68e515677997e6d546e652b454cc9464b9e7eede9486b3f5eeb055e646e9bb8c",
+      "entry_sha256": "fa0802759623b56ed4056ceb48a2d69e8776c2c84195fb866faabfbbbe3d5618",
+      "scenario_sha256": "9522bed20895776af13118a6d46e4c78f0eedb20327850be261a3ba7c15917a5",
+      "exit": 0
+    }
+  ],
+  "captures": [
+    {
+      "path": "launch-01/reopened-aspects-compact.png",
+      "sha256": "16c6bdd3e4a21a41e3c921c67075a8888fb8c775f692c52a3bc3fdcaa319e7a0",
+      "width": 840,
+      "height": 1520,
+      "review": "At 420 logical width the saved orb disclosure and motion text wrap within the panel; subsequent content remains scrollable."
+    },
+    {
+      "path": "launch-01/reopened-aspects-wide.png",
+      "sha256": "28094d7db21ca4c790bfeffcded2f177bf309d50ed211e6f47dedde47c82ad0b",
+      "width": 2320,
+      "height": 1520,
+      "review": "Saved zero-orb rules and no-match result remain readable; planetary rates and retrograde Saturn remain legible; reflection controls visible."
+    },
+    {
+      "path": "launch-01/reopened-shared-subject.png",
+      "sha256": "2a76066d62417c031c9da13fe8d9ec03bc3cda8135f07bb55c858fa1b2660ce2",
+      "width": 2320,
+      "height": 1520,
+      "review": "Shared birth facts refresh and selected public synthetic subject are visible; saved birth revision begins below the form. Only visible region claimed."
+    },
+    {
+      "path": "reopen-01/reopened-aspects-compact.png",
+      "sha256": "16c6bdd3e4a21a41e3c921c67075a8888fb8c775f692c52a3bc3fdcaa319e7a0",
+      "width": 840,
+      "height": 1520,
+      "review": "At 420 logical width the saved orb disclosure and motion text wrap within the panel; subsequent content remains scrollable."
+    },
+    {
+      "path": "reopen-01/reopened-aspects-wide.png",
+      "sha256": "28094d7db21ca4c790bfeffcded2f177bf309d50ed211e6f47dedde47c82ad0b",
+      "width": 2320,
+      "height": 1520,
+      "review": "Saved zero-orb rules and no-match result remain readable; planetary rates and retrograde Saturn remain legible; reflection controls visible."
+    },
+    {
+      "path": "reopen-01/reopened-shared-subject.png",
+      "sha256": "c535b4b1cd4ddc4bf3d5dc52b65fa7855a4830055bf040616e44917e2a28e840",
+      "width": 2320,
+      "height": 1520,
+      "review": "Shared birth facts refresh and selected public synthetic subject are visible; saved birth revision begins below the form. Only visible region claimed."
+    }
+  ],
+  "readings": 6,
+  "reflections": 2,
+  "shared_resources_exact": true,
+  "baseline_receipt_sha256": "db864ee956dfd2d53267e3e0605a9d67e04b513ac6b1500cd752a72747a696be"
+}

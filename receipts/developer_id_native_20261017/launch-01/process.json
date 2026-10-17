@@ -1,0 +1,27 @@
+{
+  "graphical_provider_processes": [
+    {
+      "pid": 63640,
+      "parent": 63610,
+      "command": "osascript -e try -e display dialog \"Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 63723,
+      "parent": 63610,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    }
+  ],
+  "exit": 0,
+  "timeout": false,
+  "failure": null,
+  "elapsed_seconds": 101.7,
+  "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+  "entry": "/Users/markik/Code/testing/cleromancy/aspects-release-20261017/signed-native-20261017-01/installed/Cleromancy Aspects Developer ID Candidate.app/Contents/MacOS/Cleromancy",
+  "entry_sha256": "fa0802759623b56ed4056ceb48a2d69e8776c2c84195fb866faabfbbbe3d5618",
+  "payload_sha256": "68e515677997e6d546e652b454cc9464b9e7eede9486b3f5eeb055e646e9bb8c",
+  "scenario_sha256": "9522bed20895776af13118a6d46e4c78f0eedb20327850be261a3ba7c15917a5",
+  "terminal_answers": 0,
+  "unlock": "production NativeOrTerminal graphical; manual public-fixture input",
+  "offline_ip_deny": true,
+  "public_fixture": true
+}

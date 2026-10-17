@@ -18,10 +18,9 @@ editions and their identities remain intact.
 The [natal-aspects qualification](receipts/natal-aspects-qualification_20261017.json)
 binds 150/199 product tests, core 59/60/61, native wide/compact presentation and
 exact offline fresh-process reopening. A verified Apple Silicon app archive is
-available as a local development candidate. The final extracted launcher now
+available as a local development candidate. A separate [Developer ID signed archive](receipts/developer-id-native-qualification_20261017.json) now passes two native graphical launch/reopen processes, six capture reviews and exact retained reading/shared-resource checks. The final extracted launcher now
 passes [production graphical unlock and retry](receipts/graphical-unlock-qualification_20261017.json),
-with six readings and two reflections reopened exactly. Developer ID key access,
-notarization and public distribution readiness remain open gates;
+with six readings and two reflections reopened exactly. Notarization and public distribution readiness remain open gates;
 see the [follow-up plan](design_docs/2026-10-17_aspects_unlock_packaging_plan.md).
 
 The ordinary product opens the resident-held divination mere; its old private
