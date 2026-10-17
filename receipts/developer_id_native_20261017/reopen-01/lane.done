@@ -1,0 +1,14 @@
+RESULT ok
+waited 753 frames
+waited 0 frames
+captured reopened-aspects-wide
+waited 0 frames
+captured reopened-aspects-compact
+waited 0 frames
+waited 326 frames
+captured reopened-shared-subject
+capture reopened-aspects-wide 2320x1520 digest=1725fb6593d7288c file=/Users/markik/Code/testing/cleromancy/aspects-release-20261017/signed-native-20261017-01/reopen-01/reopened-aspects-wide.png
+capture reopened-aspects-compact 840x1520 digest=be6119872ed875ae file=/Users/markik/Code/testing/cleromancy/aspects-release-20261017/signed-native-20261017-01/reopen-01/reopened-aspects-compact.png
+capture reopened-shared-subject 2320x1520 digest=9450352099b0576d file=/Users/markik/Code/testing/cleromancy/aspects-release-20261017/signed-native-20261017-01/reopen-01/reopened-shared-subject.png
+frames: 3 captured, 0 blank, 3 distinct digests
+presentation: 1113 frames, 1114 redraws, 1 unpresented redraws

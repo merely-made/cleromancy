@@ -1,0 +1,64 @@
+[
+  {
+    "target": "installed/Cleromancy Aspects Developer ID Candidate.app",
+    "args": [
+      "--verify",
+      "--strict",
+      "--verbose=2"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "--prepared:/Users/markik/Code/testing/cleromancy/aspects-release-20261017/signed-native-20261017-01/installed/Cleromancy Aspects Developer ID Candidate.app/Contents/MacOS/cleromancy-bin\n--validated:/Users/markik/Code/testing/cleromancy/aspects-release-20261017/signed-native-20261017-01/installed/Cleromancy Aspects Developer ID Candidate.app/Contents/MacOS/cleromancy-bin\n/Users/markik/Code/testing/cleromancy/aspects-release-20261017/signed-native-20261017-01/installed/Cleromancy Aspects Developer ID Candidate.app: valid on disk\n/Users/markik/Code/testing/cleromancy/aspects-release-20261017/signed-native-20261017-01/installed/Cleromancy Aspects Developer ID Candidate.app: satisfies its Designated Requirement\n"
+  },
+  {
+    "target": "installed/Cleromancy Aspects Developer ID Candidate.app",
+    "args": [
+      "-d",
+      "--verbose=4"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "Executable=/Users/markik/Code/testing/cleromancy/aspects-release-20261017/signed-native-20261017-01/installed/Cleromancy Aspects Developer ID Candidate.app/Contents/MacOS/Cleromancy\nIdentifier=dev.merely.cleromancy.aspects.developerid20261017\nFormat=app bundle with generic\nCodeDirectory v=20200 size=241 flags=0x10000(runtime) hashes=1+3 location=embedded\nHash type=sha256 size=32\nCandidateCDHash sha256=7dab39fe21e46e0facd3059a1accba5ff5345dd8\nCandidateCDHashFull sha256=7dab39fe21e46e0facd3059a1accba5ff5345dd80aed53c585e10fadb1bfdefd\nHash choices=sha256\nCMSDigest=7dab39fe21e46e0facd3059a1accba5ff5345dd80aed53c585e10fadb1bfdefd\nCMSDigestType=2\nPage size=none\nCDHash=7dab39fe21e46e0facd3059a1accba5ff5345dd8\nSignature size=8972\nAuthority=Developer ID Application: Mark Boykim (HWVZ5S7ACJ)\nAuthority=Developer ID Certification Authority\nAuthority=Apple Root CA\nTimestamp=Oct 17, 2026 at 4:00:15\u202fPM\nInfo.plist entries=9\nTeamIdentifier=HWVZ5S7ACJ\nSealed Resources version=2 rules=13 files=1746\nInternal requirements count=2 size=260\n"
+  },
+  {
+    "target": "installed/Cleromancy Aspects Developer ID Candidate.app",
+    "args": [
+      "--verify",
+      "-R=anchor apple generic and certificate leaf[field.1.2.840.113635.100.6.1.13] exists"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "target": "installed/Cleromancy Aspects Developer ID Candidate.app/Contents/MacOS/cleromancy-bin",
+    "args": [
+      "--verify",
+      "--strict",
+      "--verbose=2"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "/Users/markik/Code/testing/cleromancy/aspects-release-20261017/signed-native-20261017-01/installed/Cleromancy Aspects Developer ID Candidate.app/Contents/MacOS/cleromancy-bin: valid on disk\n/Users/markik/Code/testing/cleromancy/aspects-release-20261017/signed-native-20261017-01/installed/Cleromancy Aspects Developer ID Candidate.app/Contents/MacOS/cleromancy-bin: satisfies its Designated Requirement\n"
+  },
+  {
+    "target": "installed/Cleromancy Aspects Developer ID Candidate.app/Contents/MacOS/cleromancy-bin",
+    "args": [
+      "-d",
+      "--verbose=4"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "Executable=/Users/markik/Code/testing/cleromancy/aspects-release-20261017/signed-native-20261017-01/installed/Cleromancy Aspects Developer ID Candidate.app/Contents/MacOS/cleromancy-bin\nIdentifier=cleromancy-bin\nFormat=Mach-O thin (arm64)\nCodeDirectory v=20500 size=597850 flags=0x10000(runtime) hashes=18677+2 location=embedded\nVersionPlatform=1\nVersionMin=720896\nVersionSDK=1705216\nHash type=sha256 size=32\nCandidateCDHash sha256=d8a10e974e66d774fe6dbb860b4ca9f935aa5e41\nCandidateCDHashFull sha256=d8a10e974e66d774fe6dbb860b4ca9f935aa5e41375c90d4ecae6a6c028ebad7\nHash choices=sha256\nCMSDigest=d8a10e974e66d774fe6dbb860b4ca9f935aa5e41375c90d4ecae6a6c028ebad7\nCMSDigestType=2\nExecutable Segment base=0\nExecutable Segment limit=136298496\nExecutable Segment flags=0x1\nPage size=16384\nCDHash=d8a10e974e66d774fe6dbb860b4ca9f935aa5e41\nSignature size=8972\nAuthority=Developer ID Application: Mark Boykim (HWVZ5S7ACJ)\nAuthority=Developer ID Certification Authority\nAuthority=Apple Root CA\nTimestamp=Oct 17, 2026 at 4:00:06\u202fPM\nInfo.plist=not bound\nTeamIdentifier=HWVZ5S7ACJ\nRuntime Version=26.5.0\nSealed Resources=none\nInternal requirements count=1 size=176\n"
+  },
+  {
+    "target": "installed/Cleromancy Aspects Developer ID Candidate.app/Contents/MacOS/cleromancy-bin",
+    "args": [
+      "--verify",
+      "-R=anchor apple generic and certificate leaf[field.1.2.840.113635.100.6.1.13] exists"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]
