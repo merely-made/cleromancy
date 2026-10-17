@@ -38,7 +38,8 @@ pub enum ConsultationAction {
         resource: dramatis::resources::ResourceRef,
         question: String,
         fold: crate::natal::FoldChoice,
-        houses: Option<crate::natal_houses::HouseSystem>,
+        houses: Option<crate::natal_cap::HouseChoice>,
+        orientation: Option<crate::natal_cap::OrientationSnapshot>,
     },
 
     OpenNeighborhood {

@@ -263,3 +263,219 @@ fn missing_place_unknown_time_and_degenerate_pole_never_invent_houses() {
         ));
     }
 }
+
+#[test]
+fn earlier_qualified_house_receipts_replay_without_supplements() {
+    let raw: serde_json::Value = serde_json::from_str(include_str!(
+        "../receipts/natal_houses_20261017/exact-readings.json"
+    ))
+    .unwrap();
+    let records: Vec<NatalReading> = serde_json::from_value(raw.clone()).unwrap();
+    for r in &records {
+        assert!(r.supplement.is_none());
+        r.validate().unwrap();
+    }
+    assert_eq!(serde_json::to_value(records).unwrap(), raw);
+}
+fn placed_cap_reading() -> NatalReading {
+    let mut f = birth().facts;
+    f.place = Some(BirthPlace {
+        label: "Public NYC fixture".into(),
+        latitude_microdegrees: Some(40_712_800),
+        longitude_microdegrees: Some(-74_006_000),
+        precision: "Public synthetic".into(),
+    });
+    read(
+        personal_facts::birth_resource(&f).unwrap(),
+        FoldChoice::Refuse,
+    )
+    .unwrap()
+}
+#[test]
+fn motion_and_placidus_seal_replay_and_refuse_recomputed_identity_tampering() {
+    use cleromancy::natal_cap::*;
+    let r = placed_cap_reading()
+        .with_supplement(Some(HouseChoice::Placidus), None)
+        .unwrap();
+    let s = r.supplement.as_ref().unwrap();
+    assert!(matches!(
+        s.houses,
+        Some(cleromancy::natal_houses::HouseOutcome::Calculated { .. })
+    ));
+    let MotionOutcome::Calculated { planets, .. } = &s.motion else {
+        panic!()
+    };
+    assert_eq!(planets.len(), 10);
+    assert_eq!(planets[0].classification, MotionClass::Direct);
+    r.validate().unwrap();
+    let bytes = serde_json::to_vec(&r).unwrap();
+    let again: NatalReading = serde_json::from_slice(&bytes).unwrap();
+    again.validate().unwrap();
+    assert_eq!(serde_json::to_vec(&again).unwrap(), bytes);
+    for field in ["motion", "cusp", "supplier", "system"] {
+        let mut bad = serde_json::to_value(&r).unwrap();
+        match field {
+            "motion" => {
+                bad["supplement"]["motion"]["planets"][0]["microdegrees_per_tt_day"] =
+                    serde_json::json!(-50)
+            },
+            "cusp" => bad["supplement"]["houses"]["cusps_microdegrees"][2] = serde_json::json!(1),
+            "supplier" => bad["supplement"]["supplier"] = serde_json::json!("other"),
+            _ => bad["supplement"]["house_system"] = serde_json::json!("equal"),
+        }
+        let mut content = bad.clone();
+        content.as_object_mut().unwrap().remove("id");
+        bad["id"] = serde_json::json!(
+            blake3::hash(&serde_json::to_vec(&content).unwrap())
+                .to_hex()
+                .to_string()
+        );
+        assert!(
+            serde_json::from_value::<NatalReading>(bad)
+                .unwrap()
+                .validate()
+                .is_err(),
+            "{field}"
+        );
+    }
+}
+#[test]
+fn polar_placidus_is_unavailable_and_missing_place_still_has_motion() {
+    use cleromancy::natal_cap::*;
+    let mut f = placed_cap_reading().birth.facts;
+    f.place.as_mut().unwrap().latitude_microdegrees = Some(70_000_000);
+    let r = read(
+        personal_facts::birth_resource(&f).unwrap(),
+        FoldChoice::Refuse,
+    )
+    .unwrap()
+    .with_supplement(Some(HouseChoice::Placidus), None)
+    .unwrap();
+    assert!(matches!(
+        r.supplement.unwrap().houses,
+        Some(cleromancy::natal_houses::HouseOutcome::Unavailable { .. })
+    ));
+    let r = read(birth(), FoldChoice::Refuse)
+        .unwrap()
+        .with_supplement(Some(HouseChoice::Placidus), None)
+        .unwrap();
+    assert!(matches!(
+        r.supplement.as_ref().unwrap().motion,
+        MotionOutcome::Calculated { .. }
+    ));
+    assert!(matches!(
+        r.supplement.unwrap().houses,
+        Some(cleromancy::natal_houses::HouseOutcome::Unavailable { .. })
+    ));
+}
+#[test]
+fn retained_final_observations_replay_and_outside_coverage_refuses() {
+    use cleromancy::natal_cap::*;
+    let text = include_str!("fixtures/natal-observed-finals2000a.txt");
+    let r = placed_cap_reading()
+        .with_supplement(
+            Some(HouseChoice::Placidus),
+            Some(OrientationSnapshot {
+                finals2000a: text.into(),
+            }),
+        )
+        .unwrap();
+    r.validate().unwrap();
+    let s = r.supplement.as_ref().unwrap();
+    let o = s.observed_values.as_ref().unwrap();
+    assert!((o.dut1_microseconds - 355066).abs() <= 1);
+    assert!((o.xp_microarcseconds - 43335).abs() <= 1);
+    assert!((o.yp_microarcseconds - 377605).abs() <= 1);
+    let a = serde_json::to_vec(&r).unwrap();
+    let again: NatalReading = serde_json::from_slice(&a).unwrap();
+    again.validate().unwrap();
+    assert_eq!(serde_json::to_vec(&again).unwrap(), a);
+    let mut f = r.birth.facts.clone();
+    f.date.year = 2020;
+    let outside = read(
+        personal_facts::birth_resource(&f).unwrap(),
+        FoldChoice::Refuse,
+    )
+    .unwrap();
+    assert!(
+        outside
+            .with_supplement(Some(HouseChoice::Placidus), s.orientation.clone())
+            .is_err()
+    );
+    assert!(
+        placed_cap_reading()
+            .with_supplement(None, s.orientation.clone())
+            .is_err()
+    );
+    let mut bad = serde_json::to_value(&r).unwrap();
+    let mut rows = text.lines().map(str::to_string).collect::<Vec<_>>();
+    rows[1].replace_range(154..165, "  0.3555000");
+    let changed = rows.join("\n") + "\n";
+    assert_ne!(changed, text);
+    bad["supplement"]["orientation"]["finals2000a"] = serde_json::json!(changed);
+    let mut content = bad.clone();
+    content.as_object_mut().unwrap().remove("id");
+    bad["id"] = serde_json::json!(
+        blake3::hash(&serde_json::to_vec(&content).unwrap())
+            .to_hex()
+            .to_string()
+    );
+    assert!(
+        serde_json::from_value::<NatalReading>(bad)
+            .unwrap()
+            .validate()
+            .is_err()
+    );
+}
+#[test]
+fn exact_civil_midnight_uses_its_observation_including_after_leap_insertion() {
+    use cleromancy::natal_cap::*;
+    for (year, text, month, day) in [
+        (
+            2000,
+            include_str!("fixtures/natal-observed-finals2000a.txt"),
+            1,
+            1,
+        ),
+        (
+            2017,
+            include_str!("fixtures/natal-observed-leap-finals2000a.txt"),
+            1,
+            1,
+        ),
+    ] {
+        let row = text
+            .lines()
+            .find(|r| {
+                r[0..2].trim().parse::<i32>().unwrap() == year % 100
+                    && r[2..4].trim() == month.to_string()
+                    && r[4..6].trim() == day.to_string()
+            })
+            .unwrap();
+        let mut f = placed_cap_reading().birth.facts;
+        f.date = CivilDate { year, month, day };
+        f.time = BirthTime::Known {
+            hour: 0,
+            minute: 0,
+            second: 0,
+        };
+        let base = read(
+            personal_facts::birth_resource(&f).unwrap(),
+            FoldChoice::Refuse,
+        )
+        .unwrap();
+        for source in [row.to_string(), text.to_string()] {
+            let r = base
+                .clone()
+                .with_supplement(
+                    Some(HouseChoice::Placidus),
+                    Some(OrientationSnapshot {
+                        finals2000a: source,
+                    }),
+                )
+                .unwrap();
+            r.validate().unwrap();
+            assert!(r.supplement.unwrap().observed_values.is_some());
+        }
+    }
+}
