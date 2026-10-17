@@ -1,0 +1,82 @@
+{
+  "check-default": {
+    "exit": 0,
+    "source": "a684361b1553848c923912807d525aced61bc820",
+    "args": [
+      "check",
+      "--all-targets"
+    ]
+  },
+  "check-no-default": {
+    "exit": 0,
+    "source": "a684361b1553848c923912807d525aced61bc820",
+    "args": [
+      "check",
+      "--no-default-features",
+      "--all-targets"
+    ]
+  },
+  "check-personal": {
+    "exit": 0,
+    "source": "a684361b1553848c923912807d525aced61bc820",
+    "args": [
+      "check",
+      "--features",
+      "personal-sync",
+      "--all-targets"
+    ]
+  },
+  "check-admission": {
+    "exit": 0,
+    "source": "a684361b1553848c923912807d525aced61bc820",
+    "args": [
+      "check",
+      "--features",
+      "graphshell-admission",
+      "--all-targets"
+    ]
+  },
+  "test-natal": {
+    "exit": 0,
+    "source": "a684361b1553848c923912807d525aced61bc820",
+    "args": [
+      "test",
+      "--test",
+      "natal"
+    ]
+  },
+  "test-natal-busy": {
+    "exit": 0,
+    "source": "a684361b1553848c923912807d525aced61bc820",
+    "args": [
+      "test",
+      "--lib",
+      "natal_actions_wait_for_owner_acknowledgement_and_refuse_double_submission"
+    ]
+  },
+  "core-default": {
+    "exit": 0,
+    "source": "a684361b1553848c923912807d525aced61bc820",
+    "args": [
+      "test"
+    ]
+  },
+  "core-legacy": {
+    "exit": 0,
+    "source": "a684361b1553848c923912807d525aced61bc820",
+    "args": [
+      "test",
+      "--features",
+      "legacy-receipts"
+    ]
+  },
+  "core-sky": {
+    "exit": 0,
+    "source": "a684361b1553848c923912807d525aced61bc820",
+    "args": [
+      "test",
+      "--features",
+      "legacy-receipts,sky-timeline"
+    ]
+  }
+}

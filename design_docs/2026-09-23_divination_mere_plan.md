@@ -1,3 +1,20 @@
+**Current shared natal intake (2026-10-17; bounded qualification complete):**
+Cleromancy `a684361` consumes Mere `d03e367bd` and Dramatis `cf562f4`.
+The resident checks newly introduced profile references against its actual vault
+and contact references against the retained same-persona contact book before
+journaling; existing admitted history remains replayable after profile deletion.
+Four all-target configurations, natal/busy-state regressions and portable-core
+46/47/48 gates pass on this intake. A rebuilt desktop app passes create plus two
+fresh offline processes with twelve reviewed original wide/compact captures.
+Birth correction preserves the original natal input snapshot and reflections.
+The [hardened intake receipt](../receipts/c8-natal-hardened-intake_20261017.json)
+supplements the F6 full-suite/native baseline below without relabelling it.
+Existing receipts and the earlier public profile remain exact. The stock daemon's
+immutable portable-core intake has its own Mere receipt. This slice calculates
+geocentric tropical placements/aspects for exact UTC birth years 1972–2098;
+unknown/approximate times are retained without invented charts. Houses,
+ascendant and graphical unlock remain separate work.
+
 **C8 shared natal qualification (2026-10-17; bounded):** source `f6d2425`
 consumes published Dramatis `cf562f4` and Mere `8498608cb`. Shared subject/resource
 associations and reusable birth revisions use the resident-owned `personal-facts`

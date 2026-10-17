@@ -1,0 +1,156 @@
+{
+  "schema": "cleromancy.c8-natal-hardened-intake/v1",
+  "date": "2026-10-17",
+  "source": "a684361b1553848c923912807d525aced61bc820",
+  "mere": "d03e367bd64a8dc2c03e67458539aa8dc5ccf9a5",
+  "dramatis": "cf562f47f33ab0b6ad0db1c5ac3123775769979e",
+  "baseline_receipt": "c8-natal-qualification_20261017.json",
+  "pack": "c8_natal_hardened_20261017",
+  "checks": {
+    "check-default": {
+      "exit": 0,
+      "source": "a684361b1553848c923912807d525aced61bc820",
+      "args": [
+        "check",
+        "--all-targets"
+      ]
+    },
+    "check-no-default": {
+      "exit": 0,
+      "source": "a684361b1553848c923912807d525aced61bc820",
+      "args": [
+        "check",
+        "--no-default-features",
+        "--all-targets"
+      ]
+    },
+    "check-personal": {
+      "exit": 0,
+      "source": "a684361b1553848c923912807d525aced61bc820",
+      "args": [
+        "check",
+        "--features",
+        "personal-sync",
+        "--all-targets"
+      ]
+    },
+    "check-admission": {
+      "exit": 0,
+      "source": "a684361b1553848c923912807d525aced61bc820",
+      "args": [
+        "check",
+        "--features",
+        "graphshell-admission",
+        "--all-targets"
+      ]
+    },
+    "test-natal": {
+      "exit": 0,
+      "source": "a684361b1553848c923912807d525aced61bc820",
+      "args": [
+        "test",
+        "--test",
+        "natal"
+      ]
+    },
+    "test-natal-busy": {
+      "exit": 0,
+      "source": "a684361b1553848c923912807d525aced61bc820",
+      "args": [
+        "test",
+        "--lib",
+        "natal_actions_wait_for_owner_acknowledgement_and_refuse_double_submission"
+      ]
+    },
+    "core-default": {
+      "exit": 0,
+      "source": "a684361b1553848c923912807d525aced61bc820",
+      "args": [
+        "test"
+      ]
+    },
+    "core-legacy": {
+      "exit": 0,
+      "source": "a684361b1553848c923912807d525aced61bc820",
+      "args": [
+        "test",
+        "--features",
+        "legacy-receipts"
+      ]
+    },
+    "core-sky": {
+      "exit": 0,
+      "source": "a684361b1553848c923912807d525aced61bc820",
+      "args": [
+        "test",
+        "--features",
+        "legacy-receipts,sky-timeline"
+      ]
+    }
+  },
+  "software_counts": {
+    "test-natal": {
+      "passed": 5,
+      "failed": 0,
+      "ignored": 0
+    },
+    "test-natal-busy": {
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    "core-default": {
+      "passed": 46,
+      "failed": 0,
+      "ignored": 0
+    },
+    "core-legacy": {
+      "passed": 47,
+      "failed": 0,
+      "ignored": 0
+    },
+    "core-sky": {
+      "passed": 48,
+      "failed": 0,
+      "ignored": 0
+    }
+  },
+  "native": {
+    "source": "a684361b1553848c923912807d525aced61bc820",
+    "runs": [
+      "native-create-05",
+      "native-reopen-05",
+      "native-overview-05"
+    ],
+    "original_captures_reviewed": 12,
+    "typed_readings_and_reflections_equal_across_three_processes": true,
+    "shared_catalog_equal_across_create_and_reopen": true,
+    "birth_correction_retains_original_natal_inputs": true,
+    "exported_hashes": {
+      "readings": "c92fe5f9d677589a3c45b1e9246a325e6efac959247b0c103b05d9edb0d9f75b",
+      "reflections": "a37c3d731dfccd8ee0dfcf32c6f6b4ab1fdb5d6d377a52838c15cfe697e1945e",
+      "shared": "9bb9a2120fe9aa06e5a3c30c4fef420eae03502e45a091433f15cf98a8bcf787"
+    },
+    "limits": [
+      "Public synthetic fixtures only",
+      "Production NativeOrTerminal fallback through PATH=/bin; graphical unlock is not qualified",
+      "No full-database byte-equality, browser-wall or hardware performance claim",
+      "Earlier startup, asynchronous-action and receipt-layout diagnostic runs remain preserved"
+    ]
+  },
+  "scope": "Four all-target builds, natal and double-submission regressions, all three portable core gates, rebuilt native create and two fresh-process offline reopens. Full product 136/185 suites remain source-bound to the F6 baseline; not relabelled as this intake.",
+  "bounds": [
+    "Exact charts: UTC birth years 1972 through 2098",
+    "Unknown/approximate time preserved without invented exact chart",
+    "IANA gaps refuse and folds require explicit choice",
+    "Geocentric tropical positions/aspects only; no houses, ascendant or retrograde calculation",
+    "Production encrypted terminal unlock qualified; graphical unlock remains separate",
+    "No browser-wall, performance or full-database byte equality claim"
+  ],
+  "daemon_intake": {
+    "mere_source": "ac10d648023c72571bd10e3e1803589791959dd2",
+    "cleromancy_core": "a684361b1553848c923912807d525aced61bc820",
+    "receipt": "resident-natal-portable-intake.json",
+    "sha256": "c9f5eb150f0aceee920034e50230ef016341d7572ab6d5c8a6c0e8c1b34a850e"
+  }
+}
