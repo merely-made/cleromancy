@@ -29,6 +29,13 @@ assert text Natal reading for Public synthetic natal subject
 reveal class natal-narration
 settle 4
 capture natal-computation
+c5-control-reveal natal-details
+settle 4
+c5-control-key natal-details
+settle 4
+capture calculation-receipt
+c5-control-key natal-details
+settle 4
 c5-control-reveal natal-latest-example
 settle 4
 c5-control-click natal-latest-example
