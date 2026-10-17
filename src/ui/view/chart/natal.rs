@@ -18,6 +18,9 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
             .attr("data-key", "natal-open"),
         ),
     ];
+    if !ui.birth_notice.is_empty() {
+        views.push(Box::new(el("p", ui.birth_notice.clone())));
+    }
     views.push(labelled_text(
         "New subject name",
         "cleromancy-natal-name",
@@ -105,7 +108,7 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
             views.push(Box::new(
                 button(
                     format!(
-                        "{}Birth revision {}-{:02}-{:02} · {}",
+                        "{}Birth revision {}-{:02}-{:02} · {} · {} · {}",
                         if index == ui.birth_revision {
                             "Selected: "
                         } else {
@@ -114,6 +117,13 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
                         d.year,
                         d.month,
                         d.day,
+                        time_label(&birth.facts.time),
+                        catalog
+                            .subjects
+                            .iter()
+                            .find(|s| s.subject == birth.facts.subject)
+                            .map(|s| s.label.as_str())
+                            .unwrap_or("Unavailable subject"),
                         &birth.resource.revision[..12]
                     ),
                     move |ui: &mut ConsultationUi, _| ui.birth_revision = index,
@@ -161,13 +171,31 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
         ));
     }
     for reading in &ui.catalog.natal_readings {
+        let id = reading.id.clone();
+        views.push(Box::new(
+            button(
+                format!(
+                    "Open natal occasion for {} · {}",
+                    reading.subject_label, reading.created_at_ms
+                ),
+                move |ui: &mut ConsultationUi, _| ui.natal_selected = Some(id.clone()),
+            )
+            .attr("data-key", format!("natal-select-{}", reading.id)),
+        ));
+    }
+    let selected = ui
+        .natal_selected
+        .as_ref()
+        .and_then(|id| ui.catalog.natal_readings.iter().find(|r| &r.id == id))
+        .or_else(|| ui.catalog.natal_readings.first());
+    if let Some(reading) = selected {
         views.push(Box::new(el(
             "h3",
             format!("Natal reading for {}", reading.subject_label),
         )));
         views.push(Box::new(el("p", reading.question.clone())));
         let f = &reading.birth.facts;
-        views.push(Box::new(el("p",format!("Birth date {}-{:02}-{:02}; civil time {:?}; timezone {}; source {}. Birth revision {}.",f.date.year,f.date.month,f.date.day,f.time,f.timezone.as_deref().unwrap_or("unspecified"),f.source.label,reading.birth.resource.revision))));
+        views.push(Box::new(el("p",format!("Birth date {}-{:02}-{:02}; civil time {}; timezone {}; source {}. Birth revision {}.",f.date.year,f.date.month,f.date.day,time_label(&f.time),f.timezone.as_deref().unwrap_or("unspecified"),f.source.label,reading.birth.resource.revision))));
         for reflection in ui
             .catalog
             .natal_reflections
@@ -334,3 +362,20 @@ fn draft(ui: &ConsultationUi) -> Result<dramatis::birth::BirthFacts, String> {
 }
 macro_rules! getter{($($name:ident=>$field:ident),*)=>{$(fn $name(ui:&mut ConsultationUi)->&mut TextInput{&mut ui.$field})*};}
 getter!(reflection=>natal_reflection,name=>natal_name,date=>natal_date,time=>natal_time,zone=>natal_zone,place=>natal_place,latitude=>natal_latitude,longitude=>natal_longitude,source=>natal_source,question=>natal_question,fold=>natal_fold);
+
+fn time_label(time: &dramatis::birth::BirthTime) -> String {
+    match time {
+        dramatis::birth::BirthTime::Unknown => "unknown".into(),
+        dramatis::birth::BirthTime::Known {
+            hour,
+            minute,
+            second,
+        } => format!("{hour:02}:{minute:02}:{second:02}"),
+        dramatis::birth::BirthTime::Approximate {
+            hour,
+            minute,
+            second,
+            uncertainty_seconds,
+        } => format!("approximately {hour:02}:{minute:02}:{second:02} ±{uncertainty_seconds}s"),
+    }
+}

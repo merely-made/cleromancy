@@ -110,6 +110,11 @@ impl NatalReading {
         {
             return Err("invalid natal reading identity".into());
         }
+        if let dramatis::subject::SubjectRef::Contact { scope, .. } = &self.birth.facts.subject {
+            if scope.as_str() != self.persona {
+                return Err("Birth contact belongs to a different source persona".into());
+            }
+        }
         if self.outcome != calculate(&self.birth, self.fold, self.orb_millidegrees)? {
             return Err("natal computation differs from its receipt".into());
         }
