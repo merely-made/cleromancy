@@ -1,0 +1,14 @@
+RESULT fail
+waited 11 frames
+waited 1 frames
+waited 0 frames
+waited 0 frames
+waited 10 frames
+captured missing-place
+waited 1 frames
+captured saved-placed-revision
+capture missing-place 2320x1520 digest=61ea1a10450f13bd file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-setup-02/missing-place.png
+capture saved-placed-revision 2320x1520 digest=1aca12a6944384d3 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-setup-02/saved-placed-revision.png
+frames: 2 captured, 0 blank, 2 distinct digests
+presentation: 68 frames, 69 redraws, 1 unpresented redraws
+FAIL: product completion: Natal scenario requires saved readings and reflections

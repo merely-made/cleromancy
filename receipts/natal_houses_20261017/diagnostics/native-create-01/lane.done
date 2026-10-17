@@ -1,0 +1,30 @@
+RESULT fail
+waited 8 frames
+waited 2 frames
+waited 0 frames
+waited 0 frames
+waited 7 frames
+captured missing-place
+waited 1 frames
+waited 12 frames
+FAIL: assert snap natal-houses-count Eq '1': got '0'
+captured whole-sign
+waited 15 frames
+waited 29 frames
+FAIL: assert snap natal-houses-count Eq '2': got '0'
+captured equal-house
+captured equal-narrative
+captured house-receipt
+waited 0 frames
+captured compact-equal
+captured compact-whole
+capture missing-place 2320x1520 digest=06d3c8a86ea8729b file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-01/missing-place.png
+capture whole-sign 2320x1520 digest=2c29202420c584b7 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-01/whole-sign.png
+capture equal-house 2320x1520 digest=7b5db06f3a1b1050 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-01/equal-house.png
+capture equal-narrative 2320x1520 digest=c79feb6358e6b53e file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-01/equal-narrative.png
+capture house-receipt 2320x1520 digest=60aa279ae32d6f7c file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-01/house-receipt.png
+capture compact-equal 840x1520 digest=8028210e8c6cf53a file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-01/compact-equal.png
+capture compact-whole 840x1520 digest=36bd5e1f5296c8c9 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-01/compact-whole.png
+frames: 7 captured, 0 blank, 7 distinct digests
+presentation: 186 frames, 187 redraws, 1 unpresented redraws
+FAIL: product completion: Natal scenario requires saved readings and reflections

@@ -1,0 +1,309 @@
+   Compiling turquet v0.17.0 (/Users/markik/Code/repos/turquet)
+warning: unnecessary parentheses around block return value
+   --> src/lunar.rs:823:5
+    |
+823 |     (2451565.1619 + 27.212220817 * k + T * T * (0.0002762 + T * (0.000000021 - T * 0.000000000088))
+    |     ^
+...
+842 |         + 0.0003 * ((2.0 * (M - D)).sin() + (2.0 * D_times_2 - M).sin() + V.sin() + P.sin()))
+    |                                                                                             ^
+    |
+    = note: `#[warn(unused_parens)]` (part of `#[warn(unused)]`) on by default
+help: remove these parentheses
+    |
+823 ~     2451565.1619 + 27.212220817 * k + T * T * (0.0002762 + T * (0.000000021 - T * 0.000000000088))
+824 |         - 0.4721 * M1.sin()
+...
+841 |         + 0.0004 * (D_times_2 - M + M1).sin()
+842 ~         + 0.0003 * ((2.0 * (M - D)).sin() + (2.0 * D_times_2 - M).sin() + V.sin() + P.sin())
+    |
+
+warning: unnecessary parentheses around match arm expression
+   --> src/planet/jupiter/moon.rs:114:22
+    |
+114 |         &Moon::Io => (5.9057 - 0.0244 * (2.0 * (u1 - u2)).cos()),
+    |                      ^                                         ^
+    |
+help: remove these parentheses
+    |
+114 -         &Moon::Io => (5.9057 - 0.0244 * (2.0 * (u1 - u2)).cos()),
+114 +         &Moon::Io => 5.9057 - 0.0244 * (2.0 * (u1 - u2)).cos(),
+    |
+
+warning: unnecessary parentheses around match arm expression
+   --> src/planet/jupiter/moon.rs:115:26
+    |
+115 |         &Moon::Europa => (9.3966 - 0.0882 * (2.0 * (u2 - u3)).cos()),
+    |                          ^                                         ^
+    |
+help: remove these parentheses
+    |
+115 -         &Moon::Europa => (9.3966 - 0.0882 * (2.0 * (u2 - u3)).cos()),
+115 +         &Moon::Europa => 9.3966 - 0.0882 * (2.0 * (u2 - u3)).cos(),
+    |
+
+warning: unnecessary parentheses around match arm expression
+   --> src/planet/jupiter/moon.rs:116:28
+    |
+116 |         &Moon::Ganymede => (14.9883 - 0.0216 * G.cos()),
+    |                            ^                          ^
+    |
+help: remove these parentheses
+    |
+116 -         &Moon::Ganymede => (14.9883 - 0.0216 * G.cos()),
+116 +         &Moon::Ganymede => 14.9883 - 0.0216 * G.cos(),
+    |
+
+warning: unnecessary parentheses around match arm expression
+   --> src/planet/jupiter/moon.rs:117:28
+    |
+117 |         &Moon::Callisto => (26.3627 - 0.1939 * H.cos()),
+    |                            ^                          ^
+    |
+help: remove these parentheses
+    |
+117 -         &Moon::Callisto => (26.3627 - 0.1939 * H.cos()),
+117 +         &Moon::Callisto => 26.3627 - 0.1939 * H.cos(),
+    |
+
+warning: unnecessary parentheses around type
+   --> src/time.rs:218:55
+    |
+218 | pub fn is_leap_year(year: i16, cal_type: &CalType) -> (bool) {
+    |                                                       ^    ^
+    |
+help: remove these parentheses
+    |
+218 - pub fn is_leap_year(year: i16, cal_type: &CalType) -> (bool) {
+218 + pub fn is_leap_year(year: i16, cal_type: &CalType) -> bool {
+    |
+
+warning: `turquet` (lib) generated 6 warnings (2 duplicates) (run `cargo fix --lib -p turquet` to apply 4 suggestions)
+warning: `turquet` (lib test) generated 6 warnings (4 duplicates) (run `cargo fix --lib -p turquet --tests` to apply 2 suggestions)
+warning: unnecessary parentheses around function argument
+  --> tests/elliptic.rs:64:40
+   |
+64 |     assert_eq!(util::round_upto_digits((T - ascen), 4), 92.2998);
+   |                                        ^         ^
+   |
+   = note: `#[warn(unused_parens)]` (part of `#[warn(unused)]`) on by default
+help: remove these parentheses
+   |
+64 -     assert_eq!(util::round_upto_digits((T - ascen), 4), 92.2998);
+64 +     assert_eq!(util::round_upto_digits(T - ascen, 4), 92.2998);
+   |
+
+warning: unnecessary parentheses around function argument
+  --> tests/elliptic.rs:69:40
+   |
+69 |     assert_eq!(util::round_upto_digits((T - descend), 4), -28.9105);
+   |                                        ^           ^
+   |
+help: remove these parentheses
+   |
+69 -     assert_eq!(util::round_upto_digits((T - descend), 4), -28.9105);
+69 +     assert_eq!(util::round_upto_digits(T - descend, 4), -28.9105);
+   |
+
+error[E0308]: mismatched types
+  --> tests/houses.rs:80:13
+   |
+80 |             0,
+   |             ^ expected `f64`, found integer
+   |
+help: use a float literal
+   |
+80 |             0.0,
+   |              ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:103:13
+    |
+103 |             0,
+    |             ^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+103 |             0.0,
+    |              ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:149:13
+    |
+149 |             0,
+    |             ^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+149 |             0.0,
+    |              ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:150:13
+    |
+150 |             0,
+    |             ^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+150 |             0.0,
+    |              ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:172:13
+    |
+172 |             0,
+    |             ^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+172 |             0.0,
+    |              ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:173:13
+    |
+173 |             0,
+    |             ^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+173 |             0.0,
+    |              ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:184:13
+    |
+184 |             0,
+    |             ^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+184 |             0.0,
+    |              ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:185:13
+    |
+185 |             0,
+    |             ^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+185 |             0.0,
+    |              ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:207:13
+    |
+207 |             0,
+    |             ^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+207 |             0.0,
+    |              ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:208:13
+    |
+208 |             0,
+    |             ^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+208 |             0.0,
+    |              ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:219:13
+    |
+219 |             0,
+    |             ^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+219 |             0.0,
+    |              ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:220:13
+    |
+220 |             0,
+    |             ^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+220 |             0.0,
+    |              ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:242:13
+    |
+242 |             0,
+    |             ^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+242 |             0.0,
+    |              ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:243:13
+    |
+243 |             0,
+    |             ^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+243 |             0.0,
+    |              ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:254:13
+    |
+254 |             60,
+    |             ^^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+254 |             60.0,
+    |               ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:277:13
+    |
+277 |             60,
+    |             ^^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+277 |             60.0,
+    |               ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:289:13
+    |
+289 |             -60,
+    |             ^^^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+289 |             -60.0,
+    |                ++
+
+error[E0308]: mismatched types
+   --> tests/houses.rs:312:13
+    |
+312 |             -60,
+    |             ^^^ expected `f64`, found integer
+    |
+help: use a float literal
+    |
+312 |             -60.0,
+    |                ++
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `turquet` (test "houses") due to 18 previous errors
+warning: build failed, waiting for other jobs to finish...
+warning: `turquet` (test "elliptic") generated 2 warnings (run `cargo fix --test "elliptic" -p turquet` to apply 2 suggestions)

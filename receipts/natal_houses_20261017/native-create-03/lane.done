@@ -1,0 +1,22 @@
+RESULT ok
+waited 33 frames
+waited 0 frames
+waited 4 frames
+waited 44 frames
+captured whole-sign
+waited 50 frames
+waited 88 frames
+captured equal-house
+captured equal-narrative
+captured house-receipt
+waited 0 frames
+captured compact-equal
+captured compact-whole
+capture whole-sign 2320x1520 digest=8421584a286a2973 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-03/whole-sign.png
+capture equal-house 2320x1520 digest=1bfc94334f719311 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-03/equal-house.png
+capture equal-narrative 2320x1520 digest=a4cf1d293fa7ce85 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-03/equal-narrative.png
+capture house-receipt 2320x1520 digest=cd88a95cd52c3785 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-03/house-receipt.png
+capture compact-equal 840x1520 digest=033c10a650614c54 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-03/compact-equal.png
+capture compact-whole 840x1520 digest=6e300db5449c4e29 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-03/compact-whole.png
+frames: 6 captured, 0 blank, 6 distinct digests
+presentation: 308 frames, 309 redraws, 1 unpresented redraws

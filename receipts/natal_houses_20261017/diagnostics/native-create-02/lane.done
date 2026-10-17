@@ -1,0 +1,32 @@
+RESULT fail
+waited 13 frames
+waited 0 frames
+waited 1 frames
+waited 0 frames
+FAIL: assert snap natal-count Eq '2': got '1'
+FAIL: assert snap natal-houses-count Eq '1': got '0'
+FAIL: assert text 'Whole Sign houses and ascendant': not on any surface
+captured whole-sign
+waited 12 frames
+FAIL: missing C4 mounted control natal-houses-equal
+FAIL: missing C4 mounted control natal-houses-equal
+FAIL: missing C4 mounted control natal-read
+FAIL: missing C4 mounted control natal-read
+waited 0 frames
+FAIL: assert snap natal-count Eq '3': got '1'
+FAIL: assert snap natal-houses-count Eq '2': got '0'
+captured equal-house
+captured equal-narrative
+captured house-receipt
+waited 0 frames
+captured compact-equal
+captured compact-whole
+capture whole-sign 2320x1520 digest=e2a86964c73ae93e file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-02/whole-sign.png
+capture equal-house 2320x1520 digest=59d05e6d848ee0a4 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-02/equal-house.png
+capture equal-narrative 2320x1520 digest=a9e1473c827c94d1 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-02/equal-narrative.png
+capture house-receipt 2320x1520 digest=ab358a4bb465a6f1 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-02/house-receipt.png
+capture compact-equal 840x1520 digest=5aacd47fca7e4803 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-02/compact-equal.png
+capture compact-whole 840x1520 digest=754290a9329c0238 file=/Users/markik/Code/testing/cleromancy/natal-houses-20261017/native-create-02/compact-whole.png
+frames: 6 captured, 0 blank, 6 distinct digests
+presentation: 113 frames, 114 redraws, 1 unpresented redraws
+FAIL: product completion: Natal scenario requires saved readings and reflections

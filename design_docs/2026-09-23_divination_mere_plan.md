@@ -1,12 +1,25 @@
-**Houses/ascendant extension (2026-10-17; in progress):** Mark selected
-Whole Sign and Equal House first. Turquet owns typed TT/UT1 horizon geometry;
-Cleromancy retains explicit system, original coordinates, Earth-rotation
-approximation, cusps and longitude-only planetary assignments in an optional
-versioned extension. Absent extensions preserve original natal v1 bytes and
-replay. Missing time/place and degenerate rising geometry explain unavailable
-results without inferred location or another system. The new numerical edition pins corrected Turquet `e2f65c0` immutably; earlier
-`4c27a6b` supplier/preflight results retain their identities. Software, native reopening
-and publication remain separate gates.
+**Houses and ascendant (2026-10-17; bounded qualification complete):**
+Cleromancy `ca562db` adds explicitly selected Whole Sign and Equal House
+receipts through immutable Turquet `e2f65c0`; planetary edition `30875f30` remains
+frozen. Ascendant, MC, cusps and longitude-only assignments replay from retained
+time/place and the declared UT1-as-UTC approximation. Missing inputs and
+degenerate geometry explain unavailable results without substitution.
+
+The [qualification receipt](../receipts/natal-houses-qualification_20261017.json)
+binds 139/188 product tests, four all-target configurations, portable-core
+49/50/51, and four native processes with thirteen reviewed originals.
+Both systems and the missing-place occasion reopen with exact natal/reflection
+values; two fresh catalogs retain all six subject/resource associations. The
+create UI's earlier cached catalog is scoped separately. All 945 prior product
+receipt paths and 31 prior Turquet receipt/vector paths remain exact. Earlier
+failed/preliminary trials retain their original identities.
+
+Mere main `34f7f08db` imports the same immutable core and passes its integrated
+215-library/nine-owner-parent gates after preserving incoming shared edits.
+The [evidence notes](../receipts/natal_houses_20261017/README.md) explain
+source identities, corrections, setup and scope. Exact UTC birth years remain
+1972–2098; Placidus, retrograde calculation, observed EOP, graphical unlock and
+shared browser-wall qualification remain separate work.
 
 **Current shared natal intake (2026-10-17; bounded qualification complete):**
 Cleromancy `a684361` consumes Mere `d03e367bd` and Dramatis `cf562f4`.
@@ -1288,3 +1301,5 @@ orientations and positions, and interpretations.
   frozen qualification, original captures and all earlier receipts unchanged.
 
 - 2026-10-16: Published-main Dramatis intake aligns the app and portable-core locks at `2f27f1a`. Source `7aeb758` passes 130/179 product tests (one intentional model probe ignored per suite), four all-target checks, portable 41/42/43 and desktop build. All 802 prior receipt paths and C7/C8 frozen verifiers remain exact. No import/product-source change, native recertification or unpublished natal-contract adoption is inferred. Publication is recorded separately.
+
+- 2026-10-17: Whole Sign and Equal House plus ascendant/MC are qualified on immutable Turquet e2f65c0 and consumer ca562db. Original natal edition and prior receipts remain exact. The dated house ledger owns source-bound software, thirteen native originals, corrected boundary/provenance findings and actual fresh-process reopening.

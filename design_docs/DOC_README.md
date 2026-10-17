@@ -251,3 +251,5 @@ C4/C5 and shared-wall acceptance remain separate.
 Bounded shared natal qualification (2026-10-17): the [divination plan](2026-09-23_divination_mere_plan.md) and [C8 natal receipt](../receipts/c8-natal-qualification_20261017.json) bind shared birth resources, exact natal inputs, software gates, native captures and offline reopening. Earlier C7/C8 receipts retain their original scope.
 
 The [hardened natal intake](../receipts/c8-natal-hardened-intake_20261017.json) records the actual-vault admission guard, unchanged history and source-bound consumer qualification on Mere d03e367bd.
+
+Bounded Whole Sign/Equal houses and ascendant: [qualification receipt](../receipts/natal-houses-qualification_20261017.json) and [evidence notes](../receipts/natal_houses_20261017/README.md). Numerical authority is Turquet; original natal receipts and the planetary edition retain their source identity.

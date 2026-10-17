@@ -1,0 +1,10 @@
+{
+  "resource": {
+    "domain": "personal-facts",
+    "id": "mere://personal-facts/birth/bbb65ab2715127a1835fb4bd70e78e25b243827f18254aa4ee4027c697ad43a7",
+    "revision": "bbb65ab2715127a1835fb4bd70e78e25b243827f18254aa4ee4027c697ad43a7"
+  },
+  "observed_index": 1,
+  "source": "actual accepted UI setup export",
+  "action": "mounted natal-birth button; no graph injection"
+}
