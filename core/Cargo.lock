@@ -197,7 +197,7 @@ dependencies = [
 [[package]]
 name = "chartulary"
 version = "0.2.2"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
 dependencies = [
  "muniment",
  "petgraph",
@@ -211,7 +211,7 @@ dependencies = [
 [[package]]
 name = "chirograph"
 version = "0.0.2"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
 dependencies = [
  "base64",
  "blake3",
@@ -220,6 +220,25 @@ dependencies = [
  "serde",
  "serde_json",
  "sha2",
+]
+
+[[package]]
+name = "chrono"
+version = "0.4.45"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1aa79e62e7697b8e29b513a68abacf485adcd1fe8284a4316c5ae868e6633327"
+dependencies = [
+ "num-traits",
+]
+
+[[package]]
+name = "chrono-tz"
+version = "0.10.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a6139a8597ed92cf816dfb33f5dd6cf0bb93a6adc938f11039f371bc5bcd26c3"
+dependencies = [
+ "chrono",
+ "phf",
 ]
 
 [[package]]
@@ -240,10 +259,15 @@ dependencies = [
  "blake3",
  "chartulary",
  "chirograph",
+ "chrono",
+ "chrono-tz",
+ "dramatis",
  "graphshell-client",
  "mere",
  "mere-alembic",
+ "mere-personal-facts",
  "muniment",
+ "personae",
  "pollster",
  "rand_core 0.6.4",
  "sceno",
@@ -267,7 +291,7 @@ checksum = "0c9ea0ac24bc397ab3c98583a3c9ba74fa56b09a4449bbe172b9b1ddb016027a"
 [[package]]
 name = "command-menu"
 version = "0.1.0"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
 dependencies = [
  "serde",
 ]
@@ -388,6 +412,18 @@ name = "downcast-rs"
 version = "2.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "117240f60069e65410b3ae1bb213295bd828f707b5bec6596a1afc8793ce0cbc"
+
+[[package]]
+name = "dramatis"
+version = "0.0.3"
+source = "git+https://github.com/merely-made/dramatis.git?branch=main#cf562f47f33ab0b6ad0db1c5ac3123775769979e"
+dependencies = [
+ "gaz",
+ "personae",
+ "serde",
+ "serde_json",
+ "uuid",
+]
 
 [[package]]
 name = "ed25519"
@@ -551,6 +587,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "gaz"
+version = "0.0.2"
+source = "git+https://github.com/merely-made/dramatis.git?branch=main#cf562f47f33ab0b6ad0db1c5ac3123775769979e"
+dependencies = [
+ "insigne",
+ "serde",
+ "uuid",
+]
+
+[[package]]
 name = "getrandom"
 version = "0.2.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -633,7 +679,7 @@ dependencies = [
 [[package]]
 name = "graphshell-client"
 version = "0.0.2"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
 dependencies = [
  "chirograph",
  "sceno",
@@ -846,7 +892,7 @@ dependencies = [
 [[package]]
 name = "insigne"
 version = "0.0.2"
-source = "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+source = "git+https://github.com/merely-made/dramatis.git?branch=main#cf562f47f33ab0b6ad0db1c5ac3123775769979e"
 dependencies = [
  "blake3",
  "ed25519-dalek",
@@ -955,7 +1001,7 @@ checksum = "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
 [[package]]
 name = "mere"
 version = "0.0.2"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
 dependencies = [
  "mere-forme",
  "mere-kernel",
@@ -967,7 +1013,7 @@ dependencies = [
 [[package]]
 name = "mere-alembic"
 version = "0.0.1"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
 dependencies = [
  "mere-kernel",
  "serde",
@@ -976,7 +1022,7 @@ dependencies = [
 [[package]]
 name = "mere-curation"
 version = "0.1.1"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
 dependencies = [
  "serde",
 ]
@@ -984,7 +1030,7 @@ dependencies = [
 [[package]]
 name = "mere-forme"
 version = "0.2.0"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
 dependencies = [
  "mere-curation",
  "serde",
@@ -996,7 +1042,7 @@ dependencies = [
 [[package]]
 name = "mere-kernel"
 version = "0.0.2"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
 dependencies = [
  "accesskit",
  "chartulary",
@@ -1018,6 +1064,20 @@ dependencies = [
  "url",
  "uuid",
  "web-time",
+]
+
+[[package]]
+name = "mere-personal-facts"
+version = "0.1.0"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
+dependencies = [
+ "blake3",
+ "chartulary",
+ "dramatis",
+ "gaz",
+ "mere-kernel",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
@@ -1059,7 +1119,7 @@ dependencies = [
 [[package]]
 name = "muniment"
 version = "0.1.2"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
 dependencies = [
  "async-trait",
  "blake3",
@@ -1168,7 +1228,7 @@ dependencies = [
 [[package]]
 name = "numen"
 version = "0.2.0"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
 dependencies = [
  "serde",
  "strum",
@@ -1226,7 +1286,7 @@ checksum = "9b4f627cb1b25917193a259e49bdad08f671f8d9708acfd5fe0a8c1455d87220"
 [[package]]
 name = "personae"
 version = "0.3.0"
-source = "git+https://github.com/merely-made/dramatis.git?branch=main#2f27f1a939aa2e046b78f7db18dcd8f81e0d7c59"
+source = "git+https://github.com/merely-made/dramatis.git?branch=main#cf562f47f33ab0b6ad0db1c5ac3123775769979e"
 dependencies = [
  "blake3",
  "chacha20poly1305",
@@ -1252,6 +1312,24 @@ dependencies = [
  "indexmap",
  "serde",
  "serde_derive",
+]
+
+[[package]]
+name = "phf"
+version = "0.12.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "913273894cec178f401a31ec4b656318d95473527be05c0752cc41cdc32be8b7"
+dependencies = [
+ "phf_shared",
+]
+
+[[package]]
+name = "phf_shared"
+version = "0.12.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "06005508882fb681fd97892ecff4b7fd0fee13ef1aa569f8695dae7ab9099981"
+dependencies = [
+ "siphasher",
 ]
 
 [[package]]
@@ -1506,7 +1584,7 @@ dependencies = [
 [[package]]
 name = "sceno"
 version = "0.0.5"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
 dependencies = [
  "serde",
  "serde_json",
@@ -1515,7 +1593,7 @@ dependencies = [
 [[package]]
 name = "scenograph"
 version = "0.0.4"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
 dependencies = [
  "mere-curation",
  "sceno",
@@ -1526,7 +1604,7 @@ dependencies = [
 [[package]]
 name = "scenotime"
 version = "0.0.4"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
 dependencies = [
  "sceno",
  "serde",
@@ -1536,7 +1614,7 @@ dependencies = [
 [[package]]
 name = "seiche"
 version = "0.0.6"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
 dependencies = [
  "euclid",
  "numen",
@@ -1610,7 +1688,7 @@ dependencies = [
 [[package]]
 name = "servitor"
 version = "0.0.2"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"
 dependencies = [
  "chartulary",
  "insigne",
@@ -1664,6 +1742,12 @@ name = "simdutf8"
 version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e3a9fe34e3e7a50316060351f37187a3f546bce95496156754b601a5fa71b76e"
+
+[[package]]
+name = "siphasher"
+version = "1.0.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "33f4fe9184a62d842c9ef383018f3306d8ba224fd9d836f56d7288308847c256"
 
 [[package]]
 name = "slab"
@@ -2237,4 +2321,4 @@ checksum = "29666d0abbfad1e3dc4dcf6144730dd3a3ab225bbbdac83319345b1b44ccfc1b"
 [[patch.unused]]
 name = "mere-proofs"
 version = "0.1.0"
-source = "git+https://github.com/merely-made/mere.git?branch=main#25cbe8106df3fd6431d83acd756ab6bcabbaba40"
+source = "git+https://github.com/merely-made/mere.git?branch=main#8498608cbdde726c46fc477c3cc582d6c359ed22"

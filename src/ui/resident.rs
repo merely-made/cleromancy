@@ -21,6 +21,7 @@ use super::worker::{WorkerUpdate, execute};
 use crate::{CleromancyHost, Consultation};
 
 pub(crate) struct ResidentConsultation {
+    personal: Option<djinn::personal_facts::PersonalFactsClient>,
     granted: Option<crate::granted_ambient::GrantedAmbient>,
     attachment: ReservoirAttachment,
     sessions: ProjectionSnapshot,
@@ -45,6 +46,7 @@ impl ResidentConsultation {
             .map_err(err)?;
         let graph_projection = attachment.client_mut().snapshot(graph).await.map_err(err)?;
         let mut client = Self {
+            personal: None,
             granted: None,
             attachment,
             sessions,
@@ -219,6 +221,16 @@ impl ResidentConsultation {
 
     pub async fn action(&mut self, action: ConsultationAction) -> Result<WorkerUpdate, String> {
         self.saved_notice = None;
+        if matches!(
+            &action,
+            ConsultationAction::RefreshBirthFacts
+                | ConsultationAction::CreateSubject { .. }
+                | ConsultationAction::SaveBirthFacts { .. }
+                | ConsultationAction::CreateNatal { .. }
+        ) {
+            return self.personal_action(action).await;
+        }
+
         match &action {
             ConsultationAction::ClearGrantedContext => {
                 if let Some(reader) = self.granted.take() {
@@ -303,6 +315,108 @@ impl ResidentConsultation {
         owner_update(&self.consultation()?, update).map_err(|message| {
             self.unavailable = true;
             message
+        })
+    }
+
+    async fn personal_action(
+        &mut self,
+        action: ConsultationAction,
+    ) -> Result<WorkerUpdate, String> {
+        let result = self.personal_action_inner(action).await;
+        match result {
+            Ok(value) => Ok(value),
+            Err(notice) => {
+                if let Some(client) = self.personal.take() {
+                    let _ = client.close().await;
+                }
+                Ok(WorkerUpdate::BirthFacts {
+                    catalog: None,
+                    notice,
+                })
+            },
+        }
+    }
+    async fn personal_action_inner(
+        &mut self,
+        action: ConsultationAction,
+    ) -> Result<WorkerUpdate, String> {
+        if self.personal.is_none() {
+            self.personal = Some(
+                djinn::personal_facts::PersonalFactsClient::open(
+                    &graphshell_endpoint::door::app_admission::configured_app_endpoint(),
+                    graphshell_endpoint::door::app_admission::AppId::new("cleromancy"),
+                )
+                .await?,
+            );
+        }
+        let client = self.personal.as_mut().unwrap();
+        match action {
+            ConsultationAction::RefreshBirthFacts => {},
+            ConsultationAction::CreateSubject { label } => {
+                client.create_contact(&label).await?;
+            },
+            ConsultationAction::SaveBirthFacts { facts } => {
+                client.save_birth(&facts).await?;
+            },
+            ConsultationAction::CreateNatal {
+                resource,
+                question,
+                fold,
+            } => {
+                let catalog = client.catalog().await?;
+                let birth=catalog.births.iter().find(|b|b.resource==resource).ok_or("Selected birth revision is no longer available from the admitted shared domain")?.clone();
+                let label = catalog
+                    .subjects
+                    .iter()
+                    .find(|s| s.subject == birth.facts.subject)
+                    .ok_or("Subject is unavailable")?
+                    .label
+                    .clone();
+                let now = std::time::SystemTime::now()
+                    .duration_since(std::time::UNIX_EPOCH)
+                    .map_err(err)?
+                    .as_millis() as u64;
+                let reading = crate::natal::NatalReading::new(
+                    catalog.persona,
+                    label,
+                    birth,
+                    question,
+                    fold,
+                    now,
+                    natal_nonce(),
+                )?;
+                self.refresh().await?;
+                let (mut candidate, edits) = self.candidate()?;
+                candidate
+                    .host_mut_candidate()
+                    .insert_natal_reading(&reading)
+                    .map_err(err)?;
+                self.commit(edits).await?;
+                self.refresh().await?;
+                let link = dramatis::resources::SubjectResourceAssociation::about(
+                    reading.birth.facts.subject.clone(),
+                    dramatis::resources::ResourceRef {
+                        domain: "divination".into(),
+                        id: format!("cleromancy://natal/{}", reading.id),
+                        revision: reading.id.clone(),
+                    },
+                );
+                if let Some(client) = self.personal.as_mut() {
+                    if let Err(error) = client.associate(&link).await {
+                        self.saved_notice = Some(format!(
+                            "Natal reading saved; shared subject link could not be saved: {error}"
+                        ));
+                    }
+                }
+                return Ok(WorkerUpdate::Catalog(
+                    self.consultation()?.catalog().map_err(err)?,
+                ));
+            },
+            _ => return Err("Unsupported shared birth action".into()),
+        }
+        Ok(WorkerUpdate::BirthFacts {
+            catalog: Some(client.catalog().await?),
+            notice: "Shared birth facts refreshed. Corrections create a new revision.".into(),
         })
     }
 
@@ -576,7 +690,10 @@ impl ResidentConsultation {
         }
     }
 
-    pub async fn close(self) -> Result<(), String> {
+    pub async fn close(mut self) -> Result<(), String> {
+        if let Some(client) = self.personal.take() {
+            let _ = client.close().await;
+        }
         self.attachment.close().await.map_err(err)
     }
 }
@@ -1150,4 +1267,11 @@ mod tests {
         assert!(verify_resource(hash, b"tampered").is_err());
         assert!(verify_resource(hash, b"").is_err());
     }
+}
+
+fn natal_nonce() -> String {
+    use rand_core::RngCore;
+    let mut bytes = [0u8; 16];
+    rand_core::OsRng.fill_bytes(&mut bytes);
+    bytes.iter().map(|b| format!("{b:02x}")).collect()
 }

@@ -215,6 +215,9 @@ impl NeighborhoodRuntime {
             .relationships
             .iter()
             .map(|r| GraphCanvasRelation {
+                link_key: None,
+                marks: Default::default(),
+                strength: 0.0,
                 id: r.disclosure.id.clone(),
                 from: r.disclosure.from_occurrence.clone(),
                 to: r.disclosure.to_occurrence.clone(),

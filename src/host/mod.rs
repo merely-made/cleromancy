@@ -42,12 +42,13 @@ mod ambient;
 mod cards;
 mod catalog;
 mod domain;
+mod inference;
+mod natal;
 #[cfg(not(feature = "portable-core"))]
 mod projection;
 mod records;
 mod replay;
 mod situation;
-mod inference;
 mod sky;
 mod spreads;
 mod summary;

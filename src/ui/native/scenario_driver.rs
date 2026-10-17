@@ -276,6 +276,25 @@ impl mesquite::Product for Product {
         }
         let ui = &ctx.runner.state().consultation;
         snapshot = snapshot
+            .with_field("natal-count", ui.catalog.natal_readings.len().to_string())
+            .with_field(
+                "natal-reflections",
+                ui.catalog.natal_reflections.len().to_string(),
+            )
+            .with_field(
+                "birth-count",
+                ui.birth_catalog
+                    .as_ref()
+                    .map_or(0, |c| c.births.len())
+                    .to_string(),
+            )
+            .with_field(
+                "subject-count",
+                ui.birth_catalog
+                    .as_ref()
+                    .map_or(0, |c| c.subjects.len())
+                    .to_string(),
+            )
             .with_field("product-busy", ui.status().is_busy().to_string())
             .with_field(
                 "ambient-memory",
@@ -460,6 +479,24 @@ impl mesquite::Product for Product {
         ctx: &mut ConsultationCtx<'_>,
         outcome: &taproot::Outcome,
     ) -> Result<(), String> {
+        if matches!(self.phase, Phase::NatalFirst | Phase::NatalReopen) {
+            let ui = &ctx.runner.state().consultation;
+            let ok = outcome.ok
+                && self.state.borrow().catalog_ready
+                && !ui.catalog.natal_readings.is_empty()
+                && !ui.catalog.natal_reflections.is_empty();
+            let receipt = serde_json::json!({"schema":"cleromancy.natal-native/v1","phase":self.phase,"ok":ok,"log":outcome.log,"readings":ui.catalog.natal_readings,"reflections":ui.catalog.natal_reflections,"shared":ui.birth_catalog});
+            std::fs::write(
+                self.dir.join("receipt.json"),
+                serde_json::to_vec_pretty(&receipt).map_err(|e| e.to_string())?,
+            )
+            .map_err(|e| e.to_string())?;
+            return if ok {
+                Ok(())
+            } else {
+                Err("Natal scenario requires saved readings and reflections".into())
+            };
+        }
         if let Some(context) = &ctx.runner.state().consultation.ambient.context {
             std::fs::write(self.dir.join("ambient.json"),serde_json::to_vec_pretty(&serde_json::json!({"view":context.view,"data":context.data,"memory":ctx.runner.state().consultation.catalog.ambient_memory,"ticks":ctx.runner.state().consultation.ambient.ticks,"error":ctx.runner.state().consultation.ambient.error})) .map_err(|e|e.to_string())?).map_err(|e|e.to_string())?;
         }
@@ -520,7 +557,26 @@ impl ScenarioDriver<'_, '_> {
             .or_else(|| line.strip_prefix("c8-control-"))
         {
             let (action, key) = command.split_once(' ').ok_or("C4 expects action and key")?;
-            let key = if key == "c8-saved-os" || key == "c8-saved-seed" {
+            let key = if key == "natal-latest-reflect" || key == "natal-latest-example" {
+                let r = self
+                    .ctx
+                    .runner
+                    .state()
+                    .consultation
+                    .catalog
+                    .natal_readings
+                    .first()
+                    .ok_or("no natal occasion")?;
+                format!(
+                    "natal-{}-{}",
+                    if key == "natal-latest-reflect" {
+                        "reflect"
+                    } else {
+                        "example"
+                    },
+                    r.id
+                )
+            } else if key == "c8-saved-os" || key == "c8-saved-seed" {
                 let label = if key == "c8-saved-os" {
                     "C8 operating-system roll"
                 } else {
@@ -653,6 +709,37 @@ impl ScenarioDriver<'_, '_> {
             return Ok(());
         }
         match line {
+            "natal-prepare-subject" => {
+                self.ctx.runner.update(|s| {
+                    s.consultation.natal_name =
+                        cambium::TextInput::new("Public synthetic natal subject")
+                });
+                Ok(())
+            },
+            "natal-prepare-birth" => {
+                self.ctx.runner.update(|s| {
+                    let ui = &mut s.consultation;
+                    ui.natal_date = cambium::TextInput::new("2000-01-01");
+                    ui.natal_time = cambium::TextInput::new("12:00:00");
+                    ui.natal_zone = cambium::TextInput::new("UTC");
+                    ui.natal_source =
+                        cambium::TextInput::new("Public synthetic fixture; no real birth data");
+                    ui.natal_question = cambium::TextInput::new(
+                        "Which themes can I reflect on in this synthetic natal occasion?",
+                    );
+                });
+                Ok(())
+            },
+            "natal-prepare-correction" => {
+                self.ctx
+                    .runner
+                    .update(|s| s.consultation.natal_time = cambium::TextInput::new("13:00:00"));
+                Ok(())
+            },
+            "natal-prepare-reflection" => {
+                self.ctx.runner.update(|s|s.consultation.natal_reflection=cambium::TextInput::new("Public natal fixture: an authored prompt offers a question, not a prediction."));
+                Ok(())
+            },
             "c8-prepare-reflection" => {
                 let detail = self
                     .ctx
@@ -1249,6 +1336,9 @@ impl ScenarioDriver<'_, '_> {
         self.ctx.runner.update(|state| {
             let ui = &mut state.consultation;
             match phase {
+                Phase::NatalFirst | Phase::NatalReopen => {
+                    error = Some("Use the explicit natal scenario actions".into());
+                },
                 Phase::First => match self.state.scenario_stage {
                     0 => {
                         ui.context_label = cambium::TextInput::new("Cleromancy and Turquet");
@@ -1292,6 +1382,7 @@ impl ScenarioDriver<'_, '_> {
                 "semantic consultation authored".to_string()
             },
             Phase::First => "semantic reflection authored".to_string(),
+            Phase::NatalFirst | Phase::NatalReopen => "natal scenario".into(),
             Phase::Reopen => "semantic recovered session selected".to_string(),
         });
         submit_pending(self.ctx.runner, self.state.worker.as_ref());

@@ -1,0 +1,21 @@
+wait 1800
+assert snap catalog-ready == true
+show-chart
+wait 1800
+assert snap natal-count == 1
+assert snap natal-reflections == 1
+c5-control-reveal natal-open
+settle 4
+c5-control-click natal-open
+wait 1800
+assert snap birth-count == 2
+assert snap subject-count == 1
+c5-control-reveal natal-latest-example
+settle 4
+capture natal-reopen
+assert text Public synthetic natal subject
+resize 420 760
+wait
+c5-control-reveal natal-latest-reflect
+settle 4
+capture compact-reopen

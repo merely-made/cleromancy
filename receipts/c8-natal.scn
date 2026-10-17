@@ -1,0 +1,54 @@
+wait 1800
+assert snap catalog-ready == true
+show-chart
+settle 6
+c5-control-reveal natal-open
+c5-control-click natal-open
+wait 1800
+assert snap product-busy == false
+natal-prepare-subject
+c5-control-reveal natal-create-subject
+settle 4
+c5-control-click natal-create-subject
+wait 1800
+assert snap subject-count == 1
+natal-prepare-birth
+c5-control-reveal natal-save-birth
+settle 4
+c5-control-click natal-save-birth
+wait 1800
+assert snap birth-count == 1
+capture saved-birth
+c5-control-reveal natal-read
+settle 4
+c5-control-click natal-read
+wait 1800
+assert snap natal-count == 1
+assert text Natal reading for Public synthetic natal subject
+c5-control-reveal natal-latest-example
+settle 4
+c5-control-click natal-latest-example
+settle 4
+capture reflection-example
+natal-prepare-reflection
+c5-control-reveal natal-latest-reflect
+settle 4
+c5-control-click natal-latest-reflect
+wait 1800
+assert snap natal-reflections == 1
+capture natal-reading
+natal-prepare-correction
+c5-control-reveal natal-save-birth
+settle 4
+c5-control-click natal-save-birth
+wait 1800
+assert snap birth-count == 2
+assert snap natal-count == 1
+resize 420 760
+wait
+c5-control-reveal natal-open
+settle 4
+capture compact-controls
+c5-control-reveal natal-latest-example
+settle 4
+capture compact-reading

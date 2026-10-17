@@ -41,6 +41,10 @@ pub use journal_policy::{
 #[serde(deny_unknown_fields)]
 pub struct ConsultationCatalog {
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub natal_readings: Vec<crate::natal::NatalReading>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub natal_reflections: Vec<crate::Reflection>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub ambient_memory: Vec<crate::ambient::MemorySummary>,
     pub contexts: Vec<ContextSnapshot>,
     pub fields: Vec<Field>,
@@ -193,6 +197,16 @@ impl<B: Backend> Consultation<B> {
             })
             .collect::<Result<Vec<_>, ConsultationError>>()?;
         Ok(ConsultationCatalog {
+            natal_readings: self.host.natal_readings()?,
+            natal_reflections: self
+                .host
+                .natal_readings()?
+                .iter()
+                .map(|r| self.host.natal_reflections(&r.id))
+                .collect::<Result<Vec<_>, _>>()?
+                .into_iter()
+                .flatten()
+                .collect(),
             ambient_memory: self.host.ambient_memories()?,
             contexts: self.host.contexts()?,
             fields: self.host.fields()?,

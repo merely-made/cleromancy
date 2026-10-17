@@ -192,3 +192,12 @@ mod tests {
         assert_eq!(pack.digest(), super::astrology_pack().digest());
     }
 }
+
+/// Authored natal interpretation, distinct from the preserved moment-reading edition.
+pub fn natal_pack() -> &'static AstrologyPromptPack {
+    static PACK: OnceLock<AstrologyPromptPack> = OnceLock::new();
+    PACK.get_or_init(|| {
+        serde_json::from_str(include_str!("content/astrology-natal-v1.json"))
+            .expect("bundled natal prompts")
+    })
+}

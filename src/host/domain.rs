@@ -16,7 +16,8 @@ use crate::{
     ThreeCardSpread,
 };
 
-const DOMAIN_FACETS: [&str; 17] = [
+const DOMAIN_FACETS: [&str; 18] = [
+    crate::natal::NATAL_FACET,
     crate::situation::SITUATION_FACET,
     crate::inference::INFERENCE_FACET,
     AMBIENT_VIEW_FACET,
@@ -99,6 +100,7 @@ impl<B: Backend> CleromancyHost<B> {
 
         // Canonical enumeration decodes every value and verifies its address,
         // including records not referenced by a current reading session.
+        self.natal_readings()?;
         self.contexts()?;
         self.fields()?;
         self.spread_templates()?;
@@ -170,7 +172,13 @@ impl<B: Backend> CleromancyHost<B> {
         )?;
         for reflection in reflections {
             reflection.validate()?;
-            self.reading_session_for_id(&reflection.session_id)?;
+            if !self
+                .natal_readings()?
+                .iter()
+                .any(|r| r.id == reflection.session_id)
+            {
+                self.reading_session_for_id(&reflection.session_id)?;
+            }
         }
         let concurrences = self.canonical_facet_values(
             CONCURRENCE_FACET,
