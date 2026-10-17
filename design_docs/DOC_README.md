@@ -253,3 +253,5 @@ Bounded shared natal qualification (2026-10-17): the [divination plan](2026-09-2
 The [hardened natal intake](../receipts/c8-natal-hardened-intake_20261017.json) records the actual-vault admission guard, unchanged history and source-bound consumer qualification on Mere d03e367bd.
 
 Bounded Whole Sign/Equal houses and ascendant: [qualification receipt](../receipts/natal-houses-qualification_20261017.json) and [evidence notes](../receipts/natal_houses_20261017/README.md). Numerical authority is Turquet; original natal receipts and the planetary edition retain their source identity.
+
+Bounded natal motion, observed Earth orientation and Placidus: [plan](2026-10-17_natal_cap_plan.md), [qualification ledger](../receipts/natal-cap-qualification_20261017.json), and [evidence notes](../receipts/natal_cap_20261017/README.md). Earlier planetary and house editions remain immutable.

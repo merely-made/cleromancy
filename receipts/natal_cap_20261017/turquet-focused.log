@@ -1,0 +1,184 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.27
+   Compiling quote v1.0.47
+   Compiling lexical-util v1.0.7
+   Compiling serde_core v1.0.229
+   Compiling autocfg v1.5.1
+   Compiling libm v0.2.16
+   Compiling lexical-parse-integer v1.0.6
+   Compiling num-traits v0.2.19
+   Compiling heck v0.5.0
+   Compiling serde v1.0.229
+   Compiling syn v2.0.119
+   Compiling syn v3.0.9
+   Compiling lexical-parse-float v1.0.6
+   Compiling lexical-core v1.0.6
+   Compiling web-time v1.1.0
+   Compiling sofars v0.6.1
+   Compiling snafu-derive v0.9.2
+   Compiling serde_derive v1.0.229
+   Compiling snafu v0.9.2
+   Compiling hifitime v4.3.1
+   Compiling turquet v0.17.0 (/Users/markik/Code/repos/turquet)
+warning: unnecessary parentheses around block return value
+   --> src/lunar.rs:823:5
+    |
+823 |     (2451565.1619 + 27.212220817 * k + T * T * (0.0002762 + T * (0.000000021 - T * 0.000000000088))
+    |     ^
+...
+842 |         + 0.0003 * ((2.0 * (M - D)).sin() + (2.0 * D_times_2 - M).sin() + V.sin() + P.sin()))
+    |                                                                                             ^
+    |
+    = note: `#[warn(unused_parens)]` (part of `#[warn(unused)]`) on by default
+help: remove these parentheses
+    |
+823 ~     2451565.1619 + 27.212220817 * k + T * T * (0.0002762 + T * (0.000000021 - T * 0.000000000088))
+824 |         - 0.4721 * M1.sin()
+...
+841 |         + 0.0004 * (D_times_2 - M + M1).sin()
+842 ~         + 0.0003 * ((2.0 * (M - D)).sin() + (2.0 * D_times_2 - M).sin() + V.sin() + P.sin())
+    |
+
+warning: unnecessary parentheses around match arm expression
+   --> src/planet/jupiter/moon.rs:114:22
+    |
+114 |         &Moon::Io => (5.9057 - 0.0244 * (2.0 * (u1 - u2)).cos()),
+    |                      ^                                         ^
+    |
+help: remove these parentheses
+    |
+114 -         &Moon::Io => (5.9057 - 0.0244 * (2.0 * (u1 - u2)).cos()),
+114 +         &Moon::Io => 5.9057 - 0.0244 * (2.0 * (u1 - u2)).cos(),
+    |
+
+warning: unnecessary parentheses around match arm expression
+   --> src/planet/jupiter/moon.rs:115:26
+    |
+115 |         &Moon::Europa => (9.3966 - 0.0882 * (2.0 * (u2 - u3)).cos()),
+    |                          ^                                         ^
+    |
+help: remove these parentheses
+    |
+115 -         &Moon::Europa => (9.3966 - 0.0882 * (2.0 * (u2 - u3)).cos()),
+115 +         &Moon::Europa => 9.3966 - 0.0882 * (2.0 * (u2 - u3)).cos(),
+    |
+
+warning: unnecessary parentheses around match arm expression
+   --> src/planet/jupiter/moon.rs:116:28
+    |
+116 |         &Moon::Ganymede => (14.9883 - 0.0216 * G.cos()),
+    |                            ^                          ^
+    |
+help: remove these parentheses
+    |
+116 -         &Moon::Ganymede => (14.9883 - 0.0216 * G.cos()),
+116 +         &Moon::Ganymede => 14.9883 - 0.0216 * G.cos(),
+    |
+
+warning: unnecessary parentheses around match arm expression
+   --> src/planet/jupiter/moon.rs:117:28
+    |
+117 |         &Moon::Callisto => (26.3627 - 0.1939 * H.cos()),
+    |                            ^                          ^
+    |
+help: remove these parentheses
+    |
+117 -         &Moon::Callisto => (26.3627 - 0.1939 * H.cos()),
+117 +         &Moon::Callisto => 26.3627 - 0.1939 * H.cos(),
+    |
+
+warning: unnecessary parentheses around type
+   --> src/time.rs:218:55
+    |
+218 | pub fn is_leap_year(year: i16, cal_type: &CalType) -> (bool) {
+    |                                                       ^    ^
+    |
+help: remove these parentheses
+    |
+218 - pub fn is_leap_year(year: i16, cal_type: &CalType) -> (bool) {
+218 + pub fn is_leap_year(year: i16, cal_type: &CalType) -> bool {
+    |
+
+warning: `turquet` (lib) generated 6 warnings (run `cargo fix --lib -p turquet` to apply 6 suggestions)
+warning: panic message contains unused formatting placeholders
+  --> tests/houses.rs:27:21
+   |
+27 |                 "JD {ut1}, lat {lat}, lon {lon}: {actual} vs {expected} ({error} deg)"
+   |                     ^^^^^      ^^^^^      ^^^^^  ^^^^^^^^    ^^^^^^^^^^  ^^^^^^^
+   |
+   = note: this message is not used as a format string when given without arguments, but will be in Rust 2021
+   = note: for more information, see <https://doc.rust-lang.org/edition-guide/rust-2021/panic-macro-consistency.html>
+   = note: `#[warn(non_fmt_panics)]` (part of `#[warn(rust_2021_compatibility)]`) on by default
+help: add the missing arguments
+   |
+27 |                 "JD {ut1}, lat {lat}, lon {lon}: {actual} vs {expected} ({error} deg)", ...
+   |                                                                                       +++++
+help: or add a "{}" format string to use the message literally
+   |
+27 |                 "{}", "JD {ut1}, lat {lat}, lon {lon}: {actual} vs {expected} ({error} deg)"
+   |                 +++++
+
+warning: panic message contains unused formatting placeholders
+   --> tests/houses.rs:114:46
+    |
+114 |                 assert!(error.abs() < 1e-8, "{system:?}: {error}");
+    |                                              ^^^^^^^^^^  ^^^^^^^
+    |
+    = note: this message is not used as a format string when given without arguments, but will be in Rust 2021
+    = note: for more information, see <https://doc.rust-lang.org/edition-guide/rust-2021/panic-macro-consistency.html>
+help: add the missing arguments
+    |
+114 |                 assert!(error.abs() < 1e-8, "{system:?}: {error}", ...);
+    |                                                                  +++++
+help: or add a "{}" format string to use the message literally
+    |
+114 |                 assert!(error.abs() < 1e-8, "{}", "{system:?}: {error}");
+    |                                             +++++
+
+warning: `turquet` (test "houses") generated 2 warnings (run `cargo fix --test "houses" -p turquet` to apply 2 suggestions)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.06s
+     Running tests/eop.rs (target/build/debug/deps/eop-90c5a0bcddbf63ab)
+
+running 9 tests
+test single_knot_and_caller_formal_errors_are_retained ... ok
+test interpolates_daily_observations_and_implements_existing_provider ... ok
+test retains_source_final_b_values_units_and_identity ... ok
+test refuses_gaps_and_suspect_dut1_jumps_without_losing_knots ... ok
+test leap_interval_is_refused_but_exact_observations_on_both_sides_work ... ok
+test no_extrapolation_even_just_outside_endpoints ... ok
+test rejects_predictions_missing_b_and_bad_fixed_columns ... ok
+test rejects_empty_identity_empty_series_duplicates_and_reversed_samples ... ok
+test validates_bounds_and_rejects_overflowing_tt ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/houses.rs (target/build/debug/deps/houses-254c8c89a7c0121d)
+
+running 5 tests
+test observed_nonzero_polar_motion_uses_sofa_local_meridian_and_preserves_eop ... FAILED
+test independent_swiss_tropical_vectors ... ok
+test swiss_placidus_errors_are_explicit_without_fallback ... ok
+test independent_swiss_placidus_vectors_and_assignment ... ok
+test observed_zero_polar_motion_agrees_with_legacy_geometry ... FAILED
+
+failures:
+
+---- observed_nonzero_polar_motion_uses_sofa_local_meridian_and_preserves_eop stdout ----
+
+thread 'observed_nonzero_polar_motion_uses_sofa_local_meridian_and_preserves_eop' (40706094) panicked at tests/houses.rs:157:17:
+assertion failed: (a.radians() - b.radians()).abs() < 1e-11
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- observed_zero_polar_motion_agrees_with_legacy_geometry stdout ----
+
+thread 'observed_zero_polar_motion_agrees_with_legacy_geometry' (40706095) panicked at tests/houses.rs:114:17:
+{system:?}: {error}
+
+
+failures:
+    observed_nonzero_polar_motion_uses_sofa_local_meridian_and_preserves_eop
+    observed_zero_polar_motion_agrees_with_legacy_geometry
+
+test result: FAILED. 3 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 36.85s
+
+error: test failed, to rerun pass `--test houses`

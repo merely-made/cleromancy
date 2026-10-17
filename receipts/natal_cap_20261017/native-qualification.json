@@ -1,0 +1,22 @@
+{
+  "source": "da495cfc75b2ee6bbb9476c8c03386e9057c36d3",
+  "binary_sha256": "9abef3dc97cd831a6f7f1b7223d5152e637223821e5d37da151bdf522c3b1fad",
+  "runs": [
+    "native-setup-01",
+    "native-create-01",
+    "native-reopen-01",
+    "native-polar-01",
+    "native-reopen-final-01"
+  ],
+  "accepted_originals_reviewed": 22,
+  "exact_readings_and_reflections_after_two_staged_fresh_reopenings": true,
+  "shared_births_and_subjects_exact": true,
+  "all_four_natal_subject_resource_associations_present": true,
+  "bounds": [
+    "Public synthetic fixture; real encrypted terminal unlock",
+    "Outbound IP blocked in all five processes; no model configured",
+    "Creation UI shared-association cache is not a full fresh shared catalog; only saved birth/subject values and staged reading/reflection exactness are claimed",
+    "No full-database byte equality, performance, graphical unlock, browser wall or release renewal claim",
+    "Some captures begin at section/viewport edge and show lower rows by scrolling"
+  ]
+}

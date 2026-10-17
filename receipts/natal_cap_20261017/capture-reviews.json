@@ -1,0 +1,222 @@
+[
+  {
+    "path": "native-setup-01/missing-place-motion.png",
+    "sha256": "ec9dd2262655d95b37a1d12d0262d821aad4c85ff53ed8ee351a2bc93670ae0e",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Signed rates and direct/retrograde labels readable, including Saturn retrograde; near-station sampling/rounding policy readable. Observed captures retain explicit DUT1 and polar-motion values."
+  },
+  {
+    "path": "native-setup-01/missing-place.png",
+    "sha256": "9d93b2ea00cbf7fda0c402cd07545afaf64a1b48ebc72c607f1b06774b16273f",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Missing coordinates explained without invented houses; motion remains available. Motion capture includes Saturn retrograde."
+  },
+  {
+    "path": "native-setup-01/saved-placed-revision.png",
+    "sha256": "9238af373e485cba6c6bcc4bc726ca1d957366873bdd94a0c484817897ef8ed3",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Reviewed original: readable selected facts; lower content continues by scrolling."
+  },
+  {
+    "path": "native-create-01/compact-motion.png",
+    "sha256": "beca4bba83cf6a1d665fbf828be2e57b5ca0b1623ee9a8c3caf0aa57163a9be2",
+    "physical_pixels": [
+      840,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Signed rates and direct/retrograde labels readable, including Saturn retrograde; near-station sampling/rounding policy readable. Observed captures retain explicit DUT1 and polar-motion values."
+  },
+  {
+    "path": "native-create-01/compact-placidus.png",
+    "sha256": "ea5536e34439f7b408ffb7d6de785c4254ea2ec7652c38bc8db890a2419da7a2",
+    "physical_pixels": [
+      840,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Placidus ascendant/MC and unequal cusp rows readable. Observed captures disclose retained source hash and coverage. Compact text and hashes wrap; lower rows scroll."
+  },
+  {
+    "path": "native-create-01/motion-wide.png",
+    "sha256": "6fac6f9cbd4b18e50c9ec283d50525ab66e908297d8243a9fbca508633588cee",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Signed rates and direct/retrograde labels readable, including Saturn retrograde; near-station sampling/rounding policy readable. Observed captures retain explicit DUT1 and polar-motion values."
+  },
+  {
+    "path": "native-create-01/observed-motion.png",
+    "sha256": "de12f40a6a7ec008d111e2d7fdceab7793537ed2054c034d3d85019033c89009",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Signed rates and direct/retrograde labels readable, including Saturn retrograde; near-station sampling/rounding policy readable. Observed captures retain explicit DUT1 and polar-motion values."
+  },
+  {
+    "path": "native-create-01/placidus-approximate.png",
+    "sha256": "ab2ff4acd39d653f6582e2aa61f294dd25e7c02a518e1e5fd5b22c76008e5120",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Placidus ascendant/MC and unequal cusp rows readable. Observed captures disclose retained source hash and coverage. Compact text and hashes wrap; lower rows scroll."
+  },
+  {
+    "path": "native-create-01/placidus-observed.png",
+    "sha256": "7f130e5ad60e99cded61fd9ca79c3f73ab46cac1e3b5b861f8bdda7fb20ece98",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Placidus ascendant/MC and unequal cusp rows readable. Observed captures disclose retained source hash and coverage. Compact text and hashes wrap; lower rows scroll."
+  },
+  {
+    "path": "native-create-01/supplement-provenance.png",
+    "sha256": "45faa85c8b702a236eaef2f35d337bd270a3f40b98e55edaaab6cb929ff9efc3",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Supplement method and immutable supplier identity readable with original edition distinction; source text and hash retained in the receipt."
+  },
+  {
+    "path": "native-reopen-01/reopen-approximate.png",
+    "sha256": "f7010bb08b13a388ca332219a88f38cb99e94901191e05ab98295ae3619d6da2",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Reviewed original: readable selected facts; lower content continues by scrolling."
+  },
+  {
+    "path": "native-reopen-01/reopen-observed-motion.png",
+    "sha256": "aca9834478e1072f5da1d37d932ce6fa9a39542640c73a9cea8af58e23fbdc12",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Signed rates and direct/retrograde labels readable, including Saturn retrograde; near-station sampling/rounding policy readable. Observed captures retain explicit DUT1 and polar-motion values."
+  },
+  {
+    "path": "native-reopen-01/reopen-placidus.png",
+    "sha256": "ae7bec84fe036a1fd4c64d65ee431e014391faffd40983d5bbb900b62b3b6e10",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Placidus ascendant/MC and unequal cusp rows readable. Observed captures disclose retained source hash and coverage. Compact text and hashes wrap; lower rows scroll."
+  },
+  {
+    "path": "native-reopen-01/reopen-shared-facts.png",
+    "sha256": "324645036fb0dd1fb7f68e0357310a5dc72646344471e2f41dd6021aa779e923",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Fresh shared facts authoring controls visible; exact saved resource values verified separately. This crop does not show every selector at once."
+  },
+  {
+    "path": "native-polar-01/compact-polar-unavailable.png",
+    "sha256": "cb662d4f44b8797b1a9aacfcc00a113e5a00a3034cdbed84e52c8ac9280b19a2",
+    "physical_pixels": [
+      840,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Placidus unavailable explained with no alternative system substituted; wide/compact text and reflection controls readable."
+  },
+  {
+    "path": "native-polar-01/polar-motion.png",
+    "sha256": "450b7dabf299c3784a44f54ce0d625c86d1eeb840eb5198311ae8f2f5938ddb1",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Signed rates and direct/retrograde labels readable, including Saturn retrograde; near-station sampling/rounding policy readable. Observed captures retain explicit DUT1 and polar-motion values."
+  },
+  {
+    "path": "native-polar-01/polar-unavailable.png",
+    "sha256": "432585e4e478c99c17a8a281f0b30c500cffda90fedcfb9748cc9aaef97ed8f6",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Placidus unavailable explained with no alternative system substituted; wide/compact text and reflection controls readable."
+  },
+  {
+    "path": "native-reopen-final-01/reopen-approximate.png",
+    "sha256": "8dae44bad8b85a18836e66a70b135244975533bbca800ad70bc61e1efc4cbc45",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Reviewed original: readable selected facts; lower content continues by scrolling."
+  },
+  {
+    "path": "native-reopen-final-01/reopen-observed-motion.png",
+    "sha256": "601edc12b9f08c7fad5059a509b35156c5e083c0c0368fe0dd725f5f4911428b",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Signed rates and direct/retrograde labels readable, including Saturn retrograde; near-station sampling/rounding policy readable. Observed captures retain explicit DUT1 and polar-motion values."
+  },
+  {
+    "path": "native-reopen-final-01/reopen-placidus.png",
+    "sha256": "455de8ba8cae84f9060b8b3ca53e3f054face82f0ff3db110600ec51e7be32c5",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Placidus ascendant/MC and unequal cusp rows readable. Observed captures disclose retained source hash and coverage. Compact text and hashes wrap; lower rows scroll."
+  },
+  {
+    "path": "native-reopen-final-01/reopen-polar-unavailable.png",
+    "sha256": "ece6c67583090f4d6a21401104fea42a90a4cf62a65a017f8c9380b501803d18",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Placidus unavailable explained with no alternative system substituted; wide/compact text and reflection controls readable."
+  },
+  {
+    "path": "native-reopen-final-01/reopen-shared-facts.png",
+    "sha256": "2865c59d121eab8e141cc5859c913f4089c124fc34217ef036e689c64a688d49",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Fresh shared facts authoring controls visible; exact saved resource values verified separately. This crop does not show every selector at once."
+  }
+]

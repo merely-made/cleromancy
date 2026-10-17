@@ -1,0 +1,95 @@
+    Blocking waiting for file lock on build directory
+   Compiling turquet v0.17.0 (/Users/markik/Code/repos/turquet)
+warning: unnecessary parentheses around block return value
+   --> src/lunar.rs:823:5
+    |
+823 |     (2451565.1619 + 27.212220817 * k + T * T * (0.0002762 + T * (0.000000021 - T * 0.000000000088))
+    |     ^
+...
+842 |         + 0.0003 * ((2.0 * (M - D)).sin() + (2.0 * D_times_2 - M).sin() + V.sin() + P.sin()))
+    |                                                                                             ^
+    |
+    = note: `#[warn(unused_parens)]` (part of `#[warn(unused)]`) on by default
+help: remove these parentheses
+    |
+823 ~     2451565.1619 + 27.212220817 * k + T * T * (0.0002762 + T * (0.000000021 - T * 0.000000000088))
+824 |         - 0.4721 * M1.sin()
+...
+841 |         + 0.0004 * (D_times_2 - M + M1).sin()
+842 ~         + 0.0003 * ((2.0 * (M - D)).sin() + (2.0 * D_times_2 - M).sin() + V.sin() + P.sin())
+    |
+
+warning: unnecessary parentheses around match arm expression
+   --> src/planet/jupiter/moon.rs:114:22
+    |
+114 |         &Moon::Io => (5.9057 - 0.0244 * (2.0 * (u1 - u2)).cos()),
+    |                      ^                                         ^
+    |
+help: remove these parentheses
+    |
+114 -         &Moon::Io => (5.9057 - 0.0244 * (2.0 * (u1 - u2)).cos()),
+114 +         &Moon::Io => 5.9057 - 0.0244 * (2.0 * (u1 - u2)).cos(),
+    |
+
+warning: unnecessary parentheses around match arm expression
+   --> src/planet/jupiter/moon.rs:115:26
+    |
+115 |         &Moon::Europa => (9.3966 - 0.0882 * (2.0 * (u2 - u3)).cos()),
+    |                          ^                                         ^
+    |
+help: remove these parentheses
+    |
+115 -         &Moon::Europa => (9.3966 - 0.0882 * (2.0 * (u2 - u3)).cos()),
+115 +         &Moon::Europa => 9.3966 - 0.0882 * (2.0 * (u2 - u3)).cos(),
+    |
+
+warning: unnecessary parentheses around match arm expression
+   --> src/planet/jupiter/moon.rs:116:28
+    |
+116 |         &Moon::Ganymede => (14.9883 - 0.0216 * G.cos()),
+    |                            ^                          ^
+    |
+help: remove these parentheses
+    |
+116 -         &Moon::Ganymede => (14.9883 - 0.0216 * G.cos()),
+116 +         &Moon::Ganymede => 14.9883 - 0.0216 * G.cos(),
+    |
+
+warning: unnecessary parentheses around match arm expression
+   --> src/planet/jupiter/moon.rs:117:28
+    |
+117 |         &Moon::Callisto => (26.3627 - 0.1939 * H.cos()),
+    |                            ^                          ^
+    |
+help: remove these parentheses
+    |
+117 -         &Moon::Callisto => (26.3627 - 0.1939 * H.cos()),
+117 +         &Moon::Callisto => 26.3627 - 0.1939 * H.cos(),
+    |
+
+warning: unnecessary parentheses around type
+   --> src/time.rs:218:55
+    |
+218 | pub fn is_leap_year(year: i16, cal_type: &CalType) -> (bool) {
+    |                                                       ^    ^
+    |
+help: remove these parentheses
+    |
+218 - pub fn is_leap_year(year: i16, cal_type: &CalType) -> (bool) {
+218 + pub fn is_leap_year(year: i16, cal_type: &CalType) -> bool {
+    |
+
+warning: `turquet` (lib) generated 6 warnings (run `cargo fix --lib -p turquet` to apply 6 suggestions)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.20s
+     Running tests/houses.rs (target/build/debug/deps/houses-254c8c89a7c0121d)
+
+running 6 tests
+test independent_swiss_tropical_vectors ... ok
+test observed_zero_at_j2000_and_corrected_polar_boundary ... ok
+test swiss_placidus_errors_are_explicit_without_fallback ... ok
+test observed_nonzero_polar_motion_rotates_zenith_and_preserves_eop ... ok
+test observed_zero_polar_motion_agrees_with_legacy_geometry ... ok
+test independent_swiss_placidus_vectors_and_assignment ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 10.22s
+

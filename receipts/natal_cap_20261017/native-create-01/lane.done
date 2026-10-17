@@ -1,0 +1,26 @@
+RESULT ok
+waited 64 frames
+waited 0 frames
+waited 16 frames
+waited 203 frames
+captured placidus-approximate
+captured motion-wide
+waited 220 frames
+waited 378 frames
+captured observed-motion
+captured placidus-observed
+captured supplement-provenance
+waited 0 frames
+captured compact-placidus
+captured compact-motion
+waited 0 frames
+waited 84 frames
+capture placidus-approximate 2320x1520 digest=0b34315b0a84a842 file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-create-01/placidus-approximate.png
+capture motion-wide 2320x1520 digest=3fa3ba00a9025394 file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-create-01/motion-wide.png
+capture observed-motion 2320x1520 digest=a97a4379a33d2980 file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-create-01/observed-motion.png
+capture placidus-observed 2320x1520 digest=bb546a6ba5b37ee4 file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-create-01/placidus-observed.png
+capture supplement-provenance 2320x1520 digest=36db0e222ee886c9 file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-create-01/supplement-provenance.png
+capture compact-placidus 840x1520 digest=00223377549d4ae3 file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-create-01/compact-placidus.png
+capture compact-motion 840x1520 digest=d8de9298fa2efc23 file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-create-01/compact-motion.png
+frames: 7 captured, 0 blank, 7 distinct digests
+presentation: 1060 frames, 1061 redraws, 1 unpresented redraws

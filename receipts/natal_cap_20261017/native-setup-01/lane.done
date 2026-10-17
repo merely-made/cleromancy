@@ -1,0 +1,16 @@
+RESULT ok
+waited 8 frames
+waited 2 frames
+waited 0 frames
+waited 0 frames
+waited 56 frames
+captured missing-place-motion
+captured missing-place
+waited 85 frames
+waited 22 frames
+captured saved-placed-revision
+capture missing-place-motion 2320x1520 digest=f50fc60fbe12e15b file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-setup-01/missing-place-motion.png
+capture missing-place 2320x1520 digest=c92d0db65c234236 file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-setup-01/missing-place.png
+capture saved-placed-revision 2320x1520 digest=7a0e03cd1ad82068 file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-setup-01/saved-placed-revision.png
+frames: 3 captured, 0 blank, 3 distinct digests
+presentation: 236 frames, 237 redraws, 1 unpresented redraws

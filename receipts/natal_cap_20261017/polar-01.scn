@@ -1,0 +1,32 @@
+wait 1800
+assert snap catalog-ready == true
+show-chart
+wait 1800
+assert snap natal-count == 3
+c5-control-reveal natal-open
+c5-control-key natal-open
+wait 1800
+assert snap birth-count == 3
+natal-prepare-birth
+c5-control-reveal natal-birth-1
+c5-control-key natal-birth-1
+c5-control-reveal natal-houses-placidus
+c5-control-key natal-houses-placidus
+c5-control-reveal natal-read
+c5-control-key natal-read
+wait 1800
+assert snap natal-count == 4
+assert snap natal-supplements == 4
+assert snap natal-placidus == 2
+reveal class natal-houses
+settle 4
+assert text No alternate house system was substituted
+capture polar-unavailable
+reveal class natal-motion
+settle 4
+capture polar-motion
+resize 420 760
+wait
+reveal class natal-houses
+settle 4
+capture compact-polar-unavailable

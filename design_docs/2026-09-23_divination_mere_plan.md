@@ -1,3 +1,15 @@
+**Natal cap (2026-10-17; bounded qualification complete):** signed direct,
+retrograde and near-station motion, retained observed Earth orientation and
+explicit Placidus are qualified at product `da495cf` with Turquet `8e3755bb`.
+145/194 product tests, core 55/56/57, four all-target checks and a desktop build
+pass. Five real native processes and 22 reviewed originals preserve four readings
+and two reflections across staged fresh offline reopening. The original planetary
+and Whole Sign/Equal editions stay pinned separately; all 1046 earlier product
+evidence files remain exact. [Ledger](../receipts/natal-cap-qualification_20261017.json)
+and [evidence notes](../receipts/natal_cap_20261017/README.md) bind the independent
+review fixes, exact EOP inputs, polar refusal and source-bound owner qualification.
+Shared/platform/browser/release receipts retain their own scope.
+
 **Houses and ascendant (2026-10-17; bounded qualification complete):**
 Cleromancy `ca562db` adds explicitly selected Whole Sign and Equal House
 receipts through immutable Turquet `e2f65c0`; planetary edition `30875f30` remains
@@ -1303,3 +1315,5 @@ orientations and positions, and interpretations.
 - 2026-10-16: Published-main Dramatis intake aligns the app and portable-core locks at `2f27f1a`. Source `7aeb758` passes 130/179 product tests (one intentional model probe ignored per suite), four all-target checks, portable 41/42/43 and desktop build. All 802 prior receipt paths and C7/C8 frozen verifiers remain exact. No import/product-source change, native recertification or unpublished natal-contract adoption is inferred. Publication is recorded separately.
 
 - 2026-10-17: Whole Sign and Equal House plus ascendant/MC are qualified on immutable Turquet e2f65c0 and consumer ca562db. Original natal edition and prior receipts remain exact. The dated house ledger owns source-bound software, thirteen native originals, corrected boundary/provenance findings and actual fresh-process reopening.
+
+- 2026-10-17: Natal cap source `da495cf` qualifies motion, explicit observed EOP and Placidus with five native processes, 22 reviewed originals and exact staged reopening. Earlier numerical editions and evidence remain intact. The dated cap ledger owns the bounded software, owner and native scopes.

@@ -1,0 +1,14 @@
+RESULT ok
+waited 327 frames
+waited 0 frames
+waited 115 frames
+waited 563 frames
+captured polar-unavailable
+captured polar-motion
+waited 0 frames
+captured compact-polar-unavailable
+capture polar-unavailable 2320x1520 digest=231caedafdedcbaa file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-polar-01/polar-unavailable.png
+capture polar-motion 2320x1520 digest=762bef4654dccd14 file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-polar-01/polar-motion.png
+capture compact-polar-unavailable 840x1520 digest=2ef509e1e783ac7e file=/Users/markik/Code/testing/cleromancy/natal-cap-20261017/native-polar-01/compact-polar-unavailable.png
+frames: 3 captured, 0 blank, 3 distinct digests
+presentation: 1050 frames, 1051 redraws, 1 unpresented redraws
