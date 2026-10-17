@@ -170,13 +170,15 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
             .attr("data-key", "natal-read"),
         ));
     }
+    let form = std::mem::take(&mut views);
     for reading in &ui.catalog.natal_readings {
         let id = reading.id.clone();
         views.push(Box::new(
             button(
                 format!(
                     "Open natal occasion for {} · {}",
-                    reading.subject_label, reading.created_at_ms
+                    reading.subject_label,
+                    crate::situation::utc_label(reading.created_at_ms)
                 ),
                 move |ui: &mut ConsultationUi, _| ui.natal_selected = Some(id.clone()),
             )
@@ -195,7 +197,34 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
         )));
         views.push(Box::new(el("p", reading.question.clone())));
         let f = &reading.birth.facts;
-        views.push(Box::new(el("p",format!("Birth date {}-{:02}-{:02}; civil time {}; timezone {}; source {}. Birth revision {}.",f.date.year,f.date.month,f.date.day,time_label(&f.time),f.timezone.as_deref().unwrap_or("unspecified"),f.source.label,reading.birth.resource.revision))));
+        views.push(Box::new(el(
+            "p",
+            format!(
+                "Birth date {}-{:02}-{:02}; civil time {}; timezone {}; source {}.",
+                f.date.year,
+                f.date.month,
+                f.date.day,
+                time_label(&f.time),
+                f.timezone.as_deref().unwrap_or("unspecified"),
+                f.source.label
+            ),
+        )));
+        match &reading.outcome {
+            NatalOutcome::Unavailable { reason } => views.push(Box::new(el("p", reason.clone()))),
+            NatalOutcome::Calculated {
+                resolution,
+                facts,
+                prompts,
+                ..
+            } => {
+                views.push(Box::new(el("p",format!("I resolved the saved civil birth time in {} to {}. Turquet calculates {} geocentric tropical placements; aspects use a {} degree orb. {}",resolution.timezone,resolution.utc.replace('T'," ").replace("+00:00"," UTC"),facts.placements.len(),reading.orb_millidegrees as f64/1000.,crate::content::natal_pack().intro)).attr("data-key","natal-narration")));
+                views.push(Box::new(el("details",(el("summary","Calculation details"),el("p",format!("Birth resource {} at revision {}; timezone database {}; selected UTC offset {} seconds; repeated-time choice {:?}; numerical method {}. No houses, rising sign or retrograde calculation.",reading.birth.resource.id,reading.birth.resource.revision,resolution.tzdb,resolution.offset_seconds,resolution.fold,crate::natal::METHOD))))));
+                for prompt in prompts {
+                    views.push(Box::new(el("h4", prompt.title.clone())));
+                    views.push(Box::new(el("p", prompt.text.clone())));
+                }
+            },
+        }
         for reflection in ui
             .catalog
             .natal_reflections
@@ -241,22 +270,8 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
             )
             .attr("data-key", format!("natal-reflect-{}", reading.id)),
         ));
-        match &reading.outcome {
-            NatalOutcome::Unavailable { reason } => views.push(Box::new(el("p", reason.clone()))),
-            NatalOutcome::Calculated {
-                resolution,
-                facts,
-                prompts,
-                ..
-            } => {
-                views.push(Box::new(el("p",format!("Resolved to {} with offset {} seconds using IANA {}. Turquet calculates {} geocentric placements; aspects use a {} degree orb. {}",resolution.utc,resolution.offset_seconds,resolution.tzdb,facts.placements.len(),reading.orb_millidegrees as f64/1000.,crate::content::natal_pack().intro))));
-                for prompt in prompts {
-                    views.push(Box::new(el("h4", prompt.title.clone())));
-                    views.push(Box::new(el("p", prompt.text.clone())));
-                }
-            },
-        }
     }
+    views.extend(form);
     views
 }
 fn draft(ui: &ConsultationUi) -> Result<dramatis::birth::BirthFacts, String> {
