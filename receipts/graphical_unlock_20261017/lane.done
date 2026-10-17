@@ -1,0 +1,7 @@
+RESULT ok
+waited 5894 frames
+waited 0 frames
+captured graphical-unlock-aspects
+capture graphical-unlock-aspects 2320x1520 digest=1725fb6593d7288c file=/Users/markik/Code/testing/cleromancy/aspects-release-20261017/graphical-unlock-02/graphical-unlock-aspects.png
+frames: 1 captured, 0 blank, 1 distinct digests
+presentation: 5911 frames, 5913 redraws, 2 unpresented redraws

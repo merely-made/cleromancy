@@ -1,0 +1,162 @@
+{
+  "graphical_provider_processes": [
+    {
+      "pid": 18892,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 18936,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 18949,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 18991,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19006,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19031,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19071,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19080,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19092,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19105,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19114,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19128,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19152,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19163,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19176,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19190,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19205,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19241,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19256,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19268,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19277,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19288,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19303,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19335,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"An empty passphrase is not accepted. Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19563,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19572,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19700,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19736,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    },
+    {
+      "pid": 19762,
+      "parent": 18871,
+      "command": "osascript -e try -e display dialog \"That did not open the vault (identity backend error: incorrect passphrase). Enter the vault passphrase to start.\" default answer \"\" hidden answer true with title \"Identity vault\" with icon note -e \"1\" & text returned of result -e on error number -128 -e 0 -e end try"
+    }
+  ],
+  "exit": 0,
+  "timeout": false,
+  "failure": null,
+  "elapsed_seconds": 254.23,
+  "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+  "entry": "/Users/markik/Code/testing/cleromancy/aspects-release-20261017/installed-04/Cleromancy Aspects Candidate.app/Contents/MacOS/Cleromancy",
+  "entry_sha256": "fa0802759623b56ed4056ceb48a2d69e8776c2c84195fb866faabfbbbe3d5618",
+  "payload_sha256": "f9c9c5f5eb89a0f8658d7c66d528370e5ea5ccba5afda7f6fa7a78fcd7fcd01a",
+  "scenario_sha256": "6b42ff9f5b49182f2b8db224fc1fcd984a9a4042909744450f12b9193550919d",
+  "terminal_answers": 0,
+  "unlock": "production NativeOrTerminal graphical; manual public-fixture input",
+  "offline_ip_deny": true,
+  "public_fixture": true
+}

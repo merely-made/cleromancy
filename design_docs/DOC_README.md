@@ -259,3 +259,5 @@ Bounded natal motion, observed Earth orientation and Placidus: [plan](2026-10-17
 Natal aspects, graphical unlock and macOS packaging: [plan](2026-10-17_aspects_unlock_packaging_plan.md). Explicit per-aspect rules retain geometric results separately from the original natal edition; packaging and graphical-startup evidence have separate acceptance boundaries.
 
 Natal-aspects [qualification ledger](../receipts/natal-aspects-qualification_20261017.json) and [evidence notes](../receipts/natal_aspects_20261017/README.md): 150/199 product tests, core 59/60/61, ten reviewed native originals and exact reopen, with graphical/private-key access blockers and the ad-hoc candidate recorded separately.
+
+Graphical unlock [qualification](../receipts/graphical-unlock-qualification_20261017.json) and [evidence notes](../receipts/graphical_unlock_20261017/README.md): final extracted package-04 launcher, actual production dialog and retry, zero terminal answers, six exact readings/two reflections and one reviewed original. Earlier failed diagnostics remain intact; Developer ID signing and public release remain open.

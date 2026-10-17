@@ -1,0 +1,24 @@
+{
+  "schema": "cleromancy.graphical-unlock-qualification/v1",
+  "accepted": true,
+  "source": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+  "baseline": "7c1f6393d877c705880c409c29986bcc71df92bf",
+  "archive_sha256": "a1a3ea9f361510719c2362d5badba54ebda8ac7d5076dc2db80cf316feabb618",
+  "native_processes": 1,
+  "reviewed_originals": 1,
+  "exact_retained_readings": 6,
+  "exact_reflections": 2,
+  "terminal_answers": 0,
+  "prior_tracked_receipt_paths": 1239,
+  "artifacts": {
+    "graphical_unlock_20261017/README.md": "7f31655652c7144155d69124d01fe7a1f790ae203a4f410175c5979a5b8dfdfb",
+    "graphical_unlock_20261017/capture-review.json": "a16fea9c4e0d80f6bf3ce42b8225039ceecbb1647aac3bf79b657057ee140ddf",
+    "graphical_unlock_20261017/controller.py": "ec1867512388e543242e76e75be24534e4bc8f84ec3134f8a5903591932d19e0",
+    "graphical_unlock_20261017/graphical-unlock-aspects.png": "28094d7db21ca4c790bfeffcded2f177bf309d50ed211e6f47dedde47c82ad0b",
+    "graphical_unlock_20261017/lane.done": "7706773339dcef3c6a8119e8fbf7d6c8b3ae2e836b2de9e9de99211d72ac367a",
+    "graphical_unlock_20261017/process.json": "c0793116a8bdd6a6296b96ba0b65a4237c1035320134429f4e55de3589a3b904",
+    "graphical_unlock_20261017/receipt.json": "8c060e788ebf3166a30df31ed73fc050745f06ae1928dce511f8b2b191c2a946",
+    "graphical_unlock_20261017/terminal.log": "f8a79fac6aa42b4671095b3ae10a88a7ffbca04d3899ed78ceec1ee6ed2b1977"
+  },
+  "scope": "Production graphical unlock with manual public-fixture input and successful retry; extracted final archive shell launcher; offline native reopening. No shared-resource export or startup performance claim. Developer ID signing and public release remain open."
+}
