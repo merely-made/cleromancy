@@ -251,6 +251,23 @@ impl ConsultationUi {
         self.error.as_deref()
     }
     pub(crate) fn record_action(&mut self, action: Option<ConsultationAction>) {
+        if matches!(
+            &action,
+            Some(
+                ConsultationAction::RefreshBirthFacts
+                    | ConsultationAction::CreateSubject { .. }
+                    | ConsultationAction::SaveBirthFacts { .. }
+                    | ConsultationAction::CreateNatal { .. }
+                    | ConsultationAction::ReflectNatal { .. }
+            )
+        ) {
+            if self.status.is_busy() {
+                return;
+            }
+            self.status = ConsultationStatus::SavingSetup;
+            self.error = None;
+        }
+
         if matches!(action, Some(ConsultationAction::CreateNatal { .. })) {
             self.natal_selected = None;
         }
