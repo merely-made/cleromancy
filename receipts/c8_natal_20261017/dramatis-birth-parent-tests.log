@@ -1,0 +1,100 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.26
+   Compiling libc v0.2.190
+   Compiling cfg-if v1.0.5
+   Compiling typenum v1.20.1
+   Compiling getrandom v0.4.3
+   Compiling rand_core v0.10.1
+   Compiling semver v1.0.28
+   Compiling serde_core v1.0.229
+   Compiling shlex v2.0.1
+   Compiling serde v1.0.229
+   Compiling find-msvc-tools v0.1.14
+   Compiling rustc_version v0.4.1
+   Compiling cc v1.6.0
+   Compiling signature v3.0.0
+   Compiling cmov v0.5.4
+   Compiling curve25519-dalek v5.0.0
+   Compiling subtle v2.6.1
+   Compiling ctutils v0.4.2
+   Compiling hybrid-array v0.4.15
+   Compiling ed25519 v3.0.0
+   Compiling arrayvec v0.7.8
+   Compiling constant_time_eq v0.4.2
+   Compiling zmij v1.0.23
+   Compiling serde_json v1.0.151
+   Compiling getrandom v0.3.4
+   Compiling thiserror v2.0.21
+   Compiling block-buffer v0.12.1
+   Compiling inout v0.2.2
+   Compiling thiserror v1.0.69
+   Compiling blake3 v1.8.7
+   Compiling syn v2.0.119
+   Compiling syn v3.0.6
+   Compiling cpufeatures v0.3.1
+   Compiling crypto-common v0.2.2
+   Compiling heapless v0.7.17
+   Compiling memchr v2.8.3
+   Compiling itoa v1.0.18
+   Compiling byteorder v1.5.0
+   Compiling hash32 v0.2.1
+   Compiling stable_deref_trait v1.2.1
+   Compiling uuid v1.27.0
+   Compiling digest v0.11.3
+   Compiling universal-hash v0.6.1
+   Compiling serde_derive v1.0.229
+   Compiling cipher v0.5.2
+   Compiling poly1305 v0.9.1
+   Compiling sha2 v0.11.0
+   Compiling thiserror-impl v2.0.21
+   Compiling aead v0.6.1
+   Compiling cobs v0.3.0
+   Compiling zeroize_derive v1.5.0
+   Compiling thiserror-impl v1.0.69
+   Compiling zeroize v1.9.1
+   Compiling chacha20 v0.10.2
+   Compiling chacha20poly1305 v0.11.0
+   Compiling ed25519-dalek v3.0.0
+   Compiling insigne v0.0.2 (/Users/markik/Code/testing/cleromancy/c8-natal-20261016/dramatis-lane/crates/insigne)
+   Compiling gaz v0.0.2 (/Users/markik/Code/testing/cleromancy/c8-natal-20261016/dramatis-lane/crates/gaz)
+   Compiling personae v0.3.0 (/Users/markik/Code/testing/cleromancy/c8-natal-20261016/dramatis-lane/crates/personae)
+   Compiling postcard v1.1.3
+   Compiling dramatis v0.0.3 (/Users/markik/Code/testing/cleromancy/c8-natal-20261016/dramatis-lane/crates/dramatis)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.24s
+     Running unittests src/lib.rs (target/build/debug/deps/dramatis-6ec3088507378b17)
+
+running 24 tests
+test birth::tests::unknown_and_all_clock_variant_binary_tags_remain_distinct ... ok
+test birth::tests::every_provided_label_reference_precision_and_zone_must_be_nonempty ... ok
+test birth::tests::optional_absence_and_duplicate_fields_do_not_invent_or_override_facts ... ok
+test birth::tests::coordinates_require_pairs_and_inclusive_geographic_ranges ... ok
+test birth::tests::nested_mutation_cannot_bypass_facts_constructor_validator_or_deserializer ... ok
+test birth::tests::clock_and_approximation_limits_refuse_on_load_and_explicit_validation ... ok
+test birth::tests::strict_schema_rejects_missing_subject_derived_fields_and_unknown_nested_fields ... ok
+test birth::tests::supplied_zone_is_preserved_without_claiming_resolver_validation ... ok
+test birth::tests::unknown_time_fixture_stays_unknown_with_no_derived_instant ... ok
+test resources::tests::about_convenience_sets_schema_and_preserves_nested_validation ... ok
+test birth::tests::known_and_approximate_fixtures_preserve_civil_inputs_and_source_exactly ... ok
+test resources::tests::association_has_a_fixed_versioned_json_fixture_and_binary_roundtrip ... ok
+test resources::tests::empty_resource_components_refuse_on_construction_load_and_mutation ... ok
+test resources::tests::association_refuses_schema_unknown_fields_missing_subject_and_bad_relationship ... ok
+test resources::tests::opaque_identifiers_are_preserved_without_normalization_or_resolution ... ok
+test resources::tests::many_subjects_can_concern_one_resource_without_a_key_or_name_join ... ok
+test subject::tests::binary_profile_and_local_contact_have_fixed_variant_order ... ok
+test subject::tests::another_person_needs_no_login_and_reload_preserves_the_reference ... ok
+test subject::tests::lookup_refuses_wrong_scope_missing_contact_and_profile_without_mutation ... ok
+test subject::tests::rename_and_rotation_keep_the_subject_but_deletion_does_not_retarget_it ... ok
+test subject::tests::malformed_or_augmented_references_are_refused ... ok
+test subject::tests::every_existing_anchor_family_round_trips_inside_a_subject ... ok
+test subject::tests::saved_json_has_explicit_namespaces_and_no_biography ... ok
+test birth::tests::gregorian_boundaries_and_century_leap_rules_are_enforced ... ok
+
+test result: ok. 24 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+   Doc-tests dramatis
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

@@ -1,0 +1,78 @@
+[
+  {
+    "path": "/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-create-01",
+    "reason": "No provisioned persona wallet; startup refused before unlock",
+    "files": {
+      "compact-controls.png": "97c57dd1b0dc91e85e34c5fbfe4e14f0e6f008a2f4443b4963458497e4ac9274",
+      "natal-reading.png": "8a97c0695d433349eee2a047785368b62e5ba5216a3b8f0d8923861c7dd07987",
+      "lane.done": "77786a136b5bbe0b0a2249f0015266600f774b4da66242e5d7541a51ebc6ac44",
+      "compact-reading.png": "f07e1ff5886cc1e0adaccacd8c6c4561043e58eb55b1b6776a4469a311dafbcc",
+      "natal-computation.png": "63225000793e4ea3ed435e44c2f09403803e4973ab0fa3b8e709a053787f3c42",
+      "terminal.log": "045647da602537912536c28f7fdc4dfc10ef2d30246d4731aa6008697adbc79f",
+      "compact-computation.png": "310bb518f5d6fbf8100806102c6ef617ea396a35f26c8bdda9f6a64fc7699d2d",
+      "process.json": "933d9ab4bff50dbd97f741df6cb882070870c65216526a3af3719b30874b4866",
+      "saved-birth.png": "2162feffe59be0a8569e8eaad9be9214e0c738e1f1946de1899a314427208ef9",
+      "receipt.json": "15b0d28fb70ec9ac73ab3c6e81b248e21f87d42f69b12a39a11b3ad828c992b4",
+      "reflection-example.png": "6a51fb1b845d0966f85cb0291df0ded0b5bf9a50e43f499afce5ffddfe4d954a"
+    }
+  },
+  {
+    "path": "/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-diagnostic-01",
+    "reason": "Preserved ordinary missing-wallet refusal",
+    "files": {
+      "lane.done": "94b89e3089c2dbb686512eb01ca9ff1615548a3f2d18d35c95afed731d437a22",
+      "startup-status.png": "5d9156ee25ce52a21c39e60c1e9023c88ebcfa4c5bfded70ee744e6006f3324c",
+      "terminal.log": "d2d27ddeced31743906ffe89b776803298740cde3c7484dab29693d58a4b00fe",
+      "process.json": "b0829a5f8d5a92b8bf58d3aef2db4af86daea10a39c54e44f3c6b84ab3f4a998",
+      "receipt.json": "6fbb2056c4306aadf5131de6466fd75288d26e9d42bc004f956e983e5cbb88fe"
+    }
+  },
+  {
+    "path": "/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-create-02",
+    "reason": "Missing busy state allowed asynchronous action/assertion races",
+    "files": {
+      "compact-controls.png": "388f6d6d117aa5a7caee646bf297acdadd015b10aa66a0ac7269e5be058fbd35",
+      "natal-reading.png": "879424776132aed87fb25d3d58e046017aa2d695887ca38c9692890da81e6ba3",
+      "lane.done": "47ad75fcc7af7efa998ead0cbe829a69edfbc2e4dd6e7cfe107a7eb92d33c085",
+      "compact-reading.png": "c21237d2492241affdc1baef47e60339fc178bc144d2216dd4ccc835eca34197",
+      "natal-computation.png": "924a8ed8fb5cb26791ded08833db330e1b5700c463120f0acb47cc14c489b16e",
+      "terminal.log": "999efdfef1493fa6eb9feaf3063683a0f9458e88b04172ae8efca3d4e867c2d0",
+      "compact-computation.png": "3756b8f6775fa20dc06e0126bc95eb34f6a44757c7d549dc0b7d8b6d58b8cd73",
+      "process.json": "cdc8417b6874e2128a0eefc7e8396f0a3bdd9b583f2ff51c6ae6340d5d9bc958",
+      "saved-birth.png": "e209783e026787c9344631b00e37e8a92e1b5ca74bfb8957f979980b89136c6e",
+      "receipt.json": "a3c840639453e6c56a9139a711e346109fc2198a44d9f344b97bf0fafb2a02b5",
+      "reflection-example.png": "14af9c905c18ac1a8e79a06e713c1b191f882de4068e243bf5aefb6fd018ecb5"
+    }
+  },
+  {
+    "path": "/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-create-03",
+    "reason": "Automatic flow passed; expanded-receipt visual review exposed shifted prompt geometry",
+    "files": {
+      "calculation-receipt.png": "afa0dc452d3358d6675f43483f34f00aaab66fe9c0b040f30e61bc9962a584c3",
+      "compact-controls.png": "482f12eb5aea6b7400f921d8d5fec0144dab114f6f41b7f9bd177782ce0210a0",
+      "natal-reading.png": "eb38af4f8a372afe01071f61c7afde3ad14a2aa3752562a39b4c156f8f840f25",
+      "lane.done": "c74bae0918ac7db6244ebe73b6ce8f7348699fe83232c6a1e63be022a0ac71ad",
+      "compact-reading.png": "ea9dcbd665130b335e5760f849d34b7d6dc50b641a41a4d88a0712586a90544c",
+      "natal-computation.png": "8edac7ca872bb5b246776e1c63f4f16876e71aa3f11af356ddd9e0c1a1c2ad55",
+      "terminal.log": "caeefd40562af5284419a8a2c84cc078c738620ce01c3beb9ab63e2472527981",
+      "compact-computation.png": "594c71258e50adc232639d0dc400c9a4dc54fd71cbc6a5d9e1cbf5eab6f2103e",
+      "process.json": "2441a2496c9798177f3b1c39f6e4d989c51523a063f2d5b7db7a72f2845b81de",
+      "saved-birth.png": "97c04f466aed07c501ad87d1611d2c0c6d79fdb0a58d0eb761e09868f37d5441",
+      "receipt.json": "0a1d629aac1dcd8d117e2df1904badb2de0cba99fa8c9264605da0e6a0af3667",
+      "reflection-example.png": "f430c9c6939943397f00a14d888c5372fb3ecbc115268d27a88c824a7821fe43"
+    }
+  },
+  {
+    "path": "/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-reopen-03",
+    "reason": "Earlier source reopening retained with its own binary identity",
+    "files": {
+      "lane.done": "172ba921a9294b334a2116e2be8ec5e88a6504c84539393511d356071525ae65",
+      "terminal.log": "308a637f3c1b2a722a171ae6ac599247be1fecc985d232cae4a918648c15197f",
+      "natal-reopen.png": "2848d9a684ba61292cc8f2ff6c62074a100bdbb10433713f4b3ae94cba3bc7e3",
+      "process.json": "9dffef614e44ae69ee457b8029c59ca6ce16ca83439d3d1a54ef6256b6f4ce94",
+      "reopened-computation.png": "6f088ad1776766676602dcadf102bde5dce3212053cf1a783983d3fd7d1b35b6",
+      "compact-reopen.png": "be3a21d774218bf11a760d0294679176bc4424ec5927fed6e2546047df092e95",
+      "receipt.json": "669b284609d06666ca14d105d7ac97659d67fc438b1210898f1411e9860f64ac"
+    }
+  }
+]

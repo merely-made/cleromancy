@@ -1,0 +1,6 @@
+RESULT ok
+waited 11 frames
+captured natal-overview
+capture natal-overview 2320x1520 digest=7000927bf76af393 file=/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-overview-04/natal-overview.png
+frames: 1 captured, 0 blank, 1 distinct digests
+presentation: 28 frames, 29 redraws, 1 unpresented redraws

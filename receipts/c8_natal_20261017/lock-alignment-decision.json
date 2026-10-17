@@ -1,0 +1,12 @@
+{
+  "decision": "Retain the tested lock rather than introduce unrelated registry-edge changes during source-annotation cleanup",
+  "genet_runtime": "Both metadata captures resolve Genet packages at fa27ea5421c6d3913a622977b8ea37736ae303ea",
+  "unexpected_changes": [
+    "codespan-reporting unicode-width edge",
+    "pliron hashbrown edge",
+    "data-encoding-macro-internal syn edge",
+    "prost-derive itertools edge"
+  ],
+  "restored_exact_git_blob": "2d4e2c2c31f2461bcc5932612fe380819de327cd",
+  "diagnostic_lock_retained": "/Users/markik/Code/testing/cleromancy/c8-natal-20261016/diagnostic-aligned-Cargo.lock"
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "buckram",
+    "source": "git+https://github.com/merely-made/genet.git?branch=main#fa27ea5421c6d3913a622977b8ea37736ae303ea",
+    "manifest_path": "/Users/markik/.cargo/git/checkouts/genet-0bbbe1b4c8511eb3/fa27ea5/components/buckram/Cargo.toml",
+    "id": "git+https://github.com/merely-made/genet.git?branch=main#buckram@0.0.3"
+  },
+  {
+    "name": "genet-livery",
+    "source": "git+https://github.com/merely-made/genet.git?branch=main#fa27ea5421c6d3913a622977b8ea37736ae303ea",
+    "manifest_path": "/Users/markik/.cargo/git/checkouts/genet-0bbbe1b4c8511eb3/fa27ea5/components/genet-livery/Cargo.toml",
+    "id": "git+https://github.com/merely-made/genet.git?branch=main#genet-livery@0.0.4"
+  },
+  {
+    "name": "genet-taffy",
+    "source": "git+https://github.com/merely-made/genet.git?branch=main#fa27ea5421c6d3913a622977b8ea37736ae303ea",
+    "manifest_path": "/Users/markik/.cargo/git/checkouts/genet-0bbbe1b4c8511eb3/fa27ea5/support/patches/taffy/Cargo.toml",
+    "id": "git+https://github.com/merely-made/genet.git?branch=main#genet-taffy@0.14.0"
+  },
+  {
+    "name": "gpu-allocator",
+    "source": "git+https://github.com/merely-made/genet.git?branch=main#fa27ea5421c6d3913a622977b8ea37736ae303ea",
+    "manifest_path": "/Users/markik/.cargo/git/checkouts/genet-0bbbe1b4c8511eb3/fa27ea5/support/patches/gpu-allocator/Cargo.toml",
+    "id": "git+https://github.com/merely-made/genet.git?branch=main#gpu-allocator@0.28.0"
+  }
+]

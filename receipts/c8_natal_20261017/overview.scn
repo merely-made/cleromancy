@@ -1,0 +1,8 @@
+wait 1800
+assert snap catalog-ready == true
+assert snap mere-unavailable == false
+show-chart
+settle 8
+assert snap natal-count == 1
+assert snap natal-reflections == 1
+capture natal-overview
