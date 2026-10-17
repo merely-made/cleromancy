@@ -26,9 +26,30 @@ exec "$bundle_bin/cleromancy-bin" "$@"
 
 def run(*args):
     try:
-        return subprocess.check_output(args, text=True, stderr=subprocess.STDOUT).strip()
+        return subprocess.check_output(args, text=True, stderr=subprocess.STDOUT, timeout=180).strip()
+    except subprocess.TimeoutExpired as error:
+        raise ValueError(f'{args[0]} timed out; any required keychain access remains unapproved') from error
     except subprocess.CalledProcessError as error:
         raise ValueError(f'{args[0]} failed ({error.returncode}): {error.output.strip()}') from error
+
+
+
+def developer_signature(path):
+    run('/usr/bin/codesign', '--verify', '--strict', '-R=anchor apple generic and certificate leaf[field.1.2.840.113635.100.6.1.13] exists', str(path))
+    details = run('/usr/bin/codesign', '--display', '--verbose=4', str(path))
+    authorities = [line[len('Authority='):] for line in details.splitlines() if line.startswith('Authority=')]
+    team = next((line.split('=', 1)[1] for line in details.splitlines() if line.startswith('TeamIdentifier=')), None)
+    timestamp = next((line.split('=', 1)[1] for line in details.splitlines() if line.startswith('Timestamp=')), None)
+    runtime = any('flags=' in line and '(runtime)' in line for line in details.splitlines())
+    if not authorities or not authorities[0].startswith('Developer ID Application:') or not team or team == 'not set' or not timestamp or not runtime:
+        raise ValueError('Developer ID signing requires an Application certificate, trusted timestamp and hardened runtime')
+    return {'authorities': authorities, 'team': team, 'timestamp': timestamp, 'hardened_runtime': runtime}
+
+
+def sign(path, identity):
+    flags = ['--timestamp=none'] if identity == '-' else ['--timestamp', '--options', 'runtime']
+    run('/usr/bin/codesign', '--force', '--sign', identity, *flags, str(path))
+    return None if identity == '-' else developer_signature(path)
 
 
 def digest(path):
@@ -130,6 +151,13 @@ def verify(app):
         if inspect_binary(binary) != manifest['binaries'][name]:
             raise ValueError(f'Binary requirements changed: {name}')
         run('/usr/bin/codesign', '--verify', '--strict', str(binary))
+    if manifest.get('signing') == 'developer-id':
+        for name, signature in manifest['developer_signatures'].items():
+            if developer_signature(app / 'Contents/MacOS' / name) != signature:
+                raise ValueError(f'Developer ID signature differs: {name}')
+        bundle = developer_signature(app)
+        if any(signature['team'] != bundle['team'] for signature in manifest['developer_signatures'].values()):
+            raise ValueError('Bundle and payload signing teams differ')
     run('/usr/bin/plutil', '-lint', str(app / 'Contents/Info.plist'))
     run('/usr/bin/codesign', '--verify', '--deep', '--strict', str(app))
     return manifest
@@ -161,13 +189,15 @@ def package(args):
         inputs[name] = Path(path).resolve()
     provenance = {}
     binaries = {}
+    signatures = {}
     for name, source in inputs.items():
         provenance[name] = inspect_binary(source)
         shutil.copyfile(source, macos / name)
         (macos / name).chmod(0o755)
         if digest(macos / name) != provenance[name]['sha256']:
             raise ValueError('Binary changed during copy')
-        run('/usr/bin/codesign', '--force', '--sign', '-', '--timestamp=none', str(macos / name))
+        signature = sign(macos / name, args.signing_identity)
+        if signature: signatures[name] = signature
         binaries[name] = inspect_binary(macos / name)
     (macos / 'Cleromancy').write_bytes(LAUNCHER)
     (macos / 'Cleromancy').chmod(0o755)
@@ -186,7 +216,8 @@ def package(args):
                 'input_binaries': provenance, 'binaries': binaries,
                 'cargo_metadata_sha256': digest(args.metadata),
                 'packager_sha256': digest(Path(__file__)),
-                'signing': 'ad-hoc', 'notarized': False,
+                'signing': 'ad-hoc' if args.signing_identity == '-' else 'developer-id', 'notarized': False,
+                'signing_identity': args.signing_identity, 'developer_signatures': signatures,
                 'missing_dependency_license_texts': missing,
                 'runtime_helpers': ['/bin/sh', '/usr/bin/osascript'],
                 'qualification': 'Structural packaging only; no execution or graphical acceptance',
@@ -196,7 +227,9 @@ def package(args):
             p.chmod(0o755 if p.parent == macos else 0o644)
             manifest['files'][str(p.relative_to(app))] = {'sha256': digest(p), 'mode': stat.S_IMODE(p.stat().st_mode)}
     json_file(resources / 'package-manifest.json', manifest)
-    run('/usr/bin/codesign', '--force', '--sign', '-', '--timestamp=none', str(app))
+    bundle_signature = sign(app, args.signing_identity)
+    if bundle_signature and any(v['team'] != bundle_signature['team'] for v in signatures.values()):
+        raise ValueError('Bundle and payload signing teams differ')
     verify(app)
     archive = output / f'Cleromancy-{args.version}-macos-arm64-{args.profile}.zip'
     # Sorted, normalized ZIP entries without host xattrs/resource forks or times.
@@ -215,7 +248,8 @@ def package(args):
                'archive_roundtrip_verified': True, 'bundle_verified': True,
                'source_revision': args.source_revision, 'profile': args.profile,
                'input_binaries': provenance, 'missing_dependency_license_texts': missing,
-               'notarized': False, 'signing': 'ad-hoc', 'executed': False}
+               'notarized': False, 'signing': manifest['signing'], 'developer_signatures': signatures,
+               'bundle_signature': bundle_signature, 'executed': False}
     json_file(output / 'verification.json', receipt)
     (output / 'SHA256SUMS').write_text(f"{receipt['sha256']}  {archive.name}\n")
     print(json.dumps({k: v for k, v in receipt.items() if k not in ('input_binaries', 'missing_dependency_license_texts')}, indent=2))
@@ -231,6 +265,7 @@ def main():
     parser.add_argument('--source-evidence', help='Public, non-personal provenance description; included in bundle')
     parser.add_argument('--profile', choices=('debug', 'release', 'unknown'))
     parser.add_argument('--version', default='0.1.0')
+    parser.add_argument('--signing-identity', default='-', help='Developer ID Application identity fingerprint, or - for ad-hoc. Developer ID requests a trusted Apple timestamp and hardened runtime.')
     parser.add_argument('--app-name', default='Cleromancy Packaging Candidate')
     parser.add_argument('--bundle-id', default='dev.merely.cleromancy.packaging.candidate20261017')
     parser.add_argument('--helper', action='append', default=[], metavar='NAME=ARM64_BINARY')
