@@ -1,0 +1,14 @@
+{
+  "schema": "cleromancy.natal-aspects-publication/v1",
+  "verified_at_utc": "2026-10-17T13:16:54.115947+00:00",
+  "product_qualification_checkpoint": "c1b276a4af7f8860f4c99e67dc8c0b6053975392",
+  "product_remote_main_at_verification": "c1b276a4af7f8860f4c99e67dc8c0b6053975392",
+  "rust_implementation": "3fa5a6db87cfa34df9fc1de0a0877181c9b4526f",
+  "packaging_tool_source": "913b6674f1d5c9aa4e36e9884b4c15b6d9c98175",
+  "mere_published_checkpoint": "128961d18795cafca51b39899c3c6fab58591705",
+  "mere_remote_main_at_verification": "128961d18795cafca51b39899c3c6fab58591705",
+  "local_candidate_archive_sha256": "a1a3ea9f361510719c2362d5badba54ebda8ac7d5076dc2db80cf316feabb618",
+  "evidence_verifier_passed": true,
+  "evidence_verifier_log_sha256": "5bc0a941c9241a538138e61e040e972cbb54750717c0d8bcd7ce58991225e9a7",
+  "qualified_scope": "Natal aspects and local ad-hoc arm64 candidate packaging; no graphical unlock, Developer ID signing or public release acceptance inferred"
+}
