@@ -860,6 +860,33 @@ impl ConsultationUi {
 #[cfg(test)]
 mod refresh_tests {
     use super::*;
+    #[test]
+    fn natal_actions_wait_for_owner_acknowledgement_and_refuse_double_submission() {
+        let c =
+            crate::Consultation::new(crate::CleromancyHost::empty(muniment::MemoryBackend::new()));
+        let mut ui = ConsultationUi::new(c.catalog().unwrap());
+        ui.record_action(Some(ConsultationAction::RefreshBirthFacts));
+        assert!(ui.status.is_busy());
+        ui.record_action(Some(ConsultationAction::CreateSubject {
+            label: "Must wait".into(),
+        }));
+        assert!(matches!(
+            ui.take_pending_action(),
+            Some(ConsultationAction::RefreshBirthFacts)
+        ));
+        ui.record_action(Some(ConsultationAction::CreateSubject {
+            label: "Still waiting".into(),
+        }));
+        assert!(ui.take_pending_action().is_none());
+        ui.status = ConsultationStatus::Ready;
+        ui.record_action(Some(ConsultationAction::CreateSubject {
+            label: "After acknowledgement".into(),
+        }));
+        assert!(matches!(
+            ui.take_pending_action(),
+            Some(ConsultationAction::CreateSubject { .. })
+        ));
+    }
 
     #[test]
     fn choosing_die_opens_a_new_form_without_changing_the_previous_reading() {
