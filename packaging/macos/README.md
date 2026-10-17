@@ -1,8 +1,8 @@
 # macOS arm64 candidate packaging
 
 This tool creates an installable `.app` and ZIP from an **existing** arm64
-Cleromancy executable. It does not build or launch applications. Output is ad hoc
-signed, without Developer ID signing or notarization. It supports local development
+Cleromancy executable. It does not build or launch applications. Output defaults to ad hoc signing; an available Developer ID Application identity
+can be selected explicitly. No notarization or upload of the app is performed. It supports local development
 candidate handoff; it does not establish a consumer-ready release.
 
 **Before installation/use:** provision the resident and wallet persona through
@@ -138,10 +138,26 @@ toolchain versions compare the manifests instead of assuming byte identity.
 
 The standalone verifier establishes self-consistency; it is not a trust signature
 against a maliciously replaced manifest. Compare the archive hash with a trusted
-`SHA256SUMS` receipt. Bundles are ad hoc signed, **not notarized**, with no Developer
-ID identity. Gatekeeper may block downloaded copies. No quarantine removal, security
+`SHA256SUMS` receipt. Bundles default to ad hoc signing, or use an explicitly
+selected Developer ID Application identity. They are **not notarized**.
+Gatekeeper may block downloaded copies. No quarantine removal, security
 policy changes, publishing, committing or pushing is performed.
 
 No app execution occurs in these checks. Graphical unlock, reading behavior,
 fresh-process reopening, installation in Applications, fresh-machine provisioning,
 and native acceptance of the final binary remain separate parent-owned claims.
+
+## Developer ID candidate
+
+Use `--signing-identity FULL_CERTIFICATE_FINGERPRINT` to select an existing local
+Developer ID Application identity. The tool requests Apple's trusted timestamp
+and enables hardened runtime for payloads and bundle. It records and rechecks
+authorities, team, timestamp and runtime flags, including after extraction.
+An Apple Development certificate is refused for this mode. Keychain access must
+already permit codesign or be explicitly approved by the user; the tool does not
+alter key access or supply a keychain password. No notarization request is made.
+
+Timestamped signatures change archive bytes between runs; the reproducibility
+witness above applies to ad hoc timestamp-free packaging. The original ad hoc
+qualification and later Developer ID candidate retain separate hashes and native
+checks. Signing does not turn a debug-profile binary into a release-profile build.

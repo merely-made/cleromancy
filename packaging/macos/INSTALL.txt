@@ -1,9 +1,10 @@
 Cleromancy for Apple Silicon — local candidate
 
-BEFORE USE: the resident/wallet persona must already be provisioned. The shared
-current authority must understand new aspect records before a newer app writes
-them. The parent must complete the portable validator intake separately. This
-archive does not upgrade a running resident or establish compatible admission.
+BEFORE USE: provision an identity through the resident’s supported workflow.
+If a shared resident is already running, update and restart it with support
+for the new saved aspect records before creating them. The matching validator
+is available in Mere checkpoint 128961d18 (Cleromancy core 3fa5a6d). This archive
+contains the application; it does not upgrade a running resident.
 
 Extract the ZIP with Archive Utility, then drag the candidate .app to Applications.
 The bundle can be moved; its launcher resolves the executable beside itself.
@@ -11,9 +12,10 @@ Requires macOS at least the LSMinimumSystemVersion in Contents/Info.plist,
 an interactive desktop session, and working Apple graphics/system frameworks.
 Only arm64 is packaged. Older OS versions have not been qualified.
 
-This candidate is ad hoc signed and NOT notarized. It has no Developer ID
-signature. Downloaded copies may be blocked by Gatekeeper. Signature and ZIP
-checks do not establish graphical, unlock, fresh-install or release acceptance.
+Signing identity and timestamp status are recorded in package-manifest.json.
+This candidate is NOT notarized. Downloaded copies may be blocked by Gatekeeper.
+Signature and ZIP checks do not establish graphical unlock, fresh-install or
+public release acceptance.
 Use your normal trusted local testing procedure; the package does not remove
 quarantine or change OS security settings.
 

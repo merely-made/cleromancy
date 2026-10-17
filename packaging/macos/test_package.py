@@ -65,5 +65,27 @@ class BundleIntegrityTests(unittest.TestCase):
                 package.inspect_binary(self.payload)
 
 
+class DeveloperIdentityTests(unittest.TestCase):
+    DETAILS = "CodeDirectory v=20500 flags=0x10000(runtime)\nAuthority=Developer ID Application: Public Fixture (TEAM123)\nAuthority=Developer ID Certification Authority\nTeamIdentifier=TEAM123\nTimestamp=Oct 17, 2026 at 9:00:00 AM\n"
+
+    def test_timestamped_runtime_identity_is_recorded(self):
+        with patch.object(package, 'run', return_value=self.DETAILS) as native:
+            details = package.developer_signature(Path('public-fixture'))
+            self.assertEqual(details['team'], 'TEAM123')
+            self.assertTrue(details['hardened_runtime'])
+            self.assertIn('-R=anchor apple generic and certificate leaf[field.1.2.840.113635.100.6.1.13] exists', native.call_args_list[0].args)
+
+    def test_development_certificate_is_not_a_developer_id_release_identity(self):
+        with patch.object(package, 'run', return_value=self.DETAILS.replace('Developer ID Application:', 'Apple Development:')):
+            with self.assertRaisesRegex(ValueError, 'Application certificate'):
+                package.developer_signature(Path('public-fixture'))
+
+    def test_timestamp_and_runtime_are_required(self):
+        for details in (self.DETAILS.replace('Timestamp=', 'NoTimestamp='), self.DETAILS.replace('(runtime)', '(none)')):
+            with self.subTest(details=details), patch.object(package, 'run', return_value=details):
+                with self.assertRaisesRegex(ValueError, 'trusted timestamp and hardened runtime'):
+                    package.developer_signature(Path('public-fixture'))
+
+
 if __name__ == '__main__':
     unittest.main()
