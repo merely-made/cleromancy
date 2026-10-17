@@ -1,0 +1,45 @@
+wait 1800
+assert snap catalog-ready == true
+assert snap mere-unavailable == false
+show-chart
+wait 1800
+assert snap natal-count == 4
+assert snap natal-aspects == 0
+c5-control-reveal natal-open
+c5-control-key natal-open
+wait 1800
+assert snap birth-count == 3
+natal-prepare-birth
+c5-control-reveal natal-birth-2
+c5-control-key natal-birth-2
+c5-control-reveal natal-aspects-on
+c5-control-key natal-aspects-on
+capture aspect-choice-and-orbs
+c5-control-reveal natal-read
+c5-control-key natal-read
+wait 1800
+assert snap natal-count == 5
+assert snap natal-aspects == 1
+natal-select-aspects
+reveal class natal-aspects
+settle 4
+assert text Natal aspects
+assert text Inclusive orbs
+capture aspects-preset-wide
+resize 420 760
+wait
+reveal class natal-aspects
+settle 4
+capture aspects-preset-compact
+resize 1160 760
+wait
+natal-aspects-exact-draft
+c5-control-reveal natal-read
+c5-control-key natal-read
+wait 1800
+assert snap natal-count == 6
+assert snap natal-aspects == 2
+reveal class natal-aspects
+settle 4
+assert text No pairs meet these saved orb rules.
+capture aspects-exact-zero

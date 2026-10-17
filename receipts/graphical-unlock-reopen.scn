@@ -1,0 +1,12 @@
+wait 12000
+assert snap catalog-ready == true
+assert snap mere-unavailable == false
+show-chart
+wait 1800
+assert snap natal-count == 6
+assert snap natal-aspects == 2
+assert snap natal-reflections == 2
+natal-select-aspects
+reveal class natal-aspects
+settle 4
+capture graphical-unlock-aspects

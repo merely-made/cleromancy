@@ -1,0 +1,25 @@
+wait 1800
+assert snap catalog-ready == true
+assert snap mere-unavailable == false
+show-chart
+wait 1800
+assert snap natal-count == 6
+assert snap natal-aspects == 2
+assert snap natal-reflections == 2
+natal-select-aspects
+reveal class natal-aspects
+settle 4
+assert text Natal aspects
+capture reopened-aspects-wide
+resize 420 760
+wait
+reveal class natal-aspects
+settle 4
+capture reopened-aspects-compact
+resize 1160 760
+wait
+c5-control-reveal natal-open
+c5-control-key natal-open
+wait 1800
+assert snap birth-count == 3
+capture reopened-shared-subject

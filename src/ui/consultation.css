@@ -136,3 +136,5 @@ pre, code { font-family: var(--tabard-font-code, monospace); }
 .inference-inputs { white-space: pre-wrap; overflow-wrap: anywhere; }
 
 .generated-inference { padding: 12px 0; }
+
+.natal-aspect-choice[aria-pressed='true'] { background: var(--tabard-color-surface-hover,#574124); border: 2px solid var(--tabard-color-text-header,#e4cf9f); }

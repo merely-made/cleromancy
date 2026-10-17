@@ -1,0 +1,38 @@
+Cleromancy for Apple Silicon — local candidate
+
+BEFORE USE: the resident/wallet persona must already be provisioned. The shared
+current authority must understand new aspect records before a newer app writes
+them. The parent must complete the portable validator intake separately. This
+archive does not upgrade a running resident or establish compatible admission.
+
+Extract the ZIP with Archive Utility, then drag the candidate .app to Applications.
+The bundle can be moved; its launcher resolves the executable beside itself.
+Requires macOS at least the LSMinimumSystemVersion in Contents/Info.plist,
+an interactive desktop session, and working Apple graphics/system frameworks.
+Only arm64 is packaged. Older OS versions have not been qualified.
+
+This candidate is ad hoc signed and NOT notarized. It has no Developer ID
+signature. Downloaded copies may be blocked by Gatekeeper. Signature and ZIP
+checks do not establish graphical, unlock, fresh-install or release acceptance.
+Use your normal trusted local testing procedure; the package does not remove
+quarantine or change OS security settings.
+
+Native vault dialogs currently require the macOS /usr/bin/osascript and
+/bin/sh providers. The launcher supplies the system PATH plus bundled helpers.
+No Swift interpreter, Rust toolchain, Cargo checkout, or external font files
+are needed by this bundle. A future compiled helper must be explicitly bundled
+and selected by its owning runtime; see the packaging README.
+
+No persona, passphrase, vault, reservoir, reading history, model weights,
+downloaded astronomy kernel, or fixture store is supplied. Normal startup
+requires an identity provisioned through the resident's supported workflow.
+MERE_ROOT, CLEROMANCY_VAULT_DIR and CLEROMANCY_ROOT retain their application
+semantics; Finder launches do not inherit interactive shell configuration.
+Optional local inference needs a separately configured compatible model.
+
+License texts, font notices and a resolved dependency inventory are in
+Contents/Resources/Licenses. The inventory can include dependencies for other
+platforms. Missing texts are recorded in package-manifest.json; this tooling
+does not certify third-party redistribution or source-offer completeness.
+MPL components require applicable corresponding-source availability when
+distributed; retain the exact source/lock revisions with any distribution.
