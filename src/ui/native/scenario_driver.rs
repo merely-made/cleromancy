@@ -302,6 +302,45 @@ impl mesquite::Product for Product {
                     .to_string(),
             )
             .with_field(
+                "natal-supplements",
+                ui.catalog
+                    .natal_readings
+                    .iter()
+                    .filter(|r| r.supplement.is_some())
+                    .count()
+                    .to_string(),
+            )
+            .with_field(
+                "natal-placidus",
+                ui.catalog
+                    .natal_readings
+                    .iter()
+                    .filter(|r| {
+                        r.supplement.as_ref().is_some_and(|s| {
+                            s.house_system == Some(crate::natal_cap::HouseChoice::Placidus)
+                                && matches!(
+                                    s.houses,
+                                    Some(crate::natal_houses::HouseOutcome::Calculated { .. })
+                                )
+                        })
+                    })
+                    .count()
+                    .to_string(),
+            )
+            .with_field(
+                "natal-observed",
+                ui.catalog
+                    .natal_readings
+                    .iter()
+                    .filter(|r| {
+                        r.supplement
+                            .as_ref()
+                            .is_some_and(|s| s.observed_values.is_some())
+                    })
+                    .count()
+                    .to_string(),
+            )
+            .with_field(
                 "natal-reflections",
                 ui.catalog.natal_reflections.len().to_string(),
             )
@@ -799,6 +838,35 @@ impl ScenarioDriver<'_, '_> {
                 self.ctx
                     .runner
                     .update(|s| s.consultation.natal_time = cambium::TextInput::new("13:00:00"));
+                Ok(())
+            },
+            "natal-prepare-observed" => {
+                self.ctx.runner.update(|s| {
+                    s.consultation.natal_eop = cambium::TextInput::new(include_str!(
+                        "../../../tests/fixtures/natal-observed-finals2000a.txt"
+                    ))
+                });
+                Ok(())
+            },
+            "natal-clear-observed" => {
+                self.ctx
+                    .runner
+                    .update(|s| s.consultation.natal_eop = cambium::TextInput::default());
+                Ok(())
+            },
+            "natal-prepare-polar" => {
+                self.ctx.runner.update(|s| {
+                    s.consultation.natal_latitude = cambium::TextInput::new("70.0");
+                    s.consultation.natal_longitude = cambium::TextInput::new("0.0");
+                    s.consultation.natal_place =
+                        cambium::TextInput::new("Public synthetic polar fixture");
+                });
+                Ok(())
+            },
+            "natal-select-cap" | "natal-select-observed" | "natal-select-polar" => {
+                let observed = line == "natal-select-observed";
+                let polar = line == "natal-select-polar";
+                self.ctx.runner.update(|s|s.consultation.natal_selected=s.consultation.catalog.natal_readings.iter().find(|r|r.supplement.as_ref().is_some_and(|c|c.house_system==Some(crate::natal_cap::HouseChoice::Placidus)&&if polar {matches!(c.houses,Some(crate::natal_houses::HouseOutcome::Unavailable{..}))}else{c.observed_values.is_some()==observed&&matches!(c.houses,Some(crate::natal_houses::HouseOutcome::Calculated{..}))})).map(|r|r.id.clone()));
                 Ok(())
             },
             "natal-prepare-reflection" => {

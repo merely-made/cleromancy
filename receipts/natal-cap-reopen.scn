@@ -1,0 +1,28 @@
+wait 1800
+assert snap catalog-ready == true
+assert snap mere-unavailable == false
+show-chart
+wait 1800
+assert snap natal-count == 3
+assert snap natal-supplements == 3
+assert snap natal-placidus == 2
+assert snap natal-observed == 1
+assert snap natal-reflections == 2
+natal-select-observed
+reveal class natal-motion
+settle 4
+assert text Observed Earth orientation
+capture reopen-observed-motion
+reveal class natal-houses
+settle 4
+assert text Placidus houses and ascendant
+capture reopen-placidus
+natal-select-cap
+reveal class natal-houses
+settle 4
+capture reopen-approximate
+c5-control-reveal natal-open
+c5-control-key natal-open
+wait 1800
+assert snap birth-count == 3
+capture reopen-shared-facts

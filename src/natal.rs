@@ -67,6 +67,8 @@ pub struct NatalReading {
     pub outcome: NatalOutcome,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub houses: Option<crate::natal_houses::HouseReceipt>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub supplement: Option<crate::natal_cap::NatalSupplement>,
 }
 impl NatalReading {
     pub fn new(
@@ -92,6 +94,7 @@ impl NatalReading {
             orb_millidegrees: 1000,
             outcome,
             houses: None,
+            supplement: None,
         };
         value.id = value.identity();
         value.validate()?;
@@ -100,6 +103,17 @@ impl NatalReading {
     /// Add a versioned house receipt without rewriting any existing natal v1.
     pub fn with_houses(mut self, system: crate::natal_houses::HouseSystem) -> Result<Self, String> {
         self.houses = Some(crate::natal_houses::calculate(&self, system)?);
+        self.id = self.identity();
+        self.validate()?;
+        Ok(self)
+    }
+    /// New numerical facts are sealed separately from the original natal edition.
+    pub fn with_supplement(
+        mut self,
+        houses: Option<crate::natal_cap::HouseChoice>,
+        orientation: Option<crate::natal_cap::OrientationSnapshot>,
+    ) -> Result<Self, String> {
+        self.supplement = Some(crate::natal_cap::calculate(&self, houses, orientation)?);
         self.id = self.identity();
         self.validate()?;
         Ok(self)
@@ -131,6 +145,11 @@ impl NatalReading {
         if let Some(receipt) = &self.houses {
             if *receipt != crate::natal_houses::calculate(self, receipt.system)? {
                 return Err("Natal house computation differs from its receipt".into());
+            }
+        }
+        if let Some(s) = &self.supplement {
+            if *s != crate::natal_cap::calculate(&self, s.house_system, s.orientation.clone())? {
+                return Err("Natal supplement differs from its retained inputs".into());
             }
         }
         Ok(())

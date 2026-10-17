@@ -9,7 +9,7 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
         Box::new(el("h2", "Personal natal readings")),
         Box::new(el(
             "p",
-            "Choose a shared subject and saved birth revision. Birth facts are reusable across applications; a natal reading retains the exact revision it used. Place and timezone are supplied explicitly. Choose placements only, Whole Sign, or Equal House. Houses and ascendant require an exact birth time and explicit birthplace coordinates.",
+            "Choose a shared subject and saved birth revision. Birth facts are reusable across applications; a natal reading retains the exact revision it used. Place and timezone are supplied explicitly. Choose placements only, Whole Sign, Equal House, or Placidus. New occasions retain direct/retrograde motion facts. Houses and ascendant require an exact birth time and explicit birthplace coordinates.",
         )),
         Box::new(
             button("Open shared birth facts", |ui: &mut ConsultationUi, _| {
@@ -147,14 +147,19 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
         for (choice, label, key) in [
             (None, "Placements only", "natal-houses-none"),
             (
-                Some(crate::natal_houses::HouseSystem::WholeSign),
+                Some(crate::natal_cap::HouseChoice::WholeSign),
                 "Whole Sign",
                 "natal-houses-whole",
             ),
             (
-                Some(crate::natal_houses::HouseSystem::Equal),
+                Some(crate::natal_cap::HouseChoice::Equal),
                 "Equal House",
                 "natal-houses-equal",
+            ),
+            (
+                Some(crate::natal_cap::HouseChoice::Placidus),
+                "Placidus",
+                "natal-houses-placidus",
             ),
         ] {
             views.push(Box::new(
@@ -173,6 +178,14 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
                 .attr("data-key", key),
             ));
         }
+        views.push(labelled_text(
+            "Retained IERS finals2000A records (optional; final observed Bulletin B values only)",
+            "cleromancy-natal-eop",
+            true,
+            &ui.natal_eop,
+            eop,
+        ));
+        views.push(Box::new(el("p", "Paste an observed IERS excerpt covering the birth instant to use measured Earth orientation. Blank uses the disclosed UT1 = UTC approximation. Nothing is fetched automatically. Placidus is unavailable in polar regions; no alternate system is substituted.")));
         views.push(Box::new(
             button("Create natal reading", |ui: &mut ConsultationUi, _| {
                 let choice = match ui.natal_fold.text().trim() {
@@ -194,6 +207,11 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
                         question: ui.natal_question.text().to_string(),
                         fold: choice,
                         houses: ui.natal_house_system,
+                        orientation: (!ui.natal_eop.text().trim().is_empty()).then(|| {
+                            crate::natal_cap::OrientationSnapshot {
+                                finals2000a: ui.natal_eop.text().to_string(),
+                            }
+                        }),
                     };
                     ui.record_action(Some(action));
                 }
@@ -272,7 +290,9 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
                         resolution.offset_seconds,
                         resolution.fold,
                         crate::natal::METHOD,
-                        if reading.houses.is_some() {
+                        if reading.supplement.is_some() {
+                            "Signed apparent longitude motion and optional house results are shown below with their retained method."
+                        } else if reading.houses.is_some() {
                             "House results and their method are shown below. No retrograde calculation."
                         } else {
                             "No houses, rising sign or retrograde calculation."
@@ -291,14 +311,79 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
                 }
             },
         }
+        if let Some(s) = &reading.supplement {
+            let mut motion_views: Vec<ConsultationView> =
+                vec![Box::new(el("h3", "Apparent planetary motion"))];
+            match &s.motion {
+                crate::natal_cap::MotionOutcome::Unavailable { reason } => {
+                    motion_views.push(Box::new(el("p", reason.clone())))
+                },
+                crate::natal_cap::MotionOutcome::Calculated {
+                    sample_half_interval_seconds,
+                    near_station_microdegrees_per_day,
+                    planets,
+                } => {
+                    motion_views.push(Box::new(el("p",format!("Geocentric tropical longitude, sampled ±{} seconds. Rates round to a microdegree per day before classification. Near station means an absolute retained rate at most {}° per TT day; it does not identify an exact stationary instant.",sample_half_interval_seconds,*near_station_microdegrees_per_day as f64/1e6))));
+                    for p in planets {
+                        motion_views.push(Box::new(el(
+                            "p",
+                            format!(
+                                "{}: {}, {:+.6}° per TT day",
+                                p.body,
+                                p.classification.label(),
+                                p.microdegrees_per_tt_day as f64 / 1e6
+                            ),
+                        )));
+                    }
+                },
+            }
+            if let Some(o) = &s.observed_values {
+                motion_views.push(Box::new(el("p",format!("Observed Earth orientation: UT1−UTC {:+.6} s; polar motion x {:+.6} arcsec, y {:+.6} arcsec. Retained IERS final observations.",o.dut1_microseconds as f64/1e6,o.xp_microarcseconds as f64/1e6,o.yp_microarcseconds as f64/1e6))));
+            }
+            if ui.natal_details {
+                motion_views.push(Box::new(el("p",format!("Supplement {}; supplier {}. Original planetary positions retain their own earlier numerical edition.",s.schema,s.supplier))));
+            }
+            views.push(Box::new(
+                el("section", motion_views)
+                    .attr("class", "natal-motion")
+                    .attr("data-key", "natal-motion"),
+            ));
+        }
         let mut house_views: Vec<ConsultationView> = Vec::new();
-        if let Some(receipt) = &reading.houses {
+        let house_display = reading
+            .supplement
+            .as_ref()
+            .and_then(|s| {
+                s.house_system
+                    .zip(s.houses.as_ref())
+                    .map(|(system, outcome)| {
+                        (
+                            system.label(),
+                            outcome,
+                            s.earth_rotation.as_str(),
+                            s.schema.as_str(),
+                            s.supplier.as_str(),
+                        )
+                    })
+            })
+            .or_else(|| {
+                reading.houses.as_ref().map(|h| {
+                    (
+                        h.system.label(),
+                        &h.outcome,
+                        h.earth_rotation.as_str(),
+                        h.method.as_str(),
+                        h.supplier.as_str(),
+                    )
+                })
+            });
+        if let Some((system, outcome, earth_rotation, method, supplier)) = house_display {
             use crate::natal_houses::HouseOutcome;
             house_views.push(Box::new(el(
                 "h3",
-                format!("{} houses and ascendant", receipt.system.label()),
+                format!("{} houses and ascendant", system),
             )));
-            match &receipt.outcome {
+            match outcome {
                 HouseOutcome::Unavailable { reason } => {
                     house_views.push(Box::new(el("p", reason.clone())))
                 },
@@ -315,7 +400,7 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
                             (value % 30_000_000) as f64 / 1e6
                         )
                     };
-                    house_views.push(Box::new(el("p",format!("Ascendant (rising sign): {}. Midheaven: {}. Birthplace: {}. {}. Airless tropical geometry; planetary houses use longitude only.",angle(*ascendant_microdegrees),angle(*midheaven_microdegrees),reading.birth.facts.place.as_ref().map(|p|p.label.as_str()).unwrap_or("unspecified"),receipt.earth_rotation))));
+                    house_views.push(Box::new(el("p",format!("Ascendant (rising sign): {}. Midheaven: {}. Birthplace: {}. {}. Airless tropical geometry; planetary houses use longitude only.",angle(*ascendant_microdegrees),angle(*midheaven_microdegrees),reading.birth.facts.place.as_ref().map(|p|p.label.as_str()).unwrap_or("unspecified"),earth_rotation))));
                     for (i, cusp) in cusps_microdegrees.iter().enumerate() {
                         house_views.push(Box::new(el(
                             "p",
@@ -331,7 +416,7 @@ pub(super) fn region(ui: &ConsultationUi) -> Vec<ConsultationView> {
                 },
             }
             if ui.natal_details {
-                house_views.push(Box::new(el("p",format!("House method {}; supplier {}; selected system {:?}; {}. Longitude angles retained in microdegrees.",receipt.method,receipt.supplier,receipt.system,receipt.earth_rotation))));
+                house_views.push(Box::new(el("p",format!("House method {}; supplier {}; selected system {:?}; {}. Longitude angles retained in microdegrees.",method,supplier,system,earth_rotation))));
             }
         }
         views.push(Box::new(
@@ -493,7 +578,7 @@ fn draft(ui: &ConsultationUi) -> Result<dramatis::birth::BirthFacts, String> {
     Ok(facts)
 }
 macro_rules! getter{($($name:ident=>$field:ident),*)=>{$(fn $name(ui:&mut ConsultationUi)->&mut TextInput{&mut ui.$field})*};}
-getter!(reflection=>natal_reflection,name=>natal_name,date=>natal_date,time=>natal_time,zone=>natal_zone,place=>natal_place,latitude=>natal_latitude,longitude=>natal_longitude,source=>natal_source,question=>natal_question,fold=>natal_fold);
+getter!(eop=>natal_eop,reflection=>natal_reflection,name=>natal_name,date=>natal_date,time=>natal_time,zone=>natal_zone,place=>natal_place,latitude=>natal_latitude,longitude=>natal_longitude,source=>natal_source,question=>natal_question,fold=>natal_fold);
 
 fn time_label(time: &dramatis::birth::BirthTime) -> String {
     match time {
@@ -514,6 +599,30 @@ fn time_label(time: &dramatis::birth::BirthTime) -> String {
 
 fn house_summary(reading: &crate::natal::NatalReading) -> String {
     use crate::natal_houses::HouseOutcome;
+    if let Some(s) = &reading.supplement {
+        if let Some(system) = s.house_system {
+            return match s.houses.as_ref() {
+                Some(HouseOutcome::Calculated {
+                    ascendant_microdegrees: a,
+                    ..
+                }) => format!(
+                    "{}: ascendant {:?} {:.3}°. Apparent motion retained. {}",
+                    system.label(),
+                    crate::astrology::ZodiacSign::from_longitude(*a / 1000),
+                    (*a % 30_000_000) as f64 / 1e6,
+                    s.earth_rotation
+                ),
+                Some(HouseOutcome::Unavailable { reason }) => format!(
+                    "{}: {}. Apparent motion shown below.",
+                    system.label(),
+                    reason
+                ),
+                None => String::new(),
+            };
+        }
+        return "Apparent direct/retrograde motion is retained below; no houses were selected."
+            .into();
+    }
     match reading.houses.as_ref() {
         None => String::new(),
         Some(h) => match &h.outcome {
