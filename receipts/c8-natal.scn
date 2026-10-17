@@ -26,7 +26,7 @@ c5-control-key natal-read
 wait 1800
 assert snap natal-count == 1
 assert text Natal reading for Public synthetic natal subject
-reveal class data-key natal-narration
+reveal class natal-narration
 settle 4
 capture natal-computation
 c5-control-reveal natal-latest-example
@@ -56,6 +56,6 @@ capture compact-controls
 c5-control-reveal natal-latest-example
 settle 4
 capture compact-reading
-reveal class data-key natal-narration
+reveal class natal-narration
 settle 4
 capture compact-computation

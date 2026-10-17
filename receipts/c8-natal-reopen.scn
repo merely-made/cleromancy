@@ -14,7 +14,7 @@ assert snap subject-count == 1
 c5-control-reveal natal-latest-example
 settle 4
 capture natal-reopen
-reveal class data-key natal-narration
+reveal class natal-narration
 settle 4
 capture reopened-computation
 assert text Public synthetic natal subject
