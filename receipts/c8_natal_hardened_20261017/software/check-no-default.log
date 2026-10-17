@@ -1,0 +1,87 @@
+    Blocking waiting for file lock on package cache
+warning: patch `murm v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `ipc-channel v0.22.0 (https://github.com/merely-made/genet.git?branch=main#e37762d7)` was not used in the crate graph
+warning: patch `p2panda-auth v0.7.1 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)` was not used in the crate graph
+warning: patch `p2panda-stream v0.7.1 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)` was not used in the crate graph
+warning: patch `embedded-graphics v0.8.2 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `embedded-graphics-core v0.4.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `murm v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `outrider v0.3.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `postilion v0.3.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `radio-face v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `radio-hand v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `selvage v0.1.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `seneschal v0.2.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `tulle v0.2.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+    Checking muniment v0.1.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking sceno v0.0.5 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking mere-forme v0.2.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking inker v0.1.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking chartulary v0.2.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking meristem v0.2.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking scenograph v0.0.4 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking tabard v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking sprigging v0.2.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking mere-kernel v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking eidetic v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking scenotime v0.0.4 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking scenomise v0.0.5 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking chirograph v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking cambium v0.3.3 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking armillary v0.1.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking esp v0.1.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking seiche v0.0.6 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking stickleback v0.1.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking cambium-winit v0.3.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking errand v0.4.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking mere-alembic v0.0.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking mere-cartography v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking pandect v0.1.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking cambium-rootstock v0.1.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking mere-transport v0.0.2 (https://github.com/merely-made/murm.git?branch=main#bd8fe1e5)
+    Checking pictograph v0.2.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking document-canvas v0.1.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking mere-fleece v0.0.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking graphshell-client v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking uxtree v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking luggage v0.1.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking graphshell-endpoint v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking mere-document-lanes v0.1.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking nematic v0.1.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking knot-file-catalog v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#9759ee87)
+    Checking mere-webrtc-carrier v0.0.1 (https://github.com/merely-made/murm.git?branch=main#bd8fe1e5)
+    Checking knot-editor-host v0.1.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking knot-capture v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#9759ee87)
+    Checking mere v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking mere-view v0.1.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking servitor v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking reference-data v0.0.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking script-rhai v0.0.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking mere-overmap v0.1.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking knot-document v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#9759ee87)
+    Checking knot-composition v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#9759ee87)
+    Checking graphshell-host v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking cambium-winit-a11y v0.3.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking mere-fetch v0.0.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking pelt-core v0.2.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking platen v0.0.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking mere-mesh v0.0.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking mere-personal-facts v0.1.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking knot-editor v0.0.3 (https://github.com/merely-made/knot-editor.git?branch=main#9759ee87)
+    Checking graphshell v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking cleromancy-core-acceptance v0.1.0 (/Users/markik/Code/repos/cleromancy/core)
+    Checking distillery v0.0.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking castellan v0.0.3 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking cambium-genet-winit-host v0.1.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking mesquite v0.1.0 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking tabard-workshop v0.0.1 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking djinn v0.0.2 (https://github.com/merely-made/mere.git?branch=main#d03e367b)
+    Checking cleromancy v0.1.0 (/Users/markik/Code/repos/cleromancy)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3m 23s

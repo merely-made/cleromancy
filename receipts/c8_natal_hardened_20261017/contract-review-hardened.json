@@ -1,0 +1,25 @@
+{
+  "reviewer": "Sagan, existing Dramatis supplier lane",
+  "scope": "Read-only review of subject/resource contracts and owner admission wiring",
+  "initial_findings": [
+    "External-resource links bypassed contact existence/scope validation",
+    "New profile references lacked resident-authoritative existence checks"
+  ],
+  "resolution": [
+    "Contact existence and persona scope are checked independently of target domain",
+    "Transition admission checks only newly introduced profile IDs through the actual PersonaeHost; pure replay remains independent of current profile existence"
+  ],
+  "followup_result": "No concrete bypass or cold-replay regression found in reviewed source",
+  "review_did_not_run_tests": true,
+  "boundary": "A reference removed from the current graph requires fresh authority lookup if introduced again; retained historical references do not",
+  "files": {
+    "crates/domain/personal-facts/src/lib.rs": "736600de8f9c2dfc53d0c3e0b48b91f2acd1ec2d076f3f749e821037f4ac605e",
+    "crates/domain/personal-facts/src/tests.rs": "8c64a8f03145848f298384934772ace39758f67d431ad2304424901c09ea4bdf",
+    "crates/system/pandect/src/graph_session.rs": "aa9477a62f6620af7150882bb975e5fe53ea50f88de7cf28ed5b726eb05bb1e3",
+    "crates/system/pandect/src/graph_session_transaction.rs": "d333080db45ca8ba2940bb37b541d5b1641af66308d05e8d77f543a587246060",
+    "ports/graphshell/src/mere_host.rs": "1fd986c7a86fe69d358c4096cdb4947340081d5a1b91e611064b1f5492d06ada",
+    "ports/djinn/src/resident_mere.rs": "54ffc6b5eb08a586c48b3c259045fa34bf6a5fbe06c9047517d9ec2915cd3c7e",
+    "ports/djinn/src/embedded_reservoir.rs": "eacce8cddfb73ab816626e09e9dc5c96f9926c239fc589883da531a1c2489b9c",
+    "ports/djinn/src/bin/djinn.rs": "f78f2f6e3c86f9e1b94f64c90498be4dabad2702f2050b8d7b5de789a06f2542"
+  }
+}

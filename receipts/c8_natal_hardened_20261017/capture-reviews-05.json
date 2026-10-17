@@ -1,0 +1,122 @@
+[
+  {
+    "path": "native-create-05/calculation-receipt.png",
+    "sha256": "1337ba33592e30fb0a459c59901d18bb7a3eeddb1b3ed9d5de7583cd7839188c",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Expanded numerical receipt wraps readably; all following planet prompts retain correct spacing and text geometry."
+  },
+  {
+    "path": "native-create-05/compact-computation.png",
+    "sha256": "28ec016ceb2a792cb07a99c972001332fe442a8effac512354dae7358713eb02",
+    "physical_pixels": [
+      840,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Computation narration, collapsed receipt control and authored prompts are readable; compact text wraps within the viewport."
+  },
+  {
+    "path": "native-create-05/compact-controls.png",
+    "sha256": "8ccb40fc7aa814a423cb6d937db72b99a0c01347413b0b18d5760ce3626e1d22",
+    "physical_pixels": [
+      840,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Birth authoring and revision controls remain readable and reachable; compact scrolling exposes lower controls."
+  },
+  {
+    "path": "native-create-05/compact-reading.png",
+    "sha256": "38e8e312a426392fe9ccba8ed1077de43526db11f42cc6f864eb08ff978dfe72",
+    "physical_pixels": [
+      840,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Birth authoring and revision controls remain readable and reachable; compact scrolling exposes lower controls."
+  },
+  {
+    "path": "native-create-05/natal-computation.png",
+    "sha256": "9ed96ffb3e928acbd954b57c9e210c32d5486661e4f77e48660035aa72484a69",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Computation narration, collapsed receipt control and authored prompts are readable; compact text wraps within the viewport."
+  },
+  {
+    "path": "native-create-05/natal-reading.png",
+    "sha256": "e53a81d356a755d243353445fcfdd7576d07f7965298b3ffeda799b1ce6e7f51",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Post-save or reopened draft controls are visible at the retained scroll position; saved reflection is shown in the computation captures and exact typed export."
+  },
+  {
+    "path": "native-create-05/reflection-example.png",
+    "sha256": "a4f794de5291b486ea78968c3758d5145a091a58165de38deae02558ea3fbbb0",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Reading-specific example appears in the reflection editor; mounted Save control remains reachable."
+  },
+  {
+    "path": "native-create-05/saved-birth.png",
+    "sha256": "015fe76e35a0b945707ae2fc05f7ead96b79b8049786c613b85239cc562bf8f6",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Birth authoring and revision controls remain readable and reachable; compact scrolling exposes lower controls."
+  },
+  {
+    "path": "native-reopen-05/compact-reopen.png",
+    "sha256": "9f60ededa209f5163a0a52b60606629b39a34bc223da07547c47542407197f7e",
+    "physical_pixels": [
+      840,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Post-save or reopened draft controls are visible at the retained scroll position; saved reflection is shown in the computation captures and exact typed export."
+  },
+  {
+    "path": "native-reopen-05/natal-reopen.png",
+    "sha256": "29b30e6eed073c8b91a761392a726d7fa482d209decacdef0a79747684c074e3",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Post-save or reopened draft controls are visible at the retained scroll position; saved reflection is shown in the computation captures and exact typed export."
+  },
+  {
+    "path": "native-reopen-05/reopened-computation.png",
+    "sha256": "d8c38f15aa8b3f7bc0996b6d84fd444994acd32ee3c8f2821d7e4e4a01b309fa",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Computation narration, collapsed receipt control and authored prompts are readable; compact text wraps within the viewport."
+  },
+  {
+    "path": "native-overview-05/natal-overview.png",
+    "sha256": "8d8d387074d5598590d27c0287f0a775d46f5f2e41e7789cedc69792ffafba5d",
+    "physical_pixels": [
+      2320,
+      1520
+    ],
+    "review": "pass within stated scope",
+    "notes": "Subject, question, original civil birth inputs, computation narrative and planetary prompts appear together after a fresh process."
+  }
+]

@@ -1,0 +1,27 @@
+RESULT ok
+waited 59 frames
+waited 14 frames
+waited 1 frames
+waited 1 frames
+captured saved-birth
+waited 15 frames
+captured natal-computation
+captured calculation-receipt
+captured reflection-example
+waited 18 frames
+captured natal-reading
+waited 5 frames
+waited 0 frames
+captured compact-controls
+captured compact-reading
+captured compact-computation
+capture saved-birth 2320x1520 digest=531eb17c7a398ae3 file=/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-create-05/saved-birth.png
+capture natal-computation 2320x1520 digest=9a2711f08756f6cb file=/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-create-05/natal-computation.png
+capture calculation-receipt 2320x1520 digest=af4597e39846406d file=/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-create-05/calculation-receipt.png
+capture reflection-example 2320x1520 digest=bb3037034fdb883b file=/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-create-05/reflection-example.png
+capture natal-reading 2320x1520 digest=b14fffdd945839aa file=/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-create-05/natal-reading.png
+capture compact-controls 840x1520 digest=de3edd3c3227ef2a file=/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-create-05/compact-controls.png
+capture compact-reading 840x1520 digest=5304fee6757a5d77 file=/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-create-05/compact-reading.png
+capture compact-computation 840x1520 digest=ef3cf25d8ff5a008 file=/Users/markik/Code/testing/cleromancy/c8-natal-20261016/native-create-05/compact-computation.png
+frames: 8 captured, 0 blank, 8 distinct digests
+presentation: 244 frames, 245 redraws, 1 unpresented redraws
