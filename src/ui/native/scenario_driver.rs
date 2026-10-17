@@ -276,6 +276,14 @@ impl mesquite::Product for Product {
         }
         let ui = &ctx.runner.state().consultation;
         snapshot = snapshot
+            .with_field(
+                "mere-unavailable",
+                matches!(
+                    ctx.runner.state().mere.model.status,
+                    mere_view::ViewStatus::Unavailable(_)
+                )
+                .to_string(),
+            )
             .with_field("natal-count", ui.catalog.natal_readings.len().to_string())
             .with_field(
                 "natal-reflections",
@@ -485,7 +493,7 @@ impl mesquite::Product for Product {
                 && self.state.borrow().catalog_ready
                 && !ui.catalog.natal_readings.is_empty()
                 && !ui.catalog.natal_reflections.is_empty();
-            let receipt = serde_json::json!({"schema":"cleromancy.natal-native/v1","phase":self.phase,"ok":ok,"log":outcome.log,"readings":ui.catalog.natal_readings,"reflections":ui.catalog.natal_reflections,"shared":ui.birth_catalog});
+            let receipt = serde_json::json!({"schema":"cleromancy.natal-native/v1","phase":self.phase,"ok":ok,"log":outcome.log,"readings":ui.catalog.natal_readings,"reflections":ui.catalog.natal_reflections,"shared":ui.birth_catalog,"error":ui.error(),"probe_events":self.state.borrow().probe_events});
             std::fs::write(
                 self.dir.join("receipt.json"),
                 serde_json::to_vec_pretty(&receipt).map_err(|e| e.to_string())?,

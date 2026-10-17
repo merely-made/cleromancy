@@ -1,5 +1,6 @@
 wait 1800
 assert snap catalog-ready == true
+assert snap mere-unavailable == false
 show-chart
 settle 6
 c5-control-reveal natal-open
@@ -25,7 +26,7 @@ c5-control-key natal-read
 wait 1800
 assert snap natal-count == 1
 assert text Natal reading for Public synthetic natal subject
-reveal key natal-narration
+reveal class data-key natal-narration
 settle 4
 capture natal-computation
 c5-control-reveal natal-latest-example
@@ -55,6 +56,6 @@ capture compact-controls
 c5-control-reveal natal-latest-example
 settle 4
 capture compact-reading
-reveal key natal-narration
+reveal class data-key natal-narration
 settle 4
 capture compact-computation
