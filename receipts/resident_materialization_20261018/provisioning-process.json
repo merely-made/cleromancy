@@ -1,0 +1,10 @@
+{
+  "command": [
+    "/Users/markik/Code/testing/shared-resident-materialization-20261018/mere/target/debug/c1-receipt-host",
+    "/tmp/srm-20261018-clero.sock",
+    "/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/profile-first-01",
+    "provision-ordinary"
+  ],
+  "exit": 0,
+  "helper_sha256": "329860d3df85ab5fe00852451f0f356b2381e01aecbc4ea9b18069e86d3b8b0e"
+}

@@ -1,0 +1,14 @@
+{
+  "graph_seeded": false,
+  "owner_startup_unchanged": true,
+  "persona": "00000000-0000-0000-0000-00c120261013",
+  "profile": "c1-public-synthetic",
+  "public_fixture": true,
+  "public_passphrase": "C1 public synthetic identity only",
+  "reservoir_opened": false,
+  "schema": "cleromancy.c1-ordinary-provisioning/v1",
+  "shared_root": "/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/profile-first-01/shared",
+  "standard_passphrase_vault": true,
+  "typed_wallet_bootstrap": true,
+  "vault_dir": "/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/profile-first-01/ordinary-vault"
+}

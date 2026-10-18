@@ -1,0 +1,19 @@
+{
+  "phase": "first",
+  "binary": "/Users/markik/Code/testing/shared-resident-materialization-20261018/bin/cleromancy-source420bcc3",
+  "binary_sha256": "90a831a01999b809f7aa3b9a1e9f4271f4f1415bff9bdf1693b8662751748ce2",
+  "scenario": "/Users/markik/Code/repos/cleromancy/receipts/c1-resident-seed.scn",
+  "scenario_sha256": "745a87182dde20c26660e7ea621bab6ce25fb73fddd2c079253e861d88a3ea06",
+  "profile": "/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/profile-first-01",
+  "endpoint": "/tmp/srm-20261018-qualified.sock",
+  "output": "/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/first-01",
+  "check_only": false,
+  "argv": [
+    "/usr/bin/sandbox-exec",
+    "-p",
+    "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))",
+    "/Users/markik/Code/testing/shared-resident-materialization-20261018/bin/cleromancy-source420bcc3"
+  ],
+  "offline_ip_deny": true,
+  "sandbox_policy": "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))"
+}

@@ -1,0 +1,26 @@
+{
+  "mere": [
+    "git+https://github.com/merely-made/mere.git?branch=main#9b8c161a831aa9615c84a4bbfaea9b15021e3659",
+    "git+https://github.com/merely-made/mere.git?rev=70deef2c8cf3d3410ae35b496a9396514070b24f#70deef2c8cf3d3410ae35b496a9396514070b24f"
+  ],
+  "genet": [
+    "git+https://github.com/merely-made/genet.git?branch=main#7114f91ce928937ac0891d7db816655706843204"
+  ],
+  "dramatis": [
+    "git+https://github.com/merely-made/dramatis.git?branch=main#cf562f47f33ab0b6ad0db1c5ac3123775769979e"
+  ],
+  "knot-editor": [
+    "git+https://github.com/merely-made/knot-editor.git?branch=main#d2d5c32942d40af47223790ed3e16bc88fa59aa6"
+  ],
+  "murm": [
+    "git+https://github.com/merely-made/murm.git?branch=main#7c2432ab16723daeb8119f21014a66f0a8121ff8"
+  ],
+  "netrender": [
+    "git+https://github.com/merely-made/netrender.git?rev=c5efc94f876e93caba20807709189c5f9589492b#c5efc94f876e93caba20807709189c5f9589492b"
+  ],
+  "turquet": [
+    "git+https://github.com/merely-made/turquet.git?rev=30875f30e83909f3030bc01237a5046e14cde29b#30875f30e83909f3030bc01237a5046e14cde29b",
+    "git+https://github.com/merely-made/turquet.git?rev=8e3755bbd0d40343eb4750b072801c941ff32802#8e3755bbd0d40343eb4750b072801c941ff32802",
+    "git+https://github.com/merely-made/turquet.git?rev=e2f65c021a6bf744ab5fe77121e0441a46b47306#e2f65c021a6bf744ab5fe77121e0441a46b47306"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "status": "interrupted-not-pass",
+  "source": "420bcc3",
+  "command": [
+    "cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-j",
+    "2",
+    "--features",
+    "personal-sync",
+    "--all-targets"
+  ],
+  "partial_log": "/Users/markik/Code/testing/shared-resident-materialization-20261018/cleromancy-validation-20261018T122617-personal-sync-all-targets.log",
+  "signal": "SIGINT",
+  "owned_process_group": 95389,
+  "validation_runner_exit": 130,
+  "cargo_exit": null,
+  "reason": "Parent agent narrowed verification to required compile gate; repeated expanded test matrix stopped.",
+  "at": "2026-10-18T12:47:20.398093"
+}

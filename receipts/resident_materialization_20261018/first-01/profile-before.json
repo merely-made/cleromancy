@@ -1,0 +1,9 @@
+{
+  ".c1-public-synthetic": "8ab469a279c51b3d37dd3cccee1a56e90b70a38571351960cc2cbd034ccbd47a",
+  "ordinary-vault/vault.json": "0bc78cbca028c0c1a5ada1ddd833e3f278aab418a720b3f74cbdd45490b6d0c2",
+  "shared/identity/device-roster.json": "e9c035935bcf2ff387e953220dc3fec3cd1a633459b4122f6dfb97810e05f2b6",
+  "shared/identity/master.seed": "56d2617ec4deb8c5b71b3549b853c844e5ea57a8a8780711e0322a1cc84825e2",
+  "shared/identity/wallet.json": "bdef17e637d388a4be7bafdb8079e8b487ed4b27338aa9b702448788f91ca8b0",
+  "shared/personas/00000000-0000-0000-0000-00c120261013/private-epoch-bridge.json": "710b1b85c2972b6ee43ad40154d2d8d48f9a5173cbd622be42af957ed965a766",
+  "shared/personas/00000000-0000-0000-0000-00c120261013/wallet.json": "be5ad96e359a2ea14a91d485b2b12da89e0de5503d498cd6a1099ee226160a90"
+}

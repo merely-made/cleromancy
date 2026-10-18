@@ -1,0 +1,146 @@
+{
+  "source": "420bcc396a242a9715b528eefbd952a05d2a7b4e",
+  "accepted_gates": [
+    {
+      "name": "atomic-regression",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--lib",
+        "mere_refresh_preserves_pending_until_atomic_command_response_restores_selection",
+        "--",
+        "--nocapture"
+      ],
+      "exit": 0,
+      "log": "cleromancy-postfix-420bcc3-123834-atomic-regression.log",
+      "totals": {
+        "passed": 1,
+        "failed": 0,
+        "ignored": 0
+      }
+    },
+    {
+      "name": "resident",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--lib",
+        "ui::resident::tests",
+        "--",
+        "--nocapture"
+      ],
+      "exit": 0,
+      "log": "cleromancy-postfix-420bcc3-123834-resident.log",
+      "totals": {
+        "passed": 7,
+        "failed": 0,
+        "ignored": 0
+      }
+    },
+    {
+      "name": "desktop-build",
+      "command": [
+        "cargo",
+        "build",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--bin",
+        "cleromancy"
+      ],
+      "exit": 0,
+      "log": "cleromancy-postfix-420bcc3-123834-desktop-build.log"
+    },
+    {
+      "source": "420bcc396a242a9715b528eefbd952a05d2a7b4e",
+      "name": "core-default",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--manifest-path",
+        "core/Cargo.toml"
+      ],
+      "exit": 0,
+      "log": "cleromancy-final-420bcc3-core-default.log",
+      "finished": "2026-10-18T12:49:27.957213",
+      "env": {
+        "RUSTC": "/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustc",
+        "RUSTDOC": "/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustdoc",
+        "TMPDIR": "/tmp",
+        "CARGO_BUILD_JOBS": "2"
+      },
+      "totals": {
+        "passed": 60,
+        "failed": 0,
+        "ignored": 0
+      }
+    },
+    {
+      "source": "420bcc396a242a9715b528eefbd952a05d2a7b4e",
+      "name": "personal-sync-check",
+      "command": [
+        "cargo",
+        "check",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--features",
+        "personal-sync",
+        "--all-targets"
+      ],
+      "exit": 0,
+      "log": "cleromancy-final-420bcc3-personal-sync-check.log",
+      "finished": "2026-10-18T12:51:25.419877",
+      "env": {
+        "RUSTC": "/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustc",
+        "RUSTDOC": "/Users/markik/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustdoc",
+        "TMPDIR": "/tmp",
+        "CARGO_BUILD_JOBS": "2"
+      }
+    }
+  ],
+  "earlier_default_matrix": {
+    "name": "default-all-targets",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "-j",
+      "2",
+      "--all-targets"
+    ],
+    "log": "cleromancy-validation-20261018T122617-default-all-targets.log",
+    "exit": 0,
+    "started": "2026-10-18T12:29:50.378485",
+    "finished": "2026-10-18T12:40:44.042789",
+    "source": "5a8393c2d04403ad5f10a912289d792729d2639c",
+    "passed": 150,
+    "ignored": 1
+  },
+  "native_binary": {
+    "path": "/Users/markik/Code/repos/cleromancy/target/debug/cleromancy",
+    "sha256": "90a831a01999b809f7aa3b9a1e9f4271f4f1415bff9bdf1693b8662751748ce2",
+    "bytes": 308541704
+  },
+  "expanded_test_matrix_status": "interrupted-not-pass; only the required feature compile gate is accepted",
+  "notes": [
+    "Seven resident and one atomic-publication regression pass on the final source.",
+    "The full default all-target test matrix ran against the pre-fix source; its 150 passes and one existing ignored ESP-provider test do not replace final focused/native qualification.",
+    "Desktop debug linking retains the large compact-unwind warning; no performance or signed-package claim."
+  ]
+}

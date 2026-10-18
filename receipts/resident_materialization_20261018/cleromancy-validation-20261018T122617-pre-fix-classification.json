@@ -1,0 +1,9 @@
+{
+  "compiled_before_fix": [
+    "resident",
+    "default-all-targets"
+  ],
+  "compiled_revision": "5a8393c2d04403ad5f10a912289d792729d2639c",
+  "fix_revision": "420bcc3",
+  "note": "Initial driver remains active. Later gates may compile the committed fix; individual logs and start times govern. Existing logs are preserved."
+}

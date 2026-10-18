@@ -1,0 +1,31 @@
+RESULT ok
+waited 6 frames
+waited 58 frames
+waited 0 frames
+waited 0 frames
+captured reading-and-mere
+waited 0 frames
+waited 0 frames
+captured minted-empty
+waited 29 frames
+captured switched-original
+waited 0 frames
+captured compact-reading-and-mere
+waited 0 frames
+waited 9 frames
+captured archived
+waited 10 frames
+captured forked
+waited 7 frames
+waited 7 frames
+waited 0 frames
+captured restored
+capture reading-and-mere 2320x1520 digest=022528e66de8183f file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/first-01/reading-and-mere.png
+capture minted-empty 2320x1520 digest=12226611c8ddcfca file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/first-01/minted-empty.png
+capture switched-original 2320x1520 digest=e866194e5a158f8d file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/first-01/switched-original.png
+capture compact-reading-and-mere 840x1520 digest=c1615d5f34d42822 file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/first-01/compact-reading-and-mere.png
+capture archived 2320x1520 digest=25dd915032989ace file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/first-01/archived.png
+capture forked 2320x1520 digest=269c019896d2f734 file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/first-01/forked.png
+capture restored 2320x1520 digest=24513046a5bff20b file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/first-01/restored.png
+frames: 7 captured, 0 blank, 7 distinct digests
+presentation: 189 frames, 190 redraws, 1 unpresented redraws

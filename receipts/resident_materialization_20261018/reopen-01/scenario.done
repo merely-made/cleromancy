@@ -1,0 +1,12 @@
+RESULT ok
+waited 28 frames
+waited 6 frames
+captured recovered
+waited 14 frames
+waited 0 frames
+captured archive-thaw
+waited 0 frames
+captured compact-archive-reading
+waited 0 frames
+waited 0 frames
+captured original-after-archive

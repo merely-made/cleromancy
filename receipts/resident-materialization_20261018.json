@@ -1,0 +1,20 @@
+{
+  "schema": "cleromancy.resident-materialization/v1",
+  "source": "420bcc396a242a9715b528eefbd952a05d2a7b4e",
+  "supplier": "9b8c161a831aa9615c84a4bbfaea9b15021e3659",
+  "shared_reader_mode": "Complete",
+  "domain_validation_retained": true,
+  "native_runs": 2,
+  "reviewed_native_captures": 11,
+  "same_ids_and_card_bytes_after_fresh_process": true,
+  "earlier_failed_lifecycle_run_preserved": true,
+  "prior_tracked_receipt_files_preserved": 1280,
+  "qualified_scope": "Ordinary embedded resident lifecycle, archive opening and read-only selection, fresh-process restoration; production terminal fallback with public synthetic fixture and outbound IP denial. Compact captures retain explicit clipping limits.",
+  "not_claimed": [
+    "graphical unlock qualification",
+    "signed-package replacement",
+    "Knot resident native completion",
+    "entire stack acceptance"
+  ],
+  "packet": "resident_materialization_20261018/artifact-hashes.json"
+}
