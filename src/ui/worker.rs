@@ -54,6 +54,9 @@ pub(crate) enum WorkerUpdate {
     Mere {
         model: MereViewModel,
         catalog: ConsultationCatalog,
+        selection: Option<(ConsultationDetail, Option<String>)>,
+        // Only a response to a submitted Mere command releases its pending wait.
+        complete_request: bool,
     },
     Catalog(ConsultationCatalog),
     Die {
@@ -172,25 +175,20 @@ fn run(commands: mpsc::Receiver<WorkerCommand>, deliver: impl Fn(WorkerUpdate)) 
             return;
         },
     };
-    let publish = |client: &ResidentConsultation| -> Result<(), String> {
+    let publish = |client: &ResidentConsultation, complete_request: bool| -> Result<(), String> {
         let catalog = client
             .consultation()?
             .catalog()
             .map_err(|e| e.to_string())?;
         deliver(WorkerUpdate::Mere {
             model: client.model.clone(),
-            catalog: catalog.clone(),
+            catalog,
+            selection: client.restored_selection(),
+            complete_request,
         });
-        if let Some((detail, position)) = client.restored_selection() {
-            deliver(WorkerUpdate::GraphSelection {
-                catalog,
-                detail,
-                position,
-            });
-        }
         Ok(())
     };
-    if let Err(message) = publish(&client) {
+    if let Err(message) = publish(&client, false) {
         deliver(WorkerUpdate::Unavailable { message });
         let _ = runtime.block_on(client.close());
         return;
@@ -199,7 +197,7 @@ fn run(commands: mpsc::Receiver<WorkerCommand>, deliver: impl Fn(WorkerUpdate)) 
         match commands.recv_timeout(Duration::from_millis(250)) {
             Ok(WorkerCommand::Product(action)) => match runtime.block_on(client.action(action)) {
                 Ok(update) => {
-                    if let Err(message) = publish(&client) {
+                    if let Err(message) = publish(&client, false) {
                         deliver(WorkerUpdate::Unavailable { message });
                         break;
                     }
@@ -255,7 +253,7 @@ fn run(commands: mpsc::Receiver<WorkerCommand>, deliver: impl Fn(WorkerUpdate)) 
                     }
                     client.model.notice = Some(message);
                 }
-                if let Err(message) = publish(&client) {
+                if let Err(message) = publish(&client, true) {
                     deliver(WorkerUpdate::Unavailable { message });
                     break;
                 }
@@ -269,7 +267,7 @@ fn run(commands: mpsc::Receiver<WorkerCommand>, deliver: impl Fn(WorkerUpdate)) 
                 match runtime.block_on(client.take_notice()) {
                     Ok(true) => match runtime.block_on(client.refresh()) {
                         Ok(()) => {
-                            if let Err(message) = publish(&client) {
+                            if let Err(message) = publish(&client, false) {
                                 deliver(WorkerUpdate::Unavailable { message });
                                 break;
                             }

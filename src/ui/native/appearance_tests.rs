@@ -1184,3 +1184,73 @@ fn shared_mere_and_focused_reading_share_the_ordinary_wide_viewport() {
     );
     assert!(host.state().consultation.pending_action.is_none());
 }
+
+#[test]
+fn mere_refresh_preserves_pending_until_atomic_command_response_restores_selection() {
+    let dir = tempfile::tempdir().unwrap();
+    let mut ui = appearance_view::ApplicationUi {
+        consultation: crate::ConsultationUi::new(empty_catalog()),
+        mere: Default::default(),
+        appearance: state(&dir),
+    };
+    let mut consultation = crate::Consultation::new(
+        crate::CleromancyHost::candidate(mere::kernel::graph::Graph::new()).unwrap(),
+    );
+    let field = pollster::block_on(consultation.install_builtin_tarot_at(1)).unwrap();
+    let context = pollster::block_on(consultation.save_context_at(
+        crate::ContextDraft::new("Pending restore", "What survives a refresh?", "lifecycle"),
+        2,
+    ))
+    .unwrap();
+    let detail =
+        pollster::block_on(consultation.read(&context, &field, crate::SelectionMode::Calculated))
+            .unwrap();
+    let catalog = consultation.catalog().unwrap();
+    let session = detail.session.id.clone();
+    let position = detail.session.placements[0].position.clone();
+    let reading = detail.session.placements[0].reading_id.clone();
+    ui.mere.busy = true;
+
+    // A queued/polled publication may arrive after the next command starts.
+    super::apply_mere_publication(
+        &mut ui,
+        Default::default(),
+        catalog.clone(),
+        Some((detail.clone(), Some(position.clone()))),
+        false,
+    );
+    assert!(
+        ui.mere.busy,
+        "an unsolicited refresh cannot acknowledge restore"
+    );
+    assert_eq!(ui.consultation.detail().unwrap().session.id, session);
+
+    // Nor may an empty refresh release the wait before its restored selection.
+    ui.consultation.clear_selection();
+    super::apply_mere_publication(&mut ui, Default::default(), catalog.clone(), None, false);
+    assert!(ui.mere.busy);
+    assert!(ui.consultation.detail().is_none());
+
+    let mut model = mere_view::MereViewModel::default();
+    model.title = "Restore acknowledged".into();
+    super::apply_mere_publication(
+        &mut ui,
+        model,
+        catalog,
+        Some((detail, Some(position.clone()))),
+        true,
+    );
+    assert!(!ui.mere.busy, "the command response releases its own wait");
+    assert_eq!(ui.mere.model.title, "Restore acknowledged");
+    assert_eq!(ui.consultation.detail().unwrap().session.id, session);
+    assert_eq!(ui.consultation.reading_focus.get(&session), Some(&position));
+    assert_eq!(
+        ui.mere.view.focused,
+        Some(
+            mere::kernel::graph::Graph::node_namespace_id(&format!(
+                "cleromancy://reading/{reading}"
+            ),)
+            .to_string(),
+        )
+    );
+}
