@@ -4,15 +4,15 @@
 //! One admitted divination client. The resident owns every saved graph and
 //! journal. Product actions transform only a complete, revision-bound candidate.
 
-use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 
-use chirograph::{
-    CarrierRequestBody, CarrierResponseBody, IntentResult, PortableCardV1, ProjectionSnapshot,
-};
+use chirograph::{CarrierRequestBody, CarrierResponseBody, IntentResult, ProjectionSnapshot};
 use djinn::embedded_reservoir::ReservoirAttachment;
 use mere::kernel::graph::{CapturedDelta, Graph};
-use mere_overmap::{route as mere_route, wire as session_item};
+use mere_overmap::{
+    materialization::{self, GraphRead, MaterializedMere},
+    route as mere_route, wire as session_item,
+};
 use mere_view::{MereViewModel, MereViewRequest};
 use muniment::MemoryBackend;
 
@@ -36,29 +36,23 @@ pub(crate) struct ResidentConsultation {
 
 impl ResidentConsultation {
     pub async fn attach(mut attachment: ReservoirAttachment) -> Result<Self, String> {
-        let opened = attachment.client_mut().open_session().await.map_err(err)?;
-        let (sessions, graph) =
-            mere_route::requests(&opened.descriptor).ok_or("resident has no mere projections")?;
-        let sessions = attachment
-            .client_mut()
-            .snapshot(sessions)
-            .await
-            .map_err(err)?;
-        let graph_projection = attachment.client_mut().snapshot(graph).await.map_err(err)?;
+        let reading =
+            materialization::read(attachment.client_mut(), "cleromancy", GraphRead::Complete)
+                .await?;
+        let model = materialized_model(&reading, MereViewModel::default())?;
         let mut client = Self {
             personal: None,
             granted: None,
             attachment,
-            sessions,
-            graph_projection,
-            envelope: None,
-            archive: None,
+            sessions: reading.sessions,
+            graph_projection: reading.graph,
+            envelope: reading.graph_material,
+            archive: reading.archive,
             transient_view: None,
-            model: MereViewModel::default(),
+            model,
             unavailable: false,
             saved_notice: None,
         };
-        client.refresh().await?;
         if !client.model.sessions.iter().any(|session| session.attached) {
             client.request(MereViewRequest::Mint).await?;
         }
@@ -84,103 +78,14 @@ impl ResidentConsultation {
         // A failed read clears transient material too. Publish it again only
         // after the complete graph proves the same read-only attachment.
         let transient_view = self.transient_view.take();
-        let opened = self
-            .attachment
-            .client_mut()
-            .open_session()
-            .await
-            .map_err(err)?;
-        let (sessions, graph) =
-            mere_route::requests(&opened.descriptor).ok_or("resident has no mere projections")?;
-        let sessions = self
-            .attachment
-            .client_mut()
-            .snapshot(sessions)
-            .await
-            .map_err(err)?;
-        let graph_projection = self
-            .attachment
-            .client_mut()
-            .snapshot(graph)
-            .await
-            .map_err(err)?;
-        let mut cards = HashMap::new();
-        for request in mere_route::card_requests(&sessions) {
-            let bytes = self
-                .attachment
-                .client_mut()
-                .resource(request.session, request.resource)
-                .await
-                .map_err(err)?;
-            verify_resource(request.resource, &bytes)?;
-            cards.insert(request.resource, bytes);
-        }
-        let mut model = self.model.clone();
-        mere_route::fill(&mut model, &sessions, &graph_projection, &cards);
-        let mut archive_projection = None;
-        if let Some(request) = mere_route::archive_request(&opened.descriptor) {
-            let archive = self
-                .attachment
-                .client_mut()
-                .snapshot(request)
-                .await
-                .map_err(err)?;
-            let mut archive_cards = HashMap::new();
-            for request in mere_route::card_requests(&archive) {
-                let bytes = self
-                    .attachment
-                    .client_mut()
-                    .resource(request.session, request.resource)
-                    .await
-                    .map_err(err)?;
-                verify_resource(request.resource, &bytes)?;
-                archive_cards.insert(request.resource, bytes);
-            }
-            mere_route::fill_archive(&mut model, &sessions, &archive, &archive_cards);
-            archive_projection = Some(archive);
-        }
-        let mut staged_envelope = None;
-        for request in mere_route::card_requests(&graph_projection) {
-            let bytes = self
-                .attachment
-                .client_mut()
-                .resource(request.session.clone(), request.resource)
-                .await
-                .map_err(err)?;
-            verify_resource(request.resource, &bytes)?;
-            if let Ok(card) = serde_json::from_slice::<PortableCardV1>(&bytes) {
-                if let Some(media) = card.media.first() {
-                    let bytes = self
-                        .attachment
-                        .client_mut()
-                        .resource(request.session, *media)
-                        .await
-                        .map_err(err)?;
-                    verify_resource(*media, &bytes)?;
-                    if let Ok(envelope) =
-                        serde_json::from_slice::<session_item::SessionGraphV1>(&bytes)
-                    {
-                        let attached = model
-                            .sessions
-                            .iter()
-                            .find(|session| session.attached)
-                            .ok_or("graph envelope has no attached session")?;
-                        verify_envelope(
-                            &envelope,
-                            attached.id,
-                            graph_projection.scene.epoch,
-                            graph_projection.scene.revision,
-                        )?;
-                        staged_envelope = Some(envelope);
-                        break;
-                    }
-                }
-            }
-        }
-        if model.sessions.iter().any(|session| session.attached) && staged_envelope.is_none() {
-            return Err("resident did not disclose its complete attached graph".into());
-        }
-        restore_scoped_layout(&mut model, staged_envelope.as_ref());
+        let reading = materialization::read(
+            self.attachment.client_mut(),
+            "cleromancy",
+            GraphRead::Complete,
+        )
+        .await?;
+        let mut model = materialized_model(&reading, self.model.clone())?;
+        let staged_envelope = reading.graph_material;
         self.transient_view = transient_view.filter(|(id, _)| {
             staged_envelope
                 .as_ref()
@@ -189,10 +94,10 @@ impl ResidentConsultation {
         if let Some((_, view)) = &self.transient_view {
             model.layout = view.strategy.clone().unwrap_or_default();
         }
-        self.sessions = sessions;
-        self.graph_projection = graph_projection;
+        self.sessions = reading.sessions;
+        self.graph_projection = reading.graph;
         self.model = model;
-        self.archive = archive_projection;
+        self.archive = reading.archive;
         self.envelope = staged_envelope;
         self.unavailable = false;
         Ok(())
@@ -823,29 +728,37 @@ fn newly_minted_session(
     Ok(id)
 }
 
+// Only publish shared transport material after product replay validation.
+fn materialized_model(
+    reading: &MaterializedMere,
+    mut model: MereViewModel,
+) -> Result<MereViewModel, String> {
+    reading.fill_model(&mut model);
+    if let Some(envelope) = &reading.graph_material {
+        let attached = model
+            .sessions
+            .iter()
+            .find(|session| session.attached)
+            .ok_or("graph envelope has no attached session")?;
+        verify_envelope(
+            envelope,
+            attached.id,
+            reading.graph.scene.epoch,
+            reading.graph.scene.revision,
+        )?;
+    }
+    restore_scoped_layout(&mut model, reading.graph_material.as_ref());
+    Ok(model)
+}
+
 fn verify_envelope(
     envelope: &session_item::SessionGraphV1,
     session: pandect::SessionId,
     epoch: scenotime::SceneEpoch,
     revision: scenotime::Revision,
 ) -> Result<(), String> {
-    if envelope.session != session {
-        return Err("graph envelope names another attached session".into());
-    }
-    if envelope.epoch != epoch || envelope.revision != revision {
-        return Err("graph envelope revision differs from its projection".into());
-    }
-    if envelope.application != "cleromancy" {
-        return Err("graph envelope belongs to another application view".into());
-    }
+    materialization::validate_graph_material(envelope, "cleromancy", session, epoch, revision)?;
     crate::host::validate_divination_graph(&envelope.clone().into_graph()?).map_err(err)
-}
-
-fn verify_resource(expected: chirograph::ContentHash, bytes: &[u8]) -> Result<(), String> {
-    if chirograph::ContentHash::of(bytes) != expected {
-        return Err("resident resource bytes do not match their content hash".into());
-    }
-    Ok(())
 }
 
 fn err(error: impl std::fmt::Display) -> String {
@@ -1266,15 +1179,6 @@ mod tests {
         assert!(newly_minted_session(&[id(1), id(2), id(3)], &model).is_err());
         model.sessions[2].trashed = true;
         assert_eq!(newly_minted_session(&[id(1)], &model).unwrap(), id(2));
-    }
-
-    #[test]
-    fn resource_content_address_is_checked_before_decoding() {
-        let bytes = serde_json::to_vec(&envelope()).unwrap();
-        let hash = chirograph::ContentHash::of(&bytes);
-        verify_resource(hash, &bytes).unwrap();
-        assert!(verify_resource(hash, b"tampered").is_err());
-        assert!(verify_resource(hash, b"").is_err());
     }
 }
 

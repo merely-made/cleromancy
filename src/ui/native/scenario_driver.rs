@@ -513,7 +513,7 @@ impl mesquite::Product for Product {
         if ctx.runner.state().appearance.editor_open || ctx.runner.state().mere.open {
             return None;
         }
-        let node = taproot::matching(
+        let node = taproot::matching_classes(
             &ctx.runner.dom().borrow(),
             &taproot::Selector::class("cleromancy-consultation"),
         )
@@ -727,11 +727,16 @@ impl ScenarioDriver<'_, '_> {
                 }
             }
             let node = {
+                let projection = self
+                    .ctx
+                    .a11y_projection()
+                    .ok_or("host accessibility projection unavailable for scenario control")?;
                 let dom = self.ctx.runner.dom();
                 let dom = dom.borrow();
-                taproot::matching(
+                taproot::matching_with_projection(
                     &dom,
                     &taproot::Selector::role("button").with_attr("data-key", &key),
+                    &projection,
                 )
                 .into_iter()
                 .next()
@@ -1066,11 +1071,16 @@ impl ScenarioDriver<'_, '_> {
                     "return-drawn-card"
                 };
                 let node = {
+                    let projection = self
+                        .ctx
+                        .a11y_projection()
+                        .ok_or("host accessibility projection unavailable for scenario control")?;
                     let dom = self.ctx.runner.dom();
                     let dom = dom.borrow();
-                    taproot::matching(
+                    taproot::matching_with_projection(
                         &dom,
                         &taproot::Selector::role("button").with_attr("data-key", key),
+                        &projection,
                     )
                     .into_iter()
                     .next()
@@ -1162,7 +1172,7 @@ impl ScenarioDriver<'_, '_> {
                 let node = {
                     let dom = self.ctx.runner.dom();
                     let dom = dom.borrow();
-                    taproot::matching(&dom, &taproot::Selector::class(class))
+                    taproot::matching_classes(&dom, &taproot::Selector::class(class))
                         .into_iter()
                         .next()
                         .ok_or_else(|| format!("no .{class}"))?
@@ -1324,10 +1334,15 @@ impl ScenarioDriver<'_, '_> {
         };
         let dom = self.ctx.runner.dom();
         let dom = dom.borrow();
-        let containers = taproot::matching(&dom, &container);
-        taproot::matching(
+        let containers = taproot::matching_classes(&dom, &container);
+        let projection = self
+            .ctx
+            .a11y_projection()
+            .ok_or("host accessibility projection unavailable for mere control")?;
+        taproot::matching_with_projection(
             &dom,
             &taproot::Selector::role("button").with_attr("data-step", step),
+            &projection,
         )
         .into_iter()
         .find(|node| {
@@ -1431,8 +1446,18 @@ impl ScenarioDriver<'_, '_> {
             let dom = dom.borrow();
             let containers = container
                 .as_ref()
-                .map(|selector| taproot::matching(&dom, selector));
-            taproot::matching(&dom, &selector)
+                .map(|selector| taproot::matching_classes(&dom, selector));
+            let matches = match &selector.matcher {
+                taproot::Match::Class(_) => taproot::matching_classes(&dom, &selector),
+                taproot::Match::Role(_) => {
+                    let projection = self
+                        .ctx
+                        .a11y_projection()
+                        .ok_or("host accessibility projection unavailable for mere action")?;
+                    taproot::matching_with_projection(&dom, &selector, &projection)
+                },
+            };
+            matches
                 .into_iter()
                 .find(|node| {
                     let Some(containers) = &containers else {
@@ -1472,7 +1497,7 @@ impl ScenarioDriver<'_, '_> {
             .ok_or_else(|| format!("expected 'class data-key', got {target:?}"))?;
         let dom = self.ctx.runner.dom();
         let dom = dom.borrow();
-        taproot::matching(
+        taproot::matching_classes(
             &dom,
             &taproot::Selector::class(class).with_attr("data-key", key),
         )

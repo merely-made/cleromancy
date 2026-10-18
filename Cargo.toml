@@ -41,7 +41,7 @@ esp = { git = "https://github.com/merely-made/mere.git", branch = "main", option
 sha2 = { version = "0.10", optional = true }
 fetch = { package = "mere-fetch", git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false }
 djinn = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false }
-mere-overmap = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+mere-overmap = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["resident"] }
 mere-view = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 pandect = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 sprigging = { git = "https://github.com/merely-made/mere.git", branch = "main" }

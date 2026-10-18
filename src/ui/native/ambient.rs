@@ -26,7 +26,7 @@ pub(super) fn sync(
         let node = {
             let dom = ctx.runner.dom();
             let dom = dom.borrow();
-            taproot::matching(&dom, &taproot::Selector::class("ambient-canvas-holder"))
+            taproot::matching_classes(&dom, &taproot::Selector::class("ambient-canvas-holder"))
                 .into_iter()
                 .next()
         };
