@@ -263,3 +263,5 @@ Natal-aspects [qualification ledger](../receipts/natal-aspects-qualification_202
 Graphical unlock [qualification](../receipts/graphical-unlock-qualification_20261017.json) and [evidence notes](../receipts/graphical_unlock_20261017/README.md): final extracted package-04 launcher, actual production dialog and retry, zero terminal answers, six exact readings/two reflections and one reviewed original. Earlier failed diagnostics remain intact; Developer ID signing and public release remain open.
 
 Developer ID signed native [qualification](../receipts/developer-id-native-qualification_20261017.json) and [evidence notes](../receipts/developer_id_native_20261017/README.md): Apple-anchored timestamped signatures/hardened runtime, two graphical processes, six reviewed originals, exact readings/reflections/shared resources and unchanged earlier receipts. Notarization and app distribution remain separate.
+
+Duplication reduction: [plan](2026-10-18_duplication_reduction_plan.md). Consolidate repeated mechanisms with explicit authority and replay boundaries; first remove duplicate aspect geometry, then qualify shared resident materialization across real consumers.

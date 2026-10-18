@@ -1,0 +1,34 @@
+{
+  "schema": "cleromancy.duplication-reduction/v1",
+  "baseline": "5590a2a05f47b79d93d9688506be07710afa0223",
+  "scope": "One aspect-angle vocabulary and one circular-distance implementation shared by two unchanged selection policies. Bounded cross-stack seam audit; no shared materialization or dependency pruning implementation.",
+  "source_sha256": {
+    "src/astrology.rs": "79f6fc43f4b37cfeeaf1d2015ca2c0cf70f28448ed9a60bf87c13a887ed0e73d",
+    "src/natal_aspects.rs": "6a6c860611a132031b4ab5e880020a731d6f5597eb03b905f43cfb03f81ad1f9",
+    "tests/natal.rs": "31284fdcac05e11cd22c67ffb234502eaa9b4f5e325beaa81f1c2b617104fbc1"
+  },
+  "gates": {
+    "portable_core_default": {
+      "exit": 0,
+      "passed": 60,
+      "failed": 0,
+      "ignored": 0
+    },
+    "desktop_natal": {
+      "exit": 0,
+      "passed": 18,
+      "failed": 0,
+      "ignored": 0
+    }
+  },
+  "prior_tracked_receipts_preserved": 1275,
+  "manifests_and_locks_unchanged": true,
+  "native_qualification_renewed": false,
+  "linker_observation": "Desktop debug link reports __eh_frame over 16MB compact-unwind limit; tests pass. No exception-handling performance claim.",
+  "artifacts": {
+    "duplication_reduction_20261018/core-default.log": "7662a72dab5148d854bea5649ca3b42624112e7eeed60a879e8443cdff508b21",
+    "duplication_reduction_20261018/core-lib.log": "fbbe6013ca2688b0deff90ece56a6d4342f1a6d60207834a7c965ff9b03a2f84",
+    "duplication_reduction_20261018/desktop-natal-result.log": "433ecf323d567a8a65339cbda903ea4d139364d9e43e2a054f96f88e189fab30",
+    "duplication_reduction_20261018/preservation.json": "7d56b33810cbb82611f2813f68da89b8db5514b79bba45b4f3f1810877fb96ba"
+  }
+}

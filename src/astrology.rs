@@ -135,6 +135,14 @@ pub struct AstrologyPosition {
 }
 
 impl AstrologyPosition {
+    /// Shortest separation between two validated longitudes on the circle.
+    pub(crate) fn separation_millidegrees(&self, other: &Self) -> u32 {
+        let direct = self
+            .longitude_millidegrees
+            .abs_diff(other.longitude_millidegrees);
+        direct.min(360_000 - direct)
+    }
+
     pub fn new(
         body: impl Into<String>,
         longitude_millidegrees: u32,
@@ -335,7 +343,7 @@ pub enum AspectKind {
 }
 
 impl AspectKind {
-    fn exact_millidegrees(self) -> u32 {
+    pub(crate) fn exact_millidegrees(self) -> u32 {
         match self {
             Self::Conjunction => 0,
             Self::Sextile => 60_000,
@@ -345,7 +353,7 @@ impl AspectKind {
         }
     }
 
-    fn ordered() -> [Self; 5] {
+    pub(crate) fn ordered() -> [Self; 5] {
         [
             Self::Conjunction,
             Self::Sextile,
@@ -408,10 +416,7 @@ fn derive_aspects(positions: &[AstrologyPosition], orb_millidegrees: u32) -> Vec
     let mut aspects = Vec::new();
     for (index, first) in positions.iter().enumerate() {
         for second in positions.iter().skip(index + 1) {
-            let direct = first
-                .longitude_millidegrees
-                .abs_diff(second.longitude_millidegrees);
-            let separation = direct.min(360_000 - direct);
+            let separation = first.separation_millidegrees(second);
             let Some((kind, orb)) = AspectKind::ordered()
                 .into_iter()
                 .map(|kind| {
