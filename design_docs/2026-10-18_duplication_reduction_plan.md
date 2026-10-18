@@ -1,6 +1,6 @@
 # Reduce duplicated mechanics without moving product authority
 
-**Status (2026-10-18):** bounded source audit and first aspect-geometry consolidation complete; shared resident materialization and dependency-boundary work remain planned. Notarization is deferred at Mark's request; its prior account refusal and signed/native receipts retain their original identities.
+**Status (2026-10-18):** bounded source audit and first aspect-geometry consolidation complete; shared resident materialization is in progress; dependency-boundary work remains planned. Notarization is deferred at Mark's request; its prior account refusal and signed/native receipts retain their original identities.
 
 ## Purpose and boundary
 
@@ -39,3 +39,5 @@ Done when two consumers use the same materialization mechanism, tests demonstrat
 - 2026-10-18: Completed the bounded comparison above. First source consolidation removes the natal copy of angle constants and circle-distance arithmetic. Added a regression that replays and round-trips all six original signed-native reading values using the existing committed receipt, without copying or rewriting those fixtures. Software validation is in progress.
 
 - 2026-10-18: Software validation passes: portable core 60 tests, desktop natal 18 tests, zero failures/ignores. The [source-bound receipt](../receipts/duplication-reduction_20261018.json) records test outcomes, changed-file hashes, unchanged manifests/locks and preservation of all 1275 prior tracked receipts. The desktop debug linker emitted its large compact-unwind-table warning; no runtime/performance claim follows. No new native acceptance or signed-package replacement is claimed.
+
+- 2026-10-18: Mark authorized shared resident materialization and both consumer migrations. The shared contract and qualification criteria now live in `mere/design_docs/2026-10-18_resident_materialization_plan.md`. Cleromancy consumes its complete mode and retains product replay validation; Knot consumes projection-only mode above its own catalog. Isolated supplier/Knot checkouts preserve active source-edit work. Source integration and qualification are in progress; no prior native receipt is relabeled.

@@ -95,8 +95,8 @@ fn action(host: &mut Host, action: &str) {
 }
 
 fn color(host: &Host, expected: tinct::Srgb) {
-    let node =
-        host.with_dom(|dom| taproot::matching(dom, &Selector::class("cleromancy-desktop"))[0]);
+    let node = host
+        .with_dom(|dom| taproot::matching_classes(dom, &Selector::class("cleromancy-desktop"))[0]);
     let value = host
         .computed_value(node, "background-color")
         .unwrap()
@@ -113,24 +113,26 @@ fn color(host: &Host, expected: tinct::Srgb) {
     );
 }
 
+// Every caller observes a harness already laid out by mounted/layout_at/relayout.
+fn matching_role(host: &Host, selector: &Selector) -> Vec<genet_scripted_dom::NodeId> {
+    let projection = host.a11y_projection();
+    host.with_dom(|dom| taproot::matching_with_projection(dom, selector, &projection))
+}
+
 fn radio_colors(host: &Host, checked: tinct::Srgb, background: tinct::Srgb, body: tinct::Srgb) {
-    let selected = host.with_dom(|dom| {
-        taproot::matching(
-            dom,
-            &Selector::role("radio").with_attr("aria-checked", "true"),
-        )
-    });
+    let selected = matching_role(
+        host,
+        &Selector::role("radio").with_attr("aria-checked", "true"),
+    );
     assert_eq!(
         selected.len(),
         4,
         "selection mode, reading shape, place consent and weather consent"
     );
-    let unselected = host.with_dom(|dom| {
-        taproot::matching(
-            dom,
-            &Selector::role("radio").with_attr("aria-checked", "false"),
-        )
-    });
+    let unselected = matching_role(
+        host,
+        &Selector::role("radio").with_attr("aria-checked", "false"),
+    );
     assert_eq!(unselected.len(), 6);
     for (nodes, property, expected) in [
         (&selected, "color", checked),
@@ -447,12 +449,10 @@ fn shared_fields_and_parent_controls_keep_real_geometry_at_420_and_1160() {
     let mut host = mounted(&dir);
     for (width, height) in [(420.0, 1000.0), (1160.0, 760.0)] {
         host.layout_at(width, height);
-        let node = host.with_dom(|dom| {
-            taproot::matching(
-                dom,
-                &Selector::role("button").with_attr("data-action", "toggle-appearance"),
-            )[0]
-        });
+        let node = matching_role(
+            &host,
+            &Selector::role("button").with_attr("data-action", "toggle-appearance"),
+        )[0];
         let (x, y, w, h) = host.painted_rect(node).unwrap();
         assert!(x >= 0.0 && y >= 0.0 && w > 0.0 && h >= 24.0 && x + w <= width + 0.1);
     }
@@ -461,22 +461,18 @@ fn shared_fields_and_parent_controls_keep_real_geometry_at_420_and_1160() {
     for (width, height) in [(420.0, 1000.0), (1160.0, 760.0)] {
         host.layout_at(width, height);
         for field in ["name", "seed-hex"] {
-            let node = host.with_dom(|dom| {
-                taproot::matching(
-                    dom,
-                    &Selector::role("textbox").with_attr("data-field", field),
-                )[0]
-            });
+            let node = matching_role(
+                &host,
+                &Selector::role("textbox").with_attr("data-field", field),
+            )[0];
             let (_, _, w, h) = host.painted_rect(node).unwrap();
             assert!(w >= 40.0 && h >= 33.9, "{field} at {width}px: {w}x{h}");
         }
         for control in ["back-to-consultation", "apply-to-cleromancy"] {
-            let node = host.with_dom(|dom| {
-                taproot::matching(
-                    dom,
-                    &Selector::role("button").with_attr("data-action", control),
-                )[0]
-            });
+            let node = matching_role(
+                &host,
+                &Selector::role("button").with_attr("data-action", control),
+            )[0];
             let (x, y, w, h) = host.visible_rect(node).unwrap();
             assert!(x >= 0.0 && y >= 0.0 && w > 0.0 && h >= 24.0 && x + w <= width + 0.1);
         }
@@ -534,20 +530,22 @@ fn neutral_workshop_headings_remain_readable_inside_dark_and_authored_hosts() {
         for (width, height) in [(1160.0, 760.0), (420.0, 1000.0)] {
             host.layout_at(width, height);
             let header = host.with_dom(|dom| {
-                let workshop = taproot::matching(dom, &Selector::class("tabard-workshop"))[0];
+                let workshop =
+                    taproot::matching_classes(dom, &Selector::class("tabard-workshop"))[0];
                 dom.dom_children(workshop)
                     .find(|node| dom.has_class(*node, "cambium-title-bar"))
                     .expect("shared workshop title bar")
             });
-            let editor =
-                host.with_dom(|dom| taproot::matching(dom, &Selector::class("theme-editor"))[0]);
+            let editor = host.with_dom(|dom| {
+                taproot::matching_classes(dom, &Selector::class("theme-editor"))[0]
+            });
             for (container, label, background) in [
                 ("brand-title", "Tabard", header),
                 ("workspace-pane-heading", "Your theme", editor),
                 ("control-group", "Seed colours", editor),
             ] {
                 let heading = host.with_dom(|dom| {
-                    taproot::matching(dom, &Selector::class(container))
+                    taproot::matching_classes(dom, &Selector::class(container))
                         .into_iter()
                         .flat_map(|node| dom.dom_children(node))
                         .find(|node| {
@@ -852,7 +850,7 @@ fn mounted_save_back_edit_apply_reuses_saved_identity_without_early_publication(
 
 // Granular preferences use the actual shared editor and native input/store seams.
 fn focus_selector(host: &mut Host, selector: Selector) {
-    let wanted = host.with_dom(|dom| taproot::matching(dom, &selector)[0]);
+    let wanted = matching_role(host, &selector)[0];
     for _ in 0..100 {
         host.tab(true);
         if host.focus() == Some(wanted) {
@@ -1030,7 +1028,7 @@ fn role_families_shape_real_bundled_faces_and_authored_css_retains_precedence() 
     );
     host.layout_at(900.0, 300.0);
     let width = |host: &Host, class: &str| {
-        let node = host.with_dom(|dom| taproot::matching(dom, &Selector::class(class))[0]);
+        let node = host.with_dom(|dom| taproot::matching_classes(dom, &Selector::class(class))[0]);
         host.painted_rect(node).unwrap().2
     };
     assert!(
@@ -1159,8 +1157,9 @@ fn shared_mere_and_focused_reading_share_the_ordinary_wide_viewport() {
     });
     host.relayout();
     action(&mut host, "toggle-mere");
-    let node =
-        |class: &str| host.with_dom(|dom| taproot::matching(dom, &Selector::class(class))[0]);
+    let node = |class: &str| {
+        host.with_dom(|dom| taproot::matching_classes(dom, &Selector::class(class))[0])
+    };
     let panel = host.painted_rect(node("mere-view")).unwrap();
     let reader = host.painted_rect(node("cleromancy-mere-reading")).unwrap();
     assert!(panel.2 > 0.0 && reader.2 > 0.0);
@@ -1169,7 +1168,8 @@ fn shared_mere_and_focused_reading_share_the_ordinary_wide_viewport() {
         "panel and reader are side by side"
     );
     assert!((panel.1 - reader.1).abs() < 1.0);
-    let focused = host.with_dom(|dom| taproot::matching(dom, &Selector::class("reading-card"))[0]);
+    let focused =
+        host.with_dom(|dom| taproot::matching_classes(dom, &Selector::class("reading-card"))[0]);
     let card = host
         .visible_rect(focused)
         .expect("the selected card is visible beside the shared panel");
