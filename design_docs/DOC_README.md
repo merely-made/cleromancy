@@ -267,3 +267,5 @@ Developer ID signed native [qualification](../receipts/developer-id-native-quali
 Duplication reduction: [plan](2026-10-18_duplication_reduction_plan.md). Consolidate repeated mechanisms with explicit authority and replay boundaries; first remove duplicate aspect geometry, then qualify shared resident materialization across real consumers.
 
 Shared resident materialization: [consumer evidence](../receipts/resident_materialization_20261018/) and [read-only verifier](../receipts/verify_resident_materialization.py). Cleromancy uses the shared complete reader and has bounded native lifecycle/fresh-process reopening evidence; supplier and Knot status live in `mere/design_docs/2026-10-18_resident_materialization_plan.md`. Earlier qualification and signed packages retain their frozen identities.
+
+The shared resident materialization slice is now qualified in both Cleromancy and Knot. Current shared status is in `mere/design_docs/2026-10-18_resident_materialization_plan.md`; Knot’s consumer receipt is `knot-editor/docs/receipts/2026-10-18_shared_resident_materialization/QUALIFICATION.md`. The Cleromancy packet retains its original frozen source and binary.
