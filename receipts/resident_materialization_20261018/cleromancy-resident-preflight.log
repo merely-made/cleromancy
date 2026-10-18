@@ -1,0 +1,310 @@
+warning: patch `netrender_device v0.1.2 (https://github.com/merely-made/netrender.git?branch=main#8960024f)` was not used in the crate graph
+  |
+  = help: perhaps you meant one of the following:
+          	https://github.com/merely-made/netrender.git
+warning: patch `murm v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `ipc-channel v0.22.0 (https://github.com/merely-made/genet.git?branch=main#e37762d7)` was not used in the crate graph
+warning: patch `p2panda-auth v0.7.1 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)` was not used in the crate graph
+warning: patch `p2panda-stream v0.7.1 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)` was not used in the crate graph
+warning: patch `embedded-graphics v0.8.2 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `embedded-graphics-core v0.4.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `murm v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `outrider v0.3.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `postilion v0.3.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `radio-face v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `radio-hand v0.0.1 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `selvage v0.1.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `seneschal v0.2.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+warning: patch `tulle v0.2.0 (https://github.com/merely-made/murm.git?branch=main#cba46d85)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling icu_provider v2.3.1
+   Compiling mere-curation v0.1.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling icu_properties v2.3.0
+   Compiling icu_normalizer v2.3.0
+   Compiling muniment v0.1.2 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling idna_adapter v1.2.2
+   Compiling idna v1.1.0
+   Compiling url v2.5.8
+   Compiling layout-dom-api v0.1.1 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling sceno v0.0.5 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling paint_list_api v0.1.2 (https://github.com/merely-made/netrender.git?rev=c5efc94f876e93caba20807709189c5f9589492b#c5efc94f)
+   Compiling command-menu v0.1.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling genet-static-dom v0.1.1 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling tinct v0.2.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling genet-paint-types v0.2.0 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling chartulary v0.2.2 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling document-session-api v0.1.0 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling workbench v0.1.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling engine-observables-api v0.2.0 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling regress v0.11.1 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling genet-text v0.1.0 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling netrender_device v0.1.2 (https://github.com/merely-made/netrender.git?rev=c5efc94f876e93caba20807709189c5f9589492b#c5efc94f)
+   Compiling genet-scripted-dom v0.1.2 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling icu_locale_fallback v2.3.0
+   Compiling genet-host-api v0.2.0 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling genet-fontique v0.10.0 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling icu_segmenter v2.3.0
+   Compiling netrender v0.1.2 (https://github.com/merely-made/netrender.git?rev=c5efc94f876e93caba20807709189c5f9589492b#c5efc94f)
+   Compiling scenograph v0.0.4 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling parley_data v0.10.0
+   Compiling backstep v0.1.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling scenomise v0.0.5 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling genet-parley v0.10.0 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling numen v0.2.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling livery v0.0.5 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling mere-forme v0.2.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling genet-css-flow v0.1.0 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling tower-http v0.6.11
+   Compiling cadency v0.0.1 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling paint_list_render v0.1.2 (https://github.com/merely-made/netrender.git?rev=c5efc94f876e93caba20807709189c5f9589492b#c5efc94f)
+   Compiling genet-taffy v0.14.0 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling buckram v0.0.3 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling mere-kernel v0.0.2 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling iroh-base v1.3.0
+   Compiling reqwest v0.13.5
+   Compiling genet-document-resources v0.2.1 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling genet-livery v0.0.4 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling n0-dns-resolver v0.1.0
+   Compiling inker v0.1.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling attohttpc v0.30.1
+   Compiling jsonschema v0.18.3
+   Compiling meristem v0.2.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling iroh-dns v1.3.0
+   Compiling igd-next v0.17.1
+   Compiling illume v0.0.2 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling mere-surface-api v0.1.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling tabard v0.0.2 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling sprigging v0.2.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling iroh-relay v1.3.0
+   Compiling cambium v0.3.3 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling portmapper v0.19.3
+   Compiling eidetic v0.0.2 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling scenotime v0.0.4 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling iroh v1.3.0
+   Compiling chirograph v0.0.2 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling mere-alembic v0.0.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling hickory-proto v0.26.3
+   Compiling incipit v0.2.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling armillary v0.1.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling esp v0.1.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling swarm-discovery v0.6.4
+   Compiling seiche v0.0.6 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling iroh-gossip v0.101.0
+   Compiling pandect v0.1.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling iroh-mdns-address-lookup v0.6.0
+   Compiling genet-render v0.2.0 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling gemini-protocol v0.1.7
+   Compiling fleece v0.5.0 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling scroll-protocol v0.1.0
+   Compiling mere-p2panda-net v0.7.5 (https://github.com/mark-ik/p2panda.git?tag=mere-p2panda-net-0.7.5-upstream-20261013#1f69c9bc)
+   Compiling iroh-util v0.6.0
+   Compiling iroh-tickets v1.0.0
+   Compiling genet-render-host v0.2.0 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling mere-proofs v0.1.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling spartan-protocol v0.1.1
+   Compiling iroh-blobs v0.103.1
+   Compiling stickleback v0.1.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling misfin v0.0.4
+   Compiling cambium-winit v0.3.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling mere-cartography v0.0.2 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling gopher-protocol v0.2.0
+   Compiling nex-protocol v0.1.1
+   Compiling guppy-protocol v0.1.1
+   Compiling finger-protocol v0.1.1
+   Compiling pictograph v0.2.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling errand v0.4.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling mere-transport v0.0.2 (https://github.com/merely-made/murm.git?branch=main#7c2432ab)
+   Compiling cambium-rootstock v0.1.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling graphshell-endpoint v0.0.2 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling document-canvas v0.1.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling mere-fleece v0.0.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling graphshell-client v0.0.2 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling uxtree v0.0.2 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling mere-page-load v0.0.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling mere-document-lanes v0.1.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling nematic v0.1.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling murm-wire v0.1.0 (https://github.com/merely-made/murm.git?branch=main#7c2432ab)
+   Compiling knot-file-catalog v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#d2d5c329)
+   Compiling luggage v0.1.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling browsing-context-api v0.1.0 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling genet-documents v0.1.0 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling mere-webrtc-carrier v0.0.1 (https://github.com/merely-made/murm.git?branch=main#7c2432ab)
+   Compiling knot-capture v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#d2d5c329)
+   Compiling netfetcher v0.1.1 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling knot-editor-host v0.1.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling genet-winit-host v0.2.0 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling mere v0.0.2 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling mere-view v0.1.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling taproot v0.1.0 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling servitor v0.0.2 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling reference-data v0.0.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling mere-source-edit v0.1.0 (https://github.com/merely-made/mere.git?rev=70deef2c8cf3d3410ae35b496a9396514070b24f#70deef2c)
+   Compiling script-engine-api v0.1.1 (https://github.com/merely-made/genet.git?branch=main#7114f91c)
+   Compiling mora-cmudict v0.0.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling script-rhai v0.0.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling knot-document v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#d2d5c329)
+   Compiling retinue v0.3.0 (https://github.com/merely-made/murm.git?branch=main#7c2432ab)
+   Compiling knot-composition v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#d2d5c329)
+   Compiling mere-overmap v0.1.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling cambium-winit-a11y v0.3.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling mere-fetch v0.0.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling graphshell-host v0.0.2 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling pelt-core v0.2.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling platen v0.0.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling mere-mesh v0.0.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling mere-personal-facts v0.1.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling knot-editor v0.0.3 (https://github.com/merely-made/knot-editor.git?branch=main#d2d5c329)
+   Compiling distillery v0.0.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling knot-site v0.0.1 (https://github.com/merely-made/knot-editor.git?branch=main#d2d5c329)
+   Compiling castellan v0.0.3 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling cleromancy-core-acceptance v0.1.0 (/Users/markik/Code/repos/cleromancy/core)
+   Compiling graphshell v0.0.2 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling cambium-genet-winit-host v0.1.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling mere-apparatus v0.0.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling mesquite v0.1.0 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling djinn v0.0.2 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling tabard-workshop v0.0.1 (https://github.com/merely-made/mere.git?branch=main#eacd5650)
+   Compiling cleromancy v0.1.0 (/Users/markik/Code/repos/cleromancy)
+error[E0425]: cannot find function `matching` in crate `taproot`
+  --> src/ui/native/ambient.rs:29:22
+   |
+29 |             taproot::matching(&dom, &taproot::Selector::class("ambient-canvas-holder"))
+   |                      ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+  --> src/ui/native/appearance_tests.rs:99:38
+   |
+99 |         host.with_dom(|dom| taproot::matching(dom, &Selector::class("cleromancy-desktop"))[0]);
+   |                                      ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+   --> src/ui/native/appearance_tests.rs:118:18
+    |
+118 |         taproot::matching(
+    |                  ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+   --> src/ui/native/appearance_tests.rs:129:18
+    |
+129 |         taproot::matching(
+    |                  ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+   --> src/ui/native/appearance_tests.rs:451:22
+    |
+451 |             taproot::matching(
+    |                      ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+   --> src/ui/native/appearance_tests.rs:465:26
+    |
+465 |                 taproot::matching(
+    |                          ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+   --> src/ui/native/appearance_tests.rs:475:26
+    |
+475 |                 taproot::matching(
+    |                          ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+   --> src/ui/native/appearance_tests.rs:537:41
+    |
+537 |                 let workshop = taproot::matching(dom, &Selector::class("tabard-workshop"))[0];
+    |                                         ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+   --> src/ui/native/appearance_tests.rs:543:46
+    |
+543 |                 host.with_dom(|dom| taproot::matching(dom, &Selector::class("theme-editor"))[0]);
+    |                                              ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+   --> src/ui/native/appearance_tests.rs:550:30
+    |
+550 |                     taproot::matching(dom, &Selector::class(container))
+    |                              ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+   --> src/ui/native/appearance_tests.rs:855:47
+    |
+855 |     let wanted = host.with_dom(|dom| taproot::matching(dom, &selector)[0]);
+    |                                               ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+    --> src/ui/native/appearance_tests.rs:1033:49
+     |
+1033 |         let node = host.with_dom(|dom| taproot::matching(dom, &Selector::class(class))[0]);
+     |                                                 ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+    --> src/ui/native/appearance_tests.rs:1163:52
+     |
+1163 |         |class: &str| host.with_dom(|dom| taproot::matching(dom, &Selector::class(class))[0]);
+     |                                                    ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+    --> src/ui/native/appearance_tests.rs:1172:48
+     |
+1172 |     let focused = host.with_dom(|dom| taproot::matching(dom, &Selector::class("reading-card"))[0]);
+     |                                                ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+   --> src/ui/native/scenario_driver.rs:516:29
+    |
+516 |         let node = taproot::matching(
+    |                             ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+   --> src/ui/native/scenario_driver.rs:732:26
+    |
+732 |                 taproot::matching(
+    |                          ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+    --> src/ui/native/scenario_driver.rs:1071:30
+     |
+1071 |                     taproot::matching(
+     |                              ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+    --> src/ui/native/scenario_driver.rs:1165:30
+     |
+1165 |                     taproot::matching(&dom, &taproot::Selector::class(class))
+     |                              ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+    --> src/ui/native/scenario_driver.rs:1327:35
+     |
+1327 |         let containers = taproot::matching(&dom, &container);
+     |                                   ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+    --> src/ui/native/scenario_driver.rs:1328:18
+     |
+1328 |         taproot::matching(
+     |                  ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+    --> src/ui/native/scenario_driver.rs:1434:42
+     |
+1434 |                 .map(|selector| taproot::matching(&dom, selector));
+     |                                          ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+    --> src/ui/native/scenario_driver.rs:1435:22
+     |
+1435 |             taproot::matching(&dom, &selector)
+     |                      ^^^^^^^^ not found in `taproot`
+
+error[E0425]: cannot find function `matching` in crate `taproot`
+    --> src/ui/native/scenario_driver.rs:1475:18
+     |
+1475 |         taproot::matching(
+     |                  ^^^^^^^^ not found in `taproot`
+
+For more information about this error, try `rustc --explain E0425`.
+error: could not compile `cleromancy` (lib test) due to 23 previous errors

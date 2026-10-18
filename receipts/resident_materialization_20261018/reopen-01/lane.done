@@ -1,0 +1,18 @@
+RESULT ok
+waited 28 frames
+waited 6 frames
+captured recovered
+waited 14 frames
+waited 0 frames
+captured archive-thaw
+waited 0 frames
+captured compact-archive-reading
+waited 0 frames
+waited 0 frames
+captured original-after-archive
+capture recovered 2320x1520 digest=1e04a381982d72c2 file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/reopen-01/recovered.png
+capture archive-thaw 2320x1520 digest=644d599f877d14da file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/reopen-01/archive-thaw.png
+capture compact-archive-reading 840x1520 digest=c6a0b4c8aa160a90 file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/reopen-01/compact-archive-reading.png
+capture original-after-archive 2320x1520 digest=0879e4e07877bf7f file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/reopen-01/original-after-archive.png
+frames: 4 captured, 0 blank, 4 distinct digests
+presentation: 86 frames, 88 redraws, 2 unpresented redraws

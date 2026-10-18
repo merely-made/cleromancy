@@ -1,0 +1,22 @@
+[
+  {
+    "file": "reopen-01/recovered.png",
+    "sha256": "bdf5cfa26272282129fc06da2e8e30d7bcefa219808b123fa2ca8dbc385c258d",
+    "review": "Fresh process restores the original reading and selected card, with three live sessions. Reading remains legible beside the shared panel."
+  },
+  {
+    "file": "reopen-01/archive-thaw.png",
+    "sha256": "12338412fe86ee8c1cadba32e23d20f26fff866d86ddbf4ad96c1dd9059310cd",
+    "review": "Archive opening retains the three-card reading and highlights the reading occasion; successful read-only thaw and four-session count are established by the unchanged scenario assertions. Lower session/archive controls remain below this crop."
+  },
+  {
+    "file": "reopen-01/compact-archive-reading.png",
+    "sha256": "bf75466cfe1ebccd073840e0fd5e693896fee889af2f7672775300aafa6b5317",
+    "review": "Read-only archive reading remains visible at 420 by 760. Existing shared panel/canvas and third-card clipping remains; no blanket compact control accessibility claim."
+  },
+  {
+    "file": "reopen-01/original-after-archive.png",
+    "sha256": "ddb531ead431f6b65c5129296a694015c23471a460ca0b3950fd344c86a5c029",
+    "review": "Return to original writable session restores the same question, three cards, orientations and focused King of Wands."
+  }
+]

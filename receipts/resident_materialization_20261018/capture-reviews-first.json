@@ -1,0 +1,37 @@
+[
+  {
+    "file": "first-01/reading-and-mere.png",
+    "sha256": "e317584ade815cea28c284acabb3388501f4fee6ea717b0c578212a9bf2e2bb7",
+    "review": "Wide reading and shared session controls paint together; King of Wands reversed, Ace of Wands upright, High Priestess reversed, saved reflection notice and focused narration are legible."
+  },
+  {
+    "file": "first-01/minted-empty.png",
+    "sha256": "5aeb15049304435cb1bd38780f0a2c75544d2d12ef2fa15a6c7b548858b1d502",
+    "review": "Minted empty session is attached with deck node; prior session remains switchable. Inherited scroll position clips the Ready heading at top; this is not broad layout acceptance."
+  },
+  {
+    "file": "first-01/switched-original.png",
+    "sha256": "3a710df036bf3677548fa18621ae5074bc8bfdf803d36afdbdca2b01d753ccfc",
+    "review": "Original three-card reading and focus restored; two live session rows visible."
+  },
+  {
+    "file": "first-01/compact-reading-and-mere.png",
+    "sha256": "389df733188896e4a66aa54185aa241143df7ac22ddf09c6b196de5f0ef4e33c",
+    "review": "At 420 by 760, shared panel and reading remain present; known panel/canvas/control and third-card clipping is visible. This capture qualifies retained state at compact size, not every control reachability."
+  },
+  {
+    "file": "first-01/archived.png",
+    "sha256": "41be3ce27aef90c9e4f51542033cf06e1a4ee56beab336d49a15c68a69852a8e",
+    "review": "Reading and original attachment remain after successful archive save; archive entry is below the captured left fold. Successful archive count is established by the unchanged scenario assertion, not this image alone."
+  },
+  {
+    "file": "first-01/forked.png",
+    "sha256": "dd7ec49ff94f0bad30e3a1af7a1f5724b9af8bbc752c69c8bdb3d09813d5bc58",
+    "review": "Third fork session row appears while the original reading stays attached."
+  },
+  {
+    "file": "first-01/restored.png",
+    "sha256": "68cbb60ec69b6d59a9ae0e674cf9da5bff0a7d9233af407683ccf27b8eb0ef6e",
+    "review": "Three live session rows remain after restore, original reading and focused King of Wands are retained. Original scenario restore and final selected IDs pass."
+  }
+]

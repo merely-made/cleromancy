@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "ids": {
+    "session_id": "90e5c6ca434d2acb294623ddba74f59560c8a426a17bf763522db2c4eff7aa46",
+    "reading_id": "ee442f5909993cc471da24a9710afa133880de731a90a83c6dba02f5e05bfe2d",
+    "reflection_id": "4399c00be9765f16a0c4bc654283bc8cd638dfb97200d525780148f578c55818"
+  },
+  "cards_sha256": "dfb68c5c329447b693013b48da3699c616728f0fde83d736f08634aae41e2898",
+  "count": 3,
+  "same_native_binary": true,
+  "both_processes_exit_zero": true
+}

@@ -1,0 +1,28 @@
+{
+  "phase": "reopen",
+  "binary": "/Users/markik/Code/testing/shared-resident-materialization-20261018/bin/cleromancy-source420bcc3",
+  "binary_sha256": "90a831a01999b809f7aa3b9a1e9f4271f4f1415bff9bdf1693b8662751748ce2",
+  "scenario": "/Users/markik/Code/repos/cleromancy/receipts/c1-resident-reopen.scn",
+  "scenario_sha256": "2a5da35d72eb6138e124e84b1999c382e1ed71cf6788c32782bf7a5ea508fb1f",
+  "profile": "/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/profile-first-01",
+  "endpoint": "/tmp/srm-20261018-qualified-reopen.sock",
+  "output": "/Users/markik/Code/testing/shared-resident-materialization-20261018/native-qualified/reopen-01",
+  "check_only": false,
+  "argv": [
+    "/usr/bin/sandbox-exec",
+    "-p",
+    "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))",
+    "/Users/markik/Code/testing/shared-resident-materialization-20261018/bin/cleromancy-source420bcc3"
+  ],
+  "offline_ip_deny": true,
+  "sandbox_policy": "(version 1)(allow default)(deny network-outbound (remote ip \"*:*\"))",
+  "ok": true,
+  "exit": 0,
+  "timeout": false,
+  "prompts": 1,
+  "elapsed_seconds": 57.57,
+  "receipt_error": null,
+  "old_profile_preservation_error": null,
+  "unlock": "production terminal fallback in owned PTY",
+  "native_acceptance": "requires separate capture review and domain verification"
+}

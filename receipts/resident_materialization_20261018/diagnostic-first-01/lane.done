@@ -1,0 +1,33 @@
+RESULT fail
+waited 10 frames
+waited 81 frames
+waited 30 frames
+waited 0 frames
+captured reading-and-mere
+waited 7 frames
+waited 0 frames
+captured minted-empty
+waited 19 frames
+captured switched-original
+waited 0 frames
+captured compact-reading-and-mere
+waited 0 frames
+waited 10 frames
+captured archived
+waited 10 frames
+captured forked
+waited 7 frames
+waited 0 frames
+FAIL: assert snap mere-trashed-sessions Eq '0': got '1'
+waited 4 frames
+captured restored
+capture reading-and-mere 2320x1520 digest=09f286f8e9788bf0 file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-preparation/first-01/reading-and-mere.png
+capture minted-empty 2320x1520 digest=2ccde47d83724042 file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-preparation/first-01/minted-empty.png
+capture switched-original 2320x1520 digest=4d3808b4d24d6e5e file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-preparation/first-01/switched-original.png
+capture compact-reading-and-mere 840x1520 digest=97882b2b6d42bf80 file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-preparation/first-01/compact-reading-and-mere.png
+capture archived 2320x1520 digest=8082efdfc72cd4a1 file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-preparation/first-01/archived.png
+capture forked 2320x1520 digest=5d6cf99abd50b33c file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-preparation/first-01/forked.png
+capture restored 2320x1520 digest=e87bedfda3b4bc49 file=/Users/markik/Code/testing/shared-resident-materialization-20261018/native-preparation/first-01/restored.png
+frames: 7 captured, 0 blank, 7 distinct digests
+presentation: 237 frames, 238 redraws, 1 unpresented redraws
+FAIL: product completion: Cleromancy durable scenario acceptance failed
