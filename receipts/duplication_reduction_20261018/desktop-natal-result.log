@@ -1,0 +1,29 @@
+warning: linker stderr: ld: __eh_frame section too large (max 16MB) to encode dwarf unwind offsets in compact unwind table, performance of exception handling might be affected
+  |
+  = note: `#[warn(linker_messages)]` on by default
+
+warning: `cleromancy` (bin "cleromancy") generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6m 11s
+     Running tests/natal.rs (target/build/debug/deps/natal-845c511c7da078ca)
+
+running 18 tests
+test natal_aspects_exact_custom_rules_stable_order_and_invalid_inputs ... ok
+test corrections_preserve_old_natal_and_forged_birth_or_output_refuses ... ok
+test natal_aspects_preset_all_five_inclusive_boundaries_and_wrap ... ok
+test natal_aspects_unavailable_is_retained_and_invalid_rules_refuse ... ok
+test original_native_natal_receipt_still_replays_byte_identically ... ok
+test exact_chart_seals_subject_civil_resolution_method_and_authored_prompts ... ok
+test gaps_refuse_and_folds_require_explicit_choice ... ok
+test unknown_approximate_and_unsupported_era_never_invent_an_exact_chart ... ok
+test earlier_qualified_house_receipts_replay_without_supplements ... ok
+test candidate_validates_natal_and_reflection_after_offline_graph_hydration ... ok
+test missing_place_unknown_time_and_degenerate_pole_never_invent_houses ... ok
+test whole_sign_and_equal_are_explicit_replayable_and_tamper_checked ... ok
+test polar_placidus_is_unavailable_and_missing_place_still_has_motion ... ok
+test consolidation_replays_frozen_native_editions_without_changing_records ... ok
+test retained_final_observations_replay_and_outside_coverage_refuses ... ok
+test motion_and_placidus_seal_replay_and_refuse_recomputed_identity_tampering ... ok
+test exact_civil_midnight_uses_its_observation_including_after_leap_insertion ... ok
+test natal_aspects_explicit_extension_replays_and_rejects_resealed_tampering ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 12.24s

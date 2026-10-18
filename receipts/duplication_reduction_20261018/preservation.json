@@ -1,0 +1,10 @@
+{
+  "baseline": "5590a2a05f47b79d93d9688506be07710afa0223",
+  "prior_tracked_receipt_paths": 1275,
+  "all_equal": true,
+  "changed_source": {
+    "src/astrology.rs": "79f6fc43f4b37cfeeaf1d2015ca2c0cf70f28448ed9a60bf87c13a887ed0e73d",
+    "src/natal_aspects.rs": "6a6c860611a132031b4ab5e880020a731d6f5597eb03b905f43cfb03f81ad1f9",
+    "tests/natal.rs": "31284fdcac05e11cd22c67ffb234502eaa9b4f5e325beaa81f1c2b617104fbc1"
+  }
+}

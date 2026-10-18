@@ -746,3 +746,18 @@ fn natal_aspects_unavailable_is_retained_and_invalid_rules_refuse() {
     };
     assert!(reading.with_aspects(rules).is_err());
 }
+
+#[test]
+fn consolidation_replays_frozen_native_editions_without_changing_records() {
+    let receipt: serde_json::Value = serde_json::from_str(include_str!(
+        "../receipts/developer_id_native_20261017/reopen-01/receipt.json"
+    ))
+    .unwrap();
+    let readings = receipt["readings"].as_array().unwrap();
+    assert_eq!(readings.len(), 6);
+    for stored in readings {
+        let reading: NatalReading = serde_json::from_value(stored.clone()).unwrap();
+        reading.validate().unwrap();
+        assert_eq!(serde_json::to_value(&reading).unwrap(), *stored);
+    }
+}

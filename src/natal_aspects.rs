@@ -53,9 +53,9 @@ impl AspectRules {
     }
 
     pub fn validate(self) -> Result<(), String> {
-        if KINDS
-            .iter()
-            .any(|(kind, _)| self.orb_millidegrees(*kind) > 180_000)
+        if AspectKind::ordered()
+            .into_iter()
+            .any(|kind| self.orb_millidegrees(kind) > 180_000)
         {
             return Err("Natal aspect orbs must be at most 180000 millidegrees".into());
         }
@@ -66,14 +66,6 @@ impl AspectRules {
 // Reuse the existing typed aspect vocabulary and hit representation. The
 // original astrology derivation has one shared orb and chooses one nearest
 // kind; this edition independently applies each retained rule instead.
-const KINDS: [(AspectKind, u32); 5] = [
-    (AspectKind::Conjunction, 0),
-    (AspectKind::Sextile, 60_000),
-    (AspectKind::Square, 90_000),
-    (AspectKind::Trine, 120_000),
-    (AspectKind::Opposition, 180_000),
-];
-
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum AspectOutcome {
@@ -105,11 +97,9 @@ pub fn derive(chart: &AstrologyChart, rules: AspectRules) -> Result<Vec<Astrolog
     let mut hits = Vec::new();
     for (index, first) in positions.iter().enumerate() {
         for second in &positions[index + 1..] {
-            let direct = first
-                .longitude_millidegrees
-                .abs_diff(second.longitude_millidegrees);
-            let separation = direct.min(360_000 - direct);
-            for (kind, exact) in KINDS {
+            let separation = first.separation_millidegrees(second);
+            for kind in AspectKind::ordered() {
+                let exact = kind.exact_millidegrees();
                 let orb = separation.abs_diff(exact);
                 if orb <= rules.orb_millidegrees(kind) {
                     hits.push(AstrologyAspect {
