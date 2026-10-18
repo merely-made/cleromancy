@@ -260,6 +260,91 @@ fn drain_worker(ctx: &mut ConsultationCtx<'_>, state: &Rc<RefCell<NativeState>>)
     }
 }
 
+// A refresh is not an acknowledgement: publish model, catalog and selection in
+// one retained-state transition, and release only the command response's wait.
+fn apply_mere_publication(
+    state: &mut ApplicationUi,
+    model: mere_view::MereViewModel,
+    catalog: crate::ConsultationCatalog,
+    selection: Option<(crate::ConsultationDetail, Option<String>)>,
+    complete_request: bool,
+) {
+    let pending_status = state
+        .consultation
+        .status
+        .is_busy()
+        .then(|| state.consultation.status.clone());
+    let previous = state
+        .mere
+        .model
+        .sessions
+        .iter()
+        .find(|s| s.attached)
+        .map(|s| s.id);
+    let next = model.sessions.iter().find(|s| s.attached).map(|s| s.id);
+    if previous != next {
+        state.consultation.clear_selection();
+        state.mere.view.focused = None;
+        state.mere.view.hovered = None;
+    }
+    state.mere.model = model;
+    if state.mere.view.focused.as_ref().is_some_and(|key| {
+        !state
+            .mere
+            .model
+            .graph
+            .nodes
+            .iter()
+            .any(|node| &node.key == key)
+    }) {
+        state.mere.view.focused = None;
+    }
+    if state.mere.view.hovered.as_ref().is_some_and(|key| {
+        !state
+            .mere
+            .model
+            .graph
+            .nodes
+            .iter()
+            .any(|node| &node.key == key)
+    }) {
+        state.mere.view.hovered = None;
+    }
+    if complete_request {
+        state.mere.busy = false;
+    }
+    state
+        .mere
+        .view
+        .lay_out(&state.mere.model, state.mere.width, state.mere.height);
+    state.consultation.replace_catalog(catalog);
+    if let Some(status) = pending_status {
+        state.consultation.status = status;
+    }
+    if let Some((detail, position)) = selection {
+        let session = detail.session.id.clone();
+        let focus_url = position
+            .as_ref()
+            .and_then(|position| {
+                detail
+                    .session
+                    .placements
+                    .iter()
+                    .find(|p| &p.position == position)
+            })
+            .map(|p| format!("cleromancy://reading/{}", p.reading_id))
+            .unwrap_or_else(|| format!("cleromancy://session/{session}"));
+        state.mere.view.focused =
+            Some(mere::kernel::graph::Graph::node_namespace_id(&focus_url).to_string());
+        state
+            .consultation
+            .present_external_session(state.consultation.catalog().clone(), detail);
+        if let Some(position) = position {
+            state.consultation.reading_focus.insert(session, position);
+        }
+    }
+}
+
 fn apply_worker_update(
     runner: &mut ConsultationRunner,
     state: &mut NativeState,
@@ -349,59 +434,15 @@ fn apply_worker_update(
                 state.consultation.present_error(message);
             });
         },
-        WorkerUpdate::Mere { model, catalog } => {
+        WorkerUpdate::Mere {
+            model,
+            catalog,
+            selection,
+            complete_request,
+        } => {
             state.catalog_ready = true;
             runner.update(|state| {
-                let pending_status = state
-                    .consultation
-                    .status
-                    .is_busy()
-                    .then(|| state.consultation.status.clone());
-                let previous = state
-                    .mere
-                    .model
-                    .sessions
-                    .iter()
-                    .find(|s| s.attached)
-                    .map(|s| s.id);
-                let next = model.sessions.iter().find(|s| s.attached).map(|s| s.id);
-                if previous != next {
-                    state.consultation.clear_selection();
-                    state.mere.view.focused = None;
-                    state.mere.view.hovered = None;
-                }
-                state.mere.model = model;
-                if state.mere.view.focused.as_ref().is_some_and(|key| {
-                    !state
-                        .mere
-                        .model
-                        .graph
-                        .nodes
-                        .iter()
-                        .any(|node| &node.key == key)
-                }) {
-                    state.mere.view.focused = None;
-                }
-                if state.mere.view.hovered.as_ref().is_some_and(|key| {
-                    !state
-                        .mere
-                        .model
-                        .graph
-                        .nodes
-                        .iter()
-                        .any(|node| &node.key == key)
-                }) {
-                    state.mere.view.hovered = None;
-                }
-                state.mere.busy = false;
-                state
-                    .mere
-                    .view
-                    .lay_out(&state.mere.model, state.mere.width, state.mere.height);
-                state.consultation.replace_catalog(catalog);
-                if let Some(status) = pending_status {
-                    state.consultation.status = status;
-                }
+                apply_mere_publication(state, model, catalog, selection, complete_request);
             });
         },
         WorkerUpdate::GraphSelection {
