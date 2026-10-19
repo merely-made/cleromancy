@@ -4,8 +4,9 @@
 //! Insertion and recording of contexts, fields, readings, sessions,
 //! reflections, astrology records, and pattern occasions.
 
-use mere::kernel::graph::apply::assert_relation;
+use mere::kernel::graph::apply::{assert_relation, assert_semantic_relation_in_scope};
 use mere::kernel::graph::{ContainmentSubKind, EdgeAssertion, ProvenanceSubKind};
+use mere::kernel::types::GraphScope;
 
 use super::*;
 use crate::{AstrologyChart, Concurrence, Reflection};
@@ -361,15 +362,13 @@ impl<B: Backend> CleromancyHost<B> {
             REFLECTION_FACET,
             serde_json::to_value(reflection).unwrap(),
         )?;
-        assert_relation(
+        assert_semantic_relation_in_scope(
             &mut self.graph,
             key,
             session_key,
-            EdgeAssertion::Semantic {
-                sub_kind: SemanticSubKind::Elaborates,
-                label: Some("reflects on".to_string()),
-                decay_progress: None,
-            },
+            SemanticSubKind::Elaborates,
+            Some("reflects on".to_string()),
+            GraphScope::Default,
         );
         self.changed();
         Ok(key)
