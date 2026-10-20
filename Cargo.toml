@@ -47,7 +47,7 @@ pandect = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 sprigging = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 tokio = { version = "1", features = ["rt-multi-thread", "time"] }
 blake3 = "1"
-cambium = { git = "https://github.com/merely-made/mere.git", branch = "main", version = "0.3.3" }
+cambium = { git = "https://github.com/merely-made/mere.git", branch = "main", version = "0.4.0" }
 cambium-genet-winit-host = { git = "https://github.com/merely-made/mere.git", branch = "main", version = "0.1.0" }
 chartulary = { git = "https://github.com/merely-made/eidetic.git", rev = "de6b1dce75dd6725d72c79b829e4878c7903a381" }
 dirs = "6"
