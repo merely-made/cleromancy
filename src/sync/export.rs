@@ -327,7 +327,6 @@ pub fn export_sync_batch<B: Backend>(
                         },
                     },
                     label: Some(relation.label.clone()),
-                    decay_progress: None,
                 },
             });
         }
@@ -428,7 +427,6 @@ pub fn export_sync_batch<B: Backend>(
                 assertion: EdgeAssertion::Semantic {
                     sub_kind: generic_semantic_kind(relation.kind),
                     label: Some(relation.label.clone()),
-                    decay_progress: None,
                 },
             });
         }
@@ -490,7 +488,6 @@ pub fn export_sync_batch<B: Backend>(
             assertion: EdgeAssertion::Semantic {
                 sub_kind: mere::kernel::graph::SemanticSubKind::Elaborates,
                 label: Some("reflects on".to_string()),
-                decay_progress: None,
             },
         });
     }
