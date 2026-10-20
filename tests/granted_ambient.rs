@@ -13,8 +13,8 @@ use djinn::{
 use graphshell_endpoint::door::{
     app_admission::{AllowedAppRoutes, AppId, AppRouteGrants},
     identity::VaultProtectionView,
-    tasks::ResidentTasks,
 };
+use armillary::tasks::ResidentTasks;
 use graphshell_host::endpoint_catalog::ResidentEndpointCatalog;
 use pandect::{
     Author, DomainId, MereSessions, ReservoirStore, open_mere_backend, open_reservoir_backend,

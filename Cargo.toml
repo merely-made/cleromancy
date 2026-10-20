@@ -141,6 +141,8 @@ path = "src/bin/cleromancy_receipt.rs"
 required-features = ["legacy-receipts"]
 
 [dev-dependencies]
+# The resident task set the app door used to export (Mere 8f26d9629 moved it here).
+armillary = { git = "https://github.com/merely-made/armillary.git", rev = "e67c5def1c735be047492a867bcdc8b41fba22b8" }
 async-trait = "0.1"
 castellan = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 tempfile = "3"
