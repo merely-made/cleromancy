@@ -37,7 +37,7 @@ chrono = { version = "0.4", default-features = false, features = ["std"] }
 chrono-tz = "=0.10.4"
 personal-facts = { package = "mere-personal-facts", git = "https://github.com/merely-made/mere.git", branch = "main" }
 
-esp = { optional = true, default-features = false, git = "https://github.com/merely-made/esp.git", rev = "af5597c670da111713dd306f4feba8db892a86d2" }
+esp = { optional = true, default-features = false, git = "https://github.com/merely-made/esp.git", rev = "6d371901435b68e3fb4099a97789222d15f87cf0" }
 sha2 = { version = "0.10", optional = true }
 fetch = { package = "mere-fetch", git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false }
 djinn = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false }
@@ -164,7 +164,7 @@ spartan-protocol = { git = "https://github.com/merely-made/errand.git", rev = "d
 # Canonical promoted families; keep registry and Git consumers type-identical.
 chartulary = { git = "https://github.com/merely-made/eidetic.git", rev = "34105d63ec17826e0a58a5b461b65150357dd000" }
 eidetic = { git = "https://github.com/merely-made/eidetic.git", rev = "34105d63ec17826e0a58a5b461b65150357dd000" }
-esp = { git = "https://github.com/merely-made/esp.git", rev = "af5597c670da111713dd306f4feba8db892a86d2" }
+esp = { git = "https://github.com/merely-made/esp.git", rev = "6d371901435b68e3fb4099a97789222d15f87cf0" }
 luggage = { git = "https://github.com/merely-made/eidetic.git", rev = "34105d63ec17826e0a58a5b461b65150357dd000" }
 servitor = { git = "https://github.com/merely-made/eidetic.git", rev = "34105d63ec17826e0a58a5b461b65150357dd000" }
 stickleback = { git = "https://github.com/merely-made/eidetic.git", rev = "34105d63ec17826e0a58a5b461b65150357dd000" }
@@ -238,7 +238,7 @@ gpu-allocator = { git = "https://github.com/merely-made/genet.git", branch = "ma
 chartulary = { git = "https://github.com/merely-made/eidetic.git", rev = "34105d63ec17826e0a58a5b461b65150357dd000" }
 eidetic = { git = "https://github.com/merely-made/eidetic.git", rev = "34105d63ec17826e0a58a5b461b65150357dd000" }
 errand = { git = "https://github.com/merely-made/errand.git", rev = "dce1f08546b8475e42a5a01ca1ea18794c6e9b97" }
-esp = { git = "https://github.com/merely-made/esp.git", rev = "af5597c670da111713dd306f4feba8db892a86d2" }
+esp = { git = "https://github.com/merely-made/esp.git", rev = "6d371901435b68e3fb4099a97789222d15f87cf0" }
 luggage = { git = "https://github.com/merely-made/eidetic.git", rev = "34105d63ec17826e0a58a5b461b65150357dd000" }
 mere-proofs = { git = "https://github.com/merely-made/eidetic.git", rev = "34105d63ec17826e0a58a5b461b65150357dd000" }
 muniment = { git = "https://github.com/merely-made/eidetic.git", rev = "34105d63ec17826e0a58a5b461b65150357dd000" }
@@ -297,7 +297,7 @@ opt-level = 2
 chartulary = { git = "https://github.com/merely-made/eidetic.git", rev = "34105d63ec17826e0a58a5b461b65150357dd000" }
 eidetic = { git = "https://github.com/merely-made/eidetic.git", rev = "34105d63ec17826e0a58a5b461b65150357dd000" }
 errand = { git = "https://github.com/merely-made/errand.git", rev = "dce1f08546b8475e42a5a01ca1ea18794c6e9b97" }
-esp = { git = "https://github.com/merely-made/esp.git", rev = "af5597c670da111713dd306f4feba8db892a86d2" }
+esp = { git = "https://github.com/merely-made/esp.git", rev = "6d371901435b68e3fb4099a97789222d15f87cf0" }
 luggage = { git = "https://github.com/merely-made/eidetic.git", rev = "34105d63ec17826e0a58a5b461b65150357dd000" }
 mere-proofs = { git = "https://github.com/merely-made/eidetic.git", rev = "34105d63ec17826e0a58a5b461b65150357dd000" }
 muniment = { git = "https://github.com/merely-made/eidetic.git", rev = "34105d63ec17826e0a58a5b461b65150357dd000" }
