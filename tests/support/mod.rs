@@ -33,7 +33,10 @@ pub fn fixture_carrier() -> FixtureCarrier {
 }
 
 pub fn truth_bytes<B: Backend>(host: &CleromancyHost<B>) -> Vec<u8> {
-    serde_json::to_vec(&(host.graph().to_snapshot(), host.graph().facets())).unwrap()
+    let mut snapshot = host.graph().to_snapshot();
+    // Capture time is envelope metadata, independent of graph and facet truth.
+    snapshot.timestamp_secs = 0;
+    serde_json::to_vec(&(snapshot, host.graph().facets())).unwrap()
 }
 
 pub struct FixtureCarrier {

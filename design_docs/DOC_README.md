@@ -271,3 +271,10 @@ Shared resident materialization: [consumer evidence](../receipts/resident_materi
 The shared resident materialization slice is now qualified in both Cleromancy and Knot. Current shared status is in `mere/design_docs/2026-10-18_resident_materialization_plan.md`; Knot’s consumer receipt is `knot-editor/docs/receipts/2026-10-18_shared_resident_materialization/QUALIFICATION.md`. The Cleromancy packet retains its original frozen source and binary.
 
 Foundation source adoption (2026-10-19): canonical promoted-family revisions and consumer source validation are recorded in `mere/design_docs/mere_docs/implementation_strategy/2026-10-19_family_promotion_plan.md`. Existing application and domain authority remain with their owning components.
+
+Pool cohort receiving (2026-10-22): current root/core supplier identities,
+software-test qualification and publication are recorded once in
+`mere/support/family-promotion/pool-cohort-rollout-20261022.json`. The root
+receives the shared Armillary/ESP/Knot repairs through Mere's qualified SDK;
+the portable core retains its smaller feature cone. Earlier reading, native,
+capture and reopen receipts keep their frozen source identities.
