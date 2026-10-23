@@ -29,11 +29,11 @@ personal-facts = { package = "mere-personal-facts", git = "https://github.com/me
 dramatis = { git = "https://github.com/merely-made/dramatis.git", branch = "main" }
 
 blake3 = "1"
-chartulary = { git = "https://github.com/merely-made/eidetic.git", rev = "44f0664748238d7a96603925a0268caf60e091aa" }
+chartulary = { git = "https://github.com/merely-made/eidetic.git", rev = "dceb5fcd07bfaeffc57142b06f07259eed0e89ef" }
 chirograph = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 graphshell-client = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 mere = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["graph"] }
-muniment = { features = ["redb"], git = "https://github.com/merely-made/eidetic.git", rev = "44f0664748238d7a96603925a0268caf60e091aa" }
+muniment = { features = ["redb"], git = "https://github.com/merely-made/eidetic.git", rev = "dceb5fcd07bfaeffc57142b06f07259eed0e89ef" }
 rand_core = { version = "0.6", features = ["getrandom"] }
 sceno = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 scenograph = { git = "https://github.com/merely-made/mere.git", branch = "main" }
@@ -42,7 +42,7 @@ alembic = { package = "mere-alembic", git = "https://github.com/merely-made/mere
 scenotime = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-servitor = { git = "https://github.com/merely-made/eidetic.git", rev = "44f0664748238d7a96603925a0268caf60e091aa" }
+servitor = { git = "https://github.com/merely-made/eidetic.git", rev = "dceb5fcd07bfaeffc57142b06f07259eed0e89ef" }
 thiserror = "2"
 turquet-timeline = { package = "turquet", git = "https://github.com/merely-made/turquet.git", rev = "30875f30e83909f3030bc01237a5046e14cde29b", version = "=0.17.0" }
 turquet-houses = { package = "turquet", git = "https://github.com/merely-made/turquet.git", rev = "e2f65c021a6bf744ab5fe77121e0441a46b47306", version = "=0.17.0" }
@@ -75,9 +75,9 @@ path = "../tests/resident_candidate.rs"
 
 [patch.crates-io]
 # Promoted sources shared with immutable older Mere suppliers.
-chartulary = { git = "https://github.com/merely-made/eidetic.git", rev = "44f0664748238d7a96603925a0268caf60e091aa" }
-servitor = { git = "https://github.com/merely-made/eidetic.git", rev = "44f0664748238d7a96603925a0268caf60e091aa" }
-muniment = { git = "https://github.com/merely-made/eidetic.git", rev = "44f0664748238d7a96603925a0268caf60e091aa" }
+chartulary = { git = "https://github.com/merely-made/eidetic.git", rev = "dceb5fcd07bfaeffc57142b06f07259eed0e89ef" }
+servitor = { git = "https://github.com/merely-made/eidetic.git", rev = "dceb5fcd07bfaeffc57142b06f07259eed0e89ef" }
+muniment = { git = "https://github.com/merely-made/eidetic.git", rev = "dceb5fcd07bfaeffc57142b06f07259eed0e89ef" }
 
 [[test]]
 name = "typed_decks"
@@ -104,11 +104,11 @@ name = "natal"
 path = "../tests/natal.rs"
 
 [patch."https://github.com/merely-made/mere.git"]
-chartulary = { git = "https://github.com/merely-made/eidetic.git", rev = "44f0664748238d7a96603925a0268caf60e091aa" }
-muniment = { git = "https://github.com/merely-made/eidetic.git", rev = "44f0664748238d7a96603925a0268caf60e091aa" }
-servitor = { git = "https://github.com/merely-made/eidetic.git", rev = "44f0664748238d7a96603925a0268caf60e091aa" }
+chartulary = { git = "https://github.com/merely-made/eidetic.git", rev = "dceb5fcd07bfaeffc57142b06f07259eed0e89ef" }
+muniment = { git = "https://github.com/merely-made/eidetic.git", rev = "dceb5fcd07bfaeffc57142b06f07259eed0e89ef" }
+servitor = { git = "https://github.com/merely-made/eidetic.git", rev = "dceb5fcd07bfaeffc57142b06f07259eed0e89ef" }
 
 [patch."https://www.github.com/merely-made/mere.git"]
-chartulary = { git = "https://github.com/merely-made/eidetic.git", rev = "44f0664748238d7a96603925a0268caf60e091aa" }
-muniment = { git = "https://github.com/merely-made/eidetic.git", rev = "44f0664748238d7a96603925a0268caf60e091aa" }
-servitor = { git = "https://github.com/merely-made/eidetic.git", rev = "44f0664748238d7a96603925a0268caf60e091aa" }
+chartulary = { git = "https://github.com/merely-made/eidetic.git", rev = "dceb5fcd07bfaeffc57142b06f07259eed0e89ef" }
+muniment = { git = "https://github.com/merely-made/eidetic.git", rev = "dceb5fcd07bfaeffc57142b06f07259eed0e89ef" }
+servitor = { git = "https://github.com/merely-made/eidetic.git", rev = "dceb5fcd07bfaeffc57142b06f07259eed0e89ef" }
