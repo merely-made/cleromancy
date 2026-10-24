@@ -5,7 +5,7 @@
 use crate::natal::{NatalOutcome, NatalReading};
 use crate::natal_houses::{HouseOutcome, HousePlacement};
 use serde::{Deserialize, Serialize};
-use turquet_cap::{apparent::APPARENT_BODIES, foundation::*, houses, motion};
+use turquet_017::{apparent::APPARENT_BODIES, foundation::*, houses, motion};
 
 pub const METHOD: &str = "cleromancy.natal-supplement/v1";
 pub const SUPPLIER: &str = "Turquet 0.17.0@8e3755bbd0d40343eb4750b072801c941ff32802";
@@ -207,9 +207,9 @@ pub fn calculate(
 fn observed_at(
     s: &OrientationSnapshot,
     tt: JulianDate<TerrestrialTime>,
-) -> Result<(turquet_cap::observer::EarthOrientation, ObservedValues), String> {
+) -> Result<(turquet_017::observer::EarthOrientation, ObservedValues), String> {
     // Bound to the exact retained text, rather than the latest remote file.
-    let series = turquet_cap::eop::EopSeries::parse_finals2000a(
+    let series = turquet_017::eop::EopSeries::parse_finals2000a(
         &s.finals2000a,
         "IERS finals2000A",
         &s.digest(),

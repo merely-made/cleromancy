@@ -3,7 +3,7 @@
 //! Versioned optional extension: absent on all original natal v1 receipts.
 use crate::natal::{NatalOutcome, NatalReading};
 use serde::{Deserialize, Serialize};
-use turquet_houses::{
+use turquet_017::{
     foundation::{
         EastLongitude, JulianDate, Latitude, Longitude, ScaleAwareEpoch, TerrestrialTime,
         TimeOffset, UniversalTime1,

@@ -3,7 +3,7 @@
 use super::{ReadingPlace, SituationError, UnavailableFact, error, require};
 use crate::{AstrologyPlacement, AstrologyPosition};
 use serde::{Deserialize, Serialize};
-use turquet_timeline::{
+use turquet_017::{
     apparent::{APPARENT_BODIES, ApparentBody, ApparentSky},
     events::{
         ConventionalRiseSetKind, ConventionalRiseSetPolicy, ConventionalRiseSetSearch,

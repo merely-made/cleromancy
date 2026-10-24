@@ -7,16 +7,16 @@
 //! public event fields into Cleromancy's serializable fact types.
 
 use thiserror::Error;
-use turquet_timeline::events::{
+use turquet_017::events::{
     AltitudeCrossingSearch, LunarPhase, SearchWindow, SolarTwilightKind,
     airless_solar_twilight_events, ecliptic_longitude_lunar_phases,
 };
-use turquet_timeline::foundation::{
+use turquet_017::foundation::{
     Angle, EastLongitude, JulianDate, Latitude, Length, Observer, ScaleAwareEpoch, TerrestrialTime,
     TimeOffset,
 };
-use turquet_timeline::observer::EarthOrientation;
-use turquet_timeline::provider::{ANALYTICAL_EPHEMERIS, ConstantOffsetEarthOrientation};
+use turquet_017::observer::EarthOrientation;
+use turquet_017::provider::{ANALYTICAL_EPHEMERIS, ConstantOffsetEarthOrientation};
 
 use super::{
     SkyDayFacts, SkyEarthOrientationApproximation, SkyError, SkyFact, SkyFactKind,
@@ -134,7 +134,7 @@ fn earth_orientation(
     } = policy.earth_orientation.approximation;
     let offset = TimeOffset::from_seconds(ut1_minus_utc_milliseconds as f64 / 1_000.0)
         .map_err(value_error)?;
-    let ut1 = turquet_timeline::foundation::JulianDate::from_utc_epoch(utc, offset);
+    let ut1 = turquet_017::foundation::JulianDate::from_utc_epoch(utc, offset);
     let value = EarthOrientation::zero_polar_motion(
         ut1,
         &policy.earth_orientation.authority,
@@ -153,11 +153,11 @@ fn turquet_observer(value: Wgs84Observer) -> Result<Observer, TurquetSkyError> {
     ))
 }
 
-fn interval(value: turquet_timeline::events::EventInterval) -> Result<SkyTtInterval, SkyError> {
+fn interval(value: turquet_017::events::EventInterval) -> Result<SkyTtInterval, SkyError> {
     SkyTtInterval::new(value.start().day(), value.end().day())
 }
 
-fn model(value: turquet_timeline::foundation::Model) -> String {
+fn model(value: turquet_017::foundation::Model) -> String {
     format!("{}@{}", value.name(), value.revision())
 }
 

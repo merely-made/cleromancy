@@ -6,7 +6,7 @@ use chrono::{Datelike, LocalResult, Offset, TimeZone};
 use dramatis::birth::BirthTime;
 use personal_facts::BirthResource;
 use serde::{Deserialize, Serialize};
-use turquet_timeline::{
+use turquet_017::{
     apparent::{APPARENT_BODIES, ApparentSky},
     foundation::{JulianDate, ScaleAwareEpoch, TerrestrialTime},
 };
