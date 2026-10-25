@@ -1,0 +1,11 @@
+[package]
+rust-version = "1.97.1"
+name = "cleromancy-core-acceptance"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+description = "Old name of cleromancy-core, kept until Mere's Djinn takes the new name."
+publish = false
+
+[dependencies]
+cleromancy-core = { path = ".." }

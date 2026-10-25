@@ -259,7 +259,7 @@ fn find_element(dom: &ScriptedDom, node: NodeId, name: &str) -> Option<NodeId> {
     if dom.kind(node) == NodeKind::Element
         && dom
             .element_name(node)
-            .is_some_and(|element| element.local.as_ref() == name)
+            .is_some_and(|element| &*element.local == name)
     {
         return Some(node);
     }

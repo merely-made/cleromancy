@@ -550,7 +550,7 @@ fn neutral_workshop_headings_remain_readable_inside_dark_and_authored_hosts() {
                         .flat_map(|node| dom.dom_children(node))
                         .find(|node| {
                             dom.element_name(*node).is_some_and(|name| {
-                                matches!(name.local.as_ref(), "h1" | "h2" | "h3")
+                                matches!(&*name.local, "h1" | "h2" | "h3")
                             }) && dom
                                 .dom_children(*node)
                                 .filter_map(|child| dom.text(child))
