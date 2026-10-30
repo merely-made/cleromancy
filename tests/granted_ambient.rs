@@ -89,7 +89,7 @@ async fn neighboring_preview_requires_its_own_live_grant_and_clears_on_revocatio
         session.flush(SystemTime::now()).await.unwrap();
         mere
     };
-    let reservoir = ResidentReservoir::open(root.path(), Some(persona))
+    let reservoir = ResidentReservoir::open(root.path(), persona)
         .await
         .unwrap();
     let catalog = AppEndpointCatalog::new(ResidentEndpointCatalog::new());

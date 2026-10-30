@@ -1951,18 +1951,34 @@ dependencies = [
  "chacha20poly1305 0.11.0",
  "chatelaine",
  "constant_time_eq 0.4.2",
+ "credential-exchange-format",
  "dramatis",
+ "ed25519-dalek 2.2.0",
+ "eidetic",
  "getrandom 0.3.4",
  "hmac 0.13.0",
  "insigne",
  "notochord",
+ "p256",
+ "p384",
+ "pandect",
  "personae",
+ "rand_core 0.6.4",
+ "ring",
+ "rsa",
  "serde",
  "serde_json",
  "sha1 0.11.0",
  "sha2 0.11.0",
+ "signature 2.2.0",
+ "ssh-agent-lib",
+ "ssh-key",
+ "thiserror 1.0.69",
+ "tokio",
  "tracing",
+ "tracing-subscriber",
  "uuid",
+ "windows",
  "windows-sys 0.59.0",
  "zeroize",
 ]
@@ -2596,6 +2612,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "01a7799fd6b852db0e61728dde9a204c423b44d689dbd432522543614b490e78"
 dependencies = [
  "cfg-if",
+]
+
+[[package]]
+name = "credential-exchange-format"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "288cce1d17f7263796be2c92ce6abe994d0b5257614bbc02b92129fb6bea5224"
+dependencies = [
+ "chrono",
+ "data-encoding",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
@@ -3621,6 +3649,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e7c1832837b905bbfb5101e07cc24c8deddf52f93225eee6ead5f4d63d53ddcb"
 dependencies = [
  "const-oid 0.9.6",
+ "pem-rfc7468 0.7.0",
  "zeroize",
 ]
 
@@ -3859,6 +3888,7 @@ dependencies = [
  "armillary",
  "base64 0.22.1",
  "blake3",
+ "castellan",
  "chartulary",
  "chatelaine",
  "chirograph",
@@ -3866,6 +3896,7 @@ dependencies = [
  "cleromancy-core",
  "custody-wire",
  "distillery",
+ "djinn-custodian",
  "dramatis",
  "eidetic",
  "futures-util",
@@ -3916,6 +3947,36 @@ dependencies = [
  "uuid",
  "windows",
  "zbus",
+ "zeroize",
+]
+
+[[package]]
+name = "djinn-custodian"
+version = "0.0.1"
+source = "git+https://github.com/merely-made/mere.git?branch=main#c6290142866eefead385e728c5c5da24ac6f624a"
+dependencies = [
+ "base64 0.22.1",
+ "blake3",
+ "castellan",
+ "chatelaine",
+ "custody-wire",
+ "dramatis",
+ "eidetic",
+ "getrandom 0.3.4",
+ "insigne",
+ "libc",
+ "notochord",
+ "pandect",
+ "personae",
+ "serde",
+ "serde_json",
+ "ssh-agent-lib",
+ "ssh-key",
+ "tokio",
+ "uuid",
+ "windows",
+ "windows-future",
+ "windows-sys 0.59.0",
  "zeroize",
 ]
 
@@ -4057,6 +4118,7 @@ version = "2.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "115531babc129696a58c64a4fef0a8bf9e9698629fb97e9e40767d235cfbcd53"
 dependencies = [
+ "pkcs8 0.10.2",
  "signature 2.2.0",
 ]
 
@@ -4079,8 +4141,10 @@ checksum = "70e796c081cee67dc755e1a36a0a172b897fab85fc3f6bc48307991f64e4eca9"
 dependencies = [
  "curve25519-dalek 4.1.3",
  "ed25519 2.2.3",
+ "serde",
  "sha2 0.10.9",
  "subtle",
+ "zeroize",
 ]
 
 [[package]]
@@ -4134,6 +4198,7 @@ dependencies = [
  "generic-array",
  "group",
  "hkdf 0.12.4",
+ "pem-rfc7468 0.7.0",
  "pkcs8 0.10.2",
  "rand_core 0.6.4",
  "sec1",

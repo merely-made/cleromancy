@@ -1,6 +1,6 @@
 # Custody and projection receiver
 
-Status: API migration delivered; focused grant/revocation test not yet qualified.
+Status: Published API migration; focused grant/revocation test passed after updating its fixture requirements.
 
 Cleromancy selects projection-door, local and stdio. Its production and test
 AppBrokerClient imports move to `door::projection`; no compatibility alias
@@ -34,3 +34,27 @@ Evidence is retained on T-PC under
 `a682a07b8c8ecda91ba0c2be2d46ec41c84955dec038eeed694fe7f598d32088`)
 and `root-split-cleromancy-check.json` (lock wait, empty log).
 Resolved-edge audit: `testing/custody-projection-split-20261029/cleromancy-lock-normalized.json`.
+
+## Completed focused qualification
+
+`root-split-cleromancy-final` passed the focused locked test: one passed,
+zero failed or ignored. It exercises the admitted projection client, required
+ambient grant, large resource assembly and immediate card withdrawal following
+revocation. Its log SHA-256 is
+`15457b1be832bb8fdec7bb57a05597a0074b54fb64cda2c2fd1f1e1e15683ae0`.
+The same 3 GiB, zero-swap, 150 percent CPU limits were retained.
+
+The receiving fixture required three explicit adaptations: its Castellan dev
+dependency selects keeper, a Djinn dev declaration selects in-process-custody,
+and ResidentReservoir::open receives the existing persona directly. Production
+feature declarations are unchanged by these fixture adaptations. Static review
+confirmed their dev-only scope and use of the existing temporary root and
+in-memory vault. Earlier compiler failures and lock-wait receipts remain retained;
+they were not behavioral red tests.
+
+The final fixture lock audit adds credential-exchange-format 0.4.0 and
+Djinn-custodian from the same c629014 supplier, plus the selected fixture feature
+edges. No existing package identity or dependency edge was removed. No existing
+registry version selection changed. The report is
+`testing/custody-projection-split-20261029/cleromancy-final-fixture-lock.json`.
+This receipt qualifies the local broker fixture, not the full UI or Windows.

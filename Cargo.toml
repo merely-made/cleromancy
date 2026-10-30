@@ -144,7 +144,8 @@ required-features = ["legacy-receipts"]
 # The resident task set the app door used to export (Mere 8f26d9629 moved it here).
 armillary = { git = "https://github.com/merely-made/armillary.git", rev = "864f107d44bf759111ad2ea3c9036b2cfbf03f4c" }
 async-trait = "0.1"
-castellan = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+castellan = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["keeper"] }
+djinn = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["in-process-custody"] }
 tempfile = "3"
 
 # Current coherent renderer family, including owned Radeon and resource fixes.
