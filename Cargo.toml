@@ -41,7 +41,7 @@ esp = { optional = true, default-features = false, git = "https://github.com/mer
 sha2 = { version = "0.10", optional = true }
 fetch = { package = "mere-fetch", git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false }
 mere-resident = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false }
-djinn = { version = "0.0.3", git = "https://github.com/merely-made/armillary.git", rev = "721e17d41a8f258073f440adbbb39ad145250868", features = ["door-native"] }
+djinn = { version = "0.0.3", git = "https://github.com/merely-made/armillary.git", rev = "a333f516a3b8e05c381a3b0b55e617ffe154b592", features = ["door-native"] }
 mere-overmap = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["resident"] }
 mere-view = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 pandect = { git = "https://github.com/merely-made/mere.git", branch = "main" }
