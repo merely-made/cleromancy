@@ -6,8 +6,8 @@
 #[path = "../tests/support/ambient_fixture.rs"]
 mod fixture;
 use chirograph::{CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult};
-use djinn::embedded_reservoir::{ApplicationReservoirOptions, ReservoirAttachment};
-use graphshell_endpoint::door::app_admission::AppId;
+use mere_resident::embedded_reservoir::{ApplicationReservoirOptions, ReservoirAttachment};
+use djinn::door::app_admission::AppId;
 use mere_overmap::{route, wire};
 use std::{
     collections::HashMap,
@@ -28,8 +28,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         return Err("not the marked public fixture".into());
     }
     let inspect = std::env::args().nth(2).as_deref() == Some("inspect");
-    let mut prompt = djinn::startup_vault::NativeOrTerminal {
-        native: djinn::identity_ui::SystemNativeIdentityUi::default(),
+    let mut prompt = mere_resident::startup_vault::NativeOrTerminal {
+        native: mere_resident::identity_ui::SystemNativeIdentityUi::default(),
     };
     let mut attachment = ReservoirAttachment::open_application(
         ApplicationReservoirOptions {
