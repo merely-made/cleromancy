@@ -7,7 +7,7 @@
 use std::sync::{Arc, Mutex};
 
 use chirograph::{CarrierRequestBody, CarrierResponseBody, IntentResult, ProjectionSnapshot};
-use djinn::embedded_reservoir::ReservoirAttachment;
+use mere_resident::embedded_reservoir::ReservoirAttachment;
 use mere::kernel::graph::{CapturedDelta, Graph};
 use mere_overmap::{
     materialization::{self, GraphRead, MaterializedMere},
@@ -21,7 +21,7 @@ use super::worker::{WorkerUpdate, execute};
 use crate::{CleromancyHost, Consultation};
 
 pub(crate) struct ResidentConsultation {
-    personal: Option<djinn::personal_facts::PersonalFactsClient>,
+    personal: Option<mere_resident::personal_facts::PersonalFactsClient>,
     granted: Option<crate::granted_ambient::GrantedAmbient>,
     attachment: ReservoirAttachment,
     sessions: ProjectionSnapshot,
@@ -154,7 +154,7 @@ impl ResidentConsultation {
                 let opened = tokio::time::timeout(
                     std::time::Duration::from_secs(2),
                     crate::granted_ambient::GrantedAmbient::open_at(
-                        &graphshell_endpoint::door::app_admission::configured_app_endpoint(),
+                        &djinn::door::app_admission::configured_app_endpoint(),
                         domain,
                     ),
                 )
@@ -247,9 +247,9 @@ impl ResidentConsultation {
     ) -> Result<WorkerUpdate, String> {
         if self.personal.is_none() {
             self.personal = Some(
-                djinn::personal_facts::PersonalFactsClient::open(
-                    &graphshell_endpoint::door::app_admission::configured_app_endpoint(),
-                    graphshell_endpoint::door::app_admission::AppId::new("cleromancy"),
+                mere_resident::personal_facts::PersonalFactsClient::open(
+                    &djinn::door::app_admission::configured_app_endpoint(),
+                    djinn::door::app_admission::AppId::new("cleromancy"),
                 )
                 .await?,
             );
@@ -857,9 +857,9 @@ mod tests {
         use super::super::action::{ConsultationContext, ConsultationLayout};
         use castellan::authority::PersonaeHost;
         use castellan::custody::{IdentityVault, InMemoryStorage, Profile};
-        use djinn::embedded_reservoir::ReservoirAttachmentOptions;
-        use graphshell_endpoint::door::app_admission::AppId;
-        use graphshell_endpoint::door::identity::VaultProtectionView;
+        use mere_resident::embedded_reservoir::ReservoirAttachmentOptions;
+        use djinn::door::app_admission::AppId;
+        use dramatis::view::VaultProtectionView;
         use mere_view::{ArchiveRequest, SessionStep};
         use personae::{Ed25519Keypair, PersonaId, ProfileId};
 
@@ -922,7 +922,7 @@ mod tests {
                     domain: pandect::DomainId::new("divination").unwrap(),
                     session_duration: std::time::Duration::from_secs(60),
                 },
-                || async { Ok(identity) },
+                || async { Ok(identity as Arc<dyn mere_resident::custody_host::ResidentCustody>) },
             )
             .await
             .unwrap();

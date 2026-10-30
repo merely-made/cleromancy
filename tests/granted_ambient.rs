@@ -5,15 +5,13 @@ use castellan::{
     custody::{IdentityVault, InMemoryStorage, Profile},
 };
 use cleromancy::granted_ambient::GrantedAmbient;
-use djinn::{
+use mere_resident::{
     door::app_broker::{AppEndpointCatalog, serve_app_broker},
     resident_mere::MereRoutes,
     resident_reservoir::ResidentReservoir,
 };
-use graphshell_endpoint::door::{
-    app_admission::{AllowedAppRoutes, AppId, AppRouteGrants},
-    identity::VaultProtectionView,
-};
+use djinn::door::app_admission::{AllowedAppRoutes, AppId, AppRouteGrants};
+use dramatis::view::VaultProtectionView;
 use armillary::tasks::ResidentTasks;
 use graphshell_host::endpoint_catalog::ResidentEndpointCatalog;
 use pandect::{
@@ -129,7 +127,7 @@ async fn neighboring_preview_requires_its_own_live_grant_and_clears_on_revocatio
         scope
             .scope(serve_app_broker(
                 &address,
-                Arc::new(djinn::keeper::Keeper::new(identity)),
+                Arc::new(mere_resident::keeper::Keeper::new(identity)),
                 grants,
                 60000,
                 None,
@@ -138,7 +136,7 @@ async fn neighboring_preview_requires_its_own_live_grant_and_clears_on_revocatio
             .await
     });
     for _ in 0..100 {
-        if graphshell_endpoint::door::local_endpoint::connect_local(&endpoint)
+        if djinn::door::local_endpoint::connect_local(&endpoint)
             .await
             .is_ok()
         {
@@ -160,8 +158,8 @@ async fn neighboring_preview_requires_its_own_live_grant_and_clears_on_revocatio
     let mut explicit = graphshell_endpoint::door::projection::AppBrokerClient::open_route_at(
         &endpoint,
         owner.clone(),
-        graphshell_endpoint::door::app_admission::AppRouteId::new(
-            djinn::resident_mere::mere_route_id("notes"),
+        djinn::door::app_admission::AppRouteId::new(
+            mere_resident::resident_mere::mere_route_id("notes"),
         )
         .unwrap(),
     )

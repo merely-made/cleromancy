@@ -11,8 +11,8 @@ use std::path::PathBuf;
 use std::sync::mpsc::{self, Sender};
 
 use super::resident::ResidentConsultation;
-use djinn::embedded_reservoir::{ApplicationReservoirOptions, ReservoirAttachment};
-use graphshell_endpoint::door::app_admission::{AppId, configured_app_endpoint};
+use mere_resident::embedded_reservoir::{ApplicationReservoirOptions, ReservoirAttachment};
+use djinn::door::app_admission::{AppId, configured_app_endpoint};
 use mere_view::{MereViewModel, MereViewRequest};
 use std::time::Duration;
 
@@ -29,7 +29,7 @@ use super::{ConsultationAction, ConsultationContext, ConsultationLayout};
 #[derive(Clone, Debug)]
 pub(crate) enum WorkerUpdate {
     BirthFacts {
-        catalog: Option<djinn::personal_facts::PersonalFactsCatalog>,
+        catalog: Option<mere_resident::personal_facts::PersonalFactsCatalog>,
         notice: String,
     },
 
@@ -145,8 +145,8 @@ fn run(commands: mpsc::Receiver<WorkerCommand>, deliver: impl Fn(WorkerUpdate)) 
         },
     };
     let opened = runtime.block_on(async {
-        let mut prompt = djinn::startup_vault::NativeOrTerminal {
-            native: djinn::identity_ui::SystemNativeIdentityUi::default(),
+        let mut prompt = mere_resident::startup_vault::NativeOrTerminal {
+            native: mere_resident::identity_ui::SystemNativeIdentityUi::default(),
         };
         let options = ApplicationReservoirOptions {
             endpoint: configured_app_endpoint(),

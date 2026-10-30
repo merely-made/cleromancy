@@ -104,7 +104,7 @@ pub struct ConsultationUi {
     pub(super) birth_notice: String,
     pub(super) natal_details: bool,
     pub(super) natal_selected: Option<String>,
-    pub(super) birth_catalog: Option<djinn::personal_facts::PersonalFactsCatalog>,
+    pub(super) birth_catalog: Option<mere_resident::personal_facts::PersonalFactsCatalog>,
     pub(super) natal_reflection: TextInput,
     pub(super) birth_subject: usize,
     pub(super) birth_revision: usize,

@@ -3,10 +3,8 @@
 //! Read-only neighboring context through the resident's per-app, per-mere
 //! ambient grant. No shared-root files, complete graph, media, or write door.
 use chirograph::{PortableCardV1, PresentationCodec, ProjectionRequest};
-use graphshell_endpoint::door::{
-    app_admission::{AppId, AppRouteId},
-    projection::AppBrokerClient,
-};
+use djinn::door::app_admission::{AppId, AppRouteId};
+use graphshell_endpoint::door::projection::AppBrokerClient;
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct GrantedCard {
     pub domain: String,
@@ -24,7 +22,7 @@ impl GrantedAmbient {
         let domain = pandect::DomainId::new(domain)
             .map_err(|e| e.to_string())?
             .to_string();
-        let route = AppRouteId::new(djinn::resident_mere::ambient_mere_route_id(&domain))
+        let route = AppRouteId::new(mere_resident::resident_mere::ambient_mere_route_id(&domain))
             .map_err(|e| e.to_string())?;
         let mut client = AppBrokerClient::open_route_at(endpoint, AppId::new("cleromancy"), route)
             .await

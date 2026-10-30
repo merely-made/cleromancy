@@ -244,10 +244,11 @@ mod tests {
         let facet = FacetId::new(READING_FACET);
         let mut value = graph.facets().get(&id, &facet).unwrap().clone();
         value["candidate_id"] = serde_json::json!("invented");
-        graph
-            .facets_mut()
+        let mut facets = graph.facets().clone();
+        facets
             .set(id, facet, value, &AcceptAll)
             .unwrap();
+        graph.install_facets(facets).unwrap();
         assert!(validate_divination_graph(&graph).is_err());
     }
 
@@ -260,7 +261,9 @@ mod tests {
             .unwrap()
             .1
             .id;
-        graph.facets_mut().remove_node(&id);
+        let mut facets = graph.facets().clone();
+        facets.remove_node(&id);
+        graph.install_facets(facets).unwrap();
         assert!(validate_divination_graph(&graph).is_err());
     }
 
@@ -281,8 +284,8 @@ mod tests {
     fn rejects_orphan_domain_facets() {
         let mut graph = fixture();
         let id = Graph::node_namespace_id("cleromancy://reflection/orphan");
-        graph
-            .facets_mut()
+        let mut facets = graph.facets().clone();
+        facets
             .set(
                 id,
                 FacetId::new(REFLECTION_FACET),
@@ -290,6 +293,7 @@ mod tests {
                 &AcceptAll,
             )
             .unwrap();
+        graph.install_facets(facets).unwrap();
         assert!(validate_divination_graph(&graph).is_err());
     }
 
@@ -332,8 +336,8 @@ mod tests {
     fn rejects_unknown_domain_version_and_multiple_domain_records() {
         let mut graph = fixture();
         let id = graph.nodes().next().unwrap().1.id;
-        graph
-            .facets_mut()
+        let mut facets = graph.facets().clone();
+        facets
             .set(
                 id,
                 FacetId::new("cleromancy.future/v9"),
@@ -341,10 +345,11 @@ mod tests {
                 &AcceptAll,
             )
             .unwrap();
+        graph.install_facets(facets).unwrap();
         assert!(validate_divination_graph(&graph).is_err());
         let mut graph = fixture();
-        graph
-            .facets_mut()
+        let mut facets = graph.facets().clone();
+        facets
             .set(
                 id,
                 FacetId::new(REFLECTION_FACET),
@@ -352,6 +357,7 @@ mod tests {
                 &AcceptAll,
             )
             .unwrap();
+        graph.install_facets(facets).unwrap();
         assert!(validate_divination_graph(&graph).is_err());
     }
 
@@ -359,8 +365,8 @@ mod tests {
     fn preserves_unrelated_unknown_facets() {
         let mut graph = fixture();
         let id = graph.nodes().next().unwrap().1.id;
-        graph
-            .facets_mut()
+        let mut facets = graph.facets().clone();
+        facets
             .set(
                 id,
                 FacetId::new("future.presentation/v9"),
@@ -368,6 +374,7 @@ mod tests {
                 &AcceptAll,
             )
             .unwrap();
+        graph.install_facets(facets).unwrap();
         validate_divination_graph(&graph).unwrap();
     }
 }
