@@ -54,7 +54,7 @@ dirs = "6"
 graphshell = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = [] }
 graphshell-host = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["native"] }
 graphshell-client = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-graphshell-endpoint = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["local", "stdio", "door"] }
+graphshell-endpoint = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["local", "stdio", "projection-door"] }
 chirograph = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 genet-scripted-dom = { git = "https://github.com/merely-made/genet.git", branch = "main", version = "=0.1.2" }
 layout-dom-api = { git = "https://github.com/merely-made/genet.git", branch = "main", version = "=0.1.1" }

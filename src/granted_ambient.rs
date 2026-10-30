@@ -5,7 +5,7 @@
 use chirograph::{PortableCardV1, PresentationCodec, ProjectionRequest};
 use graphshell_endpoint::door::{
     app_admission::{AppId, AppRouteId},
-    app_client::AppBrokerClient,
+    projection::AppBrokerClient,
 };
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct GrantedCard {
