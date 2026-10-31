@@ -70,7 +70,6 @@ sceno = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 scenograph = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 scenomise = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 seiche = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["serde"] }
-alembic = { package = "mere-alembic", git = "https://github.com/merely-made/mere.git", branch = "main", features = ["recall"] }
 scenotime = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"

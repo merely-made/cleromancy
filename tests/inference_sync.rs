@@ -117,8 +117,8 @@ fn signed_sync_preserves_generated_prompts_only_with_reflection_consent_and_refu
             .unwrap()
             .0;
         assert_eq!(
-            alembic::memory_levels::level_of(target.graph(), target_key),
-            alembic::memory_levels::MemoryLevel::LongTerm,
+            pandect::memory_levels::level_of(target.graph(), target_key),
+            pandect::memory_levels::MemoryLevel::LongTerm,
             "selected sync retains the explicit Keep action"
         );
         let restored = target

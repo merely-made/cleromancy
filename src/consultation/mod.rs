@@ -258,8 +258,8 @@ impl<B: Backend> Consultation<B> {
                     .get_node_by_url(&format!("cleromancy://inference/{}", r.digest()))?
                     .0;
                 matches!(
-                    alembic::memory_levels::level_of(self.host.graph(), key),
-                    alembic::memory_levels::MemoryLevel::LongTerm
+                    pandect::memory_levels::level_of(self.host.graph(), key),
+                    pandect::memory_levels::MemoryLevel::LongTerm
                 )
                 .then(|| r.digest())
             })

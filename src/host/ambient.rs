@@ -60,8 +60,8 @@ impl<B: Backend> CleromancyHost<B> {
                     .get_node_by_url(&format!("cleromancy://ambient-memory/{}", memory.id))
                     .expect("canonical enumeration");
                 let kept = matches!(
-                    alembic::memory_levels::level_of(&self.graph, key),
-                    alembic::memory_levels::MemoryLevel::LongTerm
+                    pandect::memory_levels::level_of(&self.graph, key),
+                    pandect::memory_levels::MemoryLevel::LongTerm
                 );
                 Ok(MemorySummary { memory, kept })
             })
