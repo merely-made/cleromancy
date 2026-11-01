@@ -25,8 +25,8 @@ cargo +1.99.0 test --locked -j 2 --features legacy-receipts,sky-timeline
 
 The recorded outcomes are 18, 19 and 20 passing tests respectively. Exact
 commands, immutable dependency identities and hashes are in
-[the portable-core receipt](../receipts/c1-portable-core_20261014.json).
-The separate [native C1 ledger](../receipts/c1-resident-qualification_20261014.json)
+the portable-core receipt (`Code/testing/cleromancy/receipts/c1-portable-core_20261014.json`).
+The separate native C1 ledger (`Code/testing/cleromancy/receipts/c1-resident-qualification_20261014.json`)
 records product acceptance and the remaining shared browser gates. Compiler
 compatibility does not promise Cargo 1.97 lockfile stability, and these portable
 gates do not qualify a native window or full C1 acceptance.
@@ -37,14 +37,14 @@ resident-candidate and sky contracts. Immutable portable validator C remains
 distinct from the final native D publication.
 
 C3 continuation (2026-10-16): the new
-[software receipt](../receipts/c3-software-qualification_20261016.json) records
+software receipt (`Code/testing/cleromancy/receipts/c3-software-qualification_20261016.json`) records
 24/25/26 passing portable gates on Cargo/Rust 1.99.0, separately from the frozen
 C1/MSRV receipt above. Complete typed deck and position-definition snapshots
 are validated as part of each field; old fields omit the new optional members
 and retain their exact encoding. A newly built owner consumes this codec; an
-older resident correctly refuses unfamiliar metadata before write. The [C3 native receipt](../receipts/c3-native-qualification_20261016.json)
+older resident correctly refuses unfamiliar metadata before write. The C3 native receipt (`Code/testing/cleromancy/receipts/c3-native-qualification_20261016.json`)
 now records bounded create/reopen qualification on the matching product codec.
 Mere’s standalone receiving intake is now separately qualified at `7a656097e`
 and published with its receipt at `289d64b1a`; the
-[publication ledger](../receipts/c3-publication-intake_20261016.json) records that
+publication ledger (`Code/testing/cleromancy/receipts/c3-publication-intake_20261016.json`) records that
 intake and the original product qualification without repinning the product.

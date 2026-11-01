@@ -5,8 +5,8 @@ explicit Placidus are qualified at product `da495cf` with Turquet `8e3755bb`.
 pass. Five real native processes and 22 reviewed originals preserve four readings
 and two reflections across staged fresh offline reopening. The original planetary
 and Whole Sign/Equal editions stay pinned separately; all 1046 earlier product
-evidence files remain exact. [Ledger](../receipts/natal-cap-qualification_20261017.json)
-and [evidence notes](../receipts/natal_cap_20261017/README.md) bind the independent
+evidence files remain exact. Ledger (`Code/testing/cleromancy/receipts/natal-cap-qualification_20261017.json`)
+and evidence notes (`Code/testing/cleromancy/receipts/natal_cap_20261017/README.md`) bind the independent
 review fixes, exact EOP inputs, polar refusal and source-bound owner qualification.
 Shared/platform/browser/release receipts retain their own scope.
 
@@ -17,7 +17,7 @@ frozen. Ascendant, MC, cusps and longitude-only assignments replay from retained
 time/place and the declared UT1-as-UTC approximation. Missing inputs and
 degenerate geometry explain unavailable results without substitution.
 
-The [qualification receipt](../receipts/natal-houses-qualification_20261017.json)
+The qualification receipt (`Code/testing/cleromancy/receipts/natal-houses-qualification_20261017.json`)
 binds 139/188 product tests, four all-target configurations, portable-core
 49/50/51, and four native processes with thirteen reviewed originals.
 Both systems and the missing-place occasion reopen with exact natal/reflection
@@ -28,7 +28,7 @@ failed/preliminary trials retain their original identities.
 
 Mere main `34f7f08db` imports the same immutable core and passes its integrated
 215-library/nine-owner-parent gates after preserving incoming shared edits.
-The [evidence notes](../receipts/natal_houses_20261017/README.md) explain
+The evidence notes (`Code/testing/cleromancy/receipts/natal_houses_20261017/README.md`) explain
 source identities, corrections, setup and scope. Exact UTC birth years remain
 1972–2098; Placidus, retrograde calculation, observed EOP, graphical unlock and
 shared browser-wall qualification remain separate work.
@@ -42,7 +42,7 @@ Four all-target configurations, natal/busy-state regressions and portable-core
 46/47/48 gates pass on this intake. A rebuilt desktop app passes create plus two
 fresh offline processes with twelve reviewed original wide/compact captures.
 Birth correction preserves the original natal input snapshot and reflections.
-The [hardened intake receipt](../receipts/c8-natal-hardened-intake_20261017.json)
+The hardened intake receipt (`Code/testing/cleromancy/receipts/c8-natal-hardened-intake_20261017.json`)
 supplements the F6 full-suite/native baseline below without relabelling it.
 Existing receipts and the earlier public profile remain exact. The stock daemon's
 immutable portable-core intake has its own Mere receipt. This slice calculates
@@ -63,7 +63,7 @@ captures, keyboard admission/disclosure, compact controls and offline reopening.
 Exact natal/reflection exports and the shared create/reopen catalog match; all 838
 prior Cleromancy receipt paths, nine Dramatis receipts and 22 prior public-profile
 files remain exact. Earlier failed startup, busy-state and receipt-layout trials
-remain preserved. See the [qualification receipt](../receipts/c8-natal-qualification_20261017.json).
+remain preserved. See the qualification receipt (`Code/testing/cleromancy/receipts/c8-natal-qualification_20261017.json`).
 This first slice calculates geocentric tropical placements/aspects for exact UTC
 birth years 1972–2098; unknown/approximate time is preserved without an invented
 chart. Houses, rising sign, retrograde calculation and graphical unlock remain
@@ -76,14 +76,14 @@ portable-core lockfiles now resolve published Dramatis main
 `branch = "main"` declarations. Each resolved graph has one Dramatis source.
 No imports or product logic changed; Cargo also regenerated existing registry
 dependency edges without changing any package versions or other Git revisions.
-The [intake receipt](../receipts/dramatis-main-intake_20261016.json) binds the
+The intake receipt (`Code/testing/cleromancy/receipts/dramatis-main-intake_20261016.json`) binds the
 committed source, default/expanded product suites, four all-target checks,
 portable-core 41/42/43 and desktop build. All 802 earlier receipt paths remain
 exact, and the existing C7/C8 evidence verifiers pass. This software/build
 intake does not renew native qualification. The separate local natal subject
 contract remains unpublished and is excluded from this supplier revision.
 Qualified checkpoint `ff0c14d` is pushed and remote-verified on main; see the
-[publication record](../receipts/dramatis-main-publication_20261016.json).
+publication record (`Code/testing/cleromancy/receipts/dramatis-main-publication_20261016.json`).
 
 **C8 first-die qualification (2026-10-16):** the bounded six-sided-die slice
 now passes four whole native processes and review of all 14 original captures:
@@ -92,8 +92,8 @@ reopening of each. Both saved results are face 3; exported reading-detail bytes
 match exactly across each reopening. Final same-disk owner inspection finds
 ten occasions, preserving every field of the prior eight (including C7 prompts
 and keeping), plus complete C4 domain view/memory values. All 618 prior receipt
-paths remain exact. The [qualification ledger](../receipts/c8-first-die-qualification_20261016.json)
-and [evidence notes](../receipts/c8_20261016/README.md) bind software `e51964a`,
+paths remain exact. The qualification ledger (`Code/testing/cleromancy/receipts/c8-first-die-qualification_20261016.json`)
+and evidence notes (`Code/testing/cleromancy/receipts/c8_20261016/README.md`) bind software `e51964a`,
 native `a4abd1b`, 130/179 product tests, four all-target checks and core 41/42/43.
 Three scenario-only files separate those sources. Earlier failures and the
 bounded installation witness retain their own identities. This qualifies one
@@ -101,7 +101,7 @@ die with OS/public-seed scalar selection, without orientation or assigned
 symbolic meaning. Graphical unlock, general startup/performance, release and
 shared-wall acceptance remain separate; further C8 systems remain unimplemented.
 Qualified checkpoint `0fe3503` is pushed and remote-verified on main; the
-[publication record](../receipts/c8-publication_20261016.json) retains the exact
+publication record (`Code/testing/cleromancy/receipts/c8-publication_20261016.json`) retains the exact
 source and evidence identities.
 
 **C8 first-die preflight (2026-10-16):** one six-sided die is implemented
@@ -111,7 +111,7 @@ probe ignored in each), plus all four all-target checks. Portable core passes
 41/42/43. Native candidate `a4abd1b` differs only by three scenario files;
 its parser and desktop build pass. Actual capture and fresh-process reopening
 remain pending: the Mac is locked, and Mark has been asked to unlock it.
-The [preflight receipt](../receipts/c8-die-preflight_20261016.json) records
+The preflight receipt (`Code/testing/cleromancy/receipts/c8-die-preflight_20261016.json`) records
 source identities and the retained failed attempts separately. No C8 acceptance
 or publication follows from this checkpoint. All 618 prior receipt paths and
 the prior eight occasion details plus C4 view/memory values remain preserved.
@@ -120,7 +120,7 @@ the prior eight occasion details plus C4 view/memory values remain preserved.
 main at `dba1c183`; coordinated Mere receiving qualification is on main at
 `a4c1814c8`. The integrated receiving gate passes 8 parent tests, with one
 intentional child entry ignored. Frozen native/core sources retain their exact
-identities; [publication receipt](../receipts/c7-publication_20261016.json)
+identities; publication receipt (`Code/testing/cleromancy/receipts/c7-publication_20261016.json`)
 records these separately. C8's first dice slice is now in progress.
 
 # Cleromancy: the divination mere, and a reading that explains itself
@@ -130,7 +130,7 @@ records these separately. C8's first dice slice is now in progress.
 **C7 bounded qualification (2026-10-16; main publication pending):** versioned
 history prompts recompute exactly; local shared-ESP model prompts store their
 inputs, model/artifact identities, request and output. They start in Recent
-memory and Keep explicitly promotes them. The [C7 ledger](../receipts/c7-generated-inferences-qualification_20261016.json)
+memory and Keep explicitly promotes them. The C7 ledger (`Code/testing/cleromancy/receipts/c7-generated-inferences-qualification_20261016.json`)
 binds 126 default/175 expanded historical tests, portable-core 41/42/43, four
 all-target checks, eight immutable receiving-owner tests and 19 accepted original
 native captures. Clean creation and exact fresh-process reopening pass offline,
@@ -138,7 +138,7 @@ with no model configured on reopen. All eight prior occasions, C4 domain
 views/memory and all 439 earlier receipt/scenario paths remain exact. Failed
 attempts and five diagnostic originals keep their original identities. Native
 `2e5ef2a` adds only committed scenarios over software/core `d5c383c`; receiving
-`6a0f015a4` uses that exact Git core with no local override. The [evidence notes](../receipts/c7_20261016/README.md)
+`6a0f015a4` uses that exact Git core with no local override. The evidence notes (`Code/testing/cleromancy/receipts/c7_20261016/README.md`)
 separate this bounded acceptance from startup/release/shared-wall gates. Mark's
 next authorized product slice is C8's small dice surface.
 
@@ -152,7 +152,7 @@ source and normalized values. Viewing and replay never fetch weather or enable
 future consent. Selected personal-sync batches carry situation evidence as v7;
 older selections retain v6.
 
-The [C6 ledger](../receipts/c6-situation-qualification_20261016.json) binds
+The C6 ledger (`Code/testing/cleromancy/receipts/c6-situation-qualification_20261016.json`) binds
 120 default/160 historical tests, three all-target checks, four analytic/sky
 tests, portable-core 36/37/38, seven receiving owner tests and ten reviewed
 native originals. Both complete C6 details reopen byte-equal with outbound IP
@@ -161,10 +161,10 @@ exact; all 424 prior receipt/scenario paths are unchanged. Save captures retain
 `ee97133` and supplier `72f9c5c73`; final offline reopens bind `adc434d` and the
 narrow startup supplier `25cbe8106`. That intake changes only the two product
 locks, and only resident opening timing in the supplier. No earlier receipt is
-relabelled. The [evidence notes](../receipts/c6_20261016/README.md) and read-only
+relabelled. The evidence notes (`Code/testing/cleromancy/receipts/c6_20261016/README.md`) and read-only
 verifier retain every diagnostic attempt. Cold startup timing remains bounded
 and imperfect: a thirty-second inspector timeout and the combined-flow
-presentation stall remain explicit. The [C6 publication ledger](../receipts/c6-publication_20261016.json)
+presentation stall remain explicit. The C6 publication ledger (`Code/testing/cleromancy/receipts/c6-publication_20261016.json`)
 independently verifies product checkpoint `3d45fc5`, supplier `25cbe8106` and
 receiving Mere `623e21bf1`. C7 is
 the next product phase; the full shared wall retains its separate gates.
@@ -173,13 +173,13 @@ the next product phase; the full shared wall retains its separate gates.
 shuffle with recorded seed source, draw index and orientation. Ordinary native
 Cast/Derived tarot readings and host tarot spreads take an ordered prefix without replacement;
 operating-system randomness and public-seed draws are supported. The
-[C5 qualification ledger](../receipts/c5-shuffled-qualification_20261016.json)
+C5 qualification ledger (`Code/testing/cleromancy/receipts/c5-shuffled-qualification_20261016.json`)
 records software, ten reviewed native originals, byte-equal fresh-process
 reopening, exact prior occasion/view/memory preservation and current-consumer
 compatibility evidence. Its frozen native source is `052e54f`; later changes
 adjust acceptance-test expectations only. Product checkpoint `e94a47c` and
 coordinated Mere intake `81e6805cf` are published and independently retrieved.
-The [C5 publication ledger](../receipts/c5-publication_20261016.json) records
+The C5 publication ledger (`Code/testing/cleromancy/receipts/c5-publication_20261016.json`) records
 the isolated Knot compatibility checkpoint and supersedes frozen pending status.
 All 333 C4-and-earlier receipt/scenario paths remain exact. C6 is the next
 product phase; the full shared wall retains its separate gates.
@@ -190,16 +190,16 @@ original captures cover motion, explicit Examine/Keep, earlier-reading
 navigation, the two-dimensional ordered grid, compact controls, fresh-process
 reopening and independent relation-family selection. Three sealed reading
 details remain exact; the complete saved view and memory payload reopen
-exactly. The [C4 native receipt](../receipts/c4-native-qualification_20261016.json)
+exactly. The C4 native receipt (`Code/testing/cleromancy/receipts/c4-native-qualification_20261016.json`)
 owns that scope. Final software gates pass 108 default and 147 historical-feature
 tests, both all-target checks, one active sky fixture and portable-core 27/28/29;
 the results are recorded separately in the
-[C4 software receipt](../receipts/c4-software-qualification_20261016.json).
+C4 software receipt (`Code/testing/cleromancy/receipts/c4-software-qualification_20261016.json`).
 The integrated Mere receiving validator passes five active real-process owner
 fixtures with one intentional child entry; its source and the coordinated
-publication plan are in the [receiving ledger](../receipts/c4-resident-intake_20261016.json).
+publication plan are in the receiving ledger (`Code/testing/cleromancy/receipts/c4-resident-intake_20261016.json`).
 C4 source and the integrated receiving validator are now published; the
-[publication ledger](../receipts/c4-publication_20261016.json) verifies the
+publication ledger (`Code/testing/cleromancy/receipts/c4-publication_20261016.json`) verifies the
 remote identities and fresh checkpoint retrieval. All 267 prior tracked receipt
 and scenario paths remain byte-identical to `300ebbd`. The full shared cutover
 wall and stack-wide dynamics milestones keep their separate gates; C5 remains
@@ -211,8 +211,8 @@ non-writing crosswalk inspection and versioned interpretation data. Native
 create/reopen qualification passes with eight reviewed originals and exact
 reopened identities/card payload. Source is published and Mere’s standalone
 validator intake is separately qualified and published; the
-[publication ledger](../receipts/c3-publication-intake_20261016.json) records both. The
-[C3 software receipt](../receipts/c3-software-qualification_20261016.json) owns
+publication ledger (`Code/testing/cleromancy/receipts/c3-publication-intake_20261016.json`) records both. The
+C3 software receipt (`Code/testing/cleromancy/receipts/c3-software-qualification_20261016.json`) owns
 that scope. C1/C2 are integrated on main; C2's original native qualification
 remains bound to `fcfb1a4` and Mere `8b08c98b2`. Later family software intake
 uses committed locks at Mere `59f88e63`. C1's shared cutover gates and all older
@@ -221,7 +221,7 @@ appearance/font and native receipts retain their source identities.
 The ordinary product attaches to the resident-held divination mere. Its private
 snapshot and admitted authority APIs are confined to the nondefault
 `legacy-receipts` harness. Daemon and embedded owners install the same immutable
-portable Cleromancy validator. The [C1 qualification ledger](../receipts/c1-resident-qualification_20261014.json)
+portable Cleromancy validator. The C1 qualification ledger (`Code/testing/cleromancy/receipts/c1-resident-qualification_20261014.json`)
 binds its frozen H/N source, locked CPU gates, 19 original H captures, independent
 visual reviews, fresh-process recovery, numerical compact control bounds and
 controlled terminal-fallback unlock/embedded ownership. The historical F/D
@@ -241,7 +241,7 @@ that behaves like a shuffled deck.
 - `repos/mere/design_docs/mere_docs/implementation_strategy/2026-09-23_reservoir_plan.md`:
   the Mere side. Meres are held by the device resident, and any of an
   identity's applications can open them.
-- [Legible reader and fact surfaces](2026-09-04_legible_reader_and_fact_surfaces_plan.md),
+- [Legible reader and fact surfaces](archive_docs/2026-11-01/2026-09-04_legible_reader_and_fact_surfaces_plan.md),
   the predecessor slice. Its north-star line, "spreads as arrangements", is
   revised below.
 - `repos/mere/design_docs/mere_docs/implementation_strategy/2026-09-25_graphshell_one_tree_plan.md`:
@@ -556,7 +556,7 @@ visibility and fresh-process reopen qualification on the integrated revision.
 Refreshed the clean product checkout to published `3e101cd087ea7a6dbec6f0094f2282fb51a32286`.
 The granular-font adoption is already published at `6cf1e405042455dd5d0ca314b45e92721997ca9d`;
 it does not need another implementation lane. The
-[font receipt](receipts/tabard_20261011/font-roles/qualification.json) records
+font receipt (`Code/testing/cleromancy/tabard_20261011/font-roles/qualification.json`) records
 101 root and 17 portable-core tests, and native runtime `c1fb4ce7f28f0f599e3c3ce876bfcf128046fb1b`
 against Mere `addccab32`. Re-ran its read-only verifier and independently
 reviewed all nine original captures: two accepted processes, 123 presentations,
@@ -658,7 +658,7 @@ authority included. Nothing is imported: the mere starts empty.
 ### C2. The reading narrative
 
 **Implementation and bounded qualification (2026-10-15):** see the
-[C2 receipt](../receipts/c2-reading-qualification_20261015.json). The ordinary
+C2 receipt (`Code/testing/cleromancy/receipts/c2-reading-qualification_20261015.json`). The ordinary
 1160×760 window and compact 420×760 reading, authored layout recovery and
 fresh-process reopen are qualified on the repinned stack. The narration still
 reports independent upright draws; C5 remains responsible for changing that
@@ -720,7 +720,7 @@ both all-target checks. The signed-sync fixture preserves both complete deck
 snapshots and their content revisions. The DOM fixture checks independent
 tradition columns, compact bounds and inspection without a product action.
 All previous receipts remain frozen. The
-[native receipt](../receipts/c3-native-qualification_20261016.json) now records
+native receipt (`Code/testing/cleromancy/receipts/c3-native-qualification_20261016.json`) now records
 107 creation and 55 fresh-process reopening frames, eight directly reviewed
 originals, reachable crosswalk controls, compact stacked traditions and exact
 session/reading/reflection IDs plus byte-equal card payload. This qualifies
@@ -768,7 +768,7 @@ previously kept items and then adds one explicitly kept history item. Actual
 fresh processes restore the full recipe/spec, selected occurrence, camera,
 46 positions at thousandth-unit precision, three placement roles, foreground
 choices and all three memory records. Lens-only inspection leaves the stored
-view unchanged. See the [C4 evidence notes](../receipts/c4_20261016/README.md).
+view unchanged. See the C4 evidence notes (`Code/testing/cleromancy/receipts/c4_20261016/README.md`).
 Historical failed/checkpoint attempts retain their source identities and are
 excluded from the eleven final originals. This bounded consumer proof does
 not close the full shared wall or assert a stack-wide G4b2/T2 milestone.
@@ -939,7 +939,7 @@ flow uses a saved custom position label and the existing public C4 profile;
 fresh reopening preserves the complete shuffled-reading proof byte for byte,
 including context, field, session, template and reflection. All prior occasions
 and C4 view/kept-memory payloads remain exact. See the
-[C5 evidence notes](../receipts/c5_20261016/README.md).
+C5 evidence notes (`Code/testing/cleromancy/receipts/c5_20261016/README.md`).
 
 The current-consumer audit checks published Isocosm `1b030ea9` directly.
 Ruling 600 removed the Cleromancy dependency at `9c991e87`; no current
@@ -1175,7 +1175,7 @@ orientations and positions, and interpretations.
   product tree and all old receipts. Integration gates pass: 92 default tests,
   18 portable-core tests, 2 endpoint tests and 1 active sky-timeline fixture;
   personal-sync and admission all-target checks pass. The
-  [integration receipt](../receipts/main-integration_20261015.json) separates
+  integration receipt (`Code/testing/cleromancy/receipts/main-integration_20261015.json`) separates
   these CPU checks from frozen native qualification. P4 registration/admission
   imports use graphshell-host. Coordinated R2 intake remains pending before
   further product implementation; no new C1 shared-wall acceptance is implied.
@@ -1190,7 +1190,7 @@ orientations and positions, and interpretations.
   receiving gates pass: 92 default tests, 130 historical-feature tests, core
   18/19/20, 5 focused sync fixtures, 1 active sky-timeline fixture and both
   personal-sync/admission all-target checks. The
-  [family intake receipt](../receipts/family-intake_20261015.json) records the
+  family intake receipt (`Code/testing/cleromancy/receipts/family-intake_20261015.json`) records the
   one-source closure and preservation of all 218 prior tracked receipts and
   12 C2 capture hashes. Mere's lift plan records the P4 endpoint proof. Native
   qualification remains bound to its original source; this does not accept
@@ -1203,7 +1203,7 @@ orientations and positions, and interpretations.
   or older receipt rewrite is part of this phase.
 
 - 2026-10-16: C3 software qualification passes on `ef014d7`; see the
-  [software receipt](../receipts/c3-software-qualification_20261016.json).
+  software receipt (`Code/testing/cleromancy/receipts/c3-software-qualification_20261016.json`).
   The final candidate retains one initial RWS field so earlier lifecycle
   scenes' one-field/one-node mint contract is unchanged. The explicit Add
   tarot decks action installs the second choice, and sorted catalog updates
@@ -1225,7 +1225,7 @@ orientations and positions, and interpretations.
   Frozen `ef014d7` passes both original C3 scenarios through production terminal
   unlock on the isolated public fixture: 107/55 frames, six/two captures. All
   eight originals are reviewed; IDs and card bytes match after fresh-process
-  reopening. The [native receipt](../receipts/c3-native-qualification_20261016.json)
+  reopening. The native receipt (`Code/testing/cleromancy/receipts/c3-native-qualification_20261016.json`)
   records scope and the separate default-profile inspection window. The earlier
   software receipt and all historical evidence remain unchanged.
 
@@ -1236,7 +1236,7 @@ orientations and positions, and interpretations.
   entry point launched by parents. The integrated source is `7a656097e`; its
   receipt is published at `289d64b1a`. Only the Cleromancy lock source changes
   against incoming main. Published exact native originals and final software
-  gate logs alongside the [publication ledger](../receipts/c3-publication-intake_20261016.json).
+  gate logs alongside the publication ledger (`Code/testing/cleromancy/receipts/c3-publication-intake_20261016.json`).
   All 219 prior tracked receipt files, 12 C2 original capture hashes and both
   product locks remain exact. C3 bounded product and receiving qualification
   are complete; C4/C5 and the full shared cutover wall remain separate.
@@ -1262,7 +1262,7 @@ orientations and positions, and interpretations.
   `29d4f3b` and integrated Mere `9b6da81db`, staged all four required supplier/core
   checkpoint refs and verified their exact objects in independent fresh bare
   repositories. Both remote main identities match. The additive
-  [publication ledger](../receipts/c4-publication_20261016.json) supersedes the
+  publication ledger (`Code/testing/cleromancy/receipts/c4-publication_20261016.json`) supersedes the
   frozen ledgers’ pending-publication status. C5 proceeds with historical
   receipts and derived-selection bytes preserved.
 
@@ -1290,7 +1290,7 @@ orientations and positions, and interpretations.
   `64fb72a`; Knot main and its native receipts remain unchanged. Knot software
   checks pass its real two-document rosette fixture and all-target compilation.
   Independent bare stores retrieve all seven exact publication revisions; the
-  [C5 publication ledger](../receipts/c5-publication_20261016.json) owns the
+  C5 publication ledger (`Code/testing/cleromancy/receipts/c5-publication_20261016.json`) owns the
   identities and supplemental receiving proof. The frozen native receipt, all
   ten reviewed originals and all 333 prior receipt/scenario paths stay exact.
   C6 remains next.

@@ -1,6 +1,6 @@
 # Third-party licenses
 
-This file records the optional ephemeris feature's distribution boundary. It
+This file records the optional `analytic-ephemeris` feature's distribution boundary. It
 is not a substitute for the upstream license texts.
 
 Cleromancy acquires no data file. The JPL DE440s kernel lane, and with it

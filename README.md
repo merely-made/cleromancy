@@ -15,11 +15,11 @@ editable conjunction, opposition, trine, square and sextile orb rules, with the
 computed separation and deviation for each matching pair. Earlier reading
 editions and their identities remain intact.
 
-The [natal-aspects qualification](receipts/natal-aspects-qualification_20261017.json)
+The natal-aspects qualification (`Code/testing/cleromancy/receipts/natal-aspects-qualification_20261017.json`)
 binds 150/199 product tests, core 59/60/61, native wide/compact presentation and
 exact offline fresh-process reopening. A verified Apple Silicon app archive is
-available as a local development candidate. A separate [Developer ID signed archive](receipts/developer-id-native-qualification_20261017.json) now passes two native graphical launch/reopen processes, six capture reviews and exact retained reading/shared-resource checks. The final extracted launcher now
-passes [production graphical unlock and retry](receipts/graphical-unlock-qualification_20261017.json),
+available as a local development candidate. A separate Developer ID signed archive (`Code/testing/cleromancy/receipts/developer-id-native-qualification_20261017.json`) now passes two native graphical launch/reopen processes, six capture reviews and exact retained reading/shared-resource checks. The final extracted launcher now
+passes production graphical unlock and retry (`Code/testing/cleromancy/receipts/graphical-unlock-qualification_20261017.json`),
 with six readings and two reflections reopened exactly. Notarization and public distribution readiness remain open gates;
 see the [follow-up plan](design_docs/2026-10-17_aspects_unlock_packaging_plan.md).
 
@@ -30,7 +30,7 @@ views and mere route from their stack crates. Family dependencies use canonical
 Git URLs with `branch = "main"`; the committed locks record the tested revisions.
 The original native C2 intake at Mere `8b08c98b2` and the later family software
 checks have separate scopes. Full shared cutover qualification remains open. The
-[family intake receipt](receipts/family-intake_20261015.json) records the
+family intake receipt (`Code/testing/cleromancy/receipts/family-intake_20261015.json`) records the
 completed software checks and personal-sync compatibility follow-up.
 
 C2 narrates each card's computation, keeps authored position labels and
@@ -38,7 +38,7 @@ meanings, shows context with the reading and offers reflection examples.
 Cards reflow at compact widths. Chart entry accepts ordinary UTC dates/times
 and decimal degrees, converted exactly at the calculation boundary. Bounded
 native authoring and fresh-process reopening preserve the saved reading and
-reflection identities. The [C2 receipt](receipts/c2-reading-qualification_20261015.json)
+reflection identities. The C2 receipt (`Code/testing/cleromancy/receipts/c2-reading-qualification_20261015.json`)
 records source, gates, capture reviews and qualification limits; the
 [divination plan](design_docs/2026-09-23_divination_mere_plan.md) owns phase scope.
 
@@ -50,11 +50,11 @@ Thierens correspondences separately, with source dates and untranscribed axes
 explicit. Cross-deck inspection preserves the saved reading. New fields retain
 their full card and position-definition editions; previous fields keep their
 original encoding. The new fixed minor prompts disclose model-assisted
-editorial provenance. The [C3 software receipt](receipts/c3-software-qualification_20261016.json)
-records passing software gates. The [C3 native receipt](receipts/c3-native-qualification_20261016.json)
+editorial provenance. The C3 software receipt (`Code/testing/cleromancy/receipts/c3-software-qualification_20261016.json`)
+records passing software gates. The C3 native receipt (`Code/testing/cleromancy/receipts/c3-native-qualification_20261016.json`)
 records creation, compact presentation, crosswalk inspection and fresh-process
 reopening: eight reviewed originals, exact reading identities and byte-equal
-card payload. The [publication and receiving ledger](receipts/c3-publication-intake_20261016.json)
+card payload. The publication and receiving ledger (`Code/testing/cleromancy/receipts/c3-publication-intake_20261016.json`)
 records the published source and Mere’s qualified standalone-validator intake.
 
 - The A0-A25 proof ledger is complete (2026-08-02 through 2026-08-07):
@@ -124,7 +124,7 @@ synthetic identity.
 
 ## License
 
-Cleromancy is MIT OR Apache-2.0. The optional `ephemeris` and
+Cleromancy is MIT OR Apache-2.0. The optional `analytic-ephemeris` and
 `sky-timeline` features link third-party dependencies; see
 `THIRD_PARTY_LICENSES.md`.
 

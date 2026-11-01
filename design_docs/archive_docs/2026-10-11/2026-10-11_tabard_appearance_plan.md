@@ -154,7 +154,7 @@ responsibility. Export cancellation never saves or applies a definition.
   core lock hashes, exact commands/results, and a frozen executable. The
   coordinator owns the ensuing serial native acceptance and publication.
 
-- **2026-10-11:** Final native batch accepted 18 original captures, zero blank captures and 226 presentations across authoring, reopen, same-ID Save/Apply and final reopen. Both shared and durable receipts pass with stable consultation IDs. Native review repaired a missing star glyph with C and inherited pale workshop headings with the shared neutral editor foreground; final focused17tests/build and all four native processes passed. C1, optional sync/admission/analytics runtime, other platforms and reset recovery remain outside this appearance qualification. See [acceptance receipt](../../receipts/tabard_20261011/README.md).
+- **2026-10-11:** Final native batch accepted 18 original captures, zero blank captures and 226 presentations across authoring, reopen, same-ID Save/Apply and final reopen. Both shared and durable receipts pass with stable consultation IDs. Native review repaired a missing star glyph with C and inherited pale workshop headings with the shared neutral editor foreground; final focused17tests/build and all four native processes passed. C1, optional sync/admission/analytics runtime, other platforms and reset recovery remain outside this appearance qualification. See acceptance receipt (`Code/testing/cleromancy/tabard_20261011/README.md`).
 
 - **2026-10-11:** Additional live authored-canvas/Discard acceptance passed 3 captures and 50 presentations with the same frozen source and stable durable IDs. Actual brown/green pixel evidence and the unchanged brown saved library/choice are in the canonical receipt. Accepted native total: 21 captures and 276 presentations across five processes.
 
@@ -175,7 +175,7 @@ responsibility. Export cancellation never saves or applies a definition.
 
 **Status:** landed and qualified on macOS arm64; publication is carried by the
 consumer commit containing the final receipt. The shared owning contract is
-`mere/design_docs/mere_docs/implementation_strategy/2026-07-05_theme_modes_plan.md`,
+`mere/design_docs/archive_docs/2026-10-28/2026-07-05_theme_modes_plan.md`,
 published in Mere `829e91c7a`. This extends the existing appearance adapter.
 
 ### Phases and done-conditions
