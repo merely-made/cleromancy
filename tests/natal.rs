@@ -152,7 +152,7 @@ fn candidate_validates_natal_and_reflection_after_offline_graph_hydration() {
 #[test]
 fn original_native_natal_receipt_still_replays_byte_identically() {
     let raw: serde_json::Value = serde_json::from_str(include_str!(
-        "../receipts/c8_natal_hardened_20261017/exact-readings-05.json"
+        "fixtures/natal/c8_natal_hardened-exact-readings-05.json"
     ))
     .unwrap();
     let records: Vec<NatalReading> = serde_json::from_value(raw.clone()).unwrap();
@@ -267,7 +267,7 @@ fn missing_place_unknown_time_and_degenerate_pole_never_invent_houses() {
 #[test]
 fn earlier_qualified_house_receipts_replay_without_supplements() {
     let raw: serde_json::Value = serde_json::from_str(include_str!(
-        "../receipts/natal_houses_20261017/exact-readings.json"
+        "fixtures/natal/natal_houses-exact-readings.json"
     ))
     .unwrap();
     let records: Vec<NatalReading> = serde_json::from_value(raw.clone()).unwrap();
@@ -750,7 +750,7 @@ fn natal_aspects_unavailable_is_retained_and_invalid_rules_refuse() {
 #[test]
 fn consolidation_replays_frozen_native_editions_without_changing_records() {
     let receipt: serde_json::Value = serde_json::from_str(include_str!(
-        "../receipts/developer_id_native_20261017/reopen-01/receipt.json"
+        "fixtures/natal/developer_id_native-reopen-01-receipt.json"
     ))
     .unwrap();
     let readings = receipt["readings"].as_array().unwrap();

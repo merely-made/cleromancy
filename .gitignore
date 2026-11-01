@@ -2,15 +2,8 @@
 /target-*/
 /core/target/
 /.cargo/
-# Curated textual receipts are tracked; generated stores, screenshots, and
-# the byte-stability comparison copies stay local (headed plan evidence rule).
-/receipts/*
-!/receipts/*.html
-!/receipts/*.json
-!/receipts/*.scn
-!/receipts/*.ps1
-/receipts/*-second.*
-/receipts/*-repeat.*
+# receipts/ is local output only; archived evidence lives in Code/testing/cleromancy/.
+/receipts/
 Cargo.lock
 !/Cargo.lock
 !/core/Cargo.lock

@@ -667,7 +667,7 @@ fn exports_cannot_replace_future_application_data_or_overridden_preferences() {
 
 #[test]
 fn appearance_fixtures_keep_the_shared_scenario_lane_and_durable_product_contract() {
-    let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("receipts");
+    let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("scenarios");
     for name in [
         "tabard-authoring.scn",
         "tabard-reopen.scn",
