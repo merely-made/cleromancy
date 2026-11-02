@@ -10,7 +10,8 @@ use mere_resident::{
     resident_mere::MereRoutes,
     resident_reservoir::ResidentReservoir,
 };
-use djinn::door::app_admission::{AllowedAppRoutes, AppId, AppRouteGrants};
+use djinn::door::app_admission::{AllowedAppRoutes, AppRouteGrants};
+use ostiary::app_admission::AppId;
 use dramatis::view::VaultProtectionView;
 use armillary::tasks::ResidentTasks;
 use graphshell_host::endpoint_catalog::ResidentEndpointCatalog;
@@ -141,7 +142,7 @@ async fn neighboring_preview_requires_its_own_live_grant_and_clears_on_revocatio
             .await
     });
     for _ in 0..100 {
-        if djinn::door::local_endpoint::connect_local(&endpoint)
+        if ostiary::local_endpoint::connect_local(&endpoint)
             .await
             .is_ok()
         {
@@ -163,7 +164,7 @@ async fn neighboring_preview_requires_its_own_live_grant_and_clears_on_revocatio
     let mut explicit = graphshell_endpoint::door::projection::AppBrokerClient::open_declared_route_at(
         &endpoint,
         owner.clone(),
-        djinn::door::app_admission::AppRouteId::new(
+        ostiary::app_admission::AppRouteId::new(
             mere_resident::resident_mere::mere_route_id("notes"),
         )
         .unwrap(),

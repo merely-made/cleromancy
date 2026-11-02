@@ -154,7 +154,7 @@ impl ResidentConsultation {
                 let opened = tokio::time::timeout(
                     std::time::Duration::from_secs(2),
                     crate::granted_ambient::GrantedAmbient::open_at(
-                        &djinn::door::app_admission::configured_app_endpoint(),
+                        &ostiary::app_admission::configured_app_endpoint(),
                         domain,
                     ),
                 )
@@ -248,8 +248,8 @@ impl ResidentConsultation {
         if self.personal.is_none() {
             self.personal = Some(
                 mere_resident::personal_facts::PersonalFactsClient::open(
-                    &djinn::door::app_admission::configured_app_endpoint(),
-                    djinn::door::app_admission::AppId::new("cleromancy"),
+                    &ostiary::app_admission::configured_app_endpoint(),
+                    ostiary::app_admission::AppId::new("cleromancy"),
                     crate::granted_ambient::declaration(),
                 )
                 .await?,
@@ -859,7 +859,7 @@ mod tests {
         use castellan::authority::PersonaeHost;
         use castellan::custody::{IdentityVault, InMemoryStorage, Profile};
         use mere_resident::embedded_reservoir::ReservoirAttachmentOptions;
-        use djinn::door::app_admission::AppId;
+        use ostiary::app_admission::AppId;
         use dramatis::view::VaultProtectionView;
         use mere_view::{ArchiveRequest, SessionStep};
         use personae::{Ed25519Keypair, PersonaId, ProfileId};

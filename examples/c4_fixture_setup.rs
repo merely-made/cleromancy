@@ -7,7 +7,7 @@
 mod fixture;
 use chirograph::{CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult};
 use mere_resident::embedded_reservoir::{ApplicationReservoirOptions, ReservoirAttachment};
-use djinn::door::app_admission::AppId;
+use ostiary::app_admission::AppId;
 use mere_overmap::{route, wire};
 use std::{
     collections::HashMap,

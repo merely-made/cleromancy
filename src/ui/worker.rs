@@ -12,7 +12,7 @@ use std::sync::mpsc::{self, Sender};
 
 use super::resident::ResidentConsultation;
 use mere_resident::embedded_reservoir::{ApplicationReservoirOptions, ReservoirAttachment};
-use djinn::door::app_admission::{AppId, configured_app_endpoint};
+use ostiary::app_admission::{AppId, configured_app_endpoint};
 use mere_view::{MereViewModel, MereViewRequest};
 use std::time::Duration;
 
