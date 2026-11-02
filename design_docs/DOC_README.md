@@ -159,7 +159,8 @@ Entries marked archived live in `archive_docs/2026-11-01/` (or `archive_docs/202
   the broader workshop-resize retry remains explicitly failed evidence.
   [Completed plan](archive_docs/2026-10-11/2026-10-11_tabard_appearance_plan.md).
 
-- [Divination mere and the self-explaining reading](2026-09-23_divination_mere_plan.md):
+- [Divination mere: open work](2026-11-01_divination_mere_plan.md), cut on 2026-11-01 from the archived
+  [divination mere and the self-explaining reading](archive_docs/2026-11-01/2026-09-23_divination_mere_plan.md):
   **C1 implemented and bounded native/cross-application qualified, 2026-10-14;
   C2-C8 (first die) landed with bounded qualification; full shared wall pending;
   no phase accepted.**
@@ -281,7 +282,7 @@ byte-equal card payload. The publication ledger (`Code/testing/cleromancy/receip
 records published C3 source and Mere’s separately qualified receiving intake.
 C4/C5 and shared-wall acceptance remain separate.
 
-Bounded shared natal qualification (2026-10-17): the [divination plan](2026-09-23_divination_mere_plan.md) and C8 natal receipt (`Code/testing/cleromancy/receipts/c8-natal-qualification_20261017.json`) bind shared birth resources, exact natal inputs, software gates, native captures and offline reopening. Earlier C7/C8 receipts retain their original scope.
+Bounded shared natal qualification (2026-10-17): the [divination plan](archive_docs/2026-11-01/2026-09-23_divination_mere_plan.md) and C8 natal receipt (`Code/testing/cleromancy/receipts/c8-natal-qualification_20261017.json`) bind shared birth resources, exact natal inputs, software gates, native captures and offline reopening. Earlier C7/C8 receipts retain their original scope.
 
 The hardened natal intake (`Code/testing/cleromancy/receipts/c8-natal-hardened-intake_20261017.json`) records the actual-vault admission guard, unchanged history and source-bound consumer qualification on Mere d03e367bd.
 

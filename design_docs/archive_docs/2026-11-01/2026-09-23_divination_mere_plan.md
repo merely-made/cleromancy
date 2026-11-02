@@ -1,3 +1,5 @@
+> **Archived 2026-11-01 (cut; history only).** Cut into `2026-11-01_divination_mere_plan.md`, which holds the open work and the decisions (Mark: "Cut it, draft first"). C1 to C8 (first die) and the natal, aspects and packaging slices have bounded qualification here; **no phase accepted**. Run evidence index and the old-to-main hash table: `archive_docs/receipts/2026-09-23_divination_mere_plan_receipts.md`. Hashes in the body are the pre-merge hashes it was written with.
+
 **Natal cap (2026-10-17; bounded qualification complete):** signed direct,
 retrograde and near-station motion, retained observed Earth orientation and
 explicit Placidus are qualified at product `da495cf` with Turquet `8e3755bb`.
@@ -241,7 +243,7 @@ that behaves like a shuffled deck.
 - `repos/mere/design_docs/mere_docs/implementation_strategy/2026-09-23_reservoir_plan.md`:
   the Mere side. Meres are held by the device resident, and any of an
   identity's applications can open them.
-- [Legible reader and fact surfaces](archive_docs/2026-11-01/2026-09-04_legible_reader_and_fact_surfaces_plan.md),
+- [Legible reader and fact surfaces](2026-09-04_legible_reader_and_fact_surfaces_plan.md),
   the predecessor slice. Its north-star line, "spreads as arrangements", is
   revised below.
 - `repos/mere/design_docs/mere_docs/implementation_strategy/2026-09-25_graphshell_one_tree_plan.md`:
@@ -327,20 +329,20 @@ published main branches. This refresh changes documentation only.
 
 - **The reservoir consumer has not landed.** `CleromancyHost` still stores
   `PersistedHost` (graph, facets and projection counters) in one muniment slot
-  ([`host/mod.rs`](../src/host/mod.rs)). `CleromancySessionAuthority` still
-  owns its application graph ([`admitted.rs`](../src/admitted.rs)). C1's
+  ([`host/mod.rs`](../../../src/host/mod.rs)). `CleromancySessionAuthority` still
+  owns its application graph ([`admitted.rs`](../../../src/admitted.rs)). C1's
   resident-held divination domain is not established by the existing native
   reopen proof.
-- **The scene is a bounded adapter.** [`reading_scene.rs`](../src/reading_scene.rs)
+- **The scene is a bounded adapter.** [`reading_scene.rs`](../../../src/reading_scene.rs)
   interns reading sources with separate placement occurrences, but manually
   positions three columns. The DOM realization uses those coordinates
-  ([`ui/view/reading_scene.rs`](../src/ui/view/reading_scene.rs)); there is no
+  ([`ui/view/reading_scene.rs`](../../../src/ui/view/reading_scene.rs)); there is no
   editable relation neighborhood or dynamics binding. The manifest pins Mere
   `8106c7c2`, so current platform capabilities need a tested adaptation.
 - **Authored positions lose their meaning in the reader.** The renderer
   derives labels and stock rationales from position ids instead of the saved
-  template ([`ui/view/reading.rs`](../src/ui/view/reading.rs),
-  [`reading_scene.rs`](../src/reading_scene.rs)). A saved label "What I must
+  template ([`ui/view/reading.rs`](../../../src/ui/view/reading.rs),
+  [`reading_scene.rs`](../../../src/reading_scene.rs)). A saved label "What I must
   release" under `foundation` displayed "Foundation" and the built-in
   grounding rationale. C2 must resolve the saved template; C3 must carry its
   meaning as versioned data.
@@ -352,7 +354,7 @@ published main branches. This refresh changes documentation only.
   not evidence that a new storage layer fixes the interface.
 - **The old draw behavior remains.** The built-in field has 22 upright Major
   Arcana, and each position casts independently over the full field
-  ([`tarot.rs`](../src/tarot.rs), [`host/spreads.rs`](../src/host/spreads.rs)).
+  ([`tarot.rs`](../../../src/tarot.rs), [`host/spreads.rs`](../../../src/host/spreads.rs)).
   C5's shuffled deck, non-repetition and reversals have not landed.
 - **Verification is bounded.** The four-feature suite
   `cargo test --features analytic-ephemeris,sky-timeline,personal-sync,graphshell-admission`
@@ -537,7 +539,7 @@ Graphshell's one-tree cutover and mounted session panel remain V2b gates; this
 wave does not bypass them or move C2 ahead of C1.
 
 Cleromancy supplies a read-only complete-candidate validator in
-[`host/domain.rs`](../src/host/domain.rs). It checks canonical record identity,
+[`host/domain.rs`](../../../src/host/domain.rs). It checks canonical record identity,
 supported domain facets, sealed reading replay and stored dependencies using
 the existing product decoders. It opens no store and leaves the candidate
 unchanged. The shared resident must install it before any graph, journal,
@@ -589,29 +591,29 @@ current compatibility evidence.
 
 - **Storage.** `CleromancyHost` holds one Mere kernel `Graph` and saves it
   whole, as one snapshot document in one muniment slot
-  ([`host/mod.rs`](../src/host/mod.rs)). It has no pandect sessions, no graph
+  ([`host/mod.rs`](../../../src/host/mod.rs)). It has no pandect sessions, no graph
   journal and no codicils. It runs its own resident authority,
-  `CleromancySessionAuthority` ([`admitted.rs`](../src/admitted.rs)). The
+  `CleromancySessionAuthority` ([`admitted.rs`](../../../src/admitted.rs)). The
   reservoir plan's device-resident model replaces that authority.
 - **No data to migrate.** No store exists at the default data root,
   `%LOCALAPPDATA%\cleromancy`, on the primary development machine, and Mark
   confirms there are no real readings elsewhere. Headed test stores live under
   `C:\t\` and regenerate.
 - **Spreads repeat cards.** Every position is an independent cast against the
-  full field ([`host/spreads.rs`](../src/host/spreads.rs), both the three-card
+  full field ([`host/spreads.rs`](../../../src/host/spreads.rs), both the three-card
   and template paths). Over the 22 Major Arcana, a three-card spread repeats a
   card about 13% of the time, and a ten-card spread about 91%.
 - **Interpretation lives in four carriers.**
   - `Candidate.interpretation` is sealed into the field.
   - `SkyRulePack` carries a pack id, author, version and digest
-    ([`sky.rs`](../src/sky.rs)).
+    ([`sky.rs`](../../../src/sky.rs)).
   - The edition-1 chart prompts are `match` arms in a view
-    ([`ui/view/astrology_reading.rs`](../src/ui/view/astrology_reading.rs)).
+    ([`ui/view/astrology_reading.rs`](../../../src/ui/view/astrology_reading.rs)).
   - Position rationales are another view-level `match`
-    ([`reading_scene.rs`](../src/reading_scene.rs)).
+    ([`reading_scene.rs`](../../../src/reading_scene.rs)).
 - **Cards carry no typed axes.** The pack is upright-only by A6's decision, and
   a card is `{id, title, prompt, 3 tags, base_weight}`. Its number exists only
-  inside the id string ([`tarot.rs`](../src/tarot.rs)). It has no typed suit,
+  inside the id string ([`tarot.rs`](../../../src/tarot.rs)). It has no typed suit,
   arcana, element, planet or sign.
 - **Isocosm consumes derived selection.** Its games-wing plan pins Cleromancy
   at `3b321539c5bc854403623087d8af18dcef6f2b53`

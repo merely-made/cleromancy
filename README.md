@@ -40,7 +40,8 @@ and decimal degrees, converted exactly at the calculation boundary. Bounded
 native authoring and fresh-process reopening preserve the saved reading and
 reflection identities. The C2 receipt (`Code/testing/cleromancy/receipts/c2-reading-qualification_20261015.json`)
 records source, gates, capture reviews and qualification limits; the
-[divination plan](design_docs/2026-09-23_divination_mere_plan.md) owns phase scope.
+[divination plan](design_docs/2026-11-01_divination_mere_plan.md) owns open work; phase history is in the
+[archived plan](design_docs/archive_docs/2026-11-01/2026-09-23_divination_mere_plan.md).
 
 C3 is implemented and bounded native qualification passes: complete Rider–Waite–Smith and
 Marseille-structure text decks, 78 cards each, with typed identities, suits,
