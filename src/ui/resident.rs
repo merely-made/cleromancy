@@ -250,6 +250,7 @@ impl ResidentConsultation {
                 mere_resident::personal_facts::PersonalFactsClient::open(
                     &djinn::door::app_admission::configured_app_endpoint(),
                     djinn::door::app_admission::AppId::new("cleromancy"),
+                    crate::granted_ambient::declaration(),
                 )
                 .await?,
             );
@@ -916,7 +917,8 @@ mod tests {
                 ReservoirAttachmentOptions {
                     endpoint: address,
                     application: AppId::new("cleromancy"),
-                    applications: vec![AppId::new("cleromancy")],
+                    declaration: crate::granted_ambient::declaration(),
+                    grants: Vec::new(),
                     shared_root: root.path().into(),
                     persona,
                     domain: pandect::DomainId::new("divination").unwrap(),

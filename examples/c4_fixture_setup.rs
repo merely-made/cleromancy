@@ -35,6 +35,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         ApplicationReservoirOptions {
             endpoint: "/tmp/c4-20261016.sock".into(),
             application: AppId::new("cleromancy"),
+            declaration: cleromancy::granted_ambient::declaration(),
             domain: pandect::DomainId::new("divination")?,
             shared_root: root.join("shared"),
             vault_dir: root.join("ordinary-vault"),
