@@ -5,6 +5,13 @@
 use chirograph::{PortableCardV1, PresentationCodec, ProjectionRequest};
 use djinn::door::app_admission::{AppId, AppRouteId};
 use graphshell_endpoint::door::projection::AppBrokerClient;
+
+/// What Cleromancy declares on every hello to Djinn (Mere's capability door
+/// D22): the reservoir, the identity route and its meres, explicit and
+/// ambient. The owner's grant decides which it receives.
+pub fn declaration() -> djinn::door::declaration::AppDeclaration {
+    mere_resident::resident_reservoir::mere_client_declaration()
+}
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct GrantedCard {
     pub domain: String,
@@ -24,8 +31,9 @@ impl GrantedAmbient {
             .to_string();
         let route = AppRouteId::new(mere_resident::resident_mere::ambient_mere_route_id(&domain))
             .map_err(|e| e.to_string())?;
-        let mut client = AppBrokerClient::open_route_at(endpoint, AppId::new("cleromancy"), route)
-            .await
+        let mut client =
+            AppBrokerClient::open_declared_route_at(endpoint, AppId::new("cleromancy"), route, declaration())
+                .await
             .map_err(|e| e.to_string())?;
         let opened = client.open_session().await.map_err(|e| e.to_string())?;
         let request = opened
