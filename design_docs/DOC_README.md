@@ -321,3 +321,13 @@ receipts are in
 `mere/design_docs/mere_docs/implementation_strategy/2026-10-28_workspace_hygiene_plan.md`.
 This is native compile evidence for these pins; earlier headed receipts retain
 their recorded source and artifact basis.
+
+Resident identity receiving (2026-11-03), qualified: startup/profile and
+custody service calls now name Dramatis's `dramatis-resident` directly;
+Mere supplies its host, projections and concrete native dialogs. Qualification
+is coordinated by `dramatis/design_docs/2026-11-01_dramatis_repo_plan.md`, D15.
+Earlier headed receipts retain their original source basis.
+
+The locked all-target gate passes on Mere `a9d19631d` and Dramatis `6b65ea4`,
+with Genet consolidated at `ad362723109b`; earlier headed acceptance keeps its
+original source basis.

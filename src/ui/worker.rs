@@ -145,7 +145,7 @@ fn run(commands: mpsc::Receiver<WorkerCommand>, deliver: impl Fn(WorkerUpdate)) 
         },
     };
     let opened = runtime.block_on(async {
-        let mut prompt = mere_resident::startup_vault::NativeOrTerminal {
+        let mut prompt = dramatis_resident::startup_vault::NativeOrTerminal {
             native: mere_resident::identity_ui::SystemNativeIdentityUi::default(),
         };
         let options = ApplicationReservoirOptions {

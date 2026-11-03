@@ -924,7 +924,7 @@ mod tests {
                     domain: pandect::DomainId::new("divination").unwrap(),
                     session_duration: std::time::Duration::from_secs(60),
                 },
-                || async { Ok(identity as Arc<dyn mere_resident::custody_host::ResidentCustody>) },
+                || async { Ok(identity as Arc<dyn dramatis_resident::custody_host::ResidentCustody>) },
             )
             .await
             .unwrap();

@@ -133,7 +133,7 @@ async fn neighboring_preview_requires_its_own_live_grant_and_clears_on_revocatio
         scope
             .scope(serve_app_broker(
                 &address,
-                Arc::new(mere_resident::keeper::Keeper::new(identity)),
+                Arc::new(dramatis_resident::keeper::Keeper::new(identity)),
                 grants,
                 60000,
                 None,

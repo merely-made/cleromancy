@@ -32,6 +32,7 @@ graphshell-admission = ["graphshell-host/native"]
 # Cargo.lock records the exact tested revisions; intake updates the lock.
 # The original C1/C2 qualification retains its frozen supplier identities.
 [dependencies]
+dramatis-resident = { git = "https://github.com/merely-made/dramatis.git", branch = "main", default-features = false }
 dramatis = { git = "https://github.com/merely-made/dramatis.git", branch = "main" }
 chrono = { version = "0.4", default-features = false, features = ["std"] }
 chrono-tz = "=0.10.4"
@@ -154,6 +155,8 @@ djinn = { version = "0.0.3", git = "https://github.com/merely-made/armillary.git
 # Root patches are not inherited from Mere or Genet. The native host resolves
 # one maintained Classic 0.11 triple and the matching Netrender device source.
 [patch.crates-io]
+# Resident custody and the host share one OS peer-facts vocabulary.
+peer-facts = { version = "0.0.1", git = "https://github.com/merely-made/armillary.git", rev = "08ebbc44f5d391bd263fcc26b6053edf72741954" }
 # Promoted sources shared with immutable older Mere suppliers.
 errand = { git = "https://github.com/merely-made/errand.git", rev = "897fb963d184f0e379ab9041d68e17e726cb7763" }
 finger-protocol = { git = "https://github.com/merely-made/errand.git", rev = "897fb963d184f0e379ab9041d68e17e726cb7763" }

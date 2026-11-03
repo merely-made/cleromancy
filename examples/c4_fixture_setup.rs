@@ -28,7 +28,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         return Err("not the marked public fixture".into());
     }
     let inspect = std::env::args().nth(2).as_deref() == Some("inspect");
-    let mut prompt = mere_resident::startup_vault::NativeOrTerminal {
+    let mut prompt = dramatis_resident::startup_vault::NativeOrTerminal {
         native: mere_resident::identity_ui::SystemNativeIdentityUi::default(),
     };
     let mut attachment = ReservoirAttachment::open_application(
