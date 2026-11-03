@@ -41,7 +41,7 @@ esp = { optional = true, default-features = false, git = "https://github.com/mer
 sha2 = { version = "0.10", optional = true }
 fetch = { package = "mere-fetch", git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false }
 mere-resident = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false }
-djinn = { version = "0.0.3", git = "https://github.com/merely-made/armillary.git", rev = "73968e28e2ceb78399b9d533bfa037cd300126c5", features = ["door-native"] }
+ostiary = { version = "0.0.1", git = "https://github.com/merely-made/armillary.git", rev = "08ebbc44f5d391bd263fcc26b6053edf72741954", features = ["native"] }
 mere-overmap = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["resident"] }
 mere-view = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 pandect = { git = "https://github.com/merely-made/mere.git", branch = "main" }
@@ -147,6 +147,8 @@ async-trait = "0.1"
 castellan = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["keeper"] }
 mere-resident = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["in-process-custody"] }
 tempfile = "3"
+# The grant logic the granted-ambient test stands a door up with.
+djinn = { version = "0.0.3", git = "https://github.com/merely-made/armillary.git", rev = "08ebbc44f5d391bd263fcc26b6053edf72741954", features = ["door", "door-native"] }
 
 # Current coherent renderer family, including owned Radeon and resource fixes.
 # Root patches are not inherited from Mere or Genet. The native host resolves

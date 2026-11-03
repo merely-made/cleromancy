@@ -12,7 +12,7 @@ use std::sync::mpsc::{self, Sender};
 
 use super::resident::ResidentConsultation;
 use mere_resident::embedded_reservoir::{ApplicationReservoirOptions, ReservoirAttachment};
-use djinn::door::app_admission::{AppId, configured_app_endpoint};
+use ostiary::app_admission::{AppId, configured_app_endpoint};
 use mere_view::{MereViewModel, MereViewRequest};
 use std::time::Duration;
 
@@ -151,6 +151,7 @@ fn run(commands: mpsc::Receiver<WorkerCommand>, deliver: impl Fn(WorkerUpdate)) 
         let options = ApplicationReservoirOptions {
             endpoint: configured_app_endpoint(),
             application: AppId::new("cleromancy"),
+            declaration: crate::granted_ambient::declaration(),
             domain: pandect::DomainId::new("divination").map_err(|e| e.to_string())?,
             shared_root: pandect::shared_root::shared_root(),
             vault_dir: std::env::var_os("CLEROMANCY_VAULT_DIR")

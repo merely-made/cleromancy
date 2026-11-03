@@ -10,7 +10,8 @@ use mere_resident::{
     resident_mere::MereRoutes,
     resident_reservoir::ResidentReservoir,
 };
-use djinn::door::app_admission::{AllowedAppRoutes, AppId, AppRouteGrants};
+use djinn::door::app_admission::{AllowedAppRoutes, AppRouteGrants};
+use ostiary::app_admission::AppId;
 use dramatis::view::VaultProtectionView;
 use armillary::tasks::ResidentTasks;
 use graphshell_host::endpoint_catalog::ResidentEndpointCatalog;
@@ -91,16 +92,21 @@ async fn neighboring_preview_requires_its_own_live_grant_and_clears_on_revocatio
         .await
         .unwrap();
     let catalog = AppEndpointCatalog::new(ResidentEndpointCatalog::new());
-    let grants = AppRouteGrants::new(AllowedAppRoutes::new([
-        (app.clone(), ResidentReservoir::route()),
-        (owner.clone(), ResidentReservoir::route()),
-    ]));
+    let grants = AppRouteGrants::new(AllowedAppRoutes::none());
+    mere_resident::applications::install(
+        &grants,
+        [&app, &owner]
+            .map(|who| {
+                mere_resident::applications::grant_for(who, &cleromancy::granted_ambient::declaration(), None)
+            })
+            .to_vec(),
+    );
+    grants.update(|routes| routes.serve(ResidentReservoir::route()));
     let routes = MereRoutes::new(
         root.path().into(),
         persona,
         catalog.clone(),
         grants.clone(),
-        vec![app.clone(), owner.clone()],
     );
     routes.load_access(&reservoir).await.unwrap();
     routes.serve(&mere).await.unwrap();
@@ -136,7 +142,7 @@ async fn neighboring_preview_requires_its_own_live_grant_and_clears_on_revocatio
             .await
     });
     for _ in 0..100 {
-        if djinn::door::local_endpoint::connect_local(&endpoint)
+        if ostiary::local_endpoint::connect_local(&endpoint)
             .await
             .is_ok()
         {
@@ -155,13 +161,14 @@ async fn neighboring_preview_requires_its_own_live_grant_and_clears_on_revocatio
         )
         .await
         .unwrap();
-    let mut explicit = graphshell_endpoint::door::projection::AppBrokerClient::open_route_at(
+    let mut explicit = graphshell_endpoint::door::projection::AppBrokerClient::open_declared_route_at(
         &endpoint,
         owner.clone(),
-        djinn::door::app_admission::AppRouteId::new(
+        ostiary::app_admission::AppRouteId::new(
             mere_resident::resident_mere::mere_route_id("notes"),
         )
         .unwrap(),
+        cleromancy::granted_ambient::declaration(),
     )
     .await
     .unwrap();
