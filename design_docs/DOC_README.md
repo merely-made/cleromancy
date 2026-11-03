@@ -331,3 +331,12 @@ Earlier headed receipts retain their original source basis.
 The locked all-target gate passes on Mere `a9d19631d` and Dramatis `6b65ea4`,
 with Genet consolidated at `ad362723109b`; earlier headed acceptance keeps its
 original source basis.
+
+Distillery receiving (2026-11-03): the application and core follow the Mere
+source cut at `f673d313`, Distillery's runtime cohort `6610858`, and Knot's
+receiving commit `a84ae72`. Published producer contracts are patched to the
+same Mere source as their host. The locked native workspace/all-target check
+and selected normal/build source audit pass, retaining Genet `ad362723`.
+Canonical plan and receipts:
+`mere/design_docs/mere_docs/implementation_strategy/2026-10-31_distillery_extraction_plan.md`.
+No new headed consultation or model acceptance is claimed by this source intake.
