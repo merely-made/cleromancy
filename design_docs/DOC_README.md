@@ -312,3 +312,12 @@ software-test qualification and publication are recorded once in
 receives the shared Armillary/ESP/Knot repairs through Mere's qualified SDK;
 the portable core retains its smaller feature cone. Earlier reading, native,
 capture and reopen receipts keep their frozen source identities.
+
+Registry receiving (2026-11-03): the locked all-target check passes on Mere
+`47dce59ee`, Genet `ad362723109`, Eidetic `9fe08ee` and ESP `9e8a32d`,
+including Pandect 0.2.0 and the published custody client. The receiving source
+audit finds one storage and door-type identity. Coordination and compact
+receipts are in
+`mere/design_docs/mere_docs/implementation_strategy/2026-10-28_workspace_hygiene_plan.md`.
+This is native compile evidence for these pins; earlier headed receipts retain
+their recorded source and artifact basis.
