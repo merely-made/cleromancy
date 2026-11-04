@@ -1,5 +1,7 @@
 # Cleromancy design-doc index
 
+Source homes (2026-11-04): [shared daily sky consolidation](2026-10-18_duplication_reduction_plan.md#turquet-and-shared-daily-sky-2026-11-04), [Turquet plan](2026-11-04_turquet_plan.md), and [Turquet provider architecture](2026-08-13_turquet_provider_architecture.md). The astronomy and embeddable sky workspaces are independent of the application and its interpretation/UI.
+
 Rust policy (2026-10-13): working toolchain 1.99.1 (fixed by `rust-toolchain.toml`) and shared MSRV 1.97.1, qualified separately. Canonical policy: `mere/design_docs/2026-08-12_family_composition_thesis_brief.md`, section "Shared Rust toolchain and minimum version".
 
 Murm source adoption (2026-10-13) is tracked in
@@ -127,7 +129,7 @@ All archived (landed) in `archive_docs/2026-11-01/`.
 
 ## Astrology and ephemeris
 
-All archived in `archive_docs/2026-11-01/`.
+The active engine and shared sky consolidation are indexed above. Product milestone plans below remain archived in `archive_docs/2026-11-01/`.
 
 - [A13 astrology facts](archive_docs/2026-11-01/2026-08-04_a13_astrology_facts.md): positions to
   source-qualified placements and aspects.
@@ -143,7 +145,7 @@ All archived in `archive_docs/2026-11-01/`.
   optional kernel-backed chart lane, removed in `13fbd73` (2026-08-13).
 - [T5b sky timeline](archive_docs/2026-11-01/2026-08-26_sky_timeline_plan.md): landed; Turquet event
   consumer, durable sky facts, and authored daily interpretations
-  (`sky-timeline` is an empty feature; Turquet 0.17 is an unconditional dependency).
+  (`sky-timeline` enables the shared daily sky library; Turquet 0.17 also serves retained natal editions).
 
 ## Consultation, projection, and residency
 

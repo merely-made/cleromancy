@@ -31,6 +31,23 @@ pub enum TurquetSkyError {
     Turquet(String),
 }
 
+/// Calculate a named-zone daily sky with the shared Turnstone-derived engine.
+/// The caller supplies the observer, body policies, search controls and EOP.
+/// Existing UTC-day twilight readings retain their separate explicit policy.
+pub fn analytical_local_sky_day<E: turquet_017::provider::EarthOrientationProvider>(
+    request: &super::daily::sky_timeline::SkyDayRequest,
+    earth_orientation: &E,
+) -> Result<
+    super::daily::sky_timeline::SkyTimeline,
+    super::daily::sky_timeline::SkyTimelineError<turquet_017::apparent::ApparentError, E::Error>,
+> {
+    super::daily::sky_timeline::build_sky_timeline(
+        &ANALYTICAL_EPHEMERIS,
+        earth_orientation,
+        request,
+    )
+}
+
 /// Calculate a factual UTC-day timeline with Turquet's public analytical,
 /// phase, and caller-policy airless-twilight APIs.
 pub fn analytical_sky_day(

@@ -137,7 +137,7 @@ pub use session::{
     SessionError,
 };
 #[cfg(feature = "sky-timeline")]
-pub use sky::turquet::{TurquetSkyError, analytical_sky_day};
+pub use sky::turquet::{TurquetSkyError, analytical_local_sky_day, analytical_sky_day};
 pub use sky::{
     SKY_DAY_FACTS_SCHEMA, SKY_INTERPRETATION_SCHEMA, SKY_RULE_PACK_SCHEMA, SkyDayFacts,
     SkyEarthOrientationApproximation, SkyEarthOrientationPolicy, SkyError, SkyFact, SkyFactKind,

@@ -1,1 +1,6 @@
 tests/fixtures/pre-c5-selections.json text eol=lf
+
+# Imported Sky receipts retain their exact original serialized bytes.
+crates/cleromancy-sky/scenarios/fixtures/*.json -text
+crates/turquet/tests/vectors/** -text
+

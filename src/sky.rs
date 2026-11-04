@@ -18,6 +18,10 @@ use crate::context::canonical_digest;
 #[cfg(feature = "sky-timeline")]
 pub mod turquet;
 
+/// Shared named-zone timeline and receipt capability; interpretations stay here.
+#[cfg(feature = "sky-timeline")]
+pub use cleromancy_sky as daily;
+
 pub const SKY_DAY_FACTS_SCHEMA: &str = "cleromancy.sky-day-facts/v1";
 pub const SKY_RULE_PACK_SCHEMA: &str = "cleromancy.sky-rule-pack/v1";
 pub const SKY_INTERPRETATION_SCHEMA: &str = "cleromancy.sky-interpretation/v1";

@@ -24,7 +24,7 @@ local-inference = ["dep:esp", "esp/decoder", "dep:sha2"]
 legacy-receipts = []
 # The data-free analytic engine. No kernel, no download, no filesystem.
 analytic-ephemeris = ["dep:turquet"]
-sky-timeline = []
+sky-timeline = ["dep:cleromancy-sky"]
 personal-sync = ["graphshell/personal-sync", "dep:uuid"]
 graphshell-admission = ["graphshell-host/native"]
 
@@ -84,7 +84,8 @@ uuid = { version = "1", features = ["serde"], optional = true }
 turquet = { version = "=0.1.0", optional = true }
 # One Turquet 0.17 source serves the timeline (30875f30), houses (e2f65c02) and
 # cap (8e3755bb) editions; 8e3755bb reproduces the first two bit for bit.
-turquet-017 = { package = "turquet", git = "https://github.com/merely-made/turquet.git", rev = "8e3755bbd0d40343eb4750b072801c941ff32802", version = "=0.17.0" }
+turquet-017 = { package = "turquet", path = "crates/turquet", version = "=0.17.0" }
+cleromancy-sky = { path = "crates/cleromancy-sky", optional = true }
 
 [[bin]]
 name = "a4_sync_receipt"

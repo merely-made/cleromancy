@@ -1,0 +1,427 @@
+{
+  "donor_repository": "https://github.com/merely-made/turnstone",
+  "donor_revision": "b9f6b88fa6dba931dcde10af45c8b1c9c559e67d",
+  "bytes_policy": "canonical Git object bytes",
+  "files": [
+    {
+      "donor_path": "LICENSE",
+      "receiving_path": "LICENSE",
+      "donor_blob": "d4a7d86fc669970dcf7c59d416a1cc37f573685d",
+      "sha256": "8913f210e058505aa0904e7b8016ef9eae7cd76014621aae929a5faf6b4d1404"
+    },
+    {
+      "donor_path": "scenarios/fixtures/sky_receipt_v1_boston_2024-04-08.json",
+      "receiving_path": "scenarios/fixtures/sky_receipt_v1_boston_2024-04-08.json",
+      "donor_blob": "f0400460469ae14b5385bc5f885814bbbd608c37",
+      "sha256": "a244a3bc2ade271422563297dcc622ce7138355a1969504e6abf444c6ba12dd2"
+    },
+    {
+      "donor_path": "scenarios/fixtures/sky_receipt_v1_boston_2024-04-09.json",
+      "receiving_path": "scenarios/fixtures/sky_receipt_v1_boston_2024-04-09.json",
+      "donor_blob": "a5d2afe326bec5123907a5960b48112f9d33acac",
+      "sha256": "3d9a42d71fe1b79120a28e7d15097dead4e7b992a981b695ff7304bbae61e42a"
+    },
+    {
+      "donor_path": "src/sky_receipt.rs",
+      "receiving_path": "src/sky_receipt.rs",
+      "donor_blob": "dc05fca389e1f7c38aca19d87775b92fa074e05b",
+      "sha256": "f50a5b0baf0f71969e19732cc46d9a87b78570a3b5f2ce6ff3bb00e8e398ea60"
+    },
+    {
+      "donor_path": "src/sky_receipt/duration_nanoseconds.rs",
+      "receiving_path": "src/sky_receipt/duration_nanoseconds.rs",
+      "donor_blob": "583e39c7f5472c54cacaafef3a83c8f5e9c39d4d",
+      "sha256": "a68bf8232ae84fe4142b497873e2d8be761f4939359dc6bf4418260bfccc70ea"
+    },
+    {
+      "donor_path": "src/sky_receipt/impl_fmt_display_for_sky_receipt.rs",
+      "receiving_path": "src/sky_receipt/impl_fmt_display_for_sky_receipt.rs",
+      "donor_blob": "2fd15d1475df6383f8669622fd1176b6f83c3d9a",
+      "sha256": "6645227b5a253e8de0092aa14c7e19c8035afebf32ea3a17b7231276961a3712"
+    },
+    {
+      "donor_path": "src/sky_receipt/impl_std_error_error_for_sky.rs",
+      "receiving_path": "src/sky_receipt/impl_std_error_error_for_sky.rs",
+      "donor_blob": "992887d1ff4dd1703e5753e9b6d7d33bb56b0a8e",
+      "sha256": "e5592be02099bb4303bdf6344c031b22224a3d44eb2da9aa1f50bf842763c5d8"
+    },
+    {
+      "donor_path": "src/sky_receipt/invalid.rs",
+      "receiving_path": "src/sky_receipt/invalid.rs",
+      "donor_blob": "b81195e8825a793e496b8a4b36396d70e7dfb259",
+      "sha256": "4f6869940e628df3bd76fb3bbe640ce1dbd174cfa394e14f6c2363b1b258351c"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_accuracy_v1_from_accuracy.rs",
+      "receiving_path": "src/sky_receipt/sky_accuracy_v1_from_accuracy.rs",
+      "donor_blob": "5d211d6ab09e45e083ca4ea75530faaa18e0f6b7",
+      "sha256": "904df4beb5836283031a4b800685b21f1e1125c960303e7ac2d339634aca4a49"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_body_policy_v1_from_selection.rs",
+      "receiving_path": "src/sky_receipt/sky_body_policy_v1_from_selection.rs",
+      "donor_blob": "9aba83da731fd7ebb640bfc493702b93de4c6908",
+      "sha256": "7a3cc103a29a48a1a8a291d908295f7e6d890c8d0cad98c07d4a8beef676d7c5"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_body_v1_from_body.rs",
+      "receiving_path": "src/sky_receipt/sky_body_v1_from_body.rs",
+      "donor_blob": "3c461bff41a2d1b4e0f941190efaebac03c7b3c7",
+      "sha256": "286c526d09f3ba1851b011c2d19d4a202e97c6f9168e1a4251cb37fe79b883e1"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_day_v1_from_receipt.rs",
+      "receiving_path": "src/sky_receipt/sky_day_v1_from_receipt.rs",
+      "donor_blob": "fd4a1a75dbd815d75dc85ee85a06a509cbbdded5",
+      "sha256": "6a6c45a83cec9aa4da470f3fca1a0e2a4d38a397cc15b9a114226679f9fd809b"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_engine_v1_turquet.rs",
+      "receiving_path": "src/sky_receipt/sky_engine_v1_turquet.rs",
+      "donor_blob": "478d5644ceefa78bdf9787ca1441798d95c5a3ed",
+      "sha256": "ced977b10029c5fa270a2b1d38d84c90b7e316d0557596ac07921c15ecc2f98b"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_ephemeris_v1_validate.rs",
+      "receiving_path": "src/sky_receipt/sky_ephemeris_v1_validate.rs",
+      "donor_blob": "35af6eda239c29793a4ec177ee13a1008e5ac2de",
+      "sha256": "a8ef2551882f3258cefe25ceeb852a7bf653b42a801d2cc3a93ec0a5f297c665"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_fact_detail_v1_from_item.rs",
+      "receiving_path": "src/sky_receipt/sky_fact_detail_v1_from_item.rs",
+      "donor_blob": "8d01731304966f041d5b484e5daa4e0dfe091034",
+      "sha256": "ebc8deb41179072989d75bf17cbb18f2814cdfca797b79ca7833f2c34f3e07e7"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_fact_kind_v1_from_kind.rs",
+      "receiving_path": "src/sky_receipt/sky_fact_kind_v1_from_kind.rs",
+      "donor_blob": "89f09894dca6a505363054f67fd4ca6e6be398b9",
+      "sha256": "dbf66726d94b8c5b09191da5216f306520fba85af904c018c2346bb904214139"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_fact_span_v1_from_span.rs",
+      "receiving_path": "src/sky_receipt/sky_fact_span_v1_from_span.rs",
+      "donor_blob": "5aae14653e1894537d04b697fd1fd6f0b504b609",
+      "sha256": "253824a83c01d5be2f30988d5f04c416778ad398e6acb12f96c233ae812f62d9"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_fact_v1_from_item.rs",
+      "receiving_path": "src/sky_receipt/sky_fact_v1_from_item.rs",
+      "donor_blob": "f3d06017b2523af43141b9821d9e46fdf8084f04",
+      "sha256": "8054eebe848561c591522d11df0084ef25b6bf2d0f070f04f3c2754c44d0a609"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_horizon_dip_v1_from_model.rs",
+      "receiving_path": "src/sky_receipt/sky_horizon_dip_v1_from_model.rs",
+      "donor_blob": "e62ff8244fe27f3ad787da0853b7318e24a38153",
+      "sha256": "de0bee9c2c7b38a91216bbbdc2c82c0327cab9f62580dfa26c224a54e74afccf"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_limb_v1_from_model.rs",
+      "receiving_path": "src/sky_receipt/sky_limb_v1_from_model.rs",
+      "donor_blob": "7d634ba6f25ad69ba8a53c74dc1150b36c92bee8",
+      "sha256": "a147d8d9b252e41e4ff5dae216e6b401ee7482b65a39b4aa3fcf5b786056a7d8"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_model_v1_from_model.rs",
+      "receiving_path": "src/sky_receipt/sky_model_v1_from_model.rs",
+      "donor_blob": "f048e015c507301d2137b66b8b2da96616fc9743",
+      "sha256": "7795422bf2d9df8cddf336c5793c8d10e4a61d3ad0aaa6857b97205bbf1d1ba6"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_observer_transform_v1_validate.rs",
+      "receiving_path": "src/sky_receipt/sky_observer_transform_v1_validate.rs",
+      "donor_blob": "96af6ad7fe7b204624bc89b5aedf0f1932c12fb8",
+      "sha256": "b3a1c172e85e04599f77bb8eda8128d7d52a9ff37cc2e0a6c58071860be0f8b7"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_observer_v1_from_observer.rs",
+      "receiving_path": "src/sky_receipt/sky_observer_v1_from_observer.rs",
+      "donor_blob": "cd95a103813f1fb478c70450c8a848fe19b746ae",
+      "sha256": "d8ca7a2c0279a0d3a74ada88fa211af72237a4f0884dfdd89cb6b56a4e838a6f"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_receipt_v1_from_timeline.rs",
+      "receiving_path": "src/sky_receipt/sky_receipt_v1_from_timeline.rs",
+      "donor_blob": "7624ad794d202d246746565f3c076863cddb560d",
+      "sha256": "a47b2af68dbd2750dfe028d73a68c27330e74857e1578b03c919202dcaf96dc3"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_refraction_v1_from_model.rs",
+      "receiving_path": "src/sky_receipt/sky_refraction_v1_from_model.rs",
+      "donor_blob": "204ed2573a3332c31216213dabac1bd389fe1f4b",
+      "sha256": "5cfa0a86119e5256f9dcb9d14f57459d38a0812e1610a3e25c1762efda0b06f3"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_rise_set_policy_v1_from_policy.rs",
+      "receiving_path": "src/sky_receipt/sky_rise_set_policy_v1_from_policy.rs",
+      "donor_blob": "1de0b736d3d9c05cb2e273557f5f9d76a0faa069",
+      "sha256": "c49dc06b89455891dd3175fa309b855d60d0b307da8996dbf8d51f3c0754196e"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_search_v1_validate.rs",
+      "receiving_path": "src/sky_receipt/sky_search_v1_validate.rs",
+      "donor_blob": "f92be97ab646acabde170ca6f7500a6ab3f84eae",
+      "sha256": "e045dea53af171e7f59bc6d6c2e03b1d52e0841a87d383307b494ccebb7ffc45"
+    },
+    {
+      "donor_path": "src/sky_receipt/sky_source_identity_v1_validate.rs",
+      "receiving_path": "src/sky_receipt/sky_source_identity_v1_validate.rs",
+      "donor_blob": "767779c8a354ef71bddde5fd7e08ec2410579f85",
+      "sha256": "f8051698891cfa8b352819c0f2d13b895a941658a1dbf1191f07068f1020f526"
+    },
+    {
+      "donor_path": "src/sky_receipt/tests.rs",
+      "receiving_path": "src/sky_receipt/tests.rs",
+      "donor_blob": "037938d5488bbfe13a81fd445a46caf47ec5d2e9",
+      "sha256": "05feee9ab37167f382dc93426cfb0de267ce1338d972564ab31a8a9dce7ad9ff"
+    },
+    {
+      "donor_path": "src/sky_receipt/tt_julian_date_v1_from_tt.rs",
+      "receiving_path": "src/sky_receipt/tt_julian_date_v1_from_tt.rs",
+      "donor_blob": "fdf67b2b836d422b8a2790c4d4d504273c03eb07",
+      "sha256": "52274bd33bbed93a0ec98f6278ec30561009d5dca87fd1d6450f0712a67141b8"
+    },
+    {
+      "donor_path": "src/sky_receipt/validate_closed_range.rs",
+      "receiving_path": "src/sky_receipt/validate_closed_range.rs",
+      "donor_blob": "05e51deb2672aed6ee133e907ce43c197b68616d",
+      "sha256": "3fd86e4fc017bc2c5b8f5c1ea4ace1c08ec2cbbf1f69838d6f3735e7a7de19b2"
+    },
+    {
+      "donor_path": "src/sky_receipt/validate_finite.rs",
+      "receiving_path": "src/sky_receipt/validate_finite.rs",
+      "donor_blob": "c0a12b23cfd8446d3fd248965187baf10ad79bf5",
+      "sha256": "eda9567f061335f16bb0e73a5f5e3f8c6274004a05c1b991da43b8251122ea43"
+    },
+    {
+      "donor_path": "src/sky_receipt/validate_half_open_range.rs",
+      "receiving_path": "src/sky_receipt/validate_half_open_range.rs",
+      "donor_blob": "e7946813624d7f4dd13204ec8bf7f82a7ec4f53a",
+      "sha256": "0032bb7bfd55efd19816d4d08b506e1a0a3b25fc5391c0676ae62e1dfab160a0"
+    },
+    {
+      "donor_path": "src/sky_receipt/validate_nonempty.rs",
+      "receiving_path": "src/sky_receipt/validate_nonempty.rs",
+      "donor_blob": "3b058ab250769ae6b376374e748d24de19bc733f",
+      "sha256": "21075735c82cd446593c5ee1ba9abc7afe520ac2c2f36f78ce97aa8ede41f903"
+    },
+    {
+      "donor_path": "src/sky_receipt/validate_nonnegative.rs",
+      "receiving_path": "src/sky_receipt/validate_nonnegative.rs",
+      "donor_blob": "7aeb86f773e4f551cc820bd08f6637e78ae3c528",
+      "sha256": "8fff49a46972a9d059727603b4b603d809967c99f833c670d6ede3dadb193a11"
+    },
+    {
+      "donor_path": "src/sky_receipt/validate_open_closed_range.rs",
+      "receiving_path": "src/sky_receipt/validate_open_closed_range.rs",
+      "donor_blob": "230b375dec03b6b48a98b39abc0d9352cf333f7c",
+      "sha256": "616ead2be8de7f81b7230b3d23faf0305d8bbce188c8e595ddece25e059a12fa"
+    },
+    {
+      "donor_path": "src/sky_receipt/validate_optional_nonempty.rs",
+      "receiving_path": "src/sky_receipt/validate_optional_nonempty.rs",
+      "donor_blob": "8b23892792e1aac44c694c70d492aff6efb17516",
+      "sha256": "5da588069d612884490f1b9be0b5754193fd36eaa8c2ac5273a26ad2b2ade94e"
+    },
+    {
+      "donor_path": "src/sky_receipt/validate_positive.rs",
+      "receiving_path": "src/sky_receipt/validate_positive.rs",
+      "donor_blob": "6a7655c62687f8d2d8d113733ed6c5707326b992",
+      "sha256": "db6a715cdbd4dfba3ae190a636cde90ad821310a3512d52d0d8e6f25be26c1a9"
+    },
+    {
+      "donor_path": "src/sky_receipt/validate_time_zone_identifier.rs",
+      "receiving_path": "src/sky_receipt/validate_time_zone_identifier.rs",
+      "donor_blob": "cb6218f11586e2259685c6da03b1d66ec22b25dc",
+      "sha256": "2c54525381a51630024be82ffd87df4275e61c2faa11cf758efed7f6c314ee03"
+    },
+    {
+      "donor_path": "src/sky_timeline.rs",
+      "receiving_path": "src/sky_timeline.rs",
+      "donor_blob": "8237a1e4e0f0faccf3335dad5bae702a263bd4b5",
+      "sha256": "41fa21b9fbd776d1444d7ec3c6703e578a25943b5137628666ea734d76b82582"
+    },
+    {
+      "donor_path": "src/sky_timeline/body_rank.rs",
+      "receiving_path": "src/sky_timeline/body_rank.rs",
+      "donor_blob": "a428536811dfb9262f0b0f230c7613a19d21a37d",
+      "sha256": "7d408466b285b2b9b9323b6e6a1e9e0c4cd34afebbe05ef4aac7126b55641522"
+    },
+    {
+      "donor_path": "src/sky_timeline/build_sky_timeline.rs",
+      "receiving_path": "src/sky_timeline/build_sky_timeline.rs",
+      "donor_blob": "7b5dfcc53649f9da2c347507b8844419ad2b7323",
+      "sha256": "d3247406221c42d0c9d54bc30a1d5faec39607c82ef537c837d7c98f9d64c74a"
+    },
+    {
+      "donor_path": "src/sky_timeline/fact_kind_label.rs",
+      "receiving_path": "src/sky_timeline/fact_kind_label.rs",
+      "donor_blob": "c81452419aa900d02f06f253dff9c64bd9639156",
+      "sha256": "69ebd851574b64610228d0da8f8df1421559da9f2a14d6e60045327aa6057488"
+    },
+    {
+      "donor_path": "src/sky_timeline/impl_fmt_display_for_sky_local.rs",
+      "receiving_path": "src/sky_timeline/impl_fmt_display_for_sky_local.rs",
+      "donor_blob": "a486586d077744f92f6b8322b43b8ec6788ae6df",
+      "sha256": "4e46098bc4ba6549ae5cb5fe39f38b3dc393c4675d52b56b1959698972b3625f"
+    },
+    {
+      "donor_path": "src/sky_timeline/impl_fmt_display_for_sky_request.rs",
+      "receiving_path": "src/sky_timeline/impl_fmt_display_for_sky_request.rs",
+      "donor_blob": "afbd76982b806b7f8c72232d1bacc034ba152c21",
+      "sha256": "d1a7c0f2c3144c05816aaf7f783d639c839e0c38cd958b45d2017caf9299185d"
+    },
+    {
+      "donor_path": "src/sky_timeline/impl_fmt_display_for_sky_search.rs",
+      "receiving_path": "src/sky_timeline/impl_fmt_display_for_sky_search.rs",
+      "donor_blob": "71068393adf28397e7d2c489a5a5844bb41235f3",
+      "sha256": "3c685cfccf4d60ec6598d50b18fd10484cd073bfaab3f7e44fe4fceb94be2917"
+    },
+    {
+      "donor_path": "src/sky_timeline/impl_from_event_interval_for.rs",
+      "receiving_path": "src/sky_timeline/impl_from_event_interval_for.rs",
+      "donor_blob": "52ba794e56d077a0177e736299f6955e3631bf06",
+      "sha256": "d3cb4a08195a2f83542f391e03d34640e770c410fe5570e1d4b6b75f6a2d1efa"
+    },
+    {
+      "donor_path": "src/sky_timeline/impl_p_fmt_display_e.rs",
+      "receiving_path": "src/sky_timeline/impl_p_fmt_display_e.rs",
+      "donor_blob": "4469556f520d78dae0dfac81e653b70548a463c0",
+      "sha256": "5232f82237cff604d224a68b95d56d1ef015c9f0445c91ad99fa249594a104c7"
+    },
+    {
+      "donor_path": "src/sky_timeline/impl_std_error_error_for_sky.rs",
+      "receiving_path": "src/sky_timeline/impl_std_error_error_for_sky.rs",
+      "donor_blob": "963bed3a62f92421a0566e88b83f3bedbe60c33b",
+      "sha256": "561ff309dcdaa1e1eb6b8f32b81ac2629a95f3b13afc31c2176f98af351866d5"
+    },
+    {
+      "donor_path": "src/sky_timeline/impl_std_error_error_for_sky_2.rs",
+      "receiving_path": "src/sky_timeline/impl_std_error_error_for_sky_2.rs",
+      "donor_blob": "75db076a98493ebb8184a5526b0a18438745b9bb",
+      "sha256": "bbc4b05a7c15e1f71e5ec5ce21c279ee0536885b4d0ea0f032a0c1b30f962df5"
+    },
+    {
+      "donor_path": "src/sky_timeline/impl_std_error_error_for_sky_3.rs",
+      "receiving_path": "src/sky_timeline/impl_std_error_error_for_sky_3.rs",
+      "donor_blob": "c1c8d9446eaa4b158ccbc93e3886d0dcbd37a504",
+      "sha256": "2256cf1c1dbb7e20e6a7de64be42f87462db74607016ba65fa317b07bb31c53b"
+    },
+    {
+      "donor_path": "src/sky_timeline/item_rank.rs",
+      "receiving_path": "src/sky_timeline/item_rank.rs",
+      "donor_blob": "5d3f765add1f084af4dc218fae41e5495aa4e422",
+      "sha256": "4b1c68bca56b3ed6d7712fb9a6075bad2526d04e971f36b9929bdc0d9a9302f1"
+    },
+    {
+      "donor_path": "src/sky_timeline/receipt_fact.rs",
+      "receiving_path": "src/sky_timeline/receipt_fact.rs",
+      "donor_blob": "61701289c3451d530189cbd47f0ddf315f8660b6",
+      "sha256": "64cf57ac27844b24a45901827b808dacdcbe6ecdf594c76af1ddbea7c3f12d69"
+    },
+    {
+      "donor_path": "src/sky_timeline/resolve_local.rs",
+      "receiving_path": "src/sky_timeline/resolve_local.rs",
+      "donor_blob": "ee3239720785842b6d74eea75bdd51a6ccc50e50",
+      "sha256": "a3e4b56080438545450d484fbb1e6661c3975c7becca46b7b19a8dad2c6d8bd3"
+    },
+    {
+      "donor_path": "src/sky_timeline/resolve_named_sky_day.rs",
+      "receiving_path": "src/sky_timeline/resolve_named_sky_day.rs",
+      "donor_blob": "2412681094dd6827ccf053064a64dc45fe1246b1",
+      "sha256": "6c0aa524f7372b3945c727c7dfe53883ecb175517015a3bbca7935e8c113af40"
+    },
+    {
+      "donor_path": "src/sky_timeline/resolve_sky_day.rs",
+      "receiving_path": "src/sky_timeline/resolve_sky_day.rs",
+      "donor_blob": "89726e8b24babef255668f5eea6bb1b5ea274443",
+      "sha256": "5812c52ac9ebb2c38f9354b4358754b2851a8bcd637416696f1d01c8ca66b464"
+    },
+    {
+      "donor_path": "src/sky_timeline/resolved_sky_day_date.rs",
+      "receiving_path": "src/sky_timeline/resolved_sky_day_date.rs",
+      "donor_blob": "b38a50f796b85a2280e17184ceac7ce9792aa08d",
+      "sha256": "80fd772d1b08e6fffcb01350cc90b923e923f38ec1b730f6efa83acb66b77cad"
+    },
+    {
+      "donor_path": "src/sky_timeline/sky_body_selection_new.rs",
+      "receiving_path": "src/sky_timeline/sky_body_selection_new.rs",
+      "donor_blob": "aed4fbec4ac9d32895ef301a743da06dcb50632c",
+      "sha256": "a0ea26c32b6cb69120bf03d397b172bec381a14c61cf5ab59536c6f3ffff2f2d"
+    },
+    {
+      "donor_path": "src/sky_timeline/sky_day_request_new.rs",
+      "receiving_path": "src/sky_timeline/sky_day_request_new.rs",
+      "donor_blob": "135d160035f614069f7f820b0fb451d5eb02704c",
+      "sha256": "af7967dff3341c46bbb7141f39145769fe397cfba285a946c060ffebcb596f83"
+    },
+    {
+      "donor_path": "src/sky_timeline/sky_derivation_receipt_day.rs",
+      "receiving_path": "src/sky_timeline/sky_derivation_receipt_day.rs",
+      "donor_blob": "fb604d1a702aeb4bd413c1fc618ce3838f74ea74",
+      "sha256": "65412414966fa20c9dba020644c11328f63e22bcdac380336f2c06cb88fced01"
+    },
+    {
+      "donor_path": "src/sky_timeline/sky_fact_span_at.rs",
+      "receiving_path": "src/sky_timeline/sky_fact_span_at.rs",
+      "donor_blob": "0e7e37b44662534f8a66e2f56db2ba2108e14b22",
+      "sha256": "1e5786e416fd72f979a24fca88cb50a62978f06ed1617a7d39334aedc87e02ba"
+    },
+    {
+      "donor_path": "src/sky_timeline/sky_position_fact_body.rs",
+      "receiving_path": "src/sky_timeline/sky_position_fact_body.rs",
+      "donor_blob": "020f1a19a2956b68d639e66d7abcec8e9cf59917",
+      "sha256": "c8a8b5c9b66c4dda1c67c36d9469f20aaf6260eab31281a777a33d73fc776b8a"
+    },
+    {
+      "donor_path": "src/sky_timeline/sky_receipt_fact_body.rs",
+      "receiving_path": "src/sky_timeline/sky_receipt_fact_body.rs",
+      "donor_blob": "ce2cf335f6976968fb9dc1a4f8e42cb781600209",
+      "sha256": "bd2359821c01e092d67978322fe12183b4f86a0848a93a48b882642a890826e8"
+    },
+    {
+      "donor_path": "src/sky_timeline/sky_search_controls_new.rs",
+      "receiving_path": "src/sky_timeline/sky_search_controls_new.rs",
+      "donor_blob": "e3451fe92f15d662f16396c562b1a65517cf39a5",
+      "sha256": "2585f60fd73f9955d620de38c379841aae95c576a6944d1e84b3310ec801e256"
+    },
+    {
+      "donor_path": "src/sky_timeline/sky_timeline_item_instant.rs",
+      "receiving_path": "src/sky_timeline/sky_timeline_item_instant.rs",
+      "donor_blob": "a14206b901b0575cb5e9656357dfc4f71e204e1e",
+      "sha256": "c677cd51af85add73308000a50c901ab58da422f29d61b62dd6288449e0d92b4"
+    },
+    {
+      "donor_path": "src/sky_timeline/sky_timeline_items.rs",
+      "receiving_path": "src/sky_timeline/sky_timeline_items.rs",
+      "donor_blob": "21bcc2afe6f6570b50e267c725c7c40cf9f2a658",
+      "sha256": "b92e1207ffbb3b17f194f0f33fe46af62d748bb1a511fc83c51da47b1d14d63f"
+    },
+    {
+      "donor_path": "src/sky_timeline/tests.rs",
+      "receiving_path": "src/sky_timeline/tests.rs",
+      "donor_blob": "32f5f9ae56b3303c874264c65305bc6786685f15",
+      "sha256": "076205acb48c22c231ed2a5ff7734a502bb6e9b2a59e08a42dd3264e051b4219"
+    },
+    {
+      "donor_path": "src/sky_timeline/tt_from_utc.rs",
+      "receiving_path": "src/sky_timeline/tt_from_utc.rs",
+      "donor_blob": "1085750992e4df144cb94aa95ede2da3c3aa52f5",
+      "sha256": "08ff2982f5da3084edf302ce571d42b12907836d544c5ae197e2f7dcdf1a6da3"
+    },
+    {
+      "donor_path": "src/sky_timeline/utc_from_tt.rs",
+      "receiving_path": "src/sky_timeline/utc_from_tt.rs",
+      "donor_blob": "23fc57136ce182108838e96a8ce9f60d4c67bbf8",
+      "sha256": "854f91e4cae9c8398e46f41fa1b3454e42f364fbe24c2f8d729d220905738c74"
+    },
+    {
+      "donor_path": "src/sky_timeline/validate_fact_provenance.rs",
+      "receiving_path": "src/sky_timeline/validate_fact_provenance.rs",
+      "donor_blob": "646d982dedde345902325f3faad6c1f76d819cca",
+      "sha256": "7cb8b41165a686f390251b3ec4b8f06dae12efc2a658caba45f7dfc8b2f0c5e3"
+    }
+  ]
+}

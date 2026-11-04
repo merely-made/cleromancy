@@ -20,7 +20,7 @@ legacy-receipts = []
 analytic-ephemeris = []
 graphshell-admission = []
 personal-sync = []
-sky-timeline = []
+sky-timeline = ["dep:cleromancy-sky"]
 
 [dependencies]
 chrono = { version = "0.4", default-features = false, features = ["std"] }
@@ -46,7 +46,8 @@ servitor = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a34
 thiserror = "2"
 # One Turquet 0.17 source serves the timeline (30875f30), houses (e2f65c02) and
 # cap (8e3755bb) editions; 8e3755bb reproduces the first two bit for bit.
-turquet-017 = { package = "turquet", git = "https://github.com/merely-made/turquet.git", rev = "8e3755bbd0d40343eb4750b072801c941ff32802", version = "=0.17.0" }
+turquet-017 = { package = "turquet", path = "../crates/turquet", version = "=0.17.0" }
+cleromancy-sky = { path = "../crates/cleromancy-sky", optional = true }
 
 [dev-dependencies]
 personae = { git = "https://github.com/merely-made/dramatis.git", branch = "main" }
@@ -129,3 +130,8 @@ missing_panics_doc = "warn"
 missing_safety_doc = "warn"
 undocumented_unsafe_blocks = "warn"
 too_many_lines = "warn"
+
+[[test]]
+name = "shared_sky"
+path = "../tests/shared_sky.rs"
+
