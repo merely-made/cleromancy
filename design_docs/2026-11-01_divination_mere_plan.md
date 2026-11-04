@@ -78,6 +78,12 @@ C1 through C8 (first die) and the natal editions each have a bounded ledger unde
 - **e. Resident catalog** (headed item 7): integrate the installed product route generically with Knot and Cleromancy, retaining Personae and Graphshell authority. **Done when:** both products use one route integration with their receipts unchanged.
 - **f. Forms-family adoption** (headed "separate gate"): mechanical compatibility with the existing public pins qualified on 2026-10-08. Adopting Mere's new Forms family needs its own coherent published pins and consumer gates; no labels are added to currently unnamed fields. The F5 scope ruling is `genet/design_docs/2026-10-07_forms_value_validation_submission_plan.md`; the F6 accessibility projection is `mere/design_docs/cambium_docs/technical_architecture/genet-compatibility.md`. **Done when:** a coherent published family is pinned and the affected native classification and headed DOM fixtures pass on the locked graph.
 
+### O7. Existing automated consultation and ambient-route failures
+
+The Windows baseline for the [H7 source pass](2026-11-03_source_splits_plan.md) finds an absent aria-expanded false attribute in consultation_authoring_dom and a declared app-broker route open returning NotFound in granted_ambient. Both precede and survive the source moves; the existing public-seed golden only needed canonical LF checkout bytes.
+
+**Done when:** the two named integration cases pass on the locked graph while retaining authored-action and live-grant/revocation behavior, with the source plan's external evidence used as the control. This is product follow-up and does not imply phase acceptance.
+
 ## Findings
 
 - 2026-11-01: Isocosm no longer depends on Cleromancy: its commit `9c991e87` ("Remove Cleromancy from the VTT") removed the dependency, and its `Cargo.toml` has no Cleromancy entry. The headed plan's second-consumer item is therefore closed, not open.

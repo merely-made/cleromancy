@@ -34,6 +34,11 @@ consumer tests, native authoring/reopening and preserved historical evidence.
 
 ## Working principles
 
+- Preserve exact literal and fixture bytes when splitting source. Copy only the
+  bounded source-notice comment block into a child, since a missing blank line
+  after SPDX does not make following code part of that header. Recheck cfg on
+  facade aliases and compare generic bounds, type fields and method signatures.
+
 - Keep numerical facts, interpretation (authored or generated, labelled which),
   and graph relationships as separate inspectable values. A prose rule never
   mutates a calculated fact.
@@ -164,6 +169,8 @@ Entries marked archived live in `archive_docs/2026-11-01/` (or `archive_docs/202
   **C1 implemented and bounded native/cross-application qualified, 2026-10-14;
   C2-C8 (first die) landed with bounded qualification; full shared wall pending;
   no phase accepted.**
+  O7 now carries the existing authoring-DOM and declared ambient-route
+  failures found by the H7 source-maintenance baseline.
   - Published H/f7ec/N composes Cleromancy's product-owned validator into the
     resident. Ordinary Cleromancy attaches or embeds the resident; private
     snapshot/authority paths are retired from its default product. Historical
@@ -340,3 +347,5 @@ and selected normal/build source audit pass, retaining Genet `ad362723`.
 Canonical plan and receipts:
 `mere/design_docs/mere_docs/implementation_strategy/2026-10-31_distillery_extraction_plan.md`.
 No new headed consultation or model acceptance is claimed by this source intake.
+
+- [Source splits, H7](2026-11-03_source_splits_plan.md): 9 responsibility and fixture-group splits landed; zero ceiling exceptions, scoped software gates and external evidence; product failures carry forward in divination O7.
