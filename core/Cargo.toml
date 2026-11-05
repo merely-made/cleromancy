@@ -29,11 +29,11 @@ personal-facts = { package = "mere-facts", git = "https://github.com/merely-made
 dramatis = { git = "https://github.com/merely-made/dramatis.git", branch = "main" }
 
 blake3 = "1"
-chartulary = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
+chartulary = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
 chirograph = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 graphshell-client = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 mere = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["graph"] }
-muniment = { features = ["redb"], git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
+muniment = { features = ["redb"], git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
 rand_core = { version = "0.6", features = ["getrandom"] }
 sceno = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 scenograph = { git = "https://github.com/merely-made/mere.git", branch = "main" }
@@ -42,7 +42,7 @@ pandect = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 scenotime = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-servitor = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
+servitor = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
 thiserror = "2"
 # One Turquet 0.17 source serves the timeline (30875f30), houses (e2f65c02) and
 # cap (8e3755bb) editions; 8e3755bb reproduces the first two bit for bit.
@@ -76,9 +76,9 @@ path = "../tests/resident_candidate.rs"
 
 [patch.crates-io]
 # Promoted sources shared with immutable older Mere suppliers.
-chartulary = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
-servitor = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
-muniment = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
+chartulary = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
+servitor = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
+muniment = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
 
 [[test]]
 name = "typed_decks"
@@ -105,24 +105,24 @@ name = "natal"
 path = "../tests/natal.rs"
 
 [patch."https://github.com/merely-made/mere.git"]
-chartulary = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
-muniment = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
-servitor = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
+chartulary = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
+muniment = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
+servitor = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
 
 [patch."https://www.github.com/merely-made/mere.git"]
-chartulary = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
-muniment = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
-servitor = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
+chartulary = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
+muniment = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
+servitor = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
 
 # Standalone acceptance must share store and graph types with its Mere suppliers.
 [patch."https://github.com/merely-made/eidetic.git"]
-chartulary = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
-eidetic = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
-luggage = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
-mere-proofs = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
-muniment = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
-servitor = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
-stickleback = { git = "https://www.github.com/merely-made/eidetic.git", rev = "7a3453a02bc7dea391ef18814c1bfa1a46e67160" }
+chartulary = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
+eidetic = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
+luggage = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
+mere-proofs = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
+muniment = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
+servitor = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
+stickleback = { git = "https://www.github.com/merely-made/eidetic.git", rev = "1fcdb359e72ac6309a96823c3ab5558eaaa3ec31" }
 
 [lints.clippy]
 missing_errors_doc = "warn"
