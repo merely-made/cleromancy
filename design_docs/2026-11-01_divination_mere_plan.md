@@ -39,6 +39,8 @@ Links: area receipts · refines divination D3 · summary three natal replay fixt
 
 Mark ruled in Mere's domain contract (`mere/design_docs/mere_docs/technical_architecture/2026-11-06_domain_contract.md`, O8 and C1) that every mere becomes one Stickleback causal operation log, and that Cleromancy's existing `divination` and `personal-facts` meres are not converted: "Fresh start". When Mere lands the causal-log store, the new meres begin empty, and the linear-journal stores stay on disk untouched and are no longer opened. Retiring them is Mark's call. `validate_divination_graph` carries over unchanged as the admission policy.
 
+The contract check (same document, "Cleromancy against the contract") found Cleromancy conforming through the route, with two changes on this side: the theme choice in `appearance.json` moves to the person's settings (Mere adoption plan D7), and the `reading-workspace` view splits so its layout replicates while selection and focus stay on the device (contract C7). Neither is scheduled.
+
 Links: area divination mere · follows mere domain contract O8, C1 · summary new causal-log meres start empty; old stores kept, not converted
 
 ## Open work
