@@ -3,7 +3,7 @@
 
 use super::*;
 
-impl mesquite::Product for Product {
+impl mandrake::Product for Product {
     type State = ApplicationUi;
     type Logic = Logic;
     type View = Child;
@@ -368,7 +368,7 @@ impl mesquite::Product for Product {
         }
         snapshot
     }
-    fn viewport(&self, ctx: &ConsultationCtx<'_>) -> Option<mesquite::Viewport> {
+    fn viewport(&self, ctx: &ConsultationCtx<'_>) -> Option<mandrake::Viewport> {
         // Shared workspace captures need both the mere and its focused reading.
         // The ordinary consultation crop would discard the owner controls.
         if ctx.runner.state().appearance.editor_open || ctx.runner.state().mere.open {
@@ -382,7 +382,7 @@ impl mesquite::Product for Product {
         .next()?;
         let (x, y, width, height) = ctx.painted_rect(node)?;
         let scale = ctx.window?.scale_factor() as f32 * ctx.ui_zoom;
-        Some(mesquite::Viewport::new([x, y, width, height], scale, 1.0))
+        Some(mandrake::Viewport::new([x, y, width, height], scale, 1.0))
     }
     fn drain_events(&mut self, _: &mut ConsultationCtx<'_>) -> Vec<String> {
         std::mem::take(&mut self.state.borrow_mut().probe_events)
@@ -398,7 +398,7 @@ impl mesquite::Product for Product {
     fn app_step(
         &mut self,
         ctx: &mut ConsultationCtx<'_>,
-        _: mesquite::Checkpoints<'_>,
+        _: mandrake::Checkpoints<'_>,
         line: &str,
     ) -> Result<(), String> {
         ScenarioDriver {

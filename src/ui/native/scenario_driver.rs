@@ -20,12 +20,12 @@ pub(super) struct Product {
     sheet: String,
 }
 
-pub(super) fn drive(lane: &mut mesquite::Lane<Product>, ctx: &mut ConsultationCtx<'_>) {
+pub(super) fn drive(lane: &mut mandrake::Lane<Product>, ctx: &mut ConsultationCtx<'_>) {
     lane.product_mut().sheet = ctx.runner.state().appearance.stylesheet();
     lane.after_frame(ctx);
 }
 
-pub(super) fn lane(state: Rc<RefCell<NativeState>>, run: scenario::Run) -> mesquite::Lane<Product> {
+pub(super) fn lane(state: Rc<RefCell<NativeState>>, run: scenario::Run) -> mandrake::Lane<Product> {
     let product = Product {
         sheet: format!(
             "{}\n{}\n{}",
@@ -38,8 +38,8 @@ pub(super) fn lane(state: Rc<RefCell<NativeState>>, run: scenario::Run) -> mesqu
         phase: run.phase,
         keep_open: std::env::var("CLEROMANCY_SCENARIO_KEEP_OPEN").as_deref() == Ok("1"),
     };
-    mesquite::Lane::from_config(
-        mesquite::LaneConfig {
+    mandrake::Lane::from_config(
+        mandrake::LaneConfig {
             scenario: run.path,
             capture_dir: Some(run.dir.clone()),
             // The shared receipt includes capture failures and timings. The
