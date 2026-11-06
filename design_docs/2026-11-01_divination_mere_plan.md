@@ -35,6 +35,12 @@ Mark, 2026-11-01: "tests/fixtures/natal/". Three receipt files are read at compi
 
 Links: area receipts · refines divination D3 · summary three natal replay fixtures live in tests/fixtures/natal/
 
+### divination D6: the move to a causal-log mere starts fresh (2026-11-06)
+
+Mark ruled in Mere's domain contract (`mere/design_docs/mere_docs/technical_architecture/2026-11-06_domain_contract.md`, O8 and C1) that every mere becomes one Stickleback causal operation log, and that Cleromancy's existing `divination` and `personal-facts` meres are not converted: "Fresh start". When Mere lands the causal-log store, the new meres begin empty, and the linear-journal stores stay on disk untouched and are no longer opened. Retiring them is Mark's call. `validate_divination_graph` carries over unchanged as the admission policy.
+
+Links: area divination mere · follows mere domain contract O8, C1 · summary new causal-log meres start empty; old stores kept, not converted
+
 ## Open work
 
 Every item is open as of 2026-11-01. Constraints that bind it: no app-local copies of stack capabilities (sessions, journal, codicils, reservoir and engine registration are Mere's); everything stays replayable and a record that fails replay is refused before it is written; generated material is always labelled; place and network sources never switch on by default; narration claims no more than its receipt supports. The existing proof wall stays green, and headed receipts run at the ordinary window size with painted bounds and native capture.
