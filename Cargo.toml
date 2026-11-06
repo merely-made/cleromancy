@@ -169,8 +169,6 @@ cambium = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 workbench = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 hest = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 sprigging = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-script-wire = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-script-witgen = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 # Resident custody and the host share one OS peer-facts vocabulary.
 peer-facts = { version = "0.0.1", git = "https://github.com/merely-made/armillary.git", branch = "main" }
 # Promoted sources shared with immutable older Mere suppliers.
