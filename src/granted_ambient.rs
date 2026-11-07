@@ -4,7 +4,7 @@
 //! ambient grant. No shared-root files, complete graph, media, or write door.
 use chirograph::{PortableCardV1, PresentationCodec, ProjectionRequest};
 use ostiary::app_admission::{AppId, AppRouteId};
-use graphshell_endpoint::door::projection::AppBrokerClient;
+use graphshell_door::projection::AppBrokerClient;
 
 /// What Cleromancy declares on every hello to Djinn (Mere's capability door
 /// D22): the reservoir, the identity route and its meres, explicit and

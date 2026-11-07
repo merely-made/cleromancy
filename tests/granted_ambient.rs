@@ -161,7 +161,7 @@ async fn neighboring_preview_requires_its_own_live_grant_and_clears_on_revocatio
         )
         .await
         .unwrap();
-    let mut explicit = graphshell_endpoint::door::projection::AppBrokerClient::open_declared_route_at(
+    let mut explicit = graphshell_door::projection::AppBrokerClient::open_declared_route_at(
         &endpoint,
         owner.clone(),
         ostiary::app_admission::AppRouteId::new(
