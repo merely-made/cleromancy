@@ -163,7 +163,9 @@ fn run(commands: mpsc::Receiver<WorkerCommand>, deliver: impl Fn(WorkerUpdate)) 
         };
         let attachment =
             ReservoirAttachment::open_application(options, &mut prompt, |routes| async {
-                Ok(routes.with_divination_authority())
+                // Mere 022560ff1 moved registration into the domain registry; cycle-breaks P3
+                // moves divination's registration into Cleromancy later.
+                routes.with_resident_defaults().map_err(|e| e.to_string())
             })
             .await
             .map_err(|e| e.to_string())?;

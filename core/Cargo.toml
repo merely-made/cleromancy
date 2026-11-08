@@ -37,7 +37,7 @@ muniment = { features = ["redb"], git = "https://github.com/merely-made/eidetic.
 rand_core = { version = "0.6", features = ["getrandom"] }
 sceno = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 scenograph = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-seiche = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["serde"] }
+seiche = { git = "https://github.com/merely-made/seiche.git", branch = "main", default-features = false, features = ["serde"] }
 pandect = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 scenotime = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 serde = { version = "1", features = ["derive"] }

@@ -71,7 +71,7 @@ rand_core = { version = "0.6", features = ["getrandom"] }
 sceno = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 scenograph = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 scenomise = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-seiche = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["serde"] }
+seiche = { git = "https://github.com/merely-made/seiche.git", branch = "main", default-features = false, features = ["serde"] }
 scenotime = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
@@ -80,7 +80,7 @@ taproot = { git = "https://github.com/merely-made/genet.git", branch = "main" }
 thiserror = "2"
 tabard = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 tabard-workshop = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["native-host"] }
-tinct = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+tinct = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 uuid = { version = "1", features = ["serde"], optional = true }
 turquet = { version = "=0.1.0", optional = true }
 # One Turquet 0.17 source serves the timeline (30875f30), houses (e2f65c02) and
@@ -216,6 +216,9 @@ gpu-allocator = { git = "https://github.com/merely-made/genet.git", branch = "ma
 # pins the revision, so the www and double-slash spellings that gave two sources
 # one replacement identity are gone. These rows redirect packages that left Mere.
 [patch."https://github.com/merely-made/mere.git"]
+# Knot names these through mere.git; they leave when Knot repins seiche.
+numen = { git = "https://github.com/merely-made/seiche.git", branch = "main" }
+seiche = { git = "https://github.com/merely-made/seiche.git", branch = "main" }
 # Promoted sources shared with immutable older Mere suppliers.
 chartulary = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
 eidetic = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
