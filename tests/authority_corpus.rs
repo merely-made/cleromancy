@@ -6,12 +6,22 @@
 //! delta batches, each with its native verdict, plus single-leaf tampers of
 //! every batch with theirs.
 //!
-//! The wasm spike (`spike/wasm-authority`) reads this directory and demands
-//! the same verdict from the component. Set `CLEROMANCY_AUTHORITY_CORPUS` to
-//! the directory to write; without it the test writes nothing and checks only
-//! that the untampered fixtures are admitted and that tampering is refused.
+//! The conformance test runs the same cases through the wasm guest (`authority-guest/`),
+//! installed as the owner approves it into Mere's guest store, and demands the same verdict
+//! and the same refusal text from the guest as from the native validator. Set
+//! `CLEROMANCY_AUTHORITY_CORPUS` to a directory to write the cases as files; without it the
+//! first test writes nothing and checks only that the untampered fixtures are admitted and
+//! that tampering is refused. `CLEROMANCY_AUTHORITY_TAMPERS` is the tampers per fixture
+//! (3 for the first test, 150 for the conformance run).
 
 use std::sync::{Arc, Mutex};
+
+mod common {
+    #[allow(dead_code)]
+    pub mod authority_pack {
+        include!("common/authority_pack.rs");
+    }
+}
 
 use cleromancy::{CleromancyHost, Consultation, ContextDraft, SelectionMode};
 use mere::kernel::graph::CapturedDelta;
@@ -257,8 +267,19 @@ fn tamper(leaf: &mut Value) {
     }
 }
 
-#[test]
-fn the_seven_tests_graphs_and_their_tampers_have_native_verdicts() {
+/// One corpus case: a captured batch (as JSON, so a tamper is a changed leaf) and the
+/// native verdict over it.
+struct Case {
+    name: String,
+    deltas: Value,
+    native: Result<(), String>,
+}
+
+/// The six product graphs of the seven moving tests and `per_fixture` single-leaf tampers of
+/// each, with their native verdicts. A tamper that no longer parses as a batch, or whose
+/// stable id no longer parses (which panics inside the kernel's replay before any validator
+/// runs), cannot reach the validator over the resident's wire and is not a case.
+fn corpus(per_fixture: usize) -> Vec<Case> {
     let fixtures = [
         ("published-reading", [false, false, false, false, false]),
         ("typed-decks", [true, false, false, false, false]),
@@ -267,19 +288,8 @@ fn the_seven_tests_graphs_and_their_tampers_have_native_verdicts() {
         ("situation", [true, false, true, true, false]),
         ("inference", [true, false, true, false, true]),
     ];
-    let out = std::env::var_os("CLEROMANCY_AUTHORITY_CORPUS").map(std::path::PathBuf::from);
-    if let Some(dir) = &out {
-        std::fs::create_dir_all(dir).unwrap();
-    }
-    let per_fixture: usize = std::env::var("CLEROMANCY_AUTHORITY_TAMPERS")
-        .ok()
-        .and_then(|value| value.parse().ok())
-        // A written corpus is for the spike's harness and wants breadth; the
-        // ordinary run only needs the controls.
-        .unwrap_or(if out.is_some() { 40 } else { 3 });
     std::panic::set_hook(Box::new(|_| {}));
-    let mut refused = 0usize;
-    let mut total = 0usize;
+    let mut cases = Vec::new();
     for (name, [typed, ambient, shuffled, situation, inference]) in fixtures {
         let (edits, _facets, _reading) =
             product_fixture(typed, ambient, shuffled, situation, inference);
@@ -289,43 +299,150 @@ fn the_seven_tests_graphs_and_their_tampers_have_native_verdicts() {
         leaves(&whole, &mut Vec::new(), &mut all);
         // Spread the sampled leaves evenly over the batch.
         let step = (all.len() / per_fixture.max(1)).max(1);
-        let mut cases = vec![(name.to_string(), whole.clone())];
+        let mut variants = vec![(name.to_string(), whole.clone())];
         for (n, path) in all.iter().step_by(step).take(per_fixture).enumerate() {
             let mut changed = whole.clone();
             tamper(leaf_mut(&mut changed, path));
-            cases.push((format!("{name}-tamper-{n:03}"), changed));
+            variants.push((format!("{name}-tamper-{n:03}"), changed));
         }
-        for (case, value) in cases {
-            // A tamper that no longer parses as a batch cannot reach the
-            // validator over this wire, so it is not a case.
+        for (case, value) in variants {
             let Ok(batch) = serde_json::from_value::<Vec<CapturedDelta>>(value.clone()) else {
                 continue;
             };
-            // A tamper of a stable id that no longer parses panics inside the
-            // kernel's replay, before any validator runs; the resident never
-            // gets that far either, so it is not a case.
             let Ok(native) = std::panic::catch_unwind(|| verdict(batch)) else {
                 continue;
             };
-            total += 1;
-            refused += usize::from(native.is_err());
-            if let Some(dir) = &out {
-                let record = serde_json::json!({
-                    "name": case,
-                    "deltas": value,
-                    "native_ok": native.is_ok(),
-                    "native_error": native.err(),
-                });
-                std::fs::write(
-                    dir.join(format!("{case}.json")),
-                    serde_json::to_vec(&record).unwrap(),
-                )
-                .unwrap();
-            }
+            cases.push(Case { name: case, deltas: value, native });
         }
     }
-    assert!(total > fixtures.len(), "tampered cases exist");
-    assert!(refused > 0, "tampering is refused at least once ({refused}/{total})");
+    cases
+}
+
+fn tampers_per_fixture(default: usize) -> usize {
+    std::env::var("CLEROMANCY_AUTHORITY_TAMPERS")
+        .ok()
+        .and_then(|value| value.parse().ok())
+        .unwrap_or(default)
+}
+
+#[test]
+fn the_seven_tests_graphs_and_their_tampers_have_native_verdicts() {
+    let out = std::env::var_os("CLEROMANCY_AUTHORITY_CORPUS").map(std::path::PathBuf::from);
+    if let Some(dir) = &out {
+        std::fs::create_dir_all(dir).unwrap();
+    }
+    // A written corpus wants breadth; the ordinary run only needs the controls.
+    let cases = corpus(tampers_per_fixture(if out.is_some() { 40 } else { 3 }));
+    let refused = cases.iter().filter(|case| case.native.is_err()).count();
+    if let Some(dir) = &out {
+        for case in &cases {
+            let record = serde_json::json!({
+                "name": case.name,
+                "deltas": case.deltas,
+                "native_ok": case.native.is_ok(),
+                "native_error": case.native.clone().err(),
+            });
+            std::fs::write(
+                dir.join(format!("{}.json", case.name)),
+                serde_json::to_vec(&record).unwrap(),
+            )
+            .unwrap();
+        }
+    }
+    assert!(cases.len() > 6, "tampered cases exist");
+    assert!(refused > 0, "tampering is refused at least once ({refused}/{})", cases.len());
+}
+
+/// The guest, installed as the owner approves it, gives the native validator's verdict and
+/// its refusal text on every case; none traps. Prints the measurements the plan records.
+#[test]
+fn the_guest_agrees_with_the_native_validator_on_every_case() {
+    use mere_resident::authority_guest::GuestStore;
+    use mere_resident::domain_registry::Authority;
+    use std::time::{Duration, Instant};
+
+    let persona = personae::PersonaId::from_uuid(uuid::Uuid::from_u128(0x4155_5448));
+    let root = tempfile::tempdir().unwrap();
+    let pin = common::authority_pack::install_divination_guest(root.path(), persona);
+    let registration = GuestStore::at(root.path(), persona).registrations().remove(0);
+    assert_eq!((registration.domain.as_str(), registration.authority.kind()), ("divination", "guest"));
+    let Authority::Guest(guest) = &registration.authority else { unreachable!() };
+    let runtime = guest.runtime().expect("the approved guest loads").clone();
+    let component_bytes = runtime.component_bytes();
+    assert!(
+        component_bytes <= authority_cap(),
+        "the component is {component_bytes} bytes against the 8 MiB ceiling (16 MiB cap)"
+    );
+
+    let cases = corpus(tampers_per_fixture(150));
+    let (mut agree, mut same_text, mut admitted, mut refused) = (0usize, 0usize, 0usize, 0usize);
+    let mut disagreements = Vec::new();
+    let (mut native_times, mut guest_times) = (Vec::new(), Vec::new());
+    for case in &cases {
+        let batch: Vec<CapturedDelta> = serde_json::from_value(case.deltas.clone()).unwrap();
+        let graph = mere::kernel::graph::replay_captured_deltas(batch.clone());
+        let started = Instant::now();
+        let native = verdict(batch);
+        native_times.push(started.elapsed());
+        let started = Instant::now();
+        let guest = registration.validate(&graph);
+        guest_times.push(started.elapsed());
+        assert_eq!(native.is_ok(), case.native.is_ok(), "{}: native reproduces", case.name);
+        if native.is_ok() == guest.is_ok() {
+            agree += 1;
+            if native == guest {
+                same_text += 1;
+            }
+        } else {
+            disagreements.push(case.name.clone());
+        }
+        if guest.is_ok() { admitted += 1 } else { refused += 1 }
+    }
+    let stats = runtime.stats();
+    native_times.sort();
+    guest_times.sort();
+    let pick = |times: &[Duration], p: f64| times[((times.len() - 1) as f64 * p).round() as usize];
+    eprintln!(
+        "GUEST-CONFORMANCE pin={} cases={} admitted={admitted} refused={refused} agree={agree} same-text={same_text}",
+        pin.component,
+        cases.len()
+    );
+    eprintln!(
+        "GUEST-CONFORMANCE component={component_bytes} bytes ({:.2} MiB) trapped={} max-fuel={} max-memory={:.1} MiB max-candidate={} bytes",
+        component_bytes as f64 / 1_048_576.0,
+        stats.trapped,
+        stats.max_fuel,
+        stats.max_memory as f64 / 1_048_576.0,
+        stats.max_candidate
+    );
+    eprintln!(
+        "GUEST-CONFORMANCE per-call native p50={:?} p90={:?} max={:?}; resident total (encode+guest) p50={:?} p90={:?} max={:?}",
+        pick(&native_times, 0.5),
+        pick(&native_times, 0.9),
+        native_times[native_times.len() - 1],
+        pick(&guest_times, 0.5),
+        pick(&guest_times, 0.9),
+        guest_times[guest_times.len() - 1]
+    );
+    eprintln!(
+        "GUEST-CONFORMANCE encode total={:?} max={:?} mean={:?}; guest total={:?} max={:?} mean={:?}",
+        stats.encode,
+        stats.max_encode,
+        stats.encode / stats.calls as u32,
+        stats.guest,
+        stats.max_guest,
+        stats.guest / stats.calls as u32
+    );
+    assert!(disagreements.is_empty(), "the guest disagreed with native on {disagreements:?}");
+    assert_eq!(same_text, cases.len(), "every refusal carries the native text");
+    assert_eq!(stats.trapped, 0, "no case trapped the guest");
+    assert!(refused > 0 && admitted > 0);
+}
+
+/// The component's size ceiling: half the 16 MiB pack cap (D12), so growth is noticed long
+/// before the cap. The component built at 5.15 MiB (the spike's, with more dependencies, 7.45).
+fn authority_cap() -> usize {
+    8 * 1024 * 1024
 }
 
 /// What the resident could send a guest as "the complete candidate": the
