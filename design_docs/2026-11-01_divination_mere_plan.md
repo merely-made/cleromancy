@@ -99,3 +99,4 @@ The Windows baseline for the [H7 source pass](2026-11-03_source_splits_plan.md) 
 ## Progress
 
 - 2026-11-01: Plan cut from the divination plan; decisions D1 to D5 recorded. Receipts and old-hash mapping live in `archive_docs/receipts/2026-09-23_divination_mere_plan_receipts.md`.
+- 2026-11-08: Mere cycle breaks P3 steps 1 and 2 (the validator as a wasm guest; the plan and the measurements are in Mere's `2026-11-06_cycle_breaks_plan.md`, Findings, "P3 spike"). `core/Cargo.toml` no longer names `muniment`'s `redb` feature (only the receipt binary in the root package opens a redb store), which was the whole wasm blocker on `wasm32-wasip2`. `tests/authority_corpus.rs` is the corpus of the seven tests that move from Mere's `embedded_reservoir_validation`, with native verdicts; `spike/wasm-authority` is the throwaway component and its wasmtime harness (own lock root). Not the real guest, held for Mark's review (D15 (h)).

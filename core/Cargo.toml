@@ -33,7 +33,7 @@ chartulary = { git = "https://github.com/merely-made/eidetic.git", branch = "mai
 chirograph = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 graphshell-client = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 mere = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["graph"] }
-muniment = { features = ["redb"], git = "https://github.com/merely-made/eidetic.git", branch = "main" }
+muniment = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
 rand_core = { version = "0.6", features = ["getrandom"] }
 sceno = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 scenograph = { git = "https://github.com/merely-made/mere.git", branch = "main" }
@@ -114,6 +114,10 @@ missing_panics_doc = "warn"
 missing_safety_doc = "warn"
 undocumented_unsafe_blocks = "warn"
 too_many_lines = "warn"
+
+[[test]]
+name = "authority_corpus"
+path = "../tests/authority_corpus.rs"
 
 [[test]]
 name = "shared_sky"

@@ -7,3 +7,5 @@
 Cargo.lock
 !/Cargo.lock
 !/core/Cargo.lock
+!/spike/wasm-authority/Cargo.lock
+/spike/wasm-authority/target/

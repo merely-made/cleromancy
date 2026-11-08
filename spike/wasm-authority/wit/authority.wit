@@ -1,0 +1,31 @@
+// Spike-local copy of the `domain-authority` proposal in Mere's domain contract
+// (drawing board, option A). The real world, if Mark rules for it, joins the
+// protocol layer's one WIT file; nothing here is that contract.
+package spike:authority@0.0.1;
+
+interface log {
+    log: func(message: string);
+}
+
+interface domain-authority {
+    record claim {
+        domain: string,
+        version: string,
+        graph-format: string,
+    }
+
+    /// Who this guest is an authority for, and the candidate format it reads.
+    describe: func() -> claim;
+
+    /// The complete candidate, copied, in the declared format
+    /// ("mere.captured-deltas/json": a JSON array of the kernel's CapturedDelta).
+    validate: func(candidate: list<u8>) -> result<_, string>;
+
+    /// The optional before/after check (today's GraphAdmissionValidator).
+    admit: func(before: list<u8>, after: list<u8>) -> result<_, string>;
+}
+
+world authority-guest {
+    import log;
+    export domain-authority;
+}
