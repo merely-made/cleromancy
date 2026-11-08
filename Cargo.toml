@@ -216,9 +216,6 @@ gpu-allocator = { git = "https://github.com/merely-made/genet.git", branch = "ma
 # pins the revision, so the www and double-slash spellings that gave two sources
 # one replacement identity are gone. These rows redirect packages that left Mere.
 [patch."https://github.com/merely-made/mere.git"]
-# Knot names these through mere.git; they leave when Knot repins seiche.
-numen = { git = "https://github.com/merely-made/seiche.git", branch = "main" }
-seiche = { git = "https://github.com/merely-made/seiche.git", branch = "main" }
 # Promoted sources shared with immutable older Mere suppliers.
 chartulary = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
 eidetic = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
