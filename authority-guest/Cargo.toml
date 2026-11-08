@@ -1,0 +1,43 @@
+# Cleromancy's divination authority as a wasm component (cycle breaks P3, D15 (h)).
+#
+# The `authority-guest` world of `mere:script`: Mere's resident loads this component under
+# the owner's review and runs it as the gate to the `divination` domain, so no Mere
+# manifest names Cleromancy. It is `cleromancy-core`'s own validator, unchanged, behind the
+# WIT: the same `validate_divination_graph` the native resident ran, over the candidate
+# graph restored from the bytes the resident encodes.
+#
+# A standalone workspace with its own lock root and toolchain pin, built to
+# `wasm32-wasip2` (`cargo build --locked --release`). The WIT is `graphshell-endpoint`'s
+# `wit/world.wit`, copied by build.rs to the git-ignored `wit/`; the crate itself is not
+# linked.
+[workspace]
+
+[package]
+rust-version = "1.97.1"
+name = "cleromancy-authority-guest"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# The portable core, whose manifest names no redb (so it builds for wasm32-wasip2).
+cleromancy = { package = "cleromancy-core", path = "../core" }
+mere = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["graph"] }
+# Only for its `links` metadata: where the WIT lives.
+graphshell-endpoint = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+wit-bindgen = { version = "0.58", default-features = false, features = ["macros", "realloc"] }
+
+# Size matters (the pack cap is 16 MiB, D12) and so does determinism of the build.
+# `panic = "abort"`: a panic is a trap, which the host reports as a refusal.
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
