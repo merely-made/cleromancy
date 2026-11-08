@@ -62,7 +62,11 @@ pub fn select(harness: &mut App, label: &str, option: &str) {
         "missing option {option} for {label}"
     );
     harness.with_dom(|dom| {
-        let selected = find_attr(dom, dom.document(), "aria-label", label).unwrap();
+        // Name the combobox by role as well: Cambium (mere e668d28be) labels each radio row
+        // with its option text, so the "Authored layout" radio shares its aria-label with the
+        // "Authored layout" combobox and the label alone finds the radio first.
+        let selected = find_role_attr(dom, dom.document(), "combobox", "aria-label", label)
+            .unwrap_or_else(|| panic!("missing combobox {label}"));
         assert_eq!(
             attr(dom, selected, "aria-expanded"),
             Some("false"),
@@ -284,6 +288,20 @@ fn find_attr(dom: &ScriptedDom, node: NodeId, name: &str, value: &str) -> Option
     }
     dom.dom_children(node)
         .find_map(|child| find_attr(dom, child, name, value))
+}
+
+fn find_role_attr(
+    dom: &ScriptedDom,
+    node: NodeId,
+    role: &str,
+    name: &str,
+    value: &str,
+) -> Option<NodeId> {
+    if attr(dom, node, "role") == Some(role) && attr(dom, node, name) == Some(value) {
+        return Some(node);
+    }
+    dom.dom_children(node)
+        .find_map(|child| find_role_attr(dom, child, role, name, value))
 }
 
 fn count_matching_attr(dom: &ScriptedDom, node: NodeId, name: &str, value: &str) -> usize {
