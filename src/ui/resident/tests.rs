@@ -4,6 +4,13 @@
 use super::*;
 use scenotime::{Revision, SceneEpoch};
 
+// The owner-approved divination guest, as the integration tests install it.
+#[cfg(unix)]
+#[allow(dead_code)]
+mod authority_pack {
+    include!("../../../tests/common/authority_pack.rs");
+}
+
 #[test]
 fn installed_die_survives_owner_refresh_with_authoritative_catalog() {
     let mut c = Consultation::new(CleromancyHost::empty(MemoryBackend::new()));
@@ -126,6 +133,8 @@ fn readonly_archive_layout_selection_and_comparison_never_fork_or_write() {
         root.path().file_name().unwrap().to_string_lossy()
     );
     let persona = PersonaId::from_uuid("00000000-0000-0000-0000-00c120261014".parse().unwrap());
+    // The resident loads only owner-approved guests; approve the divination guest first.
+    authority_pack::install_divination_guest(root.path(), persona);
     let identity = Arc::new(PersonaeHost::new(
         IdentityVault::with_profile(
             InMemoryStorage::new(),
