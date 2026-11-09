@@ -79,7 +79,7 @@ servitor = { git = "https://github.com/merely-made/eidetic.git", branch = "main"
 taproot = { git = "https://github.com/merely-made/genet.git", branch = "main" }
 thiserror = "2"
 tabard = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-tabard-workshop = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["native-host"] }
+tabard-workshop = { git = "https://github.com/merely-made/graphshell.git", branch = "main", features = ["native-host"] }
 tinct = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 uuid = { version = "1", features = ["serde"], optional = true }
 turquet = { version = "=0.1.0", optional = true }
