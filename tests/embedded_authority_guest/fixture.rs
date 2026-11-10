@@ -25,7 +25,7 @@ impl cleromancy::moirai::clotho::EntropySource for PublicEntropy {
 struct ClearCapture;
 impl Drop for ClearCapture {
     fn drop(&mut self) {
-        mere::kernel::graph::set_captured_delta_hook(None);
+        kernel::graph::set_captured_delta_hook(None);
     }
 }
 
@@ -38,7 +38,7 @@ pub(super) fn product_fixture(
 ) -> (Vec<CapturedDelta>, Value, cleromancy::Reading) {
     let captured = Arc::new(Mutex::new(Vec::new()));
     let observed = captured.clone();
-    mere::kernel::graph::set_captured_delta_hook(Some(Arc::new(move |delta| {
+    kernel::graph::set_captured_delta_hook(Some(Arc::new(move |delta| {
         observed.lock().unwrap().push(delta.clone());
     })));
     let clear = ClearCapture;
@@ -182,7 +182,7 @@ pub(super) fn product_fixture(
     drop(clear);
     let edits = std::mem::take(&mut *captured.lock().unwrap());
     assert!(!edits.is_empty(), "the real product emitted captured edits");
-    let replay = mere::kernel::graph::replay_captured_deltas(edits.clone());
+    let replay = kernel::graph::replay_captured_deltas(edits.clone());
     assert_eq!(replay.node_count(), graph.node_count());
     assert_eq!(
         serde_json::to_value(replay.facets()).unwrap(),
@@ -247,7 +247,7 @@ pub(super) async fn apply_bounded_fixture(client: &mut AppBrokerClient, edits: &
             if serde_json::to_vec(&payload).unwrap().len() > 900_000 {
                 continue;
             }
-            let candidate = mere::kernel::graph::replay_captured_deltas(
+            let candidate = kernel::graph::replay_captured_deltas(
                 accepted
                     .iter()
                     .cloned()

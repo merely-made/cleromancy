@@ -440,7 +440,7 @@ fn shared_mere_and_focused_reading_share_the_ordinary_wide_viewport() {
     let dir = tempfile::tempdir().unwrap();
     let mut host = mounted(&dir);
     let mut consultation = crate::Consultation::new(
-        crate::CleromancyHost::candidate(mere::kernel::graph::Graph::new()).unwrap(),
+        crate::CleromancyHost::candidate(kernel::graph::Graph::new()).unwrap(),
     );
     let field = pollster::block_on(consultation.install_builtin_tarot_at(1)).unwrap();
     let context = pollster::block_on(consultation.save_context_at(
@@ -499,7 +499,7 @@ fn mere_refresh_preserves_pending_until_atomic_command_response_restores_selecti
         appearance: state(&dir),
     };
     let mut consultation = crate::Consultation::new(
-        crate::CleromancyHost::candidate(mere::kernel::graph::Graph::new()).unwrap(),
+        crate::CleromancyHost::candidate(kernel::graph::Graph::new()).unwrap(),
     );
     let field = pollster::block_on(consultation.install_builtin_tarot_at(1)).unwrap();
     let context = pollster::block_on(consultation.save_context_at(
@@ -552,7 +552,7 @@ fn mere_refresh_preserves_pending_until_atomic_command_response_restores_selecti
     assert_eq!(
         ui.mere.view.focused,
         Some(
-            mere::kernel::graph::Graph::node_namespace_id(&format!(
+            kernel::graph::Graph::node_namespace_id(&format!(
                 "cleromancy://reading/{reading}"
             ),)
             .to_string(),

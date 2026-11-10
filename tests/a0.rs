@@ -9,7 +9,7 @@ use cleromancy::{
     CleromancyApp, CleromancyHost, ReadingEngine, ReadingError, SelectionMode, a0_fixture,
 };
 use graphshell_client::ResolvedContent;
-use mere::kernel::graph::{ProvenanceSubKind, RelationKind};
+use kernel::graph::{ProvenanceSubKind, RelationKind};
 use muniment::{Backend, RedbBackend};
 
 #[test]

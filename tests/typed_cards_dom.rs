@@ -5,7 +5,7 @@
 mod support;
 
 use cleromancy::{CleromancyHost, Consultation, ContextDraft, SelectionMode};
-use mere::kernel::graph::Graph;
+use kernel::graph::Graph;
 use support::{click_key, harness, rect_at_key, text_at_key};
 
 #[test]

@@ -361,7 +361,7 @@ impl ScenarioDriver<'_, '_> {
                     .detail()
                     .and_then(|d| d.readings.first())
                     .ok_or("no selected reading")?;
-                let key = mere::kernel::graph::Graph::node_namespace_id(&format!(
+                let key = kernel::graph::Graph::node_namespace_id(&format!(
                     "cleromancy://reading/{}",
                     reading.id
                 ))

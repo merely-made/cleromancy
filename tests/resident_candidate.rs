@@ -6,7 +6,7 @@
 use std::sync::{Arc, Mutex};
 
 use cleromancy::{CleromancyHost, Consultation, ContextDraft, SelectionMode};
-use mere::kernel::graph::Graph;
+use kernel::graph::Graph;
 
 #[test]
 fn candidate_actions_capture_stable_edits_and_leave_input_unchanged() {
@@ -27,7 +27,7 @@ fn candidate_actions_capture_stable_edits_and_leave_input_unchanged() {
     assert_eq!(detail.readings.len(), 1);
     let recorded = edits.lock().unwrap().clone();
     assert!(!recorded.is_empty());
-    let replayed = mere::kernel::graph::replay_captured_deltas(recorded);
+    let replayed = kernel::graph::replay_captured_deltas(recorded);
     cleromancy::host::validate_divination_graph(&replayed).unwrap();
     let replayed = Consultation::new(CleromancyHost::candidate(replayed).unwrap());
     assert_eq!(replayed.detail(&detail.session.id).unwrap(), detail);
@@ -113,7 +113,7 @@ fn typed_decks_survive_journal_replay_and_forged_metadata_is_refused() {
             .unwrap();
     let saved = consultation.host().graph().to_snapshot();
     let recorded = edits.lock().unwrap().clone();
-    let replayed = mere::kernel::graph::replay_captured_deltas(recorded);
+    let replayed = kernel::graph::replay_captured_deltas(recorded);
     let reopened = Consultation::new(CleromancyHost::candidate(replayed).unwrap());
     assert_eq!(reopened.detail(&detail.session.id).unwrap(), detail);
     assert_eq!(reopened.catalog().unwrap().fields.len(), 2);

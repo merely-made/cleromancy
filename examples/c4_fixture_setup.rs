@@ -105,7 +105,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 if bytes > 180_000 {
                     break;
                 }
-                mere::kernel::graph::replay_captured_deltas_onto(
+                kernel::graph::replay_captured_deltas_onto(
                     &mut candidate,
                     vec![edit.clone()],
                 );

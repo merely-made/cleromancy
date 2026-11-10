@@ -3,7 +3,7 @@
 #[path = "support/ambient_fixture.rs"]
 mod support;
 use cleromancy::{CleromancyHost, Consultation, ambient::*};
-use mere::kernel::graph::Graph;
+use kernel::graph::Graph;
 use std::collections::BTreeSet;
 
 #[test]
@@ -112,7 +112,7 @@ fn keeping_uses_shared_memory_levels_and_pose_curation_replays_without_sealed_ed
     .unwrap();
     assert_eq!(sealed(host.graph()), before_sealed);
     let mut replay = c.host().graph().clone();
-    mere::kernel::graph::replay_captured_deltas_onto(&mut replay, edits.lock().unwrap().clone());
+    kernel::graph::replay_captured_deltas_onto(&mut replay, edits.lock().unwrap().clone());
     let reopened = CleromancyHost::candidate(replay).unwrap();
     let views = reopened.ambient_views().unwrap();
     assert_eq!(views.len(), 2);

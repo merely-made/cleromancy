@@ -24,7 +24,7 @@ mod common {
 }
 
 use cleromancy::{CleromancyHost, Consultation, ContextDraft, SelectionMode};
-use mere::kernel::graph::CapturedDelta;
+use kernel::graph::CapturedDelta;
 use muniment::MemoryBackend;
 use serde_json::Value;
 
@@ -43,7 +43,7 @@ impl cleromancy::moirai::clotho::EntropySource for PublicEntropy {
 struct ClearCapture;
 impl Drop for ClearCapture {
     fn drop(&mut self) {
-        mere::kernel::graph::set_captured_delta_hook(None);
+        kernel::graph::set_captured_delta_hook(None);
     }
 }
 
@@ -56,7 +56,7 @@ fn product_fixture(
 ) -> (Vec<CapturedDelta>, Value, cleromancy::Reading) {
     let captured = Arc::new(Mutex::new(Vec::new()));
     let observed = captured.clone();
-    mere::kernel::graph::set_captured_delta_hook(Some(Arc::new(move |delta| {
+    kernel::graph::set_captured_delta_hook(Some(Arc::new(move |delta| {
         observed.lock().unwrap().push(delta.clone());
     })));
     let clear = ClearCapture;
@@ -200,7 +200,7 @@ fn product_fixture(
     drop(clear);
     let edits = std::mem::take(&mut *captured.lock().unwrap());
     assert!(!edits.is_empty(), "the real product emitted captured edits");
-    let replay = mere::kernel::graph::replay_captured_deltas(edits.clone());
+    let replay = kernel::graph::replay_captured_deltas(edits.clone());
     assert_eq!(replay.node_count(), graph.node_count());
     assert_eq!(
         serde_json::to_value(replay.facets()).unwrap(),
@@ -220,7 +220,7 @@ fn product_fixture(
 /// The native verdict the resident's validator reaches over a batch: replay it
 /// into a graph, then validate the complete candidate.
 fn verdict(edits: Vec<CapturedDelta>) -> Result<(), String> {
-    let graph = mere::kernel::graph::replay_captured_deltas(edits);
+    let graph = kernel::graph::replay_captured_deltas(edits);
     cleromancy::host::validate_divination_graph(&graph).map_err(|error| error.to_string())
 }
 
@@ -380,7 +380,7 @@ fn the_guest_agrees_with_the_native_validator_on_every_case() {
     let (mut native_times, mut guest_times) = (Vec::new(), Vec::new());
     for case in &cases {
         let batch: Vec<CapturedDelta> = serde_json::from_value(case.deltas.clone()).unwrap();
-        let graph = mere::kernel::graph::replay_captured_deltas(batch.clone());
+        let graph = kernel::graph::replay_captured_deltas(batch.clone());
         let started = Instant::now();
         let native = verdict(batch);
         native_times.push(started.elapsed());
@@ -452,16 +452,16 @@ fn authority_cap() -> usize {
 #[test]
 fn the_graph_snapshot_wire_and_the_facets() {
     let (edits, facets, _) = product_fixture(true, false, true, false, false);
-    let graph = mere::kernel::graph::replay_captured_deltas(edits);
+    let graph = kernel::graph::replay_captured_deltas(edits);
     let snapshot = graph.to_snapshot_at(0);
     let json = serde_json::to_vec(&snapshot).unwrap();
     let back = serde_json::from_slice(&json).unwrap();
-    let restored = mere::kernel::graph::Graph::try_from_snapshot(&back).unwrap();
+    let restored = kernel::graph::Graph::try_from_snapshot(&back).unwrap();
     let kept = serde_json::to_value(restored.facets()).unwrap() == facets;
     let verdict = cleromancy::host::validate_divination_graph(&restored).map_err(|e| e.to_string());
     // The facet store serialises on its own and installs onto a restored graph.
     let facet_bytes = serde_json::to_vec(graph.facets()).unwrap();
-    let mut with_facets = mere::kernel::graph::Graph::try_from_snapshot(&back).unwrap();
+    let mut with_facets = kernel::graph::Graph::try_from_snapshot(&back).unwrap();
     with_facets
         .install_facets(serde_json::from_slice(&facet_bytes).unwrap())
         .unwrap();

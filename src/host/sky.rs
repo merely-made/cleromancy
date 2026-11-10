@@ -7,8 +7,8 @@
 //! interpretation points back to its facts by digest and carries its own rule
 //! pack provenance; the host does not invent a rule-pack graph node.
 
-use mere::kernel::graph::apply::assert_relation;
-use mere::kernel::graph::{EdgeAssertion, ProvenanceSubKind};
+use kernel::graph::apply::assert_relation;
+use kernel::graph::{EdgeAssertion, ProvenanceSubKind};
 
 use super::*;
 use crate::sky::{SkyDayFacts, SkyInterpretation};

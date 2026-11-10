@@ -335,7 +335,7 @@ fn apply_mere_publication(
             .map(|p| format!("cleromancy://reading/{}", p.reading_id))
             .unwrap_or_else(|| format!("cleromancy://session/{session}"));
         state.mere.view.focused =
-            Some(mere::kernel::graph::Graph::node_namespace_id(&focus_url).to_string());
+            Some(kernel::graph::Graph::node_namespace_id(&focus_url).to_string());
         state
             .consultation
             .present_external_session(state.consultation.catalog().clone(), detail);

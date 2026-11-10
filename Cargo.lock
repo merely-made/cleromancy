@@ -2406,9 +2406,9 @@ dependencies = [
  "incipit",
  "layout-dom-api",
  "mandrake",
- "mere",
  "mere-facts",
  "mere-fetch",
+ "mere-kernel",
  "mere-overmap",
  "mere-resident",
  "mere-view",
@@ -2417,6 +2417,7 @@ dependencies = [
  "ostiary",
  "pandect",
  "personae",
+ "pictograph",
  "pollster 0.4.0",
  "rand_core 0.6.4",
  "sceno",
@@ -8296,18 +8297,11 @@ name = "mere"
 version = "0.0.2"
 source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
 dependencies = [
- "accesskit",
  "incipit",
- "inker",
  "mere-kernel",
- "netrender",
- "pictograph",
  "serde",
  "serde_json",
- "tabard",
- "tracing",
  "uuid",
- "uxtree",
 ]
 
 [[package]]
@@ -14917,16 +14911,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4af36ce0aa6ec3337634e98de25504b6ce3cf9478468c21748a6a6cea37d7276"
 dependencies = [
  "getrandom 0.4.3",
-]
-
-[[package]]
-name = "uxtree"
-version = "0.0.2"
-source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
-dependencies = [
- "accesskit",
- "inker",
- "tracing",
 ]
 
 [[package]]

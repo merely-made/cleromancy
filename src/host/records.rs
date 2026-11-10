@@ -4,9 +4,9 @@
 //! Insertion and recording of contexts, fields, readings, sessions,
 //! reflections, astrology records, and pattern occasions.
 
-use mere::kernel::graph::apply::{assert_relation, assert_semantic_relation_in_scope};
-use mere::kernel::graph::{ContainmentSubKind, EdgeAssertion, ProvenanceSubKind};
-use mere::kernel::types::GraphScope;
+use kernel::graph::apply::{assert_relation, assert_semantic_relation_in_scope};
+use kernel::graph::{ContainmentSubKind, EdgeAssertion, ProvenanceSubKind};
+use kernel::types::GraphScope;
 
 use super::*;
 use crate::{AstrologyChart, Concurrence, Reflection};

@@ -4,7 +4,7 @@ use cleromancy::{
     AstrologyChartDraft, CleromancyHost, Consultation, ContextDraft, SelectionMode,
     SpreadTemplateDraft,
 };
-use mere::kernel::graph::Graph;
+use kernel::graph::Graph;
 use muniment::MemoryBackend;
 pub struct ZeroEntropy;
 impl cleromancy::moirai::clotho::EntropySource for ZeroEntropy {

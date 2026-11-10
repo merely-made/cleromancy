@@ -6,7 +6,7 @@
 use std::collections::BTreeSet;
 
 use pandect::personal_sync::PersonalGraphEvent;
-use mere::kernel::graph::{Graph, NodeKey};
+use kernel::graph::{Graph, NodeKey};
 use serde::Serialize;
 use serde_json::Value;
 use uuid::Uuid;
@@ -102,13 +102,13 @@ pub(super) fn batch_digest(
 
 pub(super) fn generic_semantic_kind(
     kind: SpreadRelationKind,
-) -> mere::kernel::graph::SemanticSubKind {
+) -> kernel::graph::SemanticSubKind {
     match kind {
-        SpreadRelationKind::Supports => mere::kernel::graph::SemanticSubKind::Supports,
-        SpreadRelationKind::Contradicts => mere::kernel::graph::SemanticSubKind::Contradicts,
-        SpreadRelationKind::Questions => mere::kernel::graph::SemanticSubKind::Questions,
-        SpreadRelationKind::NextStep => mere::kernel::graph::SemanticSubKind::NextStep,
-        SpreadRelationKind::Elaborates => mere::kernel::graph::SemanticSubKind::Elaborates,
+        SpreadRelationKind::Supports => kernel::graph::SemanticSubKind::Supports,
+        SpreadRelationKind::Contradicts => kernel::graph::SemanticSubKind::Contradicts,
+        SpreadRelationKind::Questions => kernel::graph::SemanticSubKind::Questions,
+        SpreadRelationKind::NextStep => kernel::graph::SemanticSubKind::NextStep,
+        SpreadRelationKind::Elaborates => kernel::graph::SemanticSubKind::Elaborates,
     }
 }
 

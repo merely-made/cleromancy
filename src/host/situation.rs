@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 use super::*;
 use crate::situation::{ReadingSituation, SITUATION_FACET};
-use mere::kernel::graph::apply::assert_relation;
-use mere::kernel::graph::{EdgeAssertion, ProvenanceSubKind};
+use kernel::graph::apply::assert_relation;
+use kernel::graph::{EdgeAssertion, ProvenanceSubKind};
 
 fn invalid(e: impl std::fmt::Display) -> HostError {
     HostError::InvalidStoredFacet {

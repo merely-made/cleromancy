@@ -18,7 +18,7 @@ wit_bindgen::generate!({
 });
 
 use exports::mere::script::domain_authority::{Claim, Guest};
-use ::mere::kernel::graph::{Graph, NodeFacetStore};
+use ::kernel::graph::{Graph, NodeFacetStore};
 use serde::Deserialize;
 
 /// The grammar version of the divination domain this component validates (the registration's

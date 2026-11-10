@@ -7,7 +7,7 @@ use std::collections::{BTreeMap, BTreeSet};
 
 use crate::situation::SITUATION_FACET;
 use pandect::personal_sync::SyncProjection;
-use mere::kernel::graph::Graph;
+use kernel::graph::Graph;
 use muniment::Backend;
 
 use super::decode::{DecodedTruth, decode_projection};

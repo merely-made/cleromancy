@@ -12,7 +12,7 @@ use cleromancy::sky::{
     SkyNumericalPolicy, SkyRule, SkyRulePack, SkySearchControls, SkyTwilightMeasurement,
     SkyTwilightPolicy, UtcCivilDay, Wgs84Observer, interpret_sky_day,
 };
-use mere::kernel::graph::{ProvenanceSubKind, RelationKind};
+use kernel::graph::{ProvenanceSubKind, RelationKind};
 use muniment::MemoryBackend;
 
 fn dallas() -> Wgs84Observer {

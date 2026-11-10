@@ -7,7 +7,7 @@
 use std::sync::{Arc, Mutex};
 
 use chirograph::{CarrierRequestBody, CarrierResponseBody, IntentResult, ProjectionSnapshot};
-use mere::kernel::graph::{CapturedDelta, Graph};
+use kernel::graph::{CapturedDelta, Graph};
 use mere_overmap::{
     materialization::{self, GraphRead, MaterializedMere},
     route as mere_route, wire as session_item,

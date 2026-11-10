@@ -311,7 +311,7 @@ version = "0.1.0"
 dependencies = [
  "cleromancy-core",
  "graphshell-endpoint",
- "mere",
+ "mere-kernel",
  "serde",
  "serde_json",
  "wit-bindgen 0.58.0",
@@ -328,8 +328,8 @@ dependencies = [
  "chrono-tz",
  "dramatis",
  "graphshell-client",
- "mere",
  "mere-facts",
+ "mere-kernel",
  "muniment 0.2.1 (git+https://github.com/merely-made/eidetic.git?branch=main)",
  "pandect",
  "rand_core 0.6.4",
@@ -757,12 +757,6 @@ version = "0.0.3"
 source = "git+https://github.com/merely-made/graphshell.git?branch=main#64813dffc00c6b6db1c7ddc51efa69a30136fde0"
 
 [[package]]
-name = "grid"
-version = "1.0.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b40ca9252762c466af32d0b1002e91e4e1bc5398f77455e55474deb466355ff5"
-
-[[package]]
 name = "half"
 version = "2.7.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -976,10 +970,7 @@ version = "0.2.3"
 source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
 dependencies = [
  "catchment",
- "petgraph",
  "serde",
- "serde_json",
- "taffy",
  "uuid",
 ]
 
@@ -1129,18 +1120,6 @@ name = "memchr"
 version = "2.8.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
-
-[[package]]
-name = "mere"
-version = "0.0.2"
-source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
-dependencies = [
- "incipit",
- "mere-kernel",
- "serde",
- "serde_json",
- "uuid",
-]
 
 [[package]]
 name = "mere-facts"
@@ -1891,18 +1870,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 3.0.6",
-]
-
-[[package]]
-name = "taffy"
-version = "0.11.0-experimental-cache-fix.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e87b88128d417cd7c2c75b8a398177fb9efcb2ae5cddad22bcec106ba9c8e1c3"
-dependencies = [
- "arrayvec",
- "grid",
- "serde",
- "slotmap",
 ]
 
 [[package]]

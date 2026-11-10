@@ -62,10 +62,11 @@ graphshell-door = { git = "https://github.com/merely-made/mere.git", branch = "m
 chirograph = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 genet-scripted-dom = { git = "https://github.com/merely-made/genet.git", branch = "main", version = "0.1.2" }
 layout-dom-api = { git = "https://github.com/merely-made/genet.git", branch = "main", version = "0.1.1" }
+kernel = { package = "mere-kernel", git = "https://github.com/merely-made/mere.git", branch = "main" }
 mandrake = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-mere = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["graph", "canvas", "physics-engine"] }
 meristem = { git = "https://github.com/merely-made/mere.git", branch = "main", version = "0.2.0" }
 muniment = { features = ["redb"], git = "https://github.com/merely-made/eidetic.git", branch = "main" }
+pictograph = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["canvas", "physics-engine"] }
 personae = { git = "https://github.com/merely-made/dramatis.git", branch = "main" }
 pollster = "0.4"
 rand_core = { version = "0.6", features = ["getrandom"] }

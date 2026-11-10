@@ -9,7 +9,7 @@ use cleromancy::{
     CleromancyApp, CleromancyHost, Reading, ReadingEngine, ReadingError, ReadingSession,
     Reflection, a0_fixture,
 };
-use mere::kernel::graph::RelationKind;
+use kernel::graph::RelationKind;
 use muniment::MemoryBackend;
 use serde::Serialize;
 

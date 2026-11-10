@@ -12,7 +12,7 @@ impl<B: Backend> CleromancyHost<B> {
             projection_session: ProjectionSession(LOCAL_SESSION.to_string()),
             graph: Graph::new(),
             #[cfg(not(feature = "portable-core"))]
-            projection_channels: std::sync::Mutex::new(mere::canvas::ChannelRegistry::new()),
+            projection_channels: std::sync::Mutex::new(pictograph::canvas::ChannelRegistry::new()),
             projection_epoch: 1,
             projection_revision: 1,
             resources: BTreeMap::new(),
@@ -34,7 +34,7 @@ impl<B: Backend> CleromancyHost<B> {
                 projection_session: ProjectionSession(LOCAL_SESSION.to_string()),
                 graph: Graph::new(),
                 #[cfg(not(feature = "portable-core"))]
-                projection_channels: std::sync::Mutex::new(mere::canvas::ChannelRegistry::new()),
+                projection_channels: std::sync::Mutex::new(pictograph::canvas::ChannelRegistry::new()),
                 projection_epoch: 1,
                 projection_revision: 1,
                 resources: BTreeMap::new(),
@@ -54,7 +54,7 @@ impl<B: Backend> CleromancyHost<B> {
             projection_session: ProjectionSession(LOCAL_SESSION.to_string()),
             graph,
             #[cfg(not(feature = "portable-core"))]
-            projection_channels: std::sync::Mutex::new(mere::canvas::ChannelRegistry::new()),
+            projection_channels: std::sync::Mutex::new(pictograph::canvas::ChannelRegistry::new()),
             projection_epoch: saved.projection_epoch,
             projection_revision: saved.projection_revision,
             resources: BTreeMap::new(),
@@ -101,7 +101,7 @@ impl<B: Backend> CleromancyHost<B> {
     /// Installing a recorder does not persist or grant application authority.
     pub fn record_edits(
         &mut self,
-        edits: std::sync::Arc<std::sync::Mutex<Vec<mere::kernel::graph::CapturedDelta>>>,
+        edits: std::sync::Arc<std::sync::Mutex<Vec<kernel::graph::CapturedDelta>>>,
     ) {
         self.graph
             .set_recorder(Some(std::sync::Arc::new(move |delta| {

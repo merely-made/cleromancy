@@ -9,7 +9,7 @@ use cleromancy::{
     TarotPack, TarotQualification,
 };
 use graphshell_client::ResolvedContent;
-use mere::kernel::graph::{ContainmentSubKind, RelationKind};
+use kernel::graph::{ContainmentSubKind, RelationKind};
 use muniment::MemoryBackend;
 
 #[test]

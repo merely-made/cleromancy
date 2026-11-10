@@ -49,7 +49,7 @@ async fn neighboring_preview_requires_its_own_live_grant_and_clears_on_revocatio
         let mut session = sessions.begin(author.clone(), None);
         session
             .edit_now(author.clone(), |graph| {
-                use mere::kernel::{
+                use kernel::{
                     geometry::PortablePoint,
                     graph::{
                         Graph,

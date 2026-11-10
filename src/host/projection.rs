@@ -118,7 +118,7 @@ impl<B: Backend> CleromancyHost<B> {
             .projection_channels
             .lock()
             .expect("projection channel cache");
-        mere::canvas::project_canvas_strategy_with_score(
+        pictograph::canvas::project_canvas_strategy_with_score(
             &mut channels,
             "phyllotaxis.default",
             &self.graph,
@@ -146,7 +146,7 @@ impl<B: Backend> CleromancyHost<B> {
         } else {
             (Vec::new(), Vec::new())
         };
-        let mut layout = mere::canvas::project_canvas_strategy_with_score(
+        let mut layout = pictograph::canvas::project_canvas_strategy_with_score(
             self.projection_channels
                 .get_mut()
                 .expect("projection channel cache"),

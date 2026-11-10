@@ -269,7 +269,7 @@ mod tests {
 
     #[test]
     fn rejects_a_reading_after_its_field_node_is_removed() {
-        use mere::kernel::graph::apply::{GraphDelta, apply_graph_delta};
+        use kernel::graph::apply::{GraphDelta, apply_graph_delta};
         let mut graph = fixture();
         let key = graph
             .nodes()
@@ -299,7 +299,7 @@ mod tests {
 
     #[test]
     fn validates_a_session_and_reflection_and_refuses_a_missing_session() {
-        use mere::kernel::graph::apply::{GraphDelta, apply_graph_delta};
+        use kernel::graph::apply::{GraphDelta, apply_graph_delta};
         let (context, field) = crate::a0_fixture();
         let reading = ReadingEngine::calculate(&context, &field).unwrap();
         let session = ReadingSession::single(

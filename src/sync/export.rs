@@ -6,7 +6,7 @@
 use std::collections::{BTreeMap, BTreeSet};
 
 use pandect::personal_sync::PersonalGraphEvent;
-use mere::kernel::graph::EdgeAssertion;
+use kernel::graph::EdgeAssertion;
 use muniment::Backend;
 
 use super::collect::{SelectedTruth, collect_selected};
@@ -185,7 +185,7 @@ pub fn export_sync_batch<B: Backend>(
             from: node.id,
             to: context,
             assertion: EdgeAssertion::Provenance {
-                sub_kind: mere::kernel::graph::ProvenanceSubKind::GeneratedFrom,
+                sub_kind: kernel::graph::ProvenanceSubKind::GeneratedFrom,
             },
         });
         let Some(&field) = field_ids.get(&reading.receipt.field_digest) else {
@@ -202,7 +202,7 @@ pub fn export_sync_batch<B: Backend>(
             from: node.id,
             to: field,
             assertion: EdgeAssertion::Provenance {
-                sub_kind: mere::kernel::graph::ProvenanceSubKind::GeneratedFrom,
+                sub_kind: kernel::graph::ProvenanceSubKind::GeneratedFrom,
             },
         });
     }
@@ -221,7 +221,7 @@ pub fn export_sync_batch<B: Backend>(
             from: node.id,
             to: context,
             assertion: EdgeAssertion::Provenance {
-                sub_kind: mere::kernel::graph::ProvenanceSubKind::GeneratedFrom,
+                sub_kind: kernel::graph::ProvenanceSubKind::GeneratedFrom,
             },
         });
         let Some(&field) = field_ids.get(&session.field_digest) else {
@@ -238,7 +238,7 @@ pub fn export_sync_batch<B: Backend>(
             from: node.id,
             to: field,
             assertion: EdgeAssertion::Provenance {
-                sub_kind: mere::kernel::graph::ProvenanceSubKind::GeneratedFrom,
+                sub_kind: kernel::graph::ProvenanceSubKind::GeneratedFrom,
             },
         });
         for placement in &session.placements {
@@ -256,7 +256,7 @@ pub fn export_sync_batch<B: Backend>(
                 from: node.id,
                 to: reading,
                 assertion: EdgeAssertion::Containment {
-                    sub_kind: mere::kernel::graph::ContainmentSubKind::CollectionMember,
+                    sub_kind: kernel::graph::ContainmentSubKind::CollectionMember,
                 },
             });
         }
@@ -276,7 +276,7 @@ pub fn export_sync_batch<B: Backend>(
             from: node.id,
             to: session,
             assertion: EdgeAssertion::Provenance {
-                sub_kind: mere::kernel::graph::ProvenanceSubKind::GeneratedFrom,
+                sub_kind: kernel::graph::ProvenanceSubKind::GeneratedFrom,
             },
         });
         let placement_ids = spread
@@ -299,7 +299,7 @@ pub fn export_sync_batch<B: Backend>(
                 from: node.id,
                 to: reading,
                 assertion: EdgeAssertion::Containment {
-                    sub_kind: mere::kernel::graph::ContainmentSubKind::CollectionMember,
+                    sub_kind: kernel::graph::ContainmentSubKind::CollectionMember,
                 },
             });
         }
@@ -320,10 +320,10 @@ pub fn export_sync_batch<B: Backend>(
                 assertion: EdgeAssertion::Semantic {
                     sub_kind: match relation.kind {
                         ThreeCardRelationKind::Questions => {
-                            mere::kernel::graph::SemanticSubKind::Questions
+                            kernel::graph::SemanticSubKind::Questions
                         },
                         ThreeCardRelationKind::NextStep => {
-                            mere::kernel::graph::SemanticSubKind::NextStep
+                            kernel::graph::SemanticSubKind::NextStep
                         },
                     },
                     label: Some(relation.label.clone()),
@@ -372,7 +372,7 @@ pub fn export_sync_batch<B: Backend>(
             from: node.id,
             to: session,
             assertion: EdgeAssertion::Provenance {
-                sub_kind: mere::kernel::graph::ProvenanceSubKind::GeneratedFrom,
+                sub_kind: kernel::graph::ProvenanceSubKind::GeneratedFrom,
             },
         });
         events.push(PersonalGraphEvent::AssertRelation {
@@ -383,7 +383,7 @@ pub fn export_sync_batch<B: Backend>(
             from: node.id,
             to: template,
             assertion: EdgeAssertion::Provenance {
-                sub_kind: mere::kernel::graph::ProvenanceSubKind::GeneratedFrom,
+                sub_kind: kernel::graph::ProvenanceSubKind::GeneratedFrom,
             },
         });
         let placement_ids = session_value
@@ -406,7 +406,7 @@ pub fn export_sync_batch<B: Backend>(
                 from: node.id,
                 to: reading,
                 assertion: EdgeAssertion::Containment {
-                    sub_kind: mere::kernel::graph::ContainmentSubKind::CollectionMember,
+                    sub_kind: kernel::graph::ContainmentSubKind::CollectionMember,
                 },
             });
         }
@@ -446,7 +446,7 @@ pub fn export_sync_batch<B: Backend>(
             from: node.id,
             to: chart,
             assertion: EdgeAssertion::Provenance {
-                sub_kind: mere::kernel::graph::ProvenanceSubKind::GeneratedFrom,
+                sub_kind: kernel::graph::ProvenanceSubKind::GeneratedFrom,
             },
         });
     }
@@ -466,7 +466,7 @@ pub fn export_sync_batch<B: Backend>(
                 from: node.id,
                 to: member_id,
                 assertion: EdgeAssertion::Containment {
-                    sub_kind: mere::kernel::graph::ContainmentSubKind::CollectionMember,
+                    sub_kind: kernel::graph::ContainmentSubKind::CollectionMember,
                 },
             });
         }
@@ -486,7 +486,7 @@ pub fn export_sync_batch<B: Backend>(
             from: node.id,
             to: session,
             assertion: EdgeAssertion::Semantic {
-                sub_kind: mere::kernel::graph::SemanticSubKind::Elaborates,
+                sub_kind: kernel::graph::SemanticSubKind::Elaborates,
                 label: Some("reflects on".to_string()),
             },
         });
@@ -508,7 +508,7 @@ pub fn export_sync_batch<B: Backend>(
             from: node.id,
             to: session.1.id,
             assertion: EdgeAssertion::Provenance {
-                sub_kind: mere::kernel::graph::ProvenanceSubKind::GeneratedFrom,
+                sub_kind: kernel::graph::ProvenanceSubKind::GeneratedFrom,
             },
         });
     }
@@ -527,7 +527,7 @@ pub fn export_sync_batch<B: Backend>(
                 from: node.id,
                 to: *target,
                 assertion: EdgeAssertion::Provenance {
-                    sub_kind: mere::kernel::graph::ProvenanceSubKind::GeneratedFrom,
+                    sub_kind: kernel::graph::ProvenanceSubKind::GeneratedFrom,
                 },
             });
         }

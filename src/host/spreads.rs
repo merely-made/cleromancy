@@ -4,9 +4,9 @@
 //! Recording and insertion of the fixed three-card layout and authored
 //! spread templates with their session-bound instances.
 
-use mere::kernel::graph::apply::{assert_relation, assert_semantic_relation_in_scope};
-use mere::kernel::graph::{ContainmentSubKind, EdgeAssertion, ProvenanceSubKind};
-use mere::kernel::types::GraphScope;
+use kernel::graph::apply::{assert_relation, assert_semantic_relation_in_scope};
+use kernel::graph::{ContainmentSubKind, EdgeAssertion, ProvenanceSubKind};
+use kernel::types::GraphScope;
 
 use super::*;
 use crate::{Spread, SpreadTemplate, ThreeCardPosition, ThreeCardRelationKind, ThreeCardSpread};

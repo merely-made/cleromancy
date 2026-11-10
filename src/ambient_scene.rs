@@ -4,7 +4,7 @@
 //! dynamics runner and Cambium graph canvas. It owns no graph or force law.
 use crate::ambient::*;
 use cambium::{GraphCanvasNode, GraphCanvasRelation, GraphCanvasSubgraph, GraphCanvasSwatch};
-use mere::canvas::projection_dynamics::ProjectionDynamics;
+use pictograph::canvas::projection_dynamics::ProjectionDynamics;
 use sceno::{Scene, Size2, SourceRef};
 use scenograph::dataset::{
     ProjectionDataset, ProjectionFieldType, ProjectionOccurrence, ProjectionValue,

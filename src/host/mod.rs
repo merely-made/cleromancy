@@ -14,13 +14,13 @@ use chartulary::{FacetError, FacetId};
 use chirograph::{ContentHash, ProjectionSession};
 #[cfg(not(feature = "portable-core"))]
 use chirograph::{ProjectionRequest, ProtocolVersion};
-use mere::kernel::geometry::PortablePoint;
+use kernel::geometry::PortablePoint;
 #[cfg(feature = "legacy-receipts")]
-use mere::kernel::graph::NodeFacetStore;
-use mere::kernel::graph::apply::{GraphDelta, add_node, apply_graph_delta};
-use mere::kernel::graph::{Graph, NodeKey, RelationKind, SemanticSubKind};
+use kernel::graph::NodeFacetStore;
+use kernel::graph::apply::{GraphDelta, add_node, apply_graph_delta};
+use kernel::graph::{Graph, NodeKey, RelationKind, SemanticSubKind};
 #[cfg(feature = "legacy-receipts")]
-use mere::kernel::persistence::GraphSnapshot;
+use kernel::persistence::GraphSnapshot;
 #[cfg(feature = "legacy-receipts")]
 use muniment::JsonSlots;
 use muniment::{Backend, StoreError};
@@ -166,7 +166,7 @@ pub struct CleromancyHost<B> {
     // Transient layout facts belong to this graph owner. This is neither a
     // persisted record nor projection-session/custody authority.
     #[cfg(not(feature = "portable-core"))]
-    projection_channels: std::sync::Mutex<mere::canvas::ChannelRegistry>,
+    projection_channels: std::sync::Mutex<pictograph::canvas::ChannelRegistry>,
     pub(crate) projection_epoch: u64,
     pub(crate) projection_revision: u64,
     pub(crate) resources: BTreeMap<ContentHash, Vec<u8>>,
@@ -189,7 +189,7 @@ impl CleromancyHost<muniment::MemoryBackend> {
             projection_session: ProjectionSession(LOCAL_SESSION.to_string()),
             graph,
             #[cfg(not(feature = "portable-core"))]
-            projection_channels: std::sync::Mutex::new(mere::canvas::ChannelRegistry::new()),
+            projection_channels: std::sync::Mutex::new(pictograph::canvas::ChannelRegistry::new()),
             projection_epoch: 1,
             projection_revision: 1,
             resources: BTreeMap::new(),

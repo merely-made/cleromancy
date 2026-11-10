@@ -252,7 +252,7 @@ async fn natal_product_authority_admits_replay_and_refuses_tampering_across_apps
             .invoke(apply(
                 &shared,
                 vec![pandect::CapturedDelta::ReplaySetNodeFacetById {
-                    node_id: mere::kernel::graph::Graph::node_namespace_id(&format!(
+                    node_id: kernel::graph::Graph::node_namespace_id(&format!(
                         "cleromancy://natal/{}",
                         record.id
                     ))
@@ -332,7 +332,7 @@ async fn natal_houses_authority_admits_both_systems_and_refuses_cusp_tamper() {
                 .invoke(apply(
                     &shared,
                     vec![pandect::CapturedDelta::ReplaySetNodeFacetById {
-                        node_id: mere::kernel::graph::Graph::node_namespace_id(&format!(
+                        node_id: kernel::graph::Graph::node_namespace_id(&format!(
                             "cleromancy://natal/{}",
                             record.id
                         ))
@@ -413,7 +413,7 @@ async fn natal_cap_authority_admits_retained_observations_and_refuses_motion_tam
                 .invoke(apply(
                     &shared,
                     vec![pandect::CapturedDelta::ReplaySetNodeFacetById {
-                        node_id: mere::kernel::graph::Graph::node_namespace_id(&format!(
+                        node_id: kernel::graph::Graph::node_namespace_id(&format!(
                             "cleromancy://natal/{}",
                             record.id
                         ))
@@ -531,7 +531,7 @@ async fn natal_aspects_authority_admits_cross_app_and_refuses_resealed_results_a
             "{fault}"
         );
         let url = format!("cleromancy://natal/{}", bad.id);
-        let node_id = mere::kernel::graph::Graph::node_namespace_id(&url).to_string();
+        let node_id = kernel::graph::Graph::node_namespace_id(&url).to_string();
         let before = graph(&mut other);
         let result = other
             .invoke(apply(

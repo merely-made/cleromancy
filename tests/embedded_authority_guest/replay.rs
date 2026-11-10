@@ -24,7 +24,7 @@ pub(super) async fn owner_replay(
     let (edits, expected_facets, reading) =
         product_fixture(typed_decks, ambient, shuffled, situation, inference);
     let reading_url = format!("cleromancy://reading/{}", reading.id);
-    let reading_id = mere::kernel::graph::Graph::node_namespace_id(&reading_url);
+    let reading_id = kernel::graph::Graph::node_namespace_id(&reading_url);
     let mut retained_session = None;
     let mut retained_graph = None;
     let mut retained_logs = None;
