@@ -18,7 +18,7 @@ use cleromancy::{
     CleromancyHost, CleromancySessionAuthority, CleromancySyncSelection, ReadingEngine,
     ReadingError, a0_fixture,
 };
-use graphshell::personal_sync::{PersonalGraphReplica, SyncRoster};
+use pandect::personal_sync::{PersonalGraphReplica, SyncRoster};
 use graphshell_client::RetainedEndpointSession;
 use graphshell_endpoint::local::LocalCarrier;
 use graphshell_endpoint::{ProjectionCatalog, ProjectionSource};

@@ -7,7 +7,7 @@ use cleromancy::{
     CleromancyHost, CleromancySyncSelection, ReadingEngine, ReadingSession, Reflection, a0_fixture,
     export_sync_batch, import_sync_projection,
 };
-use graphshell::personal_sync::{PersonalGraphReplica, SyncRoster};
+use pandect::personal_sync::{PersonalGraphReplica, SyncRoster};
 use muniment::MemoryBackend;
 use personae::{IdentityProvider, InMemoryProvider};
 

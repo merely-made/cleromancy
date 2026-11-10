@@ -6,7 +6,7 @@
 use std::collections::{BTreeMap, BTreeSet};
 
 use crate::situation::SITUATION_FACET;
-use graphshell::personal_sync::SyncProjection;
+use pandect::personal_sync::SyncProjection;
 use mere::kernel::graph::Graph;
 use muniment::Backend;
 

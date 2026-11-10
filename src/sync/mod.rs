@@ -10,7 +10,7 @@
 use std::fmt;
 use std::str::FromStr;
 
-use graphshell::personal_sync::{PersonalGraphEvent, SyncSelection as PersonalSyncSelection};
+use pandect::personal_sync::{PersonalGraphEvent, SyncSelection as PersonalSyncSelection};
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
 use uuid::Uuid;

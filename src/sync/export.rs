@@ -5,7 +5,7 @@
 
 use std::collections::{BTreeMap, BTreeSet};
 
-use graphshell::personal_sync::PersonalGraphEvent;
+use pandect::personal_sync::PersonalGraphEvent;
 use mere::kernel::graph::EdgeAssertion;
 use muniment::Backend;
 

@@ -6,7 +6,7 @@ use cleromancy::{
     CleromancyHost, CleromancySyncSelection, ContextSnapshot, ReadingEngine, ReadingSession,
     TarotQualification, export_sync_batch, import_sync_projection,
 };
-use graphshell::personal_sync::{PersonalGraphReplica, SyncRoster};
+use pandect::personal_sync::{PersonalGraphReplica, SyncRoster};
 use muniment::MemoryBackend;
 use personae::{IdentityProvider, InMemoryProvider};
 
@@ -61,7 +61,7 @@ fn signed_sync_preserves_generated_prompts_only_with_reflection_consent_and_refu
         let batch = export_sync_batch(&source, selection).unwrap();
         assert_eq!(batch.schema, "cleromancy.sync-batch/v8");
         assert_eq!(batch.inferences, 1);
-        assert!(batch.events.iter().any(|event| matches!(event, graphshell::personal_sync::PersonalGraphEvent::AddTag { node, tag } if *node == source.graph().get_node(source_key).unwrap().id && tag == "kept")));
+        assert!(batch.events.iter().any(|event| matches!(event, pandect::personal_sync::PersonalGraphEvent::AddTag { node, tag } if *node == source.graph().get_node(source_key).unwrap().id && tag == "kept")));
         assert_eq!(
             export_sync_batch(&source, CleromancySyncSelection::Contexts)
                 .unwrap()

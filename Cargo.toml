@@ -25,7 +25,7 @@ legacy-receipts = []
 # The data-free analytic engine. No kernel, no download, no filesystem.
 analytic-ephemeris = ["dep:turquet"]
 sky-timeline = ["dep:cleromancy-sky"]
-personal-sync = ["graphshell/personal-sync", "dep:uuid"]
+personal-sync = ["pandect/personal-sync", "dep:uuid"]
 graphshell-admission = ["graphshell-host/native"]
 
 # Family repositories share a canonical Git URL and branch = "main".
@@ -55,7 +55,6 @@ cambium = { git = "https://github.com/merely-made/mere.git", branch = "main", ve
 cambium-desktop = { git = "https://github.com/merely-made/mere.git", branch = "main", version = "0.1.0" }
 chartulary = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
 dirs = "6"
-graphshell = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = [] }
 graphshell-host = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["native"] }
 graphshell-client = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 graphshell-endpoint = { git = "https://github.com/merely-made/graphshell.git", branch = "main", features = ["local", "stdio"] }

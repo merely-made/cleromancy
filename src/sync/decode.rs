@@ -6,7 +6,7 @@
 use crate::inference::{GeneratedInference, INFERENCE_FACET};
 use crate::situation::{ReadingSituation, SITUATION_FACET};
 use chartulary::FacetId;
-use graphshell::personal_sync::SyncProjection;
+use pandect::personal_sync::SyncProjection;
 
 use super::shared::{invalid, validate_identity};
 use super::{CleromancySyncError, CleromancySyncSelection};
