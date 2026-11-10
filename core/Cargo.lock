@@ -139,7 +139,7 @@ checksum = "fc652a48c352aef3ea3aed32080501cf3ef6ed5da78602a020c991775b0aff04"
 [[package]]
 name = "catchment"
 version = "0.1.0"
-source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
+source = "git+https://github.com/merely-made/mere.git?branch=main#ec7ba066e008036436a06a7ce49f75fbe111e056"
 dependencies = [
  "async-trait",
  "dirs",
@@ -982,7 +982,7 @@ dependencies = [
 [[package]]
 name = "incipit"
 version = "0.2.3"
-source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
+source = "git+https://github.com/merely-made/mere.git?branch=main#ec7ba066e008036436a06a7ce49f75fbe111e056"
 dependencies = [
  "catchment",
  "serde",
@@ -1191,7 +1191,7 @@ checksum = "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
 [[package]]
 name = "mere-facts"
 version = "0.1.0"
-source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
+source = "git+https://github.com/merely-made/mere.git?branch=main#ec7ba066e008036436a06a7ce49f75fbe111e056"
 dependencies = [
  "blake3",
  "chartulary",
@@ -1206,7 +1206,7 @@ dependencies = [
 [[package]]
 name = "mere-kernel"
 version = "0.0.3"
-source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
+source = "git+https://github.com/merely-made/mere.git?branch=main#ec7ba066e008036436a06a7ce49f75fbe111e056"
 dependencies = [
  "accesskit",
  "chartulary",
@@ -1330,7 +1330,7 @@ checksum = "04744f49eae99ab78e0d5c0b603ab218f515ea8cfe5a456d7629ad883a3b6e7d"
 [[package]]
 name = "pandect"
 version = "0.2.0"
-source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
+source = "git+https://github.com/merely-made/mere.git?branch=main#ec7ba066e008036436a06a7ce49f75fbe111e056"
 dependencies = [
  "async-trait",
  "blake3",
@@ -1645,7 +1645,7 @@ dependencies = [
 [[package]]
 name = "scenograph"
 version = "0.0.6"
-source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
+source = "git+https://github.com/merely-made/mere.git?branch=main#ec7ba066e008036436a06a7ce49f75fbe111e056"
 dependencies = [
  "incipit",
  "sceno",
