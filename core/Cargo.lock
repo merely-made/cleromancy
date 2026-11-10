@@ -139,7 +139,7 @@ checksum = "fc652a48c352aef3ea3aed32080501cf3ef6ed5da78602a020c991775b0aff04"
 [[package]]
 name = "catchment"
 version = "0.1.0"
-source = "git+https://github.com/merely-made/mere.git?branch=main#ad54446577df132b172dc8c6e8faf31cc8a87dd9"
+source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
 dependencies = [
  "async-trait",
  "dirs",
@@ -207,7 +207,7 @@ dependencies = [
 [[package]]
 name = "chartulary"
 version = "0.3.0"
-source = "git+https://github.com/merely-made/eidetic.git?branch=main#8e903bf15936935bd1369547310877d52429ab63"
+source = "git+https://github.com/merely-made/eidetic.git?branch=main#60f3d601acc0b8de467d0b154d4843ada09740a3"
 dependencies = [
  "muniment",
  "petgraph",
@@ -575,7 +575,7 @@ dependencies = [
 [[package]]
 name = "eidetic"
 version = "0.0.3"
-source = "git+https://github.com/merely-made/eidetic.git?branch=main#8e903bf15936935bd1369547310877d52429ab63"
+source = "git+https://github.com/merely-made/eidetic.git?branch=main#60f3d601acc0b8de467d0b154d4843ada09740a3"
 dependencies = [
  "async-trait",
  "blake3",
@@ -988,7 +988,7 @@ dependencies = [
 [[package]]
 name = "incipit"
 version = "0.2.3"
-source = "git+https://github.com/merely-made/mere.git?branch=main#ad54446577df132b172dc8c6e8faf31cc8a87dd9"
+source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
 dependencies = [
  "catchment",
  "petgraph",
@@ -1200,7 +1200,7 @@ checksum = "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
 [[package]]
 name = "mere"
 version = "0.0.2"
-source = "git+https://github.com/merely-made/mere.git?branch=main#ad54446577df132b172dc8c6e8faf31cc8a87dd9"
+source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
 dependencies = [
  "incipit",
  "mere-kernel",
@@ -1212,7 +1212,7 @@ dependencies = [
 [[package]]
 name = "mere-facts"
 version = "0.1.0"
-source = "git+https://github.com/merely-made/mere.git?branch=main#ad54446577df132b172dc8c6e8faf31cc8a87dd9"
+source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
 dependencies = [
  "blake3",
  "chartulary",
@@ -1227,7 +1227,7 @@ dependencies = [
 [[package]]
 name = "mere-kernel"
 version = "0.0.3"
-source = "git+https://github.com/merely-made/mere.git?branch=main#ad54446577df132b172dc8c6e8faf31cc8a87dd9"
+source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
 dependencies = [
  "accesskit",
  "chartulary",
@@ -1288,7 +1288,7 @@ dependencies = [
 [[package]]
 name = "muniment"
 version = "0.2.1"
-source = "git+https://github.com/merely-made/eidetic.git?branch=main#8e903bf15936935bd1369547310877d52429ab63"
+source = "git+https://github.com/merely-made/eidetic.git?branch=main#60f3d601acc0b8de467d0b154d4843ada09740a3"
 dependencies = [
  "async-trait",
  "blake3",
@@ -1351,7 +1351,7 @@ checksum = "04744f49eae99ab78e0d5c0b603ab218f515ea8cfe5a456d7629ad883a3b6e7d"
 [[package]]
 name = "pandect"
 version = "0.2.0"
-source = "git+https://github.com/merely-made/mere.git?branch=main#ad54446577df132b172dc8c6e8faf31cc8a87dd9"
+source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
 dependencies = [
  "async-trait",
  "blake3",
@@ -1666,7 +1666,7 @@ dependencies = [
 [[package]]
 name = "scenograph"
 version = "0.0.6"
-source = "git+https://github.com/merely-made/mere.git?branch=main#ad54446577df132b172dc8c6e8faf31cc8a87dd9"
+source = "git+https://github.com/merely-made/mere.git?branch=main#cc5d2161dd093ff4c116cda882be6c78b957c758"
 dependencies = [
  "incipit",
  "sceno",
@@ -1779,7 +1779,7 @@ dependencies = [
 [[package]]
 name = "servitor"
 version = "0.0.3"
-source = "git+https://github.com/merely-made/eidetic.git?branch=main#8e903bf15936935bd1369547310877d52429ab63"
+source = "git+https://github.com/merely-made/eidetic.git?branch=main#60f3d601acc0b8de467d0b154d4843ada09740a3"
 dependencies = [
  "chartulary",
  "insigne",
