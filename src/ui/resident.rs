@@ -28,7 +28,7 @@ pub(crate) struct ResidentConsultation {
     graph_projection: ProjectionSnapshot,
     envelope: Option<session_item::SessionGraphV1>,
     archive: Option<ProjectionSnapshot>,
-    transient_view: Option<(pandect::SessionId, pandect::ViewIntent)>,
+    transient_view: Option<(pandect::SessionId, incipit::view::ViewIntent)>,
     pub model: MereViewModel,
     pub unavailable: bool,
     pub saved_notice: Option<String>,

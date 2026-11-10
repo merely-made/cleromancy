@@ -59,7 +59,7 @@ fn session_without_own_view_clears_previous_saved_layout() {
     let mut original = envelope();
     original.views.insert(
         "reading-workspace".into(),
-        pandect::ViewIntent {
+        incipit::view::ViewIntent {
             strategy: Some("grid.default".into()),
             ..Default::default()
         },
@@ -72,7 +72,7 @@ fn session_without_own_view_clears_previous_saved_layout() {
     next.session = serde_json::from_str("\"00000000-0000-0000-0000-000000000002\"").unwrap();
     next.views.insert(
         "graphshell.mere".into(),
-        pandect::ViewIntent {
+        incipit::view::ViewIntent {
             strategy: Some("spiral.default".into()),
             ..Default::default()
         },
@@ -84,7 +84,7 @@ fn session_without_own_view_clears_previous_saved_layout() {
     restore_scoped_layout(&mut model, Some(&original));
     assert_eq!(model.layout, "grid.default");
     next.views
-        .insert("reading-workspace".into(), pandect::ViewIntent::default());
+        .insert("reading-workspace".into(), incipit::view::ViewIntent::default());
     restore_scoped_layout(&mut model, Some(&next));
     assert_eq!(model.layout, MereViewModel::default().layout);
     restore_scoped_layout(&mut model, Some(&original));

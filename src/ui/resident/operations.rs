@@ -423,7 +423,7 @@ impl ResidentConsultation {
         Ok(())
     }
 
-    pub(super) fn reading_view(&self) -> pandect::ViewIntent {
+    pub(super) fn reading_view(&self) -> incipit::view::ViewIntent {
         if let Some((id, view)) = &self.transient_view
             && self
                 .envelope
@@ -439,7 +439,7 @@ impl ResidentConsultation {
             .unwrap_or_default()
     }
 
-    pub(super) async fn set_view(&mut self, view: pandect::ViewIntent) -> Result<(), String> {
+    pub(super) async fn set_view(&mut self, view: incipit::view::ViewIntent) -> Result<(), String> {
         let envelope = self
             .envelope
             .as_ref()

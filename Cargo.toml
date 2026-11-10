@@ -46,6 +46,8 @@ ostiary = { version = "0.0.1", git = "https://github.com/merely-made/armillary.g
 mere-overmap = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["resident"] }
 mere-view = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 pandect = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+# The reading view's state type (engine split D78: ViewIntent left pandect).
+incipit = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["view"] }
 sprigging = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 tokio = { version = "1", features = ["rt-multi-thread", "time"] }
 blake3 = "1"
