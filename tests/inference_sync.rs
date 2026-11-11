@@ -7,6 +7,7 @@ use cleromancy::{
     TarotQualification, export_sync_batch, import_sync_projection,
 };
 use pandect::personal_sync::{PersonalGraphReplica, SyncRoster};
+use kernel::graph::fixtures::GraphFixtures as _;
 use muniment::MemoryBackend;
 use personae::{IdentityProvider, InMemoryProvider};
 

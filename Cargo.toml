@@ -146,6 +146,8 @@ path = "src/bin/cleromancy_receipt.rs"
 required-features = ["legacy-receipts"]
 
 [dev-dependencies]
+# Raw facet-store access for the sync tamper tests (tests only, not the library).
+kernel = { package = "mere-kernel", git = "https://github.com/merely-made/mere.git", branch = "main", features = ["fixtures"] }
 # The resident task set the app door used to export (Mere 8f26d9629 moved it here).
 armillary = { git = "https://github.com/merely-made/armillary.git", branch = "main" }
 async-trait = "0.1"
