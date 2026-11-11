@@ -12,7 +12,7 @@ impl<B: Backend> CleromancyHost<B> {
             projection_session: ProjectionSession(LOCAL_SESSION.to_string()),
             graph: Graph::new(),
             #[cfg(not(feature = "portable-core"))]
-            projection_channels: std::sync::Mutex::new(pictograph::canvas::ChannelRegistry::new()),
+            projection_channels: std::sync::Mutex::new(cartography::canvas::ChannelRegistry::new()),
             projection_epoch: 1,
             projection_revision: 1,
             resources: BTreeMap::new(),
@@ -34,7 +34,7 @@ impl<B: Backend> CleromancyHost<B> {
                 projection_session: ProjectionSession(LOCAL_SESSION.to_string()),
                 graph: Graph::new(),
                 #[cfg(not(feature = "portable-core"))]
-                projection_channels: std::sync::Mutex::new(pictograph::canvas::ChannelRegistry::new()),
+                projection_channels: std::sync::Mutex::new(cartography::canvas::ChannelRegistry::new()),
                 projection_epoch: 1,
                 projection_revision: 1,
                 resources: BTreeMap::new(),
@@ -54,7 +54,7 @@ impl<B: Backend> CleromancyHost<B> {
             projection_session: ProjectionSession(LOCAL_SESSION.to_string()),
             graph,
             #[cfg(not(feature = "portable-core"))]
-            projection_channels: std::sync::Mutex::new(pictograph::canvas::ChannelRegistry::new()),
+            projection_channels: std::sync::Mutex::new(cartography::canvas::ChannelRegistry::new()),
             projection_epoch: saved.projection_epoch,
             projection_revision: saved.projection_revision,
             resources: BTreeMap::new(),

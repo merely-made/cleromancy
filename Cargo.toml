@@ -40,39 +40,39 @@ personal-facts = { package = "mere-facts", git = "https://github.com/merely-made
 
 esp = { optional = true, default-features = false, git = "https://github.com/merely-made/distillery.git", branch = "main" }
 sha2 = { version = "0.10", optional = true }
-fetch = { package = "mere-fetch", git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false }
-mere-resident = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false }
+fetch = { package = "mere-fetch", git = "https://github.com/merely-made/graphshell.git", branch = "main", default-features = false }
+mere-resident = { git = "https://github.com/merely-made/graphshell.git", branch = "main", default-features = false }
 ostiary = { version = "0.0.1", git = "https://github.com/merely-made/armillary.git", branch = "main", features = ["native"] }
-mere-overmap = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["resident"] }
-mere-view = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+mere-overmap = { git = "https://github.com/merely-made/graphshell.git", branch = "main", features = ["resident"] }
+mere-view = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 pandect = { git = "https://github.com/merely-made/mere.git", branch = "main" }
 # The reading view's state type (engine split D78: ViewIntent left pandect).
-incipit = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["view"] }
-sprigging = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+incipit = { git = "https://github.com/merely-made/graphshell.git", branch = "main", features = ["view"] }
+sprigging = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 tokio = { version = "1", features = ["rt-multi-thread", "time"] }
 blake3 = "1"
-cambium = { git = "https://github.com/merely-made/mere.git", branch = "main", version = "0.6.0" }
-cambium-desktop = { git = "https://github.com/merely-made/mere.git", branch = "main", version = "0.1.0" }
+cambium = { git = "https://github.com/merely-made/graphshell.git", branch = "main", version = "0.6.0" }
+cambium-desktop = { git = "https://github.com/merely-made/graphshell.git", branch = "main", version = "0.1.0" }
 chartulary = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
 dirs = "6"
-graphshell-host = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["native"] }
+graphshell-host = { git = "https://github.com/merely-made/graphshell.git", branch = "main", default-features = false, features = ["native"] }
 graphshell-client = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 graphshell-endpoint = { git = "https://github.com/merely-made/graphshell.git", branch = "main", features = ["local", "stdio"] }
-graphshell-door = { git = "https://github.com/merely-made/mere.git", branch = "main", features = ["projection-door"] }
+graphshell-door = { git = "https://github.com/merely-made/graphshell.git", branch = "main", features = ["projection-door"] }
 chirograph = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 genet-scripted-dom = { git = "https://github.com/merely-made/genet.git", branch = "main", version = "0.1.2" }
 layout-dom-api = { git = "https://github.com/merely-made/genet.git", branch = "main", version = "0.1.1" }
 kernel = { package = "mere-kernel", git = "https://github.com/merely-made/mere.git", branch = "main" }
-mandrake = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-meristem = { git = "https://github.com/merely-made/mere.git", branch = "main", version = "0.2.0" }
+mandrake = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
+meristem = { git = "https://github.com/merely-made/graphshell.git", branch = "main", version = "0.2.0" }
 muniment = { features = ["redb"], git = "https://github.com/merely-made/eidetic.git", branch = "main" }
-pictograph = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["canvas", "physics-engine"] }
+cartography = { package = "mere-cartography", git = "https://github.com/merely-made/graphshell.git", branch = "main", default-features = false, features = ["canvas", "physics-engine"] }
 personae = { git = "https://github.com/merely-made/dramatis.git", branch = "main" }
 pollster = "0.4"
 rand_core = { version = "0.6", features = ["getrandom"] }
 sceno = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
-scenograph = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-scenomise = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+scenograph = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
+scenomise = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 seiche = { git = "https://github.com/merely-made/seiche.git", branch = "main", default-features = false, features = ["serde"] }
 scenotime = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 serde = { version = "1", features = ["derive"] }
@@ -80,7 +80,7 @@ serde_json = "1"
 servitor = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
 taproot = { git = "https://github.com/merely-made/genet.git", branch = "main" }
 thiserror = "2"
-tabard = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+tabard = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 tabard-workshop = { git = "https://github.com/merely-made/graphshell.git", branch = "main", features = ["native-host"] }
 tinct = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 uuid = { version = "1", features = ["serde"], optional = true }
@@ -152,7 +152,7 @@ kernel = { package = "mere-kernel", git = "https://github.com/merely-made/mere.g
 armillary = { git = "https://github.com/merely-made/armillary.git", branch = "main" }
 async-trait = "0.1"
 castellan = { git = "https://github.com/merely-made/dramatis.git", branch = "main", features = ["keeper"] }
-mere-resident = { git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false, features = ["in-process-custody"] }
+mere-resident = { git = "https://github.com/merely-made/graphshell.git", branch = "main", default-features = false, features = ["in-process-custody"] }
 tempfile = "3"
 # The authority guest tests sign the component into the pack the owner reviews.
 eidetic = { git = "https://github.com/merely-made/eidetic.git", branch = "main", features = ["pack-signing"] }
@@ -167,16 +167,16 @@ djinn = { version = "0.0.3", git = "https://github.com/merely-made/armillary.git
 # Producer contracts use the same Mere source as the host.
 sceno = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 scenotime = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
-scenograph = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-scenomise = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+scenograph = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
+scenomise = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 graphshell-endpoint = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
-incipit = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+incipit = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 chirograph = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
-mere-surface-api = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-cambium = { git = "https://github.com/merely-made/mere.git", branch = "main" }
-workbench = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+mere-surface-api = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
+cambium = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
+workbench = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 hest = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
-sprigging = { git = "https://github.com/merely-made/mere.git", branch = "main" }
+sprigging = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 # Resident custody and the host share one OS peer-facts vocabulary.
 peer-facts = { version = "0.0.1", git = "https://github.com/merely-made/armillary.git", branch = "main" }
 # Promoted sources shared with immutable older Mere suppliers.

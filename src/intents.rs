@@ -277,6 +277,7 @@ pub fn advertised_actions() -> Vec<AdvertisedAction> {
             explanation: "Apply the declared qualifier and append a replayable reading."
                 .to_string(),
             payload_schema: READ_SCHEMA.to_string(),
+            icon: None,
             input_form: None,
             effect: IntentEffect::DomainTruth,
         },
@@ -286,6 +287,7 @@ pub fn advertised_actions() -> Vec<AdvertisedAction> {
             explanation: "Cast across the qualified field and append its bounded sample receipt."
                 .to_string(),
             payload_schema: SELECT_SCHEMA.to_string(),
+            icon: None,
             input_form: None,
             effect: IntentEffect::DomainTruth,
         },
@@ -295,6 +297,7 @@ pub fn advertised_actions() -> Vec<AdvertisedAction> {
             explanation: "Cast one uniformly weighted die and append the replayable result."
                 .to_string(),
             payload_schema: ROLL_SCHEMA.to_string(),
+            icon: None,
             input_form: None,
             effect: IntentEffect::DomainTruth,
         },
@@ -305,6 +308,7 @@ pub fn advertised_actions() -> Vec<AdvertisedAction> {
                 "Cast foundation, tension, and next step, then append their replayable graph frame."
                     .to_string(),
             payload_schema: THREE_CARD_SPREAD_INTENT_SCHEMA.to_string(),
+            icon: None,
             input_form: None,
             effect: IntentEffect::DomainTruth,
         },
@@ -315,6 +319,7 @@ pub fn advertised_actions() -> Vec<AdvertisedAction> {
                 "Choose an explicit field, layout, and deterministic or cast mode; the selected composition is saved with its workings."
                     .to_string(),
             payload_schema: COMPOSE_READING_SCHEMA.to_string(),
+            icon: None,
             input_form: None,
             effect: IntentEffect::DomainTruth,
         },
@@ -338,6 +343,7 @@ pub fn concurrence_actions(
             "Pair this saved astrology fact set or reading session with its selected counterpart. The result records only that they were consulted together."
                 .to_string(),
         payload_schema: CREATE_CONCURRENCE_SCHEMA.to_string(),
+        icon: None,
         input_form: Some(
             ActionFormV1::new(CREATE_CONCURRENCE_SCHEMA)
                 .with_field(

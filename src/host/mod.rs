@@ -166,7 +166,7 @@ pub struct CleromancyHost<B> {
     // Transient layout facts belong to this graph owner. This is neither a
     // persisted record nor projection-session/custody authority.
     #[cfg(not(feature = "portable-core"))]
-    projection_channels: std::sync::Mutex<pictograph::canvas::ChannelRegistry>,
+    projection_channels: std::sync::Mutex<cartography::canvas::ChannelRegistry>,
     pub(crate) projection_epoch: u64,
     pub(crate) projection_revision: u64,
     pub(crate) resources: BTreeMap<ContentHash, Vec<u8>>,
@@ -189,7 +189,7 @@ impl CleromancyHost<muniment::MemoryBackend> {
             projection_session: ProjectionSession(LOCAL_SESSION.to_string()),
             graph,
             #[cfg(not(feature = "portable-core"))]
-            projection_channels: std::sync::Mutex::new(pictograph::canvas::ChannelRegistry::new()),
+            projection_channels: std::sync::Mutex::new(cartography::canvas::ChannelRegistry::new()),
             projection_epoch: 1,
             projection_revision: 1,
             resources: BTreeMap::new(),
