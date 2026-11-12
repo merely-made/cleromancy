@@ -4,9 +4,7 @@
 /.cargo/
 # receipts/ is local output only; archived evidence lives in Code/testing/cleromancy/.
 /receipts/
-Cargo.lock
-!/Cargo.lock
-!/core/Cargo.lock
-!/authority-guest/Cargo.lock
 /authority-guest/target/
 /authority-guest/wit/
+# Not tracked: what cargo resolved is a git note on each commit (scripts/record-resolved.sh).
+Cargo.lock
