@@ -95,6 +95,7 @@ The Windows baseline for the [H7 source pass](2026-11-03_source_splits_plan.md) 
 ## Findings
 
 - 2026-11-01: Isocosm no longer depends on Cleromancy: its commit `9c991e87` ("Remove Cleromancy from the VTT") removed the dependency, and its `Cargo.toml` has no Cleromancy entry. The headed plan's second-consumer item is therefore closed, not open.
+- 2026-11-12: `core/`'s test targets do not compile under `cargo check --locked --all-targets` in the `core/` lock root: `tests/common/authority_pack.rs` names `eidetic`, `mere_resident` and `ostiary`, which `core/Cargo.toml` does not declare (its test targets point at `../tests`). Seen during the engine split's P4 relock (`617e005`); a lock cannot change a manifest, so it predates the relock, but it was read, not baselined at the earlier commit. The library check is clean.
 
 ## Progress
 
