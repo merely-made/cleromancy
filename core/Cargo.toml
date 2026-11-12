@@ -103,11 +103,6 @@ path = "../tests/inference.rs"
 name = "natal"
 path = "../tests/natal.rs"
 
-[patch."https://github.com/merely-made/mere.git"]
-chartulary = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
-muniment = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
-servitor = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
-
 [lints.clippy]
 missing_errors_doc = "warn"
 missing_panics_doc = "warn"

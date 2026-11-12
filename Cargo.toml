@@ -180,13 +180,7 @@ sprigging = { git = "https://github.com/merely-made/graphshell.git", branch = "m
 # Resident custody and the host share one OS peer-facts vocabulary.
 peer-facts = { version = "0.0.1", git = "https://github.com/merely-made/armillary.git", branch = "main" }
 # Promoted sources shared with immutable older Mere suppliers.
-errand = { git = "https://github.com/merely-made/errand.git", branch = "main" }
-finger-protocol = { git = "https://github.com/merely-made/errand.git", branch = "main" }
 gemini-protocol = { git = "https://github.com/merely-made/errand.git", branch = "main" }
-gopher-protocol = { git = "https://github.com/merely-made/errand.git", branch = "main" }
-guppy-protocol = { git = "https://github.com/merely-made/errand.git", branch = "main" }
-misfin = { git = "https://github.com/merely-made/errand.git", branch = "main" }
-nex-protocol = { git = "https://github.com/merely-made/errand.git", branch = "main" }
 scroll-protocol = { git = "https://github.com/merely-made/errand.git", branch = "main" }
 spartan-protocol = { git = "https://github.com/merely-made/errand.git", branch = "main" }
 # Canonical promoted families; keep registry and Git consumers type-identical.
@@ -217,35 +211,6 @@ netrender-vello-shaders = { git = "https://github.com/mark-ik/vello", branch = "
 # on its own, so its entry buys source identity with the stack rather than a
 # fix, and keeps the pair from drifting apart on a future resolve.
 gpu-allocator = { git = "https://github.com/merely-made/genet.git", branch = "main" }
-
-# Family source convention (Mere family composition brief): every first-party row
-# names its repository by `branch = "main"` at the canonical URL and Cargo.lock
-# pins the revision, so the www and double-slash spellings that gave two sources
-# one replacement identity are gone. These rows redirect packages that left Mere.
-[patch."https://github.com/merely-made/mere.git"]
-# Promoted sources shared with immutable older Mere suppliers.
-chartulary = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
-eidetic = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
-errand = { git = "https://github.com/merely-made/errand.git", branch = "main" }
-esp = { git = "https://github.com/merely-made/distillery.git", branch = "main" }
-luggage = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
-mere-proofs = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
-muniment = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
-servitor = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
-stickleback = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
-insigne = { git = "https://github.com/merely-made/dramatis.git", branch = "main" }
-mere-transport = { git = "https://github.com/merely-made/murm.git", branch = "main" }
-notochord = { git = "https://github.com/merely-made/dramatis.git", branch = "main" }
-personae = { git = "https://github.com/merely-made/dramatis.git", branch = "main" }
-murm-webrtc = { git = "https://github.com/merely-made/murm.git", branch = "main" }
-
-# Mere's Djinn names this package through its own Cleromancy pin; the path keeps
-# one Cleromancy source in this graph.
-distillery = { git = "https://github.com/merely-made/distillery.git", branch = "main" }
-mere-mesh = { git = "https://github.com/merely-made/distillery.git", branch = "main" }
-
-[patch."https://github.com/merely-made/cleromancy.git"]
-cleromancy-core = { path = "core" }
 
 # Older suppliers (Mere's Knot pin among them) name earlier eidetic and esp
 # revisions. Mere routes every revision through the www spelling of the URL at
