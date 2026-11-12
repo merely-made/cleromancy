@@ -139,7 +139,7 @@ checksum = "fc652a48c352aef3ea3aed32080501cf3ef6ed5da78602a020c991775b0aff04"
 [[package]]
 name = "catchment"
 version = "0.1.0"
-source = "git+https://github.com/merely-made/mere.git?branch=main#299d19b631ac647bf0fa7fdcc10e61b9caf13b94"
+source = "git+https://github.com/merely-made/mere.git?branch=main#f4aef3e6877a72de0393a2c9a3f785895580d068"
 dependencies = [
  "async-trait",
  "dirs",
@@ -207,7 +207,7 @@ dependencies = [
 [[package]]
 name = "chartulary"
 version = "0.3.0"
-source = "git+https://github.com/merely-made/eidetic.git?branch=main#60f3d601acc0b8de467d0b154d4843ada09740a3"
+source = "git+https://github.com/merely-made/eidetic.git?branch=main#a4a23f818e5fd17af4ca0509ac6343cada5468ca"
 dependencies = [
  "muniment",
  "petgraph",
@@ -221,7 +221,7 @@ dependencies = [
 [[package]]
 name = "chirograph"
 version = "0.0.5"
-source = "git+https://github.com/merely-made/graphshell.git?branch=main#893818f6cb74606f7ed9dcd0cd38947e538f564b"
+source = "git+https://github.com/merely-made/graphshell.git?branch=main#ca14acaf947a40c971de0ba0d594067730ea11b8"
 dependencies = [
  "base64",
  "blake3",
@@ -525,7 +525,7 @@ dependencies = [
 [[package]]
 name = "dramatis"
 version = "0.0.5"
-source = "git+https://github.com/merely-made/dramatis.git?branch=main#a96e22df81fd068100360a20fe861b086d8b8123"
+source = "git+https://github.com/merely-made/dramatis.git?branch=main#b54da0a99dec4e97527e3515c45a58af05c1878f"
 dependencies = [
  "gaz",
  "personae",
@@ -575,7 +575,7 @@ dependencies = [
 [[package]]
 name = "eidetic"
 version = "0.0.3"
-source = "git+https://github.com/merely-made/eidetic.git?branch=main#60f3d601acc0b8de467d0b154d4843ada09740a3"
+source = "git+https://github.com/merely-made/eidetic.git?branch=main#a4a23f818e5fd17af4ca0509ac6343cada5468ca"
 dependencies = [
  "async-trait",
  "blake3",
@@ -721,7 +721,7 @@ dependencies = [
 [[package]]
 name = "gaz"
 version = "0.0.3"
-source = "git+https://github.com/merely-made/dramatis.git?branch=main#a96e22df81fd068100360a20fe861b086d8b8123"
+source = "git+https://github.com/merely-made/dramatis.git?branch=main#b54da0a99dec4e97527e3515c45a58af05c1878f"
 dependencies = [
  "insigne",
  "serde",
@@ -770,7 +770,7 @@ dependencies = [
 [[package]]
 name = "graphshell-client"
 version = "0.0.2"
-source = "git+https://github.com/merely-made/graphshell.git?branch=main#893818f6cb74606f7ed9dcd0cd38947e538f564b"
+source = "git+https://github.com/merely-made/graphshell.git?branch=main#ca14acaf947a40c971de0ba0d594067730ea11b8"
 dependencies = [
  "chirograph",
  "hest",
@@ -838,7 +838,7 @@ checksum = "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea"
 [[package]]
 name = "hest"
 version = "0.2.1"
-source = "git+https://github.com/merely-made/graphshell.git?branch=main#893818f6cb74606f7ed9dcd0cd38947e538f564b"
+source = "git+https://github.com/merely-made/graphshell.git?branch=main#ca14acaf947a40c971de0ba0d594067730ea11b8"
 dependencies = [
  "serde",
 ]
@@ -982,7 +982,7 @@ dependencies = [
 [[package]]
 name = "incipit"
 version = "0.2.3"
-source = "git+https://github.com/merely-made/graphshell.git?branch=main#893818f6cb74606f7ed9dcd0cd38947e538f564b"
+source = "git+https://github.com/merely-made/graphshell.git?branch=main#ca14acaf947a40c971de0ba0d594067730ea11b8"
 dependencies = [
  "catchment",
  "serde",
@@ -1020,7 +1020,7 @@ dependencies = [
 [[package]]
 name = "insigne"
 version = "0.0.2"
-source = "git+https://github.com/merely-made/dramatis.git?branch=main#a96e22df81fd068100360a20fe861b086d8b8123"
+source = "git+https://github.com/merely-made/dramatis.git?branch=main#b54da0a99dec4e97527e3515c45a58af05c1878f"
 dependencies = [
  "blake3",
  "ed25519-dalek",
@@ -1191,7 +1191,7 @@ checksum = "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
 [[package]]
 name = "mere-facts"
 version = "0.1.0"
-source = "git+https://github.com/merely-made/mere.git?branch=main#299d19b631ac647bf0fa7fdcc10e61b9caf13b94"
+source = "git+https://github.com/merely-made/mere.git?branch=main#f4aef3e6877a72de0393a2c9a3f785895580d068"
 dependencies = [
  "blake3",
  "chartulary",
@@ -1206,7 +1206,7 @@ dependencies = [
 [[package]]
 name = "mere-kernel"
 version = "0.0.3"
-source = "git+https://github.com/merely-made/mere.git?branch=main#299d19b631ac647bf0fa7fdcc10e61b9caf13b94"
+source = "git+https://github.com/merely-made/mere.git?branch=main#f4aef3e6877a72de0393a2c9a3f785895580d068"
 dependencies = [
  "accesskit",
  "chartulary",
@@ -1266,7 +1266,7 @@ dependencies = [
 [[package]]
 name = "muniment"
 version = "0.2.1"
-source = "git+https://github.com/merely-made/eidetic.git?branch=main#60f3d601acc0b8de467d0b154d4843ada09740a3"
+source = "git+https://github.com/merely-made/eidetic.git?branch=main#a4a23f818e5fd17af4ca0509ac6343cada5468ca"
 dependencies = [
  "async-trait",
  "blake3",
@@ -1278,7 +1278,7 @@ dependencies = [
 [[package]]
 name = "notochord"
 version = "0.1.1"
-source = "git+https://github.com/merely-made/dramatis.git?branch=main#a96e22df81fd068100360a20fe861b086d8b8123"
+source = "git+https://github.com/merely-made/dramatis.git?branch=main#b54da0a99dec4e97527e3515c45a58af05c1878f"
 dependencies = [
  "blake3",
  "insigne",
@@ -1329,7 +1329,7 @@ checksum = "04744f49eae99ab78e0d5c0b603ab218f515ea8cfe5a456d7629ad883a3b6e7d"
 [[package]]
 name = "pandect"
 version = "0.2.0"
-source = "git+https://github.com/merely-made/mere.git?branch=main#299d19b631ac647bf0fa7fdcc10e61b9caf13b94"
+source = "git+https://github.com/merely-made/mere.git?branch=main#f4aef3e6877a72de0393a2c9a3f785895580d068"
 dependencies = [
  "async-trait",
  "blake3",
@@ -1343,7 +1343,6 @@ dependencies = [
  "insigne",
  "mere-kernel",
  "muniment",
- "notochord",
  "personae",
  "serde",
  "serde_json",
@@ -1360,7 +1359,7 @@ checksum = "9b4f627cb1b25917193a259e49bdad08f671f8d9708acfd5fe0a8c1455d87220"
 [[package]]
 name = "personae"
 version = "0.3.1"
-source = "git+https://github.com/merely-made/dramatis.git?branch=main#a96e22df81fd068100360a20fe861b086d8b8123"
+source = "git+https://github.com/merely-made/dramatis.git?branch=main#b54da0a99dec4e97527e3515c45a58af05c1878f"
 dependencies = [
  "blake3",
  "chacha20poly1305",
@@ -1635,7 +1634,7 @@ checksum = "cf54715a573b99ac80df0bc206da022bcd442c974952c7b9720069370852e21f"
 [[package]]
 name = "sceno"
 version = "0.0.7"
-source = "git+https://github.com/merely-made/graphshell.git?branch=main#893818f6cb74606f7ed9dcd0cd38947e538f564b"
+source = "git+https://github.com/merely-made/graphshell.git?branch=main#ca14acaf947a40c971de0ba0d594067730ea11b8"
 dependencies = [
  "serde",
  "serde_json",
@@ -1644,7 +1643,7 @@ dependencies = [
 [[package]]
 name = "scenograph"
 version = "0.0.6"
-source = "git+https://github.com/merely-made/graphshell.git?branch=main#893818f6cb74606f7ed9dcd0cd38947e538f564b"
+source = "git+https://github.com/merely-made/graphshell.git?branch=main#ca14acaf947a40c971de0ba0d594067730ea11b8"
 dependencies = [
  "incipit",
  "sceno",
@@ -1655,7 +1654,7 @@ dependencies = [
 [[package]]
 name = "scenotime"
 version = "0.0.5"
-source = "git+https://github.com/merely-made/graphshell.git?branch=main#893818f6cb74606f7ed9dcd0cd38947e538f564b"
+source = "git+https://github.com/merely-made/graphshell.git?branch=main#ca14acaf947a40c971de0ba0d594067730ea11b8"
 dependencies = [
  "sceno",
  "serde",
@@ -1757,7 +1756,7 @@ dependencies = [
 [[package]]
 name = "servitor"
 version = "0.0.3"
-source = "git+https://github.com/merely-made/eidetic.git?branch=main#60f3d601acc0b8de467d0b154d4843ada09740a3"
+source = "git+https://github.com/merely-made/eidetic.git?branch=main#a4a23f818e5fd17af4ca0509ac6343cada5468ca"
 dependencies = [
  "chartulary",
  "insigne",
@@ -1866,7 +1865,7 @@ dependencies = [
 [[package]]
 name = "sporran"
 version = "0.0.1"
-source = "git+https://github.com/merely-made/dramatis.git?branch=main#a96e22df81fd068100360a20fe861b086d8b8123"
+source = "git+https://github.com/merely-made/dramatis.git?branch=main#b54da0a99dec4e97527e3515c45a58af05c1878f"
 dependencies = [
  "async-trait",
  "blake3",
