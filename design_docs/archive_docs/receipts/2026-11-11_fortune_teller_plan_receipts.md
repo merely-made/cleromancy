@@ -2,6 +2,45 @@
 
 ## 2026-11-13
 
+### misaki lexicons
+
+- Inputs: `misaki-us_gold.json` (3,000,469 bytes) and
+  `misaki-us_silver.json` (3,099,517 bytes) as embedded in the `loqui-g2p`
+  0.4.0 crate source, which its NOTICE says are misaki 0.9.4 unmodified.
+  Keys lowercased; an entry with part-of-speech variants uses its default.
+- Loaded: gold 89,359, silver 93,361, in both 4,321.
+- Gold: 36,916 words in CMUdict, 52,443 not (17,953 of those in
+  LibriSpeech). Against CMUdict 77.9% exact, 4.0% phone error; against
+  Wiktionary US on CMUdict words (26,784) 79.8%, 3.7%; on non-CMUdict words
+  (13,882) 68.4%, 5.6%; against LibriSpeech on non-CMUdict words 53.7%,
+  9.4%. Primary stress on the same vowel as some CMUdict variant: 35,314 of
+  36,771 (96.0%).
+- Silver: 14,303 in CMUdict, 79,058 not (11,372 in LibriSpeech). Against
+  CMUdict 85.8%, 2.8%; Wiktionary on CMUdict words (5,282) 88.9%, 2.3%; on
+  non-CMUdict words (4,280) 73.3%, 5.4%; against LibriSpeech 69.6%, 6.3%.
+  Primary stress: 13,879 of 14,302 (97.0%).
+- WordNet single words 68,869, not in CMUdict 36,701: in gold 21,134
+  (57.6%); gold or silver 24,049 (65.5%). CMUdict + gold 53,302 (77.4%);
+  + silver 56,217 (81.6%); + LibriSpeech 57,934 (84.1%).
+
+### Guesser trial
+
+- Harness: a scratch Cargo project at `Code/testing/soothsayer/g2p-trial/`
+  (source, `words.txt` and `out.tsv` kept; build output removed) depending
+  on `grapheme_to_phoneme` 0.1.0 and `loqui-g2p` 0.4.0 from crates.io.
+  Neither has a build script. Release build; 45 s to run both over the list.
+- Word list: LibriSpeech-only words also in Wiktionary US, letters only:
+  11,036. Scored as in the yardstick below; loqui's phonemes mapped from its
+  misaki symbols first. 11,029 words scored.
+- All words: LibriSpeech 52.0% exact, 11.7% phone error;
+  grapheme_to_phoneme 43.7%, 18.2%; loqui-g2p 65.2%, 7.8%.
+- 7,840 of the words are keys in loqui's `misaki-us_gold.json` or
+  `misaki-us_silver.json`. On the 3,194 that are not: LibriSpeech 44.7%,
+  15.7%; grapheme_to_phoneme 39.7%, 20.6%; loqui-g2p 48.0%, 15.1%.
+- LibriSpeech and grapheme_to_phoneme agree on 5,039 words: 75.1% exact,
+  5.8% phone error there. On the 5,993 where they differ: LibriSpeech
+  32.6%, 15.6%; grapheme_to_phoneme 17.3%, 26.4%.
+
 ### LibriSpeech against CMUdict
 
 Words lowercased, alternates folded. cmudict 125,929 words; librispeech

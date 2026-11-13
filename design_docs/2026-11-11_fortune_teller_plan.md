@@ -305,6 +305,47 @@ Recorded in the words given, 2026-11-11.
 
 ## Findings
 
+- 2026-11-13. The misaki lexicons checked as a third dictionary (version
+  0.9.4 as bundled in `loqui-g2p` 0.4.0; receipts file):
+  - Provenance is undocumented. The misaki repository is Apache-2.0 and says
+    nothing about where the "gold" and "silver" dictionaries came from, what
+    the tiers mean, or whether the data has its own licence (reported by a
+    web lane from the README, LICENSE, EN_PHONES.md and data listing).
+  - Size: gold 89,359 usable US words, silver 93,361, 4,321 in both. They
+    carry primary and secondary stress marks.
+  - They are not a copy of CMUdict or of Wiktionary. On words CMUdict has,
+    gold matches CMUdict 77.9% and Wiktionary 79.8%, the level two
+    independent human sources reach (82.1%), and puts primary stress on the
+    same vowel as CMUdict 96.0% of the time (silver 97.0%).
+  - On words CMUdict lacks, against Wiktionary: gold 68.4% exact, 5.6%
+    phone error; silver 73.3%, 5.4%. LibriSpeech's guesses score 52.0%,
+    11.7% on their list. So these read as dictionary-grade, not guesses.
+  - Coverage of WordNet's 36,701 single words missing from CMUdict: gold
+    57.6%, gold or silver 65.5%. CMUdict with gold reaches 77.4% of single
+    words; with silver 81.6%; with LibriSpeech's guesses as well, 84.1%.
+
+- 2026-11-13. Guesser trial (D40), 11,036 LibriSpeech-only words that
+  Wiktionary US also has, stress ignored (receipts file):
+  - LibriSpeech's own entries: 52.0% exact, 11.7% phone error.
+  - `grapheme_to_phoneme` 0.1.0 (Rust port of a 2020 neural model, ARPAbet
+    with stress, BSD-4-Clause): 43.7%, 18.2%. Worse than the mark.
+  - `loqui-g2p` 0.4.0 (MIT; misaki lexicons then a small neural model, both
+    Apache-2.0 by its NOTICE): 65.2%, 7.8% overall, but 7,840 of the words
+    are in its lexicons. On the 3,194 words outside them, where its guesser
+    works alone: 48.0%, 15.1%, against LibriSpeech's 44.7%, 15.7% on the
+    same words. A small gain, not a different class.
+  - `g2p2-core` 0.3.0 (pure Rust joint n-gram, 100 languages) ships no
+    models and its model repository could not be reached; not trialled.
+  - Where LibriSpeech and `grapheme_to_phoneme` give the same phones (5,039
+    words) they are right 75.1% of the time, near the 82.1% two human
+    sources reach; where they differ, 32.6% and 17.3%. Agreement between
+    independent guessers is a usable confidence signal.
+  - The misaki lexicons inside `loqui-g2p` hold 7,840 of these words with
+    stress marks. Their provenance and what "gold" and "silver" mean are not
+    yet verified; if sound, they are a third dictionary, not a guesser.
+  - No stress accuracy has been measured for any guesser: Wiktionary's files
+    lack stress, and the pretrained models have seen CMUdict.
+
 - 2026-11-13. Measured, the LibriSpeech lexicon against CMUdict (receipts
   file): 66,016 words are in both, and 97.0% of those share an identical
   pronunciation; 133,984 words, two thirds of the file, are in LibriSpeech
