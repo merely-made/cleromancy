@@ -55,11 +55,11 @@ fn candidate_constructor_refuses_tampered_resident_graph() {
         .unwrap()
         .1
         .id;
-    let facet = chartulary::FacetId::new(cleromancy::host::READING_FACET);
+    let facet = portolan::FacetId::new(cleromancy::host::READING_FACET);
     let mut value = graph.facets().get(&id, &facet).unwrap().clone();
     value["candidate_id"] = serde_json::json!("invented");
     let mut facets = graph.facets().clone();
-    facets.set(id, facet, value, &chartulary::AcceptAll).unwrap();
+    facets.set(id, facet, value, &portolan::AcceptAll).unwrap();
     graph.install_facets(facets).unwrap();
     assert!(CleromancyHost::candidate(graph).is_err());
 }
@@ -137,11 +137,11 @@ fn typed_decks_survive_journal_replay_and_forged_metadata_is_refused() {
         .unwrap()
         .1
         .id;
-    let facet = chartulary::FacetId::new(cleromancy::host::FIELD_FACET);
+    let facet = portolan::FacetId::new(cleromancy::host::FIELD_FACET);
     let mut value = graph.facets().get(&id, &facet).unwrap().clone();
     value["tarot"]["cards"][0]["interpretation"]["text"] = serde_json::json!("unbound replacement");
     let mut facets = graph.facets().clone();
-    facets.set(id, facet, value, &chartulary::AcceptAll).unwrap();
+    facets.set(id, facet, value, &portolan::AcceptAll).unwrap();
     graph.install_facets(facets).unwrap();
     assert!(cleromancy::host::validate_divination_graph(&graph).is_err());
     assert_eq!(graph_state(consultation.host().graph()), {

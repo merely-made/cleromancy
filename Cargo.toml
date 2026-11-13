@@ -53,7 +53,7 @@ tokio = { version = "1", features = ["rt-multi-thread", "time"] }
 blake3 = "1"
 cambium = { git = "https://github.com/merely-made/graphshell.git", branch = "main", version = "0.6.0" }
 cambium-desktop = { git = "https://github.com/merely-made/graphshell.git", branch = "main", version = "0.1.0" }
-chartulary = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
+portolan = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
 dirs = "7"
 graphshell-host = { git = "https://github.com/merely-made/graphshell.git", branch = "main", default-features = false, features = ["native"] }
 graphshell-client = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
@@ -184,7 +184,10 @@ gemini-protocol = { git = "https://github.com/merely-made/errand.git", branch = 
 scroll-protocol = { git = "https://github.com/merely-made/errand.git", branch = "main" }
 spartan-protocol = { git = "https://github.com/merely-made/errand.git", branch = "main" }
 # Canonical promoted families; keep registry and Git consumers type-identical.
-chartulary = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
+fieldbook = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
+hodograph = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
+portolan = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
+quadstore = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
 eidetic = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }
 esp = { git = "https://github.com/merely-made/distillery.git", branch = "main" }
 luggage = { git = "https://github.com/merely-made/eidetic.git", branch = "main" }

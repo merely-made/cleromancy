@@ -207,7 +207,7 @@ fn invalid(reason: impl Into<String>) -> HostError {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use chartulary::{AcceptAll, FacetId};
+    use portolan::{AcceptAll, FacetId};
 
     fn fixture() -> Graph {
         let (context, field) = crate::a0_fixture();

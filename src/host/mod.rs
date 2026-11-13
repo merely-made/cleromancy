@@ -10,7 +10,7 @@
 use std::collections::{BTreeMap, HashMap};
 use std::time::{SystemTime, UNIX_EPOCH};
 
-use chartulary::{FacetError, FacetId};
+use portolan::{FacetError, FacetId};
 use chirograph::{ContentHash, ProjectionSession};
 #[cfg(not(feature = "portable-core"))]
 use chirograph::{ProjectionRequest, ProtocolVersion};

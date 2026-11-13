@@ -5,8 +5,8 @@
 
 use crate::inference::{GeneratedInference, INFERENCE_FACET};
 use crate::situation::{ReadingSituation, SITUATION_FACET};
-use chartulary::FacetId;
 use pandect::personal_sync::SyncProjection;
+use portolan::FacetId;
 
 use super::shared::{invalid, validate_identity};
 use super::{CleromancySyncError, CleromancySyncSelection};

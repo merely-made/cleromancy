@@ -1,7 +1,7 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-use chartulary::{Container, EditSpec, GraphLog, Relation};
+use portolan::{Container, EditSpec, GraphLog, Relation};
 use servitor::{
     AuthorityProvider, Cap, CapError, Gate, Grant, GrantTable, Mode, ScopePath, Subject,
 };

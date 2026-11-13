@@ -200,7 +200,7 @@ async fn neighboring_preview_requires_its_own_live_grant_and_clears_on_revocatio
             .facets()
             .get(
                 &node.id,
-                &chartulary::FacetId::new("public-fixture.large/v1")
+                &portolan::FacetId::new("public-fixture.large/v1")
             )
             .unwrap()["body"],
         "z".repeat(400_000)

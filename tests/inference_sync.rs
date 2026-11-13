@@ -146,9 +146,9 @@ fn signed_sync_preserves_generated_prompts_only_with_reflection_consent_and_refu
             .facets_mut()
             .set(
                 id,
-                chartulary::FacetId::new(INFERENCE_FACET),
+                portolan::FacetId::new(INFERENCE_FACET),
                 forged,
-                &chartulary::AcceptAll,
+                &portolan::AcceptAll,
             )
             .unwrap();
         let mut empty = CleromancyHost::empty(MemoryBackend::new());

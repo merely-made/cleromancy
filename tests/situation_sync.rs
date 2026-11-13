@@ -122,9 +122,9 @@ fn signed_reading_sync_preserves_weather_evidence_and_refuses_tamper_before_impo
             .facets_mut()
             .set(
                 id,
-                chartulary::FacetId::new(SITUATION_FACET),
+                portolan::FacetId::new(SITUATION_FACET),
                 forged,
-                &chartulary::AcceptAll,
+                &portolan::AcceptAll,
             )
             .unwrap();
         let mut empty = CleromancyHost::empty(MemoryBackend::new());
