@@ -2,49 +2,17 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 //! Versioned physical-deck draws. A seed fixes one complete permutation and
 //! every orientation; spread length selects a prefix, never another shuffle.
+//! The method itself lives in `cleromancy-draw`; this module binds it to a
+//! context and field and seals the receipts.
 use super::{Reading, ReadingEngine, ReadingError, Receipt, SelectionMode};
-use crate::{ContextSnapshot, Field, context::canonical_digest, moirai::clotho::EntropySource};
+use crate::{ContextSnapshot, Field, moirai::clotho::EntropySource};
+use cleromancy_draw::DrawError;
+pub use cleromancy_draw::{
+    DeckShuffle, Orientation, SHUFFLE_ALGORITHM, SHUFFLE_SCHEMA, ShuffleSource,
+};
 use serde::{Deserialize, Serialize};
 
-pub const SHUFFLE_ALGORITHM: &str = "cleromancy.shuffle/blake3-fisher-yates-u64-rejection/v1";
-pub const SHUFFLE_SCHEMA: &str = "cleromancy.deck-shuffle/v1";
 pub const SHUFFLED_RECEIPT_SCHEMA: &str = "cleromancy.receipt/v5";
-
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(rename_all = "snake_case")]
-pub enum Orientation {
-    Upright,
-    Reversed,
-}
-impl Orientation {
-    pub fn label(self) -> &'static str {
-        match self {
-            Self::Upright => "upright",
-            Self::Reversed => "reversed",
-        }
-    }
-}
-
-#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
-pub enum ShuffleSource {
-    /// Recorded random seed, not the operating system's internal RNG state.
-    OperatingSystem {
-        seed_hex: String,
-    },
-    PublicSeed {
-        seed: String,
-        domain: String,
-    },
-}
-
-#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
-pub struct DeckShuffle {
-    pub schema: String,
-    pub algorithm: String,
-    pub source: ShuffleSource,
-}
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -67,91 +35,42 @@ fn invalid(message: &str) -> ReadingError {
     ReadingError::ReceiptMismatch(format!("deck shuffle: {message}"))
 }
 
-impl DeckShuffle {
-    pub fn from_public_seed(seed: &str, domain: &str) -> Result<Self, ReadingError> {
-        let record = Self {
-            schema: SHUFFLE_SCHEMA.into(),
-            algorithm: SHUFFLE_ALGORITHM.into(),
-            source: ShuffleSource::PublicSeed {
-                seed: seed.into(),
-                domain: domain.into(),
-            },
-        };
-        record.validate()?;
-        Ok(record)
+impl From<DrawError> for ReadingError {
+    fn from(error: DrawError) -> Self {
+        invalid(error.0)
     }
-    fn validate(&self) -> Result<(), ReadingError> {
-        if self.schema != SHUFFLE_SCHEMA || self.algorithm != SHUFFLE_ALGORITHM {
-            return Err(invalid("unsupported schema or method"));
-        }
-        match &self.source {
-            ShuffleSource::OperatingSystem { seed_hex } => {
-                if seed_hex.len() != 64
-                    || !seed_hex
-                        .bytes()
-                        .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
-                {
-                    return Err(invalid("operating-system seed"));
-                }
-            },
-            ShuffleSource::PublicSeed { seed, domain } => {
-                if seed.trim().is_empty()
-                    || seed.len() > 4096
-                    || domain.trim().is_empty()
-                    || domain.len() > 256
-                {
-                    return Err(invalid("public seed/domain bounds"));
-                }
-            },
-        }
-        Ok(())
-    }
+}
+
+/// Replays a shuffle against the context and field it was made for.
+pub trait ReplayDeck {
     /// Reconstruct the entire deck, including undrawn cards and orientations.
-    /// All integers, input encoding and stream order are fixed by the method.
-    pub fn replay(
+    ///
+    /// # Errors
+    /// The record is unsupported, or the field is not a tarot deck within
+    /// the method's bounds.
+    fn replay(
+        &self,
+        context: &ContextSnapshot,
+        field: &Field,
+    ) -> Result<Vec<ShuffledCard>, ReadingError>;
+}
+impl ReplayDeck for DeckShuffle {
+    fn replay(
         &self,
         context: &ContextSnapshot,
         field: &Field,
     ) -> Result<Vec<ShuffledCard>, ReadingError> {
         self.validate()?;
         validate_field(context, field, 1)?;
-        let digest = canonical_digest(&(SHUFFLE_ALGORITHM, context.digest(), field.digest(), self));
-        let mut hasher = blake3::Hasher::new();
-        hasher.update(digest.as_bytes());
-        let mut stream = hasher.finalize_xof();
-        let mut next = || {
-            let mut bytes = [0u8; 8];
-            stream.fill(&mut bytes);
-            u64::from_le_bytes(bytes)
-        };
-        let mut indices: Vec<_> = (0..field.candidates.len()).collect();
-        for end in (1..indices.len()).rev() {
-            let chosen = below(&mut next, (end + 1) as u64) as usize;
-            indices.swap(end, chosen);
-        }
-        Ok(indices
+        Ok(self
+            .order(&context.digest(), &field.digest(), field.candidates.len())?
             .into_iter()
-            .map(|index| ShuffledCard {
-                candidate_index: index,
-                candidate_id: field.candidates[index].id.clone(),
-                orientation: if below(&mut next, 2) == 0 {
-                    Orientation::Upright
-                } else {
-                    Orientation::Reversed
-                },
+            .map(|placed| ShuffledCard {
+                candidate_index: placed.index,
+                candidate_id: field.candidates[placed.index].id.clone(),
+                orientation: placed.orientation,
             })
             .collect())
-    }
-}
-
-// The accepted interval has exactly a multiple of upper elements in 2^64.
-fn below(next: &mut impl FnMut() -> u64, upper: u64) -> u64 {
-    let threshold = upper.wrapping_neg() % upper;
-    loop {
-        let raw = next();
-        if raw >= threshold {
-            return raw % upper;
-        }
     }
 }
 
@@ -307,14 +226,4 @@ pub(super) fn replay(
         return Err(invalid("record differs from replay"));
     }
     Ok(reading)
-}
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn rejection_includes_maximum_word_and_refuses_the_short_prefix() {
-        let mut values = [0, 5, 6, u64::MAX].into_iter();
-        assert_eq!(super::below(&mut || values.next().unwrap(), 10), 6);
-        assert_eq!(super::below(&mut || values.next().unwrap(), 10), 5);
-    }
 }

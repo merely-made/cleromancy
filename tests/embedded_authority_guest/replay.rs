@@ -4,6 +4,7 @@
 //! The three-owner replay: embedded, daemon, embedded, with tamper refusals.
 
 use super::*;
+use cleromancy::ReplayDeck;
 use super::fixture::{apply_bounded_fixture, apply_checked, disclosed, journal_and_history, product_fixture};
 
 pub(super) async fn owner_replay(

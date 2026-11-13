@@ -1,0 +1,16 @@
+[package]
+name = "cleromancy-draw"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.97.1"
+license = "MIT OR Apache-2.0"
+description = "Versioned, replayable deck shuffles from a recorded seed"
+repository = "https://github.com/merely-made/cleromancy"
+
+[workspace]
+resolver = "2"
+
+[dependencies]
+blake3 = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

@@ -40,7 +40,4 @@ impl ContextSnapshot {
     }
 }
 
-pub(crate) fn canonical_digest(value: &impl Serialize) -> String {
-    let bytes = serde_json::to_vec(value).expect("versioned Cleromancy values always serialize");
-    blake3::hash(&bytes).to_hex().to_string()
-}
+pub(crate) use cleromancy_draw::canonical_digest;

@@ -14,7 +14,7 @@ mod shuffle;
 pub use engine::ReadingEngine;
 pub use shuffle::{
     DeckDraw, DeckShuffle, Orientation, SHUFFLE_ALGORITHM, SHUFFLE_SCHEMA, SHUFFLED_RECEIPT_SCHEMA,
-    ShuffleSource, ShuffledCard,
+    ReplayDeck, ShuffleSource, ShuffledCard,
 };
 
 pub const EXTERNAL_QUALIFICATION_ALGORITHM: &str =

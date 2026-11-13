@@ -127,7 +127,7 @@ pub use intents::{
 pub use reading::{
     DERIVED_SELECTION_ALGORITHM, DERIVED_SELECTION_SCHEMA, DeckDraw, DeckShuffle, DerivedSelection,
     EXTERNAL_QUALIFICATION_ALGORITHM, EnrichmentQualification, Orientation, Reading, ReadingEngine,
-    ReadingError, Receipt, SHUFFLE_ALGORITHM, SHUFFLE_SCHEMA, SHUFFLED_RECEIPT_SCHEMA,
+    ReadingError, Receipt, ReplayDeck, SHUFFLE_ALGORITHM, SHUFFLE_SCHEMA, SHUFFLED_RECEIPT_SCHEMA,
     SelectionMode, ShuffleSource, ShuffledCard,
 };
 pub use servitor;

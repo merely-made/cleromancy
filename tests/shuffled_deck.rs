@@ -3,7 +3,7 @@
 use cleromancy::moirai::clotho::EntropySource;
 use cleromancy::{
     Candidate, ContextSnapshot, DeckShuffle, DerivedSelection, Field, Orientation, ReadingEngine,
-    ReadingPlacement, ReadingSession, TarotQualification, UNIFORM_DIE_RULE,
+    ReadingPlacement, ReadingSession, ReplayDeck, TarotQualification, UNIFORM_DIE_RULE,
 };
 use std::collections::BTreeSet;
 struct Words {

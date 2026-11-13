@@ -1,6 +1,7 @@
 /target/
 /target-*/
 /core/target/
+/crates/*/target/
 /.cargo/
 # receipts/ is local output only; archived evidence lives in Code/testing/cleromancy/.
 /receipts/

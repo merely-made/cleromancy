@@ -350,4 +350,6 @@ Canonical plan and receipts:
 `mere/design_docs/mere_docs/implementation_strategy/2026-10-31_distillery_extraction_plan.md`.
 No new headed consultation or model acceptance is claimed by this source intake.
 
+- [Fortune teller](2026-11-11_fortune_teller_plan.md): plan, 2026-11-11; a daily Reddit game for the Game of the Day hackathon (closes 2026-12-08). Rulings D1-D8 recorded; platform feasibility (F0) unverified, nothing built.
+
 - [Source splits, H7](2026-11-03_source_splits_plan.md): 9 responsibility and fixture-group splits landed; zero ceiling exceptions, scoped software gates and external evidence; product failures carry forward in divination O7.

@@ -48,6 +48,7 @@ thiserror = "2"
 # cap (8e3755bb) editions; 8e3755bb reproduces the first two bit for bit.
 turquet-017 = { package = "turquet", path = "../crates/turquet", version = "=0.17.0" }
 cleromancy-sky = { path = "../crates/cleromancy-sky", optional = true }
+cleromancy-draw = { path = "../crates/cleromancy-draw" }
 
 [dev-dependencies]
 personae = { git = "https://github.com/merely-made/dramatis.git", branch = "main" }
