@@ -384,9 +384,6 @@ crate = "rand_core@0.9.5"
 reason = "rand 0.9.5, rand_chacha 0.9.0 require it (through cambium-desktop, esp, graphshell-host and 10 more); goes when they move to rand_core 0.10.1"
 
 
-[[bans.skip]]
-crate = "redb@2.6.4"
-reason = "muniment 0.2.1 requires it (through cambium, cambium-desktop, castellan and 20 more); goes when it moves to redb 4.5.0"
 
 [[bans.skip]]
 crate = "redox_syscall@0.4.1"
