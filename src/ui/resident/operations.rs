@@ -55,12 +55,12 @@ impl ResidentConsultation {
         .await?;
         let mut model = materialized_model(&reading, self.model.clone())?;
         let staged_envelope = reading.graph_material;
-        self.transient_view = transient_view.filter(|(id, _)| {
+        self.transient_view = transient_view.filter(|(id, _, _)| {
             staged_envelope
                 .as_ref()
                 .is_some_and(|envelope| envelope.read_only && envelope.session == *id)
         });
-        if let Some((_, view)) = &self.transient_view {
+        if let Some((_, view, _)) = &self.transient_view {
             model.layout = view.strategy.clone().unwrap_or_default();
         }
         self.sessions = reading.sessions;
@@ -421,59 +421,6 @@ impl ResidentConsultation {
             self.refresh().await?;
         }
         Ok(())
-    }
-
-    pub(super) fn reading_view(&self) -> incipit::view::ViewIntent {
-        if let Some((id, view)) = &self.transient_view
-            && self
-                .envelope
-                .as_ref()
-                .is_some_and(|envelope| envelope.read_only && envelope.session == *id)
-        {
-            return view.clone();
-        }
-        self.envelope
-            .as_ref()
-            .and_then(|envelope| envelope.views.get("reading-workspace"))
-            .cloned()
-            .unwrap_or_default()
-    }
-
-    pub(super) async fn set_view(&mut self, view: incipit::view::ViewIntent) -> Result<(), String> {
-        let envelope = self
-            .envelope
-            .as_ref()
-            .ok_or("no resident graph is attached")?;
-        if envelope.read_only {
-            // SET_VIEW on a thaw is an explicit first-edit fork at the owner.
-            // Reading and arranging it must instead remain session-local.
-            self.model.layout = view.strategy.clone().unwrap_or_default();
-            self.transient_view = Some((envelope.session, view));
-            return Ok(());
-        }
-        let intent = chirograph::IntentInvocation {
-            session: self.graph_projection.session.clone(),
-            target: sceno::InstanceId(0),
-            observed_epoch: self.graph_projection.scene.epoch,
-            observed_revision: self.graph_projection.scene.revision,
-            intent: session_item::SET_VIEW_INTENT.into(),
-            payload: serde_json::to_vec(&session_item::SetViewV1::new("reading-workspace", view))
-                .map_err(err)?,
-        };
-        self.invoke(intent).await?;
-        self.refresh().await
-    }
-
-    pub(super) async fn remember_focus(&mut self, url: Option<String>) -> Result<(), String> {
-        let mut view = self.reading_view();
-        view.focus = url;
-        self.set_view(view).await
-    }
-
-    pub fn restored_selection(&self) -> Option<(crate::ConsultationDetail, Option<String>)> {
-        self.reading_view()
-            .focus
-            .and_then(|url| self.selected_detail(&url).ok())
     }
 
     pub async fn select(

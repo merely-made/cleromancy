@@ -38,7 +38,10 @@ pub fn generate(
     let mut artifacts = BTreeMap::new();
     for name in ["config.json", "tokenizer.json", "model.safetensors"] {
         let bytes = std::fs::read(directory.join(name)).map_err(|e| fail(e.to_string()))?;
-        let hash = format!("{:x}", Sha256::digest(&bytes));
+        let hash: String = Sha256::digest(&bytes)
+            .iter()
+            .map(|b| format!("{b:02x}"))
+            .collect();
         require(
             manifest.artifacts.get(name) == Some(&hash),
             "local model bytes differ from the configured artifact identity",
@@ -54,14 +57,15 @@ pub fn generate(
     };
     // Validate identity and request before invoking the shared runtime.
     GeneratedInference::model(inputs.clone(), model.clone(), "pending".into()).validate()?;
-    #[allow(deprecated)] // Match the pinned ESP NdArray CPU contract.
+    // ESP's CPU device is Burn's flex backend. The stored loader label keeps
+    // its old name: it is part of every saved record's validated identity.
     let provider = DecoderProvider::from_bytes(
         &buffers["config.json"],
         &buffers["tokenizer.json"],
         &buffers["model.safetensors"],
         &model.model_id,
         &model.loader,
-        &DecoderDevice::ndarray(),
+        &DecoderDevice::flex(),
     )
     .map_err(|e| fail(e.to_string()))?;
     let request = GenerationRequest {

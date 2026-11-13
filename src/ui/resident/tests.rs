@@ -46,6 +46,7 @@ fn envelope() -> session_item::SessionGraphV1 {
         application: "cleromancy".into(),
         read_only: false,
         views: Default::default(),
+        attention: Default::default(),
         session: serde_json::from_str("\"00000000-0000-0000-0000-000000000001\"").unwrap(),
         epoch: SceneEpoch(1),
         revision: Revision(4),

@@ -28,11 +28,18 @@ pub(crate) struct ResidentConsultation {
     graph_projection: ProjectionSnapshot,
     envelope: Option<session_item::SessionGraphV1>,
     archive: Option<ProjectionSnapshot>,
-    transient_view: Option<(pandect::SessionId, incipit::view::ViewIntent)>,
+    /// A read-only archive's arrangement and attention, kept in this session only.
+    transient_view: Option<TransientView>,
     pub model: MereViewModel,
     pub unavailable: bool,
     pub saved_notice: Option<String>,
 }
+
+type TransientView = (
+    pandect::SessionId,
+    incipit::view::ViewIntent,
+    incipit::view::AttentionState,
+);
 
 // The graph commit has already been acknowledged. A recoverable view refusal
 // must not turn a saved draw into an error that invites a duplicate retry.
@@ -191,10 +198,10 @@ fn err(error: impl std::fmt::Display) -> String {
 mod tests;
 
 fn natal_nonce() -> String {
-    use rand_core::RngCore;
     let mut bytes = [0u8; 16];
-    rand_core::OsRng.fill_bytes(&mut bytes);
+    getrandom::fill(&mut bytes).expect("OS randomness available");
     bytes.iter().map(|b| format!("{b:02x}")).collect()
 }
 
 mod operations;
+mod view_state;

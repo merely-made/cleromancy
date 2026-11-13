@@ -1,0 +1,571 @@
+# cargo-deny configuration for cleromancy.
+#
+#   cargo deny check bans
+#
+# Two versions of one crate in a build are a defect: move the older version's
+# holder forward. Each skip below is a duplicate that cannot be removed from
+# here yet: who holds it, and what removes it. Delete an entry when its holder
+# moves; `cargo deny check bans` names any that no longer match.
+
+[graph]
+all-features = true
+
+[bans]
+multiple-versions = "deny"
+wildcards = "allow"
+
+[[bans.skip]]
+crate = "addr2line@0.26.1"
+reason = "wasmtime 45.0.3 requires it (through mere-resident); goes when it moves to addr2line 0.27.1"
+
+[[bans.skip]]
+crate = "aead@0.5.2"
+reason = "aes-gcm 0.10.3, chacha20poly1305 0.10.1 require it (through cambium, cambium-desktop, castellan and 19 more); goes when they move to aead 0.6.1"
+
+[[bans.skip]]
+crate = "aes@0.8.4"
+reason = "aes-gcm 0.10.3, ssh-cipher 0.2.0, turso_core 0.8.3 require it (through cambium, cambium-desktop, castellan and 19 more); goes when they move to aes 0.9.4"
+
+[[bans.skip]]
+crate = "aes-gcm@0.10.3"
+reason = "noq-proto 1.4.0, ssh-cipher 0.2.0, turso_core 0.8.3 require it (through cambium, cambium-desktop, castellan and 19 more); goes when they move to aes-gcm 0.11.1"
+
+[[bans.skip]]
+crate = "base16ct@0.2.0"
+reason = "elliptic-curve 0.13.8, p521 0.13.3, sec1 0.7.3 require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to base16ct 1.0.0"
+
+[[bans.skip]]
+crate = "base64@0.13.1"
+reason = "spm_precompiled 0.1.4 requires it (through esp, graphshell-host, mere-cartography and 3 more); goes when it moves to base64 0.23.1"
+
+[[bans.skip]]
+crate = "base64@0.22.1"
+reason = "attohttpc 0.30.1, chirograph 0.0.5, djinn 0.0.3, graphshell-host 0.0.2 and 8 more require it (through chirograph, djinn, dramatis-resident and 11 more); goes when they move to base64 0.23.1"
+
+[[bans.skip]]
+crate = "bit-set@0.8.0"
+reason = "fancy-regex 0.17.0, fancy-regex 0.20.2 require it (through cambium, cambium-desktop, castellan and 15 more); goes when they move to bit-set 0.10.0"
+
+[[bans.skip]]
+crate = "bit-vec@0.8.0"
+reason = "bit-set 0.8.0 requires it (through cambium, cambium-desktop, castellan and 15 more); goes when it moves to bit-vec 0.9.1"
+
+[[bans.skip]]
+crate = "bitflags@1.3.2"
+reason = "core-graphics 0.23.2, core-graphics-types 0.1.3, png 0.17.16, redox_syscall 0.4.1 require it (through cambium-desktop, mandrake, tabard-workshop); goes when they move to bitflags 2.13.2"
+
+[[bans.skip]]
+crate = "block-buffer@0.10.4"
+reason = "digest 0.10.7 requires it (through cambium, cambium-desktop, castellan and 19 more); goes when it moves to block-buffer 0.12.1"
+
+[[bans.skip]]
+crate = "block2@0.5.1"
+reason = "objc2-app-kit 0.2.2, objc2-cloud-kit 0.2.2, objc2-contacts 0.2.2, objc2-core-data 0.2.2 and 10 more require it (through cambium-desktop, mandrake, tabard-workshop); goes when they move to block2 0.6.2"
+
+[[bans.skip]]
+crate = "chacha20@0.9.1"
+reason = "chacha20poly1305 0.10.1, ssh-cipher 0.2.0 require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to chacha20 0.10.2"
+
+[[bans.skip]]
+crate = "chacha20poly1305@0.10.1"
+reason = "p2mere-encryption 0.10.0 requires it (through graphshell-host, mere-cartography, mere-overmap and 3 more); goes when it moves to chacha20poly1305 0.11.0"
+
+[[bans.skip]]
+crate = "cipher@0.4.4"
+reason = "aes 0.8.4, aes-gcm 0.10.3, blowfish 0.9.1, cbc 0.1.2 and 4 more require it (through cambium, cambium-desktop, castellan and 19 more); goes when they move to cipher 0.5.2"
+
+[[bans.skip]]
+crate = "const-oid@0.9.6"
+reason = "der 0.7.10, digest 0.10.7, rsa 0.9.10 require it (through cambium, cambium-desktop, castellan and 19 more); goes when they move to const-oid 0.10.3"
+
+[[bans.skip]]
+crate = "core-foundation@0.9.4"
+reason = "core-graphics 0.23.2, core-graphics-types 0.1.3, winit 0.30.13 require it (through cambium-desktop, mandrake, tabard-workshop); goes when they move to core-foundation 0.10.1"
+
+[[bans.skip]]
+crate = "cpufeatures@0.2.17"
+reason = "aes 0.8.4, argon2 0.5.3, chacha20 0.9.1, curve25519-dalek 4.1.3 and 3 more require it (through cambium, cambium-desktop, castellan and 19 more); goes when they move to cpufeatures 0.3.1"
+
+[[bans.skip]]
+crate = "crypto-bigint@0.5.5"
+reason = "elliptic-curve 0.13.8 requires it (through cambium, cambium-desktop, castellan and 18 more); goes when it moves to crypto-bigint 0.7.11"
+
+[[bans.skip]]
+crate = "crypto-common@0.1.7"
+reason = "aead 0.5.2, cipher 0.4.4, digest 0.10.7, universal-hash 0.5.1 require it (through cambium, cambium-desktop, castellan and 19 more); goes when they move to crypto-common 0.2.2"
+
+[[bans.skip]]
+crate = "ctr@0.9.2"
+reason = "aes-gcm 0.10.3, ssh-cipher 0.2.0 require it (through cambium, cambium-desktop, castellan and 19 more); goes when they move to ctr 0.10.1"
+
+[[bans.skip]]
+crate = "curve25519-dalek@4.1.3"
+reason = "ed25519-dalek 2.2.0 requires it (through cambium, cambium-desktop, castellan and 18 more); goes when it moves to curve25519-dalek 5.0.0"
+
+[[bans.skip]]
+crate = "darling@0.20.11"
+reason = "derive_builder_core 0.20.2, wrapcenum-derive 0.4.1 require it (through esp, graphshell-host, mere-cartography and 3 more); goes when they move to darling 0.24.1"
+
+[[bans.skip]]
+crate = "darling@0.21.3"
+reason = "enumset_derive 0.15.1 requires it (through esp, graphshell-host, mere-cartography and 3 more); goes when it moves to darling 0.24.1"
+
+[[bans.skip]]
+crate = "darling_core@0.20.11"
+reason = "darling 0.20.11, darling_macro 0.20.11 require it (through esp, graphshell-host, mere-cartography and 3 more); goes when they move to darling_core 0.24.1"
+
+[[bans.skip]]
+crate = "darling_core@0.21.3"
+reason = "darling 0.21.3, darling_macro 0.21.3 require it (through esp, graphshell-host, mere-cartography and 3 more); goes when they move to darling_core 0.24.1"
+
+[[bans.skip]]
+crate = "darling_macro@0.20.11"
+reason = "darling 0.20.11 requires it (through esp, graphshell-host, mere-cartography and 3 more); goes when it moves to darling_macro 0.24.1"
+
+[[bans.skip]]
+crate = "darling_macro@0.21.3"
+reason = "darling 0.21.3 requires it (through esp, graphshell-host, mere-cartography and 3 more); goes when it moves to darling_macro 0.24.1"
+
+[[bans.skip]]
+crate = "der@0.7.10"
+reason = "ecdsa 0.16.9, pkcs1 0.7.5, pkcs8 0.10.2, sec1 0.7.3 and 1 more require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to der 0.8.3"
+
+[[bans.skip]]
+crate = "digest@0.10.7"
+reason = "blake2 0.10.6, curve25519-dalek 4.1.3, ecdsa 0.16.9, elliptic-curve 0.13.8 and 5 more require it (through cambium, cambium-desktop, castellan and 19 more); goes when they move to digest 0.11.3"
+
+[[bans.skip]]
+crate = "downcast-rs@1.2.1"
+reason = "wayland-backend 0.3.17 requires it (through cambium-desktop, mandrake, tabard-workshop); goes when it moves to downcast-rs 2.0.2"
+
+[[bans.skip]]
+crate = "ed25519@2.2.3"
+reason = "ed25519-dalek 2.2.0 requires it (through cambium, cambium-desktop, castellan and 18 more); goes when it moves to ed25519 3.0.0"
+
+[[bans.skip]]
+crate = "ed25519-dalek@2.2.0"
+reason = "castellan 0.0.4, ssh-key 0.6.7 require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to ed25519-dalek 3.0.0"
+
+[[bans.skip]]
+crate = "elliptic-curve@0.13.8"
+reason = "ecdsa 0.16.9, p256 0.13.2, p384 0.13.1, p521 0.13.3 and 1 more require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to elliptic-curve 0.14.3"
+
+[[bans.skip]]
+crate = "embedded-hal@0.2.7"
+reason = "embassy-time 0.5.1 requires it (through esp, graphshell-host, mere-cartography and 3 more); goes when it moves to embedded-hal 1.0.0"
+
+[[bans.skip]]
+crate = "fancy-regex@0.17.0"
+reason = "tokenizers 0.23.2 requires it (through esp, graphshell-host, mere-cartography and 3 more); goes when it moves to fancy-regex 0.20.2"
+
+[[bans.skip]]
+crate = "ff@0.13.1"
+reason = "elliptic-curve 0.13.8, group 0.13.0 require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to ff 0.14.0"
+
+[[bans.skip]]
+crate = "fiat-crypto@0.2.9"
+reason = "curve25519-dalek 4.1.3 requires it (through cambium, cambium-desktop, castellan and 18 more); goes when it moves to fiat-crypto 0.3.0"
+
+[[bans.skip]]
+crate = "fixedbitset@0.4.2"
+reason = "petgraph 0.6.5 requires it (through mere-resident); goes when it moves to fixedbitset 0.5.9"
+
+[[bans.skip]]
+crate = "foldhash@0.1.5"
+reason = "hashbrown 0.15.5 requires it (through cambium, cambium-desktop, castellan and 20 more); goes when it moves to foldhash 0.2.0"
+
+[[bans.skip]]
+crate = "getrandom@0.2.17"
+reason = "rand_core 0.6.4, redox_users 0.4.6, ring 0.17.14, turso_core 0.8.3 require it (through cambium, cambium-desktop, castellan and 22 more); goes when they move to getrandom 0.4.3"
+
+[[bans.skip]]
+crate = "getrandom@0.3.4"
+reason = "ahash 0.8.12, fastbloom 0.14.1, graphshell-host 0.0.2, jsonschema 0.61.2 and 7 more require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to getrandom 0.4.3"
+
+[[bans.skip]]
+crate = "ghash@0.5.1"
+reason = "aes-gcm 0.10.3 requires it (through cambium, cambium-desktop, castellan and 19 more); goes when it moves to ghash 0.6.0"
+
+[[bans.skip]]
+crate = "gimli@0.33.0"
+reason = "addr2line 0.26.1, cranelift-codegen 0.132.3, wasmtime 45.0.3, wasmtime-environ 45.0.3 and 3 more require it (through mere-resident); goes when they move to gimli 0.34.0"
+
+[[bans.skip]]
+crate = "group@0.13.0"
+reason = "elliptic-curve 0.13.8 requires it (through cambium, cambium-desktop, castellan and 18 more); goes when it moves to group 0.14.0"
+
+[[bans.skip]]
+crate = "hashbrown@0.14.5"
+reason = "dashmap 6.2.1 requires it (through graphshell-host, mere-resident); goes when it moves to hashbrown 0.17.1"
+
+[[bans.skip]]
+crate = "hashbrown@0.15.5"
+reason = "internment 0.8.6, petgraph 0.8.3 require it (through cambium, cambium-desktop, castellan and 20 more); goes when they move to hashbrown 0.17.1"
+
+[[bans.skip]]
+crate = "hashbrown@0.16.1"
+reason = "burn-autodiff 0.23.0-pre.2, burn-backend 0.23.0-pre.2, burn-core 0.23.0-pre.2, burn-cubecl-fusion 0.23.0-pre.2 and 10 more require it (through cambium, cambium-desktop, esp and 11 more); goes when they move to hashbrown 0.17.1"
+
+[[bans.skip]]
+crate = "hax-lib@0.3.7"
+reason = "core-models 0.0.7 requires it (through graphshell-host, mere-cartography, mere-overmap and 3 more); goes when it moves to hax-lib 0.4.2"
+
+[[bans.skip]]
+crate = "hax-lib-macros@0.3.7"
+reason = "hax-lib 0.3.7 requires it (through graphshell-host, mere-cartography, mere-overmap and 3 more); goes when it moves to hax-lib-macros 0.4.2"
+
+[[bans.skip]]
+crate = "hax-lib-macros-types@0.3.7"
+reason = "hax-lib-macros 0.3.7 requires it (through graphshell-host, mere-cartography, mere-overmap and 3 more); goes when it moves to hax-lib-macros-types 0.4.2"
+
+[[bans.skip]]
+crate = "hkdf@0.12.4"
+reason = "elliptic-curve 0.13.8, p2mere-encryption 0.10.0 require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to hkdf 0.13.0"
+
+[[bans.skip]]
+crate = "hmac@0.12.1"
+reason = "hkdf 0.12.4, rfc6979 0.4.0 require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to hmac 0.13.0"
+
+[[bans.skip]]
+crate = "inout@0.1.4"
+reason = "cipher 0.4.4 requires it (through cambium, cambium-desktop, castellan and 19 more); goes when it moves to inout 0.2.6"
+
+[[bans.skip]]
+crate = "itertools@0.13.0"
+reason = "bindgen 0.72.1 requires it (through graphshell-host, mere-cartography, mere-overmap and 3 more); goes when it moves to itertools 0.15.0"
+
+[[bans.skip]]
+crate = "itertools@0.14.0"
+reason = "rav1e 0.8.1, rayon-cond 0.4.0, tokenizers 0.23.2, wasmtime-internal-cranelift 45.0.3 require it (through cambium-desktop, esp, graphshell-host and 7 more); goes when they move to itertools 0.15.0"
+
+[[bans.skip]]
+crate = "jni@0.21.1"
+reason = "netdev 0.45.1, netdev 0.46.3 require it (through graphshell-host, mere-resident); goes when they move to jni 0.22.4"
+
+[[bans.skip]]
+crate = "jni-sys@0.3.1"
+reason = "jni 0.21.1, ndk 0.9.0, ndk-sys 0.6.0+11769913 require it (through cambium, cambium-desktop, esp and 8 more); goes when they move to jni-sys 0.4.1"
+
+[[bans.skip]]
+crate = "light-file-dialog@3.21.3"
+reason = "cambium-desktop 0.1.0 requires the registry release while mere-resident 0.0.2 takes Graphshell's patched copy (support/patches/light-file-dialog) at the same version; goes when cambium-desktop takes the patched copy or the patch reaches a release"
+
+[[bans.skip]]
+crate = "linux-raw-sys@0.4.15"
+reason = "rustix 0.38.44 requires it (through cambium-desktop, esp, graphshell-host and 6 more); goes when it moves to linux-raw-sys 0.12.1"
+
+[[bans.skip]]
+crate = "miniz_oxide@0.8.9"
+reason = "exr 1.74.3, png 0.17.16, png 0.18.1 require it (through cambium, cambium-desktop, esp and 9 more); goes when they move to miniz_oxide 0.9.1"
+
+[[bans.skip]]
+crate = "netdev@0.45.1"
+reason = "netwatch 0.19.3 requires it (through graphshell-host, mere-resident); goes when it moves to netdev 0.46.3"
+
+[[bans.skip]]
+crate = "netlink-packet-core@0.8.2"
+reason = "netdev 0.45.1, netlink-packet-route 0.31.0, netlink-proto 0.12.2, netwatch 0.19.3 require it (through graphshell-host, mere-resident); goes when they move to netlink-packet-core 0.9.0"
+
+[[bans.skip]]
+crate = "netlink-packet-route@0.31.0"
+reason = "netdev 0.45.1, netwatch 0.19.3 require it (through graphshell-host, mere-resident); goes when they move to netlink-packet-route 0.33.0"
+
+[[bans.skip]]
+crate = "netlink-sys@0.8.8"
+reason = "netdev 0.45.1, netlink-proto 0.12.2, netwatch 0.19.3 require it (through graphshell-host, mere-resident); goes when they move to netlink-sys 0.9.0"
+
+[[bans.skip]]
+crate = "nom@7.1.3"
+reason = "asn1-rs 0.7.2, cexpr 0.6.0, der-parser 10.0.0, rusticata-macros 4.1.0 and 2 more require it (through esp, graphshell-host, mere-cartography and 4 more); goes when they move to nom 8.0.0"
+
+[[bans.skip]]
+crate = "objc2@0.5.3"
+reason = "accesskit_macos 0.27.1, block2 0.5.1, objc2-app-kit 0.2.2, objc2-cloud-kit 0.2.2 and 13 more require it (through cambium-desktop, mandrake, tabard-workshop); goes when they move to objc2 0.6.5"
+
+[[bans.skip]]
+crate = "objc2-app-kit@0.2.2"
+reason = "accesskit_macos 0.27.1, objc2-link-presentation 0.2.2, winit 0.30.13 require it (through cambium-desktop, mandrake, tabard-workshop); goes when they move to objc2-app-kit 0.3.2"
+
+[[bans.skip]]
+crate = "objc2-foundation@0.2.2"
+reason = "accesskit_macos 0.27.1, objc2-app-kit 0.2.2, objc2-cloud-kit 0.2.2, objc2-contacts 0.2.2 and 11 more require it (through cambium-desktop, mandrake, tabard-workshop); goes when they move to objc2-foundation 0.3.2"
+
+[[bans.skip]]
+crate = "object@0.39.1"
+reason = "ar_archive_writer 0.5.5, wasmtime 45.0.3, wasmtime-environ 45.0.3, wasmtime-internal-cranelift 45.0.3 and 3 more require it (through cambium-desktop, graphshell-host, mandrake and 6 more); goes when they move to object 0.40.0"
+
+[[bans.skip]]
+crate = "p256@0.13.2"
+reason = "castellan 0.0.4, ssh-key 0.6.7 require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to p256 0.14.0"
+
+[[bans.skip]]
+crate = "p384@0.13.1"
+reason = "castellan 0.0.4, ssh-key 0.6.7 require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to p384 0.14.0"
+
+[[bans.skip]]
+crate = "pem@3.0.6"
+reason = "rcgen 0.13.2 requires it (through mere-resident); goes when it moves to pem 4.0.0"
+
+[[bans.skip]]
+crate = "pem-rfc7468@0.7.0"
+reason = "der 0.7.10, elliptic-curve 0.13.8, ssh-encoding 0.2.0 require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to pem-rfc7468 1.0.0"
+
+[[bans.skip]]
+crate = "petgraph@0.6.5"
+reason = "wasm-compose 0.248.0 requires it (through mere-resident); goes when it moves to petgraph 0.8.3"
+
+[[bans.skip]]
+crate = "phf@0.12.1"
+reason = "chrono-tz 0.10.4 requires it (through chrono-tz); goes when it moves to phf 0.14.0"
+
+[[bans.skip]]
+crate = "phf_shared@0.12.1"
+reason = "phf 0.12.1 requires it (through chrono-tz); goes when it moves to phf_shared 0.14.0"
+
+[[bans.skip]]
+crate = "pkcs8@0.10.2"
+reason = "ed25519 2.2.3, elliptic-curve 0.13.8, pkcs1 0.7.5, rsa 0.9.10 and 1 more require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to pkcs8 0.11.0"
+
+[[bans.skip]]
+crate = "png@0.17.16"
+reason = "mandrake 0.1.0 requires it (through mandrake); goes when it moves to png 0.18.1"
+
+[[bans.skip]]
+crate = "pollster@0.4.0"
+reason = "djinn-custodian 0.0.1, graphshell-host 0.0.2 require it (through dramatis-resident, graphshell-host, mere-resident); goes when they move to pollster 1.0.1"
+
+[[bans.skip]]
+crate = "poly1305@0.8.0"
+reason = "chacha20poly1305 0.10.1, ssh-cipher 0.2.0 require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to poly1305 0.9.1"
+
+[[bans.skip]]
+crate = "polyval@0.6.2"
+reason = "ghash 0.5.1 requires it (through cambium, cambium-desktop, castellan and 19 more); goes when it moves to polyval 0.7.3"
+
+[[bans.skip]]
+crate = "prettyplease@0.2.37"
+reason = "bindgen 0.69.5, bindgen 0.72.1 require it (through esp, graphshell-host, mere-cartography and 4 more); goes when they move to prettyplease 0.3.0"
+
+[[bans.skip]]
+crate = "primeorder@0.13.6"
+reason = "p256 0.13.2, p384 0.13.1, p521 0.13.3 require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to primeorder 0.14.0"
+
+[[bans.skip]]
+crate = "quick-xml@0.37.5"
+reason = "oxrdfxml 0.2.5 requires it (through graphshell-host, mere-cartography, mere-facts and 5 more); goes when it moves to quick-xml 0.42.0"
+
+[[bans.skip]]
+crate = "quick-xml@0.41.0"
+reason = "wayland-scanner 0.31.11 requires it (through cambium-desktop, mandrake, tabard-workshop); goes when it moves to quick-xml 0.42.0"
+
+[[bans.skip]]
+crate = "r-efi@5.3.0"
+reason = "getrandom 0.3.4 requires it (through cambium, cambium-desktop, castellan and 18 more); goes when it moves to r-efi 6.0.0"
+
+[[bans.skip]]
+crate = "rand@0.8.8"
+reason = "antithesis_sdk 0.3.0, num-bigint-dig 0.8.6, p2mere-core 0.10.0, shuttle 0.8.1 require it (through cambium, cambium-desktop, castellan and 19 more); goes when they move to rand 0.10.3"
+
+[[bans.skip]]
+crate = "rand@0.9.5"
+reason = "oxrdf 0.3.5, rav1e 0.8.1, tokenizers 0.23.2, turso_core 0.8.3 require it (through cambium-desktop, esp, graphshell-host and 10 more); goes when they move to rand 0.10.3"
+
+[[bans.skip]]
+crate = "rand_chacha@0.3.1"
+reason = "rand 0.8.8 requires it (through cambium, cambium-desktop, castellan and 19 more); goes when it moves to rand_chacha 0.10.0"
+
+[[bans.skip]]
+crate = "rand_chacha@0.9.0"
+reason = "p2mere-encryption 0.10.0, rand 0.9.5, rav1e 0.8.1 require it (through cambium-desktop, esp, graphshell-host and 10 more); goes when they move to rand_chacha 0.10.0"
+
+[[bans.skip]]
+crate = "rand_core@0.6.4"
+reason = "castellan 0.0.4, crypto-bigint 0.5.5, crypto-common 0.1.7, djinn 0.0.3 and 15 more require it (through cambium, cambium-desktop, castellan and 21 more); goes when they move to rand_core 0.10.1"
+
+[[bans.skip]]
+crate = "rand_core@0.9.5"
+reason = "rand 0.9.5, rand_chacha 0.9.0 require it (through cambium-desktop, esp, graphshell-host and 10 more); goes when they move to rand_core 0.10.1"
+
+[[bans.skip]]
+crate = "rcgen@0.13.2"
+reason = "gemot-site-host 0.0.1, mere-resident 0.0.2 require it (through mere-resident); goes when they move to rcgen 0.14.10"
+
+[[bans.skip]]
+crate = "redb@2.6.4"
+reason = "muniment 0.2.1 requires it (through cambium, cambium-desktop, castellan and 20 more); goes when it moves to redb 4.5.0"
+
+[[bans.skip]]
+crate = "redox_syscall@0.4.1"
+reason = "winit 0.30.13 requires it (through cambium-desktop, mandrake, tabard-workshop); goes when it moves to redox_syscall 0.9.5"
+
+[[bans.skip]]
+crate = "redox_syscall@0.5.18"
+reason = "parking_lot_core 0.9.12 requires it (through cambium, cambium-desktop, castellan and 19 more); goes when it moves to redox_syscall 0.9.5"
+
+[[bans.skip]]
+crate = "redox_users@0.4.6"
+reason = "dirs-sys-next 0.1.2 requires it (through mere-resident); goes when it moves to redox_users 0.5.3"
+
+[[bans.skip]]
+crate = "rustc-hash@1.1.0"
+reason = "bindgen 0.69.5, naga 30.0.2, naga-types 30.0.2, wgpu-core 30.0.2 require it (through cambium, cambium-desktop, esp and 8 more); goes when they move to rustc-hash 2.1.3"
+
+[[bans.skip]]
+crate = "rustix@0.38.44"
+reason = "calloop 0.13.0, calloop-wayland-source 0.3.0, smithay-client-toolkit 0.19.2, which 4.4.2 and 1 more require it (through cambium-desktop, esp, graphshell-host and 6 more); goes when they move to rustix 1.1.6"
+
+[[bans.skip]]
+crate = "sec1@0.7.3"
+reason = "elliptic-curve 0.13.8, ssh-key 0.6.7 require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to sec1 0.8.1"
+
+[[bans.skip]]
+crate = "sha2@0.10.9"
+reason = "bcrypt-pbkdf 0.10.0, ed25519-dalek 2.2.0, p256 0.13.2, p2mere-encryption 0.10.0 and 8 more require it (through cambium, cambium-desktop, castellan and 19 more); goes when they move to sha2 0.11.1"
+
+[[bans.skip]]
+crate = "shlex@1.3.0"
+reason = "bindgen 0.69.5, bindgen 0.72.1 require it (through esp, graphshell-host, mere-cartography and 4 more); goes when they move to shlex 2.0.1"
+
+[[bans.skip]]
+crate = "signature@2.2.0"
+reason = "castellan 0.0.4, ecdsa 0.16.9, ed25519 2.2.3, mere-resident 0.0.2 and 3 more require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to signature 3.0.0"
+
+[[bans.skip]]
+crate = "smol_str@0.1.24"
+reason = "acto 0.8.2 requires it (through graphshell-host, mere-resident); goes when it moves to smol_str 0.2.2"
+
+[[bans.skip]]
+crate = "spin@0.9.9"
+reason = "heapless 0.7.17, lazy_static 1.5.1 require it (through cambium, cambium-desktop, castellan and 20 more); goes when they move to spin 0.12.3"
+
+[[bans.skip]]
+crate = "spin@0.10.1"
+reason = "futures-buffered 0.2.14 requires it (through graphshell-host, mere-resident); goes when it moves to spin 0.12.3"
+
+[[bans.skip]]
+crate = "spki@0.7.3"
+reason = "ecdsa 0.16.9, pkcs1 0.7.5, pkcs8 0.10.2, rsa 0.9.10 require it (through cambium, cambium-desktop, castellan and 18 more); goes when they move to spki 0.8.1"
+
+[[bans.skip]]
+crate = "syn@1.0.109"
+reason = "genawaiter-proc-macro 0.99.1, proc-macro-error 0.4.12, proc-macro-error-attr 0.4.12, syn-mid 0.5.4 require it (through esp, graphshell-host, mere-cartography and 3 more); goes when they move to syn 3.0.10"
+
+[[bans.skip]]
+crate = "syn@2.0.119"
+reason = "arg_enum_proc_macro 0.3.4, aristo-macros 0.4.1, asn1-rs-derive 0.6.0, asn1-rs-impl 0.2.0 and 65 more require it (through armillary, cambium, cambium-desktop and 41 more); goes when they move to syn 3.0.10"
+
+[[bans.skip]]
+crate = "thiserror@1.0.69"
+reason = "calloop 0.13.0, djinn 0.0.3, graphshell-host 0.0.2, jni 0.21.1 and 11 more require it (through cambium-desktop, djinn, dramatis-resident and 10 more); goes when they move to thiserror 2.0.21"
+
+[[bans.skip]]
+crate = "thiserror-impl@1.0.69"
+reason = "thiserror 1.0.69 requires it (through cambium-desktop, djinn, dramatis-resident and 10 more); goes when it moves to thiserror-impl 2.0.21"
+
+[[bans.skip]]
+crate = "toml@0.9.12+spec-1.1.0"
+reason = "wasmtime-internal-cache 45.0.3 requires it (through mere-resident); goes when it moves to toml 1.2.1+spec-1.1.0"
+
+[[bans.skip]]
+crate = "toml_datetime@0.7.5+spec-1.1.0"
+reason = "toml 0.9.12+spec-1.1.0 requires it (through mere-resident); goes when it moves to toml_datetime 1.1.3+spec-1.1.0"
+
+[[bans.skip]]
+crate = "turquet@0.1.0"
+reason = "deliberate: cleromancy requires the published turquet 0.1.0 (analytic-ephemeris) beside the in-repo turquet 0.17.0 at crates/turquet"
+
+[[bans.skip]]
+crate = "universal-hash@0.5.1"
+reason = "poly1305 0.8.0, polyval 0.6.2 require it (through cambium, cambium-desktop, castellan and 19 more); goes when they move to universal-hash 0.6.1"
+
+[[bans.skip]]
+crate = "wasm-encoder@0.248.0"
+reason = "wasm-compose 0.248.0, wasmtime 45.0.3, wasmtime-environ 45.0.3 require it (through mere-resident); goes when they move to wasm-encoder 0.263.0"
+
+[[bans.skip]]
+crate = "wast@35.0.2"
+reason = "witx 0.9.1 requires it (through mere-resident); goes when it moves to wast 263.0.0"
+
+[[bans.skip]]
+crate = "windows-core@0.62.2"
+reason = "accesskit_windows 0.35.1, genet-fontique 0.10.0, iana-time-zone 0.1.65, wgpu-hal 30.0.2 and 5 more require it (through cambium, cambium-desktop, castellan and 13 more); goes when they move to windows-core 0.100.0"
+
+[[bans.skip]]
+crate = "windows-implement@0.60.2"
+reason = "windows-core 0.62.2 requires it (through cambium, cambium-desktop, castellan and 13 more); goes when it moves to windows-implement 0.100.0"
+
+[[bans.skip]]
+crate = "windows-interface@0.59.3"
+reason = "windows-core 0.62.2 requires it (through cambium, cambium-desktop, castellan and 13 more); goes when it moves to windows-interface 0.100.0"
+
+[[bans.skip]]
+crate = "windows-link@0.2.1"
+reason = "backtrace 0.3.77, chrono 0.4.45, gethostname 1.1.0, jiff 0.2.43 and 12 more require it (through armillary, cambium, cambium-desktop and 36 more); goes when they move to windows-link 0.100.0"
+
+[[bans.skip]]
+crate = "windows-result@0.4.1"
+reason = "ipconfig 0.3.4, netwatch 0.19.3, wgpu-hal 30.0.2, windows-core 0.62.2 and 1 more require it (through cambium, cambium-desktop, castellan and 13 more); goes when they move to windows-result 0.100.0"
+
+[[bans.skip]]
+crate = "windows-strings@0.5.1"
+reason = "windows-core 0.62.2, windows-registry 0.6.1 require it (through cambium, cambium-desktop, castellan and 13 more); goes when they move to windows-strings 0.100.0"
+
+[[bans.skip]]
+crate = "windows-sys@0.45.0"
+reason = "jni 0.21.1 requires it (through graphshell-host, mere-resident); goes when it moves to windows-sys 0.61.2"
+
+[[bans.skip]]
+crate = "windows-sys@0.52.0"
+reason = "ring 0.17.14, winit 0.30.13 require it (through cambium-desktop, castellan, dramatis-resident and 9 more); goes when they move to windows-sys 0.61.2"
+
+[[bans.skip]]
+crate = "windows-sys@0.59.0"
+reason = "cap-fs-ext 3.4.6, cap-primitives 3.4.6, djinn 0.0.3, fs-set-times 0.20.3 and 4 more require it (through cambium-desktop, djinn, dramatis-resident and 8 more); goes when they move to windows-sys 0.61.2"
+
+[[bans.skip]]
+crate = "windows-targets@0.42.2"
+reason = "windows-sys 0.45.0 requires it (through graphshell-host, mere-resident); goes when it moves to windows-targets 0.52.6"
+
+[[bans.skip]]
+crate = "windows_aarch64_gnullvm@0.42.2"
+reason = "windows-targets 0.42.2 requires it (through graphshell-host, mere-resident); goes when it moves to windows_aarch64_gnullvm 0.52.6"
+
+[[bans.skip]]
+crate = "windows_aarch64_msvc@0.42.2"
+reason = "windows-targets 0.42.2 requires it (through graphshell-host, mere-resident); goes when it moves to windows_aarch64_msvc 0.52.6"
+
+[[bans.skip]]
+crate = "windows_i686_gnu@0.42.2"
+reason = "windows-targets 0.42.2 requires it (through graphshell-host, mere-resident); goes when it moves to windows_i686_gnu 0.52.6"
+
+[[bans.skip]]
+crate = "windows_i686_msvc@0.42.2"
+reason = "windows-targets 0.42.2 requires it (through graphshell-host, mere-resident); goes when it moves to windows_i686_msvc 0.52.6"
+
+[[bans.skip]]
+crate = "windows_x86_64_gnu@0.42.2"
+reason = "windows-targets 0.42.2 requires it (through graphshell-host, mere-resident); goes when it moves to windows_x86_64_gnu 0.52.6"
+
+[[bans.skip]]
+crate = "windows_x86_64_gnullvm@0.42.2"
+reason = "windows-targets 0.42.2 requires it (through graphshell-host, mere-resident); goes when it moves to windows_x86_64_gnullvm 0.52.6"
+
+[[bans.skip]]
+crate = "windows_x86_64_msvc@0.42.2"
+reason = "windows-targets 0.42.2 requires it (through graphshell-host, mere-resident); goes when it moves to windows_x86_64_msvc 0.52.6"
+
+[[bans.skip]]
+crate = "winnow@0.7.15"
+reason = "toml 0.9.12+spec-1.1.0 requires it (through mere-resident); goes when it moves to winnow 1.0.5"
+
+[[bans.skip]]
+crate = "yasna@0.5.2"
+reason = "rcgen 0.13.2 requires it (through mere-resident); goes when it moves to yasna 0.6.0"
+
+[[bans.skip]]
+crate = "zstd@0.13.5"
+reason = "wasmtime-internal-cache 45.0.3 requires it (through mere-resident); goes when it moves to zstd 0.14.4"
+
+[[bans.skip]]
+crate = "zstd-safe@7.4.1"
+reason = "zstd 0.13.5 requires it (through mere-resident); goes when it moves to zstd-safe 8.3.0"

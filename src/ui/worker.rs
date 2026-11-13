@@ -301,9 +301,8 @@ pub(crate) fn execute<B: muniment::Backend>(
 ) -> Result<WorkerUpdate, ConsultationError> {
     match action {
         ConsultationAction::ReflectNatal { id, body } => {
-            use rand_core::RngCore;
             let mut nonce = [0u8; 16];
-            rand_core::OsRng.fill_bytes(&mut nonce);
+            getrandom::fill(&mut nonce).expect("OS randomness available");
             let nonce: String = nonce.iter().map(|b| format!("{b:02x}")).collect();
             let at = std::time::SystemTime::now()
                 .duration_since(std::time::UNIX_EPOCH)
