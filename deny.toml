@@ -280,10 +280,6 @@ crate = "prettyplease@0.2.37"
 reason = "bindgen 0.69.5, bindgen 0.72.1 require it (through esp, graphshell-host, mere-cartography and 4 more); goes when they move to prettyplease 0.3.0"
 
 [[bans.skip]]
-crate = "quick-xml@0.37.5"
-reason = "oxrdfxml 0.2.5 requires it (through graphshell-host, mere-cartography, mere-facts and 5 more); goes when it moves to quick-xml 0.42.0"
-
-[[bans.skip]]
 crate = "quick-xml@0.41.0"
 reason = "wayland-scanner 0.31.11 requires it (through cambium-desktop, mandrake, tabard-workshop); goes when it moves to quick-xml 0.42.0"
 
