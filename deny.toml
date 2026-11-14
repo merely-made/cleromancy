@@ -59,14 +59,6 @@ crate = "block2@0.5.1"
 reason = "objc2-app-kit 0.2.2, objc2-cloud-kit 0.2.2, objc2-contacts 0.2.2, objc2-core-data 0.2.2 and 10 more require it (through cambium-desktop, mandrake, tabard-workshop); goes when they move to block2 0.6.2"
 
 [[bans.skip]]
-crate = "chacha20@0.9.1"
-reason = "chacha20poly1305 0.10.1 requires it (p2mere-encryption 0.10.0; p2mere main moved; goes when p2mere publishes past 0.10.0)"
-
-[[bans.skip]]
-crate = "chacha20poly1305@0.10.1"
-reason = "p2mere-encryption 0.10.0 requires it (through graphshell-host, mere-cartography, mere-overmap and 3 more); goes when it moves to chacha20poly1305 0.11.0"
-
-[[bans.skip]]
 crate = "cipher@0.4.4"
 reason = "aes 0.8.4, aes-gcm 0.10.3, chacha20 0.9.1, chacha20poly1305 0.10.1, ctr 0.9.2 require it (aes-gcm 0.10.3 is held by noq-proto 1.4.0 and turso_core 0.8.3, both their latest releases; the chacha20 line by p2mere-encryption 0.10.0, p2mere main moved; goes when p2mere publishes past 0.10.0)"
 
@@ -175,14 +167,6 @@ crate = "hax-lib-macros-types@0.3.7"
 reason = "hax-lib-macros 0.3.7 requires it (through graphshell-host, mere-cartography, mere-overmap and 3 more); goes when it moves to hax-lib-macros-types 0.4.2"
 
 [[bans.skip]]
-crate = "hkdf@0.12.4"
-reason = "p2mere-encryption 0.10.0 requires it (p2mere main moved; goes when p2mere publishes past 0.10.0)"
-
-[[bans.skip]]
-crate = "hmac@0.12.1"
-reason = "hkdf 0.12.4 requires it (p2mere-encryption 0.10.0; p2mere main moved; goes when p2mere publishes past 0.10.0)"
-
-[[bans.skip]]
 crate = "inout@0.1.4"
 reason = "cipher 0.4.4 requires it (under aes-gcm 0.10 and chacha20poly1305 0.10); goes when it moves to inout 0.2.6"
 
@@ -268,10 +252,6 @@ crate = "png@0.17.16"
 reason = "mandrake 0.1.0 requires it (through mandrake); goes when it moves to png 0.18.1"
 
 [[bans.skip]]
-crate = "poly1305@0.8.0"
-reason = "chacha20poly1305 0.10.1 requires it (p2mere-encryption 0.10.0; p2mere main moved; goes when p2mere publishes past 0.10.0)"
-
-[[bans.skip]]
 crate = "polyval@0.6.2"
 reason = "ghash 0.5.1 requires it (aes-gcm 0.10.3 is held by noq-proto 1.4.0 and turso_core 0.8.3, both their latest releases); goes when it moves to polyval 0.7.3"
 
@@ -288,24 +268,12 @@ crate = "r-efi@5.3.0"
 reason = "getrandom 0.3.4 requires it (through cambium, cambium-desktop, castellan and 18 more); goes when it moves to r-efi 6.0.0"
 
 [[bans.skip]]
-crate = "rand@0.8.8"
-reason = "antithesis_sdk 0.3.0, num-bigint-dig 0.8.6, p2mere-core 0.10.0, shuttle 0.8.1 require it (through cambium, cambium-desktop, castellan and 19 more); goes when they move to rand 0.10.3"
-
-[[bans.skip]]
 crate = "rand@0.9.5"
 reason = "oxrdf 0.3.5, rav1e 0.8.1, tokenizers 0.23.2, turso_core 0.8.3 require it (through cambium-desktop, esp, graphshell-host and 10 more); goes when they move to rand 0.10.3"
 
 [[bans.skip]]
-crate = "rand_chacha@0.3.1"
-reason = "rand 0.8.8 requires it (through cambium, cambium-desktop, castellan and 19 more); goes when it moves to rand_chacha 0.10.0"
-
-[[bans.skip]]
 crate = "rand_chacha@0.9.0"
 reason = "p2mere-encryption 0.10.0, rand 0.9.5, rav1e 0.8.1 require it (through cambium-desktop, esp, graphshell-host and 10 more); goes when they move to rand_chacha 0.10.0"
-
-[[bans.skip]]
-crate = "rand_core@0.6.4"
-reason = "crypto-common 0.1.7, rand 0.8.8, rand_chacha 0.3.1, rand_pcg 0.3.1, shuttle 0.8.1 require it (rand 0.8 under antithesis_sdk 0.3.0, p2mere-core 0.10.0 and shuttle 0.8.1); goes when they move to rand_core 0.10.1"
 
 [[bans.skip]]
 crate = "rand_core@0.9.5"
