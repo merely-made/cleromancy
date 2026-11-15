@@ -42,7 +42,7 @@ esp = { optional = true, default-features = false, git = "https://github.com/mer
 sha2 = { version = "0.11", optional = true }
 fetch = { package = "mere-fetch", git = "https://github.com/merely-made/graphshell.git", branch = "main", default-features = false }
 mere-resident = { git = "https://github.com/merely-made/graphshell.git", branch = "main", default-features = false }
-ostiary = { version = "0.0.1", git = "https://github.com/merely-made/armillary.git", branch = "main", features = ["native"] }
+ostiary = { version = ">=0.0.1", git = "https://github.com/merely-made/armillary.git", branch = "main", features = ["native"] }
 mere-overmap = { git = "https://github.com/merely-made/graphshell.git", branch = "main", features = ["resident"] }
 mere-view = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 pandect = { git = "https://github.com/merely-made/mere.git", branch = "main" }
@@ -159,7 +159,7 @@ tempfile = "3"
 eidetic = { git = "https://github.com/merely-made/eidetic.git", branch = "main", features = ["pack-signing"] }
 uuid = { version = "1", features = ["v4"] }
 # The grant logic the granted-ambient test stands a door up with.
-djinn = { version = "0.0.3", git = "https://github.com/merely-made/armillary.git", branch = "main", features = ["door", "door-native"] }
+djinn = { version = ">=0.0.3", git = "https://github.com/merely-made/armillary.git", branch = "main", features = ["door", "door-native"] }
 
 # Current coherent renderer family, including owned Radeon and resource fixes.
 # Root patches are not inherited from Mere or Genet. The native host resolves
@@ -179,7 +179,7 @@ workbench = { git = "https://github.com/merely-made/graphshell.git", branch = "m
 hest = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 sprigging = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 # Resident custody and the host share one OS peer-facts vocabulary.
-peer-facts = { version = "0.0.1", git = "https://github.com/merely-made/armillary.git", branch = "main" }
+peer-facts = { version = ">=0.0.1", git = "https://github.com/merely-made/armillary.git", branch = "main" }
 # Promoted sources shared with immutable older Mere suppliers.
 gemini-protocol = { git = "https://github.com/merely-made/errand.git", branch = "main" }
 scroll-protocol = { git = "https://github.com/merely-made/errand.git", branch = "main" }
