@@ -1,7 +1,7 @@
 # Fortune teller: a daily game for Reddit
 
-**Status (2026-11-11): plan.** Design rulings recorded; nothing built. Platform
-feasibility is unverified (see Findings), so no phase past F0 is entered yet.
+**Status (2026-11-15): local playtest.** The draw crate and one playable
+customer run in a browser. Devvit playtest feasibility is still open.
 
 A cozy fortune-teller game. A customer sits down; cards are drawn for them; the
 player composes the reading by filling a templated fortune from a word bank.
@@ -33,17 +33,19 @@ Source: `https://redditgameofday2026.devpost.com/rules`, read 2026-11-11.
   came to ask about. The *element* is that of the sign the real Moon is in on
   the day, and sets their mood. "Mars x Water x Libra" is a Libra visiting
   under a water Moon that stands nearest Mars.
-- **Reading.** Cards are drawn from the day's public seed, so every player sees
-  the same draw. The spread grows through the week, one to five cards, and
-  its size is the difficulty. The fortune is a template with blanks, filled from a word bank
-  the cards supply.
+- **Reading.** The day sets the customer and a featured spread. The player
+  can choose another spread to change how they answer. They can shuffle the
+  face-down deck repeatedly and commit their personal draw by revealing the
+  first card. The fortune is a template filled from words associated with
+  the cards.
 - **Judgement.** Two axes: Mora scores the sound of the finished reading
-  against the customer's taste; a tag rule checks the chosen words suit the
-  cards. Meter is one taste among several, graded by how much of a line fits,
-  never pass/fail.
+  against the customer's taste; WordNet graph distance measures how closely
+  the chosen words relate to the cards. Meter is one taste among several,
+  graded by how much of a line fits. The breakdown follows delivery.
 - **Daily loop.** The first customer of a session is today's daily. Each
   customer after that is the previous day's daily, walking back through the
-  archive.
+  archive. Most visits introduce a new customer. Occasional return visits use
+  the authoring ledger for continuity and supply enough context to stand alone.
 
 ## Phases
 
@@ -67,8 +69,9 @@ Done when:
 
 Done when:
 
-- A customer is derived from a date alone, and the same date gives the same
-  planet, sign, element and draw on a second independent run.
+- The same date gives the same customer profile and featured spread on a
+  second independent run. Each player draws their own hand, which retains
+  its cards and orientations when the player returns to the reading.
 - A filled template is scored on both axes, and a test shows a reading that
   suits the customer's taste outscoring one that does not, for at least one
   customer per planet.
@@ -97,14 +100,14 @@ Done when:
 
 Each is Mark's to rule.
 
-- Which day boundary sets the weekday and the Moon's sign (UTC, as
+- Which day boundary sets the customer and the Moon's sign (UTC, as
   `sky-timeline` uses, or something else).
 - What the positions of the two-, four- and five-card spreads are called.
 - When the Moon itself is the customer's planet under D21 (for example when
   no planet is within some distance of it), and what "closest" measures
   (ecliptic longitude or angular separation).
 - Which sky events count for D19, what spread each brings, and whether a
-  special replaces or joins the day's ladder spread.
+  special replaces or joins the day's featured spread.
 - How the 78 card faces of D20 are made, and what a reversed card looks like
   at about 100 px wide.
 - What the game calls the deck (see Findings on the "Rider-Waite" name).
@@ -124,7 +127,7 @@ Each is Mark's to rule.
 
 ## Decisions
 
-Recorded in the words given, 2026-11-11.
+Initial rulings were recorded on 2026-11-11. Later rulings follow in order.
 
 - **fortune_teller D1.** Which core to pursue. "1 seems doable, 2+3 (relating
   those two seems the core of any puzzle), and 3 (a lil blank canvas is not bad
@@ -302,6 +305,25 @@ Recorded in the words given, 2026-11-11.
   and choose guessers; nothing derived from it ships. Outcome: settles the
   share-alike question left open on 2026-11-11.
   Links: area build · draws on fortune_teller D32 · summary Wiktionary measures guessers and is not shipped
+
+- **fortune_teller D42.** Featured and selectable spreads (2026-11-15).
+  One spread is featured for the daily customer. Players may choose a
+  different form of response. Difficulty depends on the pairing of customer
+  and spread, and card count alone does not determine it. Outcome: supersedes
+  the fixed weekday ladder in D14, D18 and D21.
+  Links: area game · amends fortune_teller D14 · amends fortune_teller D18 · amends fortune_teller D21 · summary one featured spread with selectable alternatives
+- **fortune_teller D43.** Personal draws and the shuffle ritual (2026-11-15).
+  Each Shuffle makes another randomized pass before any card is revealed.
+  Revealing the first card commits that player's hand. The customer can lapse
+  into increasingly impatient dialogue after repeated shuffles. Outcome:
+  replaces the shared daily draw described in D24.
+  Links: area game · amends fortune_teller D24 · summary repeated face-down shuffles and a personal hand committed on first reveal
+- **fortune_teller D44.** New customers and return visits (2026-11-15).
+  The authoring ledger records a customer's identity and voice, plus the
+  concern, reason for coming today, featured spread and dialogue for each
+  visit. Most visits introduce someone new. Occasional return visits contain
+  enough context to play on their own. Outcome: new.
+  Links: area game · draws on fortune_teller D3 · summary customer ledger with occasional self-contained return visits
 
 ## Findings
 
@@ -529,6 +551,21 @@ Recorded in the words given, 2026-11-11.
     the project are included with `additionalSourceRoots`.
 
 ## Progress
+
+- 2026-11-15. Soothsayer's source and Devvit foundation are on
+  `merely-made/soothsayer` at `9ac1fac`. The build produces the inline
+  invitation, expanded booth and a moderator-only action to create a test
+  post. The separate offline package embeds the same client and WebAssembly
+  in one HTML file. Running inside a Reddit post remains an F0 check.
+
+- 2026-11-15. The local `repos/soothsayer` booth runs Nell Varga's first
+  visit. Its WebAssembly module uses the published draw, Mora and CMUdict
+  sources. The slice has eight cards, eight authored lines, three selectable
+  spreads and local browser persistence. Card fit uses authored tag overlap
+  for this slice. The full WordNet graph, sky-derived profiles and Devvit
+  playtest remain open. In Firefox, fourteen shuffles reached Nell's
+  mail-order line. Reload recovered the partially revealed hand and later
+  the delivered reading with both scores.
 
 - 2026-11-13. F0, draw crate landed: `crates/cleromancy-draw` cut and the
   application switched to it. With `legacy-receipts` on, `derived_selection`
