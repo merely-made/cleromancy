@@ -54,17 +54,19 @@ pub fn disclosed(data: &CardNeighborhood, view: &AmbientView) -> RelationshipDat
                 .filter(|i| visible.contains(i.id.as_str())),
         )
         .enumerate()
-        .map(|(index, item)| ProjectionOccurrence {
-            occurrence_id: item.id.clone(),
-            source: SourceRef::new("cleromancy.ambient", &item.source),
-            values: BTreeMap::from([
-                (
-                    "occurrence_id".into(),
-                    ProjectionValue::Text(item.id.clone()),
-                ),
-                ("label".into(), ProjectionValue::Text(item.title.clone())),
-                ("order".into(), ProjectionValue::Number(index as f64)),
-            ]),
+        .map(|(index, item)| {
+            ProjectionOccurrence::new(
+                item.id.clone(),
+                SourceRef::new("cleromancy.ambient", &item.source),
+                BTreeMap::from([
+                    (
+                        "occurrence_id".into(),
+                        ProjectionValue::Text(item.id.clone()),
+                    ),
+                    ("label".into(), ProjectionValue::Text(item.title.clone())),
+                    ("order".into(), ProjectionValue::Number(index as f64)),
+                ]),
+            )
         })
         .collect();
     RelationshipDataset {
