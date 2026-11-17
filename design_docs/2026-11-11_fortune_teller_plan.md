@@ -38,14 +38,35 @@ Source: `https://redditgameofday2026.devpost.com/rules`, read 2026-11-11.
   face-down deck repeatedly and commit their personal draw by revealing the
   first card. The fortune is a template filled from words associated with
   the cards.
-- **Judgement.** Two axes: Mora scores the sound of the finished reading
-  against the customer's taste; WordNet graph distance measures how closely
-  the chosen words relate to the cards. Meter is one taste among several,
-  graded by how much of a line fits. The breakdown follows delivery.
+- **Reaction.** The customer reacts visibly while the player prepares the
+  reading, then responds in their own voice. Their concern, taste, delivery
+  and chance shape the response. An odd fortune can delight a customer
+  who enjoys how it was told. Mora measures sound and the association graph
+  describes card connections. The breakdown follows delivery.
 - **Daily loop.** The first customer of a session is today's daily. Each
   customer after that is the previous day's daily, walking back through the
   archive. Most visits introduce a new customer. Occasional return visits use
   the authoring ledger for continuity and supply enough context to stand alone.
+  Walk-ins provide puzzles between scheduled visits. A promoted walk-in can
+  appear in a weekly, with a new scenario if that customer returns.
+
+### Three game gates (2026-11-16)
+
+1. **Generated customers.** A player can ask for a walk-in immediately.
+   The generator combines a character and situation, including a reason
+   for coming now. A recorded seed and generator version identify a visit.
+   Favorite walk-ins can be nominated and promoted to weeklies. Retain a
+   promoted character's identity and give return visits distinct scenarios.
+2. **Generated semantic connections.** Interpretations supply starting
+   ideas. The player follows an interactive graph from those ideas to words
+   and phrases. Card connections remain explainable without prescribing
+   the content or message of the fortune.
+3. **Generated character reactions.** Expressions and motion cue what the
+   client is noticing while the player composes and prepares a delivery.
+   The delivered reaction combines the situation, a character's taste and
+   voice, the reading, and variation from a recorded seed. A coherent
+   response to the predicament and a delightful bit of nonsense can both
+   work for the same customer.
 
 ## Phases
 
@@ -325,6 +346,24 @@ Initial rulings were recorded on 2026-11-11. Later rulings follow in order.
   enough context to play on their own. Outcome: new.
   Links: area game · draws on fortune_teller D3 · summary customer ledger with occasional self-contained return visits
 
+- **fortune_teller D45.** Walk-ins and weeklies (2026-11-16).
+  Add a procedural walk-in generator for repeat play. Players can upvote
+  walk-ins for promotion to weeklies. A returning client has a new scenario.
+  Outcome: extends D44.
+  Links: area game · amends fortune_teller D44 · summary generate immediate visits and promote audience favorites
+- **fortune_teller D46.** Interpretations as prompts (2026-11-16).
+  Generate semantic connections from card meanings to words and phrases.
+  The player takes suggestions from a graphical, interactive display and
+  can improvise freely. Outcome: refines D25 and D27.
+  Links: area game · amends fortune_teller D25 · amends fortune_teller D27 · summary turn meanings into explorable suggestions
+- **fortune_teller D47.** Character reaction over correctness (2026-11-16).
+  The fortune teller is a well-meaning fraud. Let the client respond to the
+  situation, the player's words and delivery, and chance. Animate the client
+  during composition. Even nonsense can land when the delivery feels
+  mystical. Outcome: reframes D2 and allows in-progress character cues under
+  D28. Numeric breakdown stays after delivery.
+  Links: area game · amends fortune_teller D2 · amends fortune_teller D28 · summary animated reactions before and after delivery
+
 ## Findings
 
 - 2026-11-13. The misaki lexicons checked as a third dictionary (version
@@ -551,6 +590,66 @@ Initial rulings were recorded on 2026-11-11. Later rulings follow in order.
     the project are included with `additionalSourceRoots`.
 
 ## Progress
+
+- 2026-11-17. Soothsayer's accumulated game work is committed at
+  `a877d68`. Downloadable playtest `booth-preview-v0.2.0` packages the
+  walk-ins, sense-specific reactions, WordNet orbit, direct word selection,
+  five comparison relations and seven-card chains into one offline HTML
+  file. The repository README links to that version.
+
+- 2026-11-17. Local walk-in reactions now combine sense-derived concerns
+  with five situation vocabularies and three personality voices. Interpretation
+  links extend beyond the seven initial themes to available WordNet content
+  words and inflected forms. The cloud has directional relation descriptions,
+  a centered spring orbit with draggable neighbors, and a list view. The
+  comparison vocabulary adds leads-to, shelters and becomes. A seven-card
+  chain draws distinct cards from the prototype's eight-card deck and
+  preserves its six connections and delivered responses. Firefox exercised
+  Baxter's expanded interpretation links and orbit, and Alonzo's complete
+  seven-card reading through a reload.
+
+- 2026-11-17. Nell's local pair reaction now uses each selected word's
+  WordNet definition and up to two levels of broader concepts. Authored
+  rules recognize money, promises, doubt, resolve, change, work, time and
+  choices, with distinct echo and tension responses for her lease decision.
+  Unfamiliar pairs have puzzled responses. Firefox verified that the same
+  pair `doubt / change` changed its reaction when `change` switched from a
+  transition to coins. The offline build reopened with its delivered
+  response intact.
+
+- 2026-11-17. Local two-word reading prototype in `repos/soothsayer`.
+  Each WordNet find sits beneath its source card. Echo and tension controls
+  change the connection, portrait cue and dialogue while composing. The
+  reaction families are authored for this interaction trial. In Firefox,
+  Nell reacted differently to the same pair under each relation. Replacing
+  one word updated the pair. A separate walk-in reopened with both the
+  draft connection and, after delivery, the completed reading intact.
+
+- 2026-11-16. Local WordNet cloud in `repos/soothsayer`. The pinned Open
+  English WordNet 2025 export converts to a 4.9 MiB compressed browser
+  asset, with definitions, 107,519 synsets, 234,810 synset links, and
+  120,254 word-sense links. Keywords in card interpretations open the
+  intended meaning, with other senses selectable. In Firefox, the cloud
+  followed `change` to `natural event`, followed the trail back, switched to
+  the money sense, and preserved the reading's draft on close. The web and
+  offline builds were both exercised.
+- 2026-11-16. The cloud now places real WordNet words and phrases into the
+  current fortune. It retains the interpretation word and link count for
+  an uninterrupted trail. In Firefox a three-card fortune used
+  `period of time`, `dubiety` and `resolve`. The pronunciation provider
+  lacked `dubiety`; the fortune still delivered, and the rhythm breakdown
+  reported coverage of two of three lines.
+
+- 2026-11-16. Local prototype of all three game gates in
+  `repos/soothsayer`. A versioned walk-in seed combines ten identities and
+  five scenario archetypes. Card interpretations and the authored phrase
+  bank supply the semantic graph. An animated portrait responds during
+  composition; concern, voice, delivery and seeded variation shape the
+  finished line. In Firefox, a walk-in reopened with the same identity and
+  question. Nell leaned in for a quiet delivery of a fortune about a very
+  small parade, then said she had rather liked hearing it. The larger
+  lexical source, richer character art, nominations and weekly promotion
+  remain open.
 
 - 2026-11-15. Soothsayer's source and Devvit foundation are on
   `merely-made/soothsayer` at `9ac1fac`. The build produces the inline
