@@ -21,7 +21,7 @@ pub enum ConsultationLayout {
     Authored(String),
 }
 
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum ConsultationAction {
     ReflectNatal {
         id: String,

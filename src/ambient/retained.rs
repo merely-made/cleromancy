@@ -35,7 +35,7 @@ pub fn validate_motion(slot: &DynamicsSlot) -> Result<(), String> {
         Err("dynamics.spec: this consumer supports the complete bare Springs and Flock specs only; terms, channels and overrides outside that contract are refused".into())
     }
 }
-#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct AmbientView {
     pub schema: String,
@@ -280,7 +280,7 @@ pub struct MemorySummary {
     pub memory: AmbientMemory,
     pub kept: bool,
 }
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct AmbientContext {
     pub data: CardNeighborhood,
     pub view: AmbientView,

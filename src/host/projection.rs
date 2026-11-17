@@ -277,6 +277,7 @@ impl<B: Backend> CleromancyHost<B> {
                 continue;
             };
             routed_relations.push(RoutedRelation {
+                form: Default::default(),
                 link_key: None,
                 marks: Default::default(),
                 strength: None,
