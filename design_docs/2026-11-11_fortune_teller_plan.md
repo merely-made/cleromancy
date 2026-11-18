@@ -591,6 +591,20 @@ Initial rulings were recorded on 2026-11-11. Later rulings follow in order.
 
 ## Progress
 
+- 2026-11-17. Soothsayer `5b78430` expands new hands to the complete
+  78-card deck, with 156 original upright/reversed game interpretations.
+  Card identities and ordering follow Cleromancy's RWS complete reflective
+  deck at `ba7442a`; product interpretations and provenance live in
+  Soothsayer's `web/tarot-deck.json`. Saved hands record their deck edition;
+  earlier eight-card saves keep their original mapping and interpretations.
+  All orientations have at least seven explorable WordNet content words.
+  Four Rust tests include seven-card uniqueness, replay, all-card/orientation
+  reachability and legacy draw regressions. The Devvit bundle builds.
+  Firefox verified an older saved reading, a new upright/reversed pair,
+  and a complete seven-card chain through reload in the fresh-checkout
+  standalone file. Downloadable playtest `booth-preview-v0.3.0` packages
+  that source; Reddit-hosted and other-computer execution remain unverified.
+
 - 2026-11-17. Soothsayer's accumulated game work is committed at
   `a877d68`. Downloadable playtest `booth-preview-v0.2.0` packages the
   walk-ins, sense-specific reactions, WordNet orbit, direct word selection,
