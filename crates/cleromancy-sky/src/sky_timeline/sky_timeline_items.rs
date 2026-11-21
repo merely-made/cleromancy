@@ -12,7 +12,7 @@ impl SkyTimeline {
         &self.receipt
     }
 
-    pub fn local_time(&self, item: &SkyTimelineItem) -> Result<Zoned, SkyLocalTimeError> {
+    pub fn local_time(&self, item: &SkyTimelineItem) -> Result<ZonedDateTime, SkyLocalTimeError> {
         self.receipt.day.local_time(item.instant())
     }
 }

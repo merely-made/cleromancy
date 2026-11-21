@@ -39,7 +39,7 @@ impl ResolvedSkyDay {
     pub fn local_time(
         &self,
         epoch: JulianDate<TerrestrialTime>,
-    ) -> Result<Zoned, SkyLocalTimeError> {
-        Ok(utc_from_tt(epoch)?.to_zoned(self.time_zone.clone()))
+    ) -> Result<ZonedDateTime, SkyLocalTimeError> {
+        Ok(utc_from_tt(epoch)?.to_zoned_datetime(self.time_zone.clone()))
     }
 }

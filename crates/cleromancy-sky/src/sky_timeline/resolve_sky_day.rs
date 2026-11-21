@@ -15,14 +15,14 @@ pub(super) fn resolve_sky_day(
     // midnight. Jiff's compatible date resolution chooses the first valid
     // instant belonging to each date. Caller-selected anchors remain strict.
     let start_utc = date
-        .to_zoned(time_zone.clone())
+        .to_zoned_datetime(time_zone.clone())
         .map(|zoned| zoned.timestamp())
         .map_err(|_| SkyRequestError::CivilDayBoundaryOutOfRange {
             date,
             time_zone: time_zone_name.clone(),
         })?;
     let end_utc = following_date
-        .to_zoned(time_zone.clone())
+        .to_zoned_datetime(time_zone.clone())
         .map(|zoned| zoned.timestamp())
         .map_err(|_| SkyRequestError::CivilDayBoundaryOutOfRange {
             date: following_date,

@@ -13,7 +13,7 @@ use std::fmt;
 use std::time::Duration;
 
 use jiff::{
-    Timestamp, Zoned,
+    Timestamp, ZonedDateTime,
     civil::{Date, DateTime as CivilDateTime, Time},
     tz::{AmbiguousOffset, TimeZone},
 };

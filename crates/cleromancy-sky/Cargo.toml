@@ -12,7 +12,7 @@ resolver = "2"
 
 [dependencies]
 turquet = { version = "=0.17.0", path = "../turquet" }
-jiff = "0.2"
+jiff = "1.0"
 serde = { version = "1", features = ["derive"] }
 # Receipt floats must retain their exact bits through JSON decoding, including
 # when this library is built without the application's feature unification.

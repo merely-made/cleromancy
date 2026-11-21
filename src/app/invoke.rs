@@ -38,10 +38,7 @@ impl<B: Backend> CleromancyApp<B> {
             ));
         };
         if intent.observed_epoch != epoch || intent.observed_revision != revision {
-            return Ok(IntentResult::Stale {
-                current_epoch: epoch,
-                current_revision: revision,
-            });
+            return Ok(IntentResult::stale(epoch, revision));
         }
         if !self
             .host

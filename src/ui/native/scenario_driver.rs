@@ -378,7 +378,7 @@ impl ScenarioDriver<'_, '_> {
                 .map(|selector| taproot::matching_classes(&dom, selector));
             let matches = match &selector.matcher {
                 taproot::Match::Class(_) => taproot::matching_classes(&dom, &selector),
-                taproot::Match::Role(_) => {
+                taproot::Match::Role(_) | taproot::Match::Key(_) => {
                     let projection = self
                         .ctx
                         .a11y_projection()

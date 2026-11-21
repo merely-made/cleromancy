@@ -195,6 +195,10 @@ crate = "linux-raw-sys@0.4.15"
 reason = "rustix 0.38.44 requires it (through cambium-desktop, esp, graphshell-host and 6 more); goes when it moves to linux-raw-sys 0.12.1"
 
 [[bans.skip]]
+crate = "lru@0.18.5"
+reason = "held by n0-dns-resolver 0.1.1; gone when it moves to lru 0.19.0 (n0-dns-resolver 0.1.1 is its latest release)"
+
+[[bans.skip]]
 crate = "miniz_oxide@0.8.9"
 reason = "exr 1.74.3, png 0.17.16, png 0.18.1 require it (through cambium, cambium-desktop, esp and 9 more); goes when they move to miniz_oxide 0.9.1"
 
