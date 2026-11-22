@@ -187,10 +187,6 @@ crate = "jni-sys@0.3.1"
 reason = "jni 0.21.1, ndk 0.9.0, ndk-sys 0.6.0+11769913 require it (through cambium, cambium-desktop, esp and 8 more); goes when they move to jni-sys 0.4.1"
 
 [[bans.skip]]
-crate = "light-file-dialog@3.21.3"
-reason = "cambium-desktop 0.1.0 requires the registry release while mere-resident 0.0.2 takes Graphshell's patched copy (support/patches/light-file-dialog) at the same version; goes when cambium-desktop takes the patched copy or the patch reaches a release"
-
-[[bans.skip]]
 crate = "linux-raw-sys@0.4.15"
 reason = "rustix 0.38.44 requires it (through cambium-desktop, esp, graphshell-host and 6 more); goes when it moves to linux-raw-sys 0.12.1"
 
