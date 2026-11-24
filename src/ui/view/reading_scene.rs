@@ -70,7 +70,7 @@ pub(super) fn spread_view(ui: &ConsultationUi) -> ConsultationView {
                 {
                     ui.ambient.close();
                 }
-                ui.card_preview = None;
+                ui.set_card_preview(None);
                 ui.reading_focus.insert(session.clone(), target.clone());
             }
         })

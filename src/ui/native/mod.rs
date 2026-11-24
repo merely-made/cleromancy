@@ -44,6 +44,10 @@ type ConsultationCtx<'a> = AppCtx<'a, ApplicationUi, ApplicationLogic, Child>;
 pub fn run(data_root: &Path) -> Result<(), String> {
     std::fs::create_dir_all(data_root)
         .map_err(|error| format!("create {}: {error}", data_root.display()))?;
+    let directory = std::env::var_os("CLEROMANCY_ONTOLOGY_DIR").map(std::path::PathBuf::from);
+    let consultation =
+        ConsultationUi::with_ontology_directory(empty_catalog(), directory.as_deref())
+            .map_err(|error| format!("load reading ontology: {error}"))?;
     let state = Rc::new(RefCell::new(NativeState::new(scenario::load())));
     let init_state = state.clone();
     let (selection, library) = appearance::paths(data_root);
@@ -65,7 +69,7 @@ pub fn run(data_root: &Path) -> Result<(), String> {
                 .expect("initial owned sheet");
             Init {
                 state: ApplicationUi {
-                    consultation: ConsultationUi::new(empty_catalog()),
+                    consultation,
                     mere: Default::default(),
                     appearance,
                 },

@@ -1,0 +1,56 @@
+id = "https://mere.computer/packs/cleromancy/tarot"
+version = "0.1.0"
+kind = ["vocabulary"]
+licence = "CC-BY-4.0"
+credit = [
+  "TAR-O by Mikey Hogarth, https://w3id.org/taro/ontology, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).",
+  "Cleromancy selects four TAR-O classes and one property and adds local reading terms and projection families."
+]
+provides = ["tarot:", "reading:"]
+
+[prefixes]
+tarot = "https://w3id.org/taro/ontology#"
+reading = "https://mere.computer/ns/cleromancy#"
+role = "https://mere.computer/ns/cleromancy/role#"
+
+[[vocabulary.terms]]
+iri = "reading:TarotReading"
+kind = "class"
+family = "role:reading"
+labels = { en = "Tarot reading" }
+
+[[vocabulary.terms]]
+iri = "reading:drawnCard"
+kind = "predicate"
+family = "role:drawn-card"
+labels = { en = "Drawn card" }
+
+[[vocabulary.terms]]
+iri = "tarot:Deck"
+kind = "class"
+family = "role:deck"
+labels = { en = "Deck" }
+
+[[vocabulary.terms]]
+iri = "tarot:TarotCard"
+kind = "class"
+family = "role:card"
+labels = { en = "Tarot card" }
+
+[[vocabulary.terms]]
+iri = "tarot:MajorArcanaCard"
+kind = "class"
+family = "role:major-card"
+labels = { en = "Major arcana card" }
+
+[[vocabulary.terms]]
+iri = "tarot:MinorArcanaCard"
+kind = "class"
+family = "role:minor-card"
+labels = { en = "Minor arcana card" }
+
+[[vocabulary.terms]]
+iri = "tarot:inDeck"
+kind = "predicate"
+family = "role:in-deck"
+labels = { en = "In deck" }

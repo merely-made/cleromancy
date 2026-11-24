@@ -4,7 +4,35 @@
 use super::*;
 
 impl ConsultationUi {
+    pub fn catalog(&self) -> &ConsultationCatalog {
+        &self.catalog
+    }
+
+    pub fn detail(&self) -> Option<&ConsultationDetail> {
+        self.detail.as_ref()
+    }
+
+    /// The active surface, derived from the tab bar's selection. There is no
+    /// stored screen field to fall out of step with it.
+    pub fn screen(&self) -> ConsultationScreen {
+        screen::selected_screen(&self.surface_tabs)
+    }
+
+    pub fn status(&self) -> &ConsultationStatus {
+        &self.status
+    }
+
+    pub fn error(&self) -> Option<&str> {
+        self.error.as_deref()
+    }
+
+    pub(in crate::ui) fn set_card_preview(&mut self, card: Option<(String, String)>) {
+        self.card_preview = card;
+        self.correspondence = None;
+    }
+
     pub(crate) fn clear_selection(&mut self) {
+        self.set_card_preview(None);
         self.ambient = Default::default();
         self.detail = None;
         self.comparison = None;
@@ -48,7 +76,7 @@ impl ConsultationUi {
             .as_ref()
             .is_some_and(|(digest, _)| !catalog.fields.iter().any(|f| f.digest() == *digest))
         {
-            self.card_preview = None;
+            self.set_card_preview(None);
         }
         self.comparison_select.selected = self.comparison_select.selected.min(
             catalog
@@ -211,7 +239,7 @@ impl ConsultationUi {
         {
             self.ambient.close();
         }
-        self.card_preview = None;
+        self.set_card_preview(None);
         // Refresh the display clock after a draw; the startup clock precedes
         // new readings and would incorrectly label them "in the future".
         self.journal.now_ms = std::time::SystemTime::now()

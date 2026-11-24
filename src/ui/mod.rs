@@ -12,6 +12,7 @@ mod ambient_state;
 mod chart_state;
 mod journal_state;
 pub mod native;
+mod ontology;
 pub(crate) mod resident;
 pub(crate) mod scenario;
 mod screen;

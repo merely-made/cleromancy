@@ -1,0 +1,7 @@
+id = "https://mere.computer/packs/cleromancy/default"
+version = "0.1.0"
+kind = ["lens"]
+licence = "MIT OR Apache-2.0"
+
+[lens]
+select = [{ pack = "https://mere.computer/packs/cleromancy/tarot", version = "0.1.0" }]

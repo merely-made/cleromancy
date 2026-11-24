@@ -6,6 +6,26 @@ deterministic, securely cast, or derived from a public seed, and every result
 keeps a replayable receipt that separates context, qualification, selection,
 and interpretation.
 
+## Tarot vocabulary
+
+The tarot reading view exposes a JSON-LD graph linking each sealed result to
+its drawn card and that card to the saved deck. It uses the saved card name,
+the deck name when available, and the result’s display title as RDF labels.
+Typed decks also identify the major or minor arcana. The default pack
+uses terms from [TAR-O](https://w3id.org/taro/ontology) and two Cleromancy
+terms for the reading and draw.
+
+Set `CLEROMANCY_ONTOLOGY_DIR` to a local directory to choose another lens at
+startup. Copy [lens.toml](assets/ontology/lens.toml) there and edit its
+`select` list. It can select the bundled tarot vocabulary and additional
+`*.toml` packs in that directory. A local vocabulary with the same pack ID
+replaces the bundled copy. Selecting an empty list omits the tarot projection.
+
+The `family` field in [tarot.toml](assets/ontology/tarot.toml) binds each term to
+the values Cleromancy can project. Use the same family on another term to
+express the same fact in your vocabulary. The deck and card identifiers are
+fragments of the saved field, so choosing a different lens preserves them.
+
 ## Status (2026-10-17)
 
 Personal natal readings use shared subjects and retained birth revisions. They
@@ -48,7 +68,10 @@ Marseille-structure text decks, 78 cards each, with typed identities, suits,
 numbers and ranks. A fresh reading session starts with RWS; **Add tarot decks**
 adds the second choice. A focused card discloses Golden Dawn / Book T and
 Thierens correspondences separately, with source dates and untranscribed axes
-explicit. Cross-deck inspection preserves the saved reading. New fields retain
+explicit. Select a sign, planet, or element to see the cards assigned to it in
+that deck by the same source, tradition, and transcription version. Open a
+matching card to inspect both sources, then use **Return to drawn card**.
+Cross-deck inspection also preserves the saved reading. New fields retain
 their full card and position-definition editions; previous fields keep their
 original encoding. The new fixed minor prompts disclose model-assisted
 editorial provenance. The C3 software receipt (`Code/testing/cleromancy/receipts/c3-software-qualification_20261016.json`)

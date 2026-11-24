@@ -18,13 +18,17 @@ pub type App = Harness<ConsultationUi, Logic, ConsultationView>;
 pub const SHEET: &str = include_str!("../../src/ui/consultation.css");
 
 pub fn harness(catalog: cleromancy::ConsultationCatalog) -> App {
+    harness_with_state(ConsultationUi::new(catalog))
+}
+
+pub fn harness_with_state(state: ConsultationUi) -> App {
     let hooks: HostHooks<ConsultationUi, Logic, ConsultationView> = HostHooks {
         focused_text: Box::new(cleromancy::ui::native::consultation_focused_text),
         ..inert_hooks()
     };
     let mut harness = Harness::with_hooks(
         Init {
-            state: ConsultationUi::new(catalog),
+            state,
             logic: consultation_view as Logic,
             sheet: SHEET.to_string(),
             // Added in mere 1009f02d; empty keeps the harness on system

@@ -69,9 +69,11 @@ impl ConsultationStatus {
 
 #[derive(Clone, Debug, PartialEq)]
 pub struct ConsultationUi {
+    pub(super) ontology: super::ontology::ReadingOntology,
     pub(crate) ambient: super::ambient_state::AmbientUi,
     /// Inspection of another deck never changes the saved reading.
     pub(crate) card_preview: Option<(String, String)>,
+    pub(super) correspondence: Option<(String, crate::cards::CorrespondenceTerm)>,
     pub(super) catalog: ConsultationCatalog,
     pub(super) context_select: SelectState,
     pub(super) context_label: TextInput,
@@ -147,9 +149,24 @@ pub struct ConsultationUi {
 
 impl ConsultationUi {
     pub fn new(catalog: ConsultationCatalog) -> Self {
-        Self {
+        Self::with_ontology_directory(catalog, None)
+            .expect("the bundled Cleromancy reading ontology loads")
+    }
+
+    /// Open a reading surface with the chosen local lens or the bundled default.
+    ///
+    /// # Errors
+    ///
+    /// Returns a read or admission error if the selected ontology cannot load.
+    pub fn with_ontology_directory(
+        catalog: ConsultationCatalog,
+        directory: Option<&std::path::Path>,
+    ) -> Result<Self, String> {
+        Ok(Self {
+            ontology: super::ontology::ReadingOntology::load(directory)?,
             ambient: Default::default(),
             card_preview: None,
+            correspondence: None,
             catalog,
             context_select: SelectState::new(0).with_label("Context"),
             context_label: TextInput::default(),
@@ -226,30 +243,9 @@ impl ConsultationUi {
                     "This build does not include a local model runtime.".into()
                 }
             },
-        }
+        })
     }
 
-    pub fn catalog(&self) -> &ConsultationCatalog {
-        &self.catalog
-    }
-
-    pub fn detail(&self) -> Option<&ConsultationDetail> {
-        self.detail.as_ref()
-    }
-
-    /// The active surface, derived from the tab bar's selection. There is no
-    /// stored screen field to fall out of step with it.
-    pub fn screen(&self) -> ConsultationScreen {
-        screen::selected_screen(&self.surface_tabs)
-    }
-
-    pub fn status(&self) -> &ConsultationStatus {
-        &self.status
-    }
-
-    pub fn error(&self) -> Option<&str> {
-        self.error.as_deref()
-    }
     pub(crate) fn record_action(&mut self, action: Option<ConsultationAction>) {
         if matches!(
             &action,
@@ -404,7 +400,6 @@ impl ConsultationUi {
             return;
         };
         self.clear_selection();
-        self.card_preview = None;
         self.error = None;
         self.field_select.selected = index;
         self.mode.selected = 1;

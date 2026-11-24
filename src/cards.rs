@@ -241,6 +241,24 @@ pub struct Correspondence {
     pub note: String,
 }
 
+/// A transcribed correspondence, retaining its axis even when names coincide.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum CorrespondenceTerm {
+    Element(Element),
+    Planet(Planet),
+    Sign(ZodiacSign),
+}
+
+impl CorrespondenceTerm {
+    fn matches(self, row: &Correspondence) -> bool {
+        match self {
+            Self::Element(value) => row.elements.contains(&value),
+            Self::Planet(value) => row.planets.contains(&value),
+            Self::Sign(value) => row.signs.contains(&value),
+        }
+    }
+}
+
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct TypedCard {
@@ -272,6 +290,21 @@ impl TarotDeck {
     }
     pub fn crosswalk(&self, key: CardKey) -> Option<&TypedCard> {
         self.cards.iter().find(|c| c.key == key)
+    }
+    /// Cards in this deck for which the same cited transcription assigns the given term.
+    pub fn cards_with_correspondence<'a>(
+        &'a self,
+        citation: &'a Correspondence,
+        term: CorrespondenceTerm,
+    ) -> impl Iterator<Item = &'a TypedCard> {
+        self.cards.iter().filter(move |card| {
+            card.correspondences.iter().any(|row| {
+                row.source_id == citation.source_id
+                    && row.tradition == citation.tradition
+                    && row.version == citation.version
+                    && term.matches(row)
+            })
+        })
     }
     pub fn source(&self, id: &str) -> Option<&ContentSource> {
         self.sources.iter().find(|s| s.id == id)

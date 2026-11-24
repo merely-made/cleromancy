@@ -23,6 +23,7 @@ pub(super) fn reading_region(ui: &ConsultationUi) -> ConsultationView {
             .attr("class", "empty-reading"),
         )),
         Some(detail) => {
+            append_ontology(ui, detail, &mut children);
             children.push(context_with_reading(ui, detail));
             if let Some((_concurrence_id, facts_digest, placements)) = chart_concurrence(ui) {
                 let link_digest = facts_digest.clone();
@@ -311,6 +312,7 @@ pub(super) fn ambient_reader(ui: &ConsultationUi) -> ConsultationView {
     let position = ui.focused_position(detail);
     let narrative = narrate(detail);
     let mut children: Vec<ConsultationView> = vec![context_with_reading(ui, detail)];
+    append_ontology(ui, detail, &mut children);
     if let Some(card) = narrative.cards.iter().find(|c| c.position.name == position) {
         children.push(Box::new(el::<_, ConsultationUi, ()>(
             "h2",
@@ -335,4 +337,21 @@ pub(super) fn ambient_reader(ui: &ConsultationUi) -> ConsultationView {
             .attr("role", "region")
             .attr("aria-label", "Reading and card neighborhood"),
     )
+}
+
+fn append_ontology(
+    ui: &ConsultationUi,
+    detail: &ConsultationDetail,
+    children: &mut Vec<ConsultationView>,
+) {
+    if let Some(graph) = ui.ontology.graph(detail) {
+        // Escape markup delimiters if the retained DOM is serialized to HTML.
+        let data = graph.to_string().replace('<', "\\u003c");
+        children.push(Box::new(
+            el::<_, ConsultationUi, ()>("script", data)
+                .attr("type", "application/ld+json")
+                .attr("hidden", "")
+                .attr("data-key", "reading-ontology"),
+        ));
+    }
 }

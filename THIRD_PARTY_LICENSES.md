@@ -1,7 +1,13 @@
 # Third-party licenses
 
-This file records the optional `analytic-ephemeris` feature's distribution boundary. It
-is not a substitute for the upstream license texts.
+## TAR-O
+
+The default [tarot vocabulary](assets/ontology/tarot.toml) adapts four class
+names and one property from Mikey Hogarth’s TAR-O. Cleromancy adds its own
+reading terms and projection families. [TAR-O](https://w3id.org/taro/ontology)
+is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+## Analytic ephemeris
 
 Cleromancy acquires no data file. The JPL DE440s kernel lane, and with it
 ANISE and the download machinery, moved to Turquet's opt-in `verify` feature,

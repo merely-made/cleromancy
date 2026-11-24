@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
 //! Render saved typed content; inspection never writes or casts.
+mod related;
+
 use super::ConsultationView;
 use crate::{ConsultationDetail, ui::state::ConsultationUi};
 use cambium::{button, el};
@@ -86,7 +88,7 @@ pub(super) fn card_view(
         ));
         items.push(Box::new(
             button("Return to drawn card", |ui: &mut ConsultationUi, _| {
-                ui.card_preview = None;
+                ui.set_card_preview(None);
             })
             .attr("data-key", "return-drawn-card")
             .attr("class", "crosswalk"),
@@ -95,44 +97,10 @@ pub(super) fn card_view(
     let mut columns: Vec<ConsultationView> = Vec::new();
     for correspondence in &card.correspondences {
         let source = deck.source(&correspondence.source_id)?;
-        let element = correspondence
-            .elements
-            .iter()
-            .map(|v| format!("{v:?}"))
-            .collect::<Vec<_>>()
-            .join(", ");
-        let planets = correspondence
-            .planets
-            .iter()
-            .map(|v| format!("{v:?}"))
-            .collect::<Vec<_>>()
-            .join(", ");
-        let signs = correspondence
-            .signs
-            .iter()
-            .map(|v| format!("{v:?}"))
-            .collect::<Vec<_>>()
-            .join(", ");
-        let shown = |s: String| {
-            if s.is_empty() {
-                "not transcribed".to_string()
-            } else {
-                s
-            }
-        };
-        let rows: Vec<ConsultationView> = vec![
+        let mut rows: Vec<ConsultationView> = vec![
             Box::new(el::<_, ConsultationUi, ()>(
                 "h4",
                 correspondence.tradition.clone(),
-            )),
-            Box::new(el::<_, ConsultationUi, ()>(
-                "p",
-                format!(
-                    "Element: {} · Planet: {} · Sign: {}",
-                    shown(element),
-                    shown(planets),
-                    shown(signs)
-                ),
             )),
             Box::new(el::<_, ConsultationUi, ()>(
                 "p",
@@ -155,6 +123,17 @@ pub(super) fn card_view(
                     .attr("href", source.url.clone()),
             ),
         ];
+        related::append_terms(
+            &mut rows,
+            ui,
+            deck,
+            correspondence,
+            &detail.session.id,
+            ui.card_preview
+                .as_ref()
+                .map(|(digest, _)| digest.as_str())
+                .unwrap_or(&detail.session.field_digest),
+        );
         columns.push(Box::new(
             el::<_, ConsultationUi, ()>("article", rows)
                 .attr("class", "correspondence")
@@ -188,7 +167,7 @@ pub(super) fn card_view(
                 format!("Inspect {} in {}", target.title, other.title),
                 move |ui: &mut ConsultationUi, _| {
                     if ui.detail.as_ref().is_some_and(|d| d.session.id == session) {
-                        ui.card_preview = Some((digest.clone(), id.clone()));
+                        ui.set_card_preview(Some((digest.clone(), id.clone())));
                     }
                 },
             )
