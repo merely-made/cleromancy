@@ -15,7 +15,7 @@ Reproduce from the repository root:
 
 ```sh
 /Users/markik/Code/testing/cleromancy/natal-houses-20261017/oracle-env/bin/python tests/vectors/motion/generate.py
-cargo +1.97.1 test --locked --test motion -- --nocapture
+cargo +1.97.1 test --test motion -- --nocapture
 ```
 
 Generation on 2026-10-17 produced TSV SHA-256:

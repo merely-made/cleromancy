@@ -25,7 +25,7 @@ pub fn guest_dir() -> PathBuf {
     Path::new(env!("CARGO_MANIFEST_DIR")).join("authority-guest")
 }
 
-/// Build the guest (`cargo build --locked --release --target wasm32-wasip2` in its own
+/// Build the guest (`cargo build --release --target wasm32-wasip2` in its own
 /// lock root and toolchain) once per process and return the component's path.
 pub fn build_guest() -> PathBuf {
     static BUILT: OnceLock<PathBuf> = OnceLock::new();
@@ -34,7 +34,7 @@ pub fn build_guest() -> PathBuf {
             let dir = guest_dir();
             let mut cmd = Command::new("cargo");
             cmd.current_dir(&dir)
-                .args(["build", "--locked", "--release", "--target", "wasm32-wasip2"]);
+                .args(["build", "--release", "--target", "wasm32-wasip2"]);
             for (key, _) in std::env::vars() {
                 if key == "CARGO_HOME" || key == "CARGO_BUILD_JOBS" {
                     continue;
@@ -52,7 +52,7 @@ pub fn build_guest() -> PathBuf {
             let status = cmd.status().expect("run cargo for the authority guest");
             assert!(
                 status.success(),
-                "the authority guest did not build; run by hand: cd authority-guest && cargo build --locked --release --target wasm32-wasip2"
+                "the authority guest did not build; run by hand: cd authority-guest && cargo build --release --target wasm32-wasip2"
             );
             let wasm = dir.join("target/wasm32-wasip2/release/cleromancy_authority_guest.wasm");
             assert!(wasm.exists(), "{} is missing", wasm.display());

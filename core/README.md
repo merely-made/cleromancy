@@ -18,9 +18,9 @@ selected as Rust 1.97.1. In a shell with those two executable paths assigned to
 `RUSTC` and `RUSTDOC`, run these commands from this directory:
 
 ```sh
-cargo +1.99.0 test --locked -j 2
-cargo +1.99.0 test --locked -j 2 --features legacy-receipts
-cargo +1.99.0 test --locked -j 2 --features legacy-receipts,sky-timeline
+cargo +1.99.0 test -j 2
+cargo +1.99.0 test -j 2 --features legacy-receipts
+cargo +1.99.0 test -j 2 --features legacy-receipts,sky-timeline
 ```
 
 The recorded outcomes are 18, 19 and 20 passing tests respectively. Exact

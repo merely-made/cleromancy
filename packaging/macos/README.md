@@ -18,7 +18,7 @@ Run from the repository root on macOS with Python 3.9+, Apple command-line tools
 available. Cargo is needed only to export the license inventory metadata.
 
 ```sh
-cargo metadata --locked --offline --filter-platform aarch64-apple-darwin \
+cargo metadata --offline --filter-platform aarch64-apple-darwin \
   --features analytic-ephemeris,sky-timeline --format-version 1 \
   > /tmp/cleromancy-macos-metadata.json
 

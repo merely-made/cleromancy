@@ -7,7 +7,7 @@
 # graph restored from the bytes the resident encodes.
 #
 # A standalone workspace with its own lock root and toolchain pin, built to
-# `wasm32-wasip2` (`cargo build --locked --release`). The WIT is `graphshell-endpoint`'s
+# `wasm32-wasip2` (`cargo build --release`). The WIT is `graphshell-endpoint`'s
 # `wit/world.wit`, copied by build.rs to the git-ignored `wit/`; the crate itself is not
 # linked.
 [workspace]

@@ -260,7 +260,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--verify', type=Path, metavar='APP')
     parser.add_argument('--binary', type=Path)
-    parser.add_argument('--metadata', type=Path, help='Full cargo metadata --locked --offline --format-version 1 JSON')
+    parser.add_argument('--metadata', type=Path, help='Full cargo metadata --offline --format-version 1 JSON')
     parser.add_argument('--source-revision')
     parser.add_argument('--source-evidence', help='Public, non-personal provenance description; included in bundle')
     parser.add_argument('--profile', choices=('debug', 'release', 'unknown'))

@@ -187,6 +187,10 @@ crate = "jni-sys@0.3.1"
 reason = "jni 0.21.1, ndk 0.9.0, ndk-sys 0.6.0+11769913 require it (through cambium, cambium-desktop, esp and 8 more); goes when they move to jni-sys 0.4.1"
 
 [[bans.skip]]
+crate = "libloading@0.8.9"
+reason = "ash 0.38.0 (latest), khronos-egl 6.0.0 (latest) and wgpu-hal 30.0.2 require it, under wgpu 30 (cambium-desktop, cambium-rootstock, genet-presenter, genet-winit, netrender); x11rb 0.14 (winit-x11 0.31, cambium-desktop) takes 0.9.1; goes when ash, khronos-egl and wgpu-hal move to libloading 0.9.1"
+
+[[bans.skip]]
 crate = "linux-raw-sys@0.4.15"
 reason = "rustix 0.38.44 requires it (through cambium-desktop, esp, graphshell-host and 6 more); goes when it moves to linux-raw-sys 0.12.1"
 
