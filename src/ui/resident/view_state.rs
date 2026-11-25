@@ -57,7 +57,7 @@ impl ResidentConsultation {
             observed_epoch: self.graph_projection.scene.epoch,
             observed_revision: self.graph_projection.scene.revision,
             intent: session_item::SET_VIEW_INTENT.into(),
-            payload: serde_json::to_vec(&session_item::SetViewV1::new("reading-workspace", view))
+            payload: chirograph::wire::encode(&session_item::SetViewV1::new("reading-workspace", view))
                 .map_err(err)?,
         };
         self.invoke(intent).await?;
@@ -88,7 +88,7 @@ impl ResidentConsultation {
             observed_epoch: self.graph_projection.scene.epoch,
             observed_revision: self.graph_projection.scene.revision,
             intent: session_item::SET_ATTENTION_INTENT.into(),
-            payload: serde_json::to_vec(&session_item::SetAttentionV1::new(
+            payload: chirograph::wire::encode(&session_item::SetAttentionV1::new(
                 "reading-workspace",
                 attention,
             ))

@@ -322,7 +322,7 @@ impl ResidentConsultation {
             observed_epoch: self.graph_projection.scene.epoch,
             observed_revision: self.graph_projection.scene.revision,
             intent: session_item::APPLY_EDITS_INTENT.into(),
-            payload: serde_json::to_vec(&session_item::ApplyEditsV1::checked(
+            payload: chirograph::wire::encode(&session_item::ApplyEditsV1::checked(
                 envelope.revision,
                 edits,
             ))

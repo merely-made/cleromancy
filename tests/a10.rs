@@ -310,7 +310,7 @@ fn invocation(
         observed_epoch: snapshot.scene.epoch,
         observed_revision: snapshot.scene.revision,
         intent: COMPOSE_READING_INTENT.to_string(),
-        payload: serde_json::to_vec(payload).unwrap(),
+        payload: chirograph::wire::encode(payload).unwrap(),
     }
 }
 

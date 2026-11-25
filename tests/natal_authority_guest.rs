@@ -98,7 +98,7 @@ async fn fixture() -> Fixture {
         observed_epoch: listed.scene.epoch,
         observed_revision: listed.scene.revision,
         intent: RESERVOIR_ENSURE_MERE_INTENT.into(),
-        payload: serde_json::to_vec(&EnsureMereV1::new(DOMAIN)).unwrap(),
+        payload: chirograph::wire::encode(&EnsureMereV1::new(DOMAIN)).unwrap(),
     };
     assert_eq!(door.invoke(ensure).unwrap(), IntentResult::Accepted);
     Fixture {
@@ -175,7 +175,7 @@ fn apply(
     on_item(
         snapshot,
         session_item::APPLY_EDITS_INTENT,
-        serde_json::to_vec(&ApplyEditsV1::new(edits)).unwrap(),
+        chirograph::wire::encode(&ApplyEditsV1::new(edits)).unwrap(),
     )
 }
 

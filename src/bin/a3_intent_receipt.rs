@@ -59,7 +59,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         observed_epoch: snapshot.scene.epoch,
         observed_revision: snapshot.scene.revision,
         intent: READ_INTENT.to_string(),
-        payload: serde_json::to_vec(&ReadingIntentPayload::read(field.clone()))?,
+        payload: chirograph::wire::encode(&ReadingIntentPayload::read(field.clone()))?,
     };
     let result = carrier.request(CarrierRequestBody::Intent(invocation))?;
     if result != CarrierResponseBody::Intent(IntentResult::Accepted) {

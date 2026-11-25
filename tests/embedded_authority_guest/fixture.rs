@@ -242,9 +242,9 @@ pub(super) async fn apply_bounded_fixture(client: &mut AppBrokerClient, edits: &
         for end in (offset + 1..=edits.len()).rev() {
             let batch = edits[offset..end].to_vec();
             let payload =
-                serde_json::to_vec(&ApplyEditsV1::checked(current[1].scene.revision, batch))
+                chirograph::wire::encode(&ApplyEditsV1::checked(current[1].scene.revision, batch))
                     .unwrap();
-            if serde_json::to_vec(&payload).unwrap().len() > 900_000 {
+            if payload.len() > 900_000 {
                 continue;
             }
             let candidate = kernel::graph::replay_captured_deltas(
@@ -285,7 +285,7 @@ pub(super) async fn apply_checked(
             observed_epoch: snapshot.scene.epoch,
             observed_revision: snapshot.scene.revision,
             intent: APPLY_EDITS_INTENT.into(),
-            payload: serde_json::to_vec(&ApplyEditsV1::checked(snapshot.scene.revision, edits))
+            payload: chirograph::wire::encode(&ApplyEditsV1::checked(snapshot.scene.revision, edits))
                 .unwrap(),
         }))
         .await

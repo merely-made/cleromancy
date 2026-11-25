@@ -60,7 +60,7 @@ impl<B: Backend> CleromancyApp<B> {
             .ok_or_else(|| AppError::Intent("advertised intent has no scope".to_string()))?;
 
         if intent.intent == CREATE_CONCURRENCE_INTENT {
-            let payload = match serde_json::from_slice::<AstrologyReadingConcurrenceIntentPayload>(
+            let payload = match chirograph::wire::decode::<AstrologyReadingConcurrenceIntentPayload>(
                 &intent.payload,
             ) {
                 Ok(payload) => payload,
@@ -132,7 +132,7 @@ impl<B: Backend> CleromancyApp<B> {
 
         if intent.intent == COMPOSE_READING_INTENT {
             let payload =
-                match serde_json::from_slice::<ReadingCompositionIntentPayload>(&intent.payload) {
+                match chirograph::wire::decode::<ReadingCompositionIntentPayload>(&intent.payload) {
                     Ok(payload) => payload,
                     Err(error) => {
                         return Ok(rejected(format!("invalid composition payload: {error}")));
@@ -269,7 +269,7 @@ impl<B: Backend> CleromancyApp<B> {
 
         if intent.intent == THREE_CARD_SPREAD_INTENT {
             let payload =
-                match serde_json::from_slice::<ThreeCardSpreadIntentPayload>(&intent.payload) {
+                match chirograph::wire::decode::<ThreeCardSpreadIntentPayload>(&intent.payload) {
                     Ok(payload) => payload,
                     Err(error) => return Ok(rejected(format!("invalid spread payload: {error}"))),
                 };
@@ -320,7 +320,7 @@ impl<B: Backend> CleromancyApp<B> {
 
         let (field, reading, client_token) = match intent.intent.as_str() {
             READ_INTENT | SELECT_INTENT => {
-                let payload = match serde_json::from_slice::<ReadingIntentPayload>(&intent.payload)
+                let payload = match chirograph::wire::decode::<ReadingIntentPayload>(&intent.payload)
                 {
                     Ok(payload) => payload,
                     Err(error) => return Ok(rejected(format!("invalid reading payload: {error}"))),
@@ -382,7 +382,7 @@ impl<B: Backend> CleromancyApp<B> {
                 }
             }
             ROLL_INTENT => {
-                let payload = match serde_json::from_slice::<RollIntentPayload>(&intent.payload) {
+                let payload = match chirograph::wire::decode::<RollIntentPayload>(&intent.payload) {
                     Ok(payload) => payload,
                     Err(error) => return Ok(rejected(format!("invalid roll payload: {error}"))),
                 };

@@ -124,7 +124,7 @@ fn saved_facts_and_sessions_select_each_other_through_the_bound_pattern_action()
         ]))
         .unwrap();
     assert_eq!(
-        serde_json::from_slice::<AstrologyReadingConcurrenceIntentPayload>(&selected_payload)
+        chirograph::wire::decode::<AstrologyReadingConcurrenceIntentPayload>(&selected_payload)
             .unwrap(),
         AstrologyReadingConcurrenceIntentPayload::new(first_facts.digest(), &session.id)
     );

@@ -123,7 +123,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 observed_epoch: graph.scene.epoch,
                 observed_revision: graph.scene.revision,
                 intent: wire::APPLY_EDITS_INTENT.into(),
-                payload: serde_json::to_vec(&wire::ApplyEditsV1::checked(
+                payload: chirograph::wire::encode(&wire::ApplyEditsV1::checked(
                     envelope.revision,
                     batch,
                 ))?,

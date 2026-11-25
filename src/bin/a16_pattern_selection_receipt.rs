@@ -92,7 +92,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         ("reading_session_id".to_string(), session.id.clone()),
     ]))?;
     let payload =
-        serde_json::from_slice::<AstrologyReadingConcurrenceIntentPayload>(&payload_bytes)?;
+        chirograph::wire::decode::<AstrologyReadingConcurrenceIntentPayload>(&payload_bytes)?;
     let result = request_intent(
         &mut carrier,
         IntentInvocation {

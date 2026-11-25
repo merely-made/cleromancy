@@ -196,7 +196,7 @@ async fn apply(
             observed_epoch: snapshot.scene.epoch,
             observed_revision: snapshot.scene.revision,
             intent: APPLY_EDITS_INTENT.into(),
-            payload: serde_json::to_vec(&ApplyEditsV1::new(edits)).unwrap(),
+            payload: chirograph::wire::encode(&ApplyEditsV1::new(edits)).unwrap(),
         }))
         .await
         .unwrap();

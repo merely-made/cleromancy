@@ -268,7 +268,7 @@ fn readonly_archive_layout_selection_and_comparison_never_fork_or_write() {
             observed_epoch: client.graph_projection.scene.epoch,
             observed_revision: client.graph_projection.scene.revision,
             intent: session_item::APPLY_EDITS_INTENT.into(),
-            payload: serde_json::to_vec(&session_item::ApplyEditsV1::checked(
+            payload: chirograph::wire::encode(&session_item::ApplyEditsV1::checked(
                 client.envelope.as_ref().unwrap().revision,
                 vec![CapturedDelta::ReplaySetNodeFacetById {
                     node_id: node.to_string(),
