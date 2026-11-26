@@ -1,6 +1,6 @@
 # Turquet
 
-Maintained in Cleromancy since 2026-11-04. The independent crate, embedded helper, coefficients and scientific fixtures remain separate from application interpretation. Active roadmap: `cleromancy/design_docs/2026-11-04_turquet_plan.md`; provider architecture: `cleromancy/design_docs/2026-08-13_turquet_provider_architecture.md`. Historical receipt links refer to the original Turquet repository.
+Maintained in [Cleromancy](https://github.com/merely-made/cleromancy/tree/main/crates/turquet) as `crates/turquet` since 2026-11-04. The independent crate, embedded helper, coefficients and scientific fixtures remain separate from application interpretation. Active roadmap: `cleromancy/design_docs/2026-11-04_turquet_plan.md`; provider architecture: `cleromancy/design_docs/2026-08-13_turquet_provider_architecture.md`. Historical receipt links refer to the original Turquet repository, which was retired on 2026-11-25; its history is in Cleromancy.
 
 **Many views of one sky.**
 
