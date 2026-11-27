@@ -7,7 +7,9 @@ use cleromancy::{
     CleromancyHost, CleromancySyncError, CleromancySyncSelection, Reading, ReadingEngine,
     a0_fixture, export_sync_batch, import_sync_projection,
 };
-use pandect::personal_sync::{PersonalGraphEvent, PersonalGraphReplica, SyncRoster};
+use incipit_session::personal_sync::{
+    IncipitFold, PersonalGraphEvent, PersonalGraphReplica, SyncRoster,
+};
 use muniment::MemoryBackend;
 use personae::{IdentityProvider, InMemoryProvider};
 
@@ -66,7 +68,7 @@ fn signed_personal_replicas_rematerialize_a_replayable_reading() {
 
         let operation = alice.author(batch.events.clone()).await.unwrap();
         assert!(bob.accept(&operation).await.unwrap());
-        let projection = bob.projection().await.unwrap();
+        let projection = bob.projection_with(&IncipitFold).await.unwrap();
         assert!(projection.pending.is_empty());
         assert!(projection.conflicts.is_empty());
         assert_eq!(projection.writers.len(), 1);
@@ -144,7 +146,7 @@ fn concurrent_cleromancy_facet_values_are_not_silently_imported() {
         assert!(alice.accept(&bob_operation).await.unwrap());
         assert!(bob.accept(&alice_operation).await.unwrap());
 
-        let projection = alice.projection().await.unwrap();
+        let projection = alice.projection_with(&IncipitFold).await.unwrap();
         assert!(
             projection
                 .conflicts
@@ -189,7 +191,7 @@ fn reading_without_its_field_is_rejected_before_import() {
         )
         .unwrap();
         replica.author(events).await.unwrap();
-        let projection = replica.projection().await.unwrap();
+        let projection = replica.projection_with(&IncipitFold).await.unwrap();
 
         let mut target = CleromancyHost::empty(MemoryBackend::new());
         assert!(matches!(

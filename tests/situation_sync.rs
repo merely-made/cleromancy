@@ -6,7 +6,7 @@ use cleromancy::{
     CleromancyHost, CleromancySyncSelection, ContextSnapshot, ReadingEngine, ReadingSession,
     TarotQualification, export_sync_batch, import_sync_projection,
 };
-use pandect::personal_sync::{PersonalGraphReplica, SyncRoster};
+use incipit_session::personal_sync::{IncipitFold, PersonalGraphReplica, SyncRoster};
 use kernel::graph::fixtures::GraphFixtures as _;
 use muniment::MemoryBackend;
 use personae::{IdentityProvider, InMemoryProvider};
@@ -93,7 +93,7 @@ fn signed_reading_sync_preserves_weather_evidence_and_refuses_tamper_before_impo
         .unwrap();
         let signed = writer.author(batch.events.clone()).await.unwrap();
         assert!(receiver.accept(&signed).await.unwrap());
-        let mut projection = receiver.projection().await.unwrap();
+        let mut projection = receiver.projection_with(&IncipitFold).await.unwrap();
         let mut target = CleromancyHost::empty(MemoryBackend::new());
         assert_eq!(
             import_sync_projection(&mut target, &projection, selection)

@@ -6,7 +6,7 @@ use cleromancy::{
     CleromancyHost, CleromancySyncSelection, ContextSnapshot, ReadingEngine, ReadingSession,
     TarotQualification, export_sync_batch, import_sync_projection,
 };
-use pandect::personal_sync::{PersonalGraphReplica, SyncRoster};
+use incipit_session::personal_sync::{IncipitFold, PersonalGraphReplica, SyncRoster};
 use kernel::graph::fixtures::GraphFixtures as _;
 use muniment::MemoryBackend;
 use personae::{IdentityProvider, InMemoryProvider};
@@ -62,7 +62,7 @@ fn signed_sync_preserves_generated_prompts_only_with_reflection_consent_and_refu
         let batch = export_sync_batch(&source, selection).unwrap();
         assert_eq!(batch.schema, "cleromancy.sync-batch/v8");
         assert_eq!(batch.inferences, 1);
-        assert!(batch.events.iter().any(|event| matches!(event, pandect::personal_sync::PersonalGraphEvent::AddTag { node, tag } if *node == source.graph().get_node(source_key).unwrap().id && tag == "kept")));
+        assert!(batch.events.iter().any(|event| matches!(event, incipit_session::personal_sync::PersonalGraphEvent::AddTag { node, tag } if *node == source.graph().get_node(source_key).unwrap().id && tag == "kept")));
         assert_eq!(
             export_sync_batch(&source, CleromancySyncSelection::Contexts)
                 .unwrap()
@@ -104,7 +104,7 @@ fn signed_sync_preserves_generated_prompts_only_with_reflection_consent_and_refu
         .unwrap();
         let signed = writer.author(batch.events.clone()).await.unwrap();
         assert!(receiver.accept(&signed).await.unwrap());
-        let mut projection = receiver.projection().await.unwrap();
+        let mut projection = receiver.projection_with(&IncipitFold).await.unwrap();
         let mut target = CleromancyHost::empty(MemoryBackend::new());
         assert_eq!(
             import_sync_projection(&mut target, &projection, selection)
@@ -118,8 +118,8 @@ fn signed_sync_preserves_generated_prompts_only_with_reflection_consent_and_refu
             .unwrap()
             .0;
         assert_eq!(
-            pandect::memory_levels::level_of(target.graph(), target_key),
-            pandect::memory_levels::MemoryLevel::LongTerm,
+            incipit_session::memory_levels::level_of(target.graph(), target_key),
+            incipit_session::memory_levels::MemoryLevel::LongTerm,
             "selected sync retains the explicit Keep action"
         );
         let restored = target

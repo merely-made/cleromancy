@@ -5,8 +5,8 @@
 
 use std::collections::{BTreeMap, BTreeSet};
 
+use incipit_session::personal_sync::PersonalGraphEvent;
 use mere::model::EdgeAssertion;
-use pandect::personal_sync::PersonalGraphEvent;
 use muniment::Backend;
 
 use super::collect::{SelectedTruth, collect_selected};

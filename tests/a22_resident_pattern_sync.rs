@@ -18,12 +18,12 @@ use cleromancy::{
     CleromancyHost, CleromancySessionAuthority, CleromancySyncSelection, ReadingEngine,
     ReadingError, a0_fixture,
 };
-use pandect::personal_sync::{PersonalGraphReplica, SyncRoster};
 use graphshell_client::RetainedEndpointSession;
 use graphshell_endpoint::local::LocalCarrier;
 use graphshell_endpoint::{ProjectionCatalog, ProjectionSource};
 use graphshell_host::endpoint_catalog::ResidentEndpointCatalog;
 use graphshell_host::lifecycle::AdmittedEndpointContext;
+use incipit_session::personal_sync::{IncipitFold, PersonalGraphReplica, SyncRoster};
 use muniment::MemoryBackend;
 use personae::{IdentityProvider, InMemoryProvider};
 
@@ -151,7 +151,7 @@ fn admitted_pattern_sync_rehydrates_through_another_resident_authority() {
         .unwrap();
         let operation = alice.author(batch.events.clone()).await.unwrap();
         assert!(bob.accept(&operation).await.unwrap());
-        let projection = bob.projection().await.unwrap();
+        let projection = bob.projection_with(&IncipitFold).await.unwrap();
         assert!(projection.pending.is_empty());
         assert!(projection.conflicts.is_empty());
 

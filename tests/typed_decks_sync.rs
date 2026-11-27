@@ -7,7 +7,7 @@ use cleromancy::{
     CleromancyHost, CleromancySyncSelection, ContextSnapshot, ReadingEngine, TarotQualification,
     export_sync_batch, import_sync_projection,
 };
-use pandect::personal_sync::{PersonalGraphReplica, SyncRoster};
+use incipit_session::personal_sync::{IncipitFold, PersonalGraphReplica, SyncRoster};
 use muniment::MemoryBackend;
 use personae::{IdentityProvider, InMemoryProvider};
 
@@ -48,7 +48,7 @@ fn signed_sync_preserves_complete_decks_and_their_content_revisions() {
         .unwrap();
         let signed = writer.author(batch.events.clone()).await.unwrap();
         assert!(receiver.accept(&signed).await.unwrap());
-        let projection = receiver.projection().await.unwrap();
+        let projection = receiver.projection_with(&IncipitFold).await.unwrap();
         let mut target = CleromancyHost::empty(MemoryBackend::new());
         let imported = import_sync_projection(&mut target, &projection, selection).unwrap();
         assert_eq!(imported.fields, 2);

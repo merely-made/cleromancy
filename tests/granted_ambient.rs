@@ -1,5 +1,6 @@
 // Copyright 2026 Mark AB (markik)
 // SPDX-License-Identifier: MIT OR Apache-2.0
+use incipit_session::IncipitSessions;
 use castellan::{
     authority::PersonaeHost,
     custody::{IdentityVault, InMemoryStorage, Profile},

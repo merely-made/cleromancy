@@ -122,13 +122,13 @@ fn stored_model_output_round_trips_without_model_execution_and_requires_disclosu
         .unwrap()
         .0;
     assert_ne!(
-        pandect::memory_levels::level_of(host.graph(), key),
-        pandect::memory_levels::MemoryLevel::LongTerm
+        incipit_session::memory_levels::level_of(host.graph(), key),
+        incipit_session::memory_levels::MemoryLevel::LongTerm
     );
     host.keep_generated_inference(&record.digest()).unwrap();
     assert_eq!(
-        pandect::memory_levels::level_of(host.graph(), key),
-        pandect::memory_levels::MemoryLevel::LongTerm
+        incipit_session::memory_levels::level_of(host.graph(), key),
+        incipit_session::memory_levels::MemoryLevel::LongTerm
     );
     assert_eq!(record, host.inferences_for_session(&session.id).unwrap()[0]);
 }

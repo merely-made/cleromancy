@@ -11,7 +11,7 @@ use cleromancy::{
     SpreadRelation, SpreadRelationKind, SpreadTemplate, TarotPack, TarotQualification,
     export_sync_batch, import_sync_projection,
 };
-use pandect::personal_sync::{PersonalGraphReplica, SyncRoster};
+use incipit_session::personal_sync::{IncipitFold, PersonalGraphReplica, SyncRoster};
 use muniment::MemoryBackend;
 use personae::{IdentityProvider, InMemoryProvider};
 
@@ -94,7 +94,7 @@ fn selected_sync_round_trips_the_generic_template_before_its_bound_cast() {
                 .await
                 .expect("accept signed operation")
         );
-        let projection = bob.projection().await.expect("project replica");
+        let projection = bob.projection_with(&IncipitFold).await.expect("project replica");
         let mut target = CleromancyHost::empty(MemoryBackend::new());
         let imported = import_sync_projection(&mut target, &projection, selection)
             .expect("import selected projection");

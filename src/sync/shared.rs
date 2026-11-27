@@ -5,7 +5,7 @@
 
 use std::collections::BTreeSet;
 
-use pandect::personal_sync::PersonalGraphEvent;
+use incipit_session::personal_sync::PersonalGraphEvent;
 use kernel::graph::{Graph, NodeKey};
 use serde::Serialize;
 use serde_json::Value;

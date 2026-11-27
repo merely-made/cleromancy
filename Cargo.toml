@@ -25,7 +25,7 @@ legacy-receipts = []
 # The data-free analytic engine. No kernel, no download, no filesystem.
 analytic-ephemeris = ["dep:turquet"]
 sky-timeline = ["dep:cleromancy-sky"]
-personal-sync = ["pandect/personal-sync", "dep:uuid"]
+personal-sync = ["pandect/personal-sync", "incipit-session/personal-sync", "dep:uuid"]
 graphshell-admission = ["graphshell-host/native"]
 
 # Family repositories share a canonical Git URL and branch = "main".
@@ -63,7 +63,10 @@ graphshell-door = { git = "https://github.com/merely-made/graphshell.git", branc
 chirograph = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 genet-scripted-dom = { git = "https://github.com/merely-made/genet.git", branch = "main", version = ">=0.1.2" }
 layout-dom-api = { git = "https://github.com/merely-made/genet.git", branch = "main", version = ">=0.1.1" }
-kernel = { package = "mere-kernel", git = "https://github.com/merely-made/mere.git", branch = "main" }
+# The surface graph, moved from Mere's mere-kernel to Graphshell (engine split
+# D211), and the session methods and surface readers over it (D256, D267).
+kernel = { package = "incipit-graph", git = "https://github.com/merely-made/graphshell.git", branch = "main" }
+incipit-session = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 # The names the kernel re-exported from the engine, at their home (engine split D141).
 mere = { version = "0.1.0", git = "https://github.com/merely-made/mere.git", branch = "main", default-features = false }
 mandrake = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
@@ -151,7 +154,7 @@ required-features = ["legacy-receipts"]
 
 [dev-dependencies]
 # Raw facet-store access for the sync tamper tests (tests only, not the library).
-kernel = { package = "mere-kernel", git = "https://github.com/merely-made/mere.git", branch = "main", features = ["fixtures"] }
+kernel = { package = "incipit-graph", git = "https://github.com/merely-made/graphshell.git", branch = "main", features = ["fixtures"] }
 # The resident task set the app door used to export (Mere 8f26d9629 moved it here).
 armillary = { git = "https://github.com/merely-made/armillary.git", branch = "main" }
 async-trait = "0.1"

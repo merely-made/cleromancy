@@ -7,7 +7,7 @@ use cleromancy::{
     CleromancyApp, CleromancyHost, CleromancySyncImport, CleromancySyncSelection, Reading,
     ReadingEngine, a0_fixture, export_sync_batch, import_sync_projection,
 };
-use pandect::personal_sync::{PersonalGraphReplica, SyncRoster};
+use incipit_session::personal_sync::{IncipitFold, PersonalGraphReplica, SyncRoster};
 use muniment::MemoryBackend;
 use personae::{IdentityProvider, InMemoryProvider};
 use serde::Serialize;
@@ -74,7 +74,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
     if !bob.accept(&operation).await? {
         return Err("the receiving H7 replica did not insert the operation".into());
     }
-    let projection = bob.projection().await?;
+    let projection = bob.projection_with(&IncipitFold).await?;
     if !projection.pending.is_empty() || !projection.conflicts.is_empty() {
         return Err("the receiving H7 projection was not settled".into());
     }

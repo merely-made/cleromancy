@@ -10,7 +10,7 @@ use cleromancy::{
     CleromancyHost, CleromancySyncSelection, ReadingError, TarotPack, TarotQualification,
     export_sync_batch, import_sync_projection,
 };
-use pandect::personal_sync::{PersonalGraphReplica, SyncRoster};
+use incipit_session::personal_sync::{IncipitFold, PersonalGraphReplica, SyncRoster};
 use muniment::MemoryBackend;
 use personae::{IdentityProvider, InMemoryProvider};
 
@@ -60,7 +60,7 @@ fn authored_spread_syncs_as_selected_graph_truth() {
         .unwrap();
         let operation = alice.author(batch.events.clone()).await.unwrap();
         assert!(bob.accept(&operation).await.unwrap());
-        let projection = bob.projection().await.unwrap();
+        let projection = bob.projection_with(&IncipitFold).await.unwrap();
         let mut target = CleromancyHost::empty(MemoryBackend::new());
         let imported = import_sync_projection(&mut target, &projection, selection).unwrap();
         assert_eq!((imported.sessions, imported.spreads), (1, 1));

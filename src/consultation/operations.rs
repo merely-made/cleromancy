@@ -101,8 +101,8 @@ impl<B: Backend> Consultation<B> {
                     .get_node_by_url(&format!("cleromancy://inference/{}", r.digest()))?
                     .0;
                 matches!(
-                    pandect::memory_levels::level_of(self.host.graph(), key),
-                    pandect::memory_levels::MemoryLevel::LongTerm
+                    incipit_session::memory_levels::level_of(self.host.graph(), key),
+                    incipit_session::memory_levels::MemoryLevel::LongTerm
                 )
                 .then(|| r.digest())
             })
