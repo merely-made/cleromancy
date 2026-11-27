@@ -5,8 +5,8 @@
 //! spread templates with their session-bound instances.
 
 use kernel::graph::apply::{assert_relation, assert_semantic_relation_in_scope};
-use kernel::graph::{ContainmentSubKind, EdgeAssertion, ProvenanceSubKind};
-use kernel::types::GraphScope;
+use mere::model::GraphScope;
+use mere::model::{ContainmentSubKind, EdgeAssertion, ProvenanceSubKind};
 
 use super::*;
 use crate::{Spread, SpreadTemplate, ThreeCardPosition, ThreeCardRelationKind, ThreeCardSpread};

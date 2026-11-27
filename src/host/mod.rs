@@ -18,9 +18,10 @@ use kernel::geometry::PortablePoint;
 #[cfg(feature = "legacy-receipts")]
 use kernel::graph::NodeFacetStore;
 use kernel::graph::apply::{GraphDelta, add_node, apply_graph_delta};
-use kernel::graph::{Graph, NodeKey, RelationKind, SemanticSubKind};
+use kernel::graph::{Graph, NodeKey};
 #[cfg(feature = "legacy-receipts")]
 use kernel::persistence::GraphSnapshot;
+use mere::model::{RelationKind, SemanticSubKind};
 #[cfg(feature = "legacy-receipts")]
 use muniment::JsonSlots;
 use muniment::{Backend, StoreError};

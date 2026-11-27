@@ -8,7 +8,7 @@
 //! pack provenance; the host does not invent a rule-pack graph node.
 
 use kernel::graph::apply::assert_relation;
-use kernel::graph::{EdgeAssertion, ProvenanceSubKind};
+use mere::model::{EdgeAssertion, ProvenanceSubKind};
 
 use super::*;
 use crate::sky::{SkyDayFacts, SkyInterpretation};

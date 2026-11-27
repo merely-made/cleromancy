@@ -5,7 +5,7 @@ use cleromancy::{
     CleromancyApp, CleromancyHost, HostError, calculate_with_adapter,
 };
 use graphshell_client::ResolvedContent;
-use kernel::graph::{ProvenanceSubKind, RelationKind};
+use mere::model::{ProvenanceSubKind, RelationKind};
 use muniment::MemoryBackend;
 
 struct FixtureAdapter;

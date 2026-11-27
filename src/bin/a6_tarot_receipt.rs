@@ -9,7 +9,7 @@ use cleromancy::{
     CleromancyApp, CleromancyHost, ContextSnapshot, Reading, ReadingEngine, ReadingError,
     TarotPack, TarotQualification,
 };
-use kernel::graph::{ProvenanceSubKind, RelationKind};
+use mere::model::{ProvenanceSubKind, RelationKind};
 use muniment::MemoryBackend;
 use serde::Serialize;
 

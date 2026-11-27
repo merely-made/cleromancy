@@ -8,7 +8,7 @@ use cleromancy::{
     CleromancyHost, ReadingError, TarotPack, TarotQualification, ThreeCardPosition,
     ThreeCardRelationKind,
 };
-use kernel::graph::{RelationKind, SemanticSubKind};
+use mere::model::{RelationKind, SemanticSubKind};
 use muniment::MemoryBackend;
 
 #[test]

@@ -8,7 +8,7 @@ use cleromancy::{
     Candidate, CleromancyApp, CleromancyHost, ContextSnapshot, EXTERNAL_TERM_WEIGHT_RULE, Field,
     ReadingEngine, ReadingError, TarotPack, TarotQualification, UNIFORM_RULE,
 };
-use kernel::graph::{ProvenanceSubKind, RelationKind};
+use mere::model::{ProvenanceSubKind, RelationKind};
 use muniment::MemoryBackend;
 
 #[test]

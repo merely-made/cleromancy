@@ -13,7 +13,7 @@ use chirograph::{
     Carrier, CarrierRequestBody, CarrierResponseBody, IntentInvocation, IntentResult,
     ProjectionSnapshot,
 };
-use kernel::graph::{ProvenanceSubKind, RelationKind};
+use mere::model::{ProvenanceSubKind, RelationKind};
 use muniment::MemoryBackend;
 use serde::Serialize;
 

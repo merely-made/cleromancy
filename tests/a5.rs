@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
 use cleromancy::{Candidate, CleromancyHost, ContextSnapshot, Field, HostError, ReadingEngine};
-use kernel::graph::{ProvenanceSubKind, RelationKind};
+use mere::model::{ProvenanceSubKind, RelationKind};
 use muniment::MemoryBackend;
 
 #[test]

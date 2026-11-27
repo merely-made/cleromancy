@@ -7,7 +7,7 @@ use cleromancy::sky::{
     UtcCivilDay, Wgs84Observer,
 };
 use cleromancy::{CleromancyHost, HostError};
-use kernel::graph::{ProvenanceSubKind, RelationKind};
+use mere::model::{ProvenanceSubKind, RelationKind};
 use muniment::MemoryBackend;
 
 fn facts() -> SkyDayFacts {

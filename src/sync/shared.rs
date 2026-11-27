@@ -102,13 +102,13 @@ pub(super) fn batch_digest(
 
 pub(super) fn generic_semantic_kind(
     kind: SpreadRelationKind,
-) -> kernel::graph::SemanticSubKind {
+) -> mere::model::SemanticSubKind {
     match kind {
-        SpreadRelationKind::Supports => kernel::graph::SemanticSubKind::Supports,
-        SpreadRelationKind::Contradicts => kernel::graph::SemanticSubKind::Contradicts,
-        SpreadRelationKind::Questions => kernel::graph::SemanticSubKind::Questions,
-        SpreadRelationKind::NextStep => kernel::graph::SemanticSubKind::NextStep,
-        SpreadRelationKind::Elaborates => kernel::graph::SemanticSubKind::Elaborates,
+        SpreadRelationKind::Supports => mere::model::SemanticSubKind::Supports,
+        SpreadRelationKind::Contradicts => mere::model::SemanticSubKind::Contradicts,
+        SpreadRelationKind::Questions => mere::model::SemanticSubKind::Questions,
+        SpreadRelationKind::NextStep => mere::model::SemanticSubKind::NextStep,
+        SpreadRelationKind::Elaborates => mere::model::SemanticSubKind::Elaborates,
     }
 }
 

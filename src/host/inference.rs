@@ -3,7 +3,7 @@
 use super::*;
 use crate::inference::*;
 use kernel::graph::apply::assert_relation;
-use kernel::graph::{EdgeAssertion, ProvenanceSubKind};
+use mere::model::{EdgeAssertion, ProvenanceSubKind};
 
 fn invalid(e: impl std::fmt::Display) -> HostError {
     HostError::InvalidStoredFacet {
