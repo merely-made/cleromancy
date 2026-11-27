@@ -5,8 +5,8 @@
 
 use std::collections::{BTreeMap, BTreeSet};
 
+use crate::SyncProjection;
 use crate::situation::SITUATION_FACET;
-use pandect::personal_sync::SyncProjection;
 use kernel::graph::Graph;
 use muniment::Backend;
 

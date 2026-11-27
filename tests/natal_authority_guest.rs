@@ -170,7 +170,7 @@ fn on_item(snapshot: &ProjectionSnapshot, intent: &str, payload: Vec<u8>) -> Int
 
 fn apply(
     snapshot: &ProjectionSnapshot,
-    edits: Vec<pandect::CapturedDelta>,
+    edits: Vec<kernel::graph::CapturedDelta>,
 ) -> IntentInvocation {
     on_item(
         snapshot,
@@ -251,7 +251,7 @@ async fn natal_product_authority_admits_replay_and_refuses_tampering_across_apps
         other
             .invoke(apply(
                 &shared,
-                vec![pandect::CapturedDelta::ReplaySetNodeFacetById {
+                vec![kernel::graph::CapturedDelta::ReplaySetNodeFacetById {
                     node_id: kernel::graph::Graph::node_namespace_id(&format!(
                         "cleromancy://natal/{}",
                         record.id
@@ -331,7 +331,7 @@ async fn natal_houses_authority_admits_both_systems_and_refuses_cusp_tamper() {
             other
                 .invoke(apply(
                     &shared,
-                    vec![pandect::CapturedDelta::ReplaySetNodeFacetById {
+                    vec![kernel::graph::CapturedDelta::ReplaySetNodeFacetById {
                         node_id: kernel::graph::Graph::node_namespace_id(&format!(
                             "cleromancy://natal/{}",
                             record.id
@@ -412,7 +412,7 @@ async fn natal_cap_authority_admits_retained_observations_and_refuses_motion_tam
             other
                 .invoke(apply(
                     &shared,
-                    vec![pandect::CapturedDelta::ReplaySetNodeFacetById {
+                    vec![kernel::graph::CapturedDelta::ReplaySetNodeFacetById {
                         node_id: kernel::graph::Graph::node_namespace_id(&format!(
                             "cleromancy://natal/{}",
                             record.id
@@ -537,12 +537,12 @@ async fn natal_aspects_authority_admits_cross_app_and_refuses_resealed_results_a
             .invoke(apply(
                 &before,
                 vec![
-                    pandect::CapturedDelta::ReplayAddNodeWithIdIfMissing {
+                    kernel::graph::CapturedDelta::ReplayAddNodeWithIdIfMissing {
                         id: node_id.clone(),
                         url,
                         position: [0.0, 0.0],
                     },
-                    pandect::CapturedDelta::ReplaySetNodeFacetById {
+                    kernel::graph::CapturedDelta::ReplaySetNodeFacetById {
                         node_id,
                         facet: cleromancy::natal::NATAL_FACET.into(),
                         value_json: serde_json::to_string(&bad).unwrap(),

@@ -177,6 +177,17 @@ pub use ui::{
     ConsultationStatus, ConsultationUi, ConsultationView, consultation_view,
 };
 
+// pandect's graph-generic types over this crate's graph, one alias each (engine split D244).
+#[cfg(all(
+    not(feature = "portable-core"),
+    any(
+        feature = "personal-sync",
+        all(feature = "legacy-receipts", feature = "graphshell-admission")
+    ),
+    not(target_arch = "wasm32")
+))]
+pub(crate) type SyncProjection = pandect::personal_sync::SyncProjection<kernel::graph::Graph>;
+
 /// Stable fixture used by the A0 executable and integration receipts.
 pub fn a0_fixture() -> (ContextSnapshot, Field) {
     let context = ContextSnapshot::new("A threshold", "cleromancy.fixture-context/v1")

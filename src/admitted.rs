@@ -17,7 +17,7 @@ use chirograph::{
     ProjectionSnapshot, ResourceRequest, ResourceResponse,
 };
 #[cfg(feature = "personal-sync")]
-use pandect::personal_sync::SyncProjection;
+use crate::SyncProjection;
 use graphshell_endpoint::{
     IntentSink, PresentationSource, ProjectionCatalog, ProjectionNoticeSource, ProjectionSource,
 };

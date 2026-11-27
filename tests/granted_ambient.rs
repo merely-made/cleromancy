@@ -15,14 +15,16 @@ use ostiary::app_admission::AppId;
 use dramatis::view::VaultProtectionView;
 use armillary::tasks::ResidentTasks;
 use graphshell_host::endpoint_catalog::ResidentEndpointCatalog;
-use pandect::{
-    Author, DomainId, MereSessions, ReservoirStore, open_mere_backend, open_reservoir_backend,
-};
+use pandect::{Author, DomainId, ReservoirStore, open_mere_backend, open_reservoir_backend};
 use personae::{Ed25519Keypair, PersonaId, ProfileId};
 use std::{
     sync::Arc,
     time::{Duration, SystemTime},
 };
+
+// pandect's graph-generic types over this crate's graph, one alias each (engine split D244).
+pub(crate) type MereSessions<B> = pandect::MereSessions<B, kernel::graph::Graph>;
+
 #[tokio::test(flavor = "multi_thread")]
 async fn neighboring_preview_requires_its_own_live_grant_and_clears_on_revocation() {
     let root = tempfile::Builder::new()

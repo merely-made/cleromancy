@@ -3,9 +3,9 @@
 
 //! Decoding of the selected facets from an H7 materialized projection.
 
+use crate::SyncProjection;
 use crate::inference::{GeneratedInference, INFERENCE_FACET};
 use crate::situation::{ReadingSituation, SITUATION_FACET};
-use pandect::personal_sync::SyncProjection;
 use portolan::FacetId;
 
 use super::shared::{invalid, validate_identity};
