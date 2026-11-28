@@ -171,6 +171,9 @@ djinn = { version = ">=0.0.3", git = "https://github.com/merely-made/armillary.g
 # Root patches are not inherited from Mere or Genet. The native host resolves
 # one maintained Classic 0.11 triple and the matching Netrender device source.
 [patch.crates-io]
+# totp-rs master takes constant_time_eq 0.6 (PR #92, unreleased after 6.0.0), as dramatis
+# patches it, but its patch does not reach consumers. Remove when totp-rs releases it.
+totp-rs = { git = "https://github.com/constantoine/totp-rs", branch = "master" }
 # Producer contracts use the same Mere source as the host.
 sceno = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
 scenotime = { git = "https://github.com/merely-made/graphshell.git", branch = "main" }
