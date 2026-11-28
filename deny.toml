@@ -47,10 +47,6 @@ crate = "bit-vec@0.8.0"
 reason = "bit-set 0.8.0 requires it (through cambium, cambium-desktop, castellan and 15 more); goes when it moves to bit-vec 0.9.1"
 
 [[bans.skip]]
-crate = "bitflags@1.3.2"
-reason = "core-graphics 0.23.2, core-graphics-types 0.1.3, png 0.17.16, redox_syscall 0.4.1 require it (through cambium-desktop, mandrake, tabard-workshop); goes when they move to bitflags 2.13.2"
-
-[[bans.skip]]
 crate = "block-buffer@0.10.4"
 reason = "digest 0.10.7 requires it (under hmac 0.12 and sha2 0.10); goes when it moves to block-buffer 0.12.1"
 
@@ -256,10 +252,6 @@ crate = "phf_shared@0.12.1"
 reason = "phf 0.12.1 requires it (through chrono-tz); goes when it moves to phf_shared 0.14.0"
 
 [[bans.skip]]
-crate = "png@0.17.16"
-reason = "mandrake 0.1.0 requires it (through mandrake); goes when it moves to png 0.18.1"
-
-[[bans.skip]]
 crate = "polyval@0.6.2"
 reason = "ghash 0.5.1 requires it (aes-gcm 0.10.3 is held by noq-proto 1.4.0 and turso_core 0.8.3, both their latest releases); goes when it moves to polyval 0.7.3"
 
@@ -296,10 +288,6 @@ reason = "winit 0.30.13 requires it (through cambium-desktop, mandrake, tabard-w
 [[bans.skip]]
 crate = "redox_syscall@0.5.18"
 reason = "parking_lot_core 0.9.12 requires it (through cambium, cambium-desktop, castellan and 19 more); goes when it moves to redox_syscall 0.9.5"
-
-[[bans.skip]]
-crate = "redox_users@0.4.6"
-reason = "dirs-sys-next 0.1.2 requires it (through mere-resident); goes when it moves to redox_users 0.5.3"
 
 [[bans.skip]]
 crate = "rustc-hash@1.1.0"
@@ -344,14 +332,6 @@ reason = "calloop 0.13.0, djinn 0.0.3, graphshell-host 0.0.2, jni 0.21.1 and 11 
 [[bans.skip]]
 crate = "thiserror-impl@1.0.69"
 reason = "thiserror 1.0.69 requires it (through cambium-desktop, djinn, dramatis-resident and 10 more); goes when it moves to thiserror-impl 2.0.21"
-
-[[bans.skip]]
-crate = "toml@0.9.12+spec-1.1.0"
-reason = "wasmtime-internal-cache 45.0.3 requires it (through mere-resident); goes when it moves to toml 1.2.1+spec-1.1.0"
-
-[[bans.skip]]
-crate = "toml_datetime@0.7.5+spec-1.1.0"
-reason = "toml 0.9.12+spec-1.1.0 requires it (through mere-resident); goes when it moves to toml_datetime 1.1.3+spec-1.1.0"
 
 [[bans.skip]]
 crate = "turquet@0.1.0"
@@ -436,10 +416,6 @@ reason = "windows-targets 0.42.2 requires it (through graphshell-host, mere-resi
 [[bans.skip]]
 crate = "windows_x86_64_msvc@0.42.2"
 reason = "windows-targets 0.42.2 requires it (through graphshell-host, mere-resident); goes when it moves to windows_x86_64_msvc 0.52.6"
-
-[[bans.skip]]
-crate = "winnow@0.7.15"
-reason = "toml 0.9.12+spec-1.1.0 requires it (through mere-resident); goes when it moves to winnow 1.0.5"
 
 
 [[bans.skip]]
